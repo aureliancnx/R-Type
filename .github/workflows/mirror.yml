@@ -5,13 +5,13 @@ on: [push, delete]
 jobs:
   epitech_mirror:
     runs-on: ubuntu-latest
-    steps:                                              # <-- must use actions/checkout before mirroring!
+    steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - uses: pixta-dev/repository-mirroring-action@v1
         with:
           target_repo_url:
-            git@gitlab.com:EpitechPromo2025/B-CPP-500-REN-5-1-rtype-aurelien.marcel.git
+            git@github.com:EpitechPromo2025/B-CPP-500-REN-5-1-rtype-aurelien.marcel.git
           ssh_private_key:
             ${{ secrets.SSH_PRIVATE_KEY }}

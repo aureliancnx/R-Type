@@ -22,5 +22,5 @@ int main(int ac, char **av) {
     } catch(...) {}
 
 
-    // engine.run();
+    engine.run();
 }

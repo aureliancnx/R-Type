@@ -9,11 +9,17 @@ endif(${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_BINARY_DIR} AND NOT W
 
 project(RType LANGUAGES CXX)
 
+option(IS_SERVER "Generate R-Type server" OFF)
+
 # Library
 add_subdirectory(Library/KapEngine)
 add_subdirectory(Library/KapMirror)
 
-file(GLOB_RECURSE SOURCES Main.cpp Assets/Components/*.cpp)
+if(${IS_SERVER})
+	file(GLOB_RECURSE SOURCES ServerMain.cpp Assets/Components/*.cpp)
+else()
+	file(GLOB_RECURSE SOURCES ClientMain.cpp Assets/Components/*.cpp)
+endif()
 
 add_executable(RType ${SOURCES} ${HEADERS})
 

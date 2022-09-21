@@ -17,13 +17,14 @@ brew install coreutils gcc@11 ninja cmake
 ```console
 git submodule update --init --recursive
 mkdir build && cd build
-cmake ..
 ```
 
-### Build with Ninja
-Build performance is drastically better with Ninja.
+### Build Client
 ```console
-git submodule update --init --recursive
-mkdir build && cd build
-cmake -G Ninja ..
+cmake -G Ninja -DIS_SERVER:BOOLEAN=FALSE ..
+```
+
+### Build Server
+```console
+cmake -G Ninja -DIS_SERVER:BOOLEAN=TRUE ..
 ```

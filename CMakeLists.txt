@@ -11,15 +11,20 @@ project(RType LANGUAGES CXX)
 
 # Library
 add_subdirectory(Library/KapEngine)
+add_subdirectory(Library/KapMirror)
 
 file(GLOB_RECURSE SOURCES Main.cpp Assets/Components/*.cpp)
 
 add_executable(RType ${SOURCES} ${HEADERS})
 
 target_link_libraries(RType KapEngine)
+target_link_libraries(RType KapMirror)
 
 include_directories(.)
 include_directories(Assets/Components)
+
+# KapMirror include
+include_directories(Library/KapMirror)
 
 # KapEngine include
 include(Library/KapEngine/CMake/engine_include.cmake)

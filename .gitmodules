@@ -1,3 +1,6 @@
 [submodule "Library/KapEngine"]
 	path = Library/KapEngine
 	url = git@github.com:benji-35/KapEngine.git
+[submodule "Library/KapMirror"]
+	path = Library/KapMirror
+	url = git@github.com:Chaika9/KapMirror.git

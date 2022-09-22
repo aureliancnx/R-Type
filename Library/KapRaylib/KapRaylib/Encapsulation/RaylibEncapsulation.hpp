@@ -192,7 +192,7 @@ namespace KapEngine {
                  */
 
                 void drawrectangle(float posX, float posY, float width, float heigth, Color color) {
-                    std::shared_ptr<DrawSpriteColor> spriteColor = std::make_shared<DrawSpriteColor>(posX, posY, width, heigth, color);
+                    // auto spriteColor = std::make_shared<DrawSpriteColor>(posX, posY, width, heigth, color);
                     // _uiToDraw.push_back(spriteColor);
                 }
 

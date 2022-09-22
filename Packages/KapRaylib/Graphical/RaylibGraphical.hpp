@@ -40,7 +40,7 @@ namespace KapEngine {
                 void display() override;
                 void getEvents() override;
 
-                float getJoystikValue(int gamepadId, int joystickId) override {}
+                float getJoystikValue(int gamepadId, int joystickId) override;
 
             protected:
             private:

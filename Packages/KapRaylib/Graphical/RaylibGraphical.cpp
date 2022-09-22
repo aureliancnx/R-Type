@@ -53,3 +53,7 @@ void KapEngine::Graphical::RaylibGraphical::getEvents() {
         return;
     }
 }
+
+float KapEngine::Graphical::RaylibGraphical::getJoystikValue(int gamepadId, int joystickId) {
+    raylib->getGamepadJoystickValue(gamepadId, joystickId);
+}

@@ -200,6 +200,54 @@ namespace KapEngine {
                     DrawRectangle(posX, posY, width, hiegth, color);
                 }
 
+                /**
+                 * @brief Input part
+                 * 
+                 */
+
+                bool isGamepadConnected(int gpId) {
+                    return IsGamepadAvailable(gpId);
+                }
+
+                int maxJoystickGamepad(int gpId) {
+                    if (!isGamepadConnected(gpId))
+                        return 0;
+                    return GetGamepadAxisCount(gpId);
+                }
+
+                float getGamepadJoystickValue(int gpId, int joystickId) {
+                    if (!isGamepadConnected(gpId))
+                        return 0.0f;
+                    if (maxJoystickGamepad(gpId) <= joystickId)
+                        return 0.0f;
+                    return GetGamepadAxisMovement(gpId, joystickId);
+                }
+
+                int getKeyPressed() {
+                    return GetKeyPressed();
+                }
+
+                bool isKeyReleased(int key) {
+                    return IsKeyReleased(key);
+                }
+
+                bool isMouseButtonReleased(int btn) {
+                    return IsMouseButtonReleased(btn);
+                }
+
+                bool isMouseButtonPressed(int btn) {
+                    return IsMouseButtonPressed(btn);
+                }
+
+                bool isGamepadButtonReleased(int gpId, int btn) {
+                    return IsGamepadButtonReleased(gpId, btn);
+                }
+
+                bool isGamepadButtonPressed(int gpId, int btn) {
+                    return IsGamepadButtonPressed(gpId, btn);
+                }
+
+
             protected:
                 void drawNoCamText() {
                     DrawText("No camera found !", _widthWindow / 2 - 65.f, _heightWindow / 2 - 20.f, 15.0f, WHITE);

@@ -23,5 +23,22 @@ KapEngine::Graphical::RaylibGraphical::RaylibGraphical(GraphicalLibManager &mana
 
 KapEngine::Graphical::RaylibGraphical::~RaylibGraphical() {}
 
+void KapEngine::Graphical::RaylibGraphical::clearCache() {
 
+}
 
+void KapEngine::Graphical::RaylibGraphical::stopDisplay() {
+    raylib->closeWindow();
+}
+
+void KapEngine::Graphical::RaylibGraphical::startDisplay() {
+    raylib->openWindow();
+}
+
+void KapEngine::Graphical::RaylibGraphical::clear() {
+    raylib->startDrawing();
+}
+
+void KapEngine::Graphical::RaylibGraphical::display() {
+    raylib->stopDrawing();
+}

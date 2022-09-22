@@ -8,7 +8,7 @@
 #ifndef DRAWUI_HPP_
 #define DRAWUI_HPP_
 
-#include "RaylibEncapsulation.hpp"
+#include "Encapsulation/RaylibEncapsulation.hpp"
 
 namespace KapEngine {
 

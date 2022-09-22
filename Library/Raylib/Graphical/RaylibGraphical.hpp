@@ -11,7 +11,7 @@
 #include <memory>
 
 #include "GraphicalLib.hpp"
-#include "RaylibEncapsulation.hpp"
+#include "Encapsulation/RaylibEncapsulation.hpp"
 
 namespace KapEngine {
     class KapEngine;

@@ -91,10 +91,10 @@ namespace KapEngine {
                         BeginMode3D(_camera);
                         //draw 3D elements
                         EndMode3D();
-                        for (std::size_t i = 0; i < _uiToDraw.size(); i++) {
-                            _uiToDraw[i]->draw();
-                            _uiToDraw[i]->clear();
-                        }
+                        // for (std::size_t i = 0; i < _uiToDraw.size(); i++) {
+                        //     _uiToDraw[i]->draw();
+                        //     _uiToDraw[i]->clear();
+                        // }
                         _uiToDraw.clear();
                     }
                     if (_drawFps) {
@@ -193,7 +193,7 @@ namespace KapEngine {
 
                 void drawrectangle(float posX, float posY, float width, float heigth, Color color) {
                     std::shared_ptr<DrawSpriteColor> spriteColor = std::make_shared<DrawSpriteColor>(posX, posY, width, heigth, color);
-                    _uiToDraw.push_back(spriteColor);
+                    // _uiToDraw.push_back(spriteColor);
                 }
 
                 static void __drawRectangle(float posX, float posY, float width, float hiegth, Color color) {

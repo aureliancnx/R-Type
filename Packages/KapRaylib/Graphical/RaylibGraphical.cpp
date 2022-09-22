@@ -7,6 +7,7 @@
 
 #include "RaylibGraphical.hpp"
 #include "Vectors.hpp"
+#include "Debug.hpp"
 
 KapEngine::Graphical::RaylibGraphical::RaylibGraphical(GraphicalLibManager &manager) : GraphicalLib("raylib", manager) {
 
@@ -21,7 +22,9 @@ KapEngine::Graphical::RaylibGraphical::RaylibGraphical(GraphicalLibManager &mana
 
 }
 
-KapEngine::Graphical::RaylibGraphical::~RaylibGraphical() {}
+KapEngine::Graphical::RaylibGraphical::~RaylibGraphical() {
+    raylib->closeWindow();
+}
 
 void KapEngine::Graphical::RaylibGraphical::clearCache() {
 
@@ -33,6 +36,7 @@ void KapEngine::Graphical::RaylibGraphical::stopDisplay() {
 
 void KapEngine::Graphical::RaylibGraphical::startDisplay() {
     raylib->openWindow();
+    Debug::log("Use " + getName());
 }
 
 void KapEngine::Graphical::RaylibGraphical::clear() {
@@ -41,4 +45,11 @@ void KapEngine::Graphical::RaylibGraphical::clear() {
 
 void KapEngine::Graphical::RaylibGraphical::display() {
     raylib->stopDrawing();
+}
+
+void KapEngine::Graphical::RaylibGraphical::getEvents() {
+    if (raylib->windownShouldClose()) {
+        manager.getEngine().stop();
+        return;
+    }
 }

@@ -9,6 +9,7 @@
 #define DRAWUI_HPP_
 
 #include "raylib.h"
+#include <string>
 
 namespace KapEngine {
     namespace Graphical {

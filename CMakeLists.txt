@@ -9,7 +9,7 @@ endif(${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_BINARY_DIR} AND NOT W
 
 project(RType LANGUAGES CXX)
 
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/CMake" ${CMAKE_MODULE_PATH})
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake" ${CMAKE_MODULE_PATH})
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -18,29 +18,31 @@ option(IS_SERVER "Generate R-Type server" OFF)
 # Library
 add_subdirectory(Library/KapEngine)
 add_subdirectory(Library/KapMirror)
+add_subdirectory(Library/KapRaylib)
 
 if(${IS_SERVER})
 	file(GLOB_RECURSE SOURCES ServerMain.cpp Assets/Components/*.cpp)
 else()
 	file(GLOB_RECURSE SOURCES ClientMain.cpp Assets/Components/*.cpp)
 
-	# RayLib version
-	set(raylib_VERSION 4.0.0)
-	find_package(raylib REQUIRED)
+	# # RayLib version
+	# set(raylib_VERSION 4.0.0)
+	# find_package(raylib REQUIRED)
 endif()
 
 add_executable(RType ${SOURCES} ${HEADERS})
 
 target_link_libraries(RType KapEngine)
 target_link_libraries(RType KapMirror)
+# target_link_libraries(RType KapRaylib)
 
-if(!${IS_SERVER})
-	target_link_libraries(RType raylib)
-endif()
+# if(!${IS_SERVER})
+# 	target_link_libraries(RType raylib)
+# endif()
 
 include_directories(.)
 include_directories(Assets/Components)
-include_directories(Library/Raylib)
+# include_directories(Library/KapRaylib/KapRaylib)
 
 # KapMirror include
 include_directories(Library/KapMirror)

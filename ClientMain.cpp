@@ -8,6 +8,10 @@ int main(int ac, char **av) {
 
     KapEngine::KapEngine engine(true, "RType", "Alpha", "Epitech tkt on gère");
 
+    KapEngine::Tools::Vector2 screenSize(720, 480);
+
+    engine.setScreenSize(screenSize);
+
     auto raylib = std::make_shared<KapEngine::Graphical::RaylibGraphical>(*engine.getGraphicalLibManager());
 
     engine.getGraphicalLibManager()->addLib(raylib);

@@ -37,7 +37,7 @@ namespace KapEngine {
                     _fps = fps;
                     setVisibleFps(true);
                 }
-                ~RaylibEncapsulation();
+                ~RaylibEncapsulation() {}
 
                 void openWindow() {
                     if (opened)

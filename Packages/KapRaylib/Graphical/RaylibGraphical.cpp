@@ -9,6 +9,9 @@
 #include "Vectors.hpp"
 #include "Debug.hpp"
 #include "Key.hpp"
+#include "UiImage.hpp"
+#include "UiText.hpp"
+#include "Transform.hpp"
 
 KapEngine::Graphical::RaylibGraphical::RaylibGraphical(GraphicalLibManager &manager) : GraphicalLib("raylib", manager) {
 
@@ -20,6 +23,31 @@ KapEngine::Graphical::RaylibGraphical::RaylibGraphical(GraphicalLibManager &mana
         manager.getEngine().getGameName(),
         manager.getEngine().getMaxFps()
     );
+
+    setDrawImage([this](UI::Image &img){
+        
+        if (img.isUsingSprite()) {
+            Debug::log("Draw sprite");
+        } else {
+            Tools::Vector2 pos = img.getCalculatedPosition();
+            Tools::Vector2 scale = img.getCalculatedScale();
+            Tools::Color color = img.getColorSprite();
+            this->raylib->drawRectangle(pos.getX(), pos.getY(), scale.getX(), scale.getY(), engineToRaylib(color));
+        }
+    });
+
+    setDrawText([this](UI::Text &txt){
+
+        Transform &tr = (Transform &)txt.getGameObject().getTransform();
+        Tools::Vector2 posTr;
+
+        posTr.setX(tr.getWorldPosition().getX());
+        posTr.setY(tr.getWorldPosition().getY());
+
+        Vector2 pos = engineToRaylib(posTr);
+
+        this->raylib->drawText(txt.getFontPath(), txt.getText(), pos, txt.getPoliceSize(), txt.getSpace(), engineToRaylib(Tools::Color::white()));
+    });
 
 }
 
@@ -398,4 +426,23 @@ bool KapEngine::Graphical::RaylibGraphical::isGamepadButtonPressedEngine(Events:
 
     k = key;
     return isGamepadButtonPressedEngine(k);
+}
+
+Color KapEngine::Graphical::RaylibGraphical::engineToRaylib(Tools::Color const& color) const {
+    Color result;
+
+    result.a = color.getA();
+    result.r = color.getR();
+    result.g = color.getG();
+    result.b = color.getB();
+    return result;
+}
+
+Vector2 KapEngine::Graphical::RaylibGraphical::engineToRaylib(Tools::Vector2 const& vec) const {
+    Vector2 result;
+
+    result.x = vec.getX();
+    result.y = vec.getY();
+
+    return result;
 }

@@ -90,11 +90,10 @@ namespace KapEngine {
                     if (camSet) {
                         BeginMode3D(_camera);
                         //draw 3D elements
-                        _3DElements.clear();
                         EndMode3D();
                         for (std::size_t i = 0; i < _uiToDraw.size(); i++) {
-                            _uiToDraw[i].draw();
-                            _uiToDraw[i].clear();
+                            _uiToDraw[i]->draw();
+                            _uiToDraw[i]->clear();
                         }
                         _uiToDraw.clear();
                     }
@@ -184,7 +183,7 @@ namespace KapEngine {
                 Font &getFont(std::string const& fontPath) {
                     loadFont(fontPath);
 
-                    return _font[fontPath];
+                    return _fonts[fontPath];
                 }
 
                 /**

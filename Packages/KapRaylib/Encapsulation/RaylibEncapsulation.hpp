@@ -22,6 +22,10 @@ namespace KapEngine {
         class DrawUI;
         class DrawSpriteColor;
     }
+
+    namespace Events {
+        class Key;
+    }
 }
 
 namespace KapEngine {
@@ -36,6 +40,7 @@ namespace KapEngine {
                     _title = title;
                     _fps = fps;
                     setVisibleFps(true);
+                    SetTraceLogLevel(LOG_NONE);
                 }
                 ~RaylibEncapsulation() {}
 
@@ -198,6 +203,53 @@ namespace KapEngine {
 
                 static void __drawRectangle(float posX, float posY, float width, float hiegth, Color color) {
                     DrawRectangle(posX, posY, width, hiegth, color);
+                }
+
+                /**
+                 * @brief Input part
+                 * 
+                 */
+
+                bool isGamepadConnected(int gpId) {
+                    return IsGamepadAvailable(gpId);
+                }
+
+                int maxJoystickGamepad(int gpId) {
+                    if (!isGamepadConnected(gpId))
+                        return 0;
+                    return GetGamepadAxisCount(gpId);
+                }
+
+                float getGamepadJoystickValue(int gpId, int joystickId) {
+                    if (!isGamepadConnected(gpId))
+                        return 0.0f;
+                    if (maxJoystickGamepad(gpId) <= joystickId)
+                        return 0.0f;
+                    return GetGamepadAxisMovement(gpId, joystickId);
+                }
+
+                int getKeyPressed() {
+                    return GetKeyPressed();
+                }
+
+                bool isKeyReleased(int key) {
+                    return IsKeyReleased(key);
+                }
+
+                bool isMouseButtonReleased(int btn) {
+                    return IsMouseButtonReleased(btn);
+                }
+
+                bool isMouseButtonPressed(int btn) {
+                    return IsMouseButtonPressed(btn);
+                }
+
+                bool isGamepadButtonReleased(int gpId, int btn) {
+                    return IsGamepadButtonReleased(gpId, btn);
+                }
+
+                bool isGamepadButtonPressed(int gpId, int btn) {
+                    return IsGamepadButtonPressed(gpId, btn);
                 }
 
             protected:

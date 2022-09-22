@@ -42,7 +42,7 @@ namespace KapEngine {
                 }
 
                 void draw() override {
-                    RaylibEncapsulation::drawRectangle(_posX, _posY, _width, _heigth, _color);
+                    RaylibEncapsulation::__drawRectangle(_posX, _posY, _width, _heigth, _color);
                 }
 
                 //getters

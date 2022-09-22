@@ -192,7 +192,12 @@ namespace KapEngine {
                  * 
                  */
 
-                static void drawRectangle(float posX, float posY, float width, float hiegth, Color color) {
+                void drawrectangle(float posX, float posY, float width, float heigth, Color color) {
+                    std::shared_ptr<DrawSpriteColor> spriteColor = std::make_shared<DrawSpriteColor>(posX, posY, width, heigth, color);
+                    _uiToDraw.push_back(spriteColor);
+                }
+
+                static void __drawRectangle(float posX, float posY, float width, float hiegth, Color color) {
                     DrawRectangle(posX, posY, width, hiegth, color);
                 }
 
@@ -223,7 +228,7 @@ namespace KapEngine {
                 //cache
                 std::map<std::string, Font> _fonts;
 
-                std::vector<DrawUI> _uiToDraw;
+                std::vector<std::shared_ptr<DrawUI>> _uiToDraw;
         };
 
     }

@@ -13,14 +13,20 @@
 #include <vector>
 #include <map>
 
+#include "DrawSystem/DrawUI.hpp"
+
 #include "raylib.h"
 
 namespace KapEngine {
     namespace Graphical {
 
         //raylib draw system
-        class DrawUI;
-        class DrawSpriteColor;
+
+        namespace Draw {
+            class RaylibDrawing;
+            class DrawSpriteColor;
+            class DrawText;
+        }
     }
 
     namespace Events {
@@ -96,11 +102,13 @@ namespace KapEngine {
                         BeginMode3D(_camera);
                         //draw 3D elements
                         EndMode3D();
-                        // for (std::size_t i = 0; i < _uiToDraw.size(); i++) {
-                        //     _uiToDraw[i]->draw();
-                        //     _uiToDraw[i]->clear();
-                        // }
-                        _uiToDraw.clear();
+
+                        for (std::size_t i = 0; i < _drawUi.size(); i++) {
+                            _drawUi[i]->draw();
+                            _drawUi[i]->clear();
+                        }
+
+                        _drawUi.clear();
                     }
                     if (_drawFps) {
                         drawFps();
@@ -196,13 +204,30 @@ namespace KapEngine {
                  * 
                  */
 
-                void drawrectangle(float posX, float posY, float width, float heigth, Color color) {
-                    // auto spriteColor = std::make_shared<DrawSpriteColor>(posX, posY, width, heigth, color);
-                    // _uiToDraw.push_back(spriteColor);
+                void drawRectangle(float posX, float posY, float width, float heigth, Color color) {
+                    auto sprite = std::make_shared<Draw::DrawSpriteColor>(*this, posX, posY, width, heigth, color);
+                    _drawUi.push_back(sprite);
                 }
 
-                static void __drawRectangle(float posX, float posY, float width, float hiegth, Color color) {
+                void __drawRectangle(float posX, float posY, float width, float hiegth, Color color) {
                     DrawRectangle(posX, posY, width, hiegth, color);
+                }
+
+                void drawText(std::string const& fontPath, std::string const& text, Vector2 pos, float fontSize, float spacing, Color col) {
+                    auto txt = std::make_shared<Draw::DrawText>(*this);
+                    
+                    txt->setColor(col);
+                    txt->setPos(pos);
+                    txt->setSize(fontSize);
+                    txt->setSpacing(spacing);
+                    txt->setText(text);
+                    txt->setFont(getFont(fontPath));
+
+                    _drawUi.push_back(txt);
+                }
+
+                void __drawText(Font font, std::string const& text, Vector2 pos, float fontSize, float spacing, Color col) {
+                    DrawTextEx(font, text.c_str(), pos, fontSize, spacing, col);
                 }
 
                 /**
@@ -279,7 +304,7 @@ namespace KapEngine {
                 //cache
                 std::map<std::string, Font> _fonts;
 
-                std::vector<std::shared_ptr<DrawUI>> _uiToDraw;
+                std::vector<std::shared_ptr<Draw::RaylibDrawing>> _drawUi;
         };
 
     }

@@ -23,4 +23,8 @@ void RType::Component::TestComponent::onUpdate() {
         KapEngine::Debug::log("ARROW LEFT");
     if (getInput().getKeyDown(KapEngine::Events::Key::RIGHT))
         KapEngine::Debug::log("ARROW RIGTH");
+    if (getInput().getKeyDown(KapEngine::Events::Key::MOUSE_LEFT))
+        KapEngine::Debug::log("LEFT CLICK");
+    if (getInput().getKeyDown(KapEngine::Events::Key::MOUSE_RIGHT))
+        KapEngine::Debug::log("RIGHT CLICK");
 }

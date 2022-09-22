@@ -21,6 +21,10 @@ namespace KapEngine {
         class GraphicalLib;
     }
 
+    namespace Tools {
+        class Color;
+    }
+
 }
 
 namespace KapEngine {
@@ -56,6 +60,9 @@ namespace KapEngine {
                 bool isGamepadButtonReleasedEngine(Events::Key::EKey key);
                 bool isGamepadButtonPressedEngine(Events::Key key);
                 bool isGamepadButtonPressedEngine(Events::Key::EKey key);
+
+                Color engineToRaylib(Tools::Color const& color) const;
+                Vector2 engineToRaylib(Tools::Vector2 const& vector) const;
 
             protected:
             private:

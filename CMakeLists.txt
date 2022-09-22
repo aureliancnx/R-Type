@@ -28,6 +28,7 @@ target_link_libraries(RType KapMirror)
 
 include_directories(.)
 include_directories(Assets/Components)
+include_directories(Library/Raylib)
 
 # KapMirror include
 include_directories(Library/KapMirror)

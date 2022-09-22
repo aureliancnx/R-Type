@@ -23,7 +23,7 @@ file(GLOB_RECURSE SOURCES ${KapRaylib_SOURCE_DIR}/KapRaylib/*.cpp)
 add_library(KapRaylib SHARED ${SOURCES} ${HEADERS})
 
 include_directories(${KapRaylib_SOURCE_DIR}/KapRaylib)
-include_directories(/home/chaika9/Epitech/R-Type/build/_deps/raylib-src/src)
+include_directories(../../build/_deps/raylib-src/src)
 
 # KapEngine include
 include(../KapEngine/CMake/engine_include.cmake)

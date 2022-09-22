@@ -19,10 +19,6 @@ find_package(raylib REQUIRED)
 
 option(IS_SERVER "Generate R-Type server" OFF)
 
-# Library
-add_subdirectory(Library/KapEngine)
-add_subdirectory(Library/KapMirror)
-
 if(${IS_SERVER})
 	file(GLOB_RECURSE SOURCES ServerMain.cpp Assets/Components/*.cpp Packages/*.cpp)
 else()
@@ -32,21 +28,13 @@ endif()
 add_executable(RType ${SOURCES} ${HEADERS})
 
 # Library
-target_link_libraries(RType KapEngine)
-target_link_libraries(RType KapMirror)
+include(Library/library.cmake)
+
 target_link_libraries(RType raylib)
 
+# Includes
 include_directories(.)
-
-# Assets
 include_directories(Assets/Components)
 
 # Packages
-include_directories(Packages)
-include_directories(Packages/KapRaylib)
-
-# KapMirror include
-include_directories(Library/KapMirror)
-
-# KapEngine include
-include(Library/KapEngine/CMake/engine_include.cmake)
+include(Packages/packages.cmake)

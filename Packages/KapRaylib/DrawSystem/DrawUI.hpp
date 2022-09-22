@@ -27,7 +27,7 @@ namespace KapEngine {
 
         /**
          * @brief Use to draw rectangle colored without images or specify things
-         * 
+         *
          */
         class DrawSpriteColor : public DrawUI {
             public:

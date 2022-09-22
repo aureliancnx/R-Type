@@ -2,6 +2,8 @@
 
 #include "KapEngine.hpp"
 #include "Graphical/RaylibGraphical.hpp"
+#include "TestComponent.hpp"
+#include "Factory.hpp"
 
 int main(int ac, char **av) {
     // std::cout << "Starting R-Type Client..." << std::endl;
@@ -16,6 +18,15 @@ int main(int ac, char **av) {
 
     engine.getGraphicalLibManager()->addLib(raylib);
     engine.getGraphicalLibManager()->changeLib("raylib");
+
+    try {
+        auto &scene = engine.getSceneManager()->getCurrentScene();
+    
+        auto go = KapEngine::Factory::createEmptyGameObject(scene, "Lol");
+        auto testComp = std::make_shared<RType::Component::TestComponent>(go);
+        go->addComponent(testComp);
+
+    } catch(...) {}
 
     engine.run();
 

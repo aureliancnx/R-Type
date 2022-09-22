@@ -22,6 +22,10 @@ namespace KapEngine {
         class DrawUI;
         class DrawSpriteColor;
     }
+
+    namespace Events {
+        class Key;
+    }
 }
 
 namespace KapEngine {
@@ -36,6 +40,7 @@ namespace KapEngine {
                     _title = title;
                     _fps = fps;
                     setVisibleFps(true);
+                    SetTraceLogLevel(LOG_NONE);
                 }
                 ~RaylibEncapsulation() {}
 
@@ -246,7 +251,6 @@ namespace KapEngine {
                 bool isGamepadButtonPressed(int gpId, int btn) {
                     return IsGamepadButtonPressed(gpId, btn);
                 }
-
 
             protected:
                 void drawNoCamText() {

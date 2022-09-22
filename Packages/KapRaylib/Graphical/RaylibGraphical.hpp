@@ -42,6 +42,21 @@ namespace KapEngine {
 
                 float getJoystikValue(int gamepadId, int joystickId) override;
 
+                Events::Key::EKey toKey(KeyboardKey _key);
+                Events::Key::EKey toKey(MouseButton _key);
+                Events::Key::EKey toKey(GamepadButton _key, int id);
+                Events::Key::EKey toKey(int _key);
+
+                int toRaylibKey(Events::Key key);
+                int toRaylibKey(Events::Key::EKey key);
+
+                bool keyAlreadyInList(Events::Key key);
+
+                bool isGamepadButtonReleasedEngine(Events::Key key);
+                bool isGamepadButtonReleasedEngine(Events::Key::EKey key);
+                bool isGamepadButtonPressedEngine(Events::Key key);
+                bool isGamepadButtonPressedEngine(Events::Key::EKey key);
+
             protected:
             private:
                 std::unique_ptr<RaylibEncapsulation> raylib;

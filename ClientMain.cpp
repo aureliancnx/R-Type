@@ -38,6 +38,7 @@ void testCanvas(KapEngine::KapEngine *engine) {
         KapEngine::Tools::Vector3 pos(500.f, 250.f, 10.f);
         KapEngine::Tools::Vector3 scale(15.f, 15.f, 15.f);
         imageComponent->setColor(KapEngine::Tools::Color::green());
+        imageComponent->setPathSprite("Toto.png");
         trImage.setPosition(pos);
         trImage.setScale(scale);
 
@@ -60,7 +61,7 @@ int main(int ac, char **av) {
 
     engine.setScreenSize(screenSize);
 
-    auto raylib = std::make_shared<KapEngine::Graphical::RaylibGraphical>(*engine.getGraphicalLibManager());
+    auto raylib = std::make_shared<KapEngine::Graphical::Raylib::RaylibGraphical>(*engine.getGraphicalLibManager());
 
     engine.getGraphicalLibManager()->addLib(raylib);
     engine.getGraphicalLibManager()->changeLib("raylib");

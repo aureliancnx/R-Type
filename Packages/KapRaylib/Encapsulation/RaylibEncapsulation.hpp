@@ -242,7 +242,15 @@ namespace KapEngine {
                     }
 
                     void drawTexture(std::string const& path, float posX, float posY, float width, float heigth, Color col) {
+                        auto texture = std::make_shared<Draw::DrawSpriteTexture>(*this);
+                        texture->setPathTexture(path);
+                        texture->setHeigth(heigth);
+                        texture->setWidth(width);
+                        texture->setPosX(posX);
+                        texture->setPosY(posY);
+                        texture->setColor(col);
 
+                        _drawUi.push_back(texture);
                     }
 
                     void __drawTexture();

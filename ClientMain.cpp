@@ -36,7 +36,7 @@ void testCanvas(KapEngine::KapEngine *engine) {
 
         //set values for image
         KapEngine::Tools::Vector3 pos(0.f, 0.f, 10.f);
-        KapEngine::Tools::Vector3 scale(0.05f, 1.f, 1.f);
+        KapEngine::Tools::Vector3 scale(0.3f, 1.f, 1.f);
         imageComponent->setColor(KapEngine::Tools::Color::white());
         imageComponent->setPathSprite("./Library/KapEngine/Documentation/images/KapEngineBannerNeg.png");
         trImage.setPosition(pos);

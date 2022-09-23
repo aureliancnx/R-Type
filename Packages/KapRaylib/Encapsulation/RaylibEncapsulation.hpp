@@ -12,8 +12,10 @@
 #include <memory>
 #include <vector>
 #include <map>
+#include <iostream>
 
 #include "DrawSystem/DrawUI.hpp"
+#include "Cache/RaylibCache.hpp"
 
 #include "raylib.h"
 
@@ -38,274 +40,331 @@ namespace KapEngine {
 
     namespace Graphical {
 
-        class RaylibEncapsulation {
-            public:
-                RaylibEncapsulation(int const& windowWidth, int const& windowHeight, std::string const& title, int const& fps) {
-                    _widthWindow = windowWidth;
-                    _heightWindow = windowHeight;
-                    _title = title;
-                    _fps = fps;
-                    setVisibleFps(true);
-                    SetTraceLogLevel(LOG_NONE);
-                }
-                ~RaylibEncapsulation() {}
+        namespace Raylib {
 
-                void openWindow() {
-                    if (opened)
-                        return;
-                    InitWindow(_widthWindow, _heightWindow, _title.c_str());
-                    SetTargetFPS(_fps);
-                    InitAudioDevice();
-                    initCam();
-                    opened = true;
-                }
+            class RaylibEncapsulation {
+                public:
+                    RaylibEncapsulation(int const& windowWidth, int const& windowHeight, std::string const& title, int const& fps) {
+                        _widthWindow = windowWidth;
+                        _heightWindow = windowHeight;
+                        _title = title;
+                        _fps = fps;
+                        setVisibleFps(true);
+                        SetTraceLogLevel(LOG_NONE);
+                    }
+                    ~RaylibEncapsulation() {
+                        closeWindow();
+                    }
 
-                void closeWindow() {
-                    if (!opened)
-                        return;
-                    // stopAllMsuics();
-                    CloseWindow();
-                    CloseAudioDevice();
-                    stopCam();
-                    clearCache();
-                    opened = false;
-                }
+                    void openWindow() {
+                        if (opened)
+                            return;
+                        InitWindow(_widthWindow, _heightWindow, _title.c_str());
+                        SetTargetFPS(_fps);
+                        InitAudioDevice();
+                        initCam();
+                        opened = true;
+                    }
 
-                bool windownShouldClose() {
-                    return WindowShouldClose();
-                }
+                    void closeWindow() {
+                        if (!opened)
+                            return;
+                        // stopAllMsuics();
+                        CloseWindow();
+                        CloseAudioDevice();
+                        stopCam();
+                        clearCache();
+                        opened = false;
+                        std::cout << "Clearing RAYLIB" << std::endl;
+                    }
 
-                void startDrawing() {
-                    if (!opened)
-                        return;
-                    BeginDrawing();
-                    clearWindow();
-                    if (!camSet) {
-                        drawNoCamText();
-                        stopDrawing();
+                    bool windownShouldClose() {
+                        return WindowShouldClose();
+                    }
+
+                    void startDrawing() {
+                        if (!opened)
+                            return;
+                        BeginDrawing();
+                        clearWindow();
+                        if (!camSet) {
+                            drawNoCamText();
+                            stopDrawing();
+                            canDraw = false;
+                            return;
+                        }
+                        //update music
+                        canDraw = true;
+                    }
+
+                    void stopDrawing() {
+                        if (_firstRun) {
+                            _firstRun = false;
+                            return;
+                        }
+                        if (!opened)
+                            return;
                         canDraw = false;
-                        return;
-                    }
-                    //update music
-                    canDraw = true;
-                }
+                        if (camSet) {
+                            BeginMode3D(_camera);
+                            //draw 3D elements
+                            EndMode3D();
 
-                void stopDrawing() {
-                    if (_firstRun) {
-                        _firstRun = false;
-                        return;
-                    }
-                    if (!opened)
-                        return;
-                    canDraw = false;
-                    if (camSet) {
-                        BeginMode3D(_camera);
-                        //draw 3D elements
-                        EndMode3D();
+                            for (std::size_t i = 0; i < _drawUi.size(); i++) {
+                                _drawUi[i]->draw();
+                                _drawUi[i]->clear();
+                            }
 
-                        for (std::size_t i = 0; i < _drawUi.size(); i++) {
-                            _drawUi[i]->draw();
-                            _drawUi[i]->clear();
+                            _drawUi.clear();
+                        }
+                        if (_drawFps) {
+                            drawFps();
+                        }
+                        EndDrawing();
+                        for (std::size_t i = 0; i < _cacheTexture.size(); i++) {
+                            __unloadTexture(_cacheTexture[i]);
+                        }
+                        _cacheTexture.clear();
+                    }
+
+                    void setVisibleFps(bool b) {
+                        _drawFps = b;
+                    }
+
+                    void clearWindow() {
+                        if (!opened)
+                            return;
+                        ClearBackground(_background);
+                    }
+
+                    void setBackgroundColor(Color background) {
+                        _background = background;
+                    }
+
+                    void initCam() {
+                        if (camSet)
+                            return;
+                        _camera.position = (Vector3){ 20.0f, 20.0f, 20.0f };
+                        _camera.target = (Vector3){ 0.0f, 8.0f, 0.0f };
+                        _camera.up = (Vector3){ 0.0f, 1.6f, 0.0f };
+                        _camera.fovy = 45.0f;
+                        _camera.projection = CAMERA_PERSPECTIVE;
+                        camSet = true;
+                    }
+
+                    void stopCam() {
+                        if (!camSet)
+                            return;
+                        camSet = false;
+                    }
+
+                    void updateCam(Vector3 pos, Vector3 target, Vector3 up, float fov) {
+                        _camera.position = pos;
+                        _camera.target = target;
+                        _camera.up = up;
+                        _camera.fovy = fov;
+                    }
+
+                    void updateCamProjection(int proj) {
+                        _camera.projection = proj;
+                    }
+
+                    void clearCache();
+
+                    void drawFps() {
+                        DrawFPS(10, 10);
+                    }
+
+                    /**
+                     * @brief image actions
+                     * 
+                     */
+
+                    void __setImageSize(Image *img, Vector2 size) {
+                        if (size.x < 0)
+                            ImageFlipVertical(img);
+                        if (size.y < 0)
+                            ImageFlipHorizontal(img);
+                    }
+
+                    /**
+                     * @brief unload part
+                     * 
+                     */
+
+                    void unloadFont(std::string const& fontPath);
+
+                    void unloadAllFonts();
+
+                    void __unloadFont(Font const& font) {
+                        UnloadFont(font);
+                    }
+
+                    void __unloadImage(Image const& img) {
+                        UnloadImage(img);
+                    }
+
+                    void __unloadTexture(Texture2D const& texture) {
+                        UnloadTexture(texture);
+                    }
+
+                    /**
+                     * @brief load part
+                     * 
+                     */
+
+                    void loadFont(std::string const& fontPath);
+
+                    void loadImage(std::string const& imagePath);
+
+                    Font &getFont(std::string const& fontPath, bool alreadyTry = false);
+
+                    Image &getImage(std::string const& imagePath, bool alreadyTry = false);
+
+                    Image __loadImage(std::string const& imagePath) {
+                        return LoadImage(imagePath.c_str());
+                    }
+
+                    Font __loadFont(std::string const& fontPath) {
+                        return LoadFont(fontPath.c_str());
+                    }
+
+                    Texture2D __getTextureFromImage(Image const& img) {
+                        return LoadTextureFromImage(img);
+                    }
+
+                    /**
+                     * @brief Draw part
+                     * 
+                     */
+
+                    void drawRectangle(float posX, float posY, float width, float heigth, Color color) {
+                        auto sprite = std::make_shared<Draw::DrawSpriteColor>(*this, posX, posY, width, heigth, color);
+                        _drawUi.push_back(sprite);
+                    }
+
+                    void __drawRectangle(float posX, float posY, float width, float hiegth, Color color) {
+                        DrawRectangle(posX, posY, width, hiegth, color);
+                    }
+
+                    void drawText(std::string const& fontPath, std::string const& text, Vector2 pos, float fontSize, float spacing, Color col) {
+                        auto txt = std::make_shared<Draw::DrawText>(*this);
+                        
+                        txt->setColor(col);
+                        txt->setPos(pos);
+                        txt->setSize(fontSize);
+                        txt->setSpacing(spacing);
+                        txt->setText(text);
+                        if (fontPath != "") {
+                            try {
+                                txt->setFont(getFont(fontPath));
+                            } catch(...) {}
                         }
 
-                        _drawUi.clear();
+                        _drawUi.push_back(txt);
                     }
-                    if (_drawFps) {
-                        drawFps();
+
+                    void __drawText(Font font, std::string const& text, Vector2 pos, float fontSize, float spacing, Color col) {
+                        DrawTextEx(font, text.c_str(), pos, fontSize, spacing, col);
                     }
-                    EndDrawing();
-                }
 
-                void setVisibleFps(bool b) {
-                    _drawFps = b;
-                }
-
-                void clearWindow() {
-                    if (!opened)
-                        return;
-                    ClearBackground(_background);
-                }
-
-                void setBackgroundColor(Color background) {
-                    _background = background;
-                }
-
-                void initCam() {
-                    if (camSet)
-                        return;
-                    _camera.position = (Vector3){ 20.0f, 20.0f, 20.0f };
-                    _camera.target = (Vector3){ 0.0f, 8.0f, 0.0f };
-                    _camera.up = (Vector3){ 0.0f, 1.6f, 0.0f };
-                    _camera.fovy = 45.0f;
-                    _camera.projection = CAMERA_PERSPECTIVE;
-                    camSet = true;
-                }
-
-                void stopCam() {
-                    if (!camSet)
-                        return;
-                    camSet = false;
-                }
-
-                void updateCam(Vector3 pos, Vector3 target, Vector3 up, float fov) {
-                    _camera.position = pos;
-                    _camera.target = target;
-                    _camera.up = up;
-                    _camera.fovy = fov;
-                }
-
-                void updateCamProjection(int proj) {
-                    _camera.projection = proj;
-                }
-
-                void clearCache() {
-                    unloadAllFonts();
-                }
-
-                void drawFps() {
-                    DrawFPS(10, 10);
-                }
-
-                /**
-                 * @brief unload part
-                 * 
-                 */
-
-                void unloadFont(std::string const& fontPath) {
-                    if (_fonts.find(fontPath) == _fonts.end())
-                        return;
-                    UnloadFont(_fonts[fontPath]);
-                }
-
-                void unloadAllFonts() {
-                    for (auto it = _fonts.begin(); it != _fonts.end(); ++it) {
-                        unloadFont(it->first);
+                    void __drawText(std::string const& text, Vector2 pos, float fontSize, float spacing, Color col) {
+                        DrawText(text.c_str(), pos.x, pos.y, fontSize, col);
                     }
-                    _fonts.clear();
-                }
 
-                /**
-                 * @brief load part
-                 * 
-                 */
+                    void drawTexture(std::string const& path, float posX, float posY, float width, float heigth, Color col) {
+                        auto texture = std::make_shared<Draw::DrawSpriteTexture>(*this);
+                        texture->setPathTexture(path);
+                        texture->setHeigth(heigth);
+                        texture->setWidth(width);
+                        texture->setPosX(posX);
+                        texture->setPosY(posY);
+                        texture->setColor(col);
 
-                void loadFont(std::string const& fontPath) {
+                        _drawUi.push_back(texture);
+                    }
 
-                }
+                    void __drawTexture(std::string const& imagePath, float posX, float posY, float width, float heigth, float cropX, float cropY, float rot, Color col);
 
-                Font &getFont(std::string const& fontPath) {
-                    loadFont(fontPath);
+                    /**
+                     * @brief Input part
+                     * 
+                     */
 
-                    return _fonts[fontPath];
-                }
+                    bool isGamepadConnected(int gpId) {
+                        return IsGamepadAvailable(gpId);
+                    }
 
-                /**
-                 * @brief Draw part
-                 * 
-                 */
+                    int maxJoystickGamepad(int gpId) {
+                        if (!isGamepadConnected(gpId))
+                            return 0;
+                        return GetGamepadAxisCount(gpId);
+                    }
 
-                void drawRectangle(float posX, float posY, float width, float heigth, Color color) {
-                    auto sprite = std::make_shared<Draw::DrawSpriteColor>(*this, posX, posY, width, heigth, color);
-                    _drawUi.push_back(sprite);
-                }
+                    float getGamepadJoystickValue(int gpId, int joystickId) {
+                        if (!isGamepadConnected(gpId))
+                            return 0.0f;
+                        if (maxJoystickGamepad(gpId) <= joystickId)
+                            return 0.0f;
+                        return GetGamepadAxisMovement(gpId, joystickId);
+                    }
 
-                void __drawRectangle(float posX, float posY, float width, float hiegth, Color color) {
-                    DrawRectangle(posX, posY, width, hiegth, color);
-                }
+                    int getKeyPressed() {
+                        return GetKeyPressed();
+                    }
 
-                void drawText(std::string const& fontPath, std::string const& text, Vector2 pos, float fontSize, float spacing, Color col) {
-                    auto txt = std::make_shared<Draw::DrawText>(*this);
-                    
-                    txt->setColor(col);
-                    txt->setPos(pos);
-                    txt->setSize(fontSize);
-                    txt->setSpacing(spacing);
-                    txt->setText(text);
-                    txt->setFont(getFont(fontPath));
+                    bool isKeyReleased(int key) {
+                        return IsKeyReleased(key);
+                    }
 
-                    _drawUi.push_back(txt);
-                }
+                    bool isMouseButtonReleased(int btn) {
+                        return IsMouseButtonReleased(btn);
+                    }
 
-                void __drawText(Font font, std::string const& text, Vector2 pos, float fontSize, float spacing, Color col) {
-                    DrawTextEx(font, text.c_str(), pos, fontSize, spacing, col);
-                }
+                    bool isMouseButtonPressed(int btn) {
+                        return IsMouseButtonPressed(btn);
+                    }
 
-                /**
-                 * @brief Input part
-                 * 
-                 */
+                    bool isGamepadButtonReleased(int gpId, int btn) {
+                        return IsGamepadButtonReleased(gpId, btn);
+                    }
 
-                bool isGamepadConnected(int gpId) {
-                    return IsGamepadAvailable(gpId);
-                }
+                    bool isGamepadButtonPressed(int gpId, int btn) {
+                        return IsGamepadButtonPressed(gpId, btn);
+                    }
 
-                int maxJoystickGamepad(int gpId) {
-                    if (!isGamepadConnected(gpId))
-                        return 0;
-                    return GetGamepadAxisCount(gpId);
-                }
+                protected:
+                    void drawNoCamText() {
+                        DrawText("No camera found !", _widthWindow / 2 - 65.f, _heightWindow / 2 - 20.f, 15.0f, WHITE);
+                    }
 
-                float getGamepadJoystickValue(int gpId, int joystickId) {
-                    if (!isGamepadConnected(gpId))
-                        return 0.0f;
-                    if (maxJoystickGamepad(gpId) <= joystickId)
-                        return 0.0f;
-                    return GetGamepadAxisMovement(gpId, joystickId);
-                }
+                private:
+                    //cam
+                    Camera3D _camera;
+                    bool camSet = false;
+                    bool opened = false;
+                    Color _background;
 
-                int getKeyPressed() {
-                    return GetKeyPressed();
-                }
+                    //windown settings
+                    int _widthWindow;
+                    int _heightWindow;
+                    std::string _title;
+                    int _fps;
 
-                bool isKeyReleased(int key) {
-                    return IsKeyReleased(key);
-                }
+                    //draw settings
+                    bool canDraw = false;
+                    bool _drawFps = false;
+                    bool _debug = false;
+                    bool _firstRun = true;
 
-                bool isMouseButtonReleased(int btn) {
-                    return IsMouseButtonReleased(btn);
-                }
+                    //cache
+                    std::vector<std::shared_ptr<Cache::RaylibCache>> _cache;
+                    std::vector<Texture2D> _cacheTexture;
 
-                bool isMouseButtonPressed(int btn) {
-                    return IsMouseButtonPressed(btn);
-                }
+                    std::vector<std::shared_ptr<Draw::RaylibDrawing>> _drawUi;
+            };
 
-                bool isGamepadButtonReleased(int gpId, int btn) {
-                    return IsGamepadButtonReleased(gpId, btn);
-                }
-
-                bool isGamepadButtonPressed(int gpId, int btn) {
-                    return IsGamepadButtonPressed(gpId, btn);
-                }
-
-            protected:
-                void drawNoCamText() {
-                    DrawText("No camera found !", _widthWindow / 2 - 65.f, _heightWindow / 2 - 20.f, 15.0f, WHITE);
-                }
-
-            private:
-                //cam
-                Camera3D _camera;
-                bool camSet = false;
-                bool opened = false;
-                Color _background;
-
-                //windown settings
-                int _widthWindow;
-                int _heightWindow;
-                std::string _title;
-                int _fps;
-
-                //draw settings
-                bool canDraw = false;
-                bool _drawFps = false;
-                bool _debug = false;
-                bool _firstRun = true;
-
-                //cache
-                std::map<std::string, Font> _fonts;
-
-                std::vector<std::shared_ptr<Draw::RaylibDrawing>> _drawUi;
-        };
+        }
 
     }
 

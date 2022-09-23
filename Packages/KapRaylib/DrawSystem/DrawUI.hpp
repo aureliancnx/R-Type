@@ -13,7 +13,12 @@
 
 namespace KapEngine {
     namespace Graphical {
-        class RaylibEncapsulation;
+
+        namespace Raylib {
+
+            class RaylibEncapsulation;
+
+        }
     }
 }
 
@@ -21,136 +26,223 @@ namespace KapEngine {
 
     namespace Graphical {
 
-        namespace Draw {
+        namespace Raylib {
 
-            class DrawUI {
-                public:
-                    virtual ~DrawUI() {}
+            namespace Draw {
 
-                    virtual void draw() = 0;
-                    virtual void clear() = 0;
+                class DrawUI {
+                    public:
+                        virtual ~DrawUI() {}
 
-                protected:
-                private:
-            };
+                        virtual void draw() = 0;
+                        virtual void clear() = 0;
 
-            class RaylibDrawing : public DrawUI {
+                    protected:
+                    private:
+                };
 
-                public:
-                    RaylibDrawing (RaylibEncapsulation &encapsulation) : _encap(encapsulation) {}
-                    ~RaylibDrawing () {}
+                class RaylibDrawing : public DrawUI {
 
-                    virtual void draw() override {}
-                    virtual void clear() override {}
-                
-                protected:
-                    RaylibEncapsulation &_encap;
+                    public:
+                        RaylibDrawing (RaylibEncapsulation &encapsulation) : _encap(encapsulation) {}
+                        ~RaylibDrawing () {}
 
-            };
+                        virtual void draw() override {}
+                        virtual void clear() override {}
+                    
+                    protected:
+                        RaylibEncapsulation &_encap;
 
-            /**
-             * @brief Use to draw rectangle colored without images or specify things
-             *
-             */
-            class DrawSpriteColor : public RaylibDrawing {
-                public:
+                };
 
-                    DrawSpriteColor(RaylibEncapsulation &e) : RaylibDrawing(e) {}
-                    DrawSpriteColor(RaylibEncapsulation &e, float x, float y, float w, float h, Color c) : RaylibDrawing(e) {
-                        setPosX(x);
-                        setPosY(y);
-                        setWidth(w);
-                        setHeigth(h);
-                        setColor(c);
-                    }
+                /**
+                 * @brief Use to draw rectangle colored without images or specify things
+                 *
+                 */
+                class DrawSpriteColor : public RaylibDrawing {
+                    public:
 
-                    void draw() override;
+                        DrawSpriteColor(RaylibEncapsulation &e) : RaylibDrawing(e) {}
+                        DrawSpriteColor(RaylibEncapsulation &e, float x, float y, float w, float h, Color c) : RaylibDrawing(e) {
+                            setPosX(x);
+                            setPosY(y);
+                            setWidth(w);
+                            setHeigth(h);
+                            setColor(c);
+                        }
 
-                    //getters
+                        void draw() override;
 
-                    float getPosX() const {
-                        return _posX;
-                    }
+                        //getters
 
-                    float getPosY() const {
-                        return _posY;
-                    }
+                        float getPosX() const {
+                            return _posX;
+                        }
 
-                    float getWidth() const {
-                        return _width;
-                    }
+                        float getPosY() const {
+                            return _posY;
+                        }
 
-                    float getHeigth() const {
-                        return _heigth;
-                    }
+                        float getWidth() const {
+                            return _width;
+                        }
 
-                    Color getColor() const {
-                        return _color;
-                    }
+                        float getHeigth() const {
+                            return _heigth;
+                        }
 
-                    //setters
+                        Color getColor() const {
+                            return _color;
+                        }
 
-                    void setPosX(float x) {
-                        _posX = x;
-                    }
+                        //setters
 
-                    void setPosY(float y) {
-                        _posY = y;
-                    }
+                        void setPosX(float x) {
+                            _posX = x;
+                        }
 
-                    void setWidth(float w) {
-                        _width = w;
-                    }
+                        void setPosY(float y) {
+                            _posY = y;
+                        }
 
-                    void setHeigth(float h) {
-                        _heigth = h;
-                    }
+                        void setWidth(float w) {
+                            _width = w;
+                        }
 
-                    void setColor(Color col) {
-                        _color = col;
-                    }
+                        void setHeigth(float h) {
+                            _heigth = h;
+                        }
 
-                private:
-                    float _posX;
-                    float _posY;
-                    float _width;
-                    float _heigth;
-                    Color _color;
-            };
+                        void setColor(Color col) {
+                            _color = col;
+                        }
 
-            class DrawText : public RaylibDrawing {
-                public:
-                    DrawText(RaylibEncapsulation &e) : RaylibDrawing(e) {}
+                    private:
+                        float _posX;
+                        float _posY;
+                        float _width;
+                        float _heigth;
+                        Color _color;
+                };
 
-                    void draw() override;
+                class DrawSpriteTexture : public RaylibDrawing {
+                    public:
+                        DrawSpriteTexture(RaylibEncapsulation &e) : RaylibDrawing(e) {}
+                        DrawSpriteTexture(RaylibEncapsulation &e, std::string const& path, float x, float y, float w, float h, Color c) : RaylibDrawing(e) {
+                            setPosX(x);
+                            setPosY(y);
+                            setWidth(w);
+                            setHeigth(h);
+                            setColor(c);
+                        }
 
-                    void setText(std::string const& text) {
-                        _text = text;
-                    }
-                    void setPos(Vector2 pos) {
-                        _pos = pos;
-                    }
-                    void setSpacing(float spacing) {
-                        _spacing = spacing;
-                    }
-                    void setSize(float size) {
-                        _size = size;
-                    }
-                    void setColor(Color col) {
-                        _col = col;
-                    }
-                    void setFont(Font font) {
-                        _font = font;
-                    }
+                        void draw() override;
 
-                private:
-                    std::string _text;
-                    Font _font;
-                    float _spacing;
-                    float _size;
-                    Vector2 _pos;
-                    Color _col;
-            };
+                        //getters
+
+                        float getPosX() const {
+                            return _posX;
+                        }
+
+                        float getPosY() const {
+                            return _posY;
+                        }
+
+                        float getWidth() const {
+                            return _width;
+                        }
+
+                        float getHeigth() const {
+                            return _heigth;
+                        }
+
+                        Color getColor() const {
+                            return _color;
+                        }
+
+                        std::string getPath() const {
+                            return _path;
+                        }
+
+                        //setters
+
+                        void setPosX(float x) {
+                            _posX = x;
+                        }
+
+                        void setPosY(float y) {
+                            _posY = y;
+                        }
+
+                        void setWidth(float w) {
+                            _width = w;
+                        }
+
+                        void setHeigth(float h) {
+                            _heigth = h;
+                        }
+
+                        void setColor(Color col) {
+                            _color = col;
+                        }
+
+                        void setPathTexture(std::string const& path) {
+                            _path = path;
+                        }
+
+                        void setRot(float r) {
+                            _rot = r;
+                        }
+
+                    private:
+                        float _posX = 0.f;
+                        float _posY = 0.f;
+                        float _width = 1.f;
+                        float _heigth = 1.f;
+                        float _rot= 0.f;
+                        float _cropX = 1.f;
+                        float _cropY = 1.f;
+                        Color _color;
+                        std::string _path;
+                };
+
+                class DrawText : public RaylibDrawing {
+                    public:
+                        DrawText(RaylibEncapsulation &e) : RaylibDrawing(e) {}
+
+                        void draw() override;
+
+                        void setText(std::string const& text) {
+                            _text = text;
+                        }
+                        void setPos(Vector2 pos) {
+                            _pos = pos;
+                        }
+                        void setSpacing(float spacing) {
+                            _spacing = spacing;
+                        }
+                        void setSize(float size) {
+                            _size = size;
+                        }
+                        void setColor(Color col) {
+                            _col = col;
+                        }
+                        void setFont(Font font) {
+                            _font = font;
+                            fontSet = true;
+                        }
+
+                    private:
+                        bool fontSet = false;
+                        std::string _text;
+                        Font _font;
+                        float _spacing;
+                        float _size;
+                        Vector2 _pos;
+                        Color _col;
+                };
+
+            }
 
         }
 

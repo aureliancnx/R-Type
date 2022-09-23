@@ -13,7 +13,7 @@
 #include "UiText.hpp"
 #include "Transform.hpp"
 
-KapEngine::Graphical::RaylibGraphical::RaylibGraphical(GraphicalLibManager &manager) : GraphicalLib("raylib", manager) {
+KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManager &manager) : GraphicalLib("raylib", manager) {
 
     Tools::Vector2 size = manager.getEngine().getScreenSize();
 
@@ -27,7 +27,10 @@ KapEngine::Graphical::RaylibGraphical::RaylibGraphical(GraphicalLibManager &mana
     setDrawImage([this](UI::Image &img){
         
         if (img.isUsingSprite()) {
-            Debug::log("Draw sprite");
+            Tools::Vector2 pos = img.getCalculatedPosition();
+            Tools::Vector2 scale = img.getCalculatedScale();
+            Tools::Color color = img.getColorSprite();
+            this->raylib->drawTexture(img.getPathSprite(), pos.getX(), pos.getY(), scale.getX(), scale.getY(), engineToRaylib(color));
         } else {
             Tools::Vector2 pos = img.getCalculatedPosition();
             Tools::Vector2 scale = img.getCalculatedScale();
@@ -51,32 +54,32 @@ KapEngine::Graphical::RaylibGraphical::RaylibGraphical(GraphicalLibManager &mana
 
 }
 
-KapEngine::Graphical::RaylibGraphical::~RaylibGraphical() {
+KapEngine::Graphical::Raylib::RaylibGraphical::~RaylibGraphical() {
     raylib->closeWindow();
 }
 
-void KapEngine::Graphical::RaylibGraphical::clearCache() {
+void KapEngine::Graphical::Raylib::RaylibGraphical::clearCache() {
 
 }
 
-void KapEngine::Graphical::RaylibGraphical::stopDisplay() {
+void KapEngine::Graphical::Raylib::RaylibGraphical::stopDisplay() {
     raylib->closeWindow();
 }
 
-void KapEngine::Graphical::RaylibGraphical::startDisplay() {
+void KapEngine::Graphical::Raylib::RaylibGraphical::startDisplay() {
     raylib->openWindow();
     Debug::log("Use " + getName());
 }
 
-void KapEngine::Graphical::RaylibGraphical::clear() {
+void KapEngine::Graphical::Raylib::RaylibGraphical::clear() {
     raylib->startDrawing();
 }
 
-void KapEngine::Graphical::RaylibGraphical::display() {
+void KapEngine::Graphical::Raylib::RaylibGraphical::display() {
     raylib->stopDrawing();
 }
 
-void KapEngine::Graphical::RaylibGraphical::getEvents() {
+void KapEngine::Graphical::Raylib::RaylibGraphical::getEvents() {
 
     //check close window
     if (raylib->windownShouldClose()) {
@@ -142,7 +145,7 @@ void KapEngine::Graphical::RaylibGraphical::getEvents() {
     }
 }
 
-bool KapEngine::Graphical::RaylibGraphical::keyAlreadyInList(Events::Key key) {
+bool KapEngine::Graphical::Raylib::RaylibGraphical::keyAlreadyInList(Events::Key key) {
     for (std::size_t i = 0; i < _pressedInputs.size(); i++) {
         if (_pressedInputs[i] == key)
             return true;
@@ -150,11 +153,11 @@ bool KapEngine::Graphical::RaylibGraphical::keyAlreadyInList(Events::Key key) {
     return false;
 }
 
-float KapEngine::Graphical::RaylibGraphical::getJoystikValue(int gamepadId, int joystickId) {
+float KapEngine::Graphical::Raylib::RaylibGraphical::getJoystikValue(int gamepadId, int joystickId) {
     return raylib->getGamepadJoystickValue(gamepadId, joystickId);
 }
 
-KapEngine::Events::Key::EKey KapEngine::Graphical::RaylibGraphical::toKey(KeyboardKey _key) {
+KapEngine::Events::Key::EKey KapEngine::Graphical::Raylib::RaylibGraphical::toKey(KeyboardKey _key) {
     int val = (int) _key;
 
     if (_key == KEY_NULL)
@@ -164,7 +167,7 @@ KapEngine::Events::Key::EKey KapEngine::Graphical::RaylibGraphical::toKey(Keyboa
     return (Events::Key::EKey) val;
 }
 
-KapEngine::Events::Key::EKey KapEngine::Graphical::RaylibGraphical::toKey(MouseButton _key) {
+KapEngine::Events::Key::EKey KapEngine::Graphical::Raylib::RaylibGraphical::toKey(MouseButton _key) {
     switch (_key) {
         case MOUSE_BUTTON_BACK:
             return Events::Key::MOUSE_BACK;
@@ -185,7 +188,7 @@ KapEngine::Events::Key::EKey KapEngine::Graphical::RaylibGraphical::toKey(MouseB
     }
 }
 
-KapEngine::Events::Key::EKey KapEngine::Graphical::RaylibGraphical::toKey(GamepadButton _key, int id) {
+KapEngine::Events::Key::EKey KapEngine::Graphical::Raylib::RaylibGraphical::toKey(GamepadButton _key, int id) {
     Events::Key::EKey res;
     switch (_key) {
         case GAMEPAD_BUTTON_LEFT_FACE_UP:
@@ -234,7 +237,7 @@ KapEngine::Events::Key::EKey KapEngine::Graphical::RaylibGraphical::toKey(Gamepa
     return res;
 }
 
-int KapEngine::Graphical::RaylibGraphical::toRaylibKey(Events::Key key)
+int KapEngine::Graphical::Raylib::RaylibGraphical::toRaylibKey(Events::Key key)
 {
     if (key.isKeyboardKey())
         return key.get();
@@ -369,14 +372,14 @@ int KapEngine::Graphical::RaylibGraphical::toRaylibKey(Events::Key key)
     return 0;
 }
 
-int KapEngine::Graphical::RaylibGraphical::toRaylibKey(Events::Key::EKey key)
+int KapEngine::Graphical::Raylib::RaylibGraphical::toRaylibKey(Events::Key::EKey key)
 {
     Events::Key k;
     k = key;
     return toRaylibKey(k);
 }
 
-bool KapEngine::Graphical::RaylibGraphical::isGamepadButtonReleasedEngine(Events::Key key)
+bool KapEngine::Graphical::Raylib::RaylibGraphical::isGamepadButtonReleasedEngine(Events::Key key)
 {
     if (!key.isGamepadKey())
         return false;
@@ -394,7 +397,7 @@ bool KapEngine::Graphical::RaylibGraphical::isGamepadButtonReleasedEngine(Events
     return false;
 }
 
-bool KapEngine::Graphical::RaylibGraphical::isGamepadButtonPressedEngine(Events::Key key)
+bool KapEngine::Graphical::Raylib::RaylibGraphical::isGamepadButtonPressedEngine(Events::Key key)
 {
     if (!key.isGamepadKey())
         return false;
@@ -412,7 +415,7 @@ bool KapEngine::Graphical::RaylibGraphical::isGamepadButtonPressedEngine(Events:
     return false;
 }
 
-bool KapEngine::Graphical::RaylibGraphical::isGamepadButtonReleasedEngine(Events::Key::EKey key)
+bool KapEngine::Graphical::Raylib::RaylibGraphical::isGamepadButtonReleasedEngine(Events::Key::EKey key)
 {
     Events::Key k;
 
@@ -420,7 +423,7 @@ bool KapEngine::Graphical::RaylibGraphical::isGamepadButtonReleasedEngine(Events
     return isGamepadButtonReleasedEngine(k);
 }
 
-bool KapEngine::Graphical::RaylibGraphical::isGamepadButtonPressedEngine(Events::Key::EKey key)
+bool KapEngine::Graphical::Raylib::RaylibGraphical::isGamepadButtonPressedEngine(Events::Key::EKey key)
 {
     Events::Key k;
 
@@ -428,7 +431,7 @@ bool KapEngine::Graphical::RaylibGraphical::isGamepadButtonPressedEngine(Events:
     return isGamepadButtonPressedEngine(k);
 }
 
-Color KapEngine::Graphical::RaylibGraphical::engineToRaylib(Tools::Color const& color) const {
+Color KapEngine::Graphical::Raylib::RaylibGraphical::engineToRaylib(Tools::Color const& color) const {
     Color result;
 
     result.a = color.getA();
@@ -438,7 +441,7 @@ Color KapEngine::Graphical::RaylibGraphical::engineToRaylib(Tools::Color const& 
     return result;
 }
 
-Vector2 KapEngine::Graphical::RaylibGraphical::engineToRaylib(Tools::Vector2 const& vec) const {
+Vector2 KapEngine::Graphical::Raylib::RaylibGraphical::engineToRaylib(Tools::Vector2 const& vec) const {
     Vector2 result;
 
     result.x = vec.getX();

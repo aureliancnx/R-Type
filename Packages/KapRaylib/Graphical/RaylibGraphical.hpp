@@ -31,43 +31,47 @@ namespace KapEngine {
 
     namespace Graphical {
 
-        class RaylibGraphical : public GraphicalLib {
-            public:
-                RaylibGraphical(GraphicalLibManager &manager);
-                ~RaylibGraphical();
+        namespace Raylib {
 
-                void clearCache() override;
-                void stopDisplay() override;
-                void startDisplay() override;
+            class RaylibGraphical : public GraphicalLib {
+                public:
+                    RaylibGraphical(GraphicalLibManager &manager);
+                    ~RaylibGraphical();
 
-                void clear() override;
-                void display() override;
-                void getEvents() override;
+                    void clearCache() override;
+                    void stopDisplay() override;
+                    void startDisplay() override;
 
-                float getJoystikValue(int gamepadId, int joystickId) override;
+                    void clear() override;
+                    void display() override;
+                    void getEvents() override;
 
-                Events::Key::EKey toKey(KeyboardKey _key);
-                Events::Key::EKey toKey(MouseButton _key);
-                Events::Key::EKey toKey(GamepadButton _key, int id);
-                Events::Key::EKey toKey(int _key);
+                    float getJoystikValue(int gamepadId, int joystickId) override;
 
-                int toRaylibKey(Events::Key key);
-                int toRaylibKey(Events::Key::EKey key);
+                    Events::Key::EKey toKey(KeyboardKey _key);
+                    Events::Key::EKey toKey(MouseButton _key);
+                    Events::Key::EKey toKey(GamepadButton _key, int id);
+                    Events::Key::EKey toKey(int _key);
 
-                bool keyAlreadyInList(Events::Key key);
+                    int toRaylibKey(Events::Key key);
+                    int toRaylibKey(Events::Key::EKey key);
 
-                bool isGamepadButtonReleasedEngine(Events::Key key);
-                bool isGamepadButtonReleasedEngine(Events::Key::EKey key);
-                bool isGamepadButtonPressedEngine(Events::Key key);
-                bool isGamepadButtonPressedEngine(Events::Key::EKey key);
+                    bool keyAlreadyInList(Events::Key key);
 
-                Color engineToRaylib(Tools::Color const& color) const;
-                Vector2 engineToRaylib(Tools::Vector2 const& vector) const;
+                    bool isGamepadButtonReleasedEngine(Events::Key key);
+                    bool isGamepadButtonReleasedEngine(Events::Key::EKey key);
+                    bool isGamepadButtonPressedEngine(Events::Key key);
+                    bool isGamepadButtonPressedEngine(Events::Key::EKey key);
 
-            protected:
-            private:
-                std::unique_ptr<RaylibEncapsulation> raylib;
-        };
+                    Color engineToRaylib(Tools::Color const& color) const;
+                    Vector2 engineToRaylib(Tools::Vector2 const& vector) const;
+
+                protected:
+                private:
+                    std::unique_ptr<RaylibEncapsulation> raylib;
+            };
+
+        }
 
     }
 }

@@ -11,8 +11,10 @@
 
 void KapEngine::Graphical::Raylib::Cache::ImageCache::init(std::string const& imagePath) {
     pathImage = imagePath;
-    img = encap.__loadImage(pathImage);
-        std::cout << "                            Load new image" << std::endl;
+    if (pathImage != "") {
+        img = encap.__loadImage(pathImage);
+        std::cout << "Load new image" << std::endl;
+    }
 }
 
 void KapEngine::Graphical::Raylib::Cache::ImageCache::clear() {
@@ -25,7 +27,7 @@ void KapEngine::Graphical::Raylib::Cache::ImageCache::clear() {
 KapEngine::Graphical::Raylib::Cache::FontCache::FontCache(RaylibEncapsulation &e, std::string const& path) : RaylibCache(e), _path(path) {
     if (_path != "") {
         _font = encap.__loadFont(_path);
-        std::cout << "                            Load new font" << std::endl;
+        std::cout << "Load new font" << std::endl;
     }
 }
 

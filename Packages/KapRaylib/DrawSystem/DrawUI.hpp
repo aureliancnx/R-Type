@@ -190,11 +190,18 @@ namespace KapEngine {
                             _path = path;
                         }
 
+                        void setRot(float r) {
+                            _rot = r;
+                        }
+
                     private:
-                        float _posX;
-                        float _posY;
-                        float _width;
-                        float _heigth;
+                        float _posX = 0.f;
+                        float _posY = 0.f;
+                        float _width = 1.f;
+                        float _heigth = 1.f;
+                        float _rot= 0.f;
+                        float _cropX = 1.f;
+                        float _cropY = 1.f;
                         Color _color;
                         std::string _path;
                 };

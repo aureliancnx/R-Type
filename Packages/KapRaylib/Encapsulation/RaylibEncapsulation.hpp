@@ -121,6 +121,10 @@ namespace KapEngine {
                             drawFps();
                         }
                         EndDrawing();
+                        for (std::size_t i = 0; i < _cacheTexture.size(); i++) {
+                            __unloadTexture(_cacheTexture[i]);
+                        }
+                        _cacheTexture.clear();
                     }
 
                     void setVisibleFps(bool b) {
@@ -172,6 +176,18 @@ namespace KapEngine {
                     }
 
                     /**
+                     * @brief image actions
+                     * 
+                     */
+
+                    void __setImageSize(Image *img, Vector2 size) {
+                        if (size.x < 0)
+                            ImageFlipVertical(img);
+                        if (size.y < 0)
+                            ImageFlipHorizontal(img);
+                    }
+
+                    /**
                      * @brief unload part
                      * 
                      */
@@ -188,6 +204,10 @@ namespace KapEngine {
                         UnloadImage(img);
                     }
 
+                    void __unloadTexture(Texture2D const& texture) {
+                        UnloadTexture(texture);
+                    }
+
                     /**
                      * @brief load part
                      * 
@@ -195,7 +215,11 @@ namespace KapEngine {
 
                     void loadFont(std::string const& fontPath);
 
+                    void loadImage(std::string const& imagePath);
+
                     Font &getFont(std::string const& fontPath, bool alreadyTry = false);
+
+                    Image &getImage(std::string const& imagePath, bool alreadyTry = false);
 
                     Image __loadImage(std::string const& imagePath) {
                         return LoadImage(imagePath.c_str());
@@ -203,6 +227,10 @@ namespace KapEngine {
 
                     Font __loadFont(std::string const& fontPath) {
                         return LoadFont(fontPath.c_str());
+                    }
+
+                    Texture2D __getTextureFromImage(Image const& img) {
+                        return LoadTextureFromImage(img);
                     }
 
                     /**
@@ -227,8 +255,11 @@ namespace KapEngine {
                         txt->setSize(fontSize);
                         txt->setSpacing(spacing);
                         txt->setText(text);
-                        if (fontPath != "")
-                            txt->setFont(getFont(fontPath));
+                        if (fontPath != "") {
+                            try {
+                                txt->setFont(getFont(fontPath));
+                            } catch(...) {}
+                        }
 
                         _drawUi.push_back(txt);
                     }
@@ -253,7 +284,7 @@ namespace KapEngine {
                         _drawUi.push_back(texture);
                     }
 
-                    void __drawTexture();
+                    void __drawTexture(std::string const& imagePath, float posX, float posY, float width, float heigth, float cropX, float cropY, float rot, Color col);
 
                     /**
                      * @brief Input part
@@ -328,6 +359,7 @@ namespace KapEngine {
 
                     //cache
                     std::vector<std::shared_ptr<Cache::RaylibCache>> _cache;
+                    std::vector<Texture2D> _cacheTexture;
 
                     std::vector<std::shared_ptr<Draw::RaylibDrawing>> _drawUi;
             };

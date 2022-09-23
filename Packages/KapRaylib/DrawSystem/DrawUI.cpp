@@ -19,3 +19,7 @@ void KapEngine::Graphical::Raylib::Draw::DrawText::draw() {
         _encap.__drawText(_text, _pos, _size, _spacing, _col);
     }
 }
+
+void KapEngine::Graphical::Raylib::Draw::DrawSpriteTexture::draw() {
+    _encap.__drawTexture(_path, _posX, _posY, _width, _heigth, _cropX, _cropY, _rot, _color);
+}

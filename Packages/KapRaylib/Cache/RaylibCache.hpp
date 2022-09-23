@@ -65,11 +65,15 @@ namespace KapEngine {
 
                         void init(std::string const& imagePath);
 
-                        Image getImage() const {
+                        Image &getImage() {
                             return img;
                         }
 
                         void clear() override;
+
+                        std::string getPath() const {
+                            return pathImage;
+                        }
 
                     private:
                         std::string pathImage;

@@ -35,10 +35,10 @@ void testCanvas(KapEngine::KapEngine *engine) {
         textObject->addComponent(textComponent);
 
         //set values for image
-        KapEngine::Tools::Vector3 pos(500.f, 250.f, 10.f);
-        KapEngine::Tools::Vector3 scale(15.f, 15.f, 15.f);
-        imageComponent->setColor(KapEngine::Tools::Color::green());
-        imageComponent->setPathSprite("Toto.png");
+        KapEngine::Tools::Vector3 pos(0.f, 0.f, 10.f);
+        KapEngine::Tools::Vector3 scale(0.05f, 1.f, 1.f);
+        imageComponent->setColor(KapEngine::Tools::Color::white());
+        imageComponent->setPathSprite("./Library/KapEngine/Documentation/images/KapEngineBannerNeg.png");
         trImage.setPosition(pos);
         trImage.setScale(scale);
 
@@ -50,6 +50,30 @@ void testCanvas(KapEngine::KapEngine *engine) {
     } catch(KapEngine::Errors::Error e) {
         KapEngine::Debug::error("Error while create canvas: \"" + std::string(e.what()) + "\"");
     }
+}
+
+void setPlayerAxis(KapEngine::KapEngine *engine) {
+    KapEngine::Events::Input::Axis _axisV("Vertical");
+    KapEngine::Events::Input::Axis _axisH("Horizontal");
+    KapEngine::Events::Input::Axis _axisM("Mouseinput");
+
+
+    //init vertical axis
+    _axisV.positiveButton = KapEngine::Events::Key::UP;
+    _axisV.negativeButton = KapEngine::Events::Key::DOWN;
+
+    //init horizontal axis
+    _axisH.positiveButton = KapEngine::Events::Key::RIGHT;
+    _axisH.negativeButton = KapEngine::Events::Key::LEFT;
+
+    //init mouse axis
+    _axisM.positiveButton = KapEngine::Events::Key::MOUSE_LEFT;
+    _axisM.negativeButton = KapEngine::Events::Key::MOUSE_RIGHT;
+
+    //add axis
+    engine->getEventManager().getInput().addAxis(_axisH);
+    engine->getEventManager().getInput().addAxis(_axisV);
+    engine->getEventManager().getInput().addAxis(_axisM);
 }
 
 int main(int ac, char **av) {
@@ -76,6 +100,7 @@ int main(int ac, char **av) {
     } catch(...) {}
 
     testCanvas(&engine);
+    setPlayerAxis(&engine);
 
     engine.run();
 

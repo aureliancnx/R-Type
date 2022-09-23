@@ -13,5 +13,9 @@ void KapEngine::Graphical::Raylib::Draw::DrawSpriteColor::draw() {
 }
 
 void KapEngine::Graphical::Raylib::Draw::DrawText::draw() {
-    _encap.__drawText(_font, _text, _pos, _size, _spacing, _col);
+    if (fontSet) {
+        _encap.__drawText(_font, _text, _pos, _size, _spacing, _col);
+    } else {
+        _encap.__drawText(_text, _pos, _size, _spacing, _col);
+    }
 }

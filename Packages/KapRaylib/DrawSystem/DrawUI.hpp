@@ -222,9 +222,11 @@ namespace KapEngine {
                         }
                         void setFont(Font font) {
                             _font = font;
+                            fontSet = true;
                         }
 
                     private:
+                        bool fontSet = false;
                         std::string _text;
                         Font _font;
                         float _spacing;

@@ -227,13 +227,18 @@ namespace KapEngine {
                         txt->setSize(fontSize);
                         txt->setSpacing(spacing);
                         txt->setText(text);
-                        txt->setFont(getFont(fontPath));
+                        if (fontPath != "")
+                            txt->setFont(getFont(fontPath));
 
                         _drawUi.push_back(txt);
                     }
 
                     void __drawText(Font font, std::string const& text, Vector2 pos, float fontSize, float spacing, Color col) {
                         DrawTextEx(font, text.c_str(), pos, fontSize, spacing, col);
+                    }
+
+                    void __drawText(std::string const& text, Vector2 pos, float fontSize, float spacing, Color col) {
+                        DrawText(text.c_str(), pos.x, pos.y, fontSize, col);
                     }
 
                     void drawTexture(std::string const& path, float posX, float posY, float width, float heigth, Color col) {

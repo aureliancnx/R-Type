@@ -9,7 +9,7 @@ int main(int ac, char **av) {
     bool isServer = false;
 
     if (ac > 1) {
-        if (std::string(av[1]) == "-s") {
+        if (std::string(av[1]) == "server") {
             isServer = true;
         }
     }
@@ -26,13 +26,14 @@ int main(int ac, char **av) {
     engine.setScreenSize(screenSize);
 
     auto raylib = std::make_shared<KapEngine::Graphical::Raylib::RaylibGraphical>(*engine.getGraphicalLibManager(), false);
+    engine.getSplashScreen()->setDisplayKapEngineLogo(false);
     engine.getGraphicalLibManager()->addLib(raylib);
     engine.getGraphicalLibManager()->changeLib("raylib");
 
     try {
         auto &scene = engine.getSceneManager()->getScene(1);
         auto go = KapEngine::Factory::createEmptyGameObject(scene, "TestNetworkManager");
-        auto testNetworkManager = std::make_shared<RType::Component::TestNetworkManager>(go);
+        auto testNetworkManager = std::make_shared<RType::Component::TestNetworkManager>(go, isServer);
         go->addComponent(testNetworkManager);
     } catch(...) {}
 

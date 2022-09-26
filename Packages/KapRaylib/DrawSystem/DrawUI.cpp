@@ -21,5 +21,5 @@ void KapEngine::Graphical::Raylib::Draw::DrawText::draw() {
 }
 
 void KapEngine::Graphical::Raylib::Draw::DrawSpriteTexture::draw() {
-    _encap.__drawTexture(_path, _posX, _posY, _width, _heigth, _cropX, _cropY, _rot, _color);
+    _encap.__drawTexture(_path, _posX, _posY, _width, _heigth, _rect, _rot, _color);
 }

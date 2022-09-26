@@ -20,7 +20,7 @@ KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManag
     raylib = std::make_unique<RaylibEncapsulation>(
         size.getX(),
         size.getY(),
-        manager.getEngine().getGameName(),
+        manager.getEngine().getGameName() + " - " + manager.getEngine().getGameVersion(),
         manager.getEngine().getMaxFps()
     );
 
@@ -30,7 +30,7 @@ KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManag
             Tools::Vector2 pos = img.getCalculatedPosition();
             Tools::Vector2 scale = img.getCalculatedScale();
             Tools::Color color = img.getColorSprite();
-            this->raylib->drawTexture(img.getPathSprite(), pos.getX(), pos.getY(), scale.getX(), scale.getY(), engineToRaylib(color));
+            this->raylib->drawTexture(img.getPathSprite(), pos.getX(), pos.getY(), scale.getX(), scale.getY(), engineToRaylib(img.getRectangle()), engineToRaylib(color));
         } else {
             Tools::Vector2 pos = img.getCalculatedPosition();
             Tools::Vector2 scale = img.getCalculatedScale();
@@ -446,6 +446,17 @@ Vector2 KapEngine::Graphical::Raylib::RaylibGraphical::engineToRaylib(Tools::Vec
 
     result.x = vec.getX();
     result.y = vec.getY();
+
+    return result;
+}
+
+Rectangle KapEngine::Graphical::Raylib::RaylibGraphical::engineToRaylib(Tools::Rectangle const& rect) {
+    Rectangle result;
+
+    result.x = rect.getPos().getX();
+    result.y = rect.getPos().getY();
+    result.width = rect.getSize().getX();
+    result.height = rect.getSize().getY();
 
     return result;
 }

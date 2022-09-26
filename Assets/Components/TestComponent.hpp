@@ -31,6 +31,10 @@ namespace RType {
 
                 void onUpdate() override;
 
+                void onDestroy() override;
+
+                void onGameQuit() override;
+
             protected:
             private:
                 KapEngine::Tools::Vector2 _lastInputs;

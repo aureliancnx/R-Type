@@ -14,7 +14,7 @@ void testCanvas(KapEngine::KapEngine *engine) {
 
         KapEngine::Debug::log("Create canvas");
 
-        auto &scene = engine->getSceneManager()->getCurrentScene();
+        auto &scene = engine->getSceneManager()->getScene(1);
         auto canvasObject = KapEngine::Factory::createEmptyGameObject(scene, "Canvas");
         auto imageObject = KapEngine::Factory::createEmptyGameObject(scene, "Image");
         auto textObject = KapEngine::Factory::createEmptyGameObject(scene, "Text");
@@ -77,9 +77,17 @@ void setPlayerAxis(KapEngine::KapEngine *engine) {
 }
 
 int main(int ac, char **av) {
-    // std::cout << "Starting R-Type Client..." << std::endl;
+    std::cout << "Starting R-Type Client..." << std::endl;
 
     KapEngine::KapEngine engine(true, "RType", "Alpha Client", "Epitech tkt on gère");
+
+    KapEngine::Time::ETime timeFixed;
+
+    timeFixed.setMicroseconds(25);
+
+    engine.setFixedTime(timeFixed);
+
+    // engine.getSplashScreen()->setDisplayKapEngineLogo(false);
 
     KapEngine::Tools::Vector2 screenSize(720, 480);
 
@@ -91,7 +99,7 @@ int main(int ac, char **av) {
     engine.getGraphicalLibManager()->changeLib("raylib");
 
     try {
-        auto &scene = engine.getSceneManager()->getCurrentScene();
+        auto &scene = engine.getSceneManager()->getScene(1);
     
         auto go = KapEngine::Factory::createEmptyGameObject(scene, "Lol");
         auto testComp = std::make_shared<RType::Component::TestComponent>(go);
@@ -106,8 +114,3 @@ int main(int ac, char **av) {
 
     return 0;
 }
-
-// int main(int ac, char **av) {
-//     std::cout << "Starting R-Type Client..." << std::endl;
-//     return 0;
-// }

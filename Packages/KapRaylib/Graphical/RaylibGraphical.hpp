@@ -12,6 +12,7 @@
 
 #include "GraphicalLib.hpp"
 #include "Encapsulation/RaylibEncapsulation.hpp"
+#include "Rectangle.hpp"
 
 namespace KapEngine {
     class KapEngine;
@@ -65,6 +66,7 @@ namespace KapEngine {
 
                     Color engineToRaylib(Tools::Color const& color) const;
                     Vector2 engineToRaylib(Tools::Vector2 const& vector) const;
+                    Rectangle engineToRaylib(Tools::Rectangle const& rect);
 
                 protected:
                 private:

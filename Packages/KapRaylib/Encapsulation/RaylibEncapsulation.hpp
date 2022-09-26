@@ -187,6 +187,10 @@ namespace KapEngine {
                             ImageFlipHorizontal(img);
                     }
 
+                    void __imageCrop(Image *img, Rectangle rect) {
+                        ImageCrop(img, rect);
+                    }
+
                     /**
                      * @brief unload part
                      * 
@@ -272,7 +276,7 @@ namespace KapEngine {
                         DrawText(text.c_str(), pos.x, pos.y, fontSize, col);
                     }
 
-                    void drawTexture(std::string const& path, float posX, float posY, float width, float heigth, Color col) {
+                    void drawTexture(std::string const& path, float posX, float posY, float width, float heigth, Rectangle rect, Color col) {
                         auto texture = std::make_shared<Draw::DrawSpriteTexture>(*this);
                         texture->setPathTexture(path);
                         texture->setHeigth(heigth);
@@ -280,11 +284,12 @@ namespace KapEngine {
                         texture->setPosX(posX);
                         texture->setPosY(posY);
                         texture->setColor(col);
+                        texture->setRectangle(rect);
 
                         _drawUi.push_back(texture);
                     }
 
-                    void __drawTexture(std::string const& imagePath, float posX, float posY, float width, float heigth, float cropX, float cropY, float rot, Color col);
+                    void __drawTexture(std::string const& imagePath, float posX, float posY, float width, float heigth, Rectangle rect, float rot, Color col);
 
                     /**
                      * @brief Input part

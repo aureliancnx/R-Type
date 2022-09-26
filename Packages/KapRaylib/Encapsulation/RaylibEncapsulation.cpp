@@ -76,17 +76,16 @@ void KapEngine::Graphical::Raylib::RaylibEncapsulation::clearCache() {
 }
 
 void KapEngine::Graphical::Raylib::RaylibEncapsulation::__drawTexture(std::string const& imagePath, float posX, float posY, float width, float heigth, Rectangle rect, float rot, Color col) {
-    Image img;
     try {
-        img = getImage(imagePath);
-    } catch(...) {
+        Image &img = getImage(imagePath);
+        __setImageRedef(&img, {width, heigth}, rect);
+        Texture2D texture = __getTextureFromImage(img);
+        _cacheTexture.push_back(texture);
+        DrawTextureEx(texture, {posX, posY}, rot, width, col);
+    } catch(std::exception e) {
+        Debug::error(e.what());
         return;
     }
-    __setImageSize(&img, {width, heigth});
-    // __imageCrop(&img, rect);
-    Texture2D texture = __getTextureFromImage(img);
-    _cacheTexture.push_back(texture);
-    DrawTextureV(texture, {posX, posY}, col);
 }
 
 void KapEngine::Graphical::Raylib::RaylibEncapsulation::loadImage(std::string const& imagePath) {

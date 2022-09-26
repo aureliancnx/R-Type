@@ -181,10 +181,18 @@ namespace KapEngine {
                      */
 
                     void __setImageSize(Image *img, Vector2 size) {
-                        if (size.x < 0)
+                        if (size.x < 0) {
                             ImageFlipVertical(img);
-                        if (size.y < 0)
+                            size.x *= -1;
+                        }
+                        if (size.y < 0) {
                             ImageFlipHorizontal(img);
+                            size.y *= -1;
+                        }
+                    }
+
+                    void __imageCrop(Image *img, Rectangle rect) {
+                        ImageCrop(img, rect);
                     }
 
                     /**
@@ -272,7 +280,7 @@ namespace KapEngine {
                         DrawText(text.c_str(), pos.x, pos.y, fontSize, col);
                     }
 
-                    void drawTexture(std::string const& path, float posX, float posY, float width, float heigth, Color col) {
+                    void drawTexture(std::string const& path, float posX, float posY, float width, float heigth, Rectangle rect, Color col) {
                         auto texture = std::make_shared<Draw::DrawSpriteTexture>(*this);
                         texture->setPathTexture(path);
                         texture->setHeigth(heigth);
@@ -280,11 +288,12 @@ namespace KapEngine {
                         texture->setPosX(posX);
                         texture->setPosY(posY);
                         texture->setColor(col);
+                        texture->setRectangle(rect);
 
                         _drawUi.push_back(texture);
                     }
 
-                    void __drawTexture(std::string const& imagePath, float posX, float posY, float width, float heigth, float cropX, float cropY, float rot, Color col);
+                    void __drawTexture(std::string const& imagePath, float posX, float posY, float width, float heigth, Rectangle rect, float rot, Color col);
 
                     /**
                      * @brief Input part

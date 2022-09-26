@@ -7,6 +7,7 @@
 
 #include "RaylibEncapsulation.hpp"
 #include "Errors.hpp"
+#include "Debug.hpp"
 #include <iostream>
 
 void KapEngine::Graphical::Raylib::RaylibEncapsulation::unloadFont(std::string const& path) {
@@ -74,7 +75,7 @@ void KapEngine::Graphical::Raylib::RaylibEncapsulation::clearCache() {
     std::cout << "Cache cleared !" << std::endl;
 }
 
-void KapEngine::Graphical::Raylib::RaylibEncapsulation::__drawTexture(std::string const& imagePath, float posX, float posY, float width, float heigth, float cropX, float cropY, float rot, Color col) {
+void KapEngine::Graphical::Raylib::RaylibEncapsulation::__drawTexture(std::string const& imagePath, float posX, float posY, float width, float heigth, Rectangle rect, float rot, Color col) {
     Image img;
     try {
         img = getImage(imagePath);
@@ -82,21 +83,22 @@ void KapEngine::Graphical::Raylib::RaylibEncapsulation::__drawTexture(std::strin
         return;
     }
     __setImageSize(&img, {width, heigth});
+    // __imageCrop(&img, rect);
     Texture2D texture = __getTextureFromImage(img);
     _cacheTexture.push_back(texture);
-    DrawTextureEx(texture, {posX, posY}, rot, width, col);
+    DrawTextureV(texture, {posX, posY}, col);
 }
 
 void KapEngine::Graphical::Raylib::RaylibEncapsulation::loadImage(std::string const& imagePath) {
     for (std::size_t i = 0; i < _cache.size(); i++) {
         if (_cache[i]->getName() == "Image") {
             auto img = (Cache::ImageCache *)_cache[i].get();
-            std::cout << "[Image]->[" << img->getPath() << "]" << std::endl;
+            Debug::warning("[RAYLIB] image->[" + img->getPath() + "]");
             if (img->getPath() == imagePath)
                 return;
         }
     }
-    std::cout << "Create image: " << imagePath << std::endl;
+    Debug::warning("[RAYLIB] create image: " + imagePath);
     auto nImg = std::make_shared<Cache::ImageCache>(*this);
     nImg->init(imagePath);
     _cache.push_back(nImg);
@@ -112,6 +114,7 @@ Image &KapEngine::Graphical::Raylib::RaylibEncapsulation::getImage(std::string c
     }
 
     if (alreadyTry) {
+        Debug::error("[RAYLIB] : no image found: " + imagePath);
         throw Errors::GraphicalSystemError("No image found: " + imagePath);
     }
     loadImage(imagePath);

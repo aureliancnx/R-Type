@@ -13,14 +13,16 @@
 #include "UiText.hpp"
 #include "Transform.hpp"
 
-KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManager &manager) : GraphicalLib("raylib", manager) {
+KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManager &manager, bool drawWindow) : GraphicalLib("raylib", manager) {
+
+    _drawWindow = drawWindow;
 
     Tools::Vector2 size = manager.getEngine().getScreenSize();
 
     raylib = std::make_unique<RaylibEncapsulation>(
         size.getX(),
         size.getY(),
-        manager.getEngine().getGameName(),
+        manager.getEngine().getGameName() + " - " + manager.getEngine().getGameVersion(),
         manager.getEngine().getMaxFps()
     );
 
@@ -30,7 +32,7 @@ KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManag
             Tools::Vector2 pos = img.getCalculatedPosition();
             Tools::Vector2 scale = img.getCalculatedScale();
             Tools::Color color = img.getColorSprite();
-            this->raylib->drawTexture(img.getPathSprite(), pos.getX(), pos.getY(), scale.getX(), scale.getY(), engineToRaylib(color));
+            this->raylib->drawTexture(img.getPathSprite(), pos.getX(), pos.getY(), scale.getX(), scale.getY(), engineToRaylib(img.getRectangle()), engineToRaylib(color));
         } else {
             Tools::Vector2 pos = img.getCalculatedPosition();
             Tools::Vector2 scale = img.getCalculatedScale();
@@ -63,24 +65,28 @@ void KapEngine::Graphical::Raylib::RaylibGraphical::clearCache() {
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::stopDisplay() {
-    raylib->closeWindow();
+    if (_drawWindow)
+        raylib->closeWindow();
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::startDisplay() {
-    raylib->openWindow();
-    Debug::log("Use " + getName());
+    if (_drawWindow)
+        raylib->openWindow();
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::clear() {
-    raylib->startDrawing();
+    if (_drawWindow)
+        raylib->startDrawing();
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::display() {
-    raylib->stopDrawing();
+    if (_drawWindow)
+        raylib->stopDrawing();
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::getEvents() {
-
+    if (!_drawWindow)
+        return;
     //check close window
     if (raylib->windownShouldClose()) {
         manager.getEngine().stop();
@@ -446,6 +452,17 @@ Vector2 KapEngine::Graphical::Raylib::RaylibGraphical::engineToRaylib(Tools::Vec
 
     result.x = vec.getX();
     result.y = vec.getY();
+
+    return result;
+}
+
+Rectangle KapEngine::Graphical::Raylib::RaylibGraphical::engineToRaylib(Tools::Rectangle const& rect) {
+    Rectangle result;
+
+    result.x = rect.getPos().getX();
+    result.y = rect.getPos().getY();
+    result.width = rect.getSize().getX();
+    result.height = rect.getSize().getY();
 
     return result;
 }

@@ -26,3 +26,11 @@ void RType::Component::TestComponent::onUpdate() {
     _lastInputs = vec;
     KapEngine::Debug::log("Player: H=" + std::to_string(vec.getX()) + ", V=" + std::to_string(vec.getY()));
 }
+
+void RType::Component::TestComponent::onDestroy() {
+    KapEngine::Debug::warning("Destroying gameObject");
+}
+
+void RType::Component::TestComponent::onGameQuit() {
+    KapEngine::Debug::warning("Game leaving...");
+}

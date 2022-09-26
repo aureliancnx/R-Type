@@ -37,8 +37,10 @@ void testCanvas(KapEngine::KapEngine *engine) {
         //set values for image
         KapEngine::Tools::Vector3 pos(0.f, 0.f, 10.f);
         KapEngine::Tools::Vector3 scale(0.3f, 1.f, 1.f);
+        KapEngine::Tools::Rectangle crop(0, 0, 1436, 1080);
         imageComponent->setColor(KapEngine::Tools::Color::white());
         imageComponent->setPathSprite("./Library/KapEngine/Documentation/images/KapEngineBannerNeg.png");
+        imageComponent->setRectangle(crop);
         trImage.setPosition(pos);
         trImage.setScale(scale);
 
@@ -87,7 +89,7 @@ int main(int ac, char **av) {
 
     engine.setFixedTime(timeFixed);
 
-    // engine.getSplashScreen()->setDisplayKapEngineLogo(false);
+    engine.getSplashScreen()->setDisplayKapEngineLogo(false);
 
     KapEngine::Tools::Vector2 screenSize(720, 480);
 

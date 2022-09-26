@@ -7,6 +7,7 @@
 
 #include "RaylibEncapsulation.hpp"
 #include "Errors.hpp"
+#include "Debug.hpp"
 #include <iostream>
 
 void KapEngine::Graphical::Raylib::RaylibEncapsulation::unloadFont(std::string const& path) {
@@ -85,19 +86,20 @@ void KapEngine::Graphical::Raylib::RaylibEncapsulation::__drawTexture(std::strin
     __setImageSize(&img, {width, heigth});
     Texture2D texture = __getTextureFromImage(img);
     _cacheTexture.push_back(texture);
-    DrawTextureEx(texture, {posX, posY}, rot, width, col);
+    DrawTextureV(texture, {posX, posY}, col);
+    Debug::log("Draw image: {" + std::to_string(posX) + "; " + std::to_string(posY) + "}, size: {" + std::to_string(width) + "; " + std::to_string(heigth) + "}");
 }
 
 void KapEngine::Graphical::Raylib::RaylibEncapsulation::loadImage(std::string const& imagePath) {
     for (std::size_t i = 0; i < _cache.size(); i++) {
         if (_cache[i]->getName() == "Image") {
             auto img = (Cache::ImageCache *)_cache[i].get();
-            std::cout << "[Image]->[" << img->getPath() << "]" << std::endl;
+            Debug::warning("[RAYLIB] image->[" + img->getPath() + "]");
             if (img->getPath() == imagePath)
                 return;
         }
     }
-    std::cout << "Create image: " << imagePath << std::endl;
+    Debug::warning("[RAYLIB] create image: " + imagePath);
     auto nImg = std::make_shared<Cache::ImageCache>(*this);
     nImg->init(imagePath);
     _cache.push_back(nImg);
@@ -113,6 +115,7 @@ Image &KapEngine::Graphical::Raylib::RaylibEncapsulation::getImage(std::string c
     }
 
     if (alreadyTry) {
+        Debug::error("[RAYLIB] : no image found: " + imagePath);
         throw Errors::GraphicalSystemError("No image found: " + imagePath);
     }
     loadImage(imagePath);

@@ -181,10 +181,15 @@ namespace KapEngine {
                      */
 
                     void __setImageSize(Image *img, Vector2 size) {
-                        if (size.x < 0)
+                        if (size.x < 0) {
                             ImageFlipVertical(img);
-                        if (size.y < 0)
+                            size.x *= -1;
+                        }
+                        if (size.y < 0) {
                             ImageFlipHorizontal(img);
+                            size.y *= -1;
+                        }
+                        ImageResize(img, size.x, size.y);
                     }
 
                     void __imageCrop(Image *img, Rectangle rect) {

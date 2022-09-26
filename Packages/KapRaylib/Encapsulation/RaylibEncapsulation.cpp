@@ -87,7 +87,6 @@ void KapEngine::Graphical::Raylib::RaylibEncapsulation::__drawTexture(std::strin
     Texture2D texture = __getTextureFromImage(img);
     _cacheTexture.push_back(texture);
     DrawTextureV(texture, {posX, posY}, col);
-    Debug::log("Draw image: {" + std::to_string(posX) + "; " + std::to_string(posY) + "}, size: {" + std::to_string(width) + "; " + std::to_string(heigth) + "}");
 }
 
 void KapEngine::Graphical::Raylib::RaylibEncapsulation::loadImage(std::string const& imagePath) {

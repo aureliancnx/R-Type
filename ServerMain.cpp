@@ -2,7 +2,7 @@
 #include "Graphical/RaylibGraphical.hpp"
 #include "Factory.hpp"
 #include "Debug.hpp"
-#include "TestNetworkComponent.hpp"
+#include "TestNetworkManager.hpp"
 #include <iostream>
 
 int main(int ac, char **av) {
@@ -32,7 +32,7 @@ int main(int ac, char **av) {
     try {
         auto &scene = engine.getSceneManager()->getScene(1);
         auto go = KapEngine::Factory::createEmptyGameObject(scene, "TestNetworkManager");
-        auto testNetworkManager = std::make_shared<RType::Component::TestNetworkComponent>(go);
+        auto testNetworkManager = std::make_shared<RType::Component::TestNetworkManager>(go);
         go->addComponent(testNetworkManager);
     } catch(...) {}
 

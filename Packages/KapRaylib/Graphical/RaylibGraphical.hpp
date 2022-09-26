@@ -36,7 +36,7 @@ namespace KapEngine {
 
             class RaylibGraphical : public GraphicalLib {
                 public:
-                    RaylibGraphical(GraphicalLibManager &manager);
+                    RaylibGraphical(GraphicalLibManager &manager, bool drawWindow = true);
                     ~RaylibGraphical();
 
                     void clearCache() override;
@@ -71,6 +71,7 @@ namespace KapEngine {
                 protected:
                 private:
                     std::unique_ptr<RaylibEncapsulation> raylib;
+                    bool _drawWindow;
             };
 
         }

@@ -189,7 +189,6 @@ namespace KapEngine {
                             ImageFlipHorizontal(img);
                             size.y *= -1;
                         }
-                        ImageResize(img, size.x, size.y);
                     }
 
                     void __imageCrop(Image *img, Rectangle rect) {

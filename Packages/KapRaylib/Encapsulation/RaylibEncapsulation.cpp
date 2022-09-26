@@ -82,8 +82,8 @@ void KapEngine::Graphical::Raylib::RaylibEncapsulation::__drawTexture(std::strin
     } catch(...) {
         return;
     }
-    __imageCrop(&img, rect);
     __setImageSize(&img, {width, heigth});
+    // __imageCrop(&img, rect);
     Texture2D texture = __getTextureFromImage(img);
     _cacheTexture.push_back(texture);
     DrawTextureV(texture, {posX, posY}, col);

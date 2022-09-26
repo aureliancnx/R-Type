@@ -13,7 +13,9 @@
 #include "UiText.hpp"
 #include "Transform.hpp"
 
-KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManager &manager) : GraphicalLib("raylib", manager) {
+KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManager &manager, bool drawWindow) : GraphicalLib("raylib", manager) {
+
+    _drawWindow = drawWindow;
 
     Tools::Vector2 size = manager.getEngine().getScreenSize();
 
@@ -63,24 +65,28 @@ void KapEngine::Graphical::Raylib::RaylibGraphical::clearCache() {
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::stopDisplay() {
-    raylib->closeWindow();
+    if (_drawWindow)
+        raylib->closeWindow();
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::startDisplay() {
-    raylib->openWindow();
-    Debug::log("Use " + getName());
+    if (_drawWindow)
+        raylib->openWindow();
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::clear() {
-    raylib->startDrawing();
+    if (_drawWindow)
+        raylib->startDrawing();
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::display() {
-    raylib->stopDrawing();
+    if (_drawWindow)
+        raylib->stopDrawing();
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::getEvents() {
-
+    if (!_drawWindow)
+        return;
     //check close window
     if (raylib->windownShouldClose()) {
         manager.getEngine().stop();

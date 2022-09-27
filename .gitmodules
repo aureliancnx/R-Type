@@ -6,3 +6,6 @@
 	path = Library/KapMirror
 	branch = main
 	url = git@github.com:Chaika9/KapMirror.git
+[submodule "Packages/KapMirror"]
+	path = Packages/KapMirror
+	url = git@github.com:Chaika9/KapMirror.git

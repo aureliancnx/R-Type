@@ -144,9 +144,9 @@ namespace KapEngine {
                     void initCam() {
                         if (camSet)
                             return;
-                        _camera.position = (Vector3){ 20.0f, 20.0f, 20.0f };
-                        _camera.target = (Vector3){ 0.0f, 8.0f, 0.0f };
-                        _camera.up = (Vector3){ 0.0f, 1.6f, 0.0f };
+                        _camera.position = { 20.0f, 20.0f, 20.0f };
+                        _camera.target = { 0.0f, 8.0f, 0.0f };
+                        _camera.up = { 0.0f, 1.6f, 0.0f };
                         _camera.fovy = 45.0f;
                         _camera.projection = CAMERA_PERSPECTIVE;
                         camSet = true;

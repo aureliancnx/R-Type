@@ -47,6 +47,8 @@ namespace KapEngine {
                     void display() override;
                     void getEvents() override;
 
+                    Tools::Vector2 getMousePosition() const override;
+
                     float getJoystikValue(int gamepadId, int joystickId) override;
 
                     Events::Key::EKey toKey(KeyboardKey _key);

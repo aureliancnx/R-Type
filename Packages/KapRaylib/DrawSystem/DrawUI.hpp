@@ -164,6 +164,10 @@ namespace KapEngine {
                             return _path;
                         }
 
+                        Rectangle getRectangle() const {
+                            return _rect;
+                        }
+
                         //setters
 
                         void setPosX(float x) {
@@ -194,16 +198,19 @@ namespace KapEngine {
                             _rot = r;
                         }
 
+                        void setRectangle(Rectangle rect) {
+                            _rect = rect;
+                        }
+
                     private:
                         float _posX = 0.f;
                         float _posY = 0.f;
                         float _width = 1.f;
                         float _heigth = 1.f;
                         float _rot= 0.f;
-                        float _cropX = 1.f;
-                        float _cropY = 1.f;
                         Color _color;
                         std::string _path;
+                        Rectangle _rect;
                 };
 
                 class DrawText : public RaylibDrawing {

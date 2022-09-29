@@ -282,7 +282,7 @@ namespace KapEngine {
                         DrawText(text.c_str(), pos.x, pos.y, fontSize, col);
                     }
 
-                    void drawTexture(std::string const& path, float posX, float posY, float width, float heigth, Rectangle rect, Color col) {
+                    void drawTexture(std::string const& path, float posX, float posY, float width, float heigth, float rot, Rectangle rect, Color col) {
                         auto texture = std::make_shared<Draw::DrawSpriteTexture>(*this);
                         texture->setPathTexture(path);
                         texture->setHeigth(heigth);
@@ -291,6 +291,7 @@ namespace KapEngine {
                         texture->setPosY(posY);
                         texture->setColor(col);
                         texture->setRectangle(rect);
+                        texture->setRot(rot);
 
                         _drawUi.push_back(texture);
                     }

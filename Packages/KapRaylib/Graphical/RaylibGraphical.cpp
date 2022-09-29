@@ -31,8 +31,10 @@ KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManag
         if (img.isUsingSprite()) {
             Tools::Vector2 pos = img.getCalculatedPosition();
             Tools::Vector2 scale = img.getCalculatedScale();
-            Tools::Color color = img.getColorSprite();
-            this->raylib->drawTexture(img.getPathSprite(), pos.getX(), pos.getY(), scale.getX(), scale.getY(), engineToRaylib(img.getRectangle()), engineToRaylib(color));
+            Tools::Color color = img.getColorSprite();Transform &tr = (Transform &)img.getGameObject().getTransform();
+
+            this->raylib->drawTexture(img.getPathSprite(), pos.getX(), pos.getY(), scale.getX(), scale.getY(), tr.getWorldRotation().getX(),
+                engineToRaylib(img.getRectangle()), engineToRaylib(color));
         } else {
             Tools::Vector2 pos = img.getCalculatedPosition();
             Tools::Vector2 scale = img.getCalculatedScale();
@@ -463,6 +465,15 @@ Rectangle KapEngine::Graphical::Raylib::RaylibGraphical::engineToRaylib(Tools::R
     result.y = rect.getPos().getY();
     result.width = rect.getSize().getX();
     result.height = rect.getSize().getY();
+
+    return result;
+}
+
+KapEngine::Tools::Vector2 KapEngine::Graphical::Raylib::RaylibGraphical::getMousePosition() const {
+    Tools::Vector2 result;
+
+    result.setX(raylib->getMousePosition().x);
+    result.setY(raylib->getMousePosition().y);
 
     return result;
 }

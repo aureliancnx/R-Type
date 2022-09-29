@@ -49,7 +49,7 @@ KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManag
 
         Vector2 pos = engineToRaylib(posTr);
 
-        this->raylib->drawText(txt.getFontPath(), txt.getText(), pos, txt.getPoliceSize(), txt.getSpace(), engineToRaylib(Tools::Color::white()));
+        this->raylib->drawText(txt.getFontPath(), txt.getText(), pos, txt.getPoliceSize(), txt.getSpace(), engineToRaylib(txt.getColor()));
     });
 
 }

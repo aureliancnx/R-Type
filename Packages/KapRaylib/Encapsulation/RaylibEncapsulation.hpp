@@ -175,6 +175,10 @@ namespace KapEngine {
                         DrawFPS(10, 10);
                     }
 
+                    Vector2 getMousePosition() const {
+                        return GetMousePosition();
+                    }
+
                     /**
                      * @brief image actions
                      * 

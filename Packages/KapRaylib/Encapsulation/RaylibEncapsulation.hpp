@@ -190,6 +190,7 @@ namespace KapEngine {
                             ImageFlipHorizontal(img);
                             size.y *= -1.f;
                         }
+                        ImageResize(img, size.x, size.y);
                     }
 
                     /**

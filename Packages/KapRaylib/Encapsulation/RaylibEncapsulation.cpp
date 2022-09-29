@@ -81,6 +81,7 @@ void KapEngine::Graphical::Raylib::RaylibEncapsulation::__drawTexture(std::strin
         __setImageRedef(&img, {width, heigth}, rect);
         Texture2D texture = __getTextureFromImage(img);
         _cacheTexture.push_back(texture);
+        SetTextureFilter(texture, TEXTURE_FILTER_POINT);
         DrawTextureEx(texture, {posX, posY}, rot, width, col);
     } catch(std::exception e) {
         Debug::error(e.what());

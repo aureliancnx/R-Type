@@ -60,10 +60,20 @@ namespace KapEngine {
                         if (opened)
                             return;
                         InitWindow(_widthWindow, _heightWindow, _title.c_str());
+                        setWindowsResizable(true);
                         SetTargetFPS(_fps);
                         InitAudioDevice();
                         initCam();
                         opened = true;
+                    }
+
+                    Vector2 getScreenSize() {
+                        Vector2 result;
+
+                        result.x = GetScreenWidth();
+                        result.y = GetScreenHeight();
+
+                        return result;
                     }
 
                     void closeWindow() {
@@ -173,6 +183,12 @@ namespace KapEngine {
 
                     void drawFps() {
                         DrawFPS(10, 10);
+                    }
+
+                    void setWindowsResizable(bool b) {
+                        if (b) {
+                            SetWindowState(FLAG_WINDOW_RESIZABLE);
+                        }
                     }
 
                     Vector2 getMousePosition() const {

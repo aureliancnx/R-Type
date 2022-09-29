@@ -45,11 +45,7 @@ KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManag
 
     setDrawText([this](UI::Text &txt){
 
-        Transform &tr = (Transform &)txt.getGameObject().getTransform();
-        Tools::Vector2 posTr;
-
-        posTr.setX(tr.getWorldPosition().getX());
-        posTr.setY(tr.getWorldPosition().getY());
+        Tools::Vector2 posTr = txt.getCalculatedPos();
 
         Vector2 pos = engineToRaylib(posTr);
 
@@ -476,4 +472,8 @@ KapEngine::Tools::Vector2 KapEngine::Graphical::Raylib::RaylibGraphical::getMous
     result.setY(raylib->getMousePosition().y);
 
     return result;
+}
+
+KapEngine::Tools::Vector2 KapEngine::Graphical::Raylib::RaylibGraphical::getScreenSize() {
+    return Tools::Vector2(raylib->getScreenSize().x, raylib->getScreenSize().y);
 }

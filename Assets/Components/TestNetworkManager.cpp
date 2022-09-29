@@ -4,6 +4,18 @@
 
 using namespace RType::Component;
 
+struct ChatMessage : public KapMirror::NetworkMessage {
+    std::string message;
+
+    void serialize(KapMirror::NetworkWriter& writer) override {
+        writer.writeString(message);
+    }
+
+    void deserialize(KapMirror::NetworkReader& reader) override {
+        message = reader.readString();
+    }
+};
+
 TestNetworkManager::TestNetworkManager(std::shared_ptr<KapEngine::GameObject> go, bool _isServer) : KapMirror::NetworkManager(go) {
     isServer = _isServer;
 }
@@ -29,6 +41,11 @@ void TestNetworkManager::onStopServer() {
 
 void TestNetworkManager::onServerClientConnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {
     KapEngine::Debug::log("TestNetworkManager::onServerClientConnected");
+
+    KapEngine::Debug::log("TestNetworkManager::onServerClientConnected: Sending message to client");
+    ChatMessage message;
+    message.message = "Goddess Ilias";
+    connection->send(message);
 }
 
 void TestNetworkManager::onServerClientDisconnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {

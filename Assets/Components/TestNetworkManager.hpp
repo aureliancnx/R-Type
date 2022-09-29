@@ -12,6 +12,17 @@ namespace Component {
             ~TestNetworkManager() = default;
 
             void onStart() override;
+
+            // Events
+            void onStartServer() override;
+            void onStopServer() override;
+            void onServerClientConnected(std::shared_ptr<KapMirror::NetworkConnection> connection) override;
+            void onServerClientDisconnected(std::shared_ptr<KapMirror::NetworkConnection> connection) override;
+
+            void onStartClient() override;
+            void onStopClient() override;
+            void onClientConnected(std::shared_ptr<KapMirror::NetworkConnection> connection) override;
+            void onClientDisconnected(std::shared_ptr<KapMirror::NetworkConnection> connection) override;
     };
 }
 }

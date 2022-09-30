@@ -12,6 +12,7 @@ namespace Component {
             ~TestNetworkManager() = default;
 
             void onStart() override;
+            void onUpdate() override;
 
             // Events
             void onStartServer() override;

@@ -40,6 +40,11 @@ void TestNetworkManager::onStart() {
     }
 }
 
+void TestNetworkManager::onUpdate() {
+    // super::onUpdate();
+    NetworkManager::onUpdate();
+}
+
 void TestNetworkManager::onStartServer() {
     KapEngine::Debug::log("TestNetworkManager::onStartServer");
 }

@@ -24,6 +24,14 @@ void TestNetworkManager::onStart() {
     KapEngine::Debug::log("TestNetworkManager::onStart");
     if (isServer) {
         KapEngine::Debug::log("TestNetworkManager::onStart: Starting server");
+
+        getServer()->registerHandler<ChatMessage>([this](std::shared_ptr<KapMirror::NetworkConnection> connection, ChatMessage& message) {
+            KapEngine::Debug::log("TestNetworkManager: Received message from client: " + message.message);
+        });
+        getClient()->registerHandler<ChatMessage>([this](std::shared_ptr<KapMirror::NetworkConnection> connection, ChatMessage& message) {
+            KapEngine::Debug::log("TestNetworkManager: Received message from server: " + message.message);
+        });
+
         startServer();
     } else {
         KapEngine::Debug::log("TestNetworkManager::onStart: Starting client");
@@ -41,11 +49,6 @@ void TestNetworkManager::onStopServer() {
 
 void TestNetworkManager::onServerClientConnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {
     KapEngine::Debug::log("TestNetworkManager::onServerClientConnected");
-
-    KapEngine::Debug::log("TestNetworkManager::onServerClientConnected: Sending message to client");
-    ChatMessage message;
-    message.message = "Goddess Ilias";
-    connection->send(message);
 }
 
 void TestNetworkManager::onServerClientDisconnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {
@@ -62,6 +65,11 @@ void TestNetworkManager::onStopClient() {
 
 void TestNetworkManager::onClientConnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {
     KapEngine::Debug::log("TestNetworkManager::onClientConnected");
+
+    KapEngine::Debug::log("TestNetworkManager::onClientConnected: Sending message to server");
+    ChatMessage message;
+    message.message = "Goddess Ilias";
+    connection->send(message);
 }
 
 void TestNetworkManager::onClientDisconnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {

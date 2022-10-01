@@ -31,8 +31,10 @@ KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManag
         if (img.isUsingSprite()) {
             Tools::Vector2 pos = img.getCalculatedPosition();
             Tools::Vector2 scale = img.getCalculatedScale();
-            Tools::Color color = img.getColorSprite();
-            this->raylib->drawTexture(img.getPathSprite(), pos.getX(), pos.getY(), scale.getX(), scale.getY(), engineToRaylib(img.getRectangle()), engineToRaylib(color));
+            Tools::Color color = img.getColorSprite();Transform &tr = (Transform &)img.getGameObject().getTransform();
+
+            this->raylib->drawTexture(img.getPathSprite(), pos.getX(), pos.getY(), scale.getX(), scale.getY(), tr.getWorldRotation().getX(),
+                engineToRaylib(img.getRectangle()), engineToRaylib(color));
         } else {
             Tools::Vector2 pos = img.getCalculatedPosition();
             Tools::Vector2 scale = img.getCalculatedScale();
@@ -43,15 +45,11 @@ KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManag
 
     setDrawText([this](UI::Text &txt){
 
-        Transform &tr = (Transform &)txt.getGameObject().getTransform();
-        Tools::Vector2 posTr;
-
-        posTr.setX(tr.getWorldPosition().getX());
-        posTr.setY(tr.getWorldPosition().getY());
+        Tools::Vector2 posTr = txt.getCalculatedPos();
 
         Vector2 pos = engineToRaylib(posTr);
 
-        this->raylib->drawText(txt.getFontPath(), txt.getText(), pos, txt.getPoliceSize(), txt.getSpace(), engineToRaylib(Tools::Color::white()));
+        this->raylib->drawText(txt.getFontPath(), txt.getText(), pos, txt.getPoliceSize(), txt.getSpace(), engineToRaylib(txt.getColor()));
     });
 
 }
@@ -465,4 +463,17 @@ Rectangle KapEngine::Graphical::Raylib::RaylibGraphical::engineToRaylib(Tools::R
     result.height = rect.getSize().getY();
 
     return result;
+}
+
+KapEngine::Tools::Vector2 KapEngine::Graphical::Raylib::RaylibGraphical::getMousePosition() const {
+    Tools::Vector2 result;
+
+    result.setX(raylib->getMousePosition().x);
+    result.setY(raylib->getMousePosition().y);
+
+    return result;
+}
+
+KapEngine::Tools::Vector2 KapEngine::Graphical::Raylib::RaylibGraphical::getScreenSize() {
+    return Tools::Vector2(raylib->getScreenSize().x, raylib->getScreenSize().y);
 }

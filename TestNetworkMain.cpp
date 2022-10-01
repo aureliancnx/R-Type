@@ -1,8 +1,9 @@
 #include "KapEngine.hpp"
-#include "Graphical/RaylibGraphical.hpp"
 #include "Factory.hpp"
 #include "Debug.hpp"
-#include "TestNetworkManager.hpp"
+#include "Graphical/RaylibGraphical.hpp"
+#include "Test/TestNetworkManager.hpp"
+#include "KapMirror/Experimental/Runtime/Compressions/GZip/GZipCompression.hpp"
 #include <iostream>
 
 int main(int ac, char **av) {
@@ -34,6 +35,7 @@ int main(int ac, char **av) {
         auto &scene = engine.getSceneManager()->getScene(1);
         auto go = KapEngine::Factory::createEmptyGameObject(scene, "TestNetworkManager");
         auto testNetworkManager = std::make_shared<RType::Component::TestNetworkManager>(go, isServer);
+        testNetworkManager->setCompression(std::make_shared<KapMirror::Experimental::GZipCompression>());
         go->addComponent(testNetworkManager);
     } catch(...) {}
 

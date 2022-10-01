@@ -20,7 +20,7 @@ find_package(raylib REQUIRED)
 option(IS_SERVER "Generate R-Type server" OFF)
 
 if(${IS_SERVER})
-	file(GLOB_RECURSE SOURCES ServerMain.cpp Assets/Components/*.cpp Packages/*.cpp)
+	file(GLOB_RECURSE SOURCES TestNetworkMain.cpp Assets/Components/*.cpp Packages/*.cpp)
 else()
 	file(GLOB_RECURSE SOURCES ClientMain.cpp Assets/Components/*.cpp Packages/*.cpp)
 endif()

@@ -49,6 +49,9 @@ namespace KapEngine {
 
                     float getJoystikValue(int gamepadId, int joystickId) override;
 
+                    Tools::Vector2 getMousePosition() const override;
+                    Tools::Vector2 getScreenSize() override;
+
                     Events::Key::EKey toKey(KeyboardKey _key);
                     Events::Key::EKey toKey(MouseButton _key);
                     Events::Key::EKey toKey(GamepadButton _key, int id);

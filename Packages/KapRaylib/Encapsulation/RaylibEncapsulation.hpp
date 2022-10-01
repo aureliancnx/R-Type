@@ -60,10 +60,20 @@ namespace KapEngine {
                         if (opened)
                             return;
                         InitWindow(_widthWindow, _heightWindow, _title.c_str());
+                        setWindowsResizable(true);
                         SetTargetFPS(_fps);
                         InitAudioDevice();
                         initCam();
                         opened = true;
+                    }
+
+                    Vector2 getScreenSize() {
+                        Vector2 result;
+
+                        result.x = GetScreenWidth();
+                        result.y = GetScreenHeight();
+
+                        return result;
                     }
 
                     void closeWindow() {
@@ -144,9 +154,9 @@ namespace KapEngine {
                     void initCam() {
                         if (camSet)
                             return;
-                        _camera.position = (Vector3){ 20.0f, 20.0f, 20.0f };
-                        _camera.target = (Vector3){ 0.0f, 8.0f, 0.0f };
-                        _camera.up = (Vector3){ 0.0f, 1.6f, 0.0f };
+                        _camera.position = { 20.0f, 20.0f, 20.0f };
+                        _camera.target = { 0.0f, 8.0f, 0.0f };
+                        _camera.up = { 0.0f, 1.6f, 0.0f };
                         _camera.fovy = 45.0f;
                         _camera.projection = CAMERA_PERSPECTIVE;
                         camSet = true;
@@ -175,6 +185,16 @@ namespace KapEngine {
                         DrawFPS(10, 10);
                     }
 
+                    void setWindowsResizable(bool b) {
+                        if (b) {
+                            SetWindowState(FLAG_WINDOW_RESIZABLE);
+                        }
+                    }
+
+                    Vector2 getMousePosition() const {
+                        return GetMousePosition();
+                    }
+
                     /**
                      * @brief image actions
                      * 
@@ -190,6 +210,7 @@ namespace KapEngine {
                             ImageFlipHorizontal(img);
                             size.y *= -1.f;
                         }
+                        ImageResize(img, size.x, size.y);
                     }
 
                     /**
@@ -277,7 +298,7 @@ namespace KapEngine {
                         DrawText(text.c_str(), pos.x, pos.y, fontSize, col);
                     }
 
-                    void drawTexture(std::string const& path, float posX, float posY, float width, float heigth, Rectangle rect, Color col) {
+                    void drawTexture(std::string const& path, float posX, float posY, float width, float heigth, float rot, Rectangle rect, Color col) {
                         auto texture = std::make_shared<Draw::DrawSpriteTexture>(*this);
                         texture->setPathTexture(path);
                         texture->setHeigth(heigth);
@@ -286,6 +307,7 @@ namespace KapEngine {
                         texture->setPosY(posY);
                         texture->setColor(col);
                         texture->setRectangle(rect);
+                        texture->setRot(rot);
 
                         _drawUi.push_back(texture);
                     }

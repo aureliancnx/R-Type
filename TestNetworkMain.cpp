@@ -1,8 +1,8 @@
 #include "KapEngine.hpp"
-#include "Graphical/RaylibGraphical.hpp"
 #include "Factory.hpp"
 #include "Debug.hpp"
-#include "TestNetworkManager.hpp"
+#include "Graphical/RaylibGraphical.hpp"
+#include "Test/TestNetworkManager.hpp"
 #include <iostream>
 
 int main(int ac, char **av) {

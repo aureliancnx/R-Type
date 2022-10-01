@@ -1,6 +1,6 @@
 #pragma once
 
-#include "KapMirror/NetworkManager.hpp"
+#include "KapMirror/KapMirror.hpp"
 
 namespace RType {
 namespace Component {

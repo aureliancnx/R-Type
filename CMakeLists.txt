@@ -16,6 +16,13 @@ set(CMAKE_CXX_STANDARD 17)
 # RayLib version
 set(raylib_VERSION 4.0.0)
 find_package(raylib REQUIRED)
+message(STATUS "RayLib version: ${raylib_VERSION}")
+
+set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
+find_package(Boost 1.45.0 COMPONENTS iostreams)
+message(STATUS "Boost version: ${Boost_VERSION}")
 
 option(IS_SERVER "Generate R-Type server" OFF)
 
@@ -32,12 +39,7 @@ include(Library/library.cmake)
 
 target_link_libraries(RType raylib)
 
-set(Boost_USE_STATIC_LIBS OFF)
-set(Boost_USE_MULTITHREADED ON)
-set(Boost_USE_STATIC_RUNTIME OFF)
-find_package(Boost 1.45.0 COMPONENTS iostreams)
-
-if(Boost_FOUND)
+if(${Boost_FOUND})
 	include_directories(${Boost_INCLUDE_DIRS})
 	target_link_libraries(RType ${Boost_LIBRARIES})
 endif()

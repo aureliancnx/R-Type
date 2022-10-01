@@ -8,7 +8,7 @@ namespace Component {
         bool isServer;
 
         public:
-            TestNetworkManager(std::shared_ptr<KapEngine::GameObject> go, bool _isServer = false);
+            TestNetworkManager(std::shared_ptr<KapEngine::GameObject> &go, std::shared_ptr<KapMirror::Compression> &compression, bool _isServer = false);
             ~TestNetworkManager() = default;
 
             void onStart() override;

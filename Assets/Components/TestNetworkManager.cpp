@@ -4,7 +4,8 @@
 
 using namespace RType::Component;
 
-TestNetworkManager::TestNetworkManager(std::shared_ptr<KapEngine::GameObject> go, bool _isServer) : KapMirror::NetworkManager(go) {
+TestNetworkManager::TestNetworkManager(std::shared_ptr<KapEngine::GameObject> &go, std::shared_ptr<KapMirror::Compression> &compression, bool _isServer) : KapMirror::NetworkManager(go) {
+    this->setCompression(compression);
     isServer = _isServer;
 }
 

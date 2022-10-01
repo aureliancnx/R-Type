@@ -32,6 +32,16 @@ include(Library/library.cmake)
 
 target_link_libraries(RType raylib)
 
+set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
+find_package(Boost 1.45.0 COMPONENTS iostreams)
+
+if(Boost_FOUND)
+	include_directories(${Boost_INCLUDE_DIRS})
+	target_link_libraries(RType ${Boost_LIBRARIES})
+endif()
+
 # Includes
 include_directories(.)
 include_directories(Assets/Components)

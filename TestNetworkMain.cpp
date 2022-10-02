@@ -1,14 +1,56 @@
+#include "TestNetwork/NetworkManager.hpp"
+#include "TestNetwork/SpaceShip.hpp"
+#include "Graphical/RaylibGraphical.hpp"
 #include "KapEngine.hpp"
 #include "Factory.hpp"
+#include "UiCanvas.hpp"
+#include "UiText.hpp"
 #include "Debug.hpp"
-#include "Graphical/RaylibGraphical.hpp"
-#include "Test/TestNetworkManager.hpp"
-#include "KapMirror/Experimental/Runtime/Compressions/GZip/GZipCompression.hpp"
 #include <iostream>
 
-int main(int ac, char **av) {
-    bool isServer = false;
+void initSceneServer(KapEngine::KapEngine& engine) {
+    auto& scene = engine.getSceneManager()->getScene(1);
 
+    auto networkManagerObject = KapEngine::Factory::createEmptyGameObject(scene, "NetworkManager");
+    auto networkManagerComponent = std::make_shared<RType::Component::TestNetworkManager>(networkManagerObject, false);
+    networkManagerObject->addComponent(networkManagerComponent);
+
+    auto canvasObject = KapEngine::Factory::createEmptyGameObject(scene, "Canvas");
+    auto canvasComponent = std::make_shared<KapEngine::UI::Canvas>(canvasObject);
+    canvasObject->addComponent(canvasComponent);
+
+    {
+        auto shipObject = KapEngine::Factory::createEmptyGameObject(scene, "SpaceShip");
+
+        auto& shipTransform = shipObject->getComponent<KapEngine::Transform>();
+        shipTransform.setPosition(KapEngine::Tools::Vector3(10.f, 300.f, 0.f));
+        shipTransform.setParent(canvasObject->getId());
+
+        auto textComponent = std::make_shared<KapEngine::UI::Text>(shipObject);
+        shipObject->addComponent(textComponent);
+        textComponent->setText("SpaceShip");
+
+        auto shipComponent = std::make_shared<RType::Component::SpaceShip>(shipObject);
+        shipObject->addComponent(shipComponent);
+    }
+}
+
+void initSceneClient(KapEngine::KapEngine& engine) {
+    auto& scene = engine.getSceneManager()->getScene(1);
+
+    auto networkManagerObject = KapEngine::Factory::createEmptyGameObject(scene, "NetworkManager");
+    auto networkManagerComponent = std::make_shared<RType::Component::TestNetworkManager>(networkManagerObject, false);
+    networkManagerObject->addComponent(networkManagerComponent);
+
+    auto canvasObject = KapEngine::Factory::createEmptyGameObject(scene, "Canvas");
+    auto canvasComponent = std::make_shared<KapEngine::UI::Canvas>(canvasObject);
+    canvasObject->addComponent(canvasComponent);
+}
+
+int main(int ac, char **av) {
+    KapEngine::Debug::log("Starting R-Type - Test Network...");
+
+    bool isServer = false;
     if (ac > 1) {
         if (std::string(av[1]) == "server") {
             isServer = true;
@@ -16,30 +58,35 @@ int main(int ac, char **av) {
     }
 
     if (isServer) {
-        std::cout << "Starting R-Type Server..." << std::endl;
+        KapEngine::Debug::log("Starting Server...");
     } else {
-        std::cout << "Starting R-Type Client..." << std::endl;
+        KapEngine::Debug::log("Starting Client...");
     }
 
-    KapEngine::KapEngine engine(true, "RType", "Alpha Client", "Epitech tkt on gère");
+    KapEngine::KapEngine engine(true, "RType - TestNetwork", "Dev", "Epitech");
 
-    KapEngine::Tools::Vector2 screenSize(720, 480);
+    KapEngine::Time::ETime timeFixed;
+    timeFixed.setMicroseconds(25);
+    engine.setFixedTime(timeFixed);
+
+    engine.getSplashScreen()->setDisplayKapEngineLogo(false);
+
+    KapEngine::Tools::Vector2 screenSize(1280, 720);
     engine.setScreenSize(screenSize);
 
-    auto raylib = std::make_shared<KapEngine::Graphical::Raylib::RaylibGraphical>(*engine.getGraphicalLibManager(), false);
-    engine.getSplashScreen()->setDisplayKapEngineLogo(false);
+    auto raylib = std::make_shared<KapEngine::Graphical::Raylib::RaylibGraphical>(*engine.getGraphicalLibManager());
     engine.getGraphicalLibManager()->addLib(raylib);
     engine.getGraphicalLibManager()->changeLib("raylib");
 
     try {
-        auto &scene = engine.getSceneManager()->getScene(1);
-        auto go = KapEngine::Factory::createEmptyGameObject(scene, "TestNetworkManager");
-        auto testNetworkManager = std::make_shared<RType::Component::TestNetworkManager>(go, isServer);
-        testNetworkManager->setCompression(std::make_shared<KapMirror::Experimental::GZipCompression>());
-        go->addComponent(testNetworkManager);
-    } catch(...) {}
-
+        if (isServer) {
+            initSceneServer(engine);
+        } else {
+            initSceneClient(engine);
+        }
+    } catch(KapEngine::Errors::Error e) {
+        KapEngine::Debug::error("Error while init default scene: \"" + std::string(e.what()) + "\"");
+    }
     engine.run();
-
     return 0;
 }

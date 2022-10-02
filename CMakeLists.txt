@@ -26,7 +26,7 @@ message(STATUS "Boost version: ${Boost_VERSION}")
 
 option(IS_SERVER "Generate R-Type server" OFF)
 
-if(${IS_SERVER})
+if(${IS_TEST_NETWORK})
 	file(GLOB_RECURSE SOURCES TestNetworkMain.cpp Assets/Components/*.cpp Packages/*.cpp)
 else()
 	file(GLOB_RECURSE SOURCES ClientMain.cpp Assets/Components/*.cpp Packages/*.cpp)

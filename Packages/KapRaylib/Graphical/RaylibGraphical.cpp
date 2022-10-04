@@ -6,17 +6,14 @@
 */
 
 #include "RaylibGraphical.hpp"
-#include "Vectors.hpp"
-#include "Debug.hpp"
-#include "Key.hpp"
-#include "UiImage.hpp"
-#include "UiText.hpp"
-#include "Transform.hpp"
+#include "KapEngineUi.hpp"
 
 KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManager &manager, bool drawWindow) : GraphicalLib("raylib", manager) {
+
     _drawWindow = drawWindow;
 
     Tools::Vector2 size = manager.getEngine().getScreenSize();
+
     raylib = std::make_unique<RaylibEncapsulation>(
         size.getX(),
         size.getY(),
@@ -24,27 +21,39 @@ KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManag
         manager.getEngine().getMaxFps()
     );
 
-    setDrawImage([this](UI::Image &img) {
+    setDrawImage([this](UI::Image &img){
+        
         if (img.isUsingSprite()) {
+            auto &tr = img.getGameObject().getComponent<Transform>();
             Tools::Vector2 pos = img.getCalculatedPosition();
             Tools::Vector2 scale = img.getCalculatedScale();
+            if (!drawable(pos, scale))
+                return;
+
             Tools::Color color = img.getColorSprite();
-            auto& tr = img.getGameObject().getComponent<Transform>();
+
+
             this->raylib->drawTexture(img.getPathSprite(), pos.getX(), pos.getY(), scale.getX(), scale.getY(), tr.getWorldRotation().getX(),
                 engineToRaylib(img.getRectangle()), engineToRaylib(color));
         } else {
             Tools::Vector2 pos = img.getCalculatedPosition();
             Tools::Vector2 scale = img.getCalculatedScale();
+            if (!drawable(pos, scale))
+                return;
             Tools::Color color = img.getColorSprite();
             this->raylib->drawRectangle(pos.getX(), pos.getY(), scale.getX(), scale.getY(), engineToRaylib(color));
         }
     });
 
     setDrawText([this](UI::Text &txt){
+
         Tools::Vector2 posTr = txt.getCalculatedPos();
+
         Vector2 pos = engineToRaylib(posTr);
+
         this->raylib->drawText(txt.getFontPath(), txt.getText(), pos, txt.getPoliceSize(), txt.getSpace(), engineToRaylib(txt.getColor()));
     });
+
 }
 
 KapEngine::Graphical::Raylib::RaylibGraphical::~RaylibGraphical() {
@@ -52,6 +61,7 @@ KapEngine::Graphical::Raylib::RaylibGraphical::~RaylibGraphical() {
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::clearCache() {
+
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::stopDisplay() {
@@ -442,6 +452,7 @@ Vector2 KapEngine::Graphical::Raylib::RaylibGraphical::engineToRaylib(Tools::Vec
 
     result.x = vec.getX();
     result.y = vec.getY();
+
     return result;
 }
 
@@ -452,6 +463,7 @@ Rectangle KapEngine::Graphical::Raylib::RaylibGraphical::engineToRaylib(Tools::R
     result.y = rect.getPos().getY();
     result.width = rect.getSize().getX();
     result.height = rect.getSize().getY();
+
     return result;
 }
 
@@ -460,9 +472,23 @@ KapEngine::Tools::Vector2 KapEngine::Graphical::Raylib::RaylibGraphical::getMous
 
     result.setX(raylib->getMousePosition().x);
     result.setY(raylib->getMousePosition().y);
+
     return result;
 }
 
 KapEngine::Tools::Vector2 KapEngine::Graphical::Raylib::RaylibGraphical::getScreenSize() {
     return Tools::Vector2(raylib->getScreenSize().x, raylib->getScreenSize().y);
+}
+
+bool KapEngine::Graphical::Raylib::RaylibGraphical::drawable(Tools::Vector2 const& pos, Tools::Vector2 const& scale) {
+    Tools::Vector2 downRightPos;
+    downRightPos = pos;
+    downRightPos += scale;
+    auto zero = Tools::Vector2::zero();
+
+    if (downRightPos.getX() < zero.getX() || downRightPos.getY() < zero.getY())
+        return false;
+    if (pos.getX() > getScreenSize().getX() || pos.getY() > getScreenSize().getY())
+        return false;
+    return true;
 }

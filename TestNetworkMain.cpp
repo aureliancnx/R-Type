@@ -1,5 +1,6 @@
 #include "TestNetwork/NetworkManager.hpp"
 #include "TestNetwork/SpaceShip.hpp"
+#include "TestNetwork/Bullet.hpp"
 #include "Graphical/RaylibGraphical.hpp"
 #include "KapEngine.hpp"
 #include "KapMirror/KapMirror.hpp"
@@ -34,6 +35,30 @@ void registerPrefabs(KapEngine::KapEngine& engine) {
         auto& shipTransform = object->getComponent<KapEngine::Transform>();
         shipTransform.setScale(KapEngine::Tools::Vector3(50.f, 50.f, 0.f));
         shipTransform.setParent(3);
+        return object;
+    });
+    engine.getPrefabManager()->createPrefab("bullet", [](KapEngine::SceneManagement::Scene& scene){
+        auto object = scene.createGameObject("Bullet");
+
+        auto networkIdentityComponent = std::make_shared<KapMirror::Experimental::NetworkIdentity>(object);
+        object->addComponent(networkIdentityComponent);
+
+        auto networkTransformComponent = std::make_shared<KapMirror::Experimental::NetworkTransform>(object);
+        networkTransformComponent->setClientAuthority(false);
+        networkTransformComponent->setSendRate(30);
+        object->addComponent(networkTransformComponent);
+
+        auto bullet = std::make_shared<RType::Bullet>(object);
+        object->addComponent(bullet);
+
+        auto img = std::make_shared<KapEngine::UI::Image>(object);
+        img->setColor(KapEngine::Tools::Color::red());
+        object->addComponent(img);
+
+        auto &tr = object->getComponent<KapEngine::Transform>();
+        tr.setScale({25, 10, 0});
+        tr.setParent(3);
+
         return object;
     });
 }

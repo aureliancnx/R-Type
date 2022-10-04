@@ -2,6 +2,8 @@
 #include "Transform.hpp"
 #include "Debug.hpp"
 
+#include "KapEngineDebug.hpp"
+
 using namespace RType::Component;
 
 SpaceShip::SpaceShip(std::shared_ptr<KapEngine::GameObject> go) : KapMirror::Experimental::NetworkComponent(go, "SpaceShip") {
@@ -37,5 +39,17 @@ void SpaceShip::getUserInput() {
     }
     if (getInput().getKey(KapEngine::Events::Key::RIGHT)) {
         transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(1.f * speed, 0.f, 0.f));
+    }
+    if (getInput().getKeyDown(KapEngine::Events::Key::SPACE)) {
+        KAP_DEBUG_LOG("SHOOT !");
+        std::shared_ptr<KapEngine::GameObject> bullet;
+        getServer()->spawnObject("bullet", bullet);
+
+        try {
+            auto &tr = bullet->getComponent<KapEngine::Transform>();
+            tr.setPosition(transform.getLocalPosition());
+        } catch(...) {
+            KAP_DEBUG_ERROR("Failed to set bullet position");
+        }
     }
 }

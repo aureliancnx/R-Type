@@ -17,6 +17,8 @@ namespace Component {
 
             void onStart() override;
             void onUpdate() override;
+
+            void onServerClientConnected(std::shared_ptr<KapMirror::NetworkConnection> connection) override;
     };
 }
 }

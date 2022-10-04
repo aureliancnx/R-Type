@@ -2,6 +2,7 @@
 #include "TestNetwork/SpaceShip.hpp"
 #include "Graphical/RaylibGraphical.hpp"
 #include "KapEngine.hpp"
+#include "KapMirror/KapMirror.hpp"
 #include "Factory.hpp"
 #include "UiCanvas.hpp"
 #include "UiText.hpp"
@@ -12,27 +13,12 @@ void initSceneServer(KapEngine::KapEngine& engine) {
     auto& scene = engine.getSceneManager()->getScene(1);
 
     auto networkManagerObject = KapEngine::Factory::createEmptyGameObject(scene, "NetworkManager");
-    auto networkManagerComponent = std::make_shared<RType::Component::TestNetworkManager>(networkManagerObject, false);
+    auto networkManagerComponent = std::make_shared<RType::Component::TestNetworkManager>(networkManagerObject, true);
     networkManagerObject->addComponent(networkManagerComponent);
 
     auto canvasObject = KapEngine::Factory::createEmptyGameObject(scene, "Canvas");
     auto canvasComponent = std::make_shared<KapEngine::UI::Canvas>(canvasObject);
     canvasObject->addComponent(canvasComponent);
-
-    {
-        auto shipObject = KapEngine::Factory::createEmptyGameObject(scene, "SpaceShip");
-
-        auto& shipTransform = shipObject->getComponent<KapEngine::Transform>();
-        shipTransform.setPosition(KapEngine::Tools::Vector3(10.f, 300.f, 0.f));
-        shipTransform.setParent(canvasObject->getId());
-
-        auto textComponent = std::make_shared<KapEngine::UI::Text>(shipObject);
-        shipObject->addComponent(textComponent);
-        textComponent->setText("SpaceShip");
-
-        auto shipComponent = std::make_shared<RType::Component::SpaceShip>(shipObject);
-        shipObject->addComponent(shipComponent);
-    }
 }
 
 void initSceneClient(KapEngine::KapEngine& engine) {

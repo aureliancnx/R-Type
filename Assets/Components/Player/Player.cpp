@@ -48,8 +48,8 @@ namespace KapEngine {
 
             getTransform().setPosition(cPos);
 
-            if (getInput().getKey(Events::Key::SPACE))
-                shoot(cPos);
+//            if (getInput().getKey(Events::Key::SPACE))
+//                shoot(cPos);
         }
 
         void Player::onDestroy() {

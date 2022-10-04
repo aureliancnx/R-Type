@@ -10,12 +10,18 @@
 #include "Debug.hpp"
 #include <iostream>
 
-void initSceneServer(KapEngine::KapEngine& engine) {
+void registerPrefabs(KapEngine::KapEngine& engine) {
+    KapEngine::Debug::log("Registering prefabs");
     engine.getPrefabManager()->createPrefab("SpaceShip", [](KapEngine::SceneManagement::Scene& scene) {
         auto object = KapEngine::Factory::createEmptyGameObject(scene, "SpaceShip");
 
         auto networkIdentityComponent = std::make_shared<KapMirror::Experimental::NetworkIdentity>(object);
         object->addComponent(networkIdentityComponent);
+
+        auto networkTransformComponent = std::make_shared<KapMirror::Experimental::NetworkTransform>(object);
+        networkTransformComponent->setClientAuthority(false);
+        networkTransformComponent->setSendRate(1);
+        object->addComponent(networkTransformComponent);
 
         auto shipComponent = std::make_shared<RType::Component::SpaceShip>(object);
         object->addComponent(shipComponent);
@@ -27,21 +33,21 @@ void initSceneServer(KapEngine::KapEngine& engine) {
 
         auto& shipTransform = object->getComponent<KapEngine::Transform>();
         shipTransform.setScale(KapEngine::Tools::Vector3(50.f, 50.f, 0.f));
+        shipTransform.setParent(3);
         return object;
     });
+}
 
+void initSceneServer(KapEngine::KapEngine& engine) {
     auto& scene = engine.getSceneManager()->getScene(1);
+
+    auto networkManagerObject = KapEngine::Factory::createEmptyGameObject(scene, "NetworkManager");
+    auto networkManagerComponent = std::make_shared<RType::Component::TestNetworkManager>(networkManagerObject, true);
+    networkManagerObject->addComponent(networkManagerComponent);
 
     auto canvasObject = KapEngine::Factory::createEmptyGameObject(scene, "Canvas");
     auto canvasComponent = std::make_shared<KapEngine::UI::Canvas>(canvasObject);
     canvasObject->addComponent(canvasComponent);
-
-    std::shared_ptr<KapEngine::GameObject> shipObject;
-    engine.getPrefabManager()->instantiatePrefab("SpaceShip", scene, shipObject);
-
-    auto& shipTransform = shipObject->getComponent<KapEngine::Transform>();
-    shipTransform.setPosition(KapEngine::Tools::Vector3(10.f, 200.f, 0.f));
-    shipTransform.setParent(canvasObject->getId());
 }
 
 void initSceneClient(KapEngine::KapEngine& engine) {
@@ -86,6 +92,8 @@ int main(int ac, char **av) {
     auto raylib = std::make_shared<KapEngine::Graphical::Raylib::RaylibGraphical>(*engine.getGraphicalLibManager());
     engine.getGraphicalLibManager()->addLib(raylib);
     engine.getGraphicalLibManager()->changeLib("raylib");
+
+    registerPrefabs(engine);
 
     try {
         if (isServer) {

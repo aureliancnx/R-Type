@@ -11,7 +11,9 @@ void SpaceShip::onStart() {
 }
 
 void SpaceShip::onUpdate() {
-    getUserInput();
+    if (isServer()) {
+        getUserInput();
+    }
 }
 
 void SpaceShip::onStartServer() {
@@ -35,8 +37,5 @@ void SpaceShip::getUserInput() {
     }
     if (getInput().getKey(KapEngine::Events::Key::RIGHT)) {
         transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(1.f * speed, 0.f, 0.f));
-    }
-    if (getInput().getKeyDown(KapEngine::Events::Key::SPACE)) {
-
     }
 }

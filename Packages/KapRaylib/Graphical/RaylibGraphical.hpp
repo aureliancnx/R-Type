@@ -10,9 +10,10 @@
 
 #include <memory>
 
-#include "GraphicalLib.hpp"
 #include "Encapsulation/RaylibEncapsulation.hpp"
-#include "Rectangle.hpp"
+
+#include "KapEngine.hpp"
+#include "KapEngineGraphical.hpp"
 
 namespace KapEngine {
     class KapEngine;
@@ -24,6 +25,7 @@ namespace KapEngine {
 
     namespace Tools {
         class Color;
+        class Vector2;
     }
 
 }
@@ -75,6 +77,8 @@ namespace KapEngine {
                 private:
                     std::unique_ptr<RaylibEncapsulation> raylib;
                     bool _drawWindow;
+
+                    bool drawable(Tools::Vector2 const& pos, Tools::Vector2 const& scale);
             };
 
         }

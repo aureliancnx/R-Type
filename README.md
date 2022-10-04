@@ -20,3 +20,4 @@ See the [KapEngine documentation](https://github.com/benji-35/KapEngine/blob/mai
 * **aureliancnx** - [aureliancnx](https://github.com/aureliancnx)
 * **Chaika9** - [Chaika9](https://github.com/Chaika9)
 * **benji-35** - [benji-35](https://github.com/benji-35)
+* **Ewen02** - [Ewen02](https://github.com/Ewen02)

@@ -1,10 +1,11 @@
 #pragma once
 
 #include "KapEngine.hpp"
+#include "KapMirror/KapMirror.hpp"
 
 namespace RType {
 namespace Component {
-    class SpaceShip : public KapEngine::Component {
+    class SpaceShip : public KapMirror::Experimental::NetworkComponent {
         private:
         float speed = 5.f;
 
@@ -14,6 +15,11 @@ namespace Component {
 
         void onStart() override;
         void onUpdate() override;
+
+        protected:
+        void onStartServer() override;
+
+        void onStartClient() override;
 
         private:
         void getUserInput();

@@ -21,7 +21,7 @@ void registerPrefabs(KapEngine::KapEngine& engine) {
 
         auto networkTransformComponent = std::make_shared<KapMirror::Experimental::NetworkTransform>(object);
         networkTransformComponent->setClientAuthority(false);
-        networkTransformComponent->setSendRate(1);
+        networkTransformComponent->setSendRate(20);
         object->addComponent(networkTransformComponent);
 
         auto shipComponent = std::make_shared<RType::Component::SpaceShip>(object);
@@ -37,16 +37,11 @@ void registerPrefabs(KapEngine::KapEngine& engine) {
         shipTransform.setParent(3);
         return object;
     });
-    engine.getPrefabManager()->createPrefab("bullet", [](KapEngine::SceneManagement::Scene& scene){
+    engine.getPrefabManager()->createPrefab("SpaceShip:Bullet", [](KapEngine::SceneManagement::Scene& scene){
         auto object = scene.createGameObject("Bullet");
 
         auto networkIdentityComponent = std::make_shared<KapMirror::Experimental::NetworkIdentity>(object);
         object->addComponent(networkIdentityComponent);
-
-        auto networkTransformComponent = std::make_shared<KapMirror::Experimental::NetworkTransform>(object);
-        networkTransformComponent->setClientAuthority(false);
-        networkTransformComponent->setSendRate(30);
-        object->addComponent(networkTransformComponent);
 
         auto bullet = std::make_shared<RType::Bullet>(object);
         object->addComponent(bullet);
@@ -56,7 +51,7 @@ void registerPrefabs(KapEngine::KapEngine& engine) {
         object->addComponent(img);
 
         auto &tr = object->getComponent<KapEngine::Transform>();
-        tr.setScale({25, 10, 0});
+        tr.setScale({25, 5, 0});
         tr.setParent(3);
 
         return object;

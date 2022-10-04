@@ -43,13 +43,6 @@ void SpaceShip::getUserInput() {
     if (getInput().getKeyDown(KapEngine::Events::Key::SPACE)) {
         KAP_DEBUG_LOG("SHOOT !");
         std::shared_ptr<KapEngine::GameObject> bullet;
-        getServer()->spawnObject("bullet", bullet);
-
-        try {
-            auto &tr = bullet->getComponent<KapEngine::Transform>();
-            tr.setPosition(transform.getLocalPosition());
-        } catch(...) {
-            KAP_DEBUG_ERROR("Failed to set bullet position");
-        }
+        getServer()->spawnObject("SpaceShip:Bullet", transform.getLocalPosition(), bullet);
     }
 }

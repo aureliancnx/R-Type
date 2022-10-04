@@ -24,5 +24,5 @@ void TestNetworkManager::onServerClientConnected(std::shared_ptr<KapMirror::Netw
     KapEngine::Debug::log("TestNetworkManager::onServerClientConnected");
 
     std::shared_ptr<KapEngine::GameObject> spaceShip;
-    getServer()->spawnObject("SpaceShip", spaceShip);
+    getServer()->spawnObject("SpaceShip", {10, 300, 0}, spaceShip);
 }

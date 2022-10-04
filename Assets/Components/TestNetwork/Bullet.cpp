@@ -10,20 +10,13 @@
 using namespace RType;
 using namespace KapEngine;
 
-Bullet::Bullet(std::shared_ptr<GameObject> go) : KapMirror::Experimental::NetworkComponent(go, "Bullet")
-{
-}
-
-Bullet::~Bullet()
-{
+Bullet::Bullet(std::shared_ptr<GameObject> go) : KapMirror::Experimental::NetworkComponent(go, "Bullet") {
 }
 
 void Bullet::onStart() {
 }
 
 void Bullet::onUpdate() {
-    if (isClient())
-        return;
     auto& transform = getGameObject().getComponent<KapEngine::Transform>();
 
     Tools::Vector3 nPos = transform.getLocalPosition();

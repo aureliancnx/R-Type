@@ -17,6 +17,8 @@
 #include "DrawSystem/DrawUI.hpp"
 #include "Cache/RaylibCache.hpp"
 
+#include "KapEngine.hpp"
+
 #include "raylib.h"
 
 namespace KapEngine {
@@ -139,6 +141,14 @@ namespace KapEngine {
 
                     void setVisibleFps(bool b) {
                         _drawFps = b;
+                    }
+
+                    void setIcon(std::string const& iconPath) {
+                        try {
+                            SetWindowIcon(getImage(iconPath));
+                        } catch(...) {
+                            DEBUG_ERROR("Failed to load windows icon");
+                        }
                     }
 
                     void clearWindow() {

@@ -70,8 +70,10 @@ void KapEngine::Graphical::Raylib::RaylibGraphical::stopDisplay() {
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::startDisplay() {
-    if (_drawWindow)
+    if (_drawWindow) {
         raylib->openWindow();
+        raylib->setIcon(manager.getEngine().getIconPath());
+    }
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::clear() {

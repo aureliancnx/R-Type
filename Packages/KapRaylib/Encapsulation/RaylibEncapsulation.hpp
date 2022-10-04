@@ -197,7 +197,7 @@ namespace KapEngine {
 
                     /**
                      * @brief image actions
-                     * 
+                     *
                      */
 
                     void __setImageRedef(Image *img, Vector2 size, Rectangle crop) {
@@ -215,7 +215,7 @@ namespace KapEngine {
 
                     /**
                      * @brief unload part
-                     * 
+                     *
                      */
 
                     void unloadFont(std::string const& fontPath);
@@ -236,7 +236,7 @@ namespace KapEngine {
 
                     /**
                      * @brief load part
-                     * 
+                     *
                      */
 
                     void loadFont(std::string const& fontPath);
@@ -261,7 +261,7 @@ namespace KapEngine {
 
                     /**
                      * @brief Draw part
-                     * 
+                     *
                      */
 
                     void drawRectangle(float posX, float posY, float width, float heigth, Color color) {
@@ -275,7 +275,7 @@ namespace KapEngine {
 
                     void drawText(std::string const& fontPath, std::string const& text, Vector2 pos, float fontSize, float spacing, Color col) {
                         auto txt = std::make_shared<Draw::DrawText>(*this);
-                        
+
                         txt->setColor(col);
                         txt->setPos(pos);
                         txt->setSize(fontSize);
@@ -316,7 +316,7 @@ namespace KapEngine {
 
                     /**
                      * @brief Input part
-                     * 
+                     *
                      */
 
                     bool isGamepadConnected(int gpId) {

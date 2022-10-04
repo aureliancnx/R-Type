@@ -6,19 +6,42 @@
 #include "Factory.hpp"
 #include "UiCanvas.hpp"
 #include "UiText.hpp"
+#include "UiImage.hpp"
 #include "Debug.hpp"
 #include <iostream>
 
 void initSceneServer(KapEngine::KapEngine& engine) {
-    auto& scene = engine.getSceneManager()->getScene(1);
+    engine.getPrefabManager()->createPrefab("SpaceShip", [](KapEngine::SceneManagement::Scene& scene) {
+        auto object = KapEngine::Factory::createEmptyGameObject(scene, "SpaceShip");
 
-    auto networkManagerObject = KapEngine::Factory::createEmptyGameObject(scene, "NetworkManager");
-    auto networkManagerComponent = std::make_shared<RType::Component::TestNetworkManager>(networkManagerObject, true);
-    networkManagerObject->addComponent(networkManagerComponent);
+        auto networkIdentityComponent = std::make_shared<KapMirror::Experimental::NetworkIdentity>(object);
+        object->addComponent(networkIdentityComponent);
+
+        auto shipComponent = std::make_shared<RType::Component::SpaceShip>(object);
+        object->addComponent(shipComponent);
+
+        auto imageComponent = std::make_shared<KapEngine::UI::Image>(object);
+        object->addComponent(imageComponent);
+        imageComponent->setPathSprite("Assets/Textures/SpaceShip.png");
+        imageComponent->setRectangle({0, 0, 99, 75});
+
+        auto& shipTransform = object->getComponent<KapEngine::Transform>();
+        shipTransform.setScale(KapEngine::Tools::Vector3(50.f, 50.f, 0.f));
+        return object;
+    });
+
+    auto& scene = engine.getSceneManager()->getScene(1);
 
     auto canvasObject = KapEngine::Factory::createEmptyGameObject(scene, "Canvas");
     auto canvasComponent = std::make_shared<KapEngine::UI::Canvas>(canvasObject);
     canvasObject->addComponent(canvasComponent);
+
+    std::shared_ptr<KapEngine::GameObject> shipObject;
+    engine.getPrefabManager()->instantiatePrefab("SpaceShip", scene, shipObject);
+
+    auto& shipTransform = shipObject->getComponent<KapEngine::Transform>();
+    shipTransform.setPosition(KapEngine::Tools::Vector3(10.f, 200.f, 0.f));
+    shipTransform.setParent(canvasObject->getId());
 }
 
 void initSceneClient(KapEngine::KapEngine& engine) {

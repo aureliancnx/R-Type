@@ -38,7 +38,7 @@ add_executable(RType ${SOURCES} ${HEADERS})
 include(Library/library.cmake)
 
 target_link_libraries(RType raylib)
-target_link_libraries(RType PRIVATE Boost::iostreams)
+target_link_libraries(RType Boost::iostreams)
 
 # Includes
 include_directories(.)

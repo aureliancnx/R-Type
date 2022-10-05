@@ -34,6 +34,7 @@ void registerPrefabs(KapEngine::KapEngine& engine) {
 
         auto& shipTransform = object->getComponent<KapEngine::Transform>();
         shipTransform.setScale(KapEngine::Tools::Vector3(50.f, 50.f, 0.f));
+        shipTransform.setRotation(KapEngine::Tools::Vector3(90.f, 0.f, 0.f));
         shipTransform.setParent(3);
         return object;
     });

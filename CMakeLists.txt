@@ -37,10 +37,7 @@ include(Library/library.cmake)
 
 target_link_libraries(RType raylib)
 
-if(${Boost_FOUND})
-	include_directories(${Boost_INCLUDE_DIRS})
-	target_link_libraries(RType ${Boost_LIBRARIES})
-endif()
+target_link_libraries(RType boost-iostreams::boost-iostreams)
 
 # Includes
 include_directories(.)

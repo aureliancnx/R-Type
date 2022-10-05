@@ -21,7 +21,11 @@ message(STATUS "RayLib version: ${raylib_VERSION}")
 set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
-find_package(Boost 1.45.0 COMPONENTS iostreams)
+find_package(
+		Boost 1.45 REQUIRED
+		COMPONENTS iostreams
+)
+install(PROGRAMS ${Boost_LIBRARIES} DESTINATION ~/install/lib)
 message(STATUS "Boost version: ${Boost_VERSION}")
 
 option(IS_SERVER "Generate R-Type server" OFF)

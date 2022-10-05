@@ -17,15 +17,16 @@ namespace KapEngine {
 
         void Player::init(std::shared_ptr<GameObject> gameObject) {
             addRequireComponent("Image");
+            playSound("Assets/music/exports/space-asteroids.wav");
 
             auto ship = std::make_shared<UI::Image>(gameObject);
-            ship->setRectangle({0, 0, 33.3125, 36});
+            ship->setRectangle({0, 0, 26, 21});
             if (!_path.size() == 0)
                 ship->setPathSprite(_path);
 
             try {
                 Transform &tr = (Transform &)gameObject->getTransform();
-                tr.setScale({33.3125, 36});
+                tr.setScale({(26 * 2), (21 * 2)});
                 tr.setPosition(_lastPos);
             } catch (...) {}
 
@@ -40,16 +41,48 @@ namespace KapEngine {
 
             Tools::Vector3 cPos = getTransform().getLocalPosition();
 
-            cPos += pos;
+            cPos += (pos * 3);
 
-            if (cPos.getX() == 0 || cPos.getX() == getGameObject().getEngine().getScreenSize().getX() - 33 ||
-                cPos.getY() == 0 || cPos.getY() == getGameObject().getEngine().getScreenSize().getY() - 36 )
-                return;
+//            if (cPos.getX() == 0 || cPos.getX() == getGameObject().getEngine().getScreenSize().getX() ||
+//                cPos.getY() == 0 || cPos.getY() == getGameObject().getEngine().getScreenSize().getY())
+//                return;
 
             getTransform().setPosition(cPos);
 
-//            if (getInput().getKey(Events::Key::SPACE))
-//                shoot(cPos);
+
+            if (_lastPos != pos) {
+                auto animator = getGameObject().getComponent<Animator>();
+
+                if (getInput().getKeyDown(Events::Key::UP))
+                    animator.setTrigger("Stay to Up");
+                else 
+                if (getInput().getKeyUp(Events::Key::UP))
+                    animator.setTrigger("Up to Stay");
+
+                if (getInput().getKeyDown(Events::Key::DOWN))
+                    animator.setTrigger("Stay to Down");
+                if (getInput().getKeyUp(Events::Key::DOWN))
+                    animator.setTrigger("Down to Stay");
+//
+//                if (pos.getY() > 0.f) {
+//                    animator.setTrigger("Stay to Up");
+//                } else if (pos.getY() < 0.f) {
+//                    animator.setTrigger("Stay to Down");
+//                } else {
+//                    if (animator.getAnimNode())
+//                        animator.setTrigger("Up to Stay");
+//                    animator.setTrigger("Down to Stay");
+//                }
+            }
+
+            if (getInput().getKeyDown(Events::Key::SPACE))
+                shoot(pos);
+
+            _lastPos = pos;
+
+
+//            if (pos.getY() < 0)
+//                getGameObject().getComponent<Animator>().setTrigger("UnPress key up");
         }
 
         void Player::onDestroy() {
@@ -71,6 +104,30 @@ namespace KapEngine {
 
         void Player::setPath(const std::string &path) {
             getImage().setPathSprite(path);
+        }
+
+        void Player::shoot(Tools::Vector3 pos) {
+            auto &scene = getGameObject().getScene();
+//            scene.getEngine().getGraphicalLibManager()->getCurrentLib()->playSound("Assets/SoundFX/shot1.wav");
+            playSound("Assets/SoundFX/shot1.wav");
+            auto shoot = scene.createGameObject("Shoot");
+
+            auto compShoot = std::make_shared<Shoot>(shoot);
+            compShoot->animation();
+
+            shoot->addComponent(compShoot);
+
+            try {
+                auto &tr = shoot->getComponent<Transform>();
+                tr.setPosition(getTransform().getLocalPosition());
+                tr.setParent(getTransform().getParentId());
+            } catch (...) {}
+
+            scene.dump();
+        }
+
+        void Player::playSound(std::string const &path) {
+           getGameObject().getEngine().getGraphicalLibManager()->getCurrentLib()->playSound(path);
         }
 
     } // KapEngine

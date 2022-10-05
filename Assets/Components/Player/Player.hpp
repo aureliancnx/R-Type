@@ -9,7 +9,7 @@
 #include "KapEngineDebug.hpp"
 #include "KapEngineUi.hpp"
 
-#include "Player/Shoot/Shoot.hpp"
+#include "Shoot/Shoot.hpp"
 
 namespace KapEngine {
     namespace RType {
@@ -34,8 +34,9 @@ namespace KapEngine {
 
             // Functions
             void init(std::shared_ptr<GameObject> gameObject);
-//            void shoot(Tools::Vector3 pos);
+            void shoot(Tools::Vector3 pos);
             UI::Image &getImage();
+            void playSound(std::string const &path);
 
         };
 

@@ -9,6 +9,8 @@
 #include "KapEngineDebug.hpp"
 #include "KapEngineUi.hpp"
 
+#include "SpriteAnimation.hpp"
+
 namespace KapEngine {
     namespace RType {
 
@@ -24,6 +26,7 @@ namespace KapEngine {
         private:
             // Variables
             Tools::Vector3 _pos;
+            std::shared_ptr<GameObject> _gameObject;
 
             // Function
             void init(std::shared_ptr<GameObject> gameObject);

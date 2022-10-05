@@ -18,11 +18,12 @@ set(raylib_VERSION 4.0.0)
 find_package(raylib REQUIRED)
 message(STATUS "RayLib version: ${raylib_VERSION}")
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMake)
+set(Boost_DEBUG Yes)
 set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
 set(BOOST_REQUESTED_VERSION 1.45.0)
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMake)
 find_package(Boost COMPONENTS system iostreams)
 
 option(IS_SERVER "Generate R-Type server" OFF)

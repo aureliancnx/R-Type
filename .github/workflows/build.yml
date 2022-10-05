@@ -89,7 +89,6 @@ jobs:
           ninja --version
           cmake --version
           gcc --version
-          ls -lR
       - name: Install dependencies on macos
         if: startsWith(matrix.config.os, 'macos')
         run: |
@@ -120,7 +119,6 @@ jobs:
             -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
             -DCMAKE_CXX_STANDARD=17 \
             -G "${{ matrix.config.generators }}"
-          ls -lR
       - name: Build
         shell: bash
         run: cmake --build build --config ${{ matrix.config.build_type }}

@@ -6,17 +6,14 @@
 */
 
 #include "RaylibGraphical.hpp"
-#include "Vectors.hpp"
-#include "Debug.hpp"
-#include "Key.hpp"
-#include "UiImage.hpp"
-#include "UiText.hpp"
-#include "Transform.hpp"
+#include "KapEngineUi.hpp"
 
 KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManager &manager, bool drawWindow) : GraphicalLib("raylib", manager) {
+
     _drawWindow = drawWindow;
 
     Tools::Vector2 size = manager.getEngine().getScreenSize();
+
     raylib = std::make_unique<RaylibEncapsulation>(
         size.getX(),
         size.getY(),
@@ -53,9 +50,12 @@ KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManag
         if (!_drawWindow)
             return;
         Tools::Vector2 posTr = txt.getCalculatedPos();
+
         Vector2 pos = engineToRaylib(posTr);
+
         this->raylib->drawText(txt.getFontPath(), txt.getText(), pos, txt.getPoliceSize(), txt.getSpace(), engineToRaylib(txt.getColor()));
     });
+
 }
 
 KapEngine::Graphical::Raylib::RaylibGraphical::~RaylibGraphical() {
@@ -63,6 +63,7 @@ KapEngine::Graphical::Raylib::RaylibGraphical::~RaylibGraphical() {
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::clearCache() {
+
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::stopDisplay() {
@@ -71,8 +72,10 @@ void KapEngine::Graphical::Raylib::RaylibGraphical::stopDisplay() {
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::startDisplay() {
-    if (_drawWindow)
+    if (_drawWindow) {
         raylib->openWindow();
+        raylib->setIcon(manager.getEngine().getIconPath());
+    }
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::clear() {
@@ -453,6 +456,7 @@ Vector2 KapEngine::Graphical::Raylib::RaylibGraphical::engineToRaylib(Tools::Vec
 
     result.x = vec.getX();
     result.y = vec.getY();
+
     return result;
 }
 
@@ -463,6 +467,7 @@ Rectangle KapEngine::Graphical::Raylib::RaylibGraphical::engineToRaylib(Tools::R
     result.y = rect.getPos().getY();
     result.width = rect.getSize().getX();
     result.height = rect.getSize().getY();
+
     return result;
 }
 
@@ -471,6 +476,7 @@ KapEngine::Tools::Vector2 KapEngine::Graphical::Raylib::RaylibGraphical::getMous
 
     result.setX(raylib->getMousePosition().x);
     result.setY(raylib->getMousePosition().y);
+
     return result;
 }
 

@@ -28,15 +28,22 @@ KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManag
         if (!_drawWindow)
             return;
         if (img.isUsingSprite()) {
+            auto& tr = img.getGameObject().getComponent<Transform>();
             Tools::Vector2 pos = img.getCalculatedPosition();
             Tools::Vector2 scale = img.getCalculatedScale();
+            if (!drawable(pos, scale))
+                return;
+
             Tools::Color color = img.getColorSprite();
-            auto& tr = img.getGameObject().getComponent<Transform>();
+
+
             this->raylib->drawTexture(img.getPathSprite(), pos.getX(), pos.getY(), scale.getX(), scale.getY(), tr.getWorldRotation().getX(),
                 engineToRaylib(img.getRectangle()), engineToRaylib(color));
         } else {
             Tools::Vector2 pos = img.getCalculatedPosition();
             Tools::Vector2 scale = img.getCalculatedScale();
+            if (!drawable(pos, scale))
+                return;
             Tools::Color color = img.getColorSprite();
             this->raylib->drawRectangle(pos.getX(), pos.getY(), scale.getX(), scale.getY(), engineToRaylib(color));
         }
@@ -469,6 +476,19 @@ KapEngine::Tools::Vector2 KapEngine::Graphical::Raylib::RaylibGraphical::getMous
 
 KapEngine::Tools::Vector2 KapEngine::Graphical::Raylib::RaylibGraphical::getScreenSize() {
     return Tools::Vector2(raylib->getScreenSize().x, raylib->getScreenSize().y);
+}
+
+bool KapEngine::Graphical::Raylib::RaylibGraphical::drawable(Tools::Vector2 const& pos, Tools::Vector2 const& scale) {
+    Tools::Vector2 downRightPos;
+    downRightPos = pos;
+    downRightPos += scale;
+    auto zero = Tools::Vector2::zero();
+
+    if (downRightPos.getX() < zero.getX() || downRightPos.getY() < zero.getY())
+        return false;
+    if (pos.getX() > getScreenSize().getX() || pos.getY() > getScreenSize().getY())
+        return false;
+    return true;
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::playSound(std::string const& path) {

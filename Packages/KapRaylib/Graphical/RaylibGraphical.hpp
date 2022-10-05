@@ -82,6 +82,8 @@ namespace KapEngine {
                 private:
                     std::unique_ptr<RaylibEncapsulation> raylib;
                     bool _drawWindow;
+
+                    bool drawable(Tools::Vector2 const& pos, Tools::Vector2 const& scale);
             };
 
         }

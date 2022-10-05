@@ -106,6 +106,7 @@ jobs:
             -S . \
             -B build \
             -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
+            -DBoost_DEBUG=0 \
             -G "${{ matrix.config.generators }}"
 
       - name: Configure C++17

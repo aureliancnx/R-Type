@@ -14,15 +14,6 @@ jobs:
       matrix:
         config:
           - {
-            name: "Windows Latest MSVC (C++11)",
-            os: windows-latest,
-            build_type: "Debug",
-            cc: "cl",
-            cxx: "cl",
-            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
-            generators: "Visual Studio 17 2022"
-          }
-          - {
             name: "Windows Latest MSVC (C++17)",
             os: windows-latest,
             build_type: "Debug",
@@ -32,14 +23,6 @@ jobs:
             generators: "Visual Studio 17 2022"
           }
           - {
-            name: "Ubuntu Latest GCC (C++11)",
-            os: ubuntu-latest,
-            build_type: "Debug",
-            cc: "gcc",
-            cxx: "g++",
-            generators: "Ninja"
-          }
-          - {
             name: "Ubuntu Latest GCC (C++17)",
             os: ubuntu-latest,
             build_type: "Debug",
@@ -47,22 +30,14 @@ jobs:
             cxx: "g++",
             generators: "Ninja"
           }
-          - {
-            name: "macOS Latest Clang (C++11)",
-            os: macos-latest,
-            build_type: "Debug",
-            cc: "clang",
-            cxx: "clang++",
-            generators: "Xcode"
-          }
-          - {
-            name: "macOS Latest Clang (C++17)",
-            os: macos-latest,
-            build_type: "Debug",
-            cc: "clang",
-            cxx: "clang++",
-            generators: "Xcode"
-          }
+          #- {
+          #  name: "macOS Latest Clang (C++17)",
+          #  os: macos-latest,
+          #  build_type: "Debug",
+          #  cc: "clang",
+          #  cxx: "clang++",
+          #  generators: "Xcode"
+          #}
 
     steps:
       - name: Checkout repo
@@ -96,18 +71,6 @@ jobs:
           ninja --version
           cmake --version
 
-      - name: Configure C++11
-        shell: bash
-        if: contains(matrix.config.name, 'C++11')
-        run: |
-          mkdir build
-          cmake \
-            -S . \
-            -B build \
-            -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
-            -DBoost_DEBUG=0 \
-            -G "${{ matrix.config.generators }}"
-
       - name: Configure C++17
         shell: bash
         if: contains(matrix.config.name, 'C++17')
@@ -118,6 +81,7 @@ jobs:
             -B build \
             -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
             -DCMAKE_CXX_STANDARD=17 \
+            -DBoost_DEBUG=0 \
             -G "${{ matrix.config.generators }}"
       - name: Build
         shell: bash

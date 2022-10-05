@@ -3,5 +3,9 @@
   "version-string": "0.1.0",
   "dependencies": [
     "boost-iostreams"
+  ],
+  "overrides": [
+    { "name": "boost-core", "version": "1.45.0" },
+    { "name": "boost-iostreams", "version": "1.45.0" }
   ]
 }

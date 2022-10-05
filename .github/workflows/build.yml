@@ -87,6 +87,7 @@ jobs:
           ninja --version
           cmake --version
           gcc --version
+          ls -lR
       - name: Install dependencies on macos
         if: startsWith(matrix.config.os, 'macos')
         run: |

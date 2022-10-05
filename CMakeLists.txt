@@ -20,7 +20,7 @@ set(raylib_VERSION 4.0.0)
 find_package(raylib REQUIRED)
 message(STATUS "RayLib version: ${raylib_VERSION}")
 
-find_package(Boost REQUIRED iostreams)
+find_package(Boost REQUIRED COMPONENTS iostreams)
 target_link_libraries(RType PRIVATE ${Boost_LIBRARIES})
 target_include_directories(RType PRIVATE ${Boost_INCLUDE_DIRS})
 

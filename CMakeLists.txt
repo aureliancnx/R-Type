@@ -22,8 +22,8 @@ message(STATUS "RayLib version: ${raylib_VERSION}")
 
 set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost REQUIRED COMPONENTS iostreams)
-target_link_libraries(RType PRIVATE ${Boost_LIBRARIES})
-target_include_directories(RType PRIVATE ${Boost_INCLUDE_DIRS})
+target_link_libraries(RType PRIVATE Boost::io-streams)
+#target_include_directories(RType PRIVATE ${Boost_INCLUDE_DIRS})
 
 option(IS_SERVER "Generate R-Type server" OFF)
 

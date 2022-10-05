@@ -22,7 +22,6 @@ message(STATUS "RayLib version: ${raylib_VERSION}")
 
 set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost REQUIRED COMPONENTS iostreams)
-target_link_libraries(RType PRIVATE Boost::iostreams)
 #target_include_directories(RType PRIVATE ${Boost_INCLUDE_DIRS})
 
 option(IS_SERVER "Generate R-Type server" OFF)
@@ -39,6 +38,7 @@ add_executable(RType ${SOURCES} ${HEADERS})
 include(Library/library.cmake)
 
 target_link_libraries(RType raylib)
+target_link_libraries(RType PRIVATE Boost::iostreams)
 
 # Includes
 include_directories(.)

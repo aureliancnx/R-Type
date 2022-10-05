@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
+set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/Library/vcpkg/scripts/buildsystems/vcpkg.cmake CACHE STRING "Vcpkg toolchain file")
+
 if(${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_BINARY_DIR} AND NOT WIN32)
 	message(FATAL_ERROR
 	"You can not use CMake to build from the root of it's source tree!\n"
@@ -18,13 +20,7 @@ set(raylib_VERSION 4.0.0)
 find_package(raylib REQUIRED)
 message(STATUS "RayLib version: ${raylib_VERSION}")
 
-set(Boost_DEBUG Yes)
-set(Boost_USE_STATIC_LIBS OFF)
-set(Boost_USE_MULTITHREADED ON)
-set(Boost_USE_STATIC_RUNTIME OFF)
-set(BOOST_REQUESTED_VERSION 1.45.0)
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMake)
-find_package(Boost COMPONENTS system iostreams)
+find_package(Boost CONFIG REQUIRED)
 
 option(IS_SERVER "Generate R-Type server" OFF)
 

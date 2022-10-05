@@ -14,6 +14,7 @@ Bullet::Bullet(std::shared_ptr<GameObject> go) : KapMirror::Experimental::Networ
 }
 
 void Bullet::onStart() {
+    initialX = getGameObject().getComponent<Transform>().getLocalPosition().getX();
 }
 
 void Bullet::onUpdate() {
@@ -23,5 +24,9 @@ void Bullet::onUpdate() {
     nPos.setX(nPos.getX() + speed);
 
     transform.setPosition(nPos);
+
+    if (nPos.getX() > initialX + 500) {
+        getGameObject().destroy();
+    }
 }
 

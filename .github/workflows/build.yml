@@ -67,8 +67,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+        with:
+          submodules: recursive
       - name: Print env
         run: |
           echo github.event.action: ${{ github.event.action }}

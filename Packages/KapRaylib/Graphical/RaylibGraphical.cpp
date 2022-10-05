@@ -21,10 +21,11 @@ KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManag
         manager.getEngine().getMaxFps()
     );
 
-    setDrawImage([this](UI::Image &img){
-        
+    setDrawImage([this](UI::Image &img) {
+        if (!_drawWindow)
+            return;
         if (img.isUsingSprite()) {
-            auto &tr = img.getGameObject().getComponent<Transform>();
+            auto& tr = img.getGameObject().getComponent<Transform>();
             Tools::Vector2 pos = img.getCalculatedPosition();
             Tools::Vector2 scale = img.getCalculatedScale();
             if (!drawable(pos, scale))
@@ -46,7 +47,8 @@ KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManag
     });
 
     setDrawText([this](UI::Text &txt){
-
+        if (!_drawWindow)
+            return;
         Tools::Vector2 posTr = txt.getCalculatedPos();
 
         Vector2 pos = engineToRaylib(posTr);
@@ -493,4 +495,29 @@ bool KapEngine::Graphical::Raylib::RaylibGraphical::drawable(Tools::Vector2 cons
     if (pos.getX() > getScreenSize().getX() || pos.getY() > getScreenSize().getY())
         return false;
     return true;
+}
+
+void KapEngine::Graphical::Raylib::RaylibGraphical::playSound(std::string const& path) {
+    raylib->playSound(path);
+}
+
+void KapEngine::Graphical::Raylib::RaylibGraphical::playMusic(std::string const& path, float vol) {
+    raylib->playMusic(path);
+    raylib->setMusicVolume(vol);
+}
+
+void KapEngine::Graphical::Raylib::RaylibGraphical::stopMusic() {
+    raylib->stopMusic();
+}
+
+void KapEngine::Graphical::Raylib::RaylibGraphical::pauseMusic() {
+    raylib->pauseMusic();
+}
+
+void KapEngine::Graphical::Raylib::RaylibGraphical::resumMusic() {
+    raylib->resumeMusic();
+}
+
+void KapEngine::Graphical::Raylib::RaylibGraphical::restartMusic() {
+    raylib->restartMusic();
 }

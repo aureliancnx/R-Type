@@ -6,7 +6,9 @@
 namespace RType {
     class Bullet : public KapMirror::Experimental::NetworkComponent {
         private:
-        float speed = 2.f;
+        float speed = 10.f;
+
+        float initialX;
 
         public:
         Bullet(std::shared_ptr<KapEngine::GameObject> go);

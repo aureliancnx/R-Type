@@ -47,6 +47,13 @@ namespace KapEngine {
                     void display() override;
                     void getEvents() override;
 
+                    void playSound(std::string const& soundPath) override;
+                    void playMusic(std::string const& musicPath, float volume = 1.0f) override;
+                    void stopMusic() override;
+                    void pauseMusic() override;
+                    void resumMusic() override;
+                    void restartMusic() override;
+
                     float getJoystikValue(int gamepadId, int joystickId) override;
 
                     Tools::Vector2 getMousePosition() const override;

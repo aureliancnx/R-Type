@@ -1,7 +1,3 @@
-[submodule "Library/KapEngine"]
-	path = Library/KapEngine
-	branch = main
-	url = git@github.com:benji-35/KapEngine.git
 [submodule "Library/KapMirror"]
 	path = Library/KapMirror
 	branch = main

@@ -109,6 +109,62 @@ namespace KapEngine {
                 
                 };
 
+                class MusicCache : public RaylibCache {
+                    public:
+                        MusicCache(RaylibEncapsulation &e, std::string const& path);
+                        ~MusicCache() {}
+
+                        bool operator==(MusicCache const& mc) {
+                            return _path == mc.getpath();
+                        }
+
+                        std::string getName() const override {
+                            return "Music";
+                        }
+
+                        std::string getpath() const {
+                            return _path;
+                        }
+
+                        Music &getMusic() {
+                            return _music;
+                        }
+
+                        void clear() override;
+
+                    private:
+                        std::string _path;
+                        Music _music;
+                };
+
+                class SoundCache : public RaylibCache {
+                    public:
+                        SoundCache(RaylibEncapsulation &e, std::string const& path);
+                        ~SoundCache() {}
+
+                        bool operator==(MusicCache const& mc) {
+                            return _path == mc.getpath();
+                        }
+
+                        std::string getName() const override {
+                            return "Sound";
+                        }
+
+                        std::string getpath() const {
+                            return _path;
+                        }
+
+                        Sound &getSound() {
+                            return _sound;
+                        }
+
+                        void clear() override;
+
+                    private:
+                        std::string _path;
+                        Sound _sound;
+                };
+
             }
 
         }

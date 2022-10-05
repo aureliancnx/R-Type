@@ -224,6 +224,50 @@ namespace KapEngine {
                     }
 
                     /**
+                     * @brief Play music and sound
+                     * 
+                    */
+
+                    void playMusic(std::string const& music);
+                    void playSound(std::string const& sound);
+
+                    void updateMusic() {
+                        if (_musicPlaying == "")
+                            return;
+                        UpdateMusicStream(getMusic(_musicPlaying));
+                    }
+                    void setMusicVolume(float f) {
+                        if (_musicPlaying == "")
+                            return;
+                        SetMusicVolume(getMusic(_musicPlaying), f);
+                    }
+                    void stopMusic() {
+                        if (_musicPlaying == "")
+                            return;
+                        StopMusicStream(getMusic(_musicPlaying));
+                    }
+                    void pauseMusic() {
+                        if (_musicPlaying == "")
+                            return;
+                        PauseMusicStream(getMusic(_musicPlaying));
+                    }
+                    void resumeMusic() {
+                        if (_musicPlaying == "")
+                            return;
+                        ResumeMusicStream(getMusic(_musicPlaying));
+                    }
+                    void restartMusic() {
+                        stopMusic();
+                        startMusic();
+                    }
+
+                    void startMusic() {
+                        if (_musicPlaying == "")
+                            return;
+                        PlayMusicStream(getMusic(_musicPlaying));
+                    }
+
+                    /**
                      * @brief unload part
                      *
                      */
@@ -244,29 +288,43 @@ namespace KapEngine {
                         UnloadTexture(texture);
                     }
 
+                    void __unloadMusic(Music const& music) {
+                        UnloadMusicStream(music);
+                    }
+
+                    void __unloadSound(Sound const& sound) {
+                        UnloadSound(sound);
+                    }
+
                     /**
                      * @brief load part
                      *
                      */
 
                     void loadFont(std::string const& fontPath);
-
                     void loadImage(std::string const& imagePath);
+                    void loadMusic(std::string const& musicPath);
+                    void loadSound(std::string const& soundPath);
 
                     Font &getFont(std::string const& fontPath, bool alreadyTry = false);
-
                     Image &getImage(std::string const& imagePath, bool alreadyTry = false);
+                    Music &getMusic(std::string const& musicPath, bool alreadyTry = false);
+                    Sound &getSound(std::string const& musicPath, bool alreadyTry = false);
 
                     Image __loadImage(std::string const& imagePath) {
                         return LoadImage(imagePath.c_str());
                     }
-
                     Font __loadFont(std::string const& fontPath) {
                         return LoadFont(fontPath.c_str());
                     }
-
                     Texture2D __getTextureFromImage(Image const& img) {
                         return LoadTextureFromImage(img);
+                    }
+                    Music __loadMusic(std::string const& music) {
+                        return LoadMusicStream(music.c_str());
+                    }
+                    Sound __loadSound(std::string const& sound) {
+                        return LoadSound(sound.c_str());
                     }
 
                     /**
@@ -396,6 +454,7 @@ namespace KapEngine {
                     bool _firstRun = true;
 
                     //cache
+                    std::string _musicPlaying = "";
                     std::vector<std::shared_ptr<Cache::RaylibCache>> _cache;
                     std::vector<Texture2D> _cacheTexture;
 

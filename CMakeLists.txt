@@ -20,7 +20,7 @@ set(raylib_VERSION 4.0.0)
 find_package(raylib REQUIRED)
 message(STATUS "RayLib version: ${raylib_VERSION}")
 
-find_package(Boost CONFIG REQUIRED)
+find_package(boost-iostreams CONFIG REQUIRED)
 
 option(IS_SERVER "Generate R-Type server" OFF)
 

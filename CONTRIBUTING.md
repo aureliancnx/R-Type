@@ -131,7 +131,7 @@ We strongly recommend that you use clear branch names, which are used for a part
 Indeed, using your Github username or a single word in your branch name is not clear at first glance.
 
 We invite you to use the following standard for modifications:
-    - ft/XXXXX: add a feature 
-    - fix/XXXXX : fix a feature
+- ft/XXXXX: add a feature 
+- fix/XXXXX : fix a feature
 
 For example, in the case of adding a KeepAlive package in the project, a sufficiently clear feature name would be: feature/network-packet-keepalive

@@ -29,20 +29,20 @@ void SpaceShip::onStartClient() {
 void SpaceShip::getUserInput() {
     auto& transform = getGameObject().getComponent<KapEngine::Transform>();
     if (getInput().getKey(KapEngine::Events::Key::DOWN)) {
-        transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0.f, 1.f * speed, 0.f));
+        transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0.f, 1.f, 0.f) * speed);
     }
     if (getInput().getKey(KapEngine::Events::Key::UP)) {
-        transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0.f, -1.f * speed, 0.f));
+        transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0.f, -1.f, 0.f) * speed);
     }
     if (getInput().getKey(KapEngine::Events::Key::LEFT)) {
-        transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(-1.f * speed, 0.f, 0.f));
+        transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(-1.f, 0.f, 0.f) * speed);
     }
     if (getInput().getKey(KapEngine::Events::Key::RIGHT)) {
-        transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(1.f * speed, 0.f, 0.f));
+        transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(1.f, 0.f, 0.f) * speed);
     }
     if (getInput().getKeyDown(KapEngine::Events::Key::SPACE)) {
-        KAP_DEBUG_LOG("SHOOT !");
         std::shared_ptr<KapEngine::GameObject> bullet;
         getServer()->spawnObject("SpaceShip:Bullet", transform.getLocalPosition(), bullet);
+        getServer()->spawnObject("SpaceShip:Bullet", transform.getLocalPosition() + KapEngine::Tools::Vector2(0.f, 50.f), bullet);
     }
 }

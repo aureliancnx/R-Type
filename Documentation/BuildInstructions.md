@@ -5,7 +5,7 @@ Make sure you have all the dependencies installed:
 
 ### Debian / Ubuntu
 ```console
-sudo apt install build-essential cmake ninja-build
+sudo apt install build-essential cmake ninja-build libboost-all-dev
 ```
 
 ### MacOS
@@ -21,10 +21,5 @@ mkdir build && cd build
 
 ### Build Client
 ```console
-cmake -G Ninja -DIS_SERVER:BOOLEAN=FALSE ..
-```
-
-### Build Server
-```console
-cmake -G Ninja -DIS_SERVER:BOOLEAN=TRUE ..
+cmake -G Ninja ..
 ```

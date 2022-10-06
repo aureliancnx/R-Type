@@ -22,6 +22,8 @@ namespace RType {
             std::shared_ptr<Menu> menu;
             if (menus.tryGetValue(name, menu)) {
                 menu->show();
+            } else {
+                throw KapEngine::Errors::Error("Menu " + name + " not found");
             }
         }
 
@@ -29,6 +31,8 @@ namespace RType {
             std::shared_ptr<Menu> menu;
             if (menus.tryGetValue(name, menu)) {
                 menu->hide();
+            } else {
+                throw KapEngine::Errors::Error("Menu " + name + " not found");
             }
         }
     };

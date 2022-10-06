@@ -69,6 +69,8 @@ void singleScene(KapEngine::KapEngine *engine, KapEngine::RType::MenuManager &ma
         auto &trBtnPlay = buttonPlay->getComponent<KapEngine::Transform>().getTransform();
         trBtnPlay.setPosition(KapEngine::Tools::Vector3(449, 350, 0));
         trBtnPlay.setScale(KapEngine::Tools::Vector3(222, 39, 0));
+        compButtonPlay->setTextPosition(KapEngine::Tools::Vector2(90, 12));
+        compButtonPlay->setTextColor(KapEngine::Tools::Color::white());
         trBtnPlay.setParent(singleCanvas);
 
         // Creation d'un bouton pour revenir au menu
@@ -78,7 +80,10 @@ void singleScene(KapEngine::KapEngine *engine, KapEngine::RType::MenuManager &ma
         buttonMenu->addComponent(compButtonMenu);
         auto &trBtnMenu = buttonMenu->getComponent<KapEngine::Transform>();
         trBtnMenu.setPosition(KapEngine::Tools::Vector3(449, 400, 0));
+        compButtonMenu->setTextPosition(KapEngine::Tools::Vector2(90, 12));
+        compButtonMenu->setTextColor(KapEngine::Tools::Color::white());
         trBtnMenu.setScale(KapEngine::Tools::Vector3(222, 39, 0));
+
         trBtnMenu.setParent(singleCanvas);
 
         // Creation d'un text devant le inputField Pseudo
@@ -183,6 +188,7 @@ void multipleScene(KapEngine::KapEngine *engine)
 
         auto inputFieldIP = scene.createGameObject("Multi InputField IP");
         auto compInputFieldIP = std::make_shared<KapEngine::UI::Inputfield>(inputFieldIP);
+        compInputFieldIP->setInputType(KapEngine::UI::Inputfield::InputType::IPV4);
         inputFieldIP->addComponent(compInputFieldIP);
         auto &trFieldIP = inputFieldIP->getComponent<KapEngine::Transform>(); //(KapEngine::Transform &)inputField->getTransform();
         trFieldIP.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -228,6 +234,8 @@ void multipleScene(KapEngine::KapEngine *engine)
         auto &trBtnMenu = buttonMenu->getComponent<KapEngine::Transform>();
         trBtnMenu.setPosition(KapEngine::Tools::Vector3(449, 400, 0));
         trBtnMenu.setScale(KapEngine::Tools::Vector3(222, 39, 0));
+        compButtonMenu->setTextPosition(KapEngine::Tools::Vector2(90, 12));
+        compButtonMenu->setTextColor(KapEngine::Tools::Color::white());
         trBtnMenu.setParent(multiCanvas);
 
         // Creation d'un bouton start
@@ -239,6 +247,8 @@ void multipleScene(KapEngine::KapEngine *engine)
         auto &trBtnPlay = buttonPlay->getComponent<KapEngine::Transform>().getTransform();
         trBtnPlay.setPosition(KapEngine::Tools::Vector3(449, 350, 0));
         trBtnPlay.setScale(KapEngine::Tools::Vector3(222, 39, 0));
+        compButtonPlay->setTextPosition(KapEngine::Tools::Vector2(90, 12));
+        compButtonPlay->setTextColor(KapEngine::Tools::Color::white());
         trBtnPlay.setParent(multiCanvas);
 
     } catch (...) {
@@ -282,6 +292,8 @@ void optionScene(KapEngine::KapEngine *engine)
         auto &trButtonV = (KapEngine::Transform &)buttonVolume->getTransform();
         trButtonV.setPosition(KapEngine::Tools::Vector3(249, 234, 0));
         trButtonV.setScale(KapEngine::Tools::Vector3(222, 39, 0));
+        compButtonV->setTextPosition(KapEngine::Tools::Vector2(90, 12));
+        compButtonV->setTextColor(KapEngine::Tools::Color::white());
         trButtonV.setParent(optionCanvas);
 
         // Creation du Btn KeyBoard
@@ -293,6 +305,8 @@ void optionScene(KapEngine::KapEngine *engine)
         auto &trButtonKB = (KapEngine::Transform &)buttonKeyBoard->getTransform();
         trButtonKB.setPosition(KapEngine::Tools::Vector3(249, 300, 0));
         trButtonKB.setScale(KapEngine::Tools::Vector3(222, 39, 0));
+        compButtonKB->setTextPosition(KapEngine::Tools::Vector2(90, 12));
+        compButtonKB->setTextColor(KapEngine::Tools::Color::white());
         trButtonKB.setParent(optionCanvas);
 
         // Creation du Btn Menu
@@ -304,6 +318,8 @@ void optionScene(KapEngine::KapEngine *engine)
         auto &trButtonM = (KapEngine::Transform &)buttonMenu->getTransform();
         trButtonM.setPosition(KapEngine::Tools::Vector3(249, 366, 0));
         trButtonM.setScale(KapEngine::Tools::Vector3(222, 39, 0));
+        compMenu->setTextPosition(KapEngine::Tools::Vector2(90, 12));
+        compMenu->setTextColor(KapEngine::Tools::Color::white());
         trButtonM.setParent(optionCanvas);
     } catch (...) {}
 }
@@ -355,6 +371,8 @@ void createMenu(KapEngine::KapEngine *engine)
         auto &trPlay = (KapEngine::Transform &)buttonPlay->getTransform();
         trPlay.setPosition(KapEngine::Tools::Vector3(249, 234, 0));
         trPlay.setScale(KapEngine::Tools::Vector3(222, 39, 0));
+        compButtonPlay->setTextPosition(KapEngine::Tools::Vector2(90, 12));
+        compButtonPlay->setTextColor(KapEngine::Tools::Color::white());
         trPlay.setParent(mainMenuCanvas);
 
         // Creation du Btn Multi
@@ -365,6 +383,8 @@ void createMenu(KapEngine::KapEngine *engine)
         auto &trMulti = (KapEngine::Transform &)buttonMulti->getTransform();
         trMulti.setPosition(KapEngine::Tools::Vector3(249, 300, 0));
         trMulti.setScale(KapEngine::Tools::Vector3(222, 39, 0));
+        compButtonMulti->setTextPosition(KapEngine::Tools::Vector2(90, 12));
+        compButtonMulti->setTextColor(KapEngine::Tools::Color::white());
         trMulti.setParent(mainMenuCanvas);
 
         // Creation du Btn Option
@@ -376,6 +396,8 @@ void createMenu(KapEngine::KapEngine *engine)
         auto &trOpt = (KapEngine::Transform &)buttonOpt->getTransform();
         trOpt.setPosition(KapEngine::Tools::Vector3(105, 375, 0));
         trOpt.setScale(KapEngine::Tools::Vector3(222, 39, 0));
+        compButtonOpt->setTextPosition(KapEngine::Tools::Vector2(90, 12));
+        compButtonOpt->setTextColor(KapEngine::Tools::Color::white());
         trOpt.setParent(mainMenuCanvas);
 
         // Creation du Btn Exit
@@ -387,6 +409,8 @@ void createMenu(KapEngine::KapEngine *engine)
         auto &trExit = (KapEngine::Transform &)buttonExit->getTransform();
         trExit.setPosition(KapEngine::Tools::Vector3(405, 375, 0));
         trExit.setScale((KapEngine::Tools::Vector3(222, 39, 0)));
+        compButtonExit->setTextPosition(KapEngine::Tools::Vector2(90, 12));
+        compButtonExit->setTextColor(KapEngine::Tools::Color::white());
         trExit.setParent(mainMenuCanvas);
     }
     catch (...) {

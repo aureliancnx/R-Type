@@ -18,6 +18,8 @@ namespace KapEngine {
         void Player::init(std::shared_ptr<GameObject> gameObject) {
             addRequireComponent("Image");
             playSound("Assets/music/exports/space-asteroids.wav");
+            addPerk("soloShoot");
+            addPerk("diagonalShoot");
 
             auto ship = std::make_shared<UI::Image>(gameObject);
             ship->setRectangle({0, 0, 26, 21});
@@ -111,6 +113,31 @@ namespace KapEngine {
 
         void Player::playSound(std::string const &path) {
            getGameObject().getEngine().getGraphicalLibManager()->getCurrentLib()->playSound(path);
+        }
+
+        void Player::test(Tools::Vector3 cPos) {
+            for (auto perk: _perks) {
+                if (perk == "multiShoot") {
+                    shoot({cPos.getX(), cPos.getY(), cPos.getX()}, {.5, 0});
+                    shoot({cPos.getX(), cPos.getY() + 26, cPos.getX()}, {.5, 0});
+                } else if (perk == "diagonalShoot") {
+                    shoot({cPos.getX(), cPos.getY(), cPos.getX()}, {.5, -.1});
+                    shoot({cPos.getX(), cPos.getY() + 26, cPos.getX()}, {.5, .1});
+                } else {
+                    shoot({cPos.getX(), cPos.getY() + (26 / 2), cPos.getX()}, {.5, 0});
+                }
+            }
+        }
+
+        void Player::addPerk(const std::string &name) {
+            _perks.insert(_perks.end(), name);
+        }
+
+        void Player::removePerk(const std::string &name) {
+            std::vector<std::string>::iterator pos = std::find(_perks.begin(), _perks.end(), name);
+
+            if (pos != _perks.end())
+                _perks.erase(pos);
         }
 
     } // KapEngine

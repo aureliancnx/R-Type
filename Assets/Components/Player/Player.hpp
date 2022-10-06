@@ -28,11 +28,15 @@ namespace KapEngine {
 
             void setPath(std::string const &path);
 
+            void addPerk(std::string const &name);
+            void removePerk(std::string const &name);
+
         protected:
         private:
             // Variables
             Tools::Vector3 _lastPos;
             std::string _path;
+            std::vector<std::string> _perks;
 
             // Functions
             void init(std::shared_ptr<GameObject> gameObject);

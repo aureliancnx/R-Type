@@ -1,11 +1,11 @@
-[submodule "Library/KapMirror"]
-	path = Library/KapMirror
+[submodule "Library/KapEngine"]
+	path = Library/KapEngine
 	branch = main
-	url = git@github.com:Chaika9/KapMirror.git
+	url = git@github.com:benji-35/KapEngine.git
 [submodule "Packages/KapMirror"]
 	path = Packages/KapMirror
 	branch = main
 	url = git@github.com:Chaika9/KapMirror.git
-[submodule "Library/KapEngine"]
-	path = Library/KapEngine
-	url = git@github.com:benji-35/KapEngine.git
+[submodule "Library/vcpkg"]
+	path = Library/vcpkg
+	url = git@github.com:microsoft/vcpkg.git

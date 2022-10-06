@@ -15,10 +15,11 @@
 namespace KapEngine {
     namespace RType {
 
-        class Player : Component {
+        class Player : public Component {
             public:
                 Player(std::shared_ptr<GameObject> gameObject);
                 Player(std::shared_ptr<GameObject> gameObject, std::string const &path);
+                ~Player() = default;
 
                 void onUpdate() override;
 

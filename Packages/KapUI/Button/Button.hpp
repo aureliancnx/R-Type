@@ -39,6 +39,7 @@ namespace KapEngine {
                 void onMouseExit() override;
 
                 void setText(std::string const& text);
+                void setTextPosition(Tools::Vector2 const& pos);
                 void setTextColor(Tools::Color const& color);
                 void setBackground(std::string const& path, Tools::Rectangle const& rect);
 

@@ -138,3 +138,24 @@ void KapEngine::UI::Button::onMouseExit() {
     }
     _onUnhover.invoke();
 }
+
+void KapEngine::UI::Button::setTextPosition(Tools::Vector2 const& pos) {
+    try {
+        auto &tr = (Transform &)getGameObject().getTransform();
+        std::vector<std::shared_ptr<GameObject>> children = tr.getChildren();
+        if (children.size() == 0) {
+            Debug::error("Cannot set text of button " + getGameObject().getName());
+            return;
+        }
+        for (std::size_t i = 0; i < children.size(); i++) {
+            if (children[i]->hasComponent("Text")) {
+                auto &tr = children[i]->getComponent<Transform>();
+                Tools::Vector3 npos;
+                npos = pos;
+                tr.setPosition(npos);
+            }
+        }
+    } catch(...) {
+        Debug::error("Cannot set text of button " + getGameObject().getName());
+    }
+}

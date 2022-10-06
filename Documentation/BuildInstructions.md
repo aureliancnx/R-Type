@@ -21,10 +21,5 @@ mkdir build && cd build
 
 ### Build Client
 ```console
-cmake -G Ninja -DIS_SERVER:BOOLEAN=FALSE ..
-```
-
-### Build Server
-```console
-cmake -G Ninja -DIS_SERVER:BOOLEAN=TRUE ..
+cmake -G Ninja ..
 ```

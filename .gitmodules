@@ -6,3 +6,7 @@
 	path = Packages/KapMirror
 	branch = main
 	url = git@github.com:Chaika9/KapMirror.git
+[submodule "Library/vcpkg"]
+	path = Library/vcpkg
+	branch = master
+	url = git@github.com:microsoft/vcpkg.git

@@ -6,12 +6,7 @@
 */
 
 #include "RaylibGraphical.hpp"
-#include "Vectors.hpp"
-#include "Debug.hpp"
-#include "Key.hpp"
-#include "UiImage.hpp"
-#include "UiText.hpp"
-#include "Transform.hpp"
+#include "KapEngineUi.hpp"
 
 KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManager &manager, bool drawWindow) : GraphicalLib("raylib", manager) {
 
@@ -26,25 +21,34 @@ KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManag
         manager.getEngine().getMaxFps()
     );
 
-    setDrawImage([this](UI::Image &img){
-        
+    setDrawImage([this](UI::Image &img) {
+        if (!_drawWindow)
+            return;
         if (img.isUsingSprite()) {
+            auto& tr = img.getGameObject().getComponent<Transform>();
             Tools::Vector2 pos = img.getCalculatedPosition();
             Tools::Vector2 scale = img.getCalculatedScale();
-            Tools::Color color = img.getColorSprite();Transform &tr = (Transform &)img.getGameObject().getTransform();
+            if (!drawable(pos, scale))
+                return;
+
+            Tools::Color color = img.getColorSprite();
+
 
             this->raylib->drawTexture(img.getPathSprite(), pos.getX(), pos.getY(), scale.getX(), scale.getY(), tr.getWorldRotation().getX(),
                 engineToRaylib(img.getRectangle()), engineToRaylib(color));
         } else {
             Tools::Vector2 pos = img.getCalculatedPosition();
             Tools::Vector2 scale = img.getCalculatedScale();
+            if (!drawable(pos, scale))
+                return;
             Tools::Color color = img.getColorSprite();
             this->raylib->drawRectangle(pos.getX(), pos.getY(), scale.getX(), scale.getY(), engineToRaylib(color));
         }
     });
 
     setDrawText([this](UI::Text &txt){
-
+        if (!_drawWindow)
+            return;
         Tools::Vector2 posTr = txt.getCalculatedPos();
 
         Vector2 pos = engineToRaylib(posTr);
@@ -68,8 +72,10 @@ void KapEngine::Graphical::Raylib::RaylibGraphical::stopDisplay() {
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::startDisplay() {
-    if (_drawWindow)
+    if (_drawWindow) {
         raylib->openWindow();
+        raylib->setIcon(manager.getEngine().getIconPath());
+    }
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::clear() {
@@ -476,4 +482,42 @@ KapEngine::Tools::Vector2 KapEngine::Graphical::Raylib::RaylibGraphical::getMous
 
 KapEngine::Tools::Vector2 KapEngine::Graphical::Raylib::RaylibGraphical::getScreenSize() {
     return Tools::Vector2(raylib->getScreenSize().x, raylib->getScreenSize().y);
+}
+
+bool KapEngine::Graphical::Raylib::RaylibGraphical::drawable(Tools::Vector2 const& pos, Tools::Vector2 const& scale) {
+    Tools::Vector2 downRightPos;
+    downRightPos = pos;
+    downRightPos += scale;
+    auto zero = Tools::Vector2::zero();
+
+    if (downRightPos.getX() < zero.getX() || downRightPos.getY() < zero.getY())
+        return false;
+    if (pos.getX() > getScreenSize().getX() || pos.getY() > getScreenSize().getY())
+        return false;
+    return true;
+}
+
+void KapEngine::Graphical::Raylib::RaylibGraphical::playSound(std::string const& path) {
+    raylib->playSound(path);
+}
+
+void KapEngine::Graphical::Raylib::RaylibGraphical::playMusic(std::string const& path, float vol) {
+    raylib->playMusic(path);
+    raylib->setMusicVolume(vol);
+}
+
+void KapEngine::Graphical::Raylib::RaylibGraphical::stopMusic() {
+    raylib->stopMusic();
+}
+
+void KapEngine::Graphical::Raylib::RaylibGraphical::pauseMusic() {
+    raylib->pauseMusic();
+}
+
+void KapEngine::Graphical::Raylib::RaylibGraphical::resumMusic() {
+    raylib->resumeMusic();
+}
+
+void KapEngine::Graphical::Raylib::RaylibGraphical::restartMusic() {
+    raylib->restartMusic();
 }

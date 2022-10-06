@@ -10,9 +10,10 @@
 
 #include <memory>
 
-#include "GraphicalLib.hpp"
 #include "Encapsulation/RaylibEncapsulation.hpp"
-#include "Rectangle.hpp"
+
+#include "KapEngine.hpp"
+#include "KapEngineGraphical.hpp"
 
 namespace KapEngine {
     class KapEngine;
@@ -24,6 +25,7 @@ namespace KapEngine {
 
     namespace Tools {
         class Color;
+        class Vector2;
     }
 
 }
@@ -46,6 +48,13 @@ namespace KapEngine {
                     void clear() override;
                     void display() override;
                     void getEvents() override;
+
+                    void playSound(std::string const& soundPath) override;
+                    void playMusic(std::string const& musicPath, float volume = 1.0f) override;
+                    void stopMusic() override;
+                    void pauseMusic() override;
+                    void resumMusic() override;
+                    void restartMusic() override;
 
                     float getJoystikValue(int gamepadId, int joystickId) override;
 
@@ -75,6 +84,8 @@ namespace KapEngine {
                 private:
                     std::unique_ptr<RaylibEncapsulation> raylib;
                     bool _drawWindow;
+
+                    bool drawable(Tools::Vector2 const& pos, Tools::Vector2 const& scale);
             };
 
         }

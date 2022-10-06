@@ -19,7 +19,7 @@ void testCanvas(KapEngine::KapEngine *engine) {
         auto imageObject = KapEngine::Factory::createEmptyGameObject(scene, "Image");
         //create text object
         auto textObject = KapEngine::Factory::createEmptyGameObject(scene, "Text");
-        
+
         //get transform of image
         auto &trImage = (KapEngine::Transform &)imageObject->getTransform();
         trImage.setParent(canvasObject->getId());

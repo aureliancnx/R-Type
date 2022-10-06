@@ -5,6 +5,8 @@
 #ifndef RTYPE_PLAYER_HPP
 #define RTYPE_PLAYER_HPP
 
+#include <algorithm>
+
 #include "KapEngine.hpp"
 #include "KapEngineDebug.hpp"
 #include "KapEngineUi.hpp"
@@ -34,7 +36,8 @@ namespace KapEngine {
 
             // Functions
             void init(std::shared_ptr<GameObject> gameObject);
-            void shoot(Tools::Vector3 pos);
+            void shoot(Tools::Vector3 pos, Tools::Vector2 direction);
+            void test(Tools::Vector3 cPos);
             UI::Image &getImage();
             void playSound(std::string const &path);
 

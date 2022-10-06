@@ -1,7 +1,7 @@
 {
-  "name": "rtype",
-  "version-string": "0.1.0",
-  "dependencies": [
-    "boost-iostreams"
-  ]
+    "name": "rtype",
+    "version-string": "0.1.0",
+    "dependencies": [
+      "boost-iostreams"
+    ]
 }

@@ -20,11 +20,11 @@ set(raylib_VERSION 4.0.0)
 find_package(raylib REQUIRED)
 message(STATUS "RayLib version: ${raylib_VERSION}")
 
-set(Boost_USE_STATIC_LIBS ON)
 set(ZLIB_USE_STATIC_LIBS ON)
-find_package(Boost REQUIRED COMPONENTS iostreams)
 find_package(ZLIB REQUIRED)
-#target_include_directories(RType PRIVATE ${Boost_INCLUDE_DIRS})
+
+set(Boost_USE_STATIC_LIBS ON)
+find_package(Boost REQUIRED COMPONENTS iostreams)
 
 option(IS_SERVER "Generate R-Type server" OFF)
 

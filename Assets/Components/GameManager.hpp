@@ -3,6 +3,9 @@
 #include "KapEngine.hpp"
 #include "MenuManager.hpp"
 
+#include "Player/Player.hpp"
+#include "Animations/SpriteAnimation.hpp"
+
 namespace RType {
     class GameManager {
         private:
@@ -22,5 +25,6 @@ namespace RType {
         void registerMenus();
         void initSoloPlayer();
         void registerPrefabsPlayer();
+        void registerAxises();
     };
 }

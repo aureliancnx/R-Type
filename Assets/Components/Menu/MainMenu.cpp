@@ -156,5 +156,5 @@ void RType::MainMenu::goToMenu(std::string const& name) {
         return;
     }
     _found->setActive(true);
-    _foundCurrent->setActive(true);
+    _foundCurrent->setActive(false);
 }

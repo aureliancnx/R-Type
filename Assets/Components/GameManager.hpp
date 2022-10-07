@@ -21,10 +21,11 @@ namespace RType {
 
         void showMenu();
         private:
-        void registerScenes();
-        void registerMenus();
-        void initSoloPlayer();
-        void registerPrefabsPlayer();
-        void registerAxises();
+            void registerScenes();
+            void registerMenus();
+            void initSoloPlayer();
+            void registerPrefabsPlayer();
+            void registerAxises();
+            void initSplashScreens();
     };
 }

@@ -32,14 +32,18 @@ namespace RType {
     }
 
     void SpriteAnimation::onUpdateAnim() {
-//            CurrTime current time animation (number of repetition)
-//            _currTime
-//            Time max to play animation
-//            _timing
-//            (_nbAnime * _currTime) / _timing(MicroSecond) = current position on sprite to anime
+        bool goBouncing = false;
         int crossProduct = (_nbAnimation * _currTime) / _timing.asMicroSecond();
+
+        if (crossProduct > _nbAnimation / 2)
+            goBouncing = true;
+
         Tools::Vector2 pos = _rect.getPos();
-        pos.setX(pos.getX() + (_rect.getSize().getX() * crossProduct));
+        if (!goBouncing) {
+            pos.setX(pos.getX() + (_rect.getSize().getX() * crossProduct));
+        } else {
+            pos.setX(pos.getX() + (_rect.getSize().getX() * (_nbAnimation - crossProduct)));
+        }
         getImage().setRectangle({pos, _rect.getSize()});
     }
 

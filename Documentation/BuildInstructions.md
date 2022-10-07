@@ -5,7 +5,7 @@ Make sure you have all the dependencies installed:
 
 ### Debian / Ubuntu
 ```console
-sudo apt install build-essential cmake ninja-build libboost-all-dev
+sudo apt install build-essential cmake ninja-build
 ```
 
 ### MacOS

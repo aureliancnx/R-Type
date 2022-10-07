@@ -11,3 +11,8 @@ Build/
 
 # OSX
 .DS_Store
+
+# Rtype
+**.keDat
+
+/cmake-build-debug

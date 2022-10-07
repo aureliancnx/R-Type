@@ -149,6 +149,7 @@ void KapEngine::UI::Inputfield::__init(std::shared_ptr<GameObject> go) {
     }
     if (!go->hasComponent("Mouse Detector")) {
         auto md = std::make_shared<MouseDetector>(go);
+        md->detectMouseInCanvas(true);
         go->addComponent(md);
     }
 

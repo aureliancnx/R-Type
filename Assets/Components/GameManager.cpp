@@ -4,6 +4,8 @@
 #include "Menu/SoloMenu.hpp"
 #include "Menu/MultiMenu.hpp"
 
+#include "KapMirror/KapMirror.hpp"
+
 using namespace RType;
 
 GameManager::GameManager(KapEngine::KapEngine& _engine) : engine(_engine) {}
@@ -45,39 +47,37 @@ void GameManager::registerMenus() {
 }
 
 void GameManager::registerPrefabsPlayer() {
-    KAP_DEBUG_LOG("Register player prefabs");
+    KapEngine::Debug::log("Register player prefabs");
 
-    engine.getPrefabManager()->createPrefab("PlayerNetwork", [](KapEngine::SceneManagement::Scene& scene){
-        auto player = KapEngine::UI::UiFactory::createImage(scene, "Player");
-
-        return player;
-    });
-
-    engine.getPrefabManager()->createPrefab("PlayerSolo", [](KapEngine::SceneManagement::Scene& scene){
+    engine.getPrefabManager()->createPrefab("Player", [](KapEngine::SceneManagement::Scene& scene) {
         auto player = scene.createGameObject("Player");
-        auto playerCanvas = KapEngine::UI::UiFactory::createCanvas(scene, "Player Canvas");
-        auto compPlayer = std::make_shared<KapEngine::RType::Player>(player, "Assets/Textures/Ship/space_ship.png");
+        auto playerCanvas = KapEngine::UI::UiFactory::createCanvas(scene, "PlayerCanvas");
 
-        player->addComponent(compPlayer);
+        auto networkIdentityComp = std::make_shared<KapMirror::Experimental::NetworkIdentity>(player);
+        player->addComponent(networkIdentityComp);
 
-        try {
-            auto &tr = (KapEngine::Transform &)player->getTransform();
-            tr.setParent(playerCanvas->getId());
-        } catch (...) {}
+        auto networkTransformComp = std::make_shared<KapMirror::Experimental::NetworkTransform>(player);
+        networkTransformComp->setClientAuthority(false);
+        networkTransformComp->setSendRate(5);
+        player->addComponent(networkTransformComp);
+
+        auto& transform = player->getComponent<KapEngine::Transform>();
+        transform.setParent(playerCanvas->getId());
         return player;
     });
 }
 
 void GameManager::initSoloPlayer() {
     auto scene = engine.getSceneManager()->createScene("Solo Game");
-    std::shared_ptr<KapEngine::GameObject> player;
 
-    if (!engine.getPrefabManager()->instantiatePrefab("PlayerSolo", *scene, player)) {
+    std::shared_ptr<KapEngine::GameObject> player;
+    if (!engine.getPrefabManager()->instantiatePrefab("Player", *scene, player)) {
         KAP_DEBUG_ERROR("Failed to instantiate player prefab");
         return;
     }
-    auto &tr = (KapEngine::Transform &)player->getTransform();
-    tr.setPosition({0, 0, 0});
+
+    auto& transform = player->getComponent<KapEngine::Transform>();
+    transform.setPosition({0, 0, 0});
 
     // Create animation manager
     auto animator = std::make_shared<KapEngine::Animator>(player);
@@ -86,6 +86,7 @@ void GameManager::initSoloPlayer() {
     // Create new animation -> stay animation (IDLE)
     auto stayAnimation = std::make_shared<SpriteAnimation>(player);
     player->addComponent(stayAnimation);
+
     // Create timer to set the duration of animation
     KapEngine::Time::ETime duration;
     duration.setSeconds(.1f);
@@ -128,21 +129,20 @@ void GameManager::registerAxises() {
     KapEngine::Events::Input::Axis _axisH("Horizontal");
     KapEngine::Events::Input::Axis _axisM("Mouseinput");
 
-
-    //init vertical axis
+    // init vertical axis
     _axisV.positiveButton = KapEngine::Events::Key::UP;
     _axisV.negativeButton = KapEngine::Events::Key::DOWN;
     _axisV.invert = true;
 
-    //init horizontal axis
+    // init horizontal axis
     _axisH.positiveButton = KapEngine::Events::Key::RIGHT;
     _axisH.negativeButton = KapEngine::Events::Key::LEFT;
 
-    //init mouse axis
+    // init mouse axis
     _axisM.positiveButton = KapEngine::Events::Key::MOUSE_LEFT;
     _axisM.negativeButton = KapEngine::Events::Key::MOUSE_RIGHT;
 
-    //add axis
+    // add axis
     engine.getEventManager().getInput().addAxis(_axisH);
     engine.getEventManager().getInput().addAxis(_axisV);
     engine.getEventManager().getInput().addAxis(_axisM);

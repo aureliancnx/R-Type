@@ -1,44 +1,14 @@
-/*
-** EPITECH PROJECT, 2022
-** Project
-** File description:
-** Player.hpp
-*/
-
-#ifndef R_TYPE_PLAYER_HPP
-#define R_TYPE_PLAYER_HPP
+#pragma once
 
 #include "KapEngine.hpp"
 #include "KapEngineDebug.hpp"
 #include "KapEngineUi.hpp"
+#include "KapMirror/KapMirror.hpp"
 
-namespace KapEngine {
-    namespace RType {
-
-        class Player : public Component {
-            public:
-                Player(std::shared_ptr<GameObject> gameObject);
-                Player(std::shared_ptr<GameObject> gameObject, std::string const &path);
-                ~Player() = default;
-
-                void onUpdate() override;
-
-                void setPath(std::string const &path);
-
-            protected:
-            private:
-                // Functions
-                void init(std::shared_ptr<GameObject> gameObject);
-                UI::Image &getImage();
-
-                // Variables
-                std::string _path;
-                Tools::Vector3 _lastPos;
-
-
-        };
-
-    } // KapEngine
-} // RType
-
-#endif //R_TYPE_PLAYER_HPP
+namespace RType {
+    class Player : public KapMirror::Experimental::NetworkComponent {
+        public:
+        Player(std::shared_ptr<KapEngine::GameObject> _gameObject);
+        ~Player() = default;
+    };
+}

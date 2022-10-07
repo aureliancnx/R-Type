@@ -148,7 +148,7 @@ void RType::SoloMenu::init() {
             shipObj->addComponent(shipAn);
             shipAn->setTiming(timer);
             shipAn->loop(true);
-            // shipAn->
+            shipAn->bouncingVersion(true);
             shipAn->setRect(KapEngine::Tools::Rectangle(0, 0, 263, 116));
             shipAn->setNbAnimations(5);
             animator->addAnim(shipAn, "Choose Skin");

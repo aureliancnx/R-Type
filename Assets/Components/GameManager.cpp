@@ -78,6 +78,49 @@ void GameManager::initSoloPlayer() {
     }
     auto &tr = (KapEngine::Transform &)player->getTransform();
     tr.setPosition({0, 0, 0});
+
+    // Create animation manager
+    auto animator = std::make_shared<KapEngine::Animator>(player);
+    player->addComponent(animator);
+
+    // Create new animation -> stay animation (IDLE)
+    auto stayAnimation = std::make_shared<SpriteAnimation>(player);
+    player->addComponent(stayAnimation);
+    // Create timer to set the duration of animation
+    KapEngine::Time::ETime duration;
+    duration.setSeconds(.1f);
+    stayAnimation->setTiming(duration);
+    stayAnimation->loop(true); // Loop but isn't a loop, loop with break point
+    stayAnimation->setRect({0, 0, 26, 21});
+    stayAnimation->setNbAnimations(1);
+
+    auto upAnimation = std::make_shared<SpriteAnimation>(player);
+    player->addComponent(stayAnimation);
+    upAnimation->setTiming(duration);
+    upAnimation->loop(true); // Loop but isn't a loop, loop with break point
+    upAnimation->setRect({(26 * 2), 0, 26, 21});
+    upAnimation->setNbAnimations(1);
+
+    auto downAnimation = std::make_shared<SpriteAnimation>(player);
+    player->addComponent(stayAnimation);
+    downAnimation->setTiming(duration);
+    downAnimation->loop(true); // Loop but isn't a loop, loop with break point
+    downAnimation->setRect({(26 * 1), 0, 26, 21});
+    downAnimation->setNbAnimations(1);
+
+    // Add animation with the unique name to animation manager - the first addAnim is the first animation
+    // Put Stay/IDLE at he first position /!\ importante
+    animator->addAnim(stayAnimation, "Stay");
+    animator->addAnim(upAnimation, "Up");
+    animator->addAnim(downAnimation, "Down");
+
+    // Add link to change animation with trigger (some action)
+    animator->addLink("Up", "Stay");
+    animator->addLink("Down", "Stay");
+    animator->addLink("Stay", "Up", "UP");
+    animator->addLink("Stay", "Down", "DOWN");
+    animator->addLink("Down", "Stay", "Idle");
+    animator->addLink("Up", "Stay", "Idle");
 }
 
 void GameManager::registerAxises() {

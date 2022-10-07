@@ -89,6 +89,7 @@ void GameManager::registerAxises() {
     //init vertical axis
     _axisV.positiveButton = KapEngine::Events::Key::UP;
     _axisV.negativeButton = KapEngine::Events::Key::DOWN;
+    _axisV.invert = true;
 
     //init horizontal axis
     _axisH.positiveButton = KapEngine::Events::Key::RIGHT;

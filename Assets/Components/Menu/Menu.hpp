@@ -21,6 +21,7 @@ namespace RType {
         }
 
         virtual void init() = 0;
+        virtual void goToMenu(std::string const& menuName) {}
 
         void show() {
             canvas->setActive(true);

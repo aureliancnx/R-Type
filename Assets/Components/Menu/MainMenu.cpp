@@ -61,7 +61,7 @@ void MainMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this](){
-            // gameManager.swichMenu("MainMenu", "SoloMenu");
+            goToMenu("SoloMenu");
         });
     }
     //create button play multi
@@ -81,7 +81,7 @@ void MainMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this](){
-            // gameManager.swichMenu("MainMenu", "MultiMenu");
+            goToMenu("MultiMenu");
         });
     }
     //create button settings
@@ -101,7 +101,7 @@ void MainMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this](){
-            // gameManager.swichMenu("MainMenu", "SettingsMenu");
+            goToMenu("SettingsMenu");
         });
     }
     //create button quit
@@ -121,7 +121,40 @@ void MainMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this](){
+            KAP_DEBUG_LOG("QUITING GAME !");
             canvas->getEngine().stop();
         });
     }
+}
+
+void RType::MainMenu::goToMenu(std::string const& name) {
+    auto objs = scene.getGameObjects("Canvas" + name);
+    auto objCurr = scene.getGameObjects("CanvasMainMenu");
+    std::shared_ptr<KapEngine::GameObject> _found;
+    std::shared_ptr<KapEngine::GameObject> _foundCurrent;
+
+    for (std::size_t i = 0; i < objs.size(); i++) {
+        if (objs[i]->hasComponent("Canvas")) {
+            _found = objs[i];
+            break;
+        }
+    }
+
+    for (std::size_t i = 0; i < objCurr.size(); i++) {
+        if (objCurr[i]->hasComponent("Canvas")) {
+            _foundCurrent = objCurr[i];
+            break;
+        }
+    }
+
+    if (_found.use_count() == 0) {
+        KAP_DEBUG_ERROR("Canvas called " + name + " not found to display it");
+        return;
+    }
+    if (_foundCurrent.use_count() == 0) {
+        KAP_DEBUG_ERROR("Canvas called CanvasSoloMenu not found to hide it");
+        return;
+    }
+    _found->setActive(true);
+    _foundCurrent->setActive(true);
 }

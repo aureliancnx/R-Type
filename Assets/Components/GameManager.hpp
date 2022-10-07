@@ -20,5 +20,7 @@ namespace RType {
         private:
         void registerScenes();
         void registerMenus();
+        void initSoloPlayer();
+        void registerPrefabsPlayer();
     };
 }

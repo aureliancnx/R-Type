@@ -40,3 +40,13 @@ void GameManager::registerMenus() {
     auto multiMenu = std::make_shared<MultiMenu>(scene);
     menuManager.registerMenu("MultiMenu", multiMenu);
 }
+
+void GameManager::registerPrefabsPlayer() {
+    KAP_DEBUG_LOG("Register player prefabs");
+
+    engine.getPrefabManager()->createPrefab("PlayerNetwork", [](KapEngine::SceneManagement::Scene& scene){
+        auto player = KapEngine::UI::UiFactory::createImage(scene, "Player");
+
+        return player;
+    });
+}

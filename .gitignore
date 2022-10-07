@@ -11,3 +11,6 @@ Build/
 
 # OSX
 .DS_Store
+
+# Rtype
+**.keDat

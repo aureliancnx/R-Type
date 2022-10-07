@@ -26,13 +26,7 @@ find_package(ZLIB REQUIRED)
 set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost REQUIRED COMPONENTS iostreams)
 
-option(IS_SERVER "Generate R-Type server" OFF)
-
-if(${IS_TEST_NETWORK})
-    file(GLOB_RECURSE SOURCES TestNetworkMain.cpp Assets/Components/*.cpp Packages/*.cpp)
-else()
-    file(GLOB_RECURSE SOURCES ClientMain.cpp Assets/Components/*.cpp Packages/*.cpp)
-endif()
+file(GLOB_RECURSE SOURCES GameMain.cpp Assets/Components/*.cpp Packages/*.cpp)
 
 add_executable(RType ${SOURCES} ${HEADERS})
 

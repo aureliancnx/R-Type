@@ -15,6 +15,7 @@ void GameManager::launchGame() {
     registerMenus();
     registerPrefabsPlayer();
     initSoloPlayer();
+    registerAxises();
 
     // Show main menu
     menuManager.showMenu("MainMenu");

@@ -2,8 +2,8 @@ name: 'VCS - Create Release'
 
 on:
   push:
-    - tags:
-        - 'v*'
+    tags:
+    - 'v*'
 
 jobs:
   build:

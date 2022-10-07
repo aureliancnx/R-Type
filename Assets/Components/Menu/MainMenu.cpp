@@ -1,10 +1,24 @@
 #include "MainMenu.hpp"
+#include "Button/Button.hpp"
 
 using namespace RType;
 
 MainMenu::MainMenu(KapEngine::SceneManagement::Scene& _scene) : Menu(_scene) {}
 
 void MainMenu::init() {
+
+    //change type of display for canvas
+    {
+        try {
+            auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
+
+            can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
+        } catch(...) {
+            KAP_DEBUG_ERROR("Failed to resize canvas");
+        }
+    }
+
+    //create background
     {
         auto background = KapEngine::UI::UiFactory::createImage(scene, "Background");
         auto imageComp = std::make_shared<KapEngine::UI::Image>(background);
@@ -17,7 +31,7 @@ void MainMenu::init() {
         transform.setScale(KapEngine::Tools::Vector3(720, 480, 0));
         transform.setParent(canvas);
     }
-
+    //create title
     {
         auto title = KapEngine::UI::UiFactory::createImage(scene, "Title");
         auto imageComp = std::make_shared<KapEngine::UI::Image>(title);
@@ -28,6 +42,70 @@ void MainMenu::init() {
         auto& transform = title->getComponent<KapEngine::Transform>();
         transform.setPosition(KapEngine::Tools::Vector3(90, 20, 0));
         transform.setScale(KapEngine::Tools::Vector3(550, 180, 0));
+        transform.setParent(canvas);
+    }
+    //create button play Solo
+    {
+        auto btn = scene.createGameObject("ButtonPlay");
+        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+        auto &transform = btn->getComponent<KapEngine::Transform>();
+
+        btn->addComponent(btnComp);
+        btnComp->setText("Campaign");
+        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+        btnComp->setTextPosition({80, 12});
+        btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+        transform.setPosition({249, 234, 0});
+        transform.setScale({222, 39, 0});
+        transform.setParent(canvas);
+    }
+    //create button play multi
+    {
+        auto btn = scene.createGameObject("ButtonMulti");
+        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+        auto &transform = btn->getComponent<KapEngine::Transform>();
+
+        btn->addComponent(btnComp);
+        btnComp->setText("Multiplayer");
+        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+        btnComp->setTextPosition({75, 12});
+        btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+        transform.setPosition({249, 300, 0});
+        transform.setScale({222, 39, 0});
+        transform.setParent(canvas);
+    }
+    //create button settings
+    {
+        auto btn = scene.createGameObject("ButtonSettings");
+        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+        auto &transform = btn->getComponent<KapEngine::Transform>();
+
+        btn->addComponent(btnComp);
+        btnComp->setText("Settings");
+        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+        btnComp->setTextPosition({80, 12});
+        btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+        transform.setPosition({105, 375, 0});
+        transform.setScale({222, 39, 0});
+        transform.setParent(canvas);
+    }
+    //create button quit
+    {
+        auto btn = scene.createGameObject("ButtonQuit");
+        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+        auto &transform = btn->getComponent<KapEngine::Transform>();
+
+        btn->addComponent(btnComp);
+        btnComp->setText("Quit");
+        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+        btnComp->setTextPosition({95, 12});
+        btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+        transform.setPosition({405, 375, 0});
+        transform.setScale({222, 39, 0});
         transform.setParent(canvas);
     }
 }

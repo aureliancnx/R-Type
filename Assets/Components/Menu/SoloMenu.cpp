@@ -13,6 +13,8 @@
 
 #include "Spaceship/MenuSpaceShip.hpp"
 
+#include "Animations/SpriteAnimation.hpp"
+
 RType::SoloMenu::SoloMenu(KapEngine::SceneManagement::Scene& _scene) : Menu(_scene) {}
 
 void RType::SoloMenu::init() {
@@ -137,20 +139,20 @@ void RType::SoloMenu::init() {
 
         //create animation
         {
-            // auto animator = std::make_shared<KapEngine::Animator>(shipObj);
-            // auto shipAn = std::make_shared<KapEngine::RType::SpriteAnimation>(shipObj);
-            // KapEngine::Time::ETime timer;
-            // timer.setSeconds(0.6f);
+            auto animator = std::make_shared<KapEngine::Animator>(shipObj);
+            auto shipAn = std::make_shared<SpriteAnimation>(shipObj);
+            KapEngine::Time::ETime timer;
+            timer.setSeconds(0.6f);
 
-            // shipObj->addComponent(animator);
-            // shipObj->addComponent(shipAn);
-            // shipAn->setTiming(timer);
-            // shipAn->loop(true);
+            shipObj->addComponent(animator);
+            shipObj->addComponent(shipAn);
+            shipAn->setTiming(timer);
+            shipAn->loop(true);
             // shipAn->
-            // shipAn->setRect(KapEngine::Tools::Rectangle(0, 0, 263, 116));
-            // shipAn->setNbAnimations(5);
-            // animator->addAnim(shipAn, "Choose Skin");
-            // animator->addLink("Choose Skin", "Choose Skin", "Link");
+            shipAn->setRect(KapEngine::Tools::Rectangle(0, 0, 263, 116));
+            shipAn->setNbAnimations(5);
+            animator->addAnim(shipAn, "Choose Skin");
+            animator->addLink("Choose Skin", "Choose Skin", "Link");
         }
     }
 }

@@ -78,3 +78,27 @@ void GameManager::initSoloPlayer() {
     auto &tr = (KapEngine::Transform &)player->getTransform();
     tr.setPosition({0, 0, 0});
 }
+
+void GameManager::registerAxises() {
+    KapEngine::Events::Input::Axis _axisV("Vertical");
+    KapEngine::Events::Input::Axis _axisH("Horizontal");
+    KapEngine::Events::Input::Axis _axisM("Mouseinput");
+
+
+    //init vertical axis
+    _axisV.positiveButton = KapEngine::Events::Key::UP;
+    _axisV.negativeButton = KapEngine::Events::Key::DOWN;
+
+    //init horizontal axis
+    _axisH.positiveButton = KapEngine::Events::Key::RIGHT;
+    _axisH.negativeButton = KapEngine::Events::Key::LEFT;
+
+    //init mouse axis
+    _axisM.positiveButton = KapEngine::Events::Key::MOUSE_LEFT;
+    _axisM.negativeButton = KapEngine::Events::Key::MOUSE_RIGHT;
+
+    //add axis
+    engine.getEventManager().getInput().addAxis(_axisH);
+    engine.getEventManager().getInput().addAxis(_axisV);
+    engine.getEventManager().getInput().addAxis(_axisM);
+}

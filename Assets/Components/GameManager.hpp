@@ -24,5 +24,6 @@ namespace RType {
         void registerMenus();
         void initSoloPlayer();
         void registerPrefabsPlayer();
+        void registerAxises();
     };
 }

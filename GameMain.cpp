@@ -8,6 +8,8 @@ static void initWindow(KapEngine::KapEngine *engine) {
     KapEngine::Tools::Vector2 screenSize(720, 480);
     engine->setScreenSize(screenSize);
 
+    engine->getSplashScreen()->setDisplayKapEngineLogo(false);
+
     auto raylib = std::make_shared<KapEngine::Graphical::Raylib::RaylibGraphical>(*engine->getGraphicalLibManager());
     engine->getGraphicalLibManager()->addLib(raylib);
     engine->getGraphicalLibManager()->changeLib("raylib");

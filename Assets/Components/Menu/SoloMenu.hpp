@@ -13,14 +13,13 @@
 namespace RType {
     class SoloMenu : public Menu {
         public:
-            SoloMenu(KapEngine::SceneManagement::Scene& _scene);
-            ~SoloMenu() = default;
+        SoloMenu(KapEngine::SceneManagement::Scene& _scene);
+        ~SoloMenu() = default;
 
-            void init() override;
+        void init() override;
 
-            void goToMenu(std::string const& menuName) override;
         protected:
-        private:
+        void goToMenu(std::string const& menuName) override;
     };
 }
 

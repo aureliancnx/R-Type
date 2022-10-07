@@ -13,22 +13,15 @@ GameManager::GameManager(KapEngine::KapEngine& _engine) : engine(_engine) {}
 void GameManager::launchGame() {
     KapEngine::Debug::log("Launch game");
 
-    registerScenes();
     registerMenus();
     registerPrefabsPlayer();
-    initSoloPlayer();
+    initSinglePlayer();
+    initMultiPlayer();
     registerAxises();
-    initSplashScreens();
+    //initSplashScreens();
 
     // Show main menu
     menuManager.showMenu("MainMenu");
-}
-
-void GameManager::registerScenes() {
-    KapEngine::Debug::log("Register scenes");
-
-    engine.getSceneManager()->createScene("SoloGame");
-    engine.getSceneManager()->createScene("MultiGame");
 }
 
 void GameManager::registerMenus() {
@@ -62,14 +55,25 @@ void GameManager::registerPrefabsPlayer() {
         networkTransformComp->setSendRate(5);
         player->addComponent(networkTransformComp);
 
+        auto playerComp = std::make_shared<Player>(player);
+        player->addComponent(playerComp);
+
+        auto imageComp = std::make_shared<KapEngine::UI::Image>(player);
+        imageComp->setRectangle({0, 0, 26, 21});
+        imageComp->setPathSprite("Assets/Textures/Ship/space_ship.png");
+        player->addComponent(imageComp);
+
         auto& transform = player->getComponent<KapEngine::Transform>();
+        transform.setPosition({0, 0, 0});
+        transform.setScale({(26 * 2), (21 * 2)});
         transform.setParent(playerCanvas->getId());
+
         return player;
     });
 }
 
-void GameManager::initSoloPlayer() {
-    auto scene = engine.getSceneManager()->createScene("Solo Game");
+void GameManager::initSinglePlayer() {
+    auto scene = engine.getSceneManager()->createScene("SinglePlayer");
 
     std::shared_ptr<KapEngine::GameObject> player;
     if (!engine.getPrefabManager()->instantiatePrefab("Player", *scene, player)) {
@@ -80,49 +84,58 @@ void GameManager::initSoloPlayer() {
     auto& transform = player->getComponent<KapEngine::Transform>();
     transform.setPosition({0, 0, 0});
 
-    // Create animation manager
-    auto animator = std::make_shared<KapEngine::Animator>(player);
-    player->addComponent(animator);
+    auto& playerComp = player->getComponent<Player>();
+    playerComp.setLocalPlayer(true);
 
-    // Create new animation -> stay animation (IDLE)
-    auto stayAnimation = std::make_shared<SpriteAnimation>(player);
-    player->addComponent(stayAnimation);
+    // TODO: Fix animation
 
-    // Create timer to set the duration of animation
-    KapEngine::Time::ETime duration;
-    duration.setSeconds(.1f);
-    stayAnimation->setTiming(duration);
-    stayAnimation->loop(true); // Loop but isn't a loop, loop with break point
-    stayAnimation->setRect({0, 0, 26, 21});
-    stayAnimation->setNbAnimations(1);
+    // // Create animation manager
+    // auto animator = std::make_shared<KapEngine::Animator>(player);
+    // player->addComponent(animator);
 
-    auto upAnimation = std::make_shared<SpriteAnimation>(player);
-    player->addComponent(stayAnimation);
-    upAnimation->setTiming(duration);
-    upAnimation->loop(true); // Loop but isn't a loop, loop with break point
-    upAnimation->setRect({(26 * 2), 0, 26, 21});
-    upAnimation->setNbAnimations(1);
+    // // Create new animation -> stay animation (IDLE)
+    // auto stayAnimation = std::make_shared<SpriteAnimation>(player);
+    // player->addComponent(stayAnimation);
 
-    auto downAnimation = std::make_shared<SpriteAnimation>(player);
-    player->addComponent(stayAnimation);
-    downAnimation->setTiming(duration);
-    downAnimation->loop(true); // Loop but isn't a loop, loop with break point
-    downAnimation->setRect({(26 * 1), 0, 26, 21});
-    downAnimation->setNbAnimations(1);
+    // // Create timer to set the duration of animation
+    // KapEngine::Time::ETime duration;
+    // duration.setSeconds(.1f);
+    // stayAnimation->setTiming(duration);
+    // stayAnimation->loop(true); // Loop but isn't a loop, loop with break point
+    // stayAnimation->setRect({0, 0, 26, 21});
+    // stayAnimation->setNbAnimations(1);
 
-    // Add animation with the unique name to animation manager - the first addAnim is the first animation
-    // Put Stay/IDLE at he first position /!\ importante
-    animator->addAnim(stayAnimation, "Stay");
-    animator->addAnim(upAnimation, "Up");
-    animator->addAnim(downAnimation, "Down");
+    // auto upAnimation = std::make_shared<SpriteAnimation>(player);
+    // player->addComponent(stayAnimation);
+    // upAnimation->setTiming(duration);
+    // upAnimation->loop(true); // Loop but isn't a loop, loop with break point
+    // upAnimation->setRect({(26 * 2), 0, 26, 21});
+    // upAnimation->setNbAnimations(1);
 
-    // Add link to change animation with trigger (some action)
-    animator->addLink("Up", "Stay");
-    animator->addLink("Down", "Stay");
-    animator->addLink("Stay", "Up", "UP");
-    animator->addLink("Stay", "Down", "DOWN");
-    animator->addLink("Down", "Stay", "Idle");
-    animator->addLink("Up", "Stay", "Idle");
+    // auto downAnimation = std::make_shared<SpriteAnimation>(player);
+    // player->addComponent(stayAnimation);
+    // downAnimation->setTiming(duration);
+    // downAnimation->loop(true); // Loop but isn't a loop, loop with break point
+    // downAnimation->setRect({(26 * 1), 0, 26, 21});
+    // downAnimation->setNbAnimations(1);
+
+    // // Add animation with the unique name to animation manager - the first addAnim is the first animation
+    // // Put Stay/IDLE at he first position /!\ importante
+    // animator->addAnim(stayAnimation, "Stay");
+    // animator->addAnim(upAnimation, "Up");
+    // animator->addAnim(downAnimation, "Down");
+
+    // // Add link to change animation with trigger (some action)
+    // animator->addLink("Up", "Stay");
+    // animator->addLink("Down", "Stay");
+    // animator->addLink("Stay", "Up", "UP");
+    // animator->addLink("Stay", "Down", "DOWN");
+    // animator->addLink("Down", "Stay", "Idle");
+    // animator->addLink("Up", "Stay", "Idle");
+}
+
+void GameManager::initMultiPlayer() {
+    auto scene = engine.getSceneManager()->createScene("MultiPlayer");
 }
 
 void GameManager::registerAxises() {

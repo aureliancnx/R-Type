@@ -7,8 +7,16 @@
 
 namespace RType {
     class Player : public KapMirror::Experimental::NetworkComponent {
+        private:
+        bool isLocalPlayer = false;
+        KapEngine::Tools::Vector3 lastPos;
+
         public:
         Player(std::shared_ptr<KapEngine::GameObject> _gameObject);
         ~Player() = default;
+
+        void setLocalPlayer(bool _isLocalPlayer);
+
+        void onUpdate() override;
     };
 }

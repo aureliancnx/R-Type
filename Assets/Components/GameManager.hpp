@@ -18,6 +18,8 @@ namespace RType {
 
         void showMenu();
 
+        void swichMenu(std::string const& currentMenu, std::string const& menuName);
+
         private:
         void registerScenes();
         void registerMenus();

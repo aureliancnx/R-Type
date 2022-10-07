@@ -5,8 +5,6 @@
 #include "Debug.hpp"
 
 static void initWindow(KapEngine::KapEngine *engine) {
-    engine->getSplashScreen()->setDisplayKapEngineLogo(false);
-
     KapEngine::Tools::Vector2 screenSize(720, 480);
     engine->setScreenSize(screenSize);
 

@@ -2,21 +2,16 @@
 
 #include "KapEngine.hpp"
 #include "UiFactory.hpp"
-#include "GameManager.hpp"
-
-namespace RType {
-    class GameManager;
-}
 
 namespace RType {
     class Menu {
         protected:
-        GameManager &gameManager;
+        KapEngine::KapEngine& engine;
         KapEngine::SceneManagement::Scene& scene;
         std::shared_ptr<KapEngine::GameObject> canvas;
 
         public:
-        Menu(GameManager &manager, KapEngine::SceneManagement::Scene& _scene) : gameManager(manager), scene(_scene) {}
+        Menu(KapEngine::SceneManagement::Scene& _scene) : engine(_scene.getEngine()), scene(_scene) {}
 
         ~Menu() = default;
 

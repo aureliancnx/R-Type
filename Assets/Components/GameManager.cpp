@@ -29,11 +29,6 @@ void GameManager::registerMenus() {
     auto& scene = engine.getSceneManager()->getScene(1);
 
     // Register menus
-    auto mainMenu = std::make_shared<MainMenu>(*this, scene);
+    auto mainMenu = std::make_shared<MainMenu>(scene);
     menuManager.registerMenu("MainMenu", mainMenu);
-}
-
-void GameManager::swichMenu(std::string const& currentMenu, std::string const& menuName) {
-    menuManager.hideMenu(currentMenu);
-    menuManager.showMenu(currentMenu);
 }

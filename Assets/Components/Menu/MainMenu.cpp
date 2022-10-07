@@ -1,10 +1,9 @@
 #include "MainMenu.hpp"
 #include "Button/Button.hpp"
-#include "MenuManager.hpp"
 
 using namespace RType;
 
-MainMenu::MainMenu(GameManager &manager, KapEngine::SceneManagement::Scene& _scene) : Menu(manager, _scene) {}
+MainMenu::MainMenu(KapEngine::SceneManagement::Scene& _scene) : Menu(_scene) {}
 
 void MainMenu::init() {
 
@@ -62,7 +61,7 @@ void MainMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this](){
-            gameManager.swichMenu("MainMenu", "SoloMenu");
+            // gameManager.swichMenu("MainMenu", "SoloMenu");
         });
     }
     //create button play multi
@@ -82,7 +81,7 @@ void MainMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this](){
-            gameManager.swichMenu("MainMenu", "MultiMenu");
+            // gameManager.swichMenu("MainMenu", "MultiMenu");
         });
     }
     //create button settings
@@ -102,7 +101,7 @@ void MainMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this](){
-            gameManager.swichMenu("MainMenu", "SettingsMenu");
+            // gameManager.swichMenu("MainMenu", "SettingsMenu");
         });
     }
     //create button quit

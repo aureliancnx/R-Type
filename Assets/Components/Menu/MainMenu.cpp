@@ -107,5 +107,9 @@ void MainMenu::init() {
         transform.setPosition({405, 375, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
+
+        btnComp->getOnClick().registerAction([this](){
+            canvas->getEngine().stop();
+        });
     }
 }

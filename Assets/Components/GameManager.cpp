@@ -13,6 +13,8 @@ void GameManager::launchGame() {
 
     registerScenes();
     registerMenus();
+    registerPrefabsPlayer();
+    initSoloPlayer();
 
     // Show main menu
     menuManager.showMenu("MainMenu");
@@ -49,4 +51,30 @@ void GameManager::registerPrefabsPlayer() {
 
         return player;
     });
+
+    engine.getPrefabManager()->createPrefab("PlayerSolo", [](KapEngine::SceneManagement::Scene& scene){
+        auto player = scene.createGameObject("Player");
+        auto playerCanvas = KapEngine::UI::UiFactory::createCanvas(scene, "Player Canvas");
+        auto compPlayer = std::make_shared<KapEngine::RType::Player>(player, "Assets/Textures/Ship/space_ship.png");
+
+        player->addComponent(compPlayer);
+
+        try {
+            auto &tr = (KapEngine::Transform &)player->getTransform();
+            tr.setParent(playerCanvas->getId());
+        } catch (...) {}
+        return player;
+    });
+}
+
+void GameManager::initSoloPlayer() {
+    auto scene = engine.getSceneManager()->createScene("Solo Game");
+    std::shared_ptr<KapEngine::GameObject> player;
+
+    if (!engine.getPrefabManager()->instantiatePrefab("PlayerSolo", *scene, player)) {
+        KAP_DEBUG_ERROR("Failed to instantiate player prefab");
+        return;
+    }
+    auto &tr = (KapEngine::Transform &)player->getTransform();
+    tr.setPosition({0, 0, 0});
 }

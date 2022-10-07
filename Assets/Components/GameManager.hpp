@@ -3,6 +3,8 @@
 #include "KapEngine.hpp"
 #include "MenuManager.hpp"
 
+#include "Player/Player.hpp"
+
 namespace RType {
     class GameManager {
         private:

@@ -16,6 +16,7 @@ void GameManager::launchGame() {
     registerPrefabsPlayer();
     initSoloPlayer();
     registerAxises();
+    initSplashScreens();
 
     // Show main menu
     menuManager.showMenu("MainMenu");
@@ -146,4 +147,14 @@ void GameManager::registerAxises() {
     engine.getEventManager().getInput().addAxis(_axisH);
     engine.getEventManager().getInput().addAxis(_axisV);
     engine.getEventManager().getInput().addAxis(_axisM);
+}
+
+void GameManager::initSplashScreens() {
+    auto nsplash = std::make_shared<KapEngine::SceneManagement::SplashScreen::SplashScreenNode>("Assets/Textures/Background/bg-back.png", 4);
+
+    nsplash->rect = {0.f, 0.f, 272.f, 160.f};
+    nsplash->size = KapEngine::Tools::Vector2({650.f, 382.35f});
+    nsplash->pos = KapEngine::Tools::Vector2({35.f, 48.825f});
+
+    engine.getSplashScreen()->addSplashScreen(nsplash);
 }

@@ -11,6 +11,8 @@
 #include "Button/Button.hpp"
 #include "InputField/Inputfield.hpp"
 
+#include "Spaceship/MenuSpaceShip.hpp"
+
 RType::SoloMenu::SoloMenu(KapEngine::SceneManagement::Scene& _scene) : Menu(_scene) {}
 
 void RType::SoloMenu::init() {
@@ -103,6 +105,53 @@ void RType::SoloMenu::init() {
         transform.setPosition(KapEngine::Tools::Vector3(350, 200, 0));
         transform.setScale(KapEngine::Tools::Vector3(40, 39, 0));
         transform.setParent(canvas);
+
+        btnComp->getOnClick().registerAction([this](){
+            int currentID = 0;
+            try {
+                if (!KapEngine::PlayerPrefs::getString("shipID").empty()) {
+                    currentID = KapEngine::PlayerPrefs::getInt("shipID");
+                }
+            } catch(...) {}
+            currentID++;
+            if (currentID > 4)
+                currentID = 0;
+            KapEngine::PlayerPrefs::setInt("shipID", currentID);
+        });
+    }
+
+    //create spaceship animated
+    {
+        auto shipObj = scene.createGameObject("Animation Ship");
+        auto compShipImg = std::make_shared<KapEngine::UI::Image>(shipObj);
+        auto &transform = (KapEngine::Transform &)shipObj->getTransform();
+        auto compSpaceShip = std::make_shared<MenuSpaceShip>(shipObj);
+
+        shipObj->addComponent(compSpaceShip);
+        compShipImg->setPathSprite("../Assets/Textures/ship1.png");
+        compShipImg->setRectangle(KapEngine::Tools::Rectangle(0, 0, 263, 116));
+        shipObj->addComponent(compShipImg);
+        transform.setScale({132, 58, 0});
+        transform.setPosition({200, 200, 0});
+        transform.setParent(canvas);
+
+        //create animation
+        {
+            // auto animator = std::make_shared<KapEngine::Animator>(shipObj);
+            // auto shipAn = std::make_shared<KapEngine::RType::SpriteAnimation>(shipObj);
+            // KapEngine::Time::ETime timer;
+            // timer.setSeconds(0.6f);
+
+            // shipObj->addComponent(animator);
+            // shipObj->addComponent(shipAn);
+            // shipAn->setTiming(timer);
+            // shipAn->loop(true);
+            // shipAn->
+            // shipAn->setRect(KapEngine::Tools::Rectangle(0, 0, 263, 116));
+            // shipAn->setNbAnimations(5);
+            // animator->addAnim(shipAn, "Choose Skin");
+            // animator->addLink("Choose Skin", "Choose Skin", "Link");
+        }
     }
 }
 

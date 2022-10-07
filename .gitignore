@@ -13,4 +13,4 @@ Build/
 .DS_Store
 
 # Rtype
-*.keDat
+**.keDat

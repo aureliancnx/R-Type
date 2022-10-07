@@ -1,6 +1,7 @@
 #include "GameManager.hpp"
 
 #include "Menu/MainMenu.hpp"
+#include "Menu/SoloMenu.hpp"
 
 using namespace RType;
 
@@ -31,4 +32,7 @@ void GameManager::registerMenus() {
     // Register menus
     auto mainMenu = std::make_shared<MainMenu>(scene);
     menuManager.registerMenu("MainMenu", mainMenu);
+
+    auto soloMenu = std::make_shared<SoloMenu>(scene);
+    menuManager.registerMenu("SoloMenu", soloMenu);
 }

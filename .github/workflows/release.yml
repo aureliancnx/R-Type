@@ -29,7 +29,7 @@ jobs:
             zipname: "release-ubuntu-x86.zip",
             os: ubuntu-latest,
             build_type: "Debug",
-            build_executables: "./build/RType Assets/"
+            build_executables: "./build/RType Assets/",
             cc: "gcc",
             cxx: "g++",
             generators: "Ninja"

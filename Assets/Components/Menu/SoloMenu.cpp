@@ -1,36 +1,26 @@
-/*
-** EPITECH PROJECT, 2022
-** RType
-** File description:
-** SoloMenu
-*/
-
 #include "SoloMenu.hpp"
-
 #include "KapEngineUi.hpp"
 #include "Button/Button.hpp"
 #include "InputField/Inputfield.hpp"
-
 #include "Spaceship/MenuSpaceShip.hpp"
-
 #include "Animations/SpriteAnimation.hpp"
 
-RType::SoloMenu::SoloMenu(KapEngine::SceneManagement::Scene& _scene) : Menu(_scene) {}
+using namespace RType;
 
-void RType::SoloMenu::init() {
+SoloMenu::SoloMenu(KapEngine::SceneManagement::Scene& _scene) : Menu(_scene) {}
 
-    //change type of display for canvas
+void SoloMenu::init() {
+    // change type of display for canvas
     {
         try {
             auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
-
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
         } catch(...) {
             KAP_DEBUG_ERROR("Failed to resize canvas");
         }
     }
 
-    //create background
+    // create background
     {
         auto background = KapEngine::UI::UiFactory::createImage(scene, "Background");
         auto imageComp = std::make_shared<KapEngine::UI::Image>(background);
@@ -43,7 +33,8 @@ void RType::SoloMenu::init() {
         transform.setScale({720, 480, 0});
         transform.setParent(canvas);
     }
-    //create button play
+
+    // create button play
     {
         auto btn = scene.createGameObject("ButtonPlay");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
@@ -59,11 +50,12 @@ void RType::SoloMenu::init() {
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
-        btnComp->getOnClick().registerAction([this](){
-            scene.getEngine().getSceneManager()->loadScene("Solo Game");
+        btnComp->getOnClick().registerAction([this]() {
+            scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
         });
     }
-    //create button back
+
+    // create button back
     {
         auto btn = scene.createGameObject("ButtonBack");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
@@ -79,11 +71,12 @@ void RType::SoloMenu::init() {
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
-        btnComp->getOnClick().registerAction([this](){
+        btnComp->getOnClick().registerAction([this]() {
             goToMenu("MainMenu");
         });
     }
-    //create inputfield for pseudo
+
+    // create inputfield for pseudo
     {
         auto inpt = scene.createGameObject("InputFieldPseudo");
         auto inptComp = std::make_shared<KapEngine::UI::Inputfield>(inpt);
@@ -95,9 +88,10 @@ void RType::SoloMenu::init() {
         transform.setPosition({200, 100, 0});
         transform.setParent(canvas);
     }
-    //create button to change spaceship
+
+    // create button to change spaceship
     {
-        auto btn = scene.createGameObject("Choose Btn");
+        auto btn = scene.createGameObject("Choose Ship");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn, ">");
         btnComp->setTextColor(KapEngine::Tools::Color::white());
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
@@ -108,21 +102,24 @@ void RType::SoloMenu::init() {
         transform.setScale(KapEngine::Tools::Vector3(40, 39, 0));
         transform.setParent(canvas);
 
-        btnComp->getOnClick().registerAction([this](){
+        btnComp->getOnClick().registerAction([this]() {
             int currentID = 0;
+
             try {
                 if (!KapEngine::PlayerPrefs::getString("shipID").empty()) {
                     currentID = KapEngine::PlayerPrefs::getInt("shipID");
                 }
             } catch(...) {}
+
             currentID++;
-            if (currentID > 4)
+            if (currentID > 4) {
                 currentID = 0;
+            }
             KapEngine::PlayerPrefs::setInt("shipID", currentID);
         });
     }
 
-    //create spaceship animated
+    // create spaceship animated
     {
         auto shipObj = scene.createGameObject("Animation Ship");
         auto compShipImg = std::make_shared<KapEngine::UI::Image>(shipObj);
@@ -130,14 +127,14 @@ void RType::SoloMenu::init() {
         auto compSpaceShip = std::make_shared<MenuSpaceShip>(shipObj);
 
         shipObj->addComponent(compSpaceShip);
-        compShipImg->setPathSprite("../Assets/Textures/ship1.png");
+        compShipImg->setPathSprite("Assets/Textures/ship1.png");
         compShipImg->setRectangle(KapEngine::Tools::Rectangle(0, 0, 263, 116));
         shipObj->addComponent(compShipImg);
         transform.setScale({132, 58, 0});
         transform.setPosition({200, 200, 0});
         transform.setParent(canvas);
 
-        //create animation
+        // create animation
         {
             auto animator = std::make_shared<KapEngine::Animator>(shipObj);
             auto shipAn = std::make_shared<SpriteAnimation>(shipObj);
@@ -148,7 +145,7 @@ void RType::SoloMenu::init() {
             shipObj->addComponent(shipAn);
             shipAn->setTiming(timer);
             shipAn->loop(true);
-            // shipAn->
+            shipAn->bouncingVersion(true);
             shipAn->setRect(KapEngine::Tools::Rectangle(0, 0, 263, 116));
             shipAn->setNbAnimations(5);
             animator->addAnim(shipAn, "Choose Skin");
@@ -157,9 +154,10 @@ void RType::SoloMenu::init() {
     }
 }
 
-void RType::SoloMenu::goToMenu(std::string const& name) {
+void SoloMenu::goToMenu(std::string const& name) {
     auto objs = scene.getGameObjects("Canvas" + name);
     auto objCurr = scene.getGameObjects("CanvasSoloMenu");
+
     std::shared_ptr<KapEngine::GameObject> _found;
     std::shared_ptr<KapEngine::GameObject> _foundCurrent;
 

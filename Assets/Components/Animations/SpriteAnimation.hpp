@@ -24,11 +24,26 @@ namespace RType {
             void onResetAnim() override;
             void setNbAnimations(int nbAnimations);
             void setRect(KapEngine::Tools::Rectangle rect);
+
+            /**
+             * @brief this function must be call after all setter functions
+             * it gonne calcul all anims to do
+             * @param b 
+             */
+            void bouncingVersion(bool bounce) {
+                if (bounce && !_bounce)
+                    _nbAnimation *= 2;
+                if (!bounce && _bounce)
+                    _nbAnimation /= 2;
+                _bounce = bounce;
+            }
+
         protected:
         private:
             // Variables
-                int _nbAnimation = 0;
-                KapEngine::Tools::Rectangle _rect;
+            int _nbAnimation = 0;
+            bool _bounce = false;
+            KapEngine::Tools::Rectangle _rect;
             // Functions
             void init(std::shared_ptr<KapEngine::GameObject> gameObject);
             KapEngine::UI::Image &getImage();

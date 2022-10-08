@@ -21,7 +21,6 @@ namespace RType {
         }
 
         virtual void init() = 0;
-        virtual void goToMenu(std::string const& menuName) {}
 
         void show() {
             canvas->setActive(true);
@@ -30,5 +29,8 @@ namespace RType {
         void hide() {
             canvas->setActive(false);
         }
+
+        protected:
+        virtual void goToMenu(std::string const& menuName) {}
     };
 }

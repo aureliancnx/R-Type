@@ -70,7 +70,7 @@ namespace KapEngine {
                 bool _hovered = false;
                 bool _clicked = false;
 
-                InputType _type;
+                InputType _type = InputType::TEXT;
 
                 std::string _content = "";
 

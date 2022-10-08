@@ -89,6 +89,7 @@ void KapEngine::Graphical::Raylib::RaylibGraphical::stopDisplay() {
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::startDisplay() {
     if (_drawWindow) {
+        raylib->setBackgroundColor(engineToRaylib(Tools::Color::black()));
         raylib->openWindow();
         raylib->setIcon(manager.getEngine().getIconPath());
     }

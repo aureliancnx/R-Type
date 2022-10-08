@@ -77,26 +77,113 @@ void RType::KeyboardMenu::init() {
         _chgKey->setCanvasInputSentence(_goInputs->getId());
         _chgKey->setCanvasSettings(_goSettings->getId());
     }
-    //create button change test input
+    //create button change up input
     {
         auto btn = scene.createGameObject("ButtonInput1");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
         auto &transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
-        btnComp->setText("Change Test");
+        btnComp->setText("Move Up");
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
         btnComp->setTextPosition({60, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 234, 0});
-        transform.setScale({222, 39, 0});
+        transform.setPosition({249, 150, 0});
+        transform.setScale({222, 40, 0});
         transform.setParent(_goSettings);
 
         btnComp->getOnClick().registerAction([this](){
-            _chgKey->startSelect("TestInput");
+            _chgKey->startSelect("upInput");
         });
     }
+    
+    //create button change down input
+    {
+        auto btn = scene.createGameObject("ButtonInput2");
+        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+        auto &transform = btn->getComponent<KapEngine::Transform>();
+
+        btn->addComponent(btnComp);
+        btnComp->setText("Move Down");
+        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+        btnComp->setTextPosition({60, 12});
+        btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+        transform.setPosition({249, 200, 0});
+        transform.setScale({222, 40, 0});
+        transform.setParent(_goSettings);
+
+        btnComp->getOnClick().registerAction([this](){
+            _chgKey->startSelect("downInput");
+        });
+    }
+    
+
+    //create button change left input
+    {
+        auto btn = scene.createGameObject("ButtonInput3");
+        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+        auto &transform = btn->getComponent<KapEngine::Transform>();
+
+        btn->addComponent(btnComp);
+        btnComp->setText("Move Left");
+        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+        btnComp->setTextPosition({60, 12});
+        btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+        transform.setPosition({249, 250, 0});
+        transform.setScale({222, 40, 0});
+        transform.setParent(_goSettings);
+
+        btnComp->getOnClick().registerAction([this](){
+            _chgKey->startSelect("leftInput");
+        });
+    }
+
+    //create button change right input
+    {
+        auto btn = scene.createGameObject("ButtonInput4");
+        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+        auto &transform = btn->getComponent<KapEngine::Transform>();
+
+        btn->addComponent(btnComp);
+        btnComp->setText("Move Right");
+        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+        btnComp->setTextPosition({60, 12});
+        btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+        transform.setPosition({249, 300, 0});
+        transform.setScale({222, 40, 0});
+        transform.setParent(_goSettings);
+
+        btnComp->getOnClick().registerAction([this](){
+            _chgKey->startSelect("rightInput");
+        });
+    }
+    
+    //create button change shoot input
+    {
+        auto btn = scene.createGameObject("ButtonInput5");
+        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+        auto &transform = btn->getComponent<KapEngine::Transform>();
+
+        btn->addComponent(btnComp);
+        btnComp->setText("Shoot");
+        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+        btnComp->setTextPosition({60, 12});
+        btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+        transform.setPosition({249, 350, 0});
+        transform.setScale({222, 40, 0});
+        transform.setParent(_goSettings);
+
+        btnComp->getOnClick().registerAction([this](){
+            _chgKey->startSelect("shootInput");
+        });
+    }
+    
+
     // create button back
     {
         auto btn = scene.createGameObject("ButtonBack");
@@ -109,7 +196,7 @@ void RType::KeyboardMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({449, 400, 0});
+        transform.setPosition({460, 410, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(_goSettings);
 

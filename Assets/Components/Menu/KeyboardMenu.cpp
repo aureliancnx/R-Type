@@ -201,9 +201,11 @@ void RType::KeyboardMenu::init() {
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Pressed a key to change it's value");
         auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
+        compText->setPoliceSize(20);
+
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(50, 100, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(190, 200, 0));
         transform.setParent(_goInputs);
     }
     //create title

@@ -49,7 +49,6 @@ void RType::KeyboardMenu::init() {
         transform.setScale(KapEngine::Tools::Vector3(720, 480, 0));
         transform.setParent(canvas);
     }
-
     //create parent inputs
     {
         _goInputs = scene.createGameObject("InputsParent");
@@ -59,7 +58,6 @@ void RType::KeyboardMenu::init() {
             _goInputs->getComponent<Transform>().setParent(canvas);
         } catch(...) {}
     }
-
     //create parent settings
     {
         _goSettings = scene.createGameObject("SettingsParent");
@@ -97,7 +95,6 @@ void RType::KeyboardMenu::init() {
             _chgKey->startSelect("upInput");
         });
     }
-    
     //create button change down input
     {
         auto btn = scene.createGameObject("ButtonInput2");
@@ -118,8 +115,6 @@ void RType::KeyboardMenu::init() {
             _chgKey->startSelect("downInput");
         });
     }
-    
-
     //create button change left input
     {
         auto btn = scene.createGameObject("ButtonInput3");
@@ -140,7 +135,6 @@ void RType::KeyboardMenu::init() {
             _chgKey->startSelect("leftInput");
         });
     }
-
     //create button change right input
     {
         auto btn = scene.createGameObject("ButtonInput4");
@@ -161,7 +155,6 @@ void RType::KeyboardMenu::init() {
             _chgKey->startSelect("rightInput");
         });
     }
-    
     //create button change shoot input
     {
         auto btn = scene.createGameObject("ButtonInput5");
@@ -182,8 +175,6 @@ void RType::KeyboardMenu::init() {
             _chgKey->startSelect("shootInput");
         });
     }
-    
-
     // create button back
     {
         auto btn = scene.createGameObject("ButtonBack");
@@ -214,6 +205,19 @@ void RType::KeyboardMenu::init() {
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3(50, 100, 0));
         transform.setParent(_goInputs);
+    }
+    //create title
+    {
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change input");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Change your keys");
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+
+        compText->setPoliceSize(20);
+
+        txt->addComponent(compText);
+        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(270, 50, 0));
+        transform.setParent(_goSettings);
     }
 }
 

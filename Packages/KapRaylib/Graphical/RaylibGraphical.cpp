@@ -50,10 +50,26 @@ KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManag
         if (!_drawWindow)
             return;
         Tools::Vector2 posTr = txt.getCalculatedPos();
+        float scale = txt.getPoliceSize();
+
+        try {
+            auto idParent = txt.getTransform().getParentContainsComponent("Canvas");
+            auto parent = txt.getGameObject().getScene().getObject(idParent);
+
+            auto &canvas = parent->getComponent<UI::Canvas>();
+            auto compare = canvas.getScreenSizeCompare();
+            auto cSize = txt.getGameObject().getEngine().getCurrentGraphicalLib()->getScreenSize();
+
+            if (canvas.getResizeType() == UI::Canvas::RESIZE_WITH_SCREEN) {
+                scale = (cSize.getX() * scale) / compare.getX();
+            }
+        } catch(...) {
+            DEBUG_ERROR("Failed to get canvas of text");
+        }
 
         Vector2 pos = engineToRaylib(posTr);
 
-        this->raylib->drawText(txt.getFontPath(), txt.getText(), pos, txt.getPoliceSize(), txt.getSpace(), engineToRaylib(txt.getColor()));
+        this->raylib->drawText(txt.getFontPath(), txt.getText(), pos, scale, txt.getSpace(), engineToRaylib(txt.getColor()));
     });
 
 }
@@ -73,6 +89,7 @@ void KapEngine::Graphical::Raylib::RaylibGraphical::stopDisplay() {
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::startDisplay() {
     if (_drawWindow) {
+        raylib->setBackgroundColor(engineToRaylib(Tools::Color::black()));
         raylib->openWindow();
         raylib->setIcon(manager.getEngine().getIconPath());
     }

@@ -13,7 +13,16 @@ project(RType LANGUAGES CXX)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake" ${CMAKE_MODULE_PATH})
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
+
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    message(STATUS "GCC detected, adding compile flags")
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    # using Visual Studio C++
+    message(STATUS "MSVC detected, adding compile flags")
+else ()
+    message(FATAL_ERROR "Unsupported compiler")
+endif()
 
 # RayLib version
 set(raylib_VERSION 4.0.0)
@@ -26,13 +35,7 @@ find_package(ZLIB REQUIRED)
 set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost REQUIRED COMPONENTS iostreams)
 
-option(IS_SERVER "Generate R-Type server" OFF)
-
-if(${IS_TEST_NETWORK})
-    file(GLOB_RECURSE SOURCES TestNetworkMain.cpp Assets/Components/*.cpp Packages/*.cpp)
-else()
-    file(GLOB_RECURSE SOURCES ClientMain.cpp Assets/Components/*.cpp Packages/*.cpp)
-endif()
+file(GLOB_RECURSE SOURCES GameMain.cpp Assets/Components/*.cpp Packages/*.cpp)
 
 add_executable(RType ${SOURCES} ${HEADERS})
 

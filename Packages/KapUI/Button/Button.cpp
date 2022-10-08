@@ -28,6 +28,7 @@ void KapEngine::UI::Button::__init(std::shared_ptr<GameObject> go) {
     //create mouseDetector if gameObject does not contain
     if (!go->hasComponent("Mouse Detector")) {
         auto md = std::make_shared<MouseDetector>(go);
+        md->detectMouseInCanvas(true);
         go->addComponent(md);
     }
     //create image component if gameObject does not contain

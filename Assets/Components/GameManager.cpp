@@ -3,6 +3,7 @@
 #include "Menu/MainMenu.hpp"
 #include "Menu/SoloMenu.hpp"
 #include "Menu/MultiMenu.hpp"
+#include "Menu/KeyboardMenu.hpp"
 
 #include "KapMirror/KapMirror.hpp"
 
@@ -38,6 +39,9 @@ void GameManager::registerMenus() {
 
     auto multiMenu = std::make_shared<MultiMenu>(scene);
     menuManager.registerMenu("MultiMenu", multiMenu);
+
+    auto keymenu = std::make_shared<KeyboardMenu>(scene);
+    menuManager.registerMenu("KeysMenu", keymenu);
 }
 
 void GameManager::registerPrefabsPlayer() {

@@ -4,6 +4,7 @@
 #include "InputField/Inputfield.hpp"
 #include "Spaceship/MenuSpaceShip.hpp"
 #include "Animations/SpriteAnimation.hpp"
+#include "Keys/UpdateStartGameKeys.hpp"
 
 using namespace RType;
 
@@ -39,6 +40,9 @@ void SoloMenu::init() {
         auto btn = scene.createGameObject("ButtonPlay");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
         auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto updateKeys = std::make_shared<UpdateStartGameKeys>(canvas);
+
+        canvas->addComponent(updateKeys);
 
         btn->addComponent(btnComp);
         btnComp->setText("Play");
@@ -51,6 +55,12 @@ void SoloMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
+            try {
+                canvas->getComponent<UpdateStartGameKeys>().checkInputs();
+            } catch(...) {
+                KAP_DEBUG_ERROR("Failed to update inputs");
+            }
+
             scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
         });
     }

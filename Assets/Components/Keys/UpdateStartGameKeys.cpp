@@ -63,7 +63,7 @@ void RType::UpdateStartGameKeys::checkInputs() {
 
 }
 
-bool setValueSaved(std::string const& name, Events::Key &key) {
+bool RType::UpdateStartGameKeys::setValueSaved(std::string const& name, Events::Key &key) {
     if (PlayerPrefs::getString(name) == "")
         return false;
     int val = PlayerPrefs::getInt(name);

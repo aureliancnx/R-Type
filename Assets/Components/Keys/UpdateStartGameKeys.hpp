@@ -15,7 +15,7 @@ using namespace KapEngine;
 
 namespace RType {
 
-    class UpdateStartGameKeys : Component {
+    class UpdateStartGameKeys : public Component {
         public:
             UpdateStartGameKeys(std::shared_ptr<GameObject> go);
             ~UpdateStartGameKeys();

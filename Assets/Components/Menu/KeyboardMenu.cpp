@@ -1,18 +1,9 @@
-/*
-** EPITECH PROJECT, 2022
-** RType
-** File description:
-** KeyboardMenu
-*/
 
 #include "KeyboardMenu.hpp"
-
 #include "KapEngineDebug.hpp"
 #include "KapEngineUi.hpp"
-
 #include "Button/Button.hpp"
 #include "InputField/Inputfield.hpp"
-
 #include "Keys/ChangeKey.hpp"
 
 using namespace KapEngine;
@@ -26,17 +17,17 @@ RType::KeyboardMenu::~KeyboardMenu()
 }
 
 void RType::KeyboardMenu::init() {
-    //change type of display for canvas
+    // change type of display for canvas
     {
         try {
             auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
-
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
         } catch(...) {
             KAP_DEBUG_ERROR("Failed to resize canvas");
         }
     }
-    //create background
+
+    // create background
     {
         auto background = KapEngine::UI::UiFactory::createImage(scene, "Background");
         auto imageComp = std::make_shared<KapEngine::UI::Image>(background);
@@ -49,7 +40,7 @@ void RType::KeyboardMenu::init() {
         transform.setScale(KapEngine::Tools::Vector3(720, 480, 0));
         transform.setParent(canvas);
     }
-    //create parent inputs
+    // create parent inputs
     {
         _goInputs = scene.createGameObject("InputsParent");
         _goInputs->setActive(false);
@@ -58,7 +49,8 @@ void RType::KeyboardMenu::init() {
             _goInputs->getComponent<Transform>().setParent(canvas);
         } catch(...) {}
     }
-    //create parent settings
+
+    // create parent settings
     {
         _goSettings = scene.createGameObject("SettingsParent");
 
@@ -66,7 +58,8 @@ void RType::KeyboardMenu::init() {
             _goSettings->getComponent<Transform>().setParent(canvas);
         } catch(...) {}
     }
-    //init chnage Key Component
+
+    // init chnage Key Component
     {
         _chgKey = std::make_shared<ChangeKey>(canvas);
 
@@ -75,7 +68,8 @@ void RType::KeyboardMenu::init() {
         _chgKey->setCanvasInputSentence(_goInputs->getId());
         _chgKey->setCanvasSettings(_goSettings->getId());
     }
-    //create button change up input
+
+    // create button change up input
     {
         auto btn = scene.createGameObject("ButtonInput1");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
@@ -91,11 +85,12 @@ void RType::KeyboardMenu::init() {
         transform.setScale({222, 40, 0});
         transform.setParent(_goSettings);
 
-        btnComp->getOnClick().registerAction([this](){
+        btnComp->getOnClick().registerAction([this]() {
             _chgKey->startSelect("upInput");
         });
     }
-    //create button change down input
+
+    // create button change down input
     {
         auto btn = scene.createGameObject("ButtonInput2");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
@@ -111,11 +106,12 @@ void RType::KeyboardMenu::init() {
         transform.setScale({222, 40, 0});
         transform.setParent(_goSettings);
 
-        btnComp->getOnClick().registerAction([this](){
+        btnComp->getOnClick().registerAction([this]() {
             _chgKey->startSelect("downInput");
         });
     }
-    //create button change left input
+
+    // create button change left input
     {
         auto btn = scene.createGameObject("ButtonInput3");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
@@ -131,11 +127,12 @@ void RType::KeyboardMenu::init() {
         transform.setScale({222, 40, 0});
         transform.setParent(_goSettings);
 
-        btnComp->getOnClick().registerAction([this](){
+        btnComp->getOnClick().registerAction([this]() {
             _chgKey->startSelect("leftInput");
         });
     }
-    //create button change right input
+
+    // create button change right input
     {
         auto btn = scene.createGameObject("ButtonInput4");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
@@ -151,11 +148,12 @@ void RType::KeyboardMenu::init() {
         transform.setScale({222, 40, 0});
         transform.setParent(_goSettings);
 
-        btnComp->getOnClick().registerAction([this](){
+        btnComp->getOnClick().registerAction([this]() {
             _chgKey->startSelect("rightInput");
         });
     }
-    //create button change shoot input
+
+    // create button change shoot input
     {
         auto btn = scene.createGameObject("ButtonInput5");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
@@ -171,10 +169,11 @@ void RType::KeyboardMenu::init() {
         transform.setScale({222, 40, 0});
         transform.setParent(_goSettings);
 
-        btnComp->getOnClick().registerAction([this](){
+        btnComp->getOnClick().registerAction([this]() {
             _chgKey->startSelect("shootInput");
         });
     }
+
     // create button back
     {
         auto btn = scene.createGameObject("ButtonBack");
@@ -195,7 +194,8 @@ void RType::KeyboardMenu::init() {
             goToMenu("MainMenu");
         });
     }
-    //create instruction
+
+    // create instruction
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change input");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Pressed a key to change it's value");
@@ -208,7 +208,8 @@ void RType::KeyboardMenu::init() {
         transform.setPosition(KapEngine::Tools::Vector3(190, 200, 0));
         transform.setParent(_goInputs);
     }
-    //create title
+
+    // create title
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change input");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Change your keys");

@@ -24,8 +24,12 @@ namespace RType {
             void onAwake() override;
             void onUpdate() override;
 
-            void setCanvasSettings(std::size_t id);
-            void setCanvasInputSentence(std::size_t id);
+            void setCanvasSettings(std::size_t id) {
+                _idSettings = id;
+            }
+            void setCanvasInputSentence(std::size_t id) {
+                _idInput = id;
+            }
 
             void startSelect(std::string const& prefName);
 

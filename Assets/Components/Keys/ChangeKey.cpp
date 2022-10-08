@@ -45,6 +45,7 @@ void RType::ChangeKey::startSelect(std::string const& prefName) {
         DEBUG_ERROR("You can't select a key without set a name to PlayerPrefs");
         return;
     }
+    _startSelect = true;
     _prefName = prefName;
     auto &keySel = getGameObject().getComponent<KeySelector>();
     keySel.selectKey();
@@ -72,7 +73,8 @@ void RType::ChangeKey::displayInputs() {
 }
 
 void RType::ChangeKey::displaySettings() {
-        std::shared_ptr<GameObject> go;
+    KAP_DEBUG_LOG("DISPLAYING SETTINGS");
+    std::shared_ptr<GameObject> go;
     std::shared_ptr<GameObject> goS;
     try {
         go = getGameObject().getScene().getObject(_idInput);

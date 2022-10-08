@@ -3,6 +3,9 @@
 #include "Menu/MainMenu.hpp"
 #include "Menu/SoloMenu.hpp"
 #include "Menu/MultiMenu.hpp"
+#include "Menu/SettingsMenu.hpp"
+#include "Menu/VolumeMenu.hpp"
+#include "Menu/KeyboardMenu.hpp"
 
 using namespace RType;
 
@@ -43,6 +46,15 @@ void GameManager::registerMenus() {
 
     auto multiMenu = std::make_shared<MultiMenu>(scene);
     menuManager.registerMenu("MultiMenu", multiMenu);
+
+    auto settingsMenu = std::make_shared<SettingsMenu>(scene);
+    menuManager.registerMenu("SettingsMenu", settingsMenu);
+
+    auto volumeMenu = std::make_shared<VolumeMenu>(scene);
+    menuManager.registerMenu("VolumeMenu", volumeMenu);
+
+    auto keyboardMenu = std::make_shared<KeyboardMenu>(scene);
+    menuManager.registerMenu("KeyboardMenu", keyboardMenu);
 }
 
 void GameManager::registerPrefabsPlayer() {

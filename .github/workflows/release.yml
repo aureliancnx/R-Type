@@ -89,12 +89,12 @@ jobs:
         shell: bash
         run: cmake --build build --config ${{ matrix.config.build_type }}
       - name: Prepare release files (Linux)
-        if: startsWith(matrix.config.os, 'Ubuntu Latest GCC')
+        if: startsWith(matrix.config.name, 'Ubuntu Latest GCC')
         run: |
           mkdir build-release/
           cp ./build/RType build-release/
           mkdir build-release/Assets
-          cp -R ./build/Assets/Textures build-release/Assets/Textures
+          cp -R ./build/Assets/Textures build-releasze/Assets/Textures
           cp -R ./build/Assets/Sounds build-release/Assets/Sounds
       - name: Zip release
         uses: vimtor/action-zip@v1

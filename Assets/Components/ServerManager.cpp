@@ -25,6 +25,6 @@ void ServerManager::initServer() {
     auto scene = engine->getSceneManager()->createScene("Server");
 
     auto networkManager = scene->createGameObject("NetworkManager");
-    auto networkManagerComp = std::make_shared<RtypeNetworkManager>(networkManager);
+    auto networkManagerComp = std::make_shared<RtypeNetworkManager>(networkManager, true);
     networkManager->addComponent(networkManagerComp);
 }

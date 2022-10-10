@@ -11,6 +11,10 @@ namespace RType {
         RtypeNetworkManager(std::shared_ptr<KapEngine::GameObject> go, bool _isServer = false);
         ~RtypeNetworkManager() = default;
 
+        void onStart() override;
+
+        void onUpdate() override;
+
         void onServerClientConnected(std::shared_ptr<KapMirror::NetworkConnection> connection) override;
     };
 }

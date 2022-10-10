@@ -9,12 +9,12 @@
 namespace RType {
     class GameManager {
         private:
-        KapEngine::KapEngine& engine;
+        KapEngine::KapEngine* engine;
 
         MenuManager menuManager;
 
         public:
-        GameManager(KapEngine::KapEngine& _engine);
+        GameManager(KapEngine::KapEngine* _engine);
         ~GameManager() = default;
 
         void launchGame();
@@ -26,10 +26,9 @@ namespace RType {
         void initSplashScreens();
 
         void initSinglePlayer();
-
-        void startMultiPlayer();
         void initMultiPlayer();
 
-        void startServer();
+        public:
+        void startMultiPlayer();
     };
 }

@@ -7,16 +7,18 @@
 
 #include "KapMirror/KapMirror.hpp"
 #include "RtypeNetworkManager.hpp"
+#include "Prefabs.hpp"
 
 using namespace RType;
 
-GameManager::GameManager(KapEngine::KapEngine& _engine) : engine(_engine) {}
+GameManager::GameManager(KapEngine::KapEngine* _engine) : engine(_engine) {}
 
 void GameManager::launchGame() {
     KapEngine::Debug::log("Launch game");
 
+    Prefabs::registerPlayerPrefab(*engine);
+
     registerMenus();
-    registerPrefabsPlayer();
     initSinglePlayer();
     initMultiPlayer();
     registerAxises();
@@ -29,7 +31,7 @@ void GameManager::launchGame() {
 void GameManager::registerMenus() {
     KapEngine::Debug::log("Register menus");
 
-    auto& scene = engine.getSceneManager()->getScene(1);
+    auto& scene = engine->getSceneManager()->getScene(1);
 
     // Register menus
     auto mainMenu = std::make_shared<MainMenu>(scene);
@@ -38,51 +40,19 @@ void GameManager::registerMenus() {
     auto soloMenu = std::make_shared<SoloMenu>(scene);
     menuManager.registerMenu("SoloMenu", soloMenu);
 
-    auto multiMenu = std::make_shared<MultiMenu>(scene);
+    auto multiMenu = std::make_shared<MultiMenu>(scene, *this);
     menuManager.registerMenu("MultiMenu", multiMenu);
 
     auto keymenu = std::make_shared<KeyboardMenu>(scene);
     menuManager.registerMenu("KeysMenu", keymenu);
 }
 
-void GameManager::registerPrefabsPlayer() {
-    KapEngine::Debug::log("Register player prefabs");
-
-    engine.getPrefabManager()->createPrefab("Player", [](KapEngine::SceneManagement::Scene& scene) {
-        auto player = scene.createGameObject("Player");
-        auto playerCanvas = KapEngine::UI::UiFactory::createCanvas(scene, "PlayerCanvas");
-
-        auto networkIdentityComp = std::make_shared<KapMirror::Experimental::NetworkIdentity>(player);
-        player->addComponent(networkIdentityComp);
-
-        auto networkTransformComp = std::make_shared<KapMirror::Experimental::NetworkTransform>(player);
-        networkTransformComp->setClientAuthority(false);
-        networkTransformComp->setSendRate(5);
-        player->addComponent(networkTransformComp);
-
-        auto playerComp = std::make_shared<Player>(player);
-        player->addComponent(playerComp);
-
-        auto imageComp = std::make_shared<KapEngine::UI::Image>(player);
-        imageComp->setRectangle({0, 0, 26, 21});
-        imageComp->setPathSprite("Assets/Textures/Ship/space_ship.png");
-        player->addComponent(imageComp);
-
-        auto& transform = player->getComponent<KapEngine::Transform>();
-        transform.setPosition({0, 0, 0});
-        transform.setScale({(26 * 2), (21 * 2)});
-        transform.setParent(playerCanvas->getId());
-
-        return player;
-    });
-}
-
 // TODO: Move this to a dedicated class
 void GameManager::initSinglePlayer() {
-    auto scene = engine.getSceneManager()->createScene("SinglePlayer");
+    auto scene = engine->getSceneManager()->createScene("SinglePlayer");
 
     std::shared_ptr<KapEngine::GameObject> player;
-    if (!engine.getPrefabManager()->instantiatePrefab("Player", *scene, player)) {
+    if (!engine->getPrefabManager()->instantiatePrefab("Player", *scene, player)) {
         KAP_DEBUG_ERROR("Failed to instantiate player prefab");
         return;
     }
@@ -99,7 +69,7 @@ void GameManager::initSinglePlayer() {
 
 // TODO: Move this to a dedicated class
 void GameManager::initMultiPlayer() {
-    auto scene = engine.getSceneManager()->createScene("MultiPlayer");
+    auto scene = engine->getSceneManager()->createScene("MultiPlayer");
 
     auto networkManager = scene->createGameObject("NetworkManager");
     auto networkManagerComp = std::make_shared<RtypeNetworkManager>(networkManager);
@@ -108,20 +78,11 @@ void GameManager::initMultiPlayer() {
 
 // TODO: Move this to a dedicated class
 void GameManager::startMultiPlayer() {
-    auto& scene = engine.getSceneManager()->getScene("MultiPlayer");
+    auto& scene = engine->getSceneManager()->getScene("MultiPlayer");
 
     auto networkManager = scene.findFirstGameObject("NetworkManager");
     auto networkManagerComp = networkManager->getComponent<RtypeNetworkManager>();
     networkManagerComp.startClient();
-}
-
-// TODO: Move this to a dedicated class
-void GameManager::startServer() {
-    auto& scene = engine.getSceneManager()->getScene("MultiPlayer");
-
-    auto networkManager = scene.findFirstGameObject("NetworkManager");
-    auto networkManagerComp = networkManager->getComponent<RtypeNetworkManager>();
-    networkManagerComp.startServer();
 }
 
 void GameManager::registerAxises() {
@@ -143,9 +104,9 @@ void GameManager::registerAxises() {
     _axisM.negativeButton = KapEngine::Events::Key::MOUSE_RIGHT;
 
     // add axis
-    engine.getEventManager().getInput().addAxis(_axisH);
-    engine.getEventManager().getInput().addAxis(_axisV);
-    engine.getEventManager().getInput().addAxis(_axisM);
+    engine->getEventManager().getInput().addAxis(_axisH);
+    engine->getEventManager().getInput().addAxis(_axisV);
+    engine->getEventManager().getInput().addAxis(_axisM);
 }
 
 void GameManager::initSplashScreens() {
@@ -155,5 +116,5 @@ void GameManager::initSplashScreens() {
     nsplash->size = KapEngine::Tools::Vector2({650.f, 382.35f});
     nsplash->pos = KapEngine::Tools::Vector2({35.f, 48.825f});
 
-    engine.getSplashScreen()->addSplashScreen(nsplash);
+    engine->getSplashScreen()->addSplashScreen(nsplash);
 }

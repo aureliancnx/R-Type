@@ -19,10 +19,6 @@ namespace RType {
 
         void launchGame();
 
-        void launchServer();
-
-        void startMultiPlayer();
-
         private:
         void registerMenus();
         void registerPrefabsPlayer();
@@ -30,9 +26,6 @@ namespace RType {
         void initSplashScreens();
 
         void initSinglePlayer();
-
         void initMultiPlayer();
-
-        void startServer();
     };
 }

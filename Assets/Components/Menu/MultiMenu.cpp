@@ -7,7 +7,7 @@
 
 using namespace RType;
 
-MultiMenu::MultiMenu(KapEngine::SceneManagement::Scene& _scene, GameManager& _gameManager) : Menu(_scene), gameManager(gameManager) {}
+MultiMenu::MultiMenu(KapEngine::SceneManagement::Scene& _scene) : Menu(_scene) {}
 
 void MultiMenu::init() {
     // change type of display for canvas
@@ -104,7 +104,6 @@ void MultiMenu::init() {
 
         btnComp->getOnClick().registerAction([this]() {
             scene.getEngine().getSceneManager()->loadScene("MultiPlayer");
-            gameManager.startMultiPlayer();
         });
     }
 

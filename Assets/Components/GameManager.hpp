@@ -26,6 +26,10 @@ namespace RType {
         void initSplashScreens();
 
         void initSinglePlayer();
+
+        void startMultiPlayer();
         void initMultiPlayer();
+
+        void startServer();
     };
 }

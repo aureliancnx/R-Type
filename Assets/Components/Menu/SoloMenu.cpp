@@ -2,7 +2,6 @@
 #include "KapEngineUi.hpp"
 #include "Button/Button.hpp"
 #include "InputField/Inputfield.hpp"
-#include "Spaceship/MenuSpaceShip.hpp"
 #include "Animations/SpriteAnimation.hpp"
 #include "Keys/UpdateStartGameKeys.hpp"
 
@@ -133,10 +132,8 @@ void SoloMenu::init() {
     {
         auto shipObj = scene.createGameObject("Animation Ship");
         auto compShipImg = std::make_shared<KapEngine::UI::Image>(shipObj);
-        auto &transform = (KapEngine::Transform &)shipObj->getTransform();
-        auto compSpaceShip = std::make_shared<MenuSpaceShip>(shipObj);
+        auto& transform = shipObj->getComponent<KapEngine::Transform>();
 
-        shipObj->addComponent(compSpaceShip);
         compShipImg->setPathSprite("Assets/Textures/ship1.png");
         compShipImg->setRectangle(KapEngine::Tools::Rectangle(0, 0, 263, 116));
         shipObj->addComponent(compShipImg);

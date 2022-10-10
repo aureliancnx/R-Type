@@ -2,7 +2,6 @@
 #include "KapEngineUi.hpp"
 #include "Button/Button.hpp"
 #include "InputField/Inputfield.hpp"
-#include "Spaceship/MenuSpaceShip.hpp"
 #include "Animations/SpriteAnimation.hpp"
 
 using namespace RType;

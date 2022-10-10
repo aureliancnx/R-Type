@@ -1,50 +1,34 @@
-/*
-** EPITECH PROJECT, 2022
-** RType
-** File description:
-** Shoot.hpp
-*/
-
-#ifndef RTYPE_SHOOT_HPP
-#define RTYPE_SHOOT_HPP
+#pragma once
 
 #include "KapEngine.hpp"
 #include "KapEngineDebug.hpp"
 #include "KapEngineUi.hpp"
 
-namespace KapEngine {
-    namespace RType {
+namespace RType {
+    class Shoot : public KapEngine::Component {
+        private:
+        std::string _path;
+        KapEngine::Tools::Rectangle _rect;
+        KapEngine::Tools::Vector3 _pos;
+        KapEngine::Tools::Vector3 _cPos;
+        KapEngine::Tools::Vector2 _direction;
 
-        class Shoot : public Component {
-            public:
-                Shoot(std::shared_ptr<GameObject> gameObject);
-                Shoot(std::shared_ptr<GameObject> gameObject, const std::string &path, Tools::Rectangle rect);
-                ~Shoot() = default;
+        public:
+        Shoot(std::shared_ptr<KapEngine::GameObject> gameObject);
+        Shoot(std::shared_ptr<KapEngine::GameObject> gameObject, const std::string &path, KapEngine::Tools::Rectangle rect);
+        ~Shoot() = default;
 
-                void onFixedUpdate() override;
+        void onFixedUpdate() override;
 
-                void setPath(const std::string &path);
-                void setRectangle(const Tools::Rectangle &rect);
-                void setDirection(const Tools::Vector2 &direction);
-                void setPos(const Tools::Vector2 &pos);
+        void setPath(const std::string &path);
+        void setRectangle(const KapEngine::Tools::Rectangle &rect);
+        void setDirection(const KapEngine::Tools::Vector2 &direction);
+        void setPos(const KapEngine::Tools::Vector2 &pos);
 
-                void shoot(const Tools::Vector2 &direction, const Tools::Vector2 &pos);
+        void shoot(const KapEngine::Tools::Vector2 &direction, const KapEngine::Tools::Vector2 &pos);
 
-            protected:
-            private:
-                // Variables
-                std::string _path;
-                Tools::Rectangle _rect;
-                Tools::Vector3 _pos;
-                Tools::Vector3 _cPos;
-                Tools::Vector2 _direction;
-
-                // Functions
-                void init(std::shared_ptr<GameObject> gameObject);
-                UI::Image &getImage();
-        };
-
-    } // KapEngine
-} // RType
-
-#endif //RTYPE_SHOOT_HPP
+        private:
+        void init(std::shared_ptr<KapEngine::GameObject> gameObject);
+        KapEngine::UI::Image &getImage();
+    };
+}

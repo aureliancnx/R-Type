@@ -165,4 +165,5 @@ void GameManager::initSplashScreens() {
     nsplash->pos = KapEngine::Tools::Vector2({35.f, 48.825f});
 
     engine.getSplashScreen()->addSplashScreen(nsplash);
+    engine.getSplashScreen()->setDisplayKapEngineLogo(true);
 }

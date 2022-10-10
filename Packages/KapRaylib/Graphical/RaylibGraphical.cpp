@@ -264,6 +264,13 @@ KapEngine::Events::Key::EKey KapEngine::Graphical::Raylib::RaylibGraphical::toKe
     return res;
 }
 
+KapEngine::Events::Key::EKey KapEngine::Graphical::Raylib::RaylibGraphical::toKey(int _key) {
+    if (Events::Key::intInEnum(_key)) {
+        return (Events::Key::EKey)_key;
+    }
+    return Events::Key::UNKNOWN;
+}
+
 int KapEngine::Graphical::Raylib::RaylibGraphical::toRaylibKey(Events::Key key)
 {
     if (key.isKeyboardKey())

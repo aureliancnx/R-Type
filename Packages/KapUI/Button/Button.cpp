@@ -6,12 +6,8 @@
 */
 
 #include "Button.hpp"
-#include "UiImage.hpp"
-#include "UiText.hpp"
-#include "UiFactory.hpp"
-#include "Debug.hpp"
-#include "MouseDetector.hpp"
-#include "Key.hpp"
+
+#include "KapEngineUi.hpp"
 
 KapEngine::UI::Button::Button(std::shared_ptr<GameObject> go, std::string const& textContent) : Component(go, "Button") {
     __init(go);

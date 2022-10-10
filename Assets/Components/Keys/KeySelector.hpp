@@ -1,38 +1,23 @@
-/*
-** EPITECH PROJECT, 2022
-** RType
-** File description:
-** KeySelector
-*/
-
-#ifndef KEYSELECTOR_HPP_
-#define KEYSELECTOR_HPP_
+#pragma once
 
 #include "KapEngine.hpp"
 #include "KapEngineDebug.hpp"
 #include "KapEngineEvents.hpp"
 
-using namespace KapEngine;
-
 namespace RType {
-
-    class KeySelector : public Component {
-        public:
-            KeySelector(std::shared_ptr<GameObject> go);
-            ~KeySelector();
-
-            void onUpdate() override;
-
-            bool keySelected(Events::Key &key);
-
-            void selectKey();
-
-        protected:
+    class KeySelector : public KapEngine::Component {
         private:
-            Events::Key _selected;
-            bool _check = false;
+        KapEngine::Events::Key _selected;
+        bool _check = false;
+
+        public:
+        KeySelector(std::shared_ptr<KapEngine::GameObject> go);
+        ~KeySelector() = default;
+
+        void onUpdate() override;
+
+        bool keySelected(KapEngine::Events::Key &key);
+
+        void selectKey();
     };
-
 }
-
-#endif /* !KEYSELECTOR_HPP_ */

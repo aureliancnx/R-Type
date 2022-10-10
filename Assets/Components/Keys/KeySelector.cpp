@@ -1,23 +1,16 @@
-/*
-** EPITECH PROJECT, 2022
-** RType
-** File description:
-** KeySelector
-*/
-
 #include "KeySelector.hpp"
 
-RType::KeySelector::KeySelector(std::shared_ptr<GameObject> go) : Component(go, "KeySelector") {}
+using namespace RType;
 
-RType::KeySelector::~KeySelector() {}
+KeySelector::KeySelector(std::shared_ptr<KapEngine::GameObject> go) : Component(go, "KeySelector") {}
 
-void RType::KeySelector::onUpdate() {
+void KeySelector::onUpdate() {
     if (_check == false)
         return;
-    for (int i = Events::Key::minValue(); i < Events::Key::maxValue(); i++) {
-        if (Events::Key::intInEnum(i)) {
-            Events::Key toCheck;
-            toCheck = (Events::Key::EKey)i;
+    for (int i = KapEngine::Events::Key::minValue(); i < KapEngine::Events::Key::maxValue(); i++) {
+        if (KapEngine::Events::Key::intInEnum(i)) {
+            KapEngine::Events::Key toCheck;
+            toCheck = (KapEngine::Events::Key::EKey)i;
             if (getInput().getKeyDown(toCheck)) {
                 _selected = toCheck;
                 _check = false;
@@ -27,15 +20,15 @@ void RType::KeySelector::onUpdate() {
     }
 }
 
-bool RType::KeySelector::keySelected(Events::Key &key) {
-    if (_selected == Events::Key::UNKNOWN)
+bool KeySelector::keySelected(KapEngine::Events::Key &key) {
+    if (_selected == KapEngine::Events::Key::UNKNOWN)
         return false;
     _check = false;
     key = _selected;
     return true;
 }
 
-void RType::KeySelector::selectKey() {
-    _selected = Events::Key::UNKNOWN;
+void KeySelector::selectKey() {
+    _selected = KapEngine::Events::Key::UNKNOWN;
     _check = true;
 }

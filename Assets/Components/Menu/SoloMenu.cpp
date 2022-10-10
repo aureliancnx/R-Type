@@ -106,7 +106,7 @@ void SoloMenu::init() {
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
         btn->addComponent(btnComp);
 
-        auto &transform = (KapEngine::Transform &)btn->getTransform();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
         transform.setPosition(KapEngine::Tools::Vector3(350, 200, 0));
         transform.setScale(KapEngine::Tools::Vector3(40, 39, 0));
         transform.setParent(canvas);

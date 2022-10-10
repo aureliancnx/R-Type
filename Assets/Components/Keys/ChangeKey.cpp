@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2022
-** RType
-** File description:
-** ChangeKey
-*/
-
 #include "ChangeKey.hpp"
 #include "KeySelector.hpp"
 

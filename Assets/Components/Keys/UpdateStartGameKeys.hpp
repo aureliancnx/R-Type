@@ -1,36 +1,21 @@
-/*
-** EPITECH PROJECT, 2022
-** RType
-** File description:
-** UpdateStartGameKeys
-*/
-
-#ifndef UPDATESTARTGAMEKEYS_HPP_
-#define UPDATESTARTGAMEKEYS_HPP_
+#pragma once
 
 #include "KapEngine.hpp"
 #include "KapEngineEvents.hpp"
 
-using namespace KapEngine;
-
 namespace RType {
-
-    class UpdateStartGameKeys : public Component {
+    class UpdateStartGameKeys : public KapEngine::Component {
         public:
-            UpdateStartGameKeys(std::shared_ptr<GameObject> go);
-            ~UpdateStartGameKeys();
+        UpdateStartGameKeys(std::shared_ptr<KapEngine::GameObject> go);
+        ~UpdateStartGameKeys();
 
-            void checkInputs();
+        void checkInputs();
 
-        protected:
         private:
-            Events::Input::Axis _baseAxisVert;
-            Events::Input::Axis _baseAxisHor;
-            Events::Input::Axis _baseAxisShoot;
+        KapEngine::Events::Input::Axis _baseAxisVert;
+        KapEngine::Events::Input::Axis _baseAxisHor;
+        KapEngine::Events::Input::Axis _baseAxisShoot;
 
-            bool setValueSaved(std::string const& name, Events::Key &key);
+        bool setValueSaved(std::string const& name, KapEngine::Events::Key &key);
     };
-
 }
-
-#endif /* !UPDATESTARTGAMEKEYS_HPP_ */

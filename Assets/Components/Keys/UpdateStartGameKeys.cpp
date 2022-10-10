@@ -1,33 +1,27 @@
-/*
-** EPITECH PROJECT, 2022
-** RType
-** File description:
-** UpdateStartGameKeys
-*/
-
 #include "UpdateStartGameKeys.hpp"
 
-RType::UpdateStartGameKeys::UpdateStartGameKeys(std::shared_ptr<GameObject> go) : Component(go, "UpdateStartGameKeys"),
+using namespace RType;
+
+UpdateStartGameKeys::UpdateStartGameKeys(std::shared_ptr<KapEngine::GameObject> go) : Component(go, "UpdateStartGameKeys"),
     _baseAxisHor("basicHorizontal"), _baseAxisVert("basicVertical"), _baseAxisShoot("basicShoot") {
 
-    _baseAxisHor.positiveButton = Events::Key::RIGHT;
-    _baseAxisHor.negativeButton = Events::Key::LEFT;
+    _baseAxisHor.positiveButton = KapEngine::Events::Key::RIGHT;
+    _baseAxisHor.negativeButton = KapEngine::Events::Key::LEFT;
 
-    _baseAxisVert.positiveButton = Events::Key::DOWN;
-    _baseAxisVert.negativeButton = Events::Key::UP;
+    _baseAxisVert.positiveButton = KapEngine::Events::Key::DOWN;
+    _baseAxisVert.negativeButton = KapEngine::Events::Key::UP;
 
-    _baseAxisShoot.positiveButton = Events::Key::MOUSE_LEFT;
+    _baseAxisShoot.positiveButton = KapEngine::Events::Key::MOUSE_LEFT;
 }
 
-RType::UpdateStartGameKeys::~UpdateStartGameKeys() {}
+UpdateStartGameKeys::~UpdateStartGameKeys() {}
 
-void RType::UpdateStartGameKeys::checkInputs() {
-
-    Events::Key up = _baseAxisVert.negativeButton;
-    Events::Key down = _baseAxisVert.positiveButton;
-    Events::Key left = _baseAxisHor.negativeButton;
-    Events::Key right = _baseAxisHor.positiveButton;
-    Events::Key shoot = _baseAxisShoot.positiveButton;
+void UpdateStartGameKeys::checkInputs() {
+    KapEngine::Events::Key up = _baseAxisVert.negativeButton;
+    KapEngine::Events::Key down = _baseAxisVert.positiveButton;
+    KapEngine::Events::Key left = _baseAxisHor.negativeButton;
+    KapEngine::Events::Key right = _baseAxisHor.positiveButton;
+    KapEngine::Events::Key shoot = _baseAxisShoot.positiveButton;
 
     setValueSaved("upInput", up);
     setValueSaved("downInput", down);
@@ -36,8 +30,7 @@ void RType::UpdateStartGameKeys::checkInputs() {
     setValueSaved("shootInput", shoot);
 
     try {
-        auto &axis = getInput().getAxisSettings("Vertical");
-
+        auto& axis = getInput().getAxisSettings("Vertical");
         axis.positiveButton = down;
         axis.negativeButton = up;
     } catch(...) {
@@ -45,8 +38,7 @@ void RType::UpdateStartGameKeys::checkInputs() {
     }
 
     try {
-        auto &axis = getInput().getAxisSettings("Horizontal");
-
+        auto& axis = getInput().getAxisSettings("Horizontal");
         axis.positiveButton = right;
         axis.negativeButton = left;
     } catch(...) {
@@ -54,21 +46,19 @@ void RType::UpdateStartGameKeys::checkInputs() {
     }
 
     try {
-        auto &axis = getInput().getAxisSettings("Shoot");
-
+        auto& axis = getInput().getAxisSettings("Shoot");
         axis.positiveButton = shoot;
     } catch(...) {
         KAP_DEBUG_ERROR("Failed to update Shoot axis");
     }
-
 }
 
-bool RType::UpdateStartGameKeys::setValueSaved(std::string const& name, Events::Key &key) {
-    if (PlayerPrefs::getString(name) == "")
+bool UpdateStartGameKeys::setValueSaved(std::string const& name, KapEngine::Events::Key &key) {
+    if (KapEngine::PlayerPrefs::getString(name) == "")
         return false;
-    int val = PlayerPrefs::getInt(name);
-    if (!Events::Key::intInEnum(val))
+    int val = KapEngine::PlayerPrefs::getInt(name);
+    if (!KapEngine::Events::Key::intInEnum(val))
         return false;
-    key = (Events::Key::EKey)val;
+    key = (KapEngine::Events::Key::EKey)val;
     return true;
 }

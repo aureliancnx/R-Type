@@ -9,8 +9,5 @@ namespace RType {
         ~MainMenu() = default;
 
         void init() override;
-
-        protected:
-        void goToMenu(std::string const& name) override;
     };
 }

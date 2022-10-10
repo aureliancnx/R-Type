@@ -8,12 +8,7 @@
 
 using namespace KapEngine;
 
-RType::KeyboardMenu::KeyboardMenu(SceneManagement::Scene &scene) : Menu(scene)
-{
-}
-
-RType::KeyboardMenu::~KeyboardMenu()
-{
+RType::KeyboardMenu::KeyboardMenu(SceneManagement::Scene &scene) : Menu(scene) {
 }
 
 void RType::KeyboardMenu::init() {
@@ -40,6 +35,7 @@ void RType::KeyboardMenu::init() {
         transform.setScale(KapEngine::Tools::Vector3(720, 480, 0));
         transform.setParent(canvas);
     }
+
     // create parent inputs
     {
         _goInputs = scene.createGameObject("InputsParent");
@@ -191,7 +187,7 @@ void RType::KeyboardMenu::init() {
         transform.setParent(_goSettings);
 
         btnComp->getOnClick().registerAction([this]() {
-            goToMenu("MainMenu");
+            switchMenu("MainMenu");
         });
     }
 
@@ -222,36 +218,4 @@ void RType::KeyboardMenu::init() {
         transform.setPosition(KapEngine::Tools::Vector3(270, 50, 0));
         transform.setParent(_goSettings);
     }
-}
-
-void RType::KeyboardMenu::goToMenu(std::string const& name) {
-    auto objs = scene.getGameObjects("Canvas" + name);
-    auto objCurr = scene.getGameObjects("CanvasKeysMenu");
-    std::shared_ptr<KapEngine::GameObject> _found;
-    std::shared_ptr<KapEngine::GameObject> _foundCurrent;
-
-    for (std::size_t i = 0; i < objs.size(); i++) {
-        if (objs[i]->hasComponent("Canvas")) {
-            _found = objs[i];
-            break;
-        }
-    }
-
-    for (std::size_t i = 0; i < objCurr.size(); i++) {
-        if (objCurr[i]->hasComponent("Canvas")) {
-            _foundCurrent = objCurr[i];
-            break;
-        }
-    }
-
-    if (_found.use_count() == 0) {
-        KAP_DEBUG_ERROR("Canvas called " + name + " not found to display it");
-        return;
-    }
-    if (_foundCurrent.use_count() == 0) {
-        KAP_DEBUG_ERROR("Canvas called CanvasSoloMenu not found to hide it");
-        return;
-    }
-    _found->setActive(true);
-    _foundCurrent->setActive(false);
 }

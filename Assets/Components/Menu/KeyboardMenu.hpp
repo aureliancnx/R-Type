@@ -12,11 +12,8 @@ namespace RType {
 
         public:
         KeyboardMenu(KapEngine::SceneManagement::Scene &_scene);
-        ~KeyboardMenu();
+        ~KeyboardMenu() = default;
 
         void init() override;
-
-        protected:
-        void goToMenu(std::string const& name) override;
     };
 }

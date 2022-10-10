@@ -6,6 +6,7 @@
 #include "Menu/KeyboardMenu.hpp"
 
 #include "KapMirror/KapMirror.hpp"
+#include "RtypeNetworkManager.hpp"
 
 using namespace RType;
 
@@ -25,6 +26,17 @@ void GameManager::launchGame() {
     menuManager.showMenu("MainMenu");
 }
 
+void GameManager::launchServer() {
+    KapEngine::Debug::log("Launch server");
+
+    registerPrefabsPlayer();
+    initMultiPlayer();
+    registerAxises();
+
+    engine.getSceneManager()->loadScene("MultiPlayer");
+    startServer();
+}
+
 void GameManager::registerMenus() {
     KapEngine::Debug::log("Register menus");
 
@@ -37,7 +49,7 @@ void GameManager::registerMenus() {
     auto soloMenu = std::make_shared<SoloMenu>(scene);
     menuManager.registerMenu("SoloMenu", soloMenu);
 
-    auto multiMenu = std::make_shared<MultiMenu>(scene);
+    auto multiMenu = std::make_shared<MultiMenu>(scene, *this);
     menuManager.registerMenu("MultiMenu", multiMenu);
 
     auto keymenu = std::make_shared<KeyboardMenu>(scene);
@@ -76,6 +88,7 @@ void GameManager::registerPrefabsPlayer() {
     });
 }
 
+// TODO: Move this to a dedicated class
 void GameManager::initSinglePlayer() {
     auto scene = engine.getSceneManager()->createScene("SinglePlayer");
 
@@ -91,55 +104,33 @@ void GameManager::initSinglePlayer() {
     auto& playerComp = player->getComponent<Player>();
     playerComp.setLocalPlayer(true);
 
-    // TODO: Fix animation
-
-    // // Create animation manager
-    // auto animator = std::make_shared<KapEngine::Animator>(player);
-    // player->addComponent(animator);
-
-    // // Create new animation -> stay animation (IDLE)
-    // auto stayAnimation = std::make_shared<SpriteAnimation>(player);
-    // player->addComponent(stayAnimation);
-
-    // // Create timer to set the duration of animation
-    // KapEngine::Time::ETime duration;
-    // duration.setSeconds(.1f);
-    // stayAnimation->setTiming(duration);
-    // stayAnimation->loop(true); // Loop but isn't a loop, loop with break point
-    // stayAnimation->setRect({0, 0, 26, 21});
-    // stayAnimation->setNbAnimations(1);
-
-    // auto upAnimation = std::make_shared<SpriteAnimation>(player);
-    // player->addComponent(stayAnimation);
-    // upAnimation->setTiming(duration);
-    // upAnimation->loop(true); // Loop but isn't a loop, loop with break point
-    // upAnimation->setRect({(26 * 2), 0, 26, 21});
-    // upAnimation->setNbAnimations(1);
-
-    // auto downAnimation = std::make_shared<SpriteAnimation>(player);
-    // player->addComponent(stayAnimation);
-    // downAnimation->setTiming(duration);
-    // downAnimation->loop(true); // Loop but isn't a loop, loop with break point
-    // downAnimation->setRect({(26 * 1), 0, 26, 21});
-    // downAnimation->setNbAnimations(1);
-
-    // // Add animation with the unique name to animation manager - the first addAnim is the first animation
-    // // Put Stay/IDLE at he first position /!\ importante
-    // animator->addAnim(stayAnimation, "Stay");
-    // animator->addAnim(upAnimation, "Up");
-    // animator->addAnim(downAnimation, "Down");
-
-    // // Add link to change animation with trigger (some action)
-    // animator->addLink("Up", "Stay");
-    // animator->addLink("Down", "Stay");
-    // animator->addLink("Stay", "Up", "UP");
-    // animator->addLink("Stay", "Down", "DOWN");
-    // animator->addLink("Down", "Stay", "Idle");
-    // animator->addLink("Up", "Stay", "Idle");
+    // TODO: Fix animation (move animation)
+    // https://github.com/aureliancnx/R-Type/blob/ae652adfdf49c702bd8513c27b8bef6dcfeaebc2/Assets/Components/GameManager.cpp#L84
 }
 
+// TODO: Move this to a dedicated class
 void GameManager::initMultiPlayer() {
     auto scene = engine.getSceneManager()->createScene("MultiPlayer");
+
+    auto networkManager = scene->createGameObject("NetworkManager");
+    auto networkManagerComp = std::make_shared<RtypeNetworkManager>(networkManager);
+    networkManager->addComponent(networkManagerComp);
+}
+
+// TODO: Move this to a dedicated class
+void GameManager::startMultiPlayer() {
+    auto& scene = engine.getSceneManager()->getScene("MultiPlayer");
+    auto networkManager = scene.findFirstGameObject("NetworkManager");
+    auto networkManagerComp = networkManager->getComponent<RtypeNetworkManager>();
+    networkManagerComp.startClient();
+}
+
+// TODO: Move this to a dedicated class
+void GameManager::startServer() {
+    auto& scene = engine.getSceneManager()->getScene("MultiPlayer");
+    auto networkManager = scene.findFirstGameObject("NetworkManager");
+    auto networkManagerComp = networkManager->getComponent<RtypeNetworkManager>();
+    networkManagerComp.startServer();
 }
 
 void GameManager::registerAxises() {

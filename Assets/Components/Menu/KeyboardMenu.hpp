@@ -1,34 +1,22 @@
-/*
-** EPITECH PROJECT, 2022
-** RType
-** File description:
-** KeyboardMenu
-*/
-
-#ifndef KEYBOARDMENU_HPP_
-#define KEYBOARDMENU_HPP_
+#pragma once
 
 #include "Menu.hpp"
-
 #include "Keys/ChangeKey.hpp"
 
 namespace RType {
-
     class KeyboardMenu : public Menu {
-        public:
-            KeyboardMenu(KapEngine::SceneManagement::Scene &_scene);
-            ~KeyboardMenu();
+        private:
+        std::shared_ptr<KapEngine::GameObject> _goSettings;
+        std::shared_ptr<KapEngine::GameObject> _goInputs;
+        std::shared_ptr<ChangeKey> _chgKey;
 
-            void init() override;
-            void goToMenu(std::string const& name) override;
+        public:
+        KeyboardMenu(KapEngine::SceneManagement::Scene &_scene);
+        ~KeyboardMenu();
+
+        void init() override;
 
         protected:
-        private:
-            std::shared_ptr<KapEngine::GameObject> _goSettings;
-            std::shared_ptr<KapEngine::GameObject> _goInputs;
-            std::shared_ptr<ChangeKey> _chgKey;
+        void goToMenu(std::string const& name) override;
     };
-
 }
-
-#endif /* !KEYBOARDMENU_HPP_ */

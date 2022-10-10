@@ -1,19 +1,15 @@
-/*
-** EPITECH PROJECT, 2022
-** RType
-** File description:
-** MultiMenu
-*/
-
-#ifndef MULTIMENU_HPP_
-#define MULTIMENU_HPP_
+#pragma once
 
 #include "Menu.hpp"
+#include "GameManager.hpp"
 
 namespace RType {
     class MultiMenu : public Menu {
+        private:
+        GameManager& gameManager;
+
         public:
-        MultiMenu(KapEngine::SceneManagement::Scene& _scene);
+        MultiMenu(KapEngine::SceneManagement::Scene& _scene, GameManager& _gameManager);
         ~MultiMenu() = default;
 
         void init() override;
@@ -23,5 +19,3 @@ namespace RType {
     };
 
 }
-
-#endif /* !MULTIMENU_HPP_ */

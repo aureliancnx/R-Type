@@ -94,8 +94,8 @@ jobs:
           mkdir build-release/
           cp ./build/RType build-release/
           mkdir build-release/Assets
-          cp -R ./build/Assets/Textures build-releasze/Assets/Textures
-          cp -R ./build/Assets/Sounds build-release/Assets/Sounds
+          cp -R ./Assets/Textures build-release/Assets/Textures
+          cp -R ./Assets/Sound build-release/Assets/Sound
       - name: Zip release
         uses: vimtor/action-zip@v1
         with:

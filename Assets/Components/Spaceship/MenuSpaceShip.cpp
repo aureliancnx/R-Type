@@ -63,7 +63,7 @@ void RType::MenuSpaceShip::foundImage() {
     }
 
     if (_found.use_count() == 0) {
-        KAP_DEBUG_ERROR("Failed to find spaceship image");
+        DEBUG_ERROR("Failed to find spaceship image");
         return;
     }
     _img = _found;

@@ -1,5 +1,6 @@
 #include "Prefabs.hpp"
 #include "Player/Player.hpp"
+#include "Bullet/Bullet.hpp"
 
 using namespace RType;
 
@@ -30,5 +31,20 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
         transform.setParent(playerCanvas->getId());
 
         return player;
+    });
+}
+
+void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
+    engine.getPrefabManager()->createPrefab("Bullet", [](KapEngine::SceneManagement::Scene& scene) {
+        auto bullet = scene.createGameObject("Bullet");
+        auto bulletCanvas = KapEngine::UI::UiFactory::createCanvas(scene, "BulletCanvas");
+
+        auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(bullet);
+        bullet->addComponent(networkIdentityComp);
+
+        auto bulletComp = std::make_shared<Player>(bullet);
+        bullet->addComponent(bulletComp);
+
+        return bullet;
     });
 }

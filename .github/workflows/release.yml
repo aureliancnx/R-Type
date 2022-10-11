@@ -109,7 +109,7 @@ jobs:
         shell: bash
         run: cmake --build build --config ${{ matrix.config.build_type }}
       - name: Prepare release files (Linux)
-        if: startsWith(matrix.config.name, 'Ubuntu Latest GCC')
+        if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') || startsWith(matrix.config.name, 'macos') }}
         run: |
           mkdir build-release/
           cp ./build/RType* build-release/

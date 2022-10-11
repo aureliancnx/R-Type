@@ -1,4 +1,5 @@
 #include "Player.hpp"
+#include "Bullet/Bullet.hpp"
 
 using namespace RType;
 

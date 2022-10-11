@@ -41,7 +41,7 @@ void RType::VolumeMenu::init() {
         transform.setParent(canvas);
     }
 
-    //Create button back menu
+    //Create button back settings menu
     {
         auto btn = scene.createGameObject("ButtonBack");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
@@ -154,11 +154,7 @@ void RType::VolumeMenu::init() {
 
     // Create music
     {
-//        getGameObject().getEngine().getGraphicalLibManager()->getCurrentLib()->playSound(path);
-        //scene
 
-        //auto music = scene.createGameObject("Music test");
-        //auto compMusic = std::make_shared<>( )
     }
 }
 

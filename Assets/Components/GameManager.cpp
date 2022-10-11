@@ -6,6 +6,7 @@
 #include "Menu/SettingsMenu.hpp"
 #include "Menu/VolumeMenu.hpp"
 #include "Menu/KeyboardMenu.hpp"
+#include "Menu/HowToPlayMenu.hpp"
 
 using namespace RType;
 
@@ -55,6 +56,9 @@ void GameManager::registerMenus() {
 
     auto keyboardMenu = std::make_shared<KeyboardMenu>(scene);
     menuManager.registerMenu("KeyboardMenu", keyboardMenu);
+
+    auto howToPlayMenu = std::make_shared<HowToPlayMenu>(scene);
+    menuManager.registerMenu("HowToPlayMenu", howToPlayMenu);
 }
 
 void GameManager::registerPrefabsPlayer() {

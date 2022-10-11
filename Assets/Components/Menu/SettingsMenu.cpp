@@ -74,7 +74,7 @@ void RType::SettingsMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 234, 0});
+        transform.setPosition({249, 168, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
@@ -95,12 +95,33 @@ void RType::SettingsMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 300, 0});
+        transform.setPosition({249, 234, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
             goToMenu("KeyboardMenu");
+        });
+    }
+
+    // Create button HowToPlay
+    {
+        auto btn = scene.createGameObject("ButtonHowToPlay");
+        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+        auto &transform = btn->getComponent<KapEngine::Transform>();
+
+        btn->addComponent(btnComp);
+        btnComp->setText("How to play");
+        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+        btnComp->setTextPosition({75, 12});
+        btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+        transform.setPosition({249, 300, 0});
+        transform.setScale({222, 39, 0});
+        transform.setParent(canvas);
+
+        btnComp->getOnClick().registerAction([this]() {
+            goToMenu("HowToPlayMenu");
         });
     }
 }

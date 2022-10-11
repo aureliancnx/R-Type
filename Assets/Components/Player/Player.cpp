@@ -12,28 +12,36 @@ void Player::setLocalPlayer(bool _isLocalPlayer) {
 }
 
 void Player::onUpdate() {
-    if (isLocalPlayer || isServer()) {
-        KapEngine::Tools::Vector3 cPos = getTransform().getLocalPosition();
-
-        KapEngine::Tools::Vector3 pos;
-        pos.setX(getInput().getAxis("Horizontal"));
-        pos.setY(getInput().getAxis("Vertical"));
-
-        if (pos.getX() != 0 || pos.getY() != 0) {
-            pos = pos * 3;
-            getTransform().setPosition(cPos + pos);
-            lastPos = getTransform().getLocalPosition();
+    if (isMoving) {
+        if (getTransform().getLocalPosition() == posToMove) {
+            isMoving = false;
         } else {
-            getTransform().setPosition(lastPos);
+            return;
+        }
+    }
+
+    if (isLocalPlayer || isServer()) {
+        // KapEngine::Tools::Vector3 cPos = getTransform().getLocalPosition();
+
+        // KapEngine::Tools::Vector3 pos;
+        // pos.setX(getInput().getAxis("Horizontal"));
+        // pos.setY(getInput().getAxis("Vertical"));
+
+        // if (pos.getX() != 0 || pos.getY() != 0) {
+        //     pos = pos * 3;
+        //     getTransform().setPosition(cPos + pos);
+        //     lastPos = getTransform().getLocalPosition();
+        // } else {
+        //     getTransform().setPosition(lastPos);
+        // }
+
+        if (getInput().getKeyDown(KapEngine::Events::Key::RIGHT)) {
+            KapEngine::Debug::log("RIGHT");
+            moveTo(getTransform().getLocalPosition() + KapEngine::Tools::Vector3(50, 0, 0));
         }
 
         if (getInput().getKeyDown(KapEngine::Events::Key::SPACE)) {
             shoot();
-        }
-    }
-    if (isMoving) {
-        if (getTransform().getLocalPosition() == posToMove) {
-            isMoving = false;
         }
     }
 }

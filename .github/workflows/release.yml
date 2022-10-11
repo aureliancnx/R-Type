@@ -111,10 +111,9 @@ jobs:
           cp -R ./Assets/Textures build-release/Assets/Textures
           cp -R ./Assets/Sound build-release/Assets/Sound
       - name: Zip release
-        uses: vimtor/action-zip@v1
-        with:
-          files: ./build-release
-          dest: release.zip
+        shell: bash
+        run: |
+          zip -r release build-release/.
       - name: Upload Release Asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
@@ -130,8 +129,8 @@ jobs:
       needs: create_release
       steps:
         - name: Publish release
-          uses: StuYarrow/publish-release@v1
+          uses: eregon/publish-release@v1
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
-            id: ${{ needs.create_release.outputs.id }}
+            release_id: ${{ needs.create_release.outputs.id }}

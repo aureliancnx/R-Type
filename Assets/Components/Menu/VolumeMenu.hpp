@@ -10,7 +10,7 @@
 namespace RType {
     class VolumeMenu : public Menu {
     public:
-        VolumeMenu(KapEngine::SceneManagement::Scene& _scene);
+        explicit VolumeMenu(KapEngine::SceneManagement::Scene& _scene);
         ~VolumeMenu() = default;
 
         void init() override;
@@ -18,7 +18,6 @@ namespace RType {
         void goToMenu(std::string const& menuName) override;
     protected:
     private:
-        void
     };
 }
 

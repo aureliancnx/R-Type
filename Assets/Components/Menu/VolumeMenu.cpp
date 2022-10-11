@@ -123,10 +123,10 @@ void RType::VolumeMenu::init() {
         transform.setPosition({249, 266, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
-
+/*
         btnComp->getOnClick().registerAction([this]() {
             // Change text ButtonOnOff
-        });
+        });*/
     }
     // Create music
     {

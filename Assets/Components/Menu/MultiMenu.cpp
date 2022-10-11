@@ -103,7 +103,7 @@ void MultiMenu::init() {
 
         btnComp->getOnClick().registerAction([this]() {
             scene.getEngine().getSceneManager()->loadScene("MultiPlayer");
-            gameManager.startMultiPlayer();
+            gameManager.startLocalMultiPlayer();
         });
     }
 

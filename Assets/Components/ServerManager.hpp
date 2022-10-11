@@ -6,6 +6,8 @@
 namespace RType {
     class ServerManager {
         private:
+        bool isStarted;
+
         KapEngine::KEngine* engine;
 
         std::shared_ptr<RtypeNetworkManager> networkManager;
@@ -14,11 +16,6 @@ namespace RType {
         ServerManager(KapEngine::KEngine* _engine);
         ~ServerManager() = default;
 
-        void launchServer();
-
-        private:
-        void initServer();
-
-        void registerAxises();
+        void start();
     };
 }

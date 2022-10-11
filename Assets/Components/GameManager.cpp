@@ -19,12 +19,23 @@ void GameManager::launchGame() {
 
     registerMenus();
     initSinglePlayer();
-    initMultiPlayer();
-    registerAxises();
     //initSplashScreens();
 
     // Show main menu
     menuManager.showMenu("MainMenu");
+}
+
+void GameManager::launchServer() {
+    KapEngine::Debug::log("Launch server");
+
+    serverManager = std::make_shared<ServerManager>(engine);
+
+    Prefabs::registerPlayerPrefab(*engine);
+
+    initMultiPlayer();
+    registerAxises();
+
+    serverManager->start();
 }
 
 void GameManager::registerMenus() {
@@ -76,7 +87,7 @@ void GameManager::initMultiPlayer() {
 }
 
 // TODO: Move this to a dedicated class
-void GameManager::startMultiPlayer() {
+void GameManager::startLocalMultiPlayer() {
     auto& scene = engine->getSceneManager()->getScene("MultiPlayer");
 
     networkManager->startClient();

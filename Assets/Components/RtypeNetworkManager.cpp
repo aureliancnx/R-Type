@@ -2,8 +2,7 @@
 
 using namespace RType;
 
-RtypeNetworkManager::RtypeNetworkManager(std::shared_ptr<KapEngine::GameObject> go, bool _isServer) : KapMirror::NetworkManager(go) {
-    isServer = _isServer;
+RtypeNetworkManager::RtypeNetworkManager(std::shared_ptr<KapEngine::GameObject> go) : KapMirror::NetworkManager(go) {
 }
 
 void RtypeNetworkManager::onStart() {

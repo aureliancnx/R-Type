@@ -1,5 +1,4 @@
 #include "GameManager.hpp"
-#include "ServerManager.hpp"
 #include "KapEngine.hpp"
 #include "Factory.hpp"
 #include "Graphical/RaylibGraphical.hpp"
@@ -28,10 +27,8 @@ int main(int argc, char **argv) {
     initWindow(&engine);
 
     RType::GameManager gameManager(&engine);
-    RType::ServerManager serverManager(&engine);
-
     if (isServer) {
-        serverManager.launchServer();
+        gameManager.launchServer();
     } else {
         gameManager.launchGame();
     }

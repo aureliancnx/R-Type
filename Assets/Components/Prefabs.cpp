@@ -8,10 +8,10 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
         auto player = scene.createGameObject("Player");
         auto playerCanvas = KapEngine::UI::UiFactory::createCanvas(scene, "PlayerCanvas");
 
-        auto networkIdentityComp = std::make_shared<KapMirror::Experimental::NetworkIdentity>(player);
+        auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(player);
         player->addComponent(networkIdentityComp);
 
-        auto networkTransformComp = std::make_shared<KapMirror::Experimental::NetworkTransform>(player);
+        auto networkTransformComp = std::make_shared<KapMirror::NetworkTransform>(player);
         networkTransformComp->setClientAuthority(false);
         networkTransformComp->setSendRate(5);
         player->addComponent(networkTransformComp);

@@ -6,7 +6,7 @@
 #include "KapMirror/KapMirror.hpp"
 
 namespace RType {
-    class Player : public KapMirror::Experimental::NetworkComponent {
+    class Player : public KapMirror::NetworkComponent {
         private:
         bool isLocalPlayer = false;
         KapEngine::Tools::Vector3 lastPos;

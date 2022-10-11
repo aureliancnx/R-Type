@@ -134,7 +134,7 @@ void SoloMenu::init() {
         auto compShipImg = std::make_shared<KapEngine::UI::Image>(shipObj);
         auto& transform = shipObj->getComponent<KapEngine::Transform>();
 
-        compShipImg->setPathSprite("Assets/Textures/ship1.png");
+        compShipImg->setPathSprite("Assets/Textures/Ship/ship_1.png");
         compShipImg->setRectangle(KapEngine::Tools::Rectangle(0, 0, 263, 116));
         shipObj->addComponent(compShipImg);
         transform.setScale({132, 58, 0});

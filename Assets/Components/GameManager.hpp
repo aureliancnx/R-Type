@@ -1,7 +1,6 @@
 #pragma once
 
 #include "KapEngine.hpp"
-#include "ServerManager.hpp"
 #include "MenuManager.hpp"
 
 #include "Player/Player.hpp"
@@ -13,7 +12,6 @@ namespace RType {
         private:
         KapEngine::KEngine* engine;
 
-        std::shared_ptr<ServerManager> serverManager;
         MenuManager menuManager;
 
         std::shared_ptr<RtypeNetworkManager> networkManager;
@@ -27,13 +25,19 @@ namespace RType {
         void launchServer();
 
         private:
+        void registerPrefabs();
+
         void registerMenus();
+
         void registerPrefabsPlayer();
+
         void registerAxises();
+
         void initSplashScreens();
 
         void initSinglePlayer();
-        void initMultiPlayer();
+
+        void initMultiPlayer(bool isServer);
 
         public:
         void startLocalMultiPlayer();

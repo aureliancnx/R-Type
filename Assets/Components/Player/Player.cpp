@@ -25,5 +25,24 @@ void Player::onUpdate() {
         } else {
             getTransform().setPosition(lastPos);
         }
+
+        if (getInput().getKeyDown(KapEngine::Events::Key::SPACE)) {
+            shoot();
+        }
+        if (getInput().getKeyDown(KapEngine::Events::Key::F1)) {
+            getGameObject().getScene().dump();
+        }
+    }
+}
+
+void Player::shoot() {
+    if (isLocalPlayer) {
+        auto& scene = getGameObject().getScene();
+        std::shared_ptr<KapEngine::GameObject> bullet;
+        getGameObject().getEngine().getPrefabManager()->instantiatePrefab("Bullet", scene, bullet);
+        bullet->getComponent<KapEngine::Transform>().setPosition(getTransform().getLocalPosition());
+    } else if (isServer()) {
+        std::shared_ptr<KapEngine::GameObject> bullet;
+        getServer()->spawnObject("Bullet", getTransform().getLocalPosition(), bullet);
     }
 }

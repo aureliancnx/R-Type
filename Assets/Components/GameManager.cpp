@@ -15,10 +15,11 @@ GameManager::GameManager(KapEngine::KEngine* _engine) : engine(_engine) {}
 void GameManager::launchGame() {
     KapEngine::Debug::log("Launch game");
 
-    Prefabs::registerPlayerPrefab(*engine);
-
+    registerAxises();
+    registerPrefabs();
     registerMenus();
     initSinglePlayer();
+    initMultiPlayer(false);
     //initSplashScreens();
 
     // Show main menu
@@ -28,14 +29,17 @@ void GameManager::launchGame() {
 void GameManager::launchServer() {
     KapEngine::Debug::log("Launch server");
 
-    serverManager = std::make_shared<ServerManager>(engine);
-
-    Prefabs::registerPlayerPrefab(*engine);
-
-    initMultiPlayer();
+    registerPrefabs();
+    initMultiPlayer(true);
     registerAxises();
 
-    serverManager->start();
+    engine->getSceneManager()->loadScene("MultiPlayer");
+    networkManager->startServer();
+}
+
+void GameManager::registerPrefabs() {
+    Prefabs::registerPlayerPrefab(*engine);
+    Prefabs::registerBulletPrefab(*engine);
 }
 
 void GameManager::registerMenus() {
@@ -78,11 +82,11 @@ void GameManager::initSinglePlayer() {
 }
 
 // TODO: Move this to a dedicated class
-void GameManager::initMultiPlayer() {
+void GameManager::initMultiPlayer(bool isServer) {
     auto scene = engine->getSceneManager()->createScene("MultiPlayer");
 
     auto networkManagerObject = scene->createGameObject("NetworkManager");
-    networkManager = std::make_shared<RtypeNetworkManager>(networkManagerObject);
+    networkManager = std::make_shared<RtypeNetworkManager>(networkManagerObject, isServer);
     networkManagerObject->addComponent(networkManager);
 }
 

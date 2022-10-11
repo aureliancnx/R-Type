@@ -18,5 +18,8 @@ namespace RType {
         void setLocalPlayer(bool _isLocalPlayer);
 
         void onUpdate() override;
+
+        private:
+        void shoot();
     };
 }

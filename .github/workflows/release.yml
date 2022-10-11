@@ -92,7 +92,7 @@ jobs:
         if: startsWith(matrix.config.name, 'Ubuntu Latest GCC')
         run: |
           mkdir build-release/
-          cp ./build/RType build-release/
+          cp ./build/RType* build-release/
           mkdir build-release/Assets
           cp -R ./Assets/Textures build-release/Assets/Textures
           cp -R ./Assets/Sound build-release/Assets/Sound

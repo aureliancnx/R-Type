@@ -83,7 +83,6 @@ jobs:
             -DCMAKE_CXX_STANDARD=17 \
             -DBoost_DEBUG=0 \
             -G "${{ matrix.config.generators }}"
-          ls -lahR build/
       - name: Build
         shell: bash
         run: cmake --build build --config ${{ matrix.config.build_type }}

@@ -121,3 +121,9 @@ jobs:
           asset_path: ./release.zip
           asset_name: ${{ matrix.config.zipname }}
           asset_content_type: application/zip
+      - name: Publish release
+        uses: StuYarrow/publish-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          id: ${{ steps.create_release.outputs.id }}

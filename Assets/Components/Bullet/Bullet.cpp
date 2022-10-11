@@ -19,6 +19,6 @@ void Bullet::onUpdate() {
     transform.setPosition(nPos);
 
     if (nPos.getX() > initialX + 500) {
-        getGameObject().destroy();
+        getTransform().getParent()->destroy();
     }
 }

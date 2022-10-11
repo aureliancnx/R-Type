@@ -30,14 +30,14 @@ jobs:
             cxx: "g++",
             generators: "Ninja"
           }
-          #- {
-          #  name: "macOS Latest Clang (C++17)",
-          #  os: macos-latest,
-          #  build_type: "Debug",
-          #  cc: "clang",
-          #  cxx: "clang++",
-          #  generators: "Xcode"
-          #}
+          - {
+            name: "macOS Latest Clang (C++17)",
+            os: macos-latest,
+            build_type: "Debug",
+            cc: "clang",
+            cxx: "clang++",
+            generators: "Xcode"
+          }
 
     steps:
       - name: Checkout repo

@@ -5,6 +5,6 @@
 namespace RType {
     class Prefabs {
         public:
-        static void registerPlayerPrefab(KapEngine::KapEngine& engine);
+        static void registerPlayerPrefab(KapEngine::KEngine& engine);
     };
 }

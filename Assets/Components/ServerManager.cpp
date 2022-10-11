@@ -4,7 +4,7 @@
 
 using namespace RType;
 
-ServerManager::ServerManager(KapEngine::KapEngine* _engine) : engine(_engine) {}
+ServerManager::ServerManager(KapEngine::KEngine* _engine) : engine(_engine) {}
 
 void ServerManager::launchServer() {
     KapEngine::Debug::log("Launch server");

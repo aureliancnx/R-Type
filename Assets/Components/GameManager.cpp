@@ -11,7 +11,7 @@
 
 using namespace RType;
 
-GameManager::GameManager(KapEngine::KapEngine* _engine) : engine(_engine) {}
+GameManager::GameManager(KapEngine::KEngine* _engine) : engine(_engine) {}
 
 void GameManager::launchGame() {
     KapEngine::Debug::log("Launch game");

@@ -6,7 +6,7 @@
 namespace RType {
     class Menu {
         protected:
-        KapEngine::KapEngine& engine;
+        KapEngine::KEngine& engine;
         KapEngine::SceneManagement::Scene& scene;
         std::shared_ptr<KapEngine::GameObject> canvas;
 

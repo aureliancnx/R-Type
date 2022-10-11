@@ -3,7 +3,7 @@
 
 using namespace RType;
 
-void Prefabs::registerPlayerPrefab(KapEngine::KapEngine& engine) {
+void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("Player", [](KapEngine::SceneManagement::Scene& scene) {
         auto player = scene.createGameObject("Player");
         auto playerCanvas = KapEngine::UI::UiFactory::createCanvas(scene, "PlayerCanvas");

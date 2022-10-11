@@ -7,12 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'aureliancnx' }}
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - uses: pixta-dev/repository-mirroring-action@v1
-        with:
-          target_repo_url:
-            git@github.com:EpitechPromo2025/B-CPP-500-REN-5-1-rtype-aurelien.marcel.git
-          ssh_private_key:
-            ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Mirror
+        shell: bash
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" >> ~/.github_key
+          ssh-add ~/.github_key
+          git clone git@github.com:aureliancnx/R-Type.git /tmp/rtype --bare
+          git remote add epitech git@github.com:EpitechPromo2025/B-CPP-500-REN-5-1-rtype-aurelien.marcel.git
+          git push epitech --mirror -f

@@ -16,6 +16,6 @@ void RtypeNetworkManager::onUpdate() {
 void RtypeNetworkManager::onServerClientConnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {
     KapEngine::Debug::log("Client connected");
 
-    // std::shared_ptr<KapEngine::GameObject> player;
-    // getServer()->spawnObject("Player", {0, 0, 0}, player);
+    std::shared_ptr<KapEngine::GameObject> player;
+    getServer()->spawnObject("Player", {0, 0, 0}, player);
 }

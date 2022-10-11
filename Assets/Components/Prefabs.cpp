@@ -6,8 +6,7 @@ using namespace RType;
 
 void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("Player", [](KapEngine::SceneManagement::Scene& scene) {
-        auto player = scene.createGameObject("Player");
-        auto playerCanvas = KapEngine::UI::UiFactory::createCanvas(scene, "PlayerCanvas");
+        auto player = KapEngine::UI::UiFactory::createCanvas(scene, "Player");
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(player);
         player->addComponent(networkIdentityComp);
@@ -28,7 +27,6 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
         auto& transform = player->getComponent<KapEngine::Transform>();
         transform.setPosition({0, 0, 0});
         transform.setScale({48.9, 34.8, 0});
-        transform.setParent(playerCanvas->getId());
 
         return player;
     });
@@ -36,8 +34,7 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
 
 void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("Bullet", [](KapEngine::SceneManagement::Scene& scene) {
-        auto bullet = scene.createGameObject("Bullet");
-        auto bulletCanvas = KapEngine::UI::UiFactory::createCanvas(scene, "BulletCanvas");
+        auto bullet = KapEngine::UI::UiFactory::createCanvas(scene, "BulletCanvas");
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(bullet);
         bullet->addComponent(networkIdentityComp);
@@ -53,7 +50,6 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
         auto& transform = bullet->getComponent<KapEngine::Transform>();
         transform.setPosition({0, 0, 0});
         transform.setScale({(26 * 2), (21 * 2)});
-        transform.setParent(bulletCanvas->getId());
 
         return bullet;
     });

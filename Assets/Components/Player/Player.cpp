@@ -31,6 +31,11 @@ void Player::onUpdate() {
             shoot();
         }
     }
+    if (isMoving) {
+        if (getTransform().getLocalPosition() == posToMove) {
+            isMoving = false;
+        }
+    }
 }
 
 void Player::shoot() {
@@ -42,5 +47,45 @@ void Player::shoot() {
     } else if (isServer()) {
         std::shared_ptr<KapEngine::GameObject> bullet;
         getServer()->spawnObject("Bullet", getTransform().getLocalPosition(), bullet);
+    }
+}
+
+void Player::moveTo(KapEngine::Tools::Vector3 nPos, float speedByUnit) {
+    posToMove = nPos;
+    speed = speedByUnit;
+    isMoving = true;
+}
+
+void Player::onFixedUpdate() {
+    if (!isMoving)
+        return;
+    auto scds = getGameObject().getEngine().getElapsedTime().asSecond();
+    auto &transform = getTransform();
+
+    auto currPos = transform.getLocalPosition();
+    KapEngine::Tools::Vector3 vecToMove = posToMove - currPos;
+
+    float currVal = scds / speed;
+
+    vecToMove.setX(calculPosMoved(currVal, vecToMove.getX()));
+    vecToMove.setY(calculPosMoved(currVal, vecToMove.getY()));
+
+    currPos += vecToMove;
+    transform.setPosition(currPos);
+}
+
+float Player::calculPosMoved(float unitToMove, float distanceToTravel) {
+    if (distanceToTravel == 0.f)
+        return 0.f;
+
+    if (distanceToTravel < 0.f) {
+        if ((distanceToTravel * -1.f) > unitToMove) {
+            return (unitToMove * -1.f);
+        }
+        return distanceToTravel;
+    } else {
+        if (distanceToTravel > unitToMove)
+            return unitToMove;
+        return distanceToTravel;
     }
 }

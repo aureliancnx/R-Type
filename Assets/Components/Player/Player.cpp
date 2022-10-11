@@ -29,9 +29,6 @@ void Player::onUpdate() {
         if (getInput().getKeyDown(KapEngine::Events::Key::SPACE)) {
             shoot();
         }
-        if (getInput().getKeyDown(KapEngine::Events::Key::F1)) {
-            getGameObject().getScene().dump();
-        }
     }
 }
 

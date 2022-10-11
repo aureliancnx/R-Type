@@ -52,15 +52,15 @@ jobs:
             cxx: "g++",
             generators: "Ninja"
           }
-          #- {
-          #  name: "macOS Latest Clang (C++17)",
-          #  zipname: "release-macos-x86.zip",
-          #  os: macos-latest,
-          #  build_type: "Debug",
-          #  cc: "clang",
-          #  cxx: "clang++",
-          #  generators: "Xcode"
-          #}
+          - {
+            name: "macOS Latest Clang (C++17)",
+            zipname: "release-macos-x86.zip",
+            os: macos-latest,
+            build_type: "Debug",
+            cc: "clang",
+            cxx: "clang++",
+            generators: "Xcode"
+          }
 
     steps:
       - name: Checkout repo
@@ -116,8 +116,8 @@ jobs:
           mkdir build-release/Assets
           cp -R ./Assets/Textures build-release/Assets/Textures
           cp -R ./Assets/Sound build-release/Assets/Sound
-      - name: Zip release (Linux)
-        if: startsWith(matrix.config.name, 'Ubuntu Latest GCC')
+      - name: Zip release (Linux or Mac)
+        if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') || startsWith(matrix.config.name, 'macos') }}
         shell: bash
         run: |
           zip -r release build-release/.

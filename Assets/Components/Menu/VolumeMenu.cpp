@@ -8,7 +8,7 @@
 #include "Button/Button.hpp"
 #include "InputField/Inputfield.hpp"
 
-#include "Spaceship/MenuSpaceShip.hpp"
+#include "Volume/MenuVolume.hpp"
 
 #include "Animations/SpriteAnimation.hpp"
 
@@ -95,8 +95,8 @@ void RType::VolumeMenu::init() {
         transform.setScale({50, 39, 0});
         transform.setParent(canvas);
     }
-    // Create text Change volume
 
+    // Create text Change volume
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Volume Text Change");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Volume : ");
@@ -113,21 +113,45 @@ void RType::VolumeMenu::init() {
         auto btn = scene.createGameObject("ButtonOnOff");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
         auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto compTypeVolume = std::make_shared<MenuVolume>(btn);
 
+        btn->addComponent(compTypeVolume);
         btn->addComponent(btnComp);
-        btnComp->setText("On");
+        btnComp->setText("Change type : ");
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
-        btnComp->setTextPosition({100, 12});
+        btnComp->setTextPosition({12, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 266, 0});
+        transform.setPosition({250, 266, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
-/*
+
         btnComp->getOnClick().registerAction([this]() {
-            // Change text ButtonOnOff
-        });*/
+            int currentID = 0;
+
+            try {
+                if (!KapEngine::PlayerPrefs::getString("volumeID").empty())
+                    currentID = KapEngine::PlayerPrefs::getInt("volumeID");
+                currentID++;
+                if (currentID > 1)
+                    currentID = 0;
+                KapEngine::PlayerPrefs::setInt("volumeID", currentID);
+            } catch (...) {}
+        });
     }
+
+    // Text Show On/Off
+    {
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Type Text Change");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "On");
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+
+        txt->addComponent(compText);
+        transform.setScale({15, 35, 0});
+        transform.setPosition({390, 280, 0});
+        transform.setParent(canvas);
+    }
+
     // Create music
     {
 //        getGameObject().getEngine().getGraphicalLibManager()->getCurrentLib()->playSound(path);
@@ -136,7 +160,6 @@ void RType::VolumeMenu::init() {
         //auto music = scene.createGameObject("Music test");
         //auto compMusic = std::make_shared<>( )
     }
-
 }
 
 void RType::VolumeMenu::goToMenu(std::string const& name) {

@@ -13,22 +13,8 @@
 #include "Encapsulation/RaylibEncapsulation.hpp"
 
 #include "KapEngine.hpp"
+#include "KapEngineEvents.hpp"
 #include "KapEngineGraphical.hpp"
-
-namespace KapEngine {
-    class KapEngine;
-
-    namespace Graphical {
-        class GraphicalLibManager;
-        class GraphicalLib;
-    }
-
-    namespace Tools {
-        class Color;
-        class Vector2;
-    }
-
-}
 
 namespace KapEngine {
 

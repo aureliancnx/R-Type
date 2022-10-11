@@ -18,6 +18,7 @@ namespace RType {
         void goToMenu(std::string const& menuName) override;
     protected:
     private:
+        void
     };
 }
 

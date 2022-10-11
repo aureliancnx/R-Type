@@ -53,7 +53,9 @@ void RtypeNetworkManager::onPlayerInputMessage(std::shared_ptr<KapMirror::Networ
 
     std::shared_ptr<KapEngine::GameObject> player;
     if (players.tryGetValue(connection->getNetworkId(), player)) {
-        // TODO: Move player
+        auto &transform = player->getComponent<KapEngine::Transform>();
+
+        transform.setPosition({transform.getLocalPosition().getX() + message.x, transform.getLocalPosition().getY() + message.y});
     }
 }
 

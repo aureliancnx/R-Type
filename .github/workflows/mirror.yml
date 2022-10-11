@@ -5,6 +5,7 @@ on: [push, delete]
 jobs:
   epitech_mirror:
     runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'aureliancnx' }}
     steps:
       - uses: actions/checkout@v2
         with:

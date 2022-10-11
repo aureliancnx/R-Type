@@ -6,9 +6,23 @@ on:
       - 'v*'
 
 jobs:
+  create_release:
+    name: Create release
+    steps:
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
   build:
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
+    needs: create_release
     strategy:
       fail-fast: false
       matrix:
@@ -101,29 +115,23 @@ jobs:
         with:
           files: ./build-release
           dest: release.zip
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
       - name: Upload Release Asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ needs.create_release.outputs.upload_url }}
           asset_path: ./release.zip
           asset_name: ${{ matrix.config.zipname }}
           asset_content_type: application/zip
-      - name: Publish release
-        uses: StuYarrow/publish-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          id: ${{ steps.create_release.outputs.id }}
+  final_publish:
+      name: Final Release Publish
+      needs: create_release
+      steps:
+        - name: Publish release
+          uses: StuYarrow/publish-release@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            id: ${{ needs.create_release.outputs.id }}

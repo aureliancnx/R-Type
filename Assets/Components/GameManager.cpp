@@ -19,7 +19,7 @@ void GameManager::launchGame() {
     registerPrefabsPlayer();
     initSoloPlayer();
     registerAxises();
-    initSplashScreens();
+    //initSplashScreens();
 
     // Show main menu
     menuManager.showMenu("MainMenu");

@@ -3,6 +3,7 @@
 #include "KapEngine.hpp"
 #include "KapMirror/KapMirror.hpp"
 #include "Dictionary.hpp"
+#include "Messages.hpp"
 
 namespace RType {
     class RtypeNetworkManager : public KapMirror::NetworkManager {
@@ -20,5 +21,12 @@ namespace RType {
         void onServerClientConnected(std::shared_ptr<KapMirror::NetworkConnection> connection) override;
 
         void onServerClientDisconnected(std::shared_ptr<KapMirror::NetworkConnection> connection) override;
+
+        private:
+        void registerServerHandlers();
+
+        void registerClientHandlers();
+
+        void onPlayerInputMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerInputMessage& message);
     };
 }

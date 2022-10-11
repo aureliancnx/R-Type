@@ -7,12 +7,34 @@ RtypeNetworkManager::RtypeNetworkManager(std::shared_ptr<KapEngine::GameObject> 
 void RtypeNetworkManager::onStart() {
     // Clean up
     players.clear();
+
+    if (isServer) {
+        registerServerHandlers();
+    } else {
+        registerClientHandlers();
+    }
 }
+
+#pragma region Client
+
+void RtypeNetworkManager::registerClientHandlers() {
+    getClient()->clearHandlers();
+}
+
+#pragma endregion
 
 #pragma region Server
 
+void RtypeNetworkManager::registerServerHandlers() {
+    getServer()->clearHandlers();
+
+    getServer()->registerHandler<PlayerInputMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerInputMessage& message) {
+        onPlayerInputMessage(connection, message);
+    });
+}
+
 void RtypeNetworkManager::onServerClientConnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {
-    KapEngine::Debug::log("Client connected");
+    KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> connected");
 
     std::shared_ptr<KapEngine::GameObject> player;
     getServer()->spawnObject("Player", {10, 50, 0}, player);
@@ -21,11 +43,20 @@ void RtypeNetworkManager::onServerClientConnected(std::shared_ptr<KapMirror::Net
 }
 
 void RtypeNetworkManager::onServerClientDisconnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {
-    KapEngine::Debug::log("Client disconnected");
+    KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> disconnected");
 
     std::shared_ptr<KapEngine::GameObject> player;
     if (players.tryGetValue(connection->getNetworkId(), player)) {
         getServer()->destroyObject(player);
+    }
+}
+
+void RtypeNetworkManager::onPlayerInputMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerInputMessage& message) {
+    KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> input message received");
+
+    std::shared_ptr<KapEngine::GameObject> player;
+    if (players.tryGetValue(connection->getNetworkId(), player)) {
+        // TODO: Move player
     }
 }
 

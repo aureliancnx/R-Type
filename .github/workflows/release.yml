@@ -12,10 +12,12 @@ jobs:
     steps:
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: actions/create-release@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          body: |
+            Release of RType: ${{ github.ref }}
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           draft: false

@@ -6,7 +6,7 @@
 namespace RType {
     class Menu {
         protected:
-        KapEngine::KapEngine& engine;
+        KapEngine::KEngine& engine;
         KapEngine::SceneManagement::Scene& scene;
         std::shared_ptr<KapEngine::GameObject> canvas;
 
@@ -31,6 +31,15 @@ namespace RType {
         }
 
         protected:
-        virtual void goToMenu(std::string const& menuName) {}
+        void switchMenu(std::string const& menuName) {
+            try {
+                auto menuCanvas = scene.findFirstGameObject("Canvas" + menuName);
+
+                hide();
+                menuCanvas->setActive(true);
+            } catch(...) {
+                KAP_DEBUG_ERROR("Failed to switch menu: " + menuName);
+            }
+        }
     };
 }

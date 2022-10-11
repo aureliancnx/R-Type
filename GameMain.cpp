@@ -4,7 +4,7 @@
 #include "Graphical/RaylibGraphical.hpp"
 #include "Debug.hpp"
 
-static void initWindow(KapEngine::KapEngine *engine) {
+static void initWindow(KapEngine::KEngine *engine) {
     KapEngine::Tools::Vector2 screenSize(720, 480);
     engine->setScreenSize(screenSize);
 
@@ -16,15 +16,21 @@ static void initWindow(KapEngine::KapEngine *engine) {
 }
 
 int main(int argc, char **argv) {
-    KapEngine::KapEngine engine(false, "R-Type", "1.0.0", "Epitech");
+    bool isServer = false;
+    if (argc > 1) {
+        if (std::string(argv[1]) == "--server") {
+            isServer = true;
+        }
+    }
+
+    KapEngine::KEngine engine(false, "R-Type", "1.0.0", "Epitech");
     initWindow(&engine);
 
-    RType::GameManager gameManager(engine);
-
-    try {
+    RType::GameManager gameManager(&engine);
+    if (isServer) {
+        gameManager.launchServer();
+    } else {
         gameManager.launchGame();
-    } catch(KapEngine::Errors::Error e) {
-        KAP_DEBUG_ERROR("Problem detected: " + std::string(e.what()));
     }
 
     engine.run();

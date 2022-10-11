@@ -2,8 +2,8 @@
 #include "KapEngineUi.hpp"
 #include "Button/Button.hpp"
 #include "InputField/Inputfield.hpp"
-#include "Spaceship/MenuSpaceShip.hpp"
 #include "Animations/SpriteAnimation.hpp"
+#include "Keys/UpdateStartGameKeys.hpp"
 
 using namespace RType;
 
@@ -39,6 +39,9 @@ void SoloMenu::init() {
         auto btn = scene.createGameObject("ButtonPlay");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
         auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto updateKeys = std::make_shared<UpdateStartGameKeys>(canvas);
+
+        canvas->addComponent(updateKeys);
 
         btn->addComponent(btnComp);
         btnComp->setText("Play");
@@ -51,6 +54,12 @@ void SoloMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
+            try {
+                canvas->getComponent<UpdateStartGameKeys>().checkInputs();
+            } catch(...) {
+                KAP_DEBUG_ERROR("Failed to update inputs");
+            }
+
             scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
         });
     }
@@ -72,7 +81,7 @@ void SoloMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
-            goToMenu("MainMenu");
+            switchMenu("MainMenu");
         });
     }
 
@@ -97,7 +106,7 @@ void SoloMenu::init() {
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
         btn->addComponent(btnComp);
 
-        auto &transform = (KapEngine::Transform &)btn->getTransform();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
         transform.setPosition(KapEngine::Tools::Vector3(350, 200, 0));
         transform.setScale(KapEngine::Tools::Vector3(40, 39, 0));
         transform.setParent(canvas);
@@ -123,10 +132,8 @@ void SoloMenu::init() {
     {
         auto shipObj = scene.createGameObject("Animation Ship");
         auto compShipImg = std::make_shared<KapEngine::UI::Image>(shipObj);
-        auto &transform = (KapEngine::Transform &)shipObj->getTransform();
-        auto compSpaceShip = std::make_shared<MenuSpaceShip>(shipObj);
+        auto& transform = shipObj->getComponent<KapEngine::Transform>();
 
-        shipObj->addComponent(compSpaceShip);
         compShipImg->setPathSprite("Assets/Textures/ship1.png");
         compShipImg->setRectangle(KapEngine::Tools::Rectangle(0, 0, 263, 116));
         shipObj->addComponent(compShipImg);
@@ -152,37 +159,4 @@ void SoloMenu::init() {
             animator->addLink("Choose Skin", "Choose Skin", "Link");
         }
     }
-}
-
-void SoloMenu::goToMenu(std::string const& name) {
-    auto objs = scene.getGameObjects("Canvas" + name);
-    auto objCurr = scene.getGameObjects("CanvasSoloMenu");
-
-    std::shared_ptr<KapEngine::GameObject> _found;
-    std::shared_ptr<KapEngine::GameObject> _foundCurrent;
-
-    for (std::size_t i = 0; i < objs.size(); i++) {
-        if (objs[i]->hasComponent("Canvas")) {
-            _found = objs[i];
-            break;
-        }
-    }
-
-    for (std::size_t i = 0; i < objCurr.size(); i++) {
-        if (objCurr[i]->hasComponent("Canvas")) {
-            _foundCurrent = objCurr[i];
-            break;
-        }
-    }
-
-    if (_found.use_count() == 0) {
-        KAP_DEBUG_ERROR("Canvas called " + name + " not found to display it");
-        return;
-    }
-    if (_foundCurrent.use_count() == 0) {
-        KAP_DEBUG_ERROR("Canvas called CanvasSoloMenu not found to hide it");
-        return;
-    }
-    _found->setActive(true);
-    _foundCurrent->setActive(false);
 }

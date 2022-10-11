@@ -6,19 +6,17 @@ using namespace RType;
 MainMenu::MainMenu(KapEngine::SceneManagement::Scene& _scene) : Menu(_scene) {}
 
 void MainMenu::init() {
-
-    //change type of display for canvas
+    // change type of display for canvas
     {
         try {
             auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
-
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
         } catch(...) {
             KAP_DEBUG_ERROR("Failed to resize canvas");
         }
     }
 
-    //create background
+    // create background
     {
         auto background = KapEngine::UI::UiFactory::createImage(scene, "Background");
         auto imageComp = std::make_shared<KapEngine::UI::Image>(background);
@@ -31,7 +29,8 @@ void MainMenu::init() {
         transform.setScale(KapEngine::Tools::Vector3(720, 480, 0));
         transform.setParent(canvas);
     }
-    //create title
+
+    // create title
     {
         auto title = KapEngine::UI::UiFactory::createImage(scene, "Title");
         auto imageComp = std::make_shared<KapEngine::UI::Image>(title);
@@ -44,7 +43,8 @@ void MainMenu::init() {
         transform.setScale(KapEngine::Tools::Vector3(550, 180, 0));
         transform.setParent(canvas);
     }
-    //create button play Solo
+
+    // create button play Solo
     {
         auto btn = scene.createGameObject("ButtonPlay");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
@@ -60,11 +60,12 @@ void MainMenu::init() {
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
-        btnComp->getOnClick().registerAction([this](){
-            goToMenu("SoloMenu");
+        btnComp->getOnClick().registerAction([this]() {
+            switchMenu("SoloMenu");
         });
     }
-    //create button play multi
+
+    // create button play multi
     {
         auto btn = scene.createGameObject("ButtonMulti");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
@@ -80,11 +81,12 @@ void MainMenu::init() {
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
-        btnComp->getOnClick().registerAction([this](){
-            goToMenu("MultiMenu");
+        btnComp->getOnClick().registerAction([this]() {
+            switchMenu("MultiMenu");
         });
     }
-    //create button settings
+
+    // create button settings
     {
         auto btn = scene.createGameObject("ButtonSettings");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
@@ -100,11 +102,12 @@ void MainMenu::init() {
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
-        btnComp->getOnClick().registerAction([this](){
-            goToMenu("SettingsMenu");
+        btnComp->getOnClick().registerAction([this]() {
+            switchMenu("SettingsMenu");
         });
     }
-    //create button quit
+
+    // create button quit
     {
         auto btn = scene.createGameObject("ButtonQuit");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
@@ -122,39 +125,7 @@ void MainMenu::init() {
 
         btnComp->getOnClick().registerAction([this](){
             KAP_DEBUG_LOG("QUITING GAME !");
-            canvas->getEngine().stop();
+            engine.stop();
         });
     }
-}
-
-void RType::MainMenu::goToMenu(std::string const& name) {
-    auto objs = scene.getGameObjects("Canvas" + name);
-    auto objCurr = scene.getGameObjects("CanvasMainMenu");
-    std::shared_ptr<KapEngine::GameObject> _found;
-    std::shared_ptr<KapEngine::GameObject> _foundCurrent;
-
-    for (std::size_t i = 0; i < objs.size(); i++) {
-        if (objs[i]->hasComponent("Canvas")) {
-            _found = objs[i];
-            break;
-        }
-    }
-
-    for (std::size_t i = 0; i < objCurr.size(); i++) {
-        if (objCurr[i]->hasComponent("Canvas")) {
-            _foundCurrent = objCurr[i];
-            break;
-        }
-    }
-
-    if (_found.use_count() == 0) {
-        KAP_DEBUG_ERROR("Canvas called " + name + " not found to display it");
-        return;
-    }
-    if (_foundCurrent.use_count() == 0) {
-        KAP_DEBUG_ERROR("Canvas called CanvasSoloMenu not found to hide it");
-        return;
-    }
-    _found->setActive(true);
-    _foundCurrent->setActive(false);
 }

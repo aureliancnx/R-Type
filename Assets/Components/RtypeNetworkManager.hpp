@@ -1,0 +1,18 @@
+#pragma once
+
+#include "KapEngine.hpp"
+#include "KapMirror/KapMirror.hpp"
+
+namespace RType {
+    class RtypeNetworkManager : public KapMirror::NetworkManager {
+        public:
+        RtypeNetworkManager(std::shared_ptr<KapEngine::GameObject> go);
+        ~RtypeNetworkManager() = default;
+
+        void onStart() override;
+
+        void onUpdate() override;
+
+        void onServerClientConnected(std::shared_ptr<KapMirror::NetworkConnection> connection) override;
+    };
+}

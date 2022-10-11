@@ -8,22 +8,8 @@
 #ifndef BUTTON_HPP_
 #define BUTTON_HPP_
 
-#include "Component.hpp"
-#include "Colors.hpp"
-#include "EventAction.hpp"
-
-namespace KapEngine {
-    class Component;
-
-    namespace Tools {
-        class Color;
-    }
-
-    namespace Events {
-        class EventAction;
-    }
-
-}
+#include "KapEngine.hpp"
+#include "KapEngineEvents.hpp"
 
 namespace KapEngine {
 

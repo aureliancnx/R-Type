@@ -7,13 +7,8 @@
 
 #include "Inputfield.hpp"
 #include "MouseDetector.hpp"
-#include "Transform.hpp"
 
-#include "UiImage.hpp"
-#include "UiText.hpp"
-#include "UiFactory.hpp"
-
-#include "Debug.hpp"
+#include "KapEngineUi.hpp"
 
 KapEngine::UI::Inputfield::Inputfield(std::shared_ptr<GameObject> go) : Component(go, "InputField") {
     __init(go);

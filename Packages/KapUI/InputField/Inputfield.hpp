@@ -8,19 +8,7 @@
 #ifndef INPUTFIELD_HPP_
 #define INPUTFIELD_HPP_
 
-#include "Component.hpp"
-#include "Colors.hpp"
-#include "Vectors.hpp"
-
-namespace KapEngine {
-    class Component;
-
-    namespace Tools {
-        class Color;
-        class Vector2;
-        class Vector3;
-    }
-}
+#include "KapEngine.hpp"
 
 namespace KapEngine {
 
@@ -70,7 +58,7 @@ namespace KapEngine {
                 bool _hovered = false;
                 bool _clicked = false;
 
-                InputType _type;
+                InputType _type = InputType::TEXT;
 
                 std::string _content = "";
 

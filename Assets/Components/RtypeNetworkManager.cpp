@@ -18,7 +18,6 @@ void RtypeNetworkManager::onStart() {
 #pragma region Client
 
 void RtypeNetworkManager::registerClientHandlers() {
-    getClient()->clearHandlers();
 }
 
 #pragma endregion
@@ -26,8 +25,6 @@ void RtypeNetworkManager::registerClientHandlers() {
 #pragma region Server
 
 void RtypeNetworkManager::registerServerHandlers() {
-    getServer()->clearHandlers();
-
     getServer()->registerHandler<PlayerInputMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerInputMessage& message) {
         onPlayerInputMessage(connection, message);
     });

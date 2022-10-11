@@ -15,15 +15,6 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake" ${CMAKE_MODULE_PATH})
 
 set(CMAKE_CXX_STANDARD 20)
 
-if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    message(STATUS "GCC detected, adding compile flags")
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    # using Visual Studio C++
-    message(STATUS "MSVC detected, adding compile flags")
-else ()
-    message(FATAL_ERROR "Unsupported compiler")
-endif()
-
 # RayLib version
 set(raylib_VERSION 4.0.0)
 find_package(raylib REQUIRED)

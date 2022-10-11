@@ -8,6 +8,8 @@ namespace RType {
         private:
         KapEngine::KEngine* engine;
 
+        std::shared_ptr<RtypeNetworkManager> networkManager;
+
         public:
         ServerManager(KapEngine::KEngine* _engine);
         ~ServerManager() = default;
@@ -16,5 +18,7 @@ namespace RType {
 
         private:
         void initServer();
+
+        void registerAxises();
     };
 }

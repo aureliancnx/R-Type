@@ -6,7 +6,6 @@
 #include "Menu/KeyboardMenu.hpp"
 
 #include "KapMirror/KapMirror.hpp"
-#include "RtypeNetworkManager.hpp"
 #include "Prefabs.hpp"
 
 using namespace RType;
@@ -71,18 +70,16 @@ void GameManager::initSinglePlayer() {
 void GameManager::initMultiPlayer() {
     auto scene = engine->getSceneManager()->createScene("MultiPlayer");
 
-    auto networkManager = scene->createGameObject("NetworkManager");
-    auto networkManagerComp = std::make_shared<RtypeNetworkManager>(networkManager);
-    networkManager->addComponent(networkManagerComp);
+    auto networkManagerObject = scene->createGameObject("NetworkManager");
+    networkManager = std::make_shared<RtypeNetworkManager>(networkManagerObject);
+    networkManagerObject->addComponent(networkManager);
 }
 
 // TODO: Move this to a dedicated class
 void GameManager::startMultiPlayer() {
     auto& scene = engine->getSceneManager()->getScene("MultiPlayer");
 
-    auto networkManager = scene.findFirstGameObject("NetworkManager");
-    auto networkManagerComp = networkManager->getComponent<RtypeNetworkManager>();
-    networkManagerComp.startClient();
+    networkManager->startClient();
 }
 
 void GameManager::registerAxises() {

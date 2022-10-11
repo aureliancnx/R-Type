@@ -5,6 +5,7 @@
 
 #include "Player/Player.hpp"
 #include "Animations/SpriteAnimation.hpp"
+#include "RtypeNetworkManager.hpp"
 
 namespace RType {
     class GameManager {
@@ -12,6 +13,8 @@ namespace RType {
         KapEngine::KEngine* engine;
 
         MenuManager menuManager;
+
+        std::shared_ptr<RtypeNetworkManager> networkManager;
 
         public:
         GameManager(KapEngine::KEngine* _engine);

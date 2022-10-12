@@ -37,6 +37,7 @@ void PlayerController::onUpdate() {
     }
 
     if (getInput().getKeyDown(KapEngine::Events::Key::SPACE)) {
+        playShootSound();
         shoot();
     }
 }
@@ -100,4 +101,13 @@ void PlayerController::sendInput(KapEngine::Tools::Vector2 input) {
     message.x = input.getX();
     message.y = input.getY();
     getClient()->send(message);
+}
+
+void PlayerController::playShootSound() {
+    long long currentTime = KapMirror::NetworkTime::localTime();
+    if (currentTime % 2 == 0) {
+        getGameObject().getEngine().getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/shot1.wav");
+    } else {
+        getGameObject().getEngine().getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/shot2.wav");
+    }
 }

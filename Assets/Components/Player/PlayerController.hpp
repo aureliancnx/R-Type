@@ -33,5 +33,7 @@ namespace RType {
 
         private:
         void sendInput(KapEngine::Tools::Vector2 input);
+
+        void playShootSound();
     };
 }

@@ -28,6 +28,7 @@ void RtypeNetworkManager::registerClientHandlers() {
 void RtypeNetworkManager::onPlayerAuthorityMessage(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerAuthorityMessage& message) {
     std::shared_ptr<KapEngine::GameObject> player;
     if (getClient()->getNetworkObject(message.networkId, player)) {
+        KAP_DEBUG_LOG("Set local authority");
         auto& playerController = player->getComponent<PlayerController>();
         playerController.setLocalAuthoriy(true);
     }

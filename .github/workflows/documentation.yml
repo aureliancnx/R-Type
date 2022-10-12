@@ -9,10 +9,24 @@ jobs:
   generate:
     name: Generate Doxygen
     runs-on: ubuntu-latest
-    steps:
-      - uses: DenverCoder1/doxygen-github-pages-action@v1.1.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          folder: docs/html
-          config_file: Doxyfile
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        submodules: "true"
+    - name: Install Doxygen
+      run: sudo apt-get install doxygen -y
+      shell: bash
+    - name: Generate Doxygen Documentation
+      run: doxygen Doxyfile
+      shell: bash
+
+    - name: Create .nojekyll (ensures pages with underscores work on gh pages)
+      run: touch docs/html/.nojekyll
+      shell: bash
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs/html

@@ -22,7 +22,6 @@ jobs:
         shell: bash
         run: |
           mkdir docs/
-          mkdir docs/html
       -
         name: "Generate Doxygen Documentation"
         run: "doxygen Doxyfile"

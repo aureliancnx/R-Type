@@ -2,6 +2,7 @@
 
 build/
 Build/
+docs/html/*
 
 # Visual Studio Code
 .vscode/

@@ -3,7 +3,7 @@
 #include "KapEngine.hpp"
 #include "MenuManager.hpp"
 
-#include "Player/Player.hpp"
+#include "Player/PlayerController.hpp"
 #include "Animations/SpriteAnimation.hpp"
 #include "RtypeNetworkManager.hpp"
 
@@ -30,8 +30,6 @@ namespace RType {
         void registerMenus();
 
         void registerPrefabsPlayer();
-
-        void registerAxises();
 
         void initSplashScreens();
 

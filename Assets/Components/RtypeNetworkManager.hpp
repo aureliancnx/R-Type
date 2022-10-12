@@ -23,10 +23,14 @@ namespace RType {
         void onServerClientDisconnected(std::shared_ptr<KapMirror::NetworkConnection> connection) override;
 
         private:
-        void registerServerHandlers();
-
         void registerClientHandlers();
 
+        void onPlayerAuthorityMessage(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerAuthorityMessage& message);
+
+        void registerServerHandlers();
+
         void onPlayerInputMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerInputMessage& message);
+
+        void onPlayerShootMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerShootMessage& message);
     };
 }

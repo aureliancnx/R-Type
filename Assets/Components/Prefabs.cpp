@@ -1,5 +1,5 @@
 #include "Prefabs.hpp"
-#include "Player/Player.hpp"
+#include "Player/PlayerController.hpp"
 #include "Bullet/Bullet.hpp"
 
 using namespace RType;
@@ -8,16 +8,17 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("Player", [](KapEngine::SceneManagement::Scene& scene) {
         auto player = KapEngine::UI::UiFactory::createCanvas(scene, "Player");
 
-        auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(player);
-        player->addComponent(networkIdentityComp);
+        auto networkIdentityComponent = std::make_shared<KapMirror::NetworkIdentity>(player);
+        player->addComponent(networkIdentityComponent);
 
-        auto networkTransformComp = std::make_shared<KapMirror::NetworkTransform>(player);
-        networkTransformComp->setClientAuthority(false);
-        networkTransformComp->setSendRate(5);
-        player->addComponent(networkTransformComp);
+        auto networkTransformComponent = std::make_shared<KapMirror::NetworkTransform>(player);
+        networkTransformComponent->setClientAuthority(false);
+        networkTransformComponent->setSendRate(10);
+        player->addComponent(networkTransformComponent);
 
-        auto playerComp = std::make_shared<Player>(player);
-        player->addComponent(playerComp);
+        auto controllerComponent = std::make_shared<PlayerController>(player);
+        player->addComponent(controllerComponent);
+        controllerComponent->setLocalAuthoriy(false);
 
         auto imageComp = std::make_shared<KapEngine::UI::Image>(player);
         imageComp->setRectangle({0, 0, 263, 116});
@@ -26,7 +27,7 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
 
         auto& transform = player->getComponent<KapEngine::Transform>();
         transform.setPosition({0, 0, 0});
-        transform.setScale({48.9, 34.8, 0});
+        transform.setScale({79, 35, 0});
 
         return player;
     });
@@ -43,13 +44,13 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
         bullet->addComponent(bulletComp);
 
         auto imageComp = std::make_shared<KapEngine::UI::Image>(bullet);
-        imageComp->setRectangle({0, 0, 26, 21});
+        imageComp->setRectangle({0, 0, 19, 6});
         imageComp->setPathSprite("Assets/Textures/Bullet/bullet_1.png");
         bullet->addComponent(imageComp);
 
         auto& transform = bullet->getComponent<KapEngine::Transform>();
         transform.setPosition({0, 0, 0});
-        transform.setScale({(26 * 2), (21 * 2)});
+        transform.setScale({19, 6});
 
         return bullet;
     });

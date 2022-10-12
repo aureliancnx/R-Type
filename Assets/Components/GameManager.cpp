@@ -18,7 +18,6 @@ GameManager::GameManager(KapEngine::KEngine* _engine) : engine(_engine) {}
 void GameManager::launchGame() {
     KapEngine::Debug::log("Launch game");
 
-    registerAxises();
     registerPrefabs();
     registerMenus();
     initSinglePlayer();
@@ -34,7 +33,6 @@ void GameManager::launchServer() {
 
     registerPrefabs();
     initMultiPlayer(true);
-    registerAxises();
 
     engine->getSceneManager()->loadScene("MultiPlayer");
     networkManager->startServer();
@@ -86,8 +84,8 @@ void GameManager::initSinglePlayer() {
     auto& transform = player->getComponent<KapEngine::Transform>();
     transform.setPosition({0, 0, 0});
 
-    auto& playerComp = player->getComponent<Player>();
-    playerComp.setLocalPlayer(true);
+    auto& playerController = player->getComponent<PlayerController>();
+    playerController.setLocalAuthoriy(true);
 
     // TODO: Fix animation (move animation)
     // https://github.com/aureliancnx/R-Type/blob/ae652adfdf49c702bd8513c27b8bef6dcfeaebc2/Assets/Components/GameManager.cpp#L84
@@ -107,30 +105,6 @@ void GameManager::startLocalMultiPlayer() {
     auto& scene = engine->getSceneManager()->getScene("MultiPlayer");
 
     networkManager->startClient();
-}
-
-void GameManager::registerAxises() {
-    KapEngine::Events::Input::Axis _axisV("Vertical");
-    KapEngine::Events::Input::Axis _axisH("Horizontal");
-    KapEngine::Events::Input::Axis _axisM("Mouseinput");
-
-    // init vertical axis
-    _axisV.positiveButton = KapEngine::Events::Key::UP;
-    _axisV.negativeButton = KapEngine::Events::Key::DOWN;
-    _axisV.invert = true;
-
-    // init horizontal axis
-    _axisH.positiveButton = KapEngine::Events::Key::RIGHT;
-    _axisH.negativeButton = KapEngine::Events::Key::LEFT;
-
-    // init mouse axis
-    _axisM.positiveButton = KapEngine::Events::Key::MOUSE_LEFT;
-    _axisM.negativeButton = KapEngine::Events::Key::MOUSE_RIGHT;
-
-    // add axis
-    engine->getEventManager().getInput().addAxis(_axisH);
-    engine->getEventManager().getInput().addAxis(_axisV);
-    engine->getEventManager().getInput().addAxis(_axisM);
 }
 
 void GameManager::initSplashScreens() {

@@ -20,4 +20,28 @@ namespace RType {
             y = reader.read<float>();
         }
     };
+
+    struct PlayerShootMessage : KapMirror::NetworkMessage {
+        unsigned int networkId;
+
+        void serialize(KapMirror::NetworkWriter& writer) {
+            writer.write(networkId);
+        }
+
+        void deserialize(KapMirror::NetworkReader& reader) {
+            networkId = reader.read<unsigned int>();
+        }
+    };
+
+    struct PlayerAuthorityMessage : KapMirror::NetworkMessage {
+        unsigned int networkId;
+
+        void serialize(KapMirror::NetworkWriter& writer) {
+            writer.write(networkId);
+        }
+
+        void deserialize(KapMirror::NetworkReader& reader) {
+            networkId = reader.read<unsigned int>();
+        }
+    };
 }

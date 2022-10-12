@@ -1,4 +1,5 @@
 #include "RtypeNetworkManager.hpp"
+#include "Player/PlayerController.hpp"
 
 using namespace RType;
 
@@ -18,6 +19,17 @@ void RtypeNetworkManager::onStart() {
 #pragma region Client
 
 void RtypeNetworkManager::registerClientHandlers() {
+    getClient()->registerHandler<PlayerAuthorityMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerAuthorityMessage& message) {
+        onPlayerAuthorityMessage(connection, message);
+    });
+}
+
+void RtypeNetworkManager::onPlayerAuthorityMessage(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerAuthorityMessage& message) {
+    std::shared_ptr<KapEngine::GameObject> player;
+    if (getClient()->getNetworkObject(message.networkId, player)) {
+        auto& playerController = player->getComponent<PlayerController>();
+        playerController.setLocalAuthoriy(true);
+    }
 }
 
 #pragma endregion
@@ -28,15 +40,23 @@ void RtypeNetworkManager::registerServerHandlers() {
     getServer()->registerHandler<PlayerInputMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerInputMessage& message) {
         onPlayerInputMessage(connection, message);
     });
+    getServer()->registerHandler<PlayerShootMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerShootMessage& message) {
+        onPlayerShootMessage(connection, message);
+    });
 }
 
 void RtypeNetworkManager::onServerClientConnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {
     KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> connected");
 
     std::shared_ptr<KapEngine::GameObject> player;
-    getServer()->spawnObject("Player", {10, 50, 0}, player);
+    getServer()->spawnObject("Player", {0, 0, 0}, player);
 
     players[connection->getNetworkId()] = player;
+
+    // Send player authority
+    PlayerAuthorityMessage message;
+    message.networkId = connection->getNetworkId();
+    connection->send(message);
 }
 
 void RtypeNetworkManager::onServerClientDisconnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {
@@ -49,13 +69,18 @@ void RtypeNetworkManager::onServerClientDisconnected(std::shared_ptr<KapMirror::
 }
 
 void RtypeNetworkManager::onPlayerInputMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerInputMessage& message) {
-    KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> input message received");
-
     std::shared_ptr<KapEngine::GameObject> player;
     if (players.tryGetValue(connection->getNetworkId(), player)) {
-        auto &transform = player->getComponent<KapEngine::Transform>();
+        auto& controllerComponent = player->getComponent<RType::PlayerController>();
+        controllerComponent.movePlayer(KapEngine::Tools::Vector2(message.x, message.y));
+    }
+}
 
-        transform.setPosition({transform.getLocalPosition().getX() + message.x, transform.getLocalPosition().getY() + message.y});
+void RtypeNetworkManager::onPlayerShootMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerShootMessage& message) {
+    std::shared_ptr<KapEngine::GameObject> player;
+    if (players.tryGetValue(connection->getNetworkId(), player)) {
+        auto& controllerComponent = player->getComponent<RType::PlayerController>();
+        controllerComponent.shoot();
     }
 }
 

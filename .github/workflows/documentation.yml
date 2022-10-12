@@ -1,32 +1,33 @@
-name: Doxygen generation
-
+name: "Doxygen generation"
 on:
   push:
     branches:
-      - 'main'
+      - main
 
 jobs:
   generate:
-    name: Generate Doxygen
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      -
+        name: "Checkout repository"
         uses: actions/checkout@v2
         with:
           submodules: "true"
-      - name: Install Doxygen
-        run: sudo apt-get install doxygen -y
+      -
+        name: "Install Doxygen"
+        run: "sudo apt-get install doxygen -y"
         shell: bash
-      - name: Generate Doxygen Documentation
-        run: doxygen Doxyfile
+      -
+        name: "Generate Doxygen Documentation"
+        run: "doxygen Doxyfile"
         shell: bash
-
-      - name: Create .nojekyll (ensures pages with underscores work on gh pages)
-        run: touch docs/html/.nojekyll
+      -
+        name: "Create .nojekyll (ensures pages with underscores work on gh pages)"
+        run: "touch docs/html/.nojekyll"
         shell: bash
-
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs/html
+      -
+        name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
+          publish_dir: ./docs/html

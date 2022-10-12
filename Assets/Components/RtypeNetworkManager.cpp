@@ -1,5 +1,6 @@
 #include "RtypeNetworkManager.hpp"
 #include "Player/PlayerController.hpp"
+#include "Player/PlayerSkin.hpp"
 
 using namespace RType;
 
@@ -49,7 +50,11 @@ void RtypeNetworkManager::onServerClientConnected(std::shared_ptr<KapMirror::Net
     KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> connected");
 
     std::shared_ptr<KapEngine::GameObject> player;
-    getServer()->spawnObject("Player", {0, 0, 0}, player);
+    getServer()->spawnObject("Player", {0, 0, 0}, [this](std::shared_ptr<KapEngine::GameObject> go) {
+        auto& networkIdentity = go->getComponent<KapMirror::NetworkIdentity>();
+        auto& playerSkin = go->getComponent<PlayerSkin>();
+        playerSkin.setSkinId(networkIdentity.getNetworkId() % 5 + 1);
+    }, player);
 
     players[connection->getNetworkId()] = player;
 

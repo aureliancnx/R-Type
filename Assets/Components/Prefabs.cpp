@@ -1,5 +1,6 @@
 #include "Prefabs.hpp"
 #include "Player/PlayerController.hpp"
+#include "Player/PlayerSkin.hpp"
 #include "Bullet/Bullet.hpp"
 
 using namespace RType;
@@ -20,9 +21,12 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
         player->addComponent(controllerComponent);
         controllerComponent->setLocalAuthoriy(false);
 
+        auto skinComponent = std::make_shared<PlayerSkin>(player);
+        player->addComponent(skinComponent);
+
         auto imageComp = std::make_shared<KapEngine::UI::Image>(player);
         imageComp->setRectangle({0, 0, 263, 116});
-        imageComp->setPathSprite("Assets/Textures/Ship/ship_1.png");
+        imageComp->setPathSprite("Assets/Textures/Ship/ship_1.png"); // Default skin
         player->addComponent(imageComp);
 
         auto& transform = player->getComponent<KapEngine::Transform>();

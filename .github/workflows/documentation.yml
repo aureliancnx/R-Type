@@ -21,7 +21,7 @@ jobs:
         name: "Create folder for documentation"
         shell: bash
         run: |
-          mkdir docs/
+          'mkdir docs/; true'
       -
         name: "Generate Doxygen Documentation"
         run: "doxygen Doxyfile"

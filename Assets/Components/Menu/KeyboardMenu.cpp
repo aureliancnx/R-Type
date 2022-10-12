@@ -187,7 +187,7 @@ void RType::KeyboardMenu::init() {
         transform.setParent(_goSettings);
 
         btnComp->getOnClick().registerAction([this]() {
-            switchMenu("MainMenu");
+            switchMenu("SettingsMenu");
         });
     }
 

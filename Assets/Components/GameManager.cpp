@@ -4,6 +4,9 @@
 #include "Menu/SoloMenu.hpp"
 #include "Menu/MultiMenu.hpp"
 #include "Menu/KeyboardMenu.hpp"
+#include "Menu/SettingsMenu.hpp"
+#include "Menu/VolumeMenu.hpp"
+#include "Menu/HowToPlayMenu.hpp"
 
 #include "KapMirror/KapMirror.hpp"
 #include "Prefabs.hpp"
@@ -59,6 +62,15 @@ void GameManager::registerMenus() {
 
     auto keymenu = std::make_shared<KeyboardMenu>(scene);
     menuManager.registerMenu("KeysMenu", keymenu);
+
+    auto settingsMenu = std::make_shared<SettingsMenu>(scene);
+    menuManager.registerMenu("SettingsMenu", settingsMenu);
+
+    auto volumeMenu = std::make_shared<VolumeMenu>(scene);
+    menuManager.registerMenu("VolumeMenu", volumeMenu);
+
+    auto htpMenu = std::make_shared<HowToPlayMenu>(scene);
+    menuManager.registerMenu("HowToPlayMenu", htpMenu);
 }
 
 // TODO: Move this to a dedicated class

@@ -19,8 +19,10 @@ jobs:
         shell: bash
       -
         name: "Create folder for documentation"
-        run: "mkdir docs/html"
         shell: bash
+        run: |
+          mkdir docs/
+          mkdir docs/html
       -
         name: "Generate Doxygen Documentation"
         run: "doxygen Doxyfile"

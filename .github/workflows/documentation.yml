@@ -18,6 +18,10 @@ jobs:
         run: "sudo apt-get install doxygen -y"
         shell: bash
       -
+        name: "Create folder for documentation"
+        run: "mkdir docs/html"
+        shell: bash
+      -
         name: "Generate Doxygen Documentation"
         run: "doxygen Doxyfile"
         shell: bash

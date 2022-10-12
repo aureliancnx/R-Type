@@ -6,27 +6,23 @@
 #include "KapEngineUi.hpp"
 #include "Button/Button.hpp"
 #include "InputField/Inputfield.hpp"
-
 #include "Volume/MenuVolume.hpp"
-
 #include "Animations/SpriteAnimation.hpp"
 
 RType::VolumeMenu::VolumeMenu(KapEngine::SceneManagement::Scene &_scene) : Menu(_scene) {}
 
 void RType::VolumeMenu::init() {
-
-    //Change type of display for canvas
+    // Change type of display for canvas
     {
         try {
             auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
-
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
         } catch (...) {
             KAP_DEBUG_ERROR("Failed to resize canvas");
         }
     }
 
-    //Create background
+    // Create background
     {
         auto background = KapEngine::UI::UiFactory::createImage(scene, "Background");
         auto imageComp = std::make_shared<KapEngine::UI::Image>(background);
@@ -40,7 +36,7 @@ void RType::VolumeMenu::init() {
         transform.setParent(canvas);
     }
 
-    //Create button back settings menu
+    // Create button back settings menu
     {
         auto btn = scene.createGameObject("ButtonBack");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
@@ -148,11 +144,6 @@ void RType::VolumeMenu::init() {
                 KapEngine::PlayerPrefs::setInt("volumeValue", currentID);
             } catch (...) {}
         });
-
-    }
-
-    // Create music
-    {
 
     }
 }

@@ -41,6 +41,20 @@ void RType::VolumeMenu::init() {
         transform.setParent(canvas);
     }
 
+    //Create text instruction Volume
+    {
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change input");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Change your volume value");
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+
+        compText->setPoliceSize(20);
+
+        txt->addComponent(compText);
+        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(230, 50, 0));
+        transform.setParent(canvas);
+    }
+
     //Create button back settings menu
     {
         auto btn = scene.createGameObject("ButtonBack");
@@ -71,7 +85,7 @@ void RType::VolumeMenu::init() {
 
         txt->addComponent(compText);
         transform.setScale({150, 35, 0});
-        transform.setPosition({250, 150, 0});
+        transform.setPosition({250, 170, 0});
         transform.setParent(canvas);
     }
 
@@ -83,7 +97,7 @@ void RType::VolumeMenu::init() {
 
         txt->addComponent(compText);
         transform.setScale({150, 35, 0});
-        transform.setPosition({350, 150, 0});
+        transform.setPosition({350, 170, 0});
         transform.setParent(canvas);
     }
 
@@ -98,11 +112,11 @@ void RType::VolumeMenu::init() {
         btn->addComponent(btnComp);
         btnComp->setText("UP");
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
-        btnComp->setTextPosition({18, 12});
+        btnComp->setTextPosition({100, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({379, 206, 0});
-        transform.setScale({50, 39, 0});
+        transform.setPosition({249, 220, 0});
+        transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
@@ -130,11 +144,11 @@ void RType::VolumeMenu::init() {
         btn->addComponent(btnComp);
         btnComp->setText("DOWN");
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
-        btnComp->setTextPosition({5, 12});
+        btnComp->setTextPosition({90, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({319, 206, 0});
-        transform.setScale({50, 39, 0});
+        transform.setPosition({249, 270, 0});
+        transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {

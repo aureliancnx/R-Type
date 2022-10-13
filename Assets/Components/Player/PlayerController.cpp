@@ -1,6 +1,7 @@
 #include "PlayerController.hpp"
 #include "Bullet/Bullet.hpp"
 #include "Messages.hpp"
+#include "GameManager.hpp"
 
 using namespace RType;
 
@@ -9,8 +10,8 @@ PlayerController::PlayerController(std::shared_ptr<KapEngine::GameObject> _gameO
     addRequireComponent("NetworkTransform");
 }
 
-void PlayerController::setLocalAuthoriy(bool _isLocalAuthoriy) {
-    isLocalAuthoriy = _isLocalAuthoriy;
+void PlayerController::setLocalAuthority(bool _isLocalAuthority) {
+    isLocalAuthority = _isLocalAuthority;
 }
 
 void PlayerController::onUpdate() {
@@ -20,7 +21,7 @@ void PlayerController::onUpdate() {
         }
     }
 
-    if (!isLocalAuthoriy) {
+    if (!isLocalAuthority) {
         return;
     }
 
@@ -74,7 +75,8 @@ void PlayerController::sendKeepAlive() {
         return;
     }
     KAP_DEBUG_LOG("SEND KEEPALIVE TO " + std::to_string(getNetworkId()));
-    getServer()->sendToClient(keepAlive, getNetworkId());
+
+    GameManager::getInstance()->getNetworkManager()->sendKeepAlive(networkIdentity);
 }
 
 void PlayerController::movePlayer(KapEngine::Tools::Vector2 input) {
@@ -98,7 +100,7 @@ void PlayerController::shoot() {
         std::shared_ptr<KapEngine::GameObject> bullet;
         getGameObject().getEngine().getPrefabManager()->instantiatePrefab("Bullet", scene, bullet);
         bullet->getComponent<KapEngine::Transform>().setPosition(pos);
-    } else if (isClient() && isLocalAuthoriy) {
+    } else if (isClient() && isLocalAuthority) {
         PlayerShootMessage message;
         message.networkId = getNetworkId();
         getClient()->send(message);
@@ -109,7 +111,7 @@ void PlayerController::shoot() {
 }
 
 void PlayerController::sendInput(KapEngine::Tools::Vector2 input) {
-    if (!isClient() || !isLocalAuthoriy) {
+    if (!isClient() || !isLocalAuthority) {
         return;
     }
 

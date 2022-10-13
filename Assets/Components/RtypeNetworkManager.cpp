@@ -19,6 +19,18 @@ void RtypeNetworkManager::onStart() {
 
 #pragma region Client
 
+void RtypeNetworkManager::sendKeepAlive(KapMirror::NetworkIdentity *identity) {
+    PlayerKeepAlive keepAlive;
+    keepAlive.timestamp = KapMirror::NetworkTime::localTime();
+
+    std::vector<long long> playerKeepAlives;
+
+    keepAlives.tryGetValue(identity->getNetworkId(), playerKeepAlives);
+    playerKeepAlives.push_back(keepAlive.timestamp);
+    keepAlives[identity->getNetworkId()] = playerKeepAlives;
+    getServer()->sendToClient(keepAlive, identity->getNetworkId());
+}
+
 void RtypeNetworkManager::registerClientHandlers() {
     getClient()->registerHandler<PlayerAuthorityMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerAuthorityMessage& message) {
         onPlayerAuthorityMessage(connection, message);
@@ -33,7 +45,7 @@ void RtypeNetworkManager::onPlayerAuthorityMessage(std::shared_ptr<KapMirror::Ne
     if (getClient()->getNetworkObject(message.networkId, player)) {
         KAP_DEBUG_LOG("Set local authority");
         auto& playerController = player->getComponent<PlayerController>();
-        playerController.setLocalAuthoriy(true);
+        playerController.setLocalAuthority(true);
     }
 }
 

@@ -22,6 +22,7 @@ void GameManager::launchGame() {
     registerMenus();
     initSinglePlayer();
     initMultiPlayer(false);
+    initAxis();
     //initSplashScreens();
 
     // Show main menu
@@ -129,6 +130,7 @@ void GameManager::initAxis() {
 
     vertical.positiveButton = KapEngine::Events::Key::UP;
     vertical.negativeButton = KapEngine::Events::Key::DOWN;
+    vertical.invert = true;
 
     shoot.positiveButton = KapEngine::Events::Key::SPACE;
 

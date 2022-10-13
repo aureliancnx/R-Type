@@ -8,13 +8,19 @@ on:
 jobs:
   create_release:
     name: Create release
+    runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+
     steps:
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: actions/create-release@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          body: |
+            Release of RType: ${{ github.ref }}
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           draft: false
@@ -28,33 +34,36 @@ jobs:
       matrix:
         config:
           - {
-            name: "Windows Latest MSVC (C++17)",
+            name: "Windows Latest MSVC (C++20)",
             zipname: "release-windows-x86.zip",
             os: windows-latest,
             build_type: "Debug",
             cc: "cl",
             cxx: "cl",
             environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
-            generators: "Visual Studio 17 2022"
+            generators: "Visual Studio 17 2022",
+            build_executable: "RType.exe"
           }
           - {
-            name: "Ubuntu Latest GCC (C++17)",
+            name: "Ubuntu Latest GCC (C++20)",
             zipname: "release-ubuntu-x86.zip",
             os: ubuntu-latest,
             build_type: "Debug",
             cc: "gcc",
             cxx: "g++",
-            generators: "Ninja"
+            generators: "Ninja",
+            build_executable: "RType"
           }
-          #- {
-          #  name: "macOS Latest Clang (C++17)",
-          #  zipname: "release-macos-x86.zip",
-          #  os: macos-latest,
-          #  build_type: "Debug",
-          #  cc: "clang",
-          #  cxx: "clang++",
-          #  generators: "Xcode"
-          #}
+          - {
+            name: "macOS Latest Clang (C++20)",
+            zipname: "release-macos-x86.zip",
+            os: macos-latest,
+            build_type: "Release",
+            cc: "clang",
+            cxx: "clang++",
+            generators: "Xcode",
+            build_executable: "Release/RType"
+          }
 
     steps:
       - name: Checkout repo
@@ -87,33 +96,39 @@ jobs:
           brew install cmake ninja
           ninja --version
           cmake --version
-      - name: Configure C++17
+      - name: Configure C++20
         shell: bash
-        if: contains(matrix.config.name, 'C++17')
+        if: contains(matrix.config.name, 'C++20')
         run: |
           mkdir build
           cmake \
             -S . \
             -B build \
             -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
-            -DCMAKE_CXX_STANDARD=17 \
+            -DCMAKE_CXX_STANDARD=20 \
             -DBoost_DEBUG=0 \
             -G "${{ matrix.config.generators }}"
       - name: Build
         shell: bash
         run: cmake --build build --config ${{ matrix.config.build_type }}
       - name: Prepare release files (Linux)
-        if: startsWith(matrix.config.name, 'Ubuntu Latest GCC')
+        if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') || startsWith(matrix.config.name, 'macos') }}
         run: |
           mkdir build-release/
-          cp ./build/RType* build-release/
+          cp ./build/${{ matrix.config.build_executable }} build-release/
           mkdir build-release/Assets
           cp -R ./Assets/Textures build-release/Assets/Textures
           cp -R ./Assets/Sound build-release/Assets/Sound
-      - name: Zip release
+      - name: Zip release (Linux or Mac)
+        if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') || startsWith(matrix.config.name, 'macos') }}
         shell: bash
         run: |
           zip -r release build-release/.
+      - name: Zip release (Windows)
+        if: startsWith(matrix.config.os, 'windows')
+        shell: bash
+        run: |
+          powershell Compress-Archive build-release release.zip
       - name: Upload Release Asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
@@ -124,13 +139,3 @@ jobs:
           asset_path: ./release.zip
           asset_name: ${{ matrix.config.zipname }}
           asset_content_type: application/zip
-  final_publish:
-      name: Final Release Publish
-      needs: create_release
-      steps:
-        - name: Publish release
-          uses: eregon/publish-release@v1
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
-            release_id: ${{ needs.create_release.outputs.id }}

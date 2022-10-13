@@ -15,6 +15,9 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake" ${CMAKE_MODULE_PATH})
 
 set(CMAKE_CXX_STANDARD 20)
 
+# use valgrind programm
+option(VALGRIND "Use -g on project compile" OFF)
+
 # RayLib version
 set(raylib_VERSION 4.0.0)
 find_package(raylib REQUIRED)
@@ -50,3 +53,7 @@ include_directories(Assets/Components)
 
 # Packages
 include(Packages/packages.cmake)
+
+if (VALGRIND)
+    target_compile_options(RType PRIVATE -g)
+endif()

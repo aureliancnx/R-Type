@@ -187,7 +187,8 @@ void RType::KeyboardMenu::init() {
         transform.setParent(_goSettings);
 
         btnComp->getOnClick().registerAction([this]() {
-            switchMenu("MainMenu");
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
+            switchMenu("SettingsMenu");
         });
     }
 

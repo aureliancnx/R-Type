@@ -54,6 +54,7 @@ void SoloMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
             try {
                 canvas->getComponent<UpdateStartGameKeys>().checkInputs();
             } catch(...) {
@@ -81,8 +82,21 @@ void SoloMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
             switchMenu("MainMenu");
         });
+    }
+
+    // create text choose pseudo
+    {
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Choose pseudo Text");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Enter your pseudo : ");
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+
+        txt->addComponent(compText);
+        transform.setScale({150, 35, 0});
+        transform.setPosition({20, 100, 0});
+        transform.setParent(canvas);
     }
 
     // create inputfield for pseudo
@@ -95,6 +109,18 @@ void SoloMenu::init() {
         auto &transform = inpt->getComponent<KapEngine::Transform>();
         transform.setScale({150, 35, 0});
         transform.setPosition({200, 100, 0});
+        transform.setParent(canvas);
+    }
+
+    // create text choose spaceship
+    {
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Choose pseudo Text");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Select your spaceship : ");
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+
+        txt->addComponent(compText);
+        transform.setScale({150, 35, 0});
+        transform.setPosition({20, 210, 0});
         transform.setParent(canvas);
     }
 
@@ -134,7 +160,7 @@ void SoloMenu::init() {
         auto compShipImg = std::make_shared<KapEngine::UI::Image>(shipObj);
         auto& transform = shipObj->getComponent<KapEngine::Transform>();
 
-        compShipImg->setPathSprite("Assets/Textures/ship1.png");
+        compShipImg->setPathSprite("Assets/Textures/Ship/ship_1.png");
         compShipImg->setRectangle(KapEngine::Tools::Rectangle(0, 0, 263, 116));
         shipObj->addComponent(compShipImg);
         transform.setScale({132, 58, 0});

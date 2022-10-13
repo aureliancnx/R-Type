@@ -37,6 +37,8 @@ namespace RType {
 
         void initMultiPlayer(bool isServer);
 
+        void initAxis();
+
         public:
         void startLocalMultiPlayer();
     };

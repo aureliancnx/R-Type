@@ -26,6 +26,8 @@ void GameManager::launchGame() {
 
     // Show main menu
     menuManager.showMenu("MainMenu");
+
+    engine->getGraphicalLibManager()->getCurrentLib()->playMusic("Assets/Sound/Music/space-asteroids.mp3");
 }
 
 void GameManager::launchServer() {
@@ -115,4 +117,21 @@ void GameManager::initSplashScreens() {
     nsplash->pos = KapEngine::Tools::Vector2({35.f, 48.825f});
 
     engine->getSplashScreen()->addSplashScreen(nsplash);
+}
+
+void GameManager::initAxis() {
+    KapEngine::Events::Input::Axis horizontal("Horizontal");
+    KapEngine::Events::Input::Axis vertical("Vertical");
+    KapEngine::Events::Input::Axis shoot("shoot");
+
+    horizontal.positiveButton = KapEngine::Events::Key::RIGHT;
+    horizontal.negativeButton = KapEngine::Events::Key::LEFT;
+
+    vertical.positiveButton = KapEngine::Events::Key::UP;
+    vertical.negativeButton = KapEngine::Events::Key::DOWN;
+
+    shoot.positiveButton = KapEngine::Events::Key::SPACE;
+
+    engine->getEventManager().getInput().addAxis(horizontal);
+    engine->getEventManager().getInput().addAxis(vertical);
 }

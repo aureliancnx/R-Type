@@ -25,18 +25,13 @@ void PlayerController::onUpdate() {
     }
 
     if (!isMoving) {
-        if (getInput().getKeyDown(KapEngine::Events::Key::RIGHT)) {
-            movePlayer(KapEngine::Tools::Vector2(1, 0));
-        } else if (getInput().getKeyDown(KapEngine::Events::Key::LEFT)) {
-            movePlayer(KapEngine::Tools::Vector2(-1, 0));
-        } else if (getInput().getKeyDown(KapEngine::Events::Key::UP)) {
-            movePlayer(KapEngine::Tools::Vector2(0, -1));
-        } else if (getInput().getKeyDown(KapEngine::Events::Key::DOWN)) {
-            movePlayer(KapEngine::Tools::Vector2(0, 1));
-        }
+        KapEngine::Tools::Vector2 way;
+        way.setX(getInput().getAxis("Horizontal"));
+        way.setY(getInput().getAxis("Vertical"));
+        movePlayer(way);
     }
 
-    if (getInput().getKeyDown(KapEngine::Events::Key::SPACE)) {
+    if (getInput().getAxis("shoot") > 1.f) {
         playShootSound();
         shoot();
     }

@@ -20,9 +20,24 @@ void RtypeNetworkManager::onStart() {
 
 #pragma region Client
 
+void RtypeNetworkManager::sendKeepAlive(KapMirror::NetworkIdentity *identity) {
+    PlayerKeepAlive keepAlive;
+    keepAlive.timestamp = KapMirror::NetworkTime::localTime();
+
+    std::vector<long long> playerKeepAlives;
+
+    keepAlives.tryGetValue(identity->getNetworkId(), playerKeepAlives);
+    playerKeepAlives.push_back(keepAlive.timestamp);
+    keepAlives[identity->getNetworkId()] = playerKeepAlives;
+    getServer()->sendToClient(keepAlive, identity->getNetworkId());
+}
+
 void RtypeNetworkManager::registerClientHandlers() {
     getClient()->registerHandler<PlayerAuthorityMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerAuthorityMessage& message) {
         onPlayerAuthorityMessage(connection, message);
+    });
+    getClient()->registerHandler<PlayerKeepAlive>([this](std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerKeepAlive& message) {
+        onServerSendKeepAlive(connection, message);
     });
 }
 
@@ -31,8 +46,16 @@ void RtypeNetworkManager::onPlayerAuthorityMessage(std::shared_ptr<KapMirror::Ne
     if (getClient()->getNetworkObject(message.networkId, player)) {
         KAP_DEBUG_LOG("Set local authority");
         auto& playerController = player->getComponent<PlayerController>();
-        playerController.setLocalAuthoriy(true);
+        playerController.setLocalAuthority(true);
     }
+}
+
+void RtypeNetworkManager::onServerSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerKeepAlive& message) {
+    KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> receive keepAlive request from server with id " + std::to_string(message.timestamp));
+
+    PlayerKeepAlive reply;
+    reply.timestamp = message.timestamp;
+    getClient()->send(message);
 }
 
 #pragma endregion
@@ -45,6 +68,9 @@ void RtypeNetworkManager::registerServerHandlers() {
     });
     getServer()->registerHandler<PlayerShootMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerShootMessage& message) {
         onPlayerShootMessage(connection, message);
+    });
+    getServer()->registerHandler<PlayerKeepAlive>([this](std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerKeepAlive& message) {
+        onClientSendKeepAlive(connection, message);
     });
 }
 
@@ -79,6 +105,24 @@ void RtypeNetworkManager::onServerClientDisconnected(std::shared_ptr<KapMirror::
     std::shared_ptr<KapEngine::GameObject> player;
     if (players.tryGetValue(connection->getNetworkId(), player)) {
         getServer()->destroyObject(player);
+    }
+}
+
+void RtypeNetworkManager::onClientSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerKeepAlive& message) {
+    KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> sent keepAlive with timestamp " + std::to_string(message.timestamp));
+
+    std::vector<long long> playerKeepAlives;
+    if (keepAlives.tryGetValue(connection->getNetworkId(), playerKeepAlives)) {
+        if (std::find(playerKeepAlives.begin(), playerKeepAlives.end(), message.timestamp) != playerKeepAlives.end()) {
+            long long ping = KapMirror::NetworkTime::localTime() - message.timestamp;
+
+            KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> ping: " + std::to_string(ping));
+            playerKeepAlives.erase(std::remove(playerKeepAlives.begin(), playerKeepAlives.end(), message.timestamp), playerKeepAlives.end());
+        }else{
+            KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> bad keepAlive packet: unknown timestamp '" + std::to_string(message.timestamp) + "'");
+        }
+    }else{
+        KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> received keepAlive timestamp " + std::to_string(message.timestamp) + " without a list");
     }
 }
 

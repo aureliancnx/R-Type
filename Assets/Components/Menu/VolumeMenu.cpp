@@ -43,7 +43,7 @@ void RType::VolumeMenu::init() {
 
     //Create text instruction Volume
     {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change input");
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change volume");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Change your volume value");
         auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
 

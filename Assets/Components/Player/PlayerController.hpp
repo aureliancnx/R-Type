@@ -8,7 +8,7 @@
 namespace RType {
     class PlayerController : public KapMirror::NetworkComponent {
         private:
-        bool isLocalAuthoriy = false;
+        bool isLocalAuthority = false;
 
         KapEngine::Tools::Vector3 lastPos;
         KapEngine::Tools::Vector3 posToMove;
@@ -16,6 +16,7 @@ namespace RType {
         bool isMoving = false;
 
         long long lastRefreshTime = 0;
+        long long lastKeepAliveTime = 0;
 
         KapEngine::Events::Key::EKey upKey = KapEngine::Events::Key::UP;
         KapEngine::Events::Key::EKey downKey = KapEngine::Events::Key::DOWN;
@@ -27,7 +28,7 @@ namespace RType {
         PlayerController(std::shared_ptr<KapEngine::GameObject> _gameObject);
         ~PlayerController() = default;
 
-        void setLocalAuthoriy(bool _isLocalAuthoriy);
+        void setLocalAuthority(bool _isLocalAuthority);
 
         void onUpdate() override;
 
@@ -41,6 +42,8 @@ namespace RType {
 
         private:
         void sendInput(KapEngine::Tools::Vector2 input);
+
+        void sendKeepAlive();
 
         void playShootSound();
 

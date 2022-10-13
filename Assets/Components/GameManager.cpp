@@ -18,15 +18,17 @@ GameManager::GameManager(KapEngine::KEngine* _engine) : engine(_engine) {}
 void GameManager::launchGame() {
     KapEngine::Debug::log("Launch game");
 
-    registerAxises();
     registerPrefabs();
     registerMenus();
     initSinglePlayer();
     initMultiPlayer(false);
+    initAxis();
     //initSplashScreens();
 
     // Show main menu
     menuManager.showMenu("MainMenu");
+
+    engine->getGraphicalLibManager()->getCurrentLib()->playMusic("Assets/Sound/Music/space-asteroids.mp3");
 }
 
 void GameManager::launchServer() {
@@ -34,7 +36,6 @@ void GameManager::launchServer() {
 
     registerPrefabs();
     initMultiPlayer(true);
-    registerAxises();
 
     engine->getSceneManager()->loadScene("MultiPlayer");
     networkManager->startServer();
@@ -86,8 +87,8 @@ void GameManager::initSinglePlayer() {
     auto& transform = player->getComponent<KapEngine::Transform>();
     transform.setPosition({0, 0, 0});
 
-    auto& playerComp = player->getComponent<Player>();
-    playerComp.setLocalPlayer(true);
+    auto& playerController = player->getComponent<PlayerController>();
+    playerController.setLocalAuthoriy(true);
 
     // TODO: Fix animation (move animation)
     // https://github.com/aureliancnx/R-Type/blob/ae652adfdf49c702bd8513c27b8bef6dcfeaebc2/Assets/Components/GameManager.cpp#L84
@@ -109,30 +110,6 @@ void GameManager::startLocalMultiPlayer() {
     networkManager->startClient();
 }
 
-void GameManager::registerAxises() {
-    KapEngine::Events::Input::Axis _axisV("Vertical");
-    KapEngine::Events::Input::Axis _axisH("Horizontal");
-    KapEngine::Events::Input::Axis _axisM("Mouseinput");
-
-    // init vertical axis
-    _axisV.positiveButton = KapEngine::Events::Key::UP;
-    _axisV.negativeButton = KapEngine::Events::Key::DOWN;
-    _axisV.invert = true;
-
-    // init horizontal axis
-    _axisH.positiveButton = KapEngine::Events::Key::RIGHT;
-    _axisH.negativeButton = KapEngine::Events::Key::LEFT;
-
-    // init mouse axis
-    _axisM.positiveButton = KapEngine::Events::Key::MOUSE_LEFT;
-    _axisM.negativeButton = KapEngine::Events::Key::MOUSE_RIGHT;
-
-    // add axis
-    engine->getEventManager().getInput().addAxis(_axisH);
-    engine->getEventManager().getInput().addAxis(_axisV);
-    engine->getEventManager().getInput().addAxis(_axisM);
-}
-
 void GameManager::initSplashScreens() {
     auto nsplash = std::make_shared<KapEngine::SceneManagement::SplashScreen::SplashScreenNode>("Assets/Textures/Background/bg-back.png", 4);
 
@@ -141,4 +118,22 @@ void GameManager::initSplashScreens() {
     nsplash->pos = KapEngine::Tools::Vector2({35.f, 48.825f});
 
     engine->getSplashScreen()->addSplashScreen(nsplash);
+}
+
+void GameManager::initAxis() {
+    KapEngine::Events::Input::Axis horizontal("Horizontal");
+    KapEngine::Events::Input::Axis vertical("Vertical");
+    KapEngine::Events::Input::Axis shoot("shoot");
+
+    horizontal.positiveButton = KapEngine::Events::Key::RIGHT;
+    horizontal.negativeButton = KapEngine::Events::Key::LEFT;
+
+    vertical.positiveButton = KapEngine::Events::Key::UP;
+    vertical.negativeButton = KapEngine::Events::Key::DOWN;
+    vertical.invert = true;
+
+    shoot.positiveButton = KapEngine::Events::Key::SPACE;
+
+    engine->getEventManager().getInput().addAxis(horizontal);
+    engine->getEventManager().getInput().addAxis(vertical);
 }

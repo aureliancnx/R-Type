@@ -1,7 +1,3 @@
-//
-// Created by leq on 12/10/22.
-//
-
 #include "MenuVolume.hpp"
 
 using namespace KapEngine;
@@ -27,12 +23,15 @@ void RType::MenuVolume::onUpdate() {
 
     int nId = 0;
 
-    if (PlayerPrefs::getString("volumeValue") == "")
+    if (PlayerPrefs::getString("volumeValue") == "") {
         PlayerPrefs::setInt("volumeValue", 50);
-    else
+    } else {
         nId = PlayerPrefs::getInt("volumeValue");
-    if (nId == lastValue)
+    }
+
+    if (nId == lastValue) {
         return;
+    }
 
     lastValue = nId;
     try {
@@ -58,7 +57,9 @@ void RType::MenuVolume::foundText() {
         DEBUG_ERROR("Failed to find volume text");
         return;
     }
+
     _txt = _found;
+
     try {
         auto &txt = _txt->getComponent<UI::Text>();
         txt.setText(std::to_string(PlayerPrefs::getInt("volumeValue")));

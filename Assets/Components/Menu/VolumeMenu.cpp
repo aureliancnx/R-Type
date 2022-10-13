@@ -12,22 +12,21 @@
 
 #include "Volume/MenuVolume.hpp"
 
+
 RType::VolumeMenu::VolumeMenu(KapEngine::SceneManagement::Scene &_scene) : Menu(_scene) {}
 
 void RType::VolumeMenu::init() {
-
-    //Change type of display for canvas
+    // Change type of display for canvas
     {
         try {
             auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
-
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
         } catch (...) {
             KAP_DEBUG_ERROR("Failed to resize canvas");
         }
     }
 
-    //Create background
+    // Create background
     {
         auto background = KapEngine::UI::UiFactory::createImage(scene, "Background");
         auto imageComp = std::make_shared<KapEngine::UI::Image>(background);
@@ -165,7 +164,6 @@ void RType::VolumeMenu::init() {
         });
 
     }
-
     // Create music
     {
         engine.getGraphicalLibManager()->getCurrentLib()->playMusic("Assets/Sound/Music/music.mp3", float(KapEngine::PlayerPrefs::getInt("volumeValue")));

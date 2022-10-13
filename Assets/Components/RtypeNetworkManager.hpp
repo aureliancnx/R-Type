@@ -23,6 +23,8 @@ namespace RType {
 
         void onServerClientDisconnected(std::shared_ptr<KapMirror::NetworkConnection> connection) override;
 
+        void sendKeepAlive(KapMirror::NetworkIdentity *identity);
+
         private:
         void registerClientHandlers();
 

@@ -13,7 +13,11 @@
 
 using namespace RType;
 
-GameManager::GameManager(KapEngine::KEngine* _engine) : engine(_engine) {}
+GameManager *GameManager::instance = nullptr;
+
+GameManager::GameManager(KapEngine::KEngine* _engine) : engine(_engine) {
+    instance = this;
+}
 
 void GameManager::launchGame() {
     KapEngine::Debug::log("Launch game");
@@ -88,7 +92,7 @@ void GameManager::initSinglePlayer() {
     transform.setPosition({0, 0, 0});
 
     auto& playerController = player->getComponent<PlayerController>();
-    playerController.setLocalAuthoriy(true);
+    playerController.setLocalAuthority(true);
 
     // TODO: Fix animation (move animation)
     // https://github.com/aureliancnx/R-Type/blob/ae652adfdf49c702bd8513c27b8bef6dcfeaebc2/Assets/Components/GameManager.cpp#L84
@@ -136,4 +140,8 @@ void GameManager::initAxis() {
 
     engine->getEventManager().getInput().addAxis(horizontal);
     engine->getEventManager().getInput().addAxis(vertical);
+}
+
+std::shared_ptr<RtypeNetworkManager> &GameManager::getNetworkManager() {
+    return networkManager;
 }

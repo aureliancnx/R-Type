@@ -19,7 +19,7 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
 
         auto controllerComponent = std::make_shared<PlayerController>(player);
         player->addComponent(controllerComponent);
-        controllerComponent->setLocalAuthoriy(false);
+        controllerComponent->setLocalAuthority(false);
 
         auto skinComponent = std::make_shared<PlayerSkin>(player);
         player->addComponent(skinComponent);

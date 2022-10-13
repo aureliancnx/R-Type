@@ -8,7 +8,7 @@
 namespace RType {
     class PlayerController : public KapMirror::NetworkComponent {
         private:
-        bool isLocalAuthoriy = false;
+        bool isLocalAuthority = false;
 
         KapEngine::Tools::Vector3 lastPos;
         KapEngine::Tools::Vector3 posToMove;
@@ -28,7 +28,7 @@ namespace RType {
         PlayerController(std::shared_ptr<KapEngine::GameObject> _gameObject);
         ~PlayerController() = default;
 
-        void setLocalAuthoriy(bool _isLocalAuthoriy);
+        void setLocalAuthority(bool _isLocalAuthority);
 
         void onUpdate() override;
 

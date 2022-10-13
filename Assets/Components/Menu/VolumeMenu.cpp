@@ -71,6 +71,7 @@ void RType::VolumeMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
             switchMenu("SettingsMenu");
         });
     }

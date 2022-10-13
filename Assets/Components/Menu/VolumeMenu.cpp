@@ -7,9 +7,10 @@
 #include "Button/Button.hpp"
 #include "InputField/Inputfield.hpp"
 
-#include "Volume/MenuVolume.hpp"
+#include "KapEngine.hpp"
+#include "KapEngineDebug.hpp"
 
-#include "Animations/SpriteAnimation.hpp"
+#include "Volume/MenuVolume.hpp"
 
 RType::VolumeMenu::VolumeMenu(KapEngine::SceneManagement::Scene &_scene) : Menu(_scene) {}
 
@@ -77,7 +78,7 @@ void RType::VolumeMenu::init() {
     // Create text volume value
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Volume Value Text");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, KapEngine::PlayerPrefs::getString("volumeID"));
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
@@ -153,6 +154,6 @@ void RType::VolumeMenu::init() {
 
     // Create music
     {
-
+        engine.getGraphicalLibManager()->getCurrentLib()->playMusic("Assets/Sound/Music/music.mp3", float(KapEngine::PlayerPrefs::getInt("volumeValue")));
     }
 }

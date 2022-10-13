@@ -25,18 +25,18 @@ void PlayerController::onUpdate() {
     }
 
     if (!isMoving) {
-        if (getInput().getKeyDown(KapEngine::Events::Key::RIGHT)) {
+        if (getInput().getKeyDown(rightKey)) {
             movePlayer(KapEngine::Tools::Vector2(1, 0));
-        } else if (getInput().getKeyDown(KapEngine::Events::Key::LEFT)) {
+        } else if (getInput().getKeyDown(leftKey)) {
             movePlayer(KapEngine::Tools::Vector2(-1, 0));
-        } else if (getInput().getKeyDown(KapEngine::Events::Key::UP)) {
+        } else if (getInput().getKeyDown(upKey)) {
             movePlayer(KapEngine::Tools::Vector2(0, -1));
-        } else if (getInput().getKeyDown(KapEngine::Events::Key::DOWN)) {
+        } else if (getInput().getKeyDown(downKey)) {
             movePlayer(KapEngine::Tools::Vector2(0, 1));
         }
     }
 
-    if (getInput().getKeyDown(KapEngine::Events::Key::SPACE)) {
+    if (getInput().getKeyDown(shootKey)) {
         playShootSound();
         shoot();
     }
@@ -113,4 +113,41 @@ void PlayerController::playShootSound() {
     } else {
         getGameObject().getEngine().getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/shot2.wav");
     }
+}
+
+void PlayerController::initSettings() {
+    if (!KapEngine::PlayerPrefs::getString("upInput").empty()) {
+        int value = KapEngine::PlayerPrefs::getInt("upInput");
+        if (KapEngine::Events::Key::intInEnum(value)) {
+            upKey = static_cast<KapEngine::Events::Key::EKey>(value);
+        }
+    }
+    if (!KapEngine::PlayerPrefs::getString("downInput").empty()) {
+        int value = KapEngine::PlayerPrefs::getInt("downInput");
+        if (KapEngine::Events::Key::intInEnum(value)) {
+            downKey = static_cast<KapEngine::Events::Key::EKey>(value);
+        }
+    }
+    if (KapEngine::PlayerPrefs::getString("leftInput").empty()) {
+        int value = KapEngine::PlayerPrefs::getInt("leftInput");
+        if (KapEngine::Events::Key::intInEnum(value)) {
+            leftKey = static_cast<KapEngine::Events::Key::EKey>(value);
+        }
+    }
+    if (!KapEngine::PlayerPrefs::getString("rightInput").empty()) {
+        int value = KapEngine::PlayerPrefs::getInt("rightInput");
+        if (KapEngine::Events::Key::intInEnum(value)) {
+            rightKey = static_cast<KapEngine::Events::Key::EKey>(value);
+        }
+    }
+    if (!KapEngine::PlayerPrefs::getString("shootInput").empty()) {
+        int value = KapEngine::PlayerPrefs::getInt("shootInput");
+        if (KapEngine::Events::Key::intInEnum(value)) {
+            shootKey = static_cast<KapEngine::Events::Key::EKey>(value);
+        }
+    }
+}
+
+void PlayerController::onStartClient() {
+    initSettings();
 }

@@ -59,9 +59,11 @@ void RtypeNetworkManager::onServerClientConnected(std::shared_ptr<KapMirror::Net
 
     players[connection->getNetworkId()] = player;
 
+    auto& networkIdentity = player->getComponent<KapMirror::NetworkIdentity>();
+
     // Send player authority
     PlayerAuthorityMessage message;
-    message.networkId = connection->getNetworkId();
+    message.networkId = networkIdentity.getNetworkId();
     connection->send(message);
 }
 

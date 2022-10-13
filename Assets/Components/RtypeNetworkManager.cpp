@@ -23,7 +23,7 @@ void RtypeNetworkManager::registerClientHandlers() {
     getClient()->registerHandler<PlayerAuthorityMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerAuthorityMessage& message) {
         onPlayerAuthorityMessage(connection, message);
     });
-    getClient()->registerHandler<SCKeepAlive>([this](std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, SCKeepAlive& message) {
+    getClient()->registerHandler<PlayerKeepAlive>([this](std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerKeepAlive& message) {
         onServerSendKeepAlive(connection, message);
     });
 }
@@ -37,10 +37,10 @@ void RtypeNetworkManager::onPlayerAuthorityMessage(std::shared_ptr<KapMirror::Ne
     }
 }
 
-void RtypeNetworkManager::onServerSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, SCKeepAlive& message) {
+void RtypeNetworkManager::onServerSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerKeepAlive& message) {
     KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> receive keepAlive request from server with id " + std::to_string(message.timestamp));
 
-    CSKeepAlive reply;
+    PlayerKeepAlive reply;
     reply.timestamp = message.timestamp;
     getClient()->send(message);
 }
@@ -56,7 +56,7 @@ void RtypeNetworkManager::registerServerHandlers() {
     getServer()->registerHandler<PlayerShootMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerShootMessage& message) {
         onPlayerShootMessage(connection, message);
     });
-    getServer()->registerHandler<CSKeepAlive>([this](std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, CSKeepAlive& message) {
+    getServer()->registerHandler<PlayerKeepAlive>([this](std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerKeepAlive& message) {
         onClientSendKeepAlive(connection, message);
     });
 }
@@ -90,7 +90,7 @@ void RtypeNetworkManager::onServerClientDisconnected(std::shared_ptr<KapMirror::
     }
 }
 
-void RtypeNetworkManager::onClientSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, CSKeepAlive& message) {
+void RtypeNetworkManager::onClientSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerKeepAlive& message) {
     KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> sent keepAlive with timestamp " + std::to_string(message.timestamp));
 
     std::vector<long long> playerKeepAlives;

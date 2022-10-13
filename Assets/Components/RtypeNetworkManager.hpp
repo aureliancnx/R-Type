@@ -28,11 +28,11 @@ namespace RType {
 
         void onPlayerAuthorityMessage(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerAuthorityMessage& message);
 
-        void onServerSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, SCKeepAlive &message);
+        void onServerSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerKeepAlive& message);
 
         void registerServerHandlers();
 
-        void onClientSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, CSKeepAlive& message);
+        void onClientSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerKeepAlive& message);
 
         void onPlayerInputMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerInputMessage& message);
 

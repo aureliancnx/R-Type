@@ -67,7 +67,7 @@ void PlayerController::onFixedUpdate() {
 }
 
 void PlayerController::sendKeepAlive() {
-    SCKeepAlive keepAlive;
+    PlayerKeepAlive keepAlive;
     keepAlive.timestamp = KapMirror::NetworkTime::localTime();
 
     if (isLocal()) {

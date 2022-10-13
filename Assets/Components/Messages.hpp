@@ -45,7 +45,7 @@ namespace RType {
         }
     };
 
-    struct CSKeepAlive : KapMirror::NetworkMessage {
+    struct PlayerKeepAlive : KapMirror::NetworkMessage {
         long long timestamp;
 
         void serialize(KapMirror::NetworkWriter& writer) {
@@ -57,15 +57,4 @@ namespace RType {
         }
     };
 
-    struct SCKeepAlive : KapMirror::NetworkMessage {
-        long long timestamp;
-
-        void serialize(KapMirror::NetworkWriter& writer) {
-            writer.write(timestamp);
-        }
-
-        void deserialize(KapMirror::NetworkReader& reader) {
-            timestamp = reader.read<long long>();
-        }
-    };
 }

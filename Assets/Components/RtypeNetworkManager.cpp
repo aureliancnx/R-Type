@@ -50,8 +50,6 @@ void RtypeNetworkManager::onPlayerAuthorityMessage(std::shared_ptr<KapMirror::Ne
 }
 
 void RtypeNetworkManager::onServerSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerKeepAlive& message) {
-    KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> receive keepAlive request from server with id " + std::to_string(message.timestamp));
-
     PlayerKeepAlive reply;
     reply.timestamp = message.timestamp;
     getClient()->send(message);

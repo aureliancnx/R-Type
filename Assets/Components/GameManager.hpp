@@ -9,6 +9,8 @@
 
 namespace RType {
     class GameManager {
+        static GameManager *instance;
+
         private:
         KapEngine::KEngine* engine;
 
@@ -41,5 +43,12 @@ namespace RType {
 
         public:
         void startLocalMultiPlayer();
+
+        std::shared_ptr<RtypeNetworkManager> &getNetworkManager();
+
+
+        static GameManager *getInstance() {
+            return instance;
+        }
     };
 }

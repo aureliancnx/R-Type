@@ -2,6 +2,7 @@
 #include "Player/PlayerController.hpp"
 #include "Player/PlayerSkin.hpp"
 #include "Bullet/Bullet.hpp"
+#include "Enemies/BasicEnemy.hpp"
 
 using namespace RType;
 
@@ -29,6 +30,9 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
         imageComp->setPathSprite("Assets/Textures/Ship/ship_1.png"); // Default skin
         player->addComponent(imageComp);
 
+        auto& canvas = player->getComponent<KapEngine::UI::Canvas>();
+        canvas.setResizeType(KapEngine::UI::Canvas::resizyngType::RESIZE_WITH_SCREEN);
+
         auto& transform = player->getComponent<KapEngine::Transform>();
         transform.setPosition({0, 0, 0});
         transform.setScale({79, 35, 0});
@@ -39,7 +43,7 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
 
 void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("Bullet", [](KapEngine::SceneManagement::Scene& scene) {
-        auto bullet = KapEngine::UI::UiFactory::createCanvas(scene, "BulletCanvas");
+        auto bullet = KapEngine::UI::UiFactory::createCanvas(scene, "Bullet");
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(bullet);
         bullet->addComponent(networkIdentityComp);
@@ -49,13 +53,42 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
 
         auto imageComp = std::make_shared<KapEngine::UI::Image>(bullet);
         imageComp->setRectangle({0, 0, 19, 6});
-        imageComp->setPathSprite("Assets/Textures/Bullet/bullet_1.png");
+        imageComp->setPathSprite("Assets/Textures/Bullet/bullet_1.png"); // Default skin
         bullet->addComponent(imageComp);
+
+        auto& canvas = bullet->getComponent<KapEngine::UI::Canvas>();
+        canvas.setResizeType(KapEngine::UI::Canvas::resizyngType::RESIZE_WITH_SCREEN);
 
         auto& transform = bullet->getComponent<KapEngine::Transform>();
         transform.setPosition({0, 0, 0});
         transform.setScale({19, 6});
 
         return bullet;
+    });
+}
+
+void Prefabs::registerBasicEnemyPrefab(KapEngine::KEngine& engine) {
+    engine.getPrefabManager()->createPrefab("BasicEnemy", [](KapEngine::SceneManagement::Scene& scene) {
+        auto enemy = KapEngine::UI::UiFactory::createCanvas(scene, "BasicEnemy");
+
+        auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
+        enemy->addComponent(networkIdentityComp);
+
+        auto enemyComp = std::make_shared<BasicEnemy>(enemy);
+        enemy->addComponent(enemyComp);
+
+        auto imageComp = std::make_shared<KapEngine::UI::Image>(enemy);
+        imageComp->setRectangle({0, 0, 263, 116});
+        imageComp->setPathSprite("Assets/Textures/Ship/ship_1.png"); // Default skin
+        enemy->addComponent(imageComp);
+
+        auto& canvas = enemy->getComponent<KapEngine::UI::Canvas>();
+        canvas.setResizeType(KapEngine::UI::Canvas::resizyngType::RESIZE_WITH_SCREEN);
+
+        auto& transform = enemy->getComponent<KapEngine::Transform>();
+        transform.setPosition({0, 0, 0});
+        transform.setScale({79, 35, 0});
+
+        return enemy;
     });
 }

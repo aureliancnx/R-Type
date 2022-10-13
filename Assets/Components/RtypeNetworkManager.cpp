@@ -1,6 +1,7 @@
 #include "RtypeNetworkManager.hpp"
 #include "Player/PlayerController.hpp"
 #include "Player/PlayerSkin.hpp"
+#include "Enemies/BasicEnemy.hpp"
 
 using namespace RType;
 
@@ -65,6 +66,11 @@ void RtypeNetworkManager::onServerClientConnected(std::shared_ptr<KapMirror::Net
     PlayerAuthorityMessage message;
     message.networkId = networkIdentity.getNetworkId();
     connection->send(message);
+
+    //TODO: Temporary
+    if (players.size() >= 1) {
+        startGame();
+    }
 }
 
 void RtypeNetworkManager::onServerClientDisconnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {
@@ -89,6 +95,18 @@ void RtypeNetworkManager::onPlayerShootMessage(std::shared_ptr<KapMirror::Networ
     if (players.tryGetValue(connection->getNetworkId(), player)) {
         auto& controllerComponent = player->getComponent<RType::PlayerController>();
         controllerComponent.shoot();
+    }
+}
+
+void RtypeNetworkManager::startGame() {
+    KAP_DEBUG_LOG("Start game");
+
+    for (int i = 1; i <= 10; i++) {
+        std::shared_ptr<KapEngine::GameObject> enemy;
+        getServer()->spawnObject("BasicEnemy", {1280 + 100 + ((float)i * 100), 100 + ((float)i * 50), 0}, [this](std::shared_ptr<KapEngine::GameObject> go) {
+            auto& basicEnemy = go->getComponent<BasicEnemy>();
+            basicEnemy.setType(BasicEnemy::Type::SHIP_4);
+        }, enemy);
     }
 }
 

@@ -9,7 +9,7 @@ namespace RType {
     class Bullet : public KapMirror::NetworkComponent {
         public:
         enum Direction {
-            LEFT,
+            LEFT = 0,
             RIGHT
         };
 

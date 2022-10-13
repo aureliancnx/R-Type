@@ -61,13 +61,16 @@ void PlayerController::onFixedUpdate() {
 }
 
 void PlayerController::movePlayer(KapEngine::Tools::Vector2 input) {
+    if (isClient()) {
+        sendInput(input);
+        return;
+    }
+
     if (isMoving) {
         return;
     }
 
     isMoving = true;
-
-    sendInput(input);
 
     posToMove = getTransform().getLocalPosition() + KapEngine::Tools::Vector3(input.getX(), input.getY(), 0) * 100;
     inputToMove = input;

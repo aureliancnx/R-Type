@@ -8,5 +8,7 @@ namespace RType {
         static void registerPlayerPrefab(KapEngine::KEngine& engine);
 
         static void registerBulletPrefab(KapEngine::KEngine& engine);
+
+        static void registerBasicEnemyPrefab(KapEngine::KEngine& engine);
     };
 }

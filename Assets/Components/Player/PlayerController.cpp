@@ -63,7 +63,7 @@ void PlayerController::onFixedUpdate() {
     // Send keep alive packet to the client
     if (KapMirror::NetworkTime::localTime() - lastKeepAliveTime > 1000) {
         lastKeepAliveTime = KapMirror::NetworkTime::localTime();
-        //sendKeepAlive();
+        sendKeepAlive();
     }
 }
 

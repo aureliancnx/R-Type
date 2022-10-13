@@ -54,6 +54,7 @@ void SoloMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
             try {
                 canvas->getComponent<UpdateStartGameKeys>().checkInputs();
             } catch(...) {
@@ -81,6 +82,7 @@ void SoloMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
             switchMenu("MainMenu");
         });
     }

@@ -57,6 +57,7 @@ void RType::SettingsMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
             switchMenu("MainMenu");
         });
     }
@@ -78,6 +79,7 @@ void RType::SettingsMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
             switchMenu("VolumeMenu");
         });
     }
@@ -99,6 +101,7 @@ void RType::SettingsMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
             switchMenu("KeysMenu");
         });
     }
@@ -120,6 +123,7 @@ void RType::SettingsMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
             switchMenu("HowToPlayMenu");
         });
     }

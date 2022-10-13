@@ -89,9 +89,12 @@ void PlayerController::movePlayer(KapEngine::Tools::Vector2 input) {
         return;
     }
 
-    isMoving = true;
-
     posToMove = getTransform().getLocalPosition() + KapEngine::Tools::Vector3(input.getX(), input.getY(), 0) * 100;
+    if (posToMove.getX() < 0 || posToMove.getX() > 800 || posToMove.getY() < 0 || posToMove.getY() + 116 > 720) {
+        return;
+    }
+
+    isMoving = true;
     inputToMove = input;
 }
 

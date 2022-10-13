@@ -7,6 +7,7 @@
 #include "Menu/SettingsMenu.hpp"
 #include "Menu/VolumeMenu.hpp"
 #include "Menu/HowToPlayMenu.hpp"
+#include "Menu/SettingPlayerMenu.hpp"
 
 #include "KapMirror/KapMirror.hpp"
 #include "Prefabs.hpp"
@@ -76,6 +77,9 @@ void GameManager::registerMenus() {
 
     auto htpMenu = std::make_shared<HowToPlayMenu>(scene);
     menuManager.registerMenu("HowToPlayMenu", htpMenu);
+
+    auto settingPlayerMenu = std::make_shared<SettingPlayerMenu>(scene);
+    menuManager.registerMenu("SettingPlayerMenu", settingPlayerMenu);
 }
 
 // TODO: Move this to a dedicated class

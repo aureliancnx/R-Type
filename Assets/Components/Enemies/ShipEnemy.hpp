@@ -6,32 +6,19 @@
 #include "KapMirror/KapMirror.hpp"
 
 namespace RType {
-    class BasicEnemy : public KapMirror::NetworkComponent {
-        public:
-        enum Type {
-            BOUBOULE = 1,
-            SHIP = 2,
-            TENTACULE = 3,
-            TEST = 4
-        };
-
+    class ShipEnemy : public KapMirror::NetworkComponent {
         private:
-        Type type = BOUBOULE;
         int life = 20;
 
         long long lastShootTime = 0;
 
         public:
-        BasicEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject);
-        ~BasicEnemy() = default;
-
-        void setType(Type _type);
+        ShipEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject);
+        ~ShipEnemy() = default;
 
         void setLife(int _life);
 
         void onFixedUpdate() override;
-
-        void onStartClient() override;
 
         void onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other) override;
 
@@ -41,7 +28,5 @@ namespace RType {
 
         private:
         void shoot();
-
-        void setSkinId(Type type);
     };
 }

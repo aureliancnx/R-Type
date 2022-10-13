@@ -49,7 +49,7 @@ void GameManager::launchServer() {
 void GameManager::registerPrefabs() {
     Prefabs::registerPlayerPrefab(*engine);
     Prefabs::registerBulletPrefab(*engine);
-    Prefabs::registerBasicEnemyPrefab(*engine);
+    Prefabs::registerShipEnemyPrefab(*engine);
 }
 
 void GameManager::registerMenus() {

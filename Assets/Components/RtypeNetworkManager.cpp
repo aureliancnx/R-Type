@@ -1,7 +1,7 @@
 #include "RtypeNetworkManager.hpp"
 #include "Player/PlayerController.hpp"
 #include "Player/PlayerSkin.hpp"
-#include "Enemies/BasicEnemy.hpp"
+#include "Enemies/ShipEnemy.hpp"
 
 using namespace RType;
 
@@ -113,10 +113,10 @@ void RtypeNetworkManager::onClientSendKeepAlive(std::shared_ptr<KapMirror::Netwo
 
             KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> ping: " + std::to_string(ping));
             playerKeepAlives.erase(std::remove(playerKeepAlives.begin(), playerKeepAlives.end(), message.timestamp), playerKeepAlives.end());
-        }else{
+        } else{
             KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> bad keepAlive packet: unknown timestamp '" + std::to_string(message.timestamp) + "'");
         }
-    }else{
+    } else{
         KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> received keepAlive timestamp " + std::to_string(message.timestamp) + " without a list");
     }
 }
@@ -142,11 +142,7 @@ void RtypeNetworkManager::startGame() {
 
     for (int i = 1; i <= 10; i++) {
         std::shared_ptr<KapEngine::GameObject> enemy;
-        getServer()->spawnObject("BasicEnemy", {1280 + 100 + ((float)i * 100), 100 + ((float)i * 50), 0}, [this](std::shared_ptr<KapEngine::GameObject> go) {
-            auto& basicEnemy = go->getComponent<BasicEnemy>();
-            basicEnemy.setType(BasicEnemy::Type::TEST);
-            basicEnemy.setLife(1);
-        }, enemy);
+        getServer()->spawnObject("Enemy:ShipEnemy", {1280 + 100 + ((float)i * 100), 100 + ((float)i * 50), 0}, enemy);
     }
 }
 

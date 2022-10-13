@@ -9,6 +9,6 @@ namespace RType {
 
         static void registerBulletPrefab(KapEngine::KEngine& engine);
 
-        static void registerBasicEnemyPrefab(KapEngine::KEngine& engine);
+        static void registerShipEnemyPrefab(KapEngine::KEngine& engine);
     };
 }

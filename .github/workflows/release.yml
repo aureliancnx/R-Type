@@ -58,11 +58,11 @@ jobs:
             name: "macOS Latest Clang (C++20)",
             zipname: "release-macos-x86.zip",
             os: macos-latest,
-            build_type: "Debug",
+            build_type: "Release",
             cc: "clang",
             cxx: "clang++",
             generators: "Xcode",
-            build_executable: "RType"
+            build_executable: "Release/RType"
           }
 
     steps:

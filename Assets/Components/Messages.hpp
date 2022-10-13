@@ -44,4 +44,28 @@ namespace RType {
             networkId = reader.read<unsigned int>();
         }
     };
+
+    struct CSKeepAlive : KapMirror::NetworkMessage {
+        long long timestamp;
+
+        void serialize(KapMirror::NetworkWriter& writer) {
+            writer.write(timestamp);
+        }
+
+        void deserialize(KapMirror::NetworkReader& reader) {
+            timestamp = reader.read<long long>();
+        }
+    };
+
+    struct SCKeepAlive : KapMirror::NetworkMessage {
+        long long timestamp;
+
+        void serialize(KapMirror::NetworkWriter& writer) {
+            writer.write(timestamp);
+        }
+
+        void deserialize(KapMirror::NetworkReader& reader) {
+            timestamp = reader.read<long long>();
+        }
+    };
 }

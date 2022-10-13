@@ -16,6 +16,7 @@ namespace RType {
         bool isMoving = false;
 
         long long lastRefreshTime = 0;
+        long long lastKeepAliveTime = 0;
 
         KapEngine::Events::Key::EKey upKey = KapEngine::Events::Key::UP;
         KapEngine::Events::Key::EKey downKey = KapEngine::Events::Key::DOWN;
@@ -41,6 +42,8 @@ namespace RType {
 
         private:
         void sendInput(KapEngine::Tools::Vector2 input);
+
+        void sendKeepAlive();
 
         void playShootSound();
 

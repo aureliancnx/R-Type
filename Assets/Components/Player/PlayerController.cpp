@@ -58,6 +58,23 @@ void PlayerController::onFixedUpdate() {
             isMoving = false;
         }
     }
+
+    // Send keep alive packet to the client
+    if (KapMirror::NetworkTime::localTime() - lastKeepAliveTime > 1000) {
+        lastKeepAliveTime = KapMirror::NetworkTime::localTime();
+        //sendKeepAlive();
+    }
+}
+
+void PlayerController::sendKeepAlive() {
+    PlayerKeepAlive keepAlive;
+    keepAlive.timestamp = KapMirror::NetworkTime::localTime();
+
+    if (isLocal()) {
+        return;
+    }
+    KAP_DEBUG_LOG("SEND KEEPALIVE TO " + std::to_string(getNetworkId()));
+    getServer()->sendToClient(keepAlive, getNetworkId());
 }
 
 void PlayerController::movePlayer(KapEngine::Tools::Vector2 input) {

@@ -9,15 +9,14 @@ namespace RType {
     class BasicEnemy : public KapMirror::NetworkComponent {
         public:
         enum Type {
-            SHIP = 1,
-            SHIP_2 = 2,
-            SHIP_3 = 3,
-            SHIP_4 = 4,
-            SHIP_5 = 5
+            BOUBOULE = 1,
+            SHIP = 2,
+            TENTACULE = 3,
+            TEST = 4
         };
 
         private:
-        Type type = SHIP;
+        Type type = BOUBOULE;
         int life = 20;
 
         long long lastShootTime = 0;
@@ -34,6 +33,8 @@ namespace RType {
 
         void onStartClient() override;
 
+        void onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other) override;
+
         void customPayloadSerialize(KapMirror::NetworkWriter& writer) override;
 
         void customPayloadDeserialize(KapMirror::NetworkReader& reader) override;
@@ -41,6 +42,6 @@ namespace RType {
         private:
         void shoot();
 
-        void initSkin();
+        void setSkinId(Type type);
     };
 }

@@ -1,4 +1,5 @@
 #include "Prefabs.hpp"
+#include "Collider.hpp"
 #include "Player/PlayerController.hpp"
 #include "Player/PlayerSkin.hpp"
 #include "Bullet/Bullet.hpp"
@@ -24,6 +25,9 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
 
         auto skinComponent = std::make_shared<PlayerSkin>(player);
         player->addComponent(skinComponent);
+
+        auto collider = std::make_shared<KapEngine::Collider>(player, true, false, true);
+        player->addComponent(collider);
 
         auto imageComp = std::make_shared<KapEngine::UI::Image>(player);
         imageComp->setRectangle({0, 0, 263, 116});
@@ -51,6 +55,9 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
         auto bulletComp = std::make_shared<Bullet>(bullet);
         bullet->addComponent(bulletComp);
 
+        auto collider = std::make_shared<KapEngine::Collider>(bullet);
+        bullet->addComponent(collider);
+
         auto imageComp = std::make_shared<KapEngine::UI::Image>(bullet);
         imageComp->setRectangle({0, 0, 19, 6});
         imageComp->setPathSprite("Assets/Textures/Bullet/bullet_1.png"); // Default skin
@@ -76,6 +83,9 @@ void Prefabs::registerBasicEnemyPrefab(KapEngine::KEngine& engine) {
 
         auto enemyComp = std::make_shared<BasicEnemy>(enemy);
         enemy->addComponent(enemyComp);
+
+        auto collider = std::make_shared<KapEngine::Collider>(enemy, true, false, true);
+        enemy->addComponent(collider);
 
         auto imageComp = std::make_shared<KapEngine::UI::Image>(enemy);
         imageComp->setRectangle({0, 0, 263, 116});

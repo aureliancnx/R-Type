@@ -44,7 +44,6 @@ void RtypeNetworkManager::registerClientHandlers() {
 void RtypeNetworkManager::onPlayerAuthorityMessage(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerAuthorityMessage& message) {
     std::shared_ptr<KapEngine::GameObject> player;
     if (getClient()->getNetworkObject(message.networkId, player)) {
-        KAP_DEBUG_LOG("Set local authority");
         auto& playerController = player->getComponent<PlayerController>();
         playerController.setLocalAuthority(true);
     }
@@ -149,7 +148,8 @@ void RtypeNetworkManager::startGame() {
         std::shared_ptr<KapEngine::GameObject> enemy;
         getServer()->spawnObject("BasicEnemy", {1280 + 100 + ((float)i * 100), 100 + ((float)i * 50), 0}, [this](std::shared_ptr<KapEngine::GameObject> go) {
             auto& basicEnemy = go->getComponent<BasicEnemy>();
-            basicEnemy.setType(BasicEnemy::Type::SHIP_4);
+            basicEnemy.setType(BasicEnemy::Type::TEST);
+            basicEnemy.setLife(1);
         }, enemy);
     }
 }

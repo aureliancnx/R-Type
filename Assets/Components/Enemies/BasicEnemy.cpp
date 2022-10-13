@@ -32,7 +32,7 @@ void BasicEnemy::onFixedUpdate() {
 }
 
 void BasicEnemy::onStartClient() {
-    initSkin();
+    setSkinId(type);
 }
 
 void BasicEnemy::shoot() {
@@ -56,12 +56,27 @@ void BasicEnemy::shoot() {
     }
 }
 
-void BasicEnemy::initSkin() {
+void BasicEnemy::setSkinId(Type type) {
     try {
         auto& image = getGameObject().getComponent<KapEngine::UI::Image>();
-        image.setPathSprite("Assets/Textures/Ship/ship_" + std::to_string((int)type) + ".png");
+        image.setPathSprite("Assets/Textures/Enemy/enemy_" + std::to_string((int)type) + ".png");
     } catch (...) {
-        KAP_DEBUG_ERROR("PlayerSkin::setSkinId: Image component not found");
+        KAP_DEBUG_ERROR("BasicEnemy::setSkinId: Image component not found");
+    }
+}
+
+void BasicEnemy::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other) {
+    if (isClient()) {
+        return;
+    }
+
+    KAP_DEBUG_LOG("BasicEnemy::onTriggerEnter: " + other->getName());
+
+    if (other->getName() == "Bullet") {
+        life -= 1;
+        if (life <= 0) {
+            getGameObject().destroy();
+        }
     }
 }
 

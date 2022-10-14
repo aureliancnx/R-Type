@@ -12,7 +12,6 @@
 
 #include "KapMirror/KapMirror.hpp"
 #include "Prefabs.hpp"
-#include "ParalaxPrefabs.hpp"
 
 using namespace RType;
 

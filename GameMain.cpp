@@ -1,12 +1,11 @@
 #include "GameManager.hpp"
-#include "ServerManager.hpp"
 #include "KapEngine.hpp"
 #include "Factory.hpp"
 #include "Graphical/RaylibGraphical.hpp"
 #include "Debug.hpp"
 
 static void initWindow(KapEngine::KEngine *engine) {
-    KapEngine::Tools::Vector2 screenSize(720, 480);
+    KapEngine::Tools::Vector2 screenSize(1280, 720);
     engine->setScreenSize(screenSize);
 
     engine->getSplashScreen()->setDisplayKapEngineLogo(false);
@@ -28,10 +27,8 @@ int main(int argc, char **argv) {
     initWindow(&engine);
 
     RType::GameManager gameManager(&engine);
-    RType::ServerManager serverManager(&engine);
-
     if (isServer) {
-        serverManager.launchServer();
+        gameManager.launchServer();
     } else {
         gameManager.launchGame();
     }

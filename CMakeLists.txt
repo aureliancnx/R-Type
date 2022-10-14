@@ -15,14 +15,8 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake" ${CMAKE_MODULE_PATH})
 
 set(CMAKE_CXX_STANDARD 20)
 
-if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    message(STATUS "GCC detected, adding compile flags")
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    # using Visual Studio C++
-    message(STATUS "MSVC detected, adding compile flags")
-else ()
-    message(FATAL_ERROR "Unsupported compiler")
-endif()
+# use valgrind programm
+option(VALGRIND "Use -g on project compile" OFF)
 
 # RayLib version
 set(raylib_VERSION 4.0.0)
@@ -45,7 +39,13 @@ include(Library/library.cmake)
 include_directories(${Boost_INCLUDE_DIRS})
 target_link_libraries(RType raylib)
 target_link_libraries(RType Boost::iostreams)
-target_link_libraries(RType z) # This is not a joke
+
+target_link_libraries(RType ZLIB::ZLIB)
+#if (WIN32)
+#    target_link_libraries(RType zlib)
+#else()
+#    target_link_libraries(RType z) # This is not a joke
+#endif()
 
 # Includes
 include_directories(.)
@@ -53,3 +53,7 @@ include_directories(Assets/Components)
 
 # Packages
 include(Packages/packages.cmake)
+
+if (VALGRIND)
+    target_compile_options(RType PRIVATE -g)
+endif()

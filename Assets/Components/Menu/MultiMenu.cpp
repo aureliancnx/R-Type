@@ -14,6 +14,7 @@ void MultiMenu::init() {
         try {
             auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
+            can.setScreenCompare(KapEngine::Tools::Vector2(720, 480));
         } catch(...) {
             KAP_DEBUG_ERROR("Failed to resize canvas");
         }
@@ -60,31 +61,6 @@ void MultiMenu::init() {
         transform.setParent(canvas);
     }
 
-    // create inputfield for pseudo
-    {
-        auto inpt = scene.createGameObject("InputFieldPseudoMulti");
-        auto inptComp = std::make_shared<KapEngine::UI::Inputfield>(inpt);
-
-        inpt->addComponent(inptComp);
-
-        auto &transform = inpt->getComponent<KapEngine::Transform>();
-        transform.setScale({150, 35, 0});
-        transform.setPosition({200, 100, 0});
-        transform.setParent(canvas);
-    }
-
-    // create text for pseudo
-    {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Multi Text Pseudo");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Enter your Pseudo : ");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
-
-        txt->addComponent(compText);
-        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(50, 100, 0));
-        transform.setParent(canvas);
-    }
-
     // create button join
     {
         auto btn = scene.createGameObject("ButtonPlay");
@@ -102,8 +78,9 @@ void MultiMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
             scene.getEngine().getSceneManager()->loadScene("MultiPlayer");
-            gameManager.startMultiPlayer();
+            gameManager.startLocalMultiPlayer();
         });
     }
 
@@ -124,6 +101,7 @@ void MultiMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
             switchMenu("MainMenu");
         });
     }

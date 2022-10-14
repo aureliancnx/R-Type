@@ -10,7 +10,7 @@
 using namespace RType;
 
 
-void ParalaxPrefabs::registerPlanetParalaxPrefab(KapEngine::KEngine& engine) {
+void ParalaxPrefabs::registerGalaxyParalaxPrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("ParalaxGalaxy", [](KapEngine::SceneManagement::Scene& scene) {
         auto paralax = scene.createGameObject("Paralax");
         auto paralaxCanvas = KapEngine::UI::UiFactory::createCanvas(scene, "ParalaxCanvas");

@@ -9,8 +9,8 @@
 #include "Menu/HowToPlayMenu.hpp"
 #include "Menu/SettingPlayerMenu.hpp"
 
-
 #include "KapMirror/KapMirror.hpp"
+#include "Sylph/SylphTransport.hpp"
 #include "Prefabs.hpp"
 
 using namespace RType;
@@ -138,6 +138,7 @@ void GameManager::initMultiPlayer(bool isServer) {
 
     auto networkManagerObject = scene->createGameObject("NetworkManager");
     networkManager = std::make_shared<RtypeNetworkManager>(networkManagerObject, isServer);
+    // networkManager->setTransport(std::make_shared<KapMirror::SylphTransport>());
     networkManagerObject->addComponent(networkManager);
 }
 

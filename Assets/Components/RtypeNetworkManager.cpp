@@ -144,9 +144,9 @@ void RtypeNetworkManager::startGame() {
     for (int i = 1; i <= 10; i++) {
         getServer()->spawnObject("Enemy:BoubouleEnemy", {1280 + 100 + ((float)i * 100), 100 + ((float)i * 50), 0}, enemy);
     }
-    for (int i = 1; i <= 10; i++) {
-        getServer()->spawnObject("Enemy:BoubouleEnemy", {1280 + 500 + ((float)i * 100), 100 + ((float)i * 50), 0}, enemy);
-    }
+    // for (int i = 1; i <= 10; i++) {
+    //     getServer()->spawnObject("Enemy:BoubouleEnemy", {1280 + 500 + ((float)i * 100), 100 + ((float)i * 50), 0}, enemy);
+    // }
     getServer()->spawnObject("Enemy:TentaclesBossEnemy", {1280 - 200, 100, 0}, enemy);
 }
 

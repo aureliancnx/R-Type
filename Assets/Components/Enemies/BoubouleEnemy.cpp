@@ -63,10 +63,10 @@ void BoubouleEnemy::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other)
     }
 }
 
-void BoubouleEnemy::customPayloadSerialize(KapMirror::NetworkWriter& writer) {
+void BoubouleEnemy::serialize(KapMirror::NetworkWriter& writer) {
     writer.write(life);
 }
 
-void BoubouleEnemy::customPayloadDeserialize(KapMirror::NetworkReader& reader) {
+void BoubouleEnemy::deserialize(KapMirror::NetworkReader& reader) {
     life = reader.read<int>();
 }

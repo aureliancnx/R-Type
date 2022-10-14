@@ -63,10 +63,10 @@ void ShipEnemy::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other) {
     }
 }
 
-void ShipEnemy::customPayloadSerialize(KapMirror::NetworkWriter& writer) {
+void ShipEnemy::serialize(KapMirror::NetworkWriter& writer) {
     writer.write(life);
 }
 
-void ShipEnemy::customPayloadDeserialize(KapMirror::NetworkReader& reader) {
+void ShipEnemy::deserialize(KapMirror::NetworkReader& reader) {
     life = reader.read<int>();
 }

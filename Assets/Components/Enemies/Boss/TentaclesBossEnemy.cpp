@@ -69,10 +69,10 @@ void TentaclesBossEnemy::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> o
     }
 }
 
-void TentaclesBossEnemy::customPayloadSerialize(KapMirror::NetworkWriter& writer) {
+void TentaclesBossEnemy::serialize(KapMirror::NetworkWriter& writer) {
     writer.write(life);
 }
 
-void TentaclesBossEnemy::customPayloadDeserialize(KapMirror::NetworkReader& reader) {
+void TentaclesBossEnemy::deserialize(KapMirror::NetworkReader& reader) {
     life = reader.read<int>();
 }

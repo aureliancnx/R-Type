@@ -36,10 +36,10 @@ void Bullet::onUpdate() {
     }
 }
 
-void Bullet::customPayloadSerialize(KapMirror::NetworkWriter& writer) {
+void Bullet::serialize(KapMirror::NetworkWriter& writer) {
     writer.write(direction);
 }
 
-void Bullet::customPayloadDeserialize(KapMirror::NetworkReader& reader) {
+void Bullet::deserialize(KapMirror::NetworkReader& reader) {
     direction = reader.read<Direction>();
 }

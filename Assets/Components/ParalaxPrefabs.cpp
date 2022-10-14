@@ -49,6 +49,16 @@ void ParalaxPrefabs::registerGalaxyParalaxPrefab(KapEngine::KEngine& engine) {
             transform.setPosition({271 * 1, 0, 0});
         } catch (...) {}
 
+        // Animation
+        auto paralaxAnimation = std::make_shared<RType::ParalaxAnimation>(paralaxCanvas, .05, 272);
+        paralax->addComponent(paralaxAnimation);
+        paralaxAnimation->setSpeed(.05);
+
+        auto animator = std::make_shared<KapEngine::Animator>(paralax);
+        paralax->addComponent(animator);
+        animator->addAnim(paralaxAnimation, "idle");
+        animator->addLink("idle", "idle");
+
         return paralax;
     });
 }

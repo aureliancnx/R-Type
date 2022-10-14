@@ -12,7 +12,7 @@
 #include "KapEngineDebug.hpp"
 #include "KapEngineUi.hpp"
 
-//#include "Animations/ParalaxAnimation.hpp"
+#include "Animations/ParalaxAnimation.hpp"
 
 namespace RType {
 

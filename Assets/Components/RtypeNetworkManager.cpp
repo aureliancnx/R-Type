@@ -142,7 +142,7 @@ void RtypeNetworkManager::startGame() {
 
     for (int i = 1; i <= 10; i++) {
         std::shared_ptr<KapEngine::GameObject> enemy;
-        getServer()->spawnObject("Enemy:ShipEnemy", {1280 + 100 + ((float)i * 100), 100 + ((float)i * 50), 0}, enemy);
+        getServer()->spawnObject("Enemy:BoubouleEnemy", {1280 + 100 + ((float)i * 100), 100 + ((float)i * 50), 0}, enemy);
     }
 }
 

@@ -4,6 +4,7 @@
 #include "Player/PlayerSkin.hpp"
 #include "Bullet/Bullet.hpp"
 #include "Enemies/ShipEnemy.hpp"
+#include "Enemies/BoubouleEnemy.hpp"
 
 using namespace RType;
 
@@ -73,6 +74,8 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
         return bullet;
     });
 }
+
+#pragma region Enemies
 
 void Prefabs::registerShipEnemyPrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("Enemy:ShipEnemy", [](KapEngine::SceneManagement::Scene& scene) {
@@ -208,3 +211,34 @@ void Prefabs::registerStarsParalaxPrefab(KapEngine::KEngine &engine) {
         return paralax;
     });
 }
+
+void Prefabs::registerBoubouleEnemyPrefab(KapEngine::KEngine& engine) {
+    engine.getPrefabManager()->createPrefab("Enemy:BoubouleEnemy", [](KapEngine::SceneManagement::Scene& scene) {
+        auto enemy = KapEngine::UI::UiFactory::createCanvas(scene, "BoubouleEnemy");
+
+        auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
+        enemy->addComponent(networkIdentityComp);
+
+        auto enemyComp = std::make_shared<BoubouleEnemy>(enemy);
+        enemy->addComponent(enemyComp);
+
+        auto collider = std::make_shared<KapEngine::Collider>(enemy, true, false, true);
+        enemy->addComponent(collider);
+
+        auto imageComp = std::make_shared<KapEngine::UI::Image>(enemy);
+        imageComp->setRectangle({0, 0, 17, 18});
+        imageComp->setPathSprite("Assets/Textures/Enemy/enemy_1.png");
+        enemy->addComponent(imageComp);
+
+        auto& canvas = enemy->getComponent<KapEngine::UI::Canvas>();
+        canvas.setResizeType(KapEngine::UI::Canvas::resizyngType::RESIZE_WITH_SCREEN);
+
+        auto& transform = enemy->getComponent<KapEngine::Transform>();
+        transform.setPosition({0, 0, 0});
+        transform.setScale({17 * 3, 18 * 3, 0});
+
+        return enemy;
+    });
+}
+
+#pragma endregion

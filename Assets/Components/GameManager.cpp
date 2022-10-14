@@ -48,11 +48,17 @@ void GameManager::launchServer() {
 }
 
 void GameManager::registerPrefabs() {
+    // Player
     Prefabs::registerPlayerPrefab(*engine);
+
     Prefabs::registerBulletPrefab(*engine);
+
+    // Enemies
     Prefabs::registerShipEnemyPrefab(*engine);
+
     Prefabs::registerGalaxyParalaxPrefab(*engine);
     Prefabs::registerStarsParalaxPrefab(*engine);
+
 }
 
 void GameManager::registerMenus() {

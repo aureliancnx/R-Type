@@ -16,5 +16,7 @@ namespace RType {
         static void registerGalaxyParalaxPrefab(KapEngine::KEngine& engine);
 
         static void registerStarsParalaxPrefab(KapEngine::KEngine& engine);
+
+        static void registerBoubouleEnemyPrefab(KapEngine::KEngine& engine);
     };
 }

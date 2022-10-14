@@ -52,7 +52,6 @@ void ParalaxPrefabs::registerGalaxyParalaxPrefab(KapEngine::KEngine& engine) {
         // Animation
         auto paralaxAnimation = std::make_shared<RType::ParalaxAnimation>(paralaxCanvas, .05, 272);
         paralax->addComponent(paralaxAnimation);
-        paralaxAnimation->setSpeed(.05);
 
         auto animator = std::make_shared<KapEngine::Animator>(paralax);
         paralax->addComponent(animator);

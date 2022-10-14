@@ -106,7 +106,6 @@ void ParalaxPrefabs::registerStarsParalaxPrefab(KapEngine::KEngine &engine) {
         // Animation
         auto paralaxAnimation = std::make_shared<RType::ParalaxAnimation>(paralaxCanvas, .5, 272);
         paralax->addComponent(paralaxAnimation);
-        paralaxAnimation->setSpeed(.5);
 
         auto animator = std::make_shared<KapEngine::Animator>(paralax);
         paralax->addComponent(animator);

@@ -57,6 +57,7 @@ void GameManager::registerPrefabs() {
     // Enemies
     Prefabs::registerShipEnemyPrefab(*engine);
     Prefabs::registerBoubouleEnemyPrefab(*engine);
+    Prefabs::registerTentaclesBossEnemyPrefab(*engine);
 
     // Paralax
     ParalaxPrefabs::registerGalaxyParalaxPrefab(*engine);

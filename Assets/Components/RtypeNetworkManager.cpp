@@ -140,10 +140,14 @@ void RtypeNetworkManager::onPlayerShootMessage(std::shared_ptr<KapMirror::Networ
 void RtypeNetworkManager::startGame() {
     KAP_DEBUG_LOG("Start game");
 
+    std::shared_ptr<KapEngine::GameObject> enemy;
     for (int i = 1; i <= 10; i++) {
-        std::shared_ptr<KapEngine::GameObject> enemy;
         getServer()->spawnObject("Enemy:BoubouleEnemy", {1280 + 100 + ((float)i * 100), 100 + ((float)i * 50), 0}, enemy);
     }
+    for (int i = 1; i <= 10; i++) {
+        getServer()->spawnObject("Enemy:BoubouleEnemy", {1280 + 500 + ((float)i * 100), 100 + ((float)i * 50), 0}, enemy);
+    }
+    getServer()->spawnObject("Enemy:TentaclesBossEnemy", {1280 - 200, 100, 0}, enemy);
 }
 
 #pragma endregion

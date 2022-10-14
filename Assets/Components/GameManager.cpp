@@ -12,7 +12,6 @@
 
 #include "KapMirror/KapMirror.hpp"
 #include "Prefabs.hpp"
-#include "ParalaxPrefabs.hpp"
 
 using namespace RType;
 
@@ -60,8 +59,8 @@ void GameManager::registerPrefabs() {
     Prefabs::registerTentaclesBossEnemyPrefab(*engine);
 
     // Paralax
-    ParalaxPrefabs::registerGalaxyParalaxPrefab(*engine);
-    ParalaxPrefabs::registerStarsParalaxPrefab(*engine);
+    Prefabs::registerGalaxyParalaxPrefab(*engine);
+    Prefabs::registerStarsParalaxPrefab(*engine);
 }
 
 void GameManager::registerMenus() {

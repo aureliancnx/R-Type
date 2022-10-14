@@ -50,6 +50,7 @@ void GameManager::registerPrefabs() {
     Prefabs::registerPlayerPrefab(*engine);
     Prefabs::registerBulletPrefab(*engine);
     Prefabs::registerShipEnemyPrefab(*engine);
+    Prefabs::registerBoubouleEnemyPrefab(*engine);
 }
 
 void GameManager::registerMenus() {

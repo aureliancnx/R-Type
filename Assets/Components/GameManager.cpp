@@ -9,8 +9,10 @@
 #include "Menu/HowToPlayMenu.hpp"
 #include "Menu/SettingPlayerMenu.hpp"
 
+
 #include "KapMirror/KapMirror.hpp"
 #include "Prefabs.hpp"
+#include "ParalaxPrefabs.hpp"
 
 using namespace RType;
 
@@ -47,10 +49,18 @@ void GameManager::launchServer() {
 }
 
 void GameManager::registerPrefabs() {
+    // Player
     Prefabs::registerPlayerPrefab(*engine);
+
     Prefabs::registerBulletPrefab(*engine);
+
+    // Enemies
     Prefabs::registerShipEnemyPrefab(*engine);
     Prefabs::registerBoubouleEnemyPrefab(*engine);
+
+    // Paralax
+    ParalaxPrefabs::registerGalaxyParalaxPrefab(*engine);
+    ParalaxPrefabs::registerStarsParalaxPrefab(*engine);
 }
 
 void GameManager::registerMenus() {
@@ -87,6 +97,24 @@ void GameManager::registerMenus() {
 // TODO: Move this to a dedicated class
 void GameManager::initSinglePlayer() {
     auto scene = engine->getSceneManager()->createScene("SinglePlayer");
+
+    std::shared_ptr<KapEngine::GameObject> paralaxGalaxy;
+    if (!engine->getPrefabManager()->instantiatePrefab("ParalaxGalaxy", *scene, paralaxGalaxy)) {
+        KAP_DEBUG_ERROR("Failed to instantiate paralax prefab");
+        return;
+    }
+
+    auto &transformPG = paralaxGalaxy->getComponent<KapEngine::Transform>();
+    transformPG.setPosition({0, 0, 0});
+
+    std::shared_ptr<KapEngine::GameObject> paralaxStars;
+    if (!engine->getPrefabManager()->instantiatePrefab("ParalaxStars", *scene, paralaxStars)) {
+        KAP_DEBUG_ERROR("Failed to instantiate paralax prefab");
+        return;
+    }
+
+    auto &transformPS = paralaxStars->getComponent<KapEngine::Transform>();
+    transformPS.setPosition({0, 0, 0});
 
     std::shared_ptr<KapEngine::GameObject> player;
     if (!engine->getPrefabManager()->instantiatePrefab("Player", *scene, player)) {

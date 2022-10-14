@@ -74,6 +74,8 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
     });
 }
 
+#pragma region Enemies
+
 void Prefabs::registerShipEnemyPrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("Enemy:ShipEnemy", [](KapEngine::SceneManagement::Scene& scene) {
         auto enemy = KapEngine::UI::UiFactory::createCanvas(scene, "ShipEnemy");
@@ -102,3 +104,5 @@ void Prefabs::registerShipEnemyPrefab(KapEngine::KEngine& engine) {
         return enemy;
     });
 }
+
+#pragma endregion

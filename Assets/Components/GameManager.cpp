@@ -52,8 +52,8 @@ void GameManager::registerPrefabs() {
     Prefabs::registerPlayerPrefab(*engine);
     Prefabs::registerBulletPrefab(*engine);
     Prefabs::registerShipEnemyPrefab(*engine);
-    ParalaxPrefabs::registerGalaxyParalaxPrefab(*engine);
-    ParalaxPrefabs::registerStarsParalaxPrefab(*engine);
+    Prefabs::registerGalaxyParalaxPrefab(*engine);
+    Prefabs::registerStarsParalaxPrefab(*engine);
 }
 
 void GameManager::registerMenus() {

@@ -10,3 +10,6 @@
 	path = Library/vcpkg
 	branch = master
 	url = git@github.com:microsoft/vcpkg.git
+[submodule "Packages/SylphTransport"]
+	path = Packages/SylphTransport
+	url = git@github.com:Chaika9/SylphTransport.git

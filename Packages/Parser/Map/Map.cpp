@@ -51,6 +51,19 @@ namespace RType {
             }
         }
 
+        void Map::parseSummons(const std::string &line) {
+            std::vector<std::string> summon = split(line, ";");
+
+            // TODO: replace float time to KapEngine::Time::ETime
+            if (summon.size() == 4) {
+                _summons.emplace_back(std::stof(summon[0]), std::stoi(summon[1]), summon[2], std::stoi(summon[3]));
+            } else if (summon.size() == 5) {
+                std::vector<std::string> bonus = split(summon[4], ":");
+                _summons.emplace_back(std::stof(summon[0]), std::stoi(summon[1]), summon[2], std::stoi(summon[3]), bonus[0], std::stoi(bonus[1]));
+            }
+
+        }
+
         void Map::openMap(const std::string &path) {
             map.open(path);
             if (!map.is_open()) {
@@ -74,6 +87,10 @@ namespace RType {
             std::cout << "Difficulty: " << 0 << std::endl;
             std::cout << "Description: " << _description << std::endl;
             std::cout << "Background: " << _background << std::endl;
+
+            std::cout << "Summons: " << std::endl;
+            for (auto summon: _summons)
+                std::cout << summon;
         }
 
         std::vector<std::string> Map::split(const std::string &str, const std::string &delim) {

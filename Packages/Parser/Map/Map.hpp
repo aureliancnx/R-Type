@@ -18,8 +18,11 @@ namespace RType {
                 Map(const std::string& path);
                 ~Map();
 
+                void display();
+
             private:
                 // Variables
+                std::ifstream map;
                 std::string _name;
                 std::vector<std::string> _author;
                 std::string _date;
@@ -30,8 +33,13 @@ namespace RType {
                 std::vector<Summon> _summons;
 
                 // Methods
-                void parse(const std::string& path);
+                void parse();
+                void parseHeader(const std::string& line);
+                void parseSummons(const std::string& line);
+                void openMap(const std::string& path);
+                void closeMap();
 
+                std::vector<std::string> split(const std::string& str, const std::string& delim);
         };
 
     } // RType

@@ -12,6 +12,7 @@ using namespace RType;
 void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("Player", [](KapEngine::SceneManagement::Scene& scene) {
         auto player = KapEngine::UI::UiFactory::createCanvas(scene, "Player");
+        player->setTag("Collider");
 
         auto networkIdentityComponent = std::make_shared<KapMirror::NetworkIdentity>(player);
         player->addComponent(networkIdentityComponent);
@@ -28,7 +29,7 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
         auto skinComponent = std::make_shared<PlayerSkin>(player);
         player->addComponent(skinComponent);
 
-        auto collider = std::make_shared<KapEngine::Collider>(player, true, false, true);
+        auto collider = std::make_shared<KapEngine::Collider>(player, true);
         player->addComponent(collider);
 
         auto imageComp = std::make_shared<KapEngine::UI::Image>(player);
@@ -57,7 +58,7 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
         auto bulletComp = std::make_shared<Bullet>(bullet);
         bullet->addComponent(bulletComp);
 
-        auto collider = std::make_shared<KapEngine::Collider>(bullet);
+        auto collider = std::make_shared<KapEngine::Collider>(bullet, false);
         bullet->addComponent(collider);
 
         auto imageComp = std::make_shared<KapEngine::UI::Image>(bullet);
@@ -81,6 +82,7 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
 void Prefabs::registerShipEnemyPrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("Enemy:ShipEnemy", [](KapEngine::SceneManagement::Scene& scene) {
         auto enemy = KapEngine::UI::UiFactory::createCanvas(scene, "ShipEnemy");
+        enemy->setTag("Collider");
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
         enemy->addComponent(networkIdentityComp);
@@ -88,7 +90,7 @@ void Prefabs::registerShipEnemyPrefab(KapEngine::KEngine& engine) {
         auto enemyComp = std::make_shared<ShipEnemy>(enemy);
         enemy->addComponent(enemyComp);
 
-        auto collider = std::make_shared<KapEngine::Collider>(enemy, true, false, true);
+        auto collider = std::make_shared<KapEngine::Collider>(enemy, true);
         enemy->addComponent(collider);
 
         auto imageComp = std::make_shared<KapEngine::UI::Image>(enemy);
@@ -110,6 +112,7 @@ void Prefabs::registerShipEnemyPrefab(KapEngine::KEngine& engine) {
 void Prefabs::registerBoubouleEnemyPrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("Enemy:BoubouleEnemy", [](KapEngine::SceneManagement::Scene& scene) {
         auto enemy = KapEngine::UI::UiFactory::createCanvas(scene, "BoubouleEnemy");
+        enemy->setTag("Collider");
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
         enemy->addComponent(networkIdentityComp);
@@ -117,7 +120,7 @@ void Prefabs::registerBoubouleEnemyPrefab(KapEngine::KEngine& engine) {
         auto enemyComp = std::make_shared<BoubouleEnemy>(enemy);
         enemy->addComponent(enemyComp);
 
-        auto collider = std::make_shared<KapEngine::Collider>(enemy, true, false, true);
+        auto collider = std::make_shared<KapEngine::Collider>(enemy, true);
         enemy->addComponent(collider);
 
         auto imageComp = std::make_shared<KapEngine::UI::Image>(enemy);
@@ -139,6 +142,7 @@ void Prefabs::registerBoubouleEnemyPrefab(KapEngine::KEngine& engine) {
 void Prefabs::registerTentaclesBossEnemyPrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("Enemy:TentaclesBossEnemy", [](KapEngine::SceneManagement::Scene& scene) {
         auto enemy = KapEngine::UI::UiFactory::createCanvas(scene, "TentaclesBossEnemy");
+        enemy->setTag("Collider");
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
         enemy->addComponent(networkIdentityComp);
@@ -146,7 +150,7 @@ void Prefabs::registerTentaclesBossEnemyPrefab(KapEngine::KEngine& engine) {
         auto enemyComp = std::make_shared<TentaclesBossEnemy>(enemy);
         enemy->addComponent(enemyComp);
 
-        auto collider = std::make_shared<KapEngine::Collider>(enemy, true, false, true);
+        auto collider = std::make_shared<KapEngine::Collider>(enemy, true);
         enemy->addComponent(collider);
 
         auto imageComp = std::make_shared<KapEngine::UI::Image>(enemy);

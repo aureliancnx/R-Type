@@ -10,25 +10,7 @@
 namespace RType {
     namespace Parser {
 
-//        Summon::Summon(KapEngine::Time::ETime time, int pos, std::string enemy, int health) {
-//            _time = time;
-//            _pos = pos;
-//            _enemy = enemy;
-//            _health = health;
-//            _hasBonus = false;
-//        }
-//
-//        Summon::Summon(KapEngine::Time::ETime time, int pos, std::string enemy, int health, std::string bonus, int bonusPourcent) {
-//            _time = time;
-//            _pos = pos;
-//            _enemy = enemy;
-//            _health = health;
-//            _bonus = bonus;
-//            _bonusPourcent = bonusPourcent;
-//            _hasBonus = true;
-//        }
-
-        Summon::Summon(float time, int pos, std::string enemy, int health) {
+        Summon::Summon(KapEngine::Time::ETime time, int pos, std::string enemy, int health) {
             _time = time;
             _pos = pos;
             _enemy = enemy;
@@ -46,9 +28,9 @@ namespace RType {
             _hasBonus = true;
         }
 
-//        KapEngine::Time::ETime Summon::getTime() const {
-//            return _time;
-//        }
+        KapEngine::Time::ETime Summon::getTime() const {
+            return _time;
+        }
 
         int Summon::getPos() const {
             return _pos;
@@ -85,6 +67,5 @@ namespace RType {
             }
             return os;
         }
-
     } // RType
 } // Parser

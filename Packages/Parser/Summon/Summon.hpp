@@ -21,16 +21,11 @@ namespace RType {
 
         class Summon {
             public:
-//                Summon(KapEngine::Time::ETime time, int pos, std::string enemy, int health);
-//                Summon(KapEngine::Time::ETime time, int pos, std::string enemy, int health, std::string bonus, int bonusPourcent);
-                // TODO: replace float time to KapEngine::Time::ETime
-                Summon(float time, int pos, std::string enemy, int health);
-                Summon(float time, int pos, std::string enemy, int health, std::string bonus, int bonusPourcent);
-
+                Summon(KapEngine::Time::ETime time, int pos, std::string enemy, int health);
+                Summon(KapEngine::Time::ETime time, int pos, std::string enemy, int health, std::string bonus, int bonusPourcent);
                 ~Summon() = default;
 
-//                KapEngine::Time::ETime getTime() const;
-                float getTime() const;
+                KapEngine::Time::ETime getTime() const;
                 int getPos() const;
                 std::string getEnemy() const;
                 int getHealth() const;
@@ -42,8 +37,7 @@ namespace RType {
                 friend std::ostream &operator<<(std::ostream &os, const Summon &summon);
 
             private:
-//                KapEngine::Time::ETime _time;
-                float _time;
+                KapEngine::Time::ETime _time;
                 int _pos;
                 std::string _enemy;
                 int _health;

@@ -10,7 +10,7 @@
 namespace RType {
     namespace Parser {
 
-        Summon::Summon(KapEngine::Time::ETime time, int pos, std::string enemy, int health) {
+        Summon::Summon(float time, int pos, std::string enemy, int health) {
             _time = time;
             _pos = pos;
             _enemy = enemy;
@@ -28,7 +28,7 @@ namespace RType {
             _hasBonus = true;
         }
 
-        KapEngine::Time::ETime Summon::getTime() const {
+        float Summon::getTime() const {
             return _time;
         }
 

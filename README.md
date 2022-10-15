@@ -19,6 +19,8 @@ See the [R-Type build instructions](https://chaika9.gitbook.io/rtype/user-manuel
 - Assets : All additional things useful for the gameplay (Components, Textures, Font, ...).
 - Package : All additional things useful for background logic (Raylib encapsulation, ...).
 
+## Authors
+
 <table>
     <tbody>
         <tr>

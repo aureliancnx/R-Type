@@ -73,9 +73,9 @@ void ShipEnemy::onSceneUpdated() {
         if (other->getName() == "Bullet Player") {
             life -= 1;
             if (life <= 0) {
-                getGameObject().destroy();
+                getServer()->destroyObject(getGameObject().getScene().getGameObject(getGameObject().getId()));
             }
-            other->destroy();
+            getServer()->destroyObject(other);
         }
     }
     collidedObjects.clear();

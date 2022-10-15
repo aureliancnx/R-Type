@@ -12,11 +12,15 @@ namespace RType {
 
         long long lastShootTime = 0;
 
+        std::vector<std::shared_ptr<KapEngine::GameObject>> collidedObjects;
+
         public:
         BoubouleEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject);
         ~BoubouleEnemy() = default;
 
         void setLife(int _life);
+
+        void onSceneUpdated() override;
 
         void onFixedUpdate() override;
 

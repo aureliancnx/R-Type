@@ -58,7 +58,7 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
         auto bulletComp = std::make_shared<Bullet>(bullet);
         bullet->addComponent(bulletComp);
 
-        auto collider = std::make_shared<KapEngine::Collider>(bullet, false);
+        auto collider = std::make_shared<KapEngine::Collider>(bullet, true);
         bullet->addComponent(collider);
 
         auto imageComp = std::make_shared<KapEngine::UI::Image>(bullet);
@@ -89,6 +89,7 @@ void Prefabs::registerShipEnemyPrefab(KapEngine::KEngine& engine) {
 
         auto enemyComp = std::make_shared<ShipEnemy>(enemy);
         enemy->addComponent(enemyComp);
+        enemyComp->setLife(1);
 
         auto collider = std::make_shared<KapEngine::Collider>(enemy, true);
         enemy->addComponent(collider);
@@ -119,6 +120,7 @@ void Prefabs::registerBoubouleEnemyPrefab(KapEngine::KEngine& engine) {
 
         auto enemyComp = std::make_shared<BoubouleEnemy>(enemy);
         enemy->addComponent(enemyComp);
+        enemyComp->setLife(1);
 
         auto collider = std::make_shared<KapEngine::Collider>(enemy, true);
         enemy->addComponent(collider);
@@ -149,6 +151,7 @@ void Prefabs::registerTentaclesBossEnemyPrefab(KapEngine::KEngine& engine) {
 
         auto enemyComp = std::make_shared<TentaclesBossEnemy>(enemy);
         enemy->addComponent(enemyComp);
+        enemyComp->setLife(1);
 
         auto collider = std::make_shared<KapEngine::Collider>(enemy, true);
         enemy->addComponent(collider);

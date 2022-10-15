@@ -13,11 +13,15 @@ namespace RType {
         bool invert = false;
         long long lastShootTime = 0;
 
+        std::vector<std::shared_ptr<KapEngine::GameObject>> collidedObjects;
+
         public:
         TentaclesBossEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject);
         ~TentaclesBossEnemy() = default;
 
         void setLife(int _life);
+
+        void onSceneUpdated() override;
 
         void onFixedUpdate() override;
 

@@ -53,14 +53,7 @@ void BoubouleEnemy::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other)
         return;
     }
 
-    KAP_DEBUG_LOG("BoubouleEnemy::onTriggerEnter: " + other->getName());
-
-    if (other->getName() == "Bullet") {
-        life -= 1;
-        if (life <= 0) {
-            getGameObject().destroy();
-        }
-    }
+    collidedObjects.push_back(other);
 }
 
 void BoubouleEnemy::serialize(KapMirror::NetworkWriter& writer) {
@@ -70,3 +63,22 @@ void BoubouleEnemy::serialize(KapMirror::NetworkWriter& writer) {
 void BoubouleEnemy::deserialize(KapMirror::NetworkReader& reader) {
     life = reader.read<int>();
 }
+
+void BoubouleEnemy::onSceneUpdated() {
+    if (isClient()) {
+        return;
+    }
+    for (std::size_t i = 0; i < collidedObjects.size(); i++) {
+        auto& other = collidedObjects[i];
+        KAP_DEBUG_LOG("Collision with " + other->getName());
+        if (other->getName() == "Bullet Player") {
+            life -= 1;
+            if (life <= 0) {
+                getGameObject().destroy();
+            }
+            other->destroy();
+        }
+    }
+    collidedObjects.clear();
+}
+

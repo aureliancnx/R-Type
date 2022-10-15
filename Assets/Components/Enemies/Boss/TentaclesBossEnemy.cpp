@@ -59,14 +59,7 @@ void TentaclesBossEnemy::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> o
         return;
     }
 
-    KAP_DEBUG_LOG("TentaclesBossEnemy::onTriggerEnter: " + other->getName());
-
-    if (other->getName() == "Bullet") {
-        life -= 1;
-        if (life <= 0) {
-            getGameObject().destroy();
-        }
-    }
+    collidedObjects.push_back(other);
 }
 
 void TentaclesBossEnemy::serialize(KapMirror::NetworkWriter& writer) {
@@ -75,4 +68,21 @@ void TentaclesBossEnemy::serialize(KapMirror::NetworkWriter& writer) {
 
 void TentaclesBossEnemy::deserialize(KapMirror::NetworkReader& reader) {
     life = reader.read<int>();
+}
+
+void TentaclesBossEnemy::onSceneUpdated() {
+    if (isClient()) {
+        return;
+    }
+    for (std::size_t i = 0; i < collidedObjects.size(); i++) {
+        auto& other = collidedObjects[i];
+        if (other->getName() == "Bullet Player") {
+            life -= 1;
+            if (life <= 0) {
+                getGameObject().destroy();
+            }
+            other->destroy();
+        }
+    }
+    collidedObjects.clear();
 }

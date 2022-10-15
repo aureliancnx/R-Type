@@ -11,12 +11,15 @@ namespace RType {
         int life = 20;
 
         long long lastShootTime = 0;
+        std::vector<std::shared_ptr<KapEngine::GameObject>> collidedObjects;
 
         public:
         ShipEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject);
         ~ShipEnemy() = default;
 
         void setLife(int _life);
+
+        void onSceneUpdated() override;
 
         void onFixedUpdate() override;
 

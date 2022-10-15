@@ -10,7 +10,25 @@
 namespace RType {
     namespace Parser {
 
-        Summon::Summon(KapEngine::Time::ETime time, int pos, std::string enemy, int health) {
+//        Summon::Summon(KapEngine::Time::ETime time, int pos, std::string enemy, int health) {
+//            _time = time;
+//            _pos = pos;
+//            _enemy = enemy;
+//            _health = health;
+//            _hasBonus = false;
+//        }
+//
+//        Summon::Summon(KapEngine::Time::ETime time, int pos, std::string enemy, int health, std::string bonus, int bonusPourcent) {
+//            _time = time;
+//            _pos = pos;
+//            _enemy = enemy;
+//            _health = health;
+//            _bonus = bonus;
+//            _bonusPourcent = bonusPourcent;
+//            _hasBonus = true;
+//        }
+
+        Summon::Summon(float time, int pos, std::string enemy, int health) {
             _time = time;
             _pos = pos;
             _enemy = enemy;
@@ -18,7 +36,7 @@ namespace RType {
             _hasBonus = false;
         }
 
-        Summon::Summon(KapEngine::Time::ETime time, int pos, std::string enemy, int health, std::string bonus, int bonusPourcent) {
+        Summon::Summon(float time, int pos, std::string enemy, int health, std::string bonus, int bonusPourcent) {
             _time = time;
             _pos = pos;
             _enemy = enemy;
@@ -28,9 +46,9 @@ namespace RType {
             _hasBonus = true;
         }
 
-        KapEngine::Time::ETime Summon::getTime() const {
-            return _time;
-        }
+//        KapEngine::Time::ETime Summon::getTime() const {
+//            return _time;
+//        }
 
         int Summon::getPos() const {
             return _pos;
@@ -55,5 +73,18 @@ namespace RType {
         bool Summon::hasBonus() const {
             return _hasBonus;
         }
+
+        std::ostream &operator<<(std::ostream &os, const RType::Parser::Summon &summon) {
+            os << "\tTime: " << summon._time << std::endl;
+            os << "\tPos: " << summon._pos << std::endl;
+            os << "\tEnemy: " << summon._enemy << std::endl;
+            os << "\tHealth: " << summon._health << std::endl;
+            if (summon._hasBonus) {
+                os << "\tBonus: " << summon._bonus << std::endl;
+                os << "\tBonusPourcent: " << summon._bonusPourcent << std::endl;
+            }
+            return os;
+        }
+
     } // RType
 } // Parser

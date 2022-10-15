@@ -59,7 +59,6 @@ namespace RType {
                 if (!checkHeaderFile(lines)) {
                     _hasError = true;
                     _filesError.push_back(file);
-                    std::cout << "Error in file: " << file << std::endl;
                 }
                 fileStream.close();
             }

@@ -13,6 +13,7 @@
 #include <filesystem>
 #include <iostream>
 #include <fstream>
+#include <map>
 
 namespace RType {
     namespace Parser {
@@ -29,6 +30,7 @@ namespace RType {
                 bool hasError() const;
                 std::vector<std::string> getFilesError() const;
                 std::vector<std::string> getFilesPath() const;
+                std::map<std::string, std::string> getErrorsInFiles() const;
 
             private:
                 // Variables
@@ -37,6 +39,7 @@ namespace RType {
                 int _nbFiles;
                 std::vector<std::string> _filesPath;
                 std::vector<std::string> _filesError;
+                std::map<std::string, std::string> _errorsInFiles;
 
                 // Methods
                 bool directoryExist();

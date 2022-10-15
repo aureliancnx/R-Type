@@ -49,16 +49,20 @@ namespace RType {
                     continue;
                 }
                 std::vector<std::string> lines;
+                lines.push_back(file);
                 std::string line;
 
                 try {
                     while (std::getline(fileStream, line)) {
-                        if (line.at(0) == '#')
-                            lines.push_back(line);
+                        if (line[0] != '#')
+                            break;
+                        lines.push_back(line);
                     }
                 } catch (std::exception &e) {
                     _hasError = true;
                     _filesError.push_back(file);
+                    _errorsInFiles[file] = e.what();
+                    continue;
                 }
 
                 if (!checkHeaderFile(lines)) {
@@ -80,8 +84,10 @@ namespace RType {
                     }
                 }
             }
-            if (nbMandatory != 5)
+            if (nbMandatory != 5) {
+                _errorsInFiles[header.at(0)] = "missing mandatory line";
                 return false;
+            }
             return true;
         }
 
@@ -99,6 +105,10 @@ namespace RType {
 
         std::vector<std::string> Parser::getFilesPath() const {
             return _filesPath;
+        }
+
+        std::map<std::string, std::string> Parser::getErrorsInFiles() const {
+            return _errorsInFiles;
         }
 
     } // RType

@@ -23,11 +23,7 @@ namespace RType {
             if (!directoryExist())
                 return;
             getFiles();
-            std::cout << "Number of file: " << _nbFiles << std::endl;
-            std::cout << "Paths files: " << std::endl;
-            for (auto &file : _filesPath) {
-                std::cout << file << std::endl;
-            }
+            getHeaderFile();
         }
 
         void Parser::getFiles() {
@@ -36,6 +32,36 @@ namespace RType {
                     _filesPath.push_back(entry.path());
                     _nbFiles++;
                 }
+            }
+        }
+
+        void Parser::getHeaderFile() {
+            for (std::string file: _filesPath) {
+                std::ifstream fileStream(file);
+                if (!fileStream.is_open()) {
+                    _hasError = true;
+                    _filesError.push_back(file);
+                    continue;
+                }
+                std::vector<std::string> lines;
+                std::string line;
+
+                try {
+                    while (std::getline(fileStream, line)) {
+                        if (line.at(0) == '#')
+                            lines.push_back(line);
+                    }
+                } catch (std::exception &e) {
+                    _hasError = true;
+                    _filesError.push_back(file);
+                }
+
+                if (!checkHeaderFile(lines)) {
+                    _hasError = true;
+                    _filesError.push_back(file);
+                    std::cout << "Error in file: " << file << std::endl;
+                }
+                fileStream.close();
             }
         }
 

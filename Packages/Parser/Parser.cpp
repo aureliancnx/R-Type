@@ -12,7 +12,8 @@
 namespace RType {
     namespace Parser {
 
-        Parser::Parser() {
+        Parser::Parser(const std::string& path) {
+            _path = path;
             _hasError = false;
             _nbFiles = 0;
         }
@@ -27,7 +28,7 @@ namespace RType {
         }
 
         void Parser::getFiles() {
-            for (const auto &entry : std::filesystem::directory_iterator("Maps/")) {
+            for (const auto &entry : std::filesystem::directory_iterator(_path)) {
                 if (entry.path().extension() == ".rtype") {
                     _filesPath.push_back(entry.path());
                     _nbFiles++;
@@ -81,7 +82,7 @@ namespace RType {
         }
 
         bool Parser::directoryExist() {
-            return std::filesystem::is_directory("Maps/");
+            return std::filesystem::is_directory(_path);
         }
 
         bool Parser::hasError() const {

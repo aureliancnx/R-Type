@@ -65,6 +65,22 @@ namespace RType {
             }
         }
 
+        bool Parser::checkHeaderFile(std::vector<std::string> header) {
+            std::string mandatory[5] = {"RType", "Name:", "Authors:", "Date:", "Difficulty:"};
+            int nbMandatory = 0;
+            for (std::string line: header) {
+                for (std::string mandatoryLine: mandatory) {
+                    if (line.find(mandatoryLine) != std::string::npos) {
+                        nbMandatory++;
+                        break;
+                    }
+                }
+            }
+            if (nbMandatory != 5)
+                return false;
+            return true;
+        }
+
         bool Parser::directoryExist() {
             return std::filesystem::is_directory("Maps/");
         }

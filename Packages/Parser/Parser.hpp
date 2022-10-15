@@ -12,16 +12,19 @@
 #include <string>
 #include <filesystem>
 #include <iostream>
+#include <fstream>
 
 namespace RType {
     namespace Parser {
 
         class Parser {
             public:
-                Parser();
+                Parser(const std::string& path = "Maps/");
                 ~Parser();
 
                 void run();
+
+                void setPath(const std::string& path);
 
                 bool hasError() const;
                 std::vector<std::string> getFilesError() const;
@@ -29,6 +32,7 @@ namespace RType {
 
             private:
                 // Variables
+                std::string _path;
                 bool _hasError;
                 int _nbFiles;
                 std::vector<std::string> _filesPath;
@@ -37,6 +41,9 @@ namespace RType {
                 // Methods
                 bool directoryExist();
                 void getFiles();
+                void getHeaderFile();
+                bool checkHeaderFile(std::vector<std::string> header);
+                void hasMandatory();
         };
 
     } // RType

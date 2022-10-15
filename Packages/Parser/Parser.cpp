@@ -46,6 +46,7 @@ namespace RType {
                 if (!fileStream.is_open()) {
                     _hasError = true;
                     _filesError.push_back(file);
+                    fileStream.close();
                     continue;
                 }
                 std::vector<std::string> lines;

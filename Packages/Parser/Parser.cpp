@@ -27,6 +27,10 @@ namespace RType {
             getHeaderFile();
         }
 
+        void Parser::setPath(const std::string &path) {
+            _path = path;
+        }
+
         void Parser::getFiles() {
             for (const auto &entry : std::filesystem::directory_iterator(_path)) {
                 if (entry.path().extension() == ".rtype") {

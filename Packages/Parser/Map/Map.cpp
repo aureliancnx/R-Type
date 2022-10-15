@@ -26,7 +26,7 @@ namespace RType {
                 else if (line.empty())
                     continue;
                 else
-                    parseSummons();
+                    parseSummons(line);
             }
         }
 
@@ -74,6 +74,16 @@ namespace RType {
             std::cout << "Difficulty: " << 0 << std::endl;
             std::cout << "Description: " << _description << std::endl;
             std::cout << "Background: " << _background << std::endl;
+        }
+
+        std::vector<std::string> Map::split(const std::string &str, const std::string &delim) {
+            std::stringstream ss(str);
+            std::string token;
+            std::vector<std::string> tokens;
+
+            while (std::getline(ss, token, delim[0]))
+                tokens.push_back(token);
+            return tokens;
         }
 
     } // RType

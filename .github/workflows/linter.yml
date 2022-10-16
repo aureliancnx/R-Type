@@ -2,24 +2,14 @@ name: Lint
 
 on:
   push:
-    branches: [linter-test]
 
 jobs:
   lint_code:
     name: Lint with clang-format
-    runs-on: ubuntu-latests
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: DoozyX/clang-format-lint-action@v0.14
-        with:
-          source: '.'
-          exclude: './Library'
-          clangFormatVersion: 14
-          inplace: true
-      - uses: EndBug/add-and-commit@v4
-        with:
-          author_name: Clang Robot
-          author_email: clang-robot@epitech.eu
-          message: 'CHG: Automatically lint code'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: "Install clang-format"
+        run: sudo apt-get install -y clang-format
+      - name: "Run clang-format"
+        run: clang-format *.cpp

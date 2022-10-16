@@ -27,10 +27,10 @@ void PlayerSkin::onStartClient() {
     setSkinId(skinId);
 }
 
-void PlayerSkin::customPayloadSerialize(KapMirror::NetworkWriter& writer) {
+void PlayerSkin::serialize(KapMirror::NetworkWriter& writer) {
     writer.write(skinId);
 }
 
-void PlayerSkin::customPayloadDeserialize(KapMirror::NetworkReader& reader) {
+void PlayerSkin::deserialize(KapMirror::NetworkReader& reader) {
     skinId = reader.read<int>();
 }

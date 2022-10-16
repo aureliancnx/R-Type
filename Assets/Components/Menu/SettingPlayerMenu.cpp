@@ -21,6 +21,7 @@ void RType::SettingPlayerMenu::init() {
             auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
 
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
+            can.setScreenCompare(KapEngine::Tools::Vector2(720, 480));
         } catch (...) {
             KAP_DEBUG_ERROR("Failed to resize canvas");
         }

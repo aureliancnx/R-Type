@@ -46,7 +46,6 @@ namespace RType {
 
         std::shared_ptr<RtypeNetworkManager> &getNetworkManager();
 
-
         static GameManager *getInstance() {
             return instance;
         }

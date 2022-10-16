@@ -65,6 +65,7 @@ namespace KapEngine {
                         setWindowsResizable(true);
                         SetTargetFPS(_fps);
                         InitAudioDevice();
+                        SetExitKey(-1);
                         initCam();
                         opened = true;
                     }

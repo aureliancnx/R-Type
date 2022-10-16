@@ -1,27 +1,23 @@
-#include "BasicEnemy.hpp"
+#include "BoubouleEnemy.hpp"
 #include "Bullet/Bullet.hpp"
 
 using namespace RType;
 
-BasicEnemy::BasicEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject) : KapMirror::NetworkComponent(_gameObject, "BasicEnemy") {
+BoubouleEnemy::BoubouleEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject) : KapMirror::NetworkComponent(_gameObject, "BoubouleEnemy") {
     addRequireComponent("Image");
 }
 
-void BasicEnemy::setType(Type _type) {
-    type = _type;
-}
-
-void BasicEnemy::setLife(int _life) {
+void BoubouleEnemy::setLife(int _life) {
     life = _life;
 }
 
-void BasicEnemy::onFixedUpdate() {
+void BoubouleEnemy::onFixedUpdate() {
     auto& transform = getTransform();
 
     transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(-1.0f, 0, 0));
 
     auto time = KapMirror::NetworkTime::localTime();
-    if (time - lastShootTime > 1000) {
+    if (time - lastShootTime > 3000) {
         lastShootTime = time;
         shoot();
     }
@@ -31,11 +27,7 @@ void BasicEnemy::onFixedUpdate() {
     }
 }
 
-void BasicEnemy::onStartClient() {
-    setSkinId(type);
-}
-
-void BasicEnemy::shoot() {
+void BoubouleEnemy::shoot() {
     KapEngine::Tools::Vector3 pos = getTransform().getLocalPosition() + KapEngine::Tools::Vector3(70, 15, 0);
 
     if (getTransform().getWorldPosition().getX() <= 0) {
@@ -56,36 +48,37 @@ void BasicEnemy::shoot() {
     }
 }
 
-void BasicEnemy::setSkinId(Type type) {
-    try {
-        auto& image = getGameObject().getComponent<KapEngine::UI::Image>();
-        image.setPathSprite("Assets/Textures/Enemy/enemy_" + std::to_string((int)type) + ".png");
-    } catch (...) {
-        KAP_DEBUG_ERROR("BasicEnemy::setSkinId: Image component not found");
-    }
-}
-
-void BasicEnemy::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other) {
+void BoubouleEnemy::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other) {
     if (isClient()) {
         return;
     }
 
-    KAP_DEBUG_LOG("BasicEnemy::onTriggerEnter: " + other->getName());
-
-    if (other->getName() == "Bullet") {
-        life -= 1;
-        if (life <= 0) {
-            getGameObject().destroy();
-        }
-    }
+    collidedObjects.push_back(other);
 }
 
-void BasicEnemy::customPayloadSerialize(KapMirror::NetworkWriter& writer) {
-    writer.write(type);
+void BoubouleEnemy::serialize(KapMirror::NetworkWriter& writer) {
     writer.write(life);
 }
 
-void BasicEnemy::customPayloadDeserialize(KapMirror::NetworkReader& reader) {
-    type = reader.read<Type>();
+void BoubouleEnemy::deserialize(KapMirror::NetworkReader& reader) {
     life = reader.read<int>();
 }
+
+void BoubouleEnemy::onSceneUpdated() {
+    if (isClient()) {
+        return;
+    }
+    for (std::size_t i = 0; i < collidedObjects.size(); i++) {
+        auto& other = collidedObjects[i];
+        KAP_DEBUG_LOG("Collision with " + other->getName());
+        if (other->getName() == "Bullet Player") {
+            life -= 1;
+            if (life <= 0) {
+                getServer()->destroyObject(getGameObject().getScene().getGameObject(getGameObject().getId()));
+            }
+            getServer()->destroyObject(other);
+        }
+    }
+    collidedObjects.clear();
+}
+

@@ -32,4 +32,4 @@ RUN cmake --build build --config Debug
 #-DCMAKE_TOOLCHAIN_FILE=/app/vcpkg/scripts/buildsystems/vcpkg.cmake
 
 # Run
-CMD ["./RType", "--server"]
+CMD ["./build/RType", "--server"]

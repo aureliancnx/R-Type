@@ -29,6 +29,7 @@ See the [R-Type build instructions](https://chaika9.gitbook.io/rtype/user-manuel
             <td align="center"><a href="https://github.com/benji-35/"><img src="https://avatars.githubusercontent.com/u/72010213?v=4?s=100" width="100px;" alt="benji-35"/><br /><sub><b>benji-35</b></sub></a><br /></td>
             <td align="center"><a href="https://github.com/Ewen02/"><img src="https://avatars.githubusercontent.com/u/72020898?v=4?s=100" width="100px;" alt="Ewen02"/><br /><sub><b>Ewen02</b></sub></a><br /></td>
             <td align="center"><a href="https://github.com/DosserPaul/"><img src="https://avatars.githubusercontent.com/u/72012163?v=4?s=100" width="100px;" alt="DosserPaul"/><br /><sub><b>DosserPaul</b></sub></a><br /></td>
+            <td align="center"><a href="https://github.com/meredith-lbj/"><img src="https://avatars.githubusercontent.com/u/72020241?v=4?s=100" width="100px;" alt="meredith-lbj"/><br /><sub><b>meredith-lbj</b></sub></a><br /></td>
         </tr>
     </tbody>
 </table>

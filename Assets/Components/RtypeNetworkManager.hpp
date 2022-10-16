@@ -39,5 +39,7 @@ namespace RType {
         void onPlayerInputMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerInputMessage& message);
 
         void onPlayerShootMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerShootMessage& message);
+
+        void startGame();
     };
 }

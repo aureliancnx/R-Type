@@ -1,6 +1,7 @@
 #include "RtypeNetworkManager.hpp"
 #include "Player/PlayerController.hpp"
 #include "Player/PlayerSkin.hpp"
+#include "Enemies/ShipEnemy.hpp"
 
 using namespace RType;
 
@@ -42,16 +43,13 @@ void RtypeNetworkManager::registerClientHandlers() {
 
 void RtypeNetworkManager::onPlayerAuthorityMessage(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerAuthorityMessage& message) {
     std::shared_ptr<KapEngine::GameObject> player;
-    if (getClient()->getNetworkObject(message.networkId, player)) {
-        KAP_DEBUG_LOG("Set local authority");
+    if (getClient()->getExistingObject(message.networkId, player)) {
         auto& playerController = player->getComponent<PlayerController>();
         playerController.setLocalAuthority(true);
     }
 }
 
 void RtypeNetworkManager::onServerSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerKeepAlive& message) {
-    KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> receive keepAlive request from server with id " + std::to_string(message.timestamp));
-
     PlayerKeepAlive reply;
     reply.timestamp = message.timestamp;
     getClient()->send(message);
@@ -74,7 +72,7 @@ void RtypeNetworkManager::registerServerHandlers() {
 }
 
 void RtypeNetworkManager::onServerClientConnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {
-    KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> connected");
+    KAP_DEBUG_LOG("Player[" + std::to_string(connection->getConnectionId()) + "] -> connected");
 
     std::shared_ptr<KapEngine::GameObject> player;
     getServer()->spawnObject("Player", {0, 0, 0}, [this](std::shared_ptr<KapEngine::GameObject> go) {
@@ -83,7 +81,7 @@ void RtypeNetworkManager::onServerClientConnected(std::shared_ptr<KapMirror::Net
         playerSkin.setSkinId(networkIdentity.getNetworkId() % 5 + 1);
     }, player);
 
-    players[connection->getNetworkId()] = player;
+    players[connection->getConnectionId()] = player;
 
     auto& networkIdentity = player->getComponent<KapMirror::NetworkIdentity>();
 
@@ -91,38 +89,41 @@ void RtypeNetworkManager::onServerClientConnected(std::shared_ptr<KapMirror::Net
     PlayerAuthorityMessage message;
     message.networkId = networkIdentity.getNetworkId();
     connection->send(message);
+
+    //TODO: Temporary
+    if (players.size() >= 1) {
+        startGame();
+    }
 }
 
 void RtypeNetworkManager::onServerClientDisconnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {
-    KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> disconnected");
+    KAP_DEBUG_LOG("Player[" + std::to_string(connection->getConnectionId()) + "] -> disconnected");
 
     std::shared_ptr<KapEngine::GameObject> player;
-    if (players.tryGetValue(connection->getNetworkId(), player)) {
+    if (players.tryGetValue(connection->getConnectionId(), player)) {
         getServer()->destroyObject(player);
     }
 }
 
 void RtypeNetworkManager::onClientSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerKeepAlive& message) {
-    KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> sent keepAlive with timestamp " + std::to_string(message.timestamp));
-
     std::vector<long long> playerKeepAlives;
-    if (keepAlives.tryGetValue(connection->getNetworkId(), playerKeepAlives)) {
+    if (keepAlives.tryGetValue(connection->getConnectionId(), playerKeepAlives)) {
         if (std::find(playerKeepAlives.begin(), playerKeepAlives.end(), message.timestamp) != playerKeepAlives.end()) {
             long long ping = KapMirror::NetworkTime::localTime() - message.timestamp;
 
-            KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> ping: " + std::to_string(ping));
+            KAP_DEBUG_LOG("Player[" + std::to_string(connection->getConnectionId()) + "] -> ping: " + std::to_string(ping));
             playerKeepAlives.erase(std::remove(playerKeepAlives.begin(), playerKeepAlives.end(), message.timestamp), playerKeepAlives.end());
-        }else{
-            KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> bad keepAlive packet: unknown timestamp '" + std::to_string(message.timestamp) + "'");
+        } else{
+            KAP_DEBUG_LOG("Player[" + std::to_string(connection->getConnectionId()) + "] -> bad keepAlive packet: unknown timestamp '" + std::to_string(message.timestamp) + "'");
         }
-    }else{
-        KAP_DEBUG_LOG("Player[" + std::to_string(connection->getNetworkId()) + "] -> received keepAlive timestamp " + std::to_string(message.timestamp) + " without a list");
+    } else{
+        KAP_DEBUG_LOG("Player[" + std::to_string(connection->getConnectionId()) + "] -> received keepAlive timestamp " + std::to_string(message.timestamp) + " without a list");
     }
 }
 
 void RtypeNetworkManager::onPlayerInputMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerInputMessage& message) {
     std::shared_ptr<KapEngine::GameObject> player;
-    if (players.tryGetValue(connection->getNetworkId(), player)) {
+    if (players.tryGetValue(connection->getConnectionId(), player)) {
         auto& controllerComponent = player->getComponent<RType::PlayerController>();
         controllerComponent.movePlayer(KapEngine::Tools::Vector2(message.x, message.y));
     }
@@ -130,10 +131,23 @@ void RtypeNetworkManager::onPlayerInputMessage(std::shared_ptr<KapMirror::Networ
 
 void RtypeNetworkManager::onPlayerShootMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerShootMessage& message) {
     std::shared_ptr<KapEngine::GameObject> player;
-    if (players.tryGetValue(connection->getNetworkId(), player)) {
+    if (players.tryGetValue(connection->getConnectionId(), player)) {
         auto& controllerComponent = player->getComponent<RType::PlayerController>();
         controllerComponent.shoot();
     }
+}
+
+void RtypeNetworkManager::startGame() {
+    KAP_DEBUG_LOG("Start game");
+
+    std::shared_ptr<KapEngine::GameObject> enemy;
+    for (int i = 1; i <= 10; i++) {
+        getServer()->spawnObject("Enemy:BoubouleEnemy", {1280 + 100 + ((float)i * 100), 100 + ((float)i * 50), 0}, enemy);
+    }
+    // for (int i = 1; i <= 10; i++) {
+    //     getServer()->spawnObject("Enemy:BoubouleEnemy", {1280 + 500 + ((float)i * 100), 100 + ((float)i * 50), 0}, enemy);
+    // }
+    getServer()->spawnObject("Enemy:TentaclesBossEnemy", {1280 - 200, 100, 0}, enemy);
 }
 
 #pragma endregion

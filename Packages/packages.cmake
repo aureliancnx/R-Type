@@ -6,3 +6,6 @@ include_directories(Packages/KapUI)
 
 # KapMirror
 include_directories(Packages/KapMirror)
+
+# SylphTransport
+include_directories(Packages/SylphTransport)

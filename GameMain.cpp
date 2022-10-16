@@ -5,7 +5,7 @@
 #include "Debug.hpp"
 
 static void initWindow(KapEngine::KEngine *engine) {
-    KapEngine::Tools::Vector2 screenSize(720, 480);
+    KapEngine::Tools::Vector2 screenSize(1280, 720);
     engine->setScreenSize(screenSize);
 
     engine->getSplashScreen()->setDisplayKapEngineLogo(false);
@@ -24,6 +24,7 @@ int main(int argc, char **argv) {
     }
 
     KapEngine::KEngine engine(false, "R-Type", "1.0.0", "Epitech");
+    engine.setEngineThread(false);
     initWindow(&engine);
 
     RType::GameManager gameManager(&engine);

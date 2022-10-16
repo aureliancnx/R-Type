@@ -63,7 +63,7 @@ void PlayerController::onFixedUpdate() {
     // Send keep alive packet to the client
     if (KapMirror::NetworkTime::localTime() - lastKeepAliveTime > 1000) {
         lastKeepAliveTime = KapMirror::NetworkTime::localTime();
-        //sendKeepAlive();
+        sendKeepAlive();
     }
 }
 
@@ -80,15 +80,21 @@ void PlayerController::sendKeepAlive() {
 }
 
 void PlayerController::movePlayer(KapEngine::Tools::Vector2 input) {
+    if (isClient()) {
+        sendInput(input);
+        return;
+    }
+
     if (isMoving) {
         return;
     }
 
-    isMoving = true;
-
-    sendInput(input);
-
     posToMove = getTransform().getLocalPosition() + KapEngine::Tools::Vector3(input.getX(), input.getY(), 0) * 100;
+    if (posToMove.getX() < 0 || posToMove.getX() > 800 || posToMove.getY() < 0 || posToMove.getY() + 116 > 720) {
+        return;
+    }
+
+    isMoving = true;
     inputToMove = input;
 }
 
@@ -106,7 +112,9 @@ void PlayerController::shoot() {
         getClient()->send(message);
     } else if (isServer()) {
         std::shared_ptr<KapEngine::GameObject> bullet;
-        getServer()->spawnObject("Bullet", pos, bullet);
+        getServer()->spawnObject("Bullet", pos, [this](std::shared_ptr<KapEngine::GameObject> bullet) {
+            bullet->setName("Bullet Player");
+        }, bullet);
     }
 }
 

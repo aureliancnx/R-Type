@@ -16,13 +16,13 @@ Bullet::Direction Bullet::getDirection() const {
 }
 
 void Bullet::onStart() {
-    initialX = getTransform().getLocalPosition().getX();
+    initialX = getTransform().getWorldPosition().getX();
 }
 
 void Bullet::onUpdate() {
     auto& transform = getTransform();
 
-    KapEngine::Tools::Vector3 nPos = transform.getLocalPosition();
+    KapEngine::Tools::Vector3 nPos = transform.getWorldPosition();
     if (direction == Direction::RIGHT) {
         nPos.setX(nPos.getX() + speed);
     } else if (direction == Direction::LEFT) {
@@ -31,15 +31,15 @@ void Bullet::onUpdate() {
 
     transform.setPosition(nPos);
 
-    if (nPos.getX() > initialX + 500) {
+    if (nPos.getX() > initialX + 1280 || nPos.getX() < 0) {
         getGameObject().destroy();
     }
 }
 
-void Bullet::customPayloadSerialize(KapMirror::NetworkWriter& writer) {
+void Bullet::serialize(KapMirror::NetworkWriter& writer) {
     writer.write(direction);
 }
 
-void Bullet::customPayloadDeserialize(KapMirror::NetworkReader& reader) {
+void Bullet::deserialize(KapMirror::NetworkReader& reader) {
     direction = reader.read<Direction>();
 }

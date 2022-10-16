@@ -18,8 +18,8 @@ namespace RType {
 
         void onStartClient() override;
 
-        void customPayloadSerialize(KapMirror::NetworkWriter& writer) override;
+        void serialize(KapMirror::NetworkWriter& writer) override;
 
-        void customPayloadDeserialize(KapMirror::NetworkReader& reader) override;
+        void deserialize(KapMirror::NetworkReader& reader) override;
     };
 }

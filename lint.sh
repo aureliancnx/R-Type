@@ -1,1 +1,1 @@
-find . -iname *.hpp -o -iname *.cpp | xargs clang-format .clang-format 
+find . -iname *.hpp -o -iname *.cpp | xargs clang-format -i

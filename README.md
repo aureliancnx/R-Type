@@ -19,6 +19,10 @@ See the [R-Type build instructions](https://chaika9.gitbook.io/rtype/user-manuel
 - Assets : All additional things useful for the gameplay (Components, Textures, Font, ...).
 - Package : All additional things useful for background logic (Raylib encapsulation, ...).
 
+## Cheat warning
+
+This repository is public for several technical reasons. Do not use this repository for a school project at EPITECH, to avoid being flagged for cheating (-42). We are not responsible for the use you make of our repository.
+
 ## Authors
 
 <table>

@@ -8,17 +8,19 @@
 #include "Menu.hpp"
 #include "Animations/HowToPlayAnimation.hpp"
 
-namespace RType {
-    class HowToPlayMenu : public Menu {
-    public:
-        explicit HowToPlayMenu(KapEngine::SceneManagement::Scene& _scene);
+namespace RType
+{
+    class HowToPlayMenu : public Menu
+    {
+      public:
+        explicit HowToPlayMenu(KapEngine::SceneManagement::Scene &_scene);
         ~HowToPlayMenu() = default;
 
         void init() override;
-    protected:
-    private:
+
+      protected:
+      private:
     };
-}
+} // namespace RType
 
-
-#endif //RTYPE_HOWTOPLAYMENU_HPP
+#endif // RTYPE_HOWTOPLAYMENU_HPP

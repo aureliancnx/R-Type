@@ -1,0 +1,25 @@
+name: Missing feature
+description: Create a feature issue
+title: '[Feature]: '
+labels:
+  - enhancement
+body:
+  - type: input
+    id: featureName
+    attributes:
+      label: Feature name
+    validations:
+      required: true
+  - type: textarea
+    id: featureContent
+    attributes:
+      label: Explain the feature 
+      description: Tell us what we should add
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: I read the Code Of Conduct
+      options:
+        - label: I read the Code Of Conduct and I comply to it
+          required: true

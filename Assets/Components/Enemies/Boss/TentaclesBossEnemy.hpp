@@ -5,9 +5,11 @@
 #include "KapEngineUi.hpp"
 #include "KapMirror/KapMirror.hpp"
 
-namespace RType {
-    class TentaclesBossEnemy : public KapMirror::NetworkComponent {
-        private:
+namespace RType
+{
+    class TentaclesBossEnemy : public KapMirror::NetworkComponent
+    {
+      private:
         int life = 20;
 
         bool invert = false;
@@ -15,7 +17,7 @@ namespace RType {
 
         std::vector<std::shared_ptr<KapEngine::GameObject>> collidedObjects;
 
-        public:
+      public:
         TentaclesBossEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject);
         ~TentaclesBossEnemy() = default;
 
@@ -27,11 +29,11 @@ namespace RType {
 
         void onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other) override;
 
-        void serialize(KapMirror::NetworkWriter& writer) override;
+        void serialize(KapMirror::NetworkWriter &writer) override;
 
-        void deserialize(KapMirror::NetworkReader& reader) override;
+        void deserialize(KapMirror::NetworkReader &reader) override;
 
-        private:
+      private:
         void shoot();
     };
-}
+} // namespace RType

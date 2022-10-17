@@ -1,0 +1,47 @@
+name: Report a bug
+description: Report a bug
+title: '[Feature]: '
+labels:
+  - bug
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Tell us what happened
+    validations:
+      required: true
+  - type: textarea
+    id: what-should-happened
+    attributes:
+      label: 'What should have happened?'
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: 'Operating System'
+      description: What is your Operating System? Windows, Linux, Mac
+      required: true
+  - type: input
+    id: ram
+    attributes:
+      label: Ram
+      description: How much RAM do you have?
+      required: true
+  - type: input
+    id: gc
+    attributes:
+      label: Graphic Card
+      description: 'What graphic card do you have?'
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: LOG
+      description: If you have log, please send it to us!
+  - type: checkboxes
+    attributes:
+      label: I read the Code Of Conduct
+      options:
+        - label: I read the Code Of Conduct and I comply to it
+          required: true

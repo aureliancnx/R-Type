@@ -9,17 +9,17 @@
 
 namespace RType
 {
-class VolumeMenu : public Menu
-{
-public:
-  explicit VolumeMenu(KapEngine::SceneManagement::Scene &_scene);
-  ~VolumeMenu() = default;
+    class VolumeMenu : public Menu
+    {
+      public:
+        explicit VolumeMenu(KapEngine::SceneManagement::Scene &_scene);
+        ~VolumeMenu() = default;
 
-  void init() override;
+        void init() override;
 
-protected:
-private:
-};
+      protected:
+      private:
+    };
 } // namespace RType
 
 #endif // RTYPE_VOLUMEMENU_HPP

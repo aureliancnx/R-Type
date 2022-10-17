@@ -9,17 +9,17 @@
 
 namespace RType
 {
-class SettingsMenu : public Menu
-{
-public:
-  explicit SettingsMenu(KapEngine::SceneManagement::Scene &_scene);
-  ~SettingsMenu() = default;
+    class SettingsMenu : public Menu
+    {
+      public:
+        explicit SettingsMenu(KapEngine::SceneManagement::Scene &_scene);
+        ~SettingsMenu() = default;
 
-  void init() override;
+        void init() override;
 
-protected:
-private:
-};
+      protected:
+      private:
+    };
 } // namespace RType
 
 #endif // RTYPE_SETTINGSMENU_HPP

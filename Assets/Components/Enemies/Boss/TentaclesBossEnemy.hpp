@@ -7,33 +7,33 @@
 
 namespace RType
 {
-class TentaclesBossEnemy : public KapMirror::NetworkComponent
-{
-private:
-  int life = 20;
+    class TentaclesBossEnemy : public KapMirror::NetworkComponent
+    {
+      private:
+        int life = 20;
 
-  bool invert = false;
-  long long lastShootTime = 0;
+        bool invert = false;
+        long long lastShootTime = 0;
 
-  std::vector<std::shared_ptr<KapEngine::GameObject>> collidedObjects;
+        std::vector<std::shared_ptr<KapEngine::GameObject>> collidedObjects;
 
-public:
-  TentaclesBossEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject);
-  ~TentaclesBossEnemy() = default;
+      public:
+        TentaclesBossEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject);
+        ~TentaclesBossEnemy() = default;
 
-  void setLife(int _life);
+        void setLife(int _life);
 
-  void onSceneUpdated() override;
+        void onSceneUpdated() override;
 
-  void onFixedUpdate() override;
+        void onFixedUpdate() override;
 
-  void onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other) override;
+        void onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other) override;
 
-  void serialize(KapMirror::NetworkWriter &writer) override;
+        void serialize(KapMirror::NetworkWriter &writer) override;
 
-  void deserialize(KapMirror::NetworkReader &reader) override;
+        void deserialize(KapMirror::NetworkReader &reader) override;
 
-private:
-  void shoot();
-};
+      private:
+        void shoot();
+    };
 } // namespace RType

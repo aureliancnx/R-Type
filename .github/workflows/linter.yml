@@ -12,7 +12,7 @@ jobs:
       - name: "Install clang-format"
         run: sudo apt-get install -y clang-format
       - name: "Run clang-format"
-        run: find . -iname *.hpp -o -iname *.cpp | xargs clang-format -i
+        run: find . -iname *.hpp -o -iname *.cpp ! -path "./Library/*" ! -path "./Packages/*" | xargs clang-format -i
       - name: "Add key"
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" >> ~/.github_key
@@ -22,6 +22,6 @@ jobs:
       - name: "Push changes"
         run: |
           git config --global user.name "Linter"
-          find . -iname *.hpp -o -iname *.cpp | xargs git add
+          find . -iname *.hpp -o -iname *.cpp ! -path "./Librar/*" ! -path "./Packages/*" | xargs git add
           git commit -m "CHG: Apply linter"
           git push

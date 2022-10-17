@@ -5,17 +5,17 @@
 
 namespace RType
 {
-class KeyboardMenu : public Menu
-{
-private:
-  std::shared_ptr<KapEngine::GameObject> _goSettings;
-  std::shared_ptr<KapEngine::GameObject> _goInputs;
-  std::shared_ptr<ChangeKey> _chgKey;
+    class KeyboardMenu : public Menu
+    {
+      private:
+        std::shared_ptr<KapEngine::GameObject> _goSettings;
+        std::shared_ptr<KapEngine::GameObject> _goInputs;
+        std::shared_ptr<ChangeKey> _chgKey;
 
-public:
-  KeyboardMenu(KapEngine::SceneManagement::Scene &_scene);
-  ~KeyboardMenu() = default;
+      public:
+        KeyboardMenu(KapEngine::SceneManagement::Scene &_scene);
+        ~KeyboardMenu() = default;
 
-  void init() override;
-};
+        void init() override;
+    };
 } // namespace RType

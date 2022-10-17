@@ -4,12 +4,12 @@
 
 namespace RType
 {
-class SoloMenu : public Menu
-{
-public:
-  SoloMenu(KapEngine::SceneManagement::Scene &_scene);
-  ~SoloMenu() = default;
+    class SoloMenu : public Menu
+    {
+      public:
+        SoloMenu(KapEngine::SceneManagement::Scene &_scene);
+        ~SoloMenu() = default;
 
-  void init() override;
-};
+        void init() override;
+    };
 } // namespace RType

@@ -7,21 +7,21 @@
 
 namespace RType
 {
-class PlayerSkin : public KapMirror::NetworkComponent
-{
-private:
-  int skinId = 1;
+    class PlayerSkin : public KapMirror::NetworkComponent
+    {
+      private:
+        int skinId = 1;
 
-public:
-  PlayerSkin(std::shared_ptr<KapEngine::GameObject> _gameObject);
-  ~PlayerSkin() = default;
+      public:
+        PlayerSkin(std::shared_ptr<KapEngine::GameObject> _gameObject);
+        ~PlayerSkin() = default;
 
-  void setSkinId(int _skinId);
+        void setSkinId(int _skinId);
 
-  void onStartClient() override;
+        void onStartClient() override;
 
-  void serialize(KapMirror::NetworkWriter &writer) override;
+        void serialize(KapMirror::NetworkWriter &writer) override;
 
-  void deserialize(KapMirror::NetworkReader &reader) override;
-};
+        void deserialize(KapMirror::NetworkReader &reader) override;
+    };
 } // namespace RType

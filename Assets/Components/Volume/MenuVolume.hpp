@@ -6,22 +6,22 @@
 
 namespace RType
 {
-class MenuVolume : public KapEngine::Component
-{
-private:
-  std::vector<std::string> _type;
-  std::shared_ptr<KapEngine::GameObject> _txt;
-  int lastValue;
+    class MenuVolume : public KapEngine::Component
+    {
+      private:
+        std::vector<std::string> _type;
+        std::shared_ptr<KapEngine::GameObject> _txt;
+        int lastValue;
 
-public:
-  MenuVolume(std::shared_ptr<KapEngine::GameObject> go);
-  ~MenuVolume();
+      public:
+        MenuVolume(std::shared_ptr<KapEngine::GameObject> go);
+        ~MenuVolume();
 
-  void onUpdate() override;
+        void onUpdate() override;
 
-  void onAwake() override;
+        void onAwake() override;
 
-private:
-  void foundText();
-};
+      private:
+        void foundText();
+    };
 } // namespace RType

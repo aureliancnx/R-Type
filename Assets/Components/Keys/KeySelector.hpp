@@ -6,20 +6,20 @@
 
 namespace RType
 {
-class KeySelector : public KapEngine::Component
-{
-private:
-  KapEngine::Events::Key _selected;
-  bool _check = false;
+    class KeySelector : public KapEngine::Component
+    {
+      private:
+        KapEngine::Events::Key _selected;
+        bool _check = false;
 
-public:
-  KeySelector(std::shared_ptr<KapEngine::GameObject> go);
-  ~KeySelector() = default;
+      public:
+        KeySelector(std::shared_ptr<KapEngine::GameObject> go);
+        ~KeySelector() = default;
 
-  void onUpdate() override;
+        void onUpdate() override;
 
-  bool keySelected(KapEngine::Events::Key &key);
+        bool keySelected(KapEngine::Events::Key &key);
 
-  void selectKey();
-};
+        void selectKey();
+    };
 } // namespace RType

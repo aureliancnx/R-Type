@@ -6,21 +6,21 @@
 
 namespace RType
 {
-class Prefabs
-{
-public:
-  static void registerPlayerPrefab(KapEngine::KEngine &engine);
+    class Prefabs
+    {
+      public:
+        static void registerPlayerPrefab(KapEngine::KEngine &engine);
 
-  static void registerBulletPrefab(KapEngine::KEngine &engine);
+        static void registerBulletPrefab(KapEngine::KEngine &engine);
 
-  static void registerShipEnemyPrefab(KapEngine::KEngine &engine);
+        static void registerShipEnemyPrefab(KapEngine::KEngine &engine);
 
-  static void registerGalaxyParalaxPrefab(KapEngine::KEngine &engine);
+        static void registerGalaxyParalaxPrefab(KapEngine::KEngine &engine);
 
-  static void registerStarsParalaxPrefab(KapEngine::KEngine &engine);
+        static void registerStarsParalaxPrefab(KapEngine::KEngine &engine);
 
-  static void registerBoubouleEnemyPrefab(KapEngine::KEngine &engine);
+        static void registerBoubouleEnemyPrefab(KapEngine::KEngine &engine);
 
-  static void registerTentaclesBossEnemyPrefab(KapEngine::KEngine &engine);
-};
+        static void registerTentaclesBossEnemyPrefab(KapEngine::KEngine &engine);
+    };
 } // namespace RType

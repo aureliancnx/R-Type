@@ -14,34 +14,36 @@
 
 using namespace KapEngine;
 
-namespace RType
-{
+namespace RType {
 
-class ChangeKey : public Component
-{
-public:
-  ChangeKey(std::shared_ptr<GameObject> go);
-  ~ChangeKey();
+    class ChangeKey : public Component {
+        public:
+            ChangeKey(std::shared_ptr<GameObject> go);
+            ~ChangeKey();
 
-  void onAwake() override;
-  void onUpdate() override;
+            void onAwake() override;
+            void onUpdate() override;
 
-  void setCanvasSettings(std::size_t id) { _idSettings = id; }
-  void setCanvasInputSentence(std::size_t id) { _idInput = id; }
+            void setCanvasSettings(std::size_t id) {
+                _idSettings = id;
+            }
+            void setCanvasInputSentence(std::size_t id) {
+                _idInput = id;
+            }
 
-  void startSelect(std::string const &prefName);
+            void startSelect(std::string const& prefName);
 
-protected:
-private:
-  std::size_t _idSettings = 0;
-  std::size_t _idInput = 0;
-  bool _startSelect = false;
-  std::string _prefName = "";
+        protected:
+        private:
+            std::size_t _idSettings = 0;
+            std::size_t _idInput = 0;
+            bool _startSelect = false;
+            std::string _prefName = "";
 
-  void displayInputs();
-  void displaySettings();
-};
+            void displayInputs();
+            void displaySettings();
+    };
 
-} // namespace RType
+}
 
 #endif /* !CHANGEKEY_HPP_ */

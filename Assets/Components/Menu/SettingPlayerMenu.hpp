@@ -7,20 +7,17 @@
 
 #include "Menu.hpp"
 
-namespace RType
-{
-class SettingPlayerMenu : public Menu
-{
-public:
-  explicit SettingPlayerMenu(KapEngine::SceneManagement::Scene &_scene);
-  ~SettingPlayerMenu() = default;
+namespace RType {
+    class SettingPlayerMenu : public Menu {
+    public:
+        explicit SettingPlayerMenu(KapEngine::SceneManagement::Scene& _scene);
+        ~SettingPlayerMenu() = default;
 
-  void init() override;
+        void init() override;
+    protected:
+    private:
+        std::shared_ptr<KapEngine::GameObject> player;
+    };
+}
 
-protected:
-private:
-  std::shared_ptr<KapEngine::GameObject> player;
-};
-} // namespace RType
-
-#endif // RTYPE_SETTINGPLAYERMENU_HPP
+#endif //RTYPE_SETTINGPLAYERMENU_HPP

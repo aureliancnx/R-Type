@@ -47,7 +47,7 @@ void SoloMenu::init() {
         btnComp->setTextPosition({80, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({449, 350, 0});
+        transform.setPosition({449, 430, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
@@ -75,7 +75,7 @@ void SoloMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({449, 400, 0});
+        transform.setPosition({50, 430, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
@@ -95,22 +95,7 @@ void SoloMenu::init() {
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(230, 50, 0));
-        transform.setParent(canvas);
-    }
-
-
-    // Create image lvl campaign
-    {
-        auto lvlImg = KapEngine::UI::UiFactory::createImage(scene, "Lvl Campaign");
-        auto imageComp = std::make_shared<KapEngine::UI::Image>(lvlImg);
-        imageComp->setPathSprite("Assets/Textures/lvl1.png");
-        imageComp->setRectangle({0, 0, 225, 224});
-        lvlImg->addComponent(imageComp);
-
-        auto& transform = lvlImg->getComponent<KapEngine::Transform>();
-        transform.setPosition(KapEngine::Tools::Vector3(200, 200, 0));
-        transform.setScale({150, 150, 0});
+        transform.setPosition(KapEngine::Tools::Vector3(280, 50, 0));
         transform.setParent(canvas);
     }
 
@@ -126,8 +111,8 @@ void SoloMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({130, 250, 0});
-        transform.setScale({40, 39, 0});
+        transform.setPosition({20, 150, 0});
+        transform.setScale({40, 230, 0});
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
@@ -147,8 +132,48 @@ void SoloMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({350, 250, 0});
-        transform.setScale({40, 39, 0});
+        transform.setPosition({660, 150, 0});
+        transform.setScale({40, 230, 0});
+        transform.setParent(canvas);
+
+        btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
+        });
+    }
+
+    // Create button level 1
+    {
+        auto btn = scene.createGameObject("ButtonLevel1");
+        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+        auto &transform = btn->getComponent<KapEngine::Transform>();
+
+        btn->addComponent(btnComp);
+        btnComp->setText("");
+        btnComp->setBackground("Assets/Textures/Level Campaign/lvl1.png", {0, 0, 430, 433});
+        btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+        transform.setPosition({90, 150, 0});
+        transform.setScale({245, 230, 0});
+        transform.setParent(canvas);
+
+        btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
+        });
+    }
+
+    // Create button level 2
+    {
+        auto btn = scene.createGameObject("ButtonLevel2");
+        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+        auto &transform = btn->getComponent<KapEngine::Transform>();
+
+        btn->addComponent(btnComp);
+        btnComp->setText("");
+        btnComp->setBackground("Assets/Textures/Level Campaign/lvl2.png", {0, 0, 430, 433});
+        btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+        transform.setPosition({380, 150, 0});
+        transform.setScale({245, 230, 0});
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {

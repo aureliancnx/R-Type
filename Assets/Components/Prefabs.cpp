@@ -38,7 +38,7 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
         player->addComponent(imageComp);
 
         auto& canvas = player->getComponent<KapEngine::UI::Canvas>();
-        canvas.setResizeType(KapEngine::UI::Canvas::resizyngType::RESIZE_WITH_SCREEN);
+        canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
 
         auto& transform = player->getComponent<KapEngine::Transform>();
         transform.setPosition({0, 0, 0});
@@ -67,7 +67,7 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
         bullet->addComponent(imageComp);
 
         auto& canvas = bullet->getComponent<KapEngine::UI::Canvas>();
-        canvas.setResizeType(KapEngine::UI::Canvas::resizyngType::RESIZE_WITH_SCREEN);
+        canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
 
         auto& transform = bullet->getComponent<KapEngine::Transform>();
         transform.setPosition({0, 0, 0});
@@ -100,7 +100,7 @@ void Prefabs::registerShipEnemyPrefab(KapEngine::KEngine& engine) {
         enemy->addComponent(imageComp);
 
         auto& canvas = enemy->getComponent<KapEngine::UI::Canvas>();
-        canvas.setResizeType(KapEngine::UI::Canvas::resizyngType::RESIZE_WITH_SCREEN);
+        canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
 
         auto& transform = enemy->getComponent<KapEngine::Transform>();
         transform.setPosition({0, 0, 0});
@@ -131,7 +131,7 @@ void Prefabs::registerBoubouleEnemyPrefab(KapEngine::KEngine& engine) {
         enemy->addComponent(imageComp);
 
         auto& canvas = enemy->getComponent<KapEngine::UI::Canvas>();
-        canvas.setResizeType(KapEngine::UI::Canvas::resizyngType::RESIZE_WITH_SCREEN);
+        canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
 
         auto& transform = enemy->getComponent<KapEngine::Transform>();
         transform.setPosition({0, 0, 0});
@@ -162,7 +162,7 @@ void Prefabs::registerTentaclesBossEnemyPrefab(KapEngine::KEngine& engine) {
         enemy->addComponent(imageComp);
 
         auto& canvas = enemy->getComponent<KapEngine::UI::Canvas>();
-        canvas.setResizeType(KapEngine::UI::Canvas::resizyngType::RESIZE_WITH_SCREEN);
+        canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
 
         auto& transform = enemy->getComponent<KapEngine::Transform>();
         transform.setPosition({0, 0, 0});

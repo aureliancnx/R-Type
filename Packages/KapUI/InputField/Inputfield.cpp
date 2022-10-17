@@ -184,3 +184,13 @@ void KapEngine::UI::Inputfield::setPlaceholderText(std::string const& text) {
         Debug::error("Failed to set text placeholder of " + getGameObject().getName());
     }
 }
+
+void KapEngine::UI::Inputfield::setBackground(std::string const& path, Tools::Rectangle const& rect) {
+    try {
+        auto &img = (Image &)getGameObject().getComponent("Image");
+        img.setPathSprite(path);
+        img.setRectangle(rect);
+    } catch(...) {
+        Debug::error("[BUTTON] failed to get image component");
+    }
+}

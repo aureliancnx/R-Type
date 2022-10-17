@@ -41,6 +41,10 @@ namespace KapEngine
 
             void setInputType(InputType type) { _type = type; }
 
+            std::string getText() const { return _content; }
+
+            void setBackground(std::string const& path, Tools::Rectangle const& rect);
+
           protected:
           private:
             bool __stringIsNumber(std::string const &str)

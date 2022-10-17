@@ -5,9 +5,11 @@
 #include "KapEngineUi.hpp"
 #include "KapMirror/KapMirror.hpp"
 
-namespace RType {
-    class PlayerController : public KapMirror::NetworkComponent {
-        private:
+namespace RType
+{
+    class PlayerController : public KapMirror::NetworkComponent
+    {
+      private:
         bool isLocalAuthority = false;
 
         KapEngine::Tools::Vector3 lastPos;
@@ -24,7 +26,7 @@ namespace RType {
         KapEngine::Events::Key::EKey rightKey = KapEngine::Events::Key::RIGHT;
         KapEngine::Events::Key::EKey shootKey = KapEngine::Events::Key::SPACE;
 
-        public:
+      public:
         PlayerController(std::shared_ptr<KapEngine::GameObject> _gameObject);
         ~PlayerController() = default;
 
@@ -40,7 +42,7 @@ namespace RType {
 
         void shoot();
 
-        private:
+      private:
         void sendInput(KapEngine::Tools::Vector2 input);
 
         void sendKeepAlive();
@@ -49,4 +51,4 @@ namespace RType {
 
         void initSettings();
     };
-}
+} // namespace RType

@@ -7,17 +7,19 @@
 
 #include "Menu.hpp"
 
-namespace RType {
-    class VolumeMenu : public Menu {
-    public:
-        explicit VolumeMenu(KapEngine::SceneManagement::Scene& _scene);
+namespace RType
+{
+    class VolumeMenu : public Menu
+    {
+      public:
+        explicit VolumeMenu(KapEngine::SceneManagement::Scene &_scene);
         ~VolumeMenu() = default;
 
         void init() override;
-    protected:
-    private:
+
+      protected:
+      private:
     };
-}
+} // namespace RType
 
-
-#endif //RTYPE_VOLUMEMENU_HPP
+#endif // RTYPE_VOLUMEMENU_HPP

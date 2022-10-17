@@ -31,7 +31,7 @@ ENV CXX "g++"
 # Build
 RUN rm -rf build/
 RUN mkdir build
-RUN cmake -S . -B build; true
+RUN cmake -S . -B build
 RUN cmake --build build --config Debug
 #-DCMAKE_TOOLCHAIN_FILE=/app/vcpkg/scripts/buildsystems/vcpkg.cmake
 

@@ -21,18 +21,21 @@ body:
     attributes:
       label: 'Operating System'
       description: What is your Operating System? Windows, Linux, Mac
+    validations:
       required: true
   - type: input
     id: ram
     attributes:
       label: Ram
       description: How much RAM do you have?
+    validations:
       required: true
   - type: input
     id: gc
     attributes:
       label: Graphic Card
       description: 'What graphic card do you have?'
+    validations:
       required: true
   - type: textarea
     id: log

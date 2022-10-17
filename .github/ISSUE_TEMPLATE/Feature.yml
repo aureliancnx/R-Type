@@ -19,7 +19,7 @@ body:
       required: true
   - type: checkboxes
     attributes:
-      label: I read the Code Of Conduct and I comply to it
+      label: I read the Code Of Conduct
       options:
         - label: I read the Code Of Conduct and I comply to it
           required: true

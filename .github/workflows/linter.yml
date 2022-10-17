@@ -23,5 +23,5 @@ jobs:
         run: |
           git config --global user.name "Linter"
           find . -iname *.hpp -o -iname *.cpp ! -path "./Librar/*" ! -path "./Packages/*" | xargs git add
-          git commit -m "CHG: Apply linter"
-          git push
+          git commit -m "CHG: Apply linter" || true
+          git push || true

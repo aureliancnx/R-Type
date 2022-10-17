@@ -11,165 +11,146 @@
 #include "raylib.h"
 #include <string>
 
-namespace KapEngine {
-    namespace Graphical {
+namespace KapEngine
+{
+namespace Graphical
+{
 
-        namespace Raylib {
+namespace Raylib
+{
 
-            class RaylibEncapsulation;
+class RaylibEncapsulation;
 
-        }
-    }
 }
+} // namespace Graphical
+} // namespace KapEngine
 
-namespace KapEngine {
-    namespace Graphical {
+namespace KapEngine
+{
+namespace Graphical
+{
 
-        namespace Raylib {
+namespace Raylib
+{
 
-            namespace Cache {
+namespace Cache
+{
 
-                class IRaylibCache {
-                    public:
-                        virtual ~IRaylibCache() {}
+class IRaylibCache
+{
+public:
+  virtual ~IRaylibCache() {}
 
-                        virtual void clear() = 0;
+  virtual void clear() = 0;
 
-                    protected:
-                    private:
-                };
+protected:
+private:
+};
 
-                class RaylibCache : public IRaylibCache {
-                    public:
-                        RaylibCache(RaylibEncapsulation &e) : encap(e) {}
-                        ~RaylibCache() {}
+class RaylibCache : public IRaylibCache
+{
+public:
+  RaylibCache(RaylibEncapsulation &e) : encap(e) {}
+  ~RaylibCache() {}
 
-                        virtual void clear() {}
-                        virtual std::string getName() const { return ""; }
-                    protected:
-                        RaylibEncapsulation &encap;
-                };
+  virtual void clear() {}
+  virtual std::string getName() const { return ""; }
 
-                class ImageCache : public RaylibCache {
-                    public:
-                        ImageCache(RaylibEncapsulation &e) : RaylibCache(e) {}
-                        ~ImageCache() {}
+protected:
+  RaylibEncapsulation &encap;
+};
 
-                        bool operator==(ImageCache const& c) {
-                            return (pathImage == c.pathImage);
-                        }
+class ImageCache : public RaylibCache
+{
+public:
+  ImageCache(RaylibEncapsulation &e) : RaylibCache(e) {}
+  ~ImageCache() {}
 
-                        std::string getName() const override {
-                            return "Image";
-                        }
+  bool operator==(ImageCache const &c) { return (pathImage == c.pathImage); }
 
-                        void init(std::string const& imagePath);
+  std::string getName() const override { return "Image"; }
 
-                        Image &getImage() {
-                            return img;
-                        }
+  void init(std::string const &imagePath);
 
-                        void clear() override;
+  Image &getImage() { return img; }
 
-                        std::string getPath() const {
-                            return pathImage;
-                        }
+  void clear() override;
 
-                    private:
-                        std::string pathImage;
-                        Image img;
-                };
+  std::string getPath() const { return pathImage; }
 
-                class FontCache : public RaylibCache {
-                    public:
-                        FontCache(RaylibEncapsulation &e, std::string const& path);
-                        ~FontCache() {}
+private:
+  std::string pathImage;
+  Image img;
+};
 
-                        bool operator==(FontCache const& font) {
-                            return (_path == font._path);
-                        }
+class FontCache : public RaylibCache
+{
+public:
+  FontCache(RaylibEncapsulation &e, std::string const &path);
+  ~FontCache() {}
 
-                        std::string getName() const override {
-                            return "Font";
-                        }
+  bool operator==(FontCache const &font) { return (_path == font._path); }
 
-                        std::string getpath() const {
-                            return _path;
-                        }
+  std::string getName() const override { return "Font"; }
 
-                        Font &getFont() {
-                            return _font;
-                        }
+  std::string getpath() const { return _path; }
 
-                        void clear() override;
+  Font &getFont() { return _font; }
 
-                    private:
-                        std::string _path;
-                        Font _font;
-                
-                };
+  void clear() override;
 
-                class MusicCache : public RaylibCache {
-                    public:
-                        MusicCache(RaylibEncapsulation &e, std::string const& path);
-                        ~MusicCache() {}
+private:
+  std::string _path;
+  Font _font;
+};
 
-                        bool operator==(MusicCache const& mc) {
-                            return _path == mc.getpath();
-                        }
+class MusicCache : public RaylibCache
+{
+public:
+  MusicCache(RaylibEncapsulation &e, std::string const &path);
+  ~MusicCache() {}
 
-                        std::string getName() const override {
-                            return "Music";
-                        }
+  bool operator==(MusicCache const &mc) { return _path == mc.getpath(); }
 
-                        std::string getpath() const {
-                            return _path;
-                        }
+  std::string getName() const override { return "Music"; }
 
-                        Music &getMusic() {
-                            return _music;
-                        }
+  std::string getpath() const { return _path; }
 
-                        void clear() override;
+  Music &getMusic() { return _music; }
 
-                    private:
-                        std::string _path;
-                        Music _music;
-                };
+  void clear() override;
 
-                class SoundCache : public RaylibCache {
-                    public:
-                        SoundCache(RaylibEncapsulation &e, std::string const& path);
-                        ~SoundCache() {}
+private:
+  std::string _path;
+  Music _music;
+};
 
-                        bool operator==(MusicCache const& mc) {
-                            return _path == mc.getpath();
-                        }
+class SoundCache : public RaylibCache
+{
+public:
+  SoundCache(RaylibEncapsulation &e, std::string const &path);
+  ~SoundCache() {}
 
-                        std::string getName() const override {
-                            return "Sound";
-                        }
+  bool operator==(MusicCache const &mc) { return _path == mc.getpath(); }
 
-                        std::string getpath() const {
-                            return _path;
-                        }
+  std::string getName() const override { return "Sound"; }
 
-                        Sound &getSound() {
-                            return _sound;
-                        }
+  std::string getpath() const { return _path; }
 
-                        void clear() override;
+  Sound &getSound() { return _sound; }
 
-                    private:
-                        std::string _path;
-                        Sound _sound;
-                };
+  void clear() override;
 
-            }
+private:
+  std::string _path;
+  Sound _sound;
+};
 
-        }
+} // namespace Cache
 
-    }
-}
+} // namespace Raylib
+
+} // namespace Graphical
+} // namespace KapEngine
 
 #endif /* !RAYLIBCACHE_HPP_ */

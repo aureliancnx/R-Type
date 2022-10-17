@@ -5,33 +5,36 @@
 #include "KapEngineUi.hpp"
 #include "KapMirror/KapMirror.hpp"
 
-namespace RType {
-    class Bullet : public KapMirror::NetworkComponent {
-        public:
-        enum Direction {
-            LEFT = 0,
-            RIGHT
-        };
+namespace RType
+{
+class Bullet : public KapMirror::NetworkComponent
+{
+public:
+  enum Direction
+  {
+    LEFT = 0,
+    RIGHT
+  };
 
-        private:
-        Direction direction;
-        float speed = 10.f;
-        float initialX;
+private:
+  Direction direction;
+  float speed = 10.f;
+  float initialX;
 
-        public:
-        Bullet(std::shared_ptr<KapEngine::GameObject> gameObject);
-        ~Bullet() = default;
+public:
+  Bullet(std::shared_ptr<KapEngine::GameObject> gameObject);
+  ~Bullet() = default;
 
-        void setDirection(Direction _direction);
+  void setDirection(Direction _direction);
 
-        Direction getDirection() const;
+  Direction getDirection() const;
 
-        void onStart() override;
+  void onStart() override;
 
-        void onUpdate() override;
+  void onUpdate() override;
 
-        void serialize(KapMirror::NetworkWriter& writer) override;
+  void serialize(KapMirror::NetworkWriter &writer) override;
 
-        void deserialize(KapMirror::NetworkReader& reader) override;
-    };
-}
+  void deserialize(KapMirror::NetworkReader &reader) override;
+};
+} // namespace RType

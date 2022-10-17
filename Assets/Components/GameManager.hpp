@@ -7,47 +7,47 @@
 #include "Animations/SpriteAnimation.hpp"
 #include "RtypeNetworkManager.hpp"
 
-namespace RType {
-    class GameManager {
-        static GameManager *instance;
+namespace RType
+{
+class GameManager
+{
+  static GameManager *instance;
 
-        private:
-        KapEngine::KEngine* engine;
+private:
+  KapEngine::KEngine *engine;
 
-        MenuManager menuManager;
+  MenuManager menuManager;
 
-        std::shared_ptr<RtypeNetworkManager> networkManager;
+  std::shared_ptr<RtypeNetworkManager> networkManager;
 
-        public:
-        GameManager(KapEngine::KEngine* _engine);
-        ~GameManager() = default;
+public:
+  GameManager(KapEngine::KEngine *_engine);
+  ~GameManager() = default;
 
-        void launchGame();
+  void launchGame();
 
-        void launchServer();
+  void launchServer();
 
-        private:
-        void registerPrefabs();
+private:
+  void registerPrefabs();
 
-        void registerMenus();
+  void registerMenus();
 
-        void registerPrefabsPlayer();
+  void registerPrefabsPlayer();
 
-        void initSplashScreens();
+  void initSplashScreens();
 
-        void initSinglePlayer();
+  void initSinglePlayer();
 
-        void initMultiPlayer(bool isServer);
+  void initMultiPlayer(bool isServer);
 
-        void initAxis();
+  void initAxis();
 
-        public:
-        void startLocalMultiPlayer();
+public:
+  void startLocalMultiPlayer();
 
-        std::shared_ptr<RtypeNetworkManager> &getNetworkManager();
+  std::shared_ptr<RtypeNetworkManager> &getNetworkManager();
 
-        static GameManager *getInstance() {
-            return instance;
-        }
-    };
-}
+  static GameManager *getInstance() { return instance; }
+};
+} // namespace RType

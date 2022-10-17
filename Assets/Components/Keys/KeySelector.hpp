@@ -4,13 +4,15 @@
 #include "KapEngineDebug.hpp"
 #include "KapEngineEvents.hpp"
 
-namespace RType {
-    class KeySelector : public KapEngine::Component {
-        private:
+namespace RType
+{
+    class KeySelector : public KapEngine::Component
+    {
+      private:
         KapEngine::Events::Key _selected;
         bool _check = false;
 
-        public:
+      public:
         KeySelector(std::shared_ptr<KapEngine::GameObject> go);
         ~KeySelector() = default;
 
@@ -20,4 +22,4 @@ namespace RType {
 
         void selectKey();
     };
-}
+} // namespace RType

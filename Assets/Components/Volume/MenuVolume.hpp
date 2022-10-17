@@ -4,14 +4,16 @@
 #include "KapEngineDebug.hpp"
 #include "KapEngineUi.hpp"
 
-namespace RType {
-    class MenuVolume : public KapEngine::Component {
-        private:
+namespace RType
+{
+    class MenuVolume : public KapEngine::Component
+    {
+      private:
         std::vector<std::string> _type;
         std::shared_ptr<KapEngine::GameObject> _txt;
         int lastValue;
 
-        public:
+      public:
         MenuVolume(std::shared_ptr<KapEngine::GameObject> go);
         ~MenuVolume();
 
@@ -19,7 +21,7 @@ namespace RType {
 
         void onAwake() override;
 
-        private:
+      private:
         void foundText();
     };
-}
+} // namespace RType

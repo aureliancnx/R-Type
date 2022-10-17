@@ -119,6 +119,14 @@ jobs:
           mkdir build-release/Assets
           cp -R ./Assets/Textures build-release/Assets/Textures
           cp -R ./Assets/Sound build-release/Assets/Sound
+      - name: Prepare release files (Windows)
+        if: startsWith(matrix.config.os, 'windows')
+        run: |
+          mkdir build-release/
+          xcopy .\build\${{ matrix.config.build_executable }} .\build-release\ /s/h/e/k/f/c
+          mkdir build-release/Assets
+          xcopy .\Assets\Textures .\build-release\Assets\Textures /s/h/e/k/f/c
+          xcopy .\Assets\Sound .\build-release\Assets\Sound /s/h/e/k/f/c
       - name: Zip release (Linux or Mac)
         if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') || startsWith(matrix.config.name, 'macos') }}
         shell: bash

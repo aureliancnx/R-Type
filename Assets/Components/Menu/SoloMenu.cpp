@@ -84,4 +84,75 @@ void SoloMenu::init() {
             switchMenu("MainMenu");
         });
     }
+
+    //Create text instruction Choose map
+    {
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change level");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Select your level");
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+
+        compText->setPoliceSize(20);
+
+        txt->addComponent(compText);
+        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(230, 50, 0));
+        transform.setParent(canvas);
+    }
+
+
+    // Create image lvl campaign
+    {
+        auto lvlImg = KapEngine::UI::UiFactory::createImage(scene, "Lvl Campaign");
+        auto imageComp = std::make_shared<KapEngine::UI::Image>(lvlImg);
+        imageComp->setPathSprite("Assets/Textures/lvl1.png");
+        imageComp->setRectangle({0, 0, 225, 224});
+        lvlImg->addComponent(imageComp);
+
+        auto& transform = lvlImg->getComponent<KapEngine::Transform>();
+        transform.setPosition(KapEngine::Tools::Vector3(200, 200, 0));
+        transform.setScale({150, 150, 0});
+        transform.setParent(canvas);
+    }
+
+    // Create button turn left
+    {
+        auto btn = scene.createGameObject("ButtonLeft");
+        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+        auto &transform = btn->getComponent<KapEngine::Transform>();
+
+        btn->addComponent(btnComp);
+        btnComp->setText("");
+        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+        btnComp->setTextPosition({75, 12});
+        btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+        transform.setPosition({130, 250, 0});
+        transform.setScale({40, 39, 0});
+        transform.setParent(canvas);
+
+        btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
+        });
+    }
+
+    // Create button turn right
+    {
+        auto btn = scene.createGameObject("ButtonRight");
+        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+        auto &transform = btn->getComponent<KapEngine::Transform>();
+
+        btn->addComponent(btnComp);
+        btnComp->setText("");
+        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+        btnComp->setTextPosition({75, 12});
+        btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+        transform.setPosition({350, 250, 0});
+        transform.setScale({40, 39, 0});
+        transform.setParent(canvas);
+
+        btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
+        });
+    }
 }

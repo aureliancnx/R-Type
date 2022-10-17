@@ -12,26 +12,28 @@
 #include "KapEngineDebug.hpp"
 #include "KapEngineUi.hpp"
 
-namespace RType {
+namespace RType
+{
 
-    class ParalaxAnimation : public KapEngine::Animation {
-        public:
-            ParalaxAnimation(std::shared_ptr<KapEngine::GameObject> canvas);
-            ParalaxAnimation(std::shared_ptr<KapEngine::GameObject> canvas, float speed, int width);
-            ~ParalaxAnimation() = default;
+    class ParalaxAnimation : public KapEngine::Animation
+    {
+      public:
+        ParalaxAnimation(std::shared_ptr<KapEngine::GameObject> canvas);
+        ParalaxAnimation(std::shared_ptr<KapEngine::GameObject> canvas, float speed, int width);
+        ~ParalaxAnimation() = default;
 
-            void onPlay() override;
-            void onUpdateAnim() override;
-            void onResetAnim() override;
+        void onPlay() override;
+        void onUpdateAnim() override;
+        void onResetAnim() override;
 
-            void setSpeed(float speed);
-            void setWidth(int width);
+        void setSpeed(float speed);
+        void setWidth(int width);
 
-        private:
-            float _speed;
-            int _width;
+      private:
+        float _speed;
+        int _width;
     };
 
-} // RType
+} // namespace RType
 
-#endif //R_TYPE_PARALAXANIMATION_HPP
+#endif // R_TYPE_PARALAXANIMATION_HPP

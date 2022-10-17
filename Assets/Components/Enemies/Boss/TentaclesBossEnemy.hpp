@@ -7,17 +7,19 @@
 
 namespace RType
 {
-    class ShipEnemy : public KapMirror::NetworkComponent
+    class TentaclesBossEnemy : public KapMirror::NetworkComponent
     {
       private:
         int life = 20;
 
+        bool invert = false;
         long long lastShootTime = 0;
+
         std::vector<std::shared_ptr<KapEngine::GameObject>> collidedObjects;
 
       public:
-        ShipEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject);
-        ~ShipEnemy() = default;
+        TentaclesBossEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject);
+        ~TentaclesBossEnemy() = default;
 
         void setLife(int _life);
 

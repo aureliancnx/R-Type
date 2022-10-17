@@ -1,33 +1,39 @@
-#include "BoubouleEnemy.hpp"
+#include "TentaclesBossEnemy.hpp"
 #include "Bullet/Bullet.hpp"
 
 using namespace RType;
 
-BoubouleEnemy::BoubouleEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject) : KapMirror::NetworkComponent(_gameObject, "BoubouleEnemy") {
+TentaclesBossEnemy::TentaclesBossEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject) : KapMirror::NetworkComponent(_gameObject, "TentaclesBossEnemy") {
     addRequireComponent("Image");
 }
 
-void BoubouleEnemy::setLife(int _life) {
+void TentaclesBossEnemy::setLife(int _life) {
     life = _life;
 }
 
-void BoubouleEnemy::onFixedUpdate() {
+void TentaclesBossEnemy::onFixedUpdate() {
     auto& transform = getTransform();
 
-    transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(-1.0f, 0, 0));
+    if (invert) {
+        transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0, -5.0f, 0));
+    } else {
+        transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0, 5.0f, 0));
+    }
+
+    if (transform.getWorldPosition().getY() > 720 - (66 * 2)) {
+        invert = true;
+    } else if (transform.getWorldPosition().getY() < 0) {
+        invert = false;
+    }
 
     auto time = KapMirror::NetworkTime::localTime();
     if (time - lastShootTime > 3000) {
         lastShootTime = time;
         shoot();
     }
-
-    if (transform.getWorldPosition().getX() < -100) {
-        getGameObject().destroy();
-    }
 }
 
-void BoubouleEnemy::shoot() {
+void TentaclesBossEnemy::shoot() {
     KapEngine::Tools::Vector3 pos = getTransform().getLocalPosition() + KapEngine::Tools::Vector3(70, 15, 0);
 
     if (getTransform().getWorldPosition().getX() <= 0) {
@@ -48,7 +54,7 @@ void BoubouleEnemy::shoot() {
     }
 }
 
-void BoubouleEnemy::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other) {
+void TentaclesBossEnemy::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other) {
     if (isClient()) {
         return;
     }
@@ -56,24 +62,24 @@ void BoubouleEnemy::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other)
     collidedObjects.push_back(other);
 }
 
-void BoubouleEnemy::serialize(KapMirror::NetworkWriter& writer) {
+void TentaclesBossEnemy::serialize(KapMirror::NetworkWriter& writer) {
     writer.write(life);
 }
 
-void BoubouleEnemy::deserialize(KapMirror::NetworkReader& reader) {
+void TentaclesBossEnemy::deserialize(KapMirror::NetworkReader& reader) {
     life = reader.read<int>();
 }
 
-void BoubouleEnemy::onSceneUpdated() {
+void TentaclesBossEnemy::onSceneUpdated() {
     if (isClient()) {
         return;
     }
     for (std::size_t i = 0; i < collidedObjects.size(); i++) {
         auto& other = collidedObjects[i];
-        KAP_DEBUG_LOG("Collision with " + other->getName());
         if (other->getName() == "Bullet Player") {
             life -= 1;
             if (life <= 0) {
+                getGameObject().destroy();
                 getServer()->destroyObject(getGameObject().getScene().getGameObject(getGameObject().getId()));
             }
             getServer()->destroyObject(other);
@@ -81,4 +87,3 @@ void BoubouleEnemy::onSceneUpdated() {
     }
     collidedObjects.clear();
 }
-

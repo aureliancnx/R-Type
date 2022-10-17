@@ -1,0 +1,27 @@
+name: Lint
+
+on:
+  push:
+
+jobs:
+  lint_code:
+    name: Lint with clang-format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: "Install clang-format"
+        run: sudo apt-get install -y clang-format
+      - name: "Run clang-format"
+        run: find . -iname *.hpp -o -iname *.cpp ! -path "./Library/*" ! -path "./Packages/*" | xargs clang-format -i
+      - name: "Add key"
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" >> ~/.github_key
+          chmod 0600 ~/.github_key
+          eval $(ssh-agent)
+          ssh-add ~/.github_key
+      - name: "Push changes"
+        run: |
+          git config --global user.name "Linter"
+          find . -iname *.hpp -o -iname *.cpp ! -path "./Librar/*" ! -path "./Packages/*" | xargs git add
+          git commit -m "CHG: Apply linter"
+          git push

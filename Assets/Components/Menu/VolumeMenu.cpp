@@ -168,6 +168,6 @@ void RType::VolumeMenu::init() {
     }
     // Create music
     {
-        engine.getGraphicalLibManager()->getCurrentLib()->playMusic("Assets/Sound/Music/music.mp3", float(KapEngine::PlayerPrefs::getInt("volumeValue")));
+        engine.getGraphicalLibManager()->getCurrentLib()->playMusic("Assets/Sound/Music/music.mp3", (float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
     }
 }

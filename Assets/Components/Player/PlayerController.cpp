@@ -112,7 +112,9 @@ void PlayerController::shoot() {
         getClient()->send(message);
     } else if (isServer()) {
         std::shared_ptr<KapEngine::GameObject> bullet;
-        getServer()->spawnObject("Bullet", pos, bullet);
+        getServer()->spawnObject("Bullet", pos, [this](std::shared_ptr<KapEngine::GameObject> bullet) {
+            bullet->setName("Bullet Player");
+        }, bullet);
     }
 }
 

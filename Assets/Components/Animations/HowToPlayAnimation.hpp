@@ -14,11 +14,14 @@
 #include "Keys/ChangeKey.hpp"
 #include <unordered_map>
 
-namespace RType {
-    class HowToPlayAnimation : public KapEngine::Animation {
-    public:
+namespace RType
+{
+    class HowToPlayAnimation : public KapEngine::Animation
+    {
+      public:
         HowToPlayAnimation(std::shared_ptr<KapEngine::GameObject> gameObject);
-        // HowToPlayAnimation(std::shared_ptr<KapEngine::GameObject> gameObject, int nbAnimation, KapEngine::Tools::Rectangle rect, int64_t const& time);
+        // HowToPlayAnimation(std::shared_ptr<KapEngine::GameObject> gameObject, int nbAnimation, KapEngine::Tools::Rectangle rect, int64_t
+        // const& time);
         ~HowToPlayAnimation() = default;
 
         void onPlay() override;
@@ -28,7 +31,7 @@ namespace RType {
         void setRect(std::string name, KapEngine::Tools::Rectangle rect);
         KapEngine::Tools::Rectangle getRect(std::string name);
 
-    private:
+      private:
         // Variables
         std::unordered_map<std::string, int> _nbAnimation;
         std::unordered_map<std::string, KapEngine::Tools::Rectangle> _rect;
@@ -39,6 +42,6 @@ namespace RType {
         void init(std::shared_ptr<KapEngine::GameObject> gameObject);
         KapEngine::UI::Image &getImage(std::string name);
     };
-}
+} // namespace RType
 
 #endif /* !HOWTOPLAYANIMATION_HPP_ */

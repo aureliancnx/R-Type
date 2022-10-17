@@ -43,7 +43,7 @@ namespace KapEngine
 
             std::string getText() const { return _content; }
 
-            void setBackground(std::string const& path, Tools::Rectangle const& rect);
+            void setBackground(std::string const &path, Tools::Rectangle const &rect);
 
           protected:
           private:

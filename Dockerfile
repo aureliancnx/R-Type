@@ -1,6 +1,10 @@
 # Using latest epitech docker image as a reference
 FROM ubuntu:latest
 
+# Expose ports
+EXPOSE 7777/tcp
+EXPOSE 7777/udp
+
 # Set workdir to folder /app
 WORKDIR /app
 

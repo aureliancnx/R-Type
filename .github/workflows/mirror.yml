@@ -15,6 +15,7 @@ jobs:
         shell: bash
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" >> ~/.github_key
+          chmod 0600 ~/.github_key
           eval $(ssh-agent)
           ssh-add ~/.github_key
           git clone git@github.com:aureliancnx/R-Type.git /tmp/rtype --bare

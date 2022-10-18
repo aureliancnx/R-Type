@@ -547,3 +547,7 @@ void KapEngine::Graphical::Raylib::RaylibGraphical::resumMusic() {
 void KapEngine::Graphical::Raylib::RaylibGraphical::restartMusic() {
     raylib->restartMusic();
 }
+
+void KapEngine::Graphical::Raylib::RaylibGraphical::setMusicVolume(float vol) {
+    raylib->setMusicVolume(vol);
+}

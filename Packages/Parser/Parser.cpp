@@ -34,7 +34,7 @@ namespace RType {
         void Parser::getFiles() {
             for (const auto &entry : std::filesystem::directory_iterator(_path)) {
                 if (entry.path().extension() == ".rtype") {
-                    _filesPath.push_back(entry.path());
+                    _filesPath.push_back(entry.path().string());
                     _nbFiles++;
                 }
             }

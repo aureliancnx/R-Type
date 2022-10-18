@@ -8,6 +8,7 @@
 #ifndef RTYPE_MAP_HPP
 #define RTYPE_MAP_HPP
 
+#include <sstream>
 #include "../Summon/Summon.hpp"
 
 namespace RType

@@ -24,12 +24,12 @@ var NAVTREE =
 [
   [ "R-Type", "index.html", [
     [ "Contributor Covenant Code of Conduct", "md_CODE_OF_CONDUCT.html", [
-      [ "R-Type", "index.html#autotoc_md124", null ],
-      [ "How do I build and run this?", "index.html#autotoc_md125", null ],
-      [ "Documentation", "index.html#autotoc_md126", null ],
-      [ "How organize project", "index.html#autotoc_md127", null ],
-      [ "Cheat warning", "index.html#autotoc_md128", null ],
-      [ "Authors", "index.html#autotoc_md129", null ],
+      [ "R-Type", "index.html#autotoc_md158", null ],
+      [ "How do I build and run this?", "index.html#autotoc_md159", null ],
+      [ "Documentation", "index.html#autotoc_md160", null ],
+      [ "How organize project", "index.html#autotoc_md161", null ],
+      [ "Cheat warning", "index.html#autotoc_md162", null ],
+      [ "Authors", "index.html#autotoc_md163", null ],
       [ "Our Pledge", "md_CODE_OF_CONDUCT.html#autotoc_md1", null ],
       [ "Our Standards", "md_CODE_OF_CONDUCT.html#autotoc_md2", null ],
       [ "Enforcement Responsibilities", "md_CODE_OF_CONDUCT.html#autotoc_md3", null ],
@@ -109,77 +109,119 @@ var NAVTREE =
       [ "Browser support", "md_doxygen-awesome-css_README.html#autotoc_md66", null ],
       [ "Credits", "md_doxygen-awesome-css_README.html#autotoc_md67", null ]
     ] ],
+    [ "Contributor Covenant Code of Conduct", "md_Library_KapEngine_CODE_OF_CONDUCT.html", [
+      [ "Our Pledge", "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md69", null ],
+      [ "Our Standards", "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md70", null ],
+      [ "Enforcement Responsibilities", "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md71", null ],
+      [ "Scope", "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md72", null ],
+      [ "Enforcement", "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md73", null ],
+      [ "Enforcement Guidelines", "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md74", [
+        [ "1. Correction", "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md75", null ],
+        [ "2. Warning", "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md76", null ],
+        [ "3. Temporary Ban", "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md77", null ],
+        [ "4. Permanent Ban", "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md78", null ]
+      ] ],
+      [ "Attribution", "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md79", null ]
+    ] ],
+    [ "Contributing to KapEngine", "md_Library_KapEngine_CONTRIBUTING.html", [
+      [ "Table of Contents", "md_Library_KapEngine_CONTRIBUTING.html#autotoc_md81", null ],
+      [ "Code of Conduct", "md_Library_KapEngine_CONTRIBUTING.html#autotoc_md82", null ],
+      [ "I Have a Question", "md_Library_KapEngine_CONTRIBUTING.html#autotoc_md83", null ],
+      [ "I Want To Contribute", "md_Library_KapEngine_CONTRIBUTING.html#autotoc_md84", [
+        [ "Legal Notice", "md_Library_KapEngine_CONTRIBUTING.html#autotoc_md85", null ],
+        [ "Reporting Bugs", "md_Library_KapEngine_CONTRIBUTING.html#autotoc_md86", [
+          [ "Before Submitting a Bug Report", "md_Library_KapEngine_CONTRIBUTING.html#autotoc_md87", null ],
+          [ "How Do I Submit a Good Bug Report?", "md_Library_KapEngine_CONTRIBUTING.html#autotoc_md88", null ]
+        ] ],
+        [ "Suggesting Enhancements", "md_Library_KapEngine_CONTRIBUTING.html#autotoc_md89", [
+          [ "Before Submitting an Enhancement", "md_Library_KapEngine_CONTRIBUTING.html#autotoc_md90", null ],
+          [ "How Do I Submit a Good Enhancement Suggestion?", "md_Library_KapEngine_CONTRIBUTING.html#autotoc_md91", null ]
+        ] ],
+        [ "Your First Code Contribution", "md_Library_KapEngine_CONTRIBUTING.html#autotoc_md92", null ],
+        [ "Improving The Documentation", "md_Library_KapEngine_CONTRIBUTING.html#autotoc_md93", null ]
+      ] ],
+      [ "Styleguides", "md_Library_KapEngine_CONTRIBUTING.html#autotoc_md94", [
+        [ "Commit Messages", "md_Library_KapEngine_CONTRIBUTING.html#autotoc_md95", null ],
+        [ "Branch names", "md_Library_KapEngine_CONTRIBUTING.html#autotoc_md96", null ]
+      ] ],
+      [ "Join The Project Team", "md_Library_KapEngine_CONTRIBUTING.html#autotoc_md97", null ]
+    ] ],
     [ "FaqEn", "md_Library_KapEngine_Documentation_md_FaqEn.html", [
-      [ "F.A.Q developer questions", "md_Library_KapEngine_Documentation_md_FaqEn.html#autotoc_md68", null ]
+      [ "F.A.Q developer questions", "md_Library_KapEngine_Documentation_md_FaqEn.html#autotoc_md98", null ]
     ] ],
     [ "FaqFr", "md_Library_KapEngine_Documentation_md_FaqFr.html", [
-      [ "F.A.Q questions de développeur", "md_Library_KapEngine_Documentation_md_FaqFr.html#autotoc_md70", null ]
+      [ "F.A.Q questions de développeur", "md_Library_KapEngine_Documentation_md_FaqFr.html#autotoc_md100", null ]
     ] ],
     [ "KapEngineEn", "md_Library_KapEngine_Documentation_md_KapEngineEn.html", null ],
     [ "KapEngineFr", "md_Library_KapEngine_Documentation_md_KapEngineFr.html", null ],
     [ "LibGraphFr", "md_Library_KapEngine_Documentation_md_LibGraphFr.html", null ],
     [ "NewComponentEn", "md_Library_KapEngine_Documentation_md_NewComponentEn.html", [
-      [ "Create Your Component", "md_Library_KapEngine_Documentation_md_NewComponentEn.html#autotoc_md77", [
-        [ "Qu'est ce que KapEngine", "md_Library_KapEngine_Documentation_md_KapEngineFr.html#autotoc_md72", [
-          [ "Table of Contents", "md_Library_KapEngine_Documentation_md_FaqEn.html#autotoc_md69", null ],
-          [ "Table des matières", "md_Library_KapEngine_Documentation_md_FaqFr.html#autotoc_md71", null ],
-          [ "Introduction", "md_Library_KapEngine_Documentation_md_KapEngineFr.html#autotoc_md73", null ],
-          [ "Point fort", "md_Library_KapEngine_Documentation_md_KapEngineFr.html#autotoc_md74", null ]
+      [ "Create Your Component", "md_Library_KapEngine_Documentation_md_NewComponentEn.html#autotoc_md107", [
+        [ "Qu'est ce que KapEngine", "md_Library_KapEngine_Documentation_md_KapEngineFr.html#autotoc_md102", [
+          [ "Table of Contents", "md_Library_KapEngine_Documentation_md_FaqEn.html#autotoc_md99", null ],
+          [ "Table des matières", "md_Library_KapEngine_Documentation_md_FaqFr.html#autotoc_md101", null ],
+          [ "Introduction", "md_Library_KapEngine_Documentation_md_KapEngineFr.html#autotoc_md103", null ],
+          [ "Point fort", "md_Library_KapEngine_Documentation_md_KapEngineFr.html#autotoc_md104", null ]
         ] ],
-        [ "Qu'est ce qu'un ECS", "md_Library_KapEngine_Documentation_md_KapEngineFr.html#autotoc_md75", null ],
-        [ "Comment fonctionne KapEngine ?", "md_Library_KapEngine_Documentation_md_KapEngineFr.html#autotoc_md76", [
-          [ "Table of content", "md_Library_KapEngine_Documentation_md_NewComponentEn.html#autotoc_md78", null ]
+        [ "Qu'est ce qu'un ECS", "md_Library_KapEngine_Documentation_md_KapEngineFr.html#autotoc_md105", null ],
+        [ "Comment fonctionne KapEngine ?", "md_Library_KapEngine_Documentation_md_KapEngineFr.html#autotoc_md106", [
+          [ "Table of content", "md_Library_KapEngine_Documentation_md_NewComponentEn.html#autotoc_md108", null ]
         ] ],
-        [ "What's a component", "md_Library_KapEngine_Documentation_md_NewComponentEn.html#autotoc_md79", null ],
-        [ "Create own", "md_Library_KapEngine_Documentation_md_NewComponentEn.html#autotoc_md80", null ],
-        [ "Quick start", "md_Library_KapEngine_Documentation_md_NewComponentEn.html#autotoc_md81", null ]
+        [ "What's a component", "md_Library_KapEngine_Documentation_md_NewComponentEn.html#autotoc_md109", null ],
+        [ "Create own", "md_Library_KapEngine_Documentation_md_NewComponentEn.html#autotoc_md110", null ],
+        [ "Quick start", "md_Library_KapEngine_Documentation_md_NewComponentEn.html#autotoc_md111", null ]
       ] ]
     ] ],
     [ "NewComponentFr", "md_Library_KapEngine_Documentation_md_NewComponentFr.html", [
-      [ "Créer ton composant", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md82", [
-        [ "Table des matières", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md83", null ],
-        [ "Qu'est ce qu'un composant", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md84", null ],
-        [ "Fonctions utiles", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md85", null ],
-        [ "Créer le sien", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md87", [
-          [ "Liste des fonctions disponibles", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md88", [
-            [ "Vous souhaitez faire fonctionner votre composant que si il est accompagné d'un autre composan sur le même objett ?", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md86", null ],
-            [ "onInit [DEPRECATED]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md89", null ],
-            [ "onAwake", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md90", null ],
-            [ "onStart", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md91", null ],
-            [ "onUpdate", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md92", null ],
-            [ "onFixedUpdate", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md93", null ],
-            [ "onDisplay", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md94", null ],
-            [ "checkComponentValidity", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md95", null ],
-            [ "onDestroy [EVENT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md96", null ],
-            [ "onGameQuit [EVENT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md97", null ],
-            [ "onDisable [EVENT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md98", null ],
-            [ "onEnable [EVENT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md99", null ],
-            [ "onMouseEnter [BESOIN D'UN COMPOSANT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md100", null ],
-            [ "onMouseStay [BESOIN D'UN COMPOSANT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md101", null ],
-            [ "onMouseExit [BESOIN D'UN COMPOSANT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md102", null ],
-            [ "onTriggerEnter[BESOIN D'UN COMPOSANT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md103", null ],
-            [ "onTriggerStay[BESOIN D'UN COMPOSANT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md104", null ],
-            [ "onTriggerExit[BESOIN D'UN COMPOSANT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md105", null ]
+      [ "Créer ton composant", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md112", [
+        [ "Table des matières", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md113", null ],
+        [ "Qu'est ce qu'un composant", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md114", null ],
+        [ "Fonctions utiles", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md115", null ],
+        [ "Créer le sien", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md117", [
+          [ "Liste des fonctions disponibles", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md118", [
+            [ "Vous souhaitez faire fonctionner votre composant que si il est accompagné d'un autre composan sur le même objett ?", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md116", null ],
+            [ "onInit [DEPRECATED]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md119", null ],
+            [ "onAwake", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md120", null ],
+            [ "onStart", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md121", null ],
+            [ "onUpdate", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md122", null ],
+            [ "onFixedUpdate", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md123", null ],
+            [ "onDisplay", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md124", null ],
+            [ "checkComponentValidity", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md125", null ],
+            [ "onDestroy [EVENT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md126", null ],
+            [ "onGameQuit [EVENT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md127", null ],
+            [ "onDisable [EVENT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md128", null ],
+            [ "onEnable [EVENT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md129", null ],
+            [ "onMouseEnter [BESOIN D'UN COMPOSANT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md130", null ],
+            [ "onMouseStay [BESOIN D'UN COMPOSANT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md131", null ],
+            [ "onMouseExit [BESOIN D'UN COMPOSANT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md132", null ],
+            [ "onTriggerEnter[BESOIN D'UN COMPOSANT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md133", null ],
+            [ "onTriggerStay[BESOIN D'UN COMPOSANT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md134", null ],
+            [ "onTriggerExit[BESOIN D'UN COMPOSANT]", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md135", null ]
           ] ]
         ] ],
-        [ "Démarrage Rapide", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md106", null ]
+        [ "Démarrage Rapide", "md_Library_KapEngine_Documentation_md_NewComponentFr.html#autotoc_md136", null ]
       ] ]
     ] ],
     [ "NewUiSceneFr", "md_Library_KapEngine_Documentation_md_NewUiSceneFr.html", [
-      [ "Qu'est ce qu'une scène ?", "md_Library_KapEngine_Documentation_md_NewUiSceneFr.html#autotoc_md107", null ],
-      [ "Qu'est ce qu'un UI ?", "md_Library_KapEngine_Documentation_md_NewUiSceneFr.html#autotoc_md108", null ],
-      [ "Pourquoi cet exemple ?", "md_Library_KapEngine_Documentation_md_NewUiSceneFr.html#autotoc_md109", null ],
-      [ "Code source", "md_Library_KapEngine_Documentation_md_NewUiSceneFr.html#autotoc_md110", null ]
+      [ "Qu'est ce qu'une scène ?", "md_Library_KapEngine_Documentation_md_NewUiSceneFr.html#autotoc_md137", null ],
+      [ "Qu'est ce qu'un UI ?", "md_Library_KapEngine_Documentation_md_NewUiSceneFr.html#autotoc_md138", null ],
+      [ "Pourquoi cet exemple ?", "md_Library_KapEngine_Documentation_md_NewUiSceneFr.html#autotoc_md139", null ],
+      [ "Code source", "md_Library_KapEngine_Documentation_md_NewUiSceneFr.html#autotoc_md140", null ]
+    ] ],
+    [ "Description", "md_Library_KapEngine_pull_request_template.html", [
+      [ "Type of change", "md_Library_KapEngine_pull_request_template.html#autotoc_md142", null ],
+      [ "How Has This Been Tested?", "md_Library_KapEngine_pull_request_template.html#autotoc_md143", null ],
+      [ "Checklist:", "md_Library_KapEngine_pull_request_template.html#autotoc_md144", null ]
     ] ],
     [ "Readme", "md_Library_KapEngine_Readme.html", [
-      [ "KapEngine <a href=\"https://github.com/benji-35/KapEngine/actions?workflow=KapEngine+Build\"><!--lint ignore no-dead-urls--><img src=\"https://github.com/benji-35/KapEngine/workflows/KapEngine%20Build/badge.svg\" alt=\"GitHub Actions status | benji-35/KapEngine\"/></a>", "md_Library_KapEngine_Readme.html#autotoc_md111", null ]
+      [ "KapEngine <a href=\"https://github.com/benji-35/KapEngine/actions?workflow=KapEngine+Build\"><!--lint ignore no-dead-urls--><img src=\"https://github.com/benji-35/KapEngine/workflows/KapEngine%20Build/badge.svg\" alt=\"GitHub Actions status | benji-35/KapEngine\"/></a>", "md_Library_KapEngine_Readme.html#autotoc_md145", null ]
     ] ],
     [ "README", "md_Packages_KapMirror_README.html", null ],
     [ "README", "md_Packages_SylphTransport_README.html", null ],
     [ "Description", "md_pull_request_template.html", [
-      [ "Type of change", "md_pull_request_template.html#autotoc_md121", null ],
-      [ "How Has This Been Tested?", "md_pull_request_template.html#autotoc_md122", null ],
-      [ "Checklist:", "md_pull_request_template.html#autotoc_md123", null ]
+      [ "Type of change", "md_pull_request_template.html#autotoc_md155", null ],
+      [ "How Has This Been Tested?", "md_pull_request_template.html#autotoc_md156", null ],
+      [ "Checklist:", "md_pull_request_template.html#autotoc_md157", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
@@ -208,14 +250,14 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"classKapEngine_1_1Component.html#ad40a84f92d11295932a4d5722e845d3e",
-"classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65adfaf741363d5b04ff203ad1eb7807fb1",
-"classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a2f65cebf3fe20cfc8098301c470fda50",
-"classKapEngine_1_1Time_1_1ETime.html#a8a6ca1567ca56e37a3e4ebe302fbbd6a",
-"classKapMirror_1_1MessagePacking.html",
-"classKapMirror_1_1Sylph_1_1UdpListener.html#aee877edc73bd8cf422fc1d77ce34ec71",
-"classRType_1_1Parser_1_1Summon.html#af0ac835c9dacb28ea9d9f30a2029fa3c",
-"md_Library_KapEngine_Documentation_md_KapEngineFr.html#autotoc_md74"
+"classKapEngine_1_1Component.html#adcf99f72eea159651e3678e9671c1822",
+"classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65ae3907216855d3267c7779a0571c81107",
+"classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a2c05252750501eeae0f145e5a906a196",
+"classKapEngine_1_1Time_1_1ETime.html#a78fa672c56c9f41cdacbd31c497c037a",
+"classKapMirror_1_1Experimental_1_1GZipCompression.html#a19fdfecef753fd11ba7583b30f57ba1c",
+"classKapMirror_1_1Sylph_1_1UdpListener.html#a8433022888ff1cb78c73d0731faa0787",
+"classRType_1_1Parser_1_1Summon.html#a6e99d5ce1cc1d45d194becfa9d422eea",
+"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md75"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

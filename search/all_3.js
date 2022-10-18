@@ -20,5 +20,7 @@ var searchData=
   ['copyarray_66',['copyArray',['../classKapMirror_1_1Array.html#af96ade23db25e4bdf8eaf1d0a60bfb03',1,'KapMirror::Array']]],
   ['contributor_20covenant_20code_20of_20conduct_67',['Contributor Covenant Code of Conduct',['../md_CODE_OF_CONDUCT.html',1,'']]],
   ['contributing_20to_20r_2dtype_68',['Contributing to R-Type',['../md_CONTRIBUTING.html',1,'']]],
-  ['customization_69',['Customization',['../md_doxygen-awesome-css_docs_customization.html',1,'']]]
+  ['customization_69',['Customization',['../md_doxygen-awesome-css_docs_customization.html',1,'']]],
+  ['contributor_20covenant_20code_20of_20conduct_70',['Contributor Covenant Code of Conduct',['../md_Library_KapEngine_CODE_OF_CONDUCT.html',1,'']]],
+  ['contributing_20to_20kapengine_71',['Contributing to KapEngine',['../md_Library_KapEngine_CONTRIBUTING.html',1,'']]]
 ];

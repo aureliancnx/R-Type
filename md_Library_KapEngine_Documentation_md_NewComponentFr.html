@@ -95,10 +95,10 @@ $(document).ready(function(){initNavTree('md_Library_KapEngine_Documentation_md_
 <div class="line">╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝</div>
 <div class="line">                                                                        </div>
 <div class="line">par Benjamin DELVERT</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md82"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md112"></a>
 Créer ton composant</h1>
 <p>Sur cette page tu vas apprendre qu'est ce qu'un <a class="el" href="classKapEngine_1_1Component.html">KapEngine::Component</a>, pourquoi il existse et comment en créer un.</p>
-<h2><a class="anchor" id="autotoc_md83"></a>
+<h2><a class="anchor" id="autotoc_md113"></a>
 Table des matières</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -110,13 +110,13 @@ Table des matières</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Démarrage Rapide </td><td class="markdownTableBodyNone"><a href="#Démarrage-rapide">GO</a> </td><td class="markdownTableBodyNone">:green_circle:  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md84"></a>
+<h2><a class="anchor" id="autotoc_md114"></a>
 Qu'est ce qu'un composant</h2>
 <p>Un composant est un script rattaché à un objet de jeu (<a class="el" href="classKapEngine_1_1GameObject.html">KapEngine::GameObject</a>). Il a pour but de donner une logique ou une action à votre objet.</p>
 <p>Certaines fonctions seront automatiquement appelées par <a class="el" href="namespaceKapEngine.html" title="main namespace">KapEngine</a> ce qui permet une autonomisation du fonctionnement de votre jeu une fois lancé.</p>
 <p>:warning: le <a class="el" href="namespaceKapEngine.html" title="main namespace">KapEngine</a> est un engine multi thread. Ce qui signifie que le jeu utilisera plusieurs coeur de votre ordinateur pour effectuer des calculs plus rapides. Les composants sont appelés sur les thread suivant : 2, 3, 4. Lors de la création de vos composants, vous pouvez définir sur quel thread votre composant tournera. Si vous définissez un autre "threadID" que ceux indiqué juste avant, votre composant ne sera jamais lu.</p>
 <p>Cette méthode de calcul vous permet d'avoir un jeu plus performant. Cependant il se peut que vous ayez des réécriute de valeur. Ce sera à vous d'y faire attention.</p>
-<h2><a class="anchor" id="autotoc_md85"></a>
+<h2><a class="anchor" id="autotoc_md115"></a>
 Fonctions utiles</h2>
 <p>Tous les composants on des fonctions très utiles permettant de connaître certains évenements de votre jeu comme les touches appuyées ou la position de votre souris en jeu.</p>
 <p>Pour cela 2 fonctions sont crées : getInput() et getMouse().</p>
@@ -128,7 +128,7 @@ Fonctions utiles</h2>
 <li>getGameObject()</li>
 <li>getGameObjectCont()</li>
 </ul>
-<h4><a class="anchor" id="autotoc_md86"></a>
+<h4><a class="anchor" id="autotoc_md116"></a>
 Vous souhaitez faire fonctionner votre composant que si il est accompagné d'un autre composan sur le même objett ?</h4>
 <p>Une fonction spécifique a été pensé pour cela.</p><ul>
 <li>addRequireComponent("AutreComposant")</li>
@@ -137,7 +137,7 @@ Vous souhaitez faire fonctionner votre composant que si il est accompagné d'un 
 <p>Vous souhaitez ajouter des conditions qui permettent de faire focntionner ou non votre composant ? Lisez les explications de la foncton :</p><ul>
 <li>bool checkComponentValidity()</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md87"></a>
+<h2><a class="anchor" id="autotoc_md117"></a>
 Créer le sien</h2>
 <p>Créer un composant est très simple. Vous devez créer un nouveau fichier .hpp. Ce fichier contiendra la classe de votre composant : <a href="#Démarrage-rapide">exemple</a>. Une fois que vous aurez créé ce composant, il fous suffira de l'ajouter sur un objet.</p>
 <p>Exemple: </p><div class="fragment"><div class="line"> {C++}</div>
@@ -160,82 +160,82 @@ Créer le sien</h2>
 <div class="line">}</div>
 </div><!-- fragment --><p>Ces étapes sont obligatoires pour pouvoir ajouter un composant à un objet.</p>
 <p>:warning: Il est primordiale de ne pas mélanger les GameObjects pour le composant. L'objet dans lequel vous ajouté le composant doit être le même objet qui se trouve dans le constructeur du composant comme dans l'exemple.</p>
-<h3><a class="anchor" id="autotoc_md88"></a>
+<h3><a class="anchor" id="autotoc_md118"></a>
 Liste des fonctions disponibles</h3>
 <p>Important : Les fonctions proposées ne sont pas toutes à réécrire. Vous pouvez réécrire uniquement celle que vous souhaitez utiliser. Cela peut également rendre votre code plus beau et épuré.</p>
-<h4><a class="anchor" id="autotoc_md89"></a>
+<h4><a class="anchor" id="autotoc_md119"></a>
 onInit [DEPRECATED]</h4>
 <p>Cette fonction n'est plus utilisée. Elle sera prochainement supprimé</p>
-<h4><a class="anchor" id="autotoc_md90"></a>
+<h4><a class="anchor" id="autotoc_md120"></a>
 onAwake</h4>
 <p>Cette fonction est lancé sur tous les composants actif ou non de la scène 1 seule fois (lorsque le GameObject appaprait dans la scène au runtime). Elle permet en règle général d'initialiser les valeurs qui ne sont toujours pas initialisées.</p>
-<h4><a class="anchor" id="autotoc_md91"></a>
+<h4><a class="anchor" id="autotoc_md121"></a>
 onStart</h4>
 <p>Cette fonction ressemble énormément à onAwake. Elle ne se lance qu'une seule fois (lorsque le GameObject appaprait dans la scène au runtime ET qu'il est activé et utilisable).<br  />
  En effet la seule différence c'est que le composant doit être activé et utilisable pour entrer dans cette fonction.</p>
-<h4><a class="anchor" id="autotoc_md92"></a>
+<h4><a class="anchor" id="autotoc_md122"></a>
 onUpdate</h4>
 <p>Cette fonction comme son nom l'indique vous permettra d'update votre composant. Cette fonction sera appelé à chaque frame de votre jeu. Cela peut devenir un peu énergivore et temps ivore sur vos calculs (réfléchissez bien si il ne faut pas utiliser le <a href="####onFixedUpdate">onFixedUpdate</a>).</p>
-<h4><a class="anchor" id="autotoc_md93"></a>
+<h4><a class="anchor" id="autotoc_md123"></a>
 onFixedUpdate</h4>
 <p>Cette fonction permet tout comme la onUpdate de mettre à jour vos informations. Mais elle n'est appelé que sur un temps donné. Votre engine contient cette valeur de temps, qui est modifiable. Cette valeur est également général à tout votre jeu. Ce qui veut dire que tous les composants appellent le onFixedUpdate en même temps.</p>
-<h4><a class="anchor" id="autotoc_md94"></a>
+<h4><a class="anchor" id="autotoc_md124"></a>
 onDisplay</h4>
 <p>Cette fonction est appelée après toutes les fonctions énoncées précédement. Elle vous permet comme son nom l'indique, intéragir avec les lib graphiques si vous le souhaitez (c'est pour cela que cette fonction à été faite ;) ).</p>
-<h4><a class="anchor" id="autotoc_md95"></a>
+<h4><a class="anchor" id="autotoc_md125"></a>
 checkComponentValidity</h4>
 <p>Cette fonction est une fonction de vérification. C'est pour cela qu'elle retourne une valeur boolean.<br  />
  Cette fontion vous permet de faire des vérifications qui par la suite va indiquer à l'engine si il faut éxecuter ou non votre composant.<br  />
  TRUE : l'engine va lire votre composant<br  />
  FALSE : l'engine ne va pas lire votre composant</p>
-<h4><a class="anchor" id="autotoc_md96"></a>
+<h4><a class="anchor" id="autotoc_md126"></a>
 onDestroy [EVENT]</h4>
 <p>Cette fonction est appelée lorsque le <a class="el" href="classKapEngine_1_1GameObject.html">KapEngine::GameObject</a> sur lequel votre composant est rattaché, va être détruit.<br  />
  Cella permet de faire une dernière action avant la destruction définitive de votre objet.<br  />
  Attention : cette fonction ne suit pas un ordre logique d'appel. Elle peut être appelé avant ou après les updates. Prenez ça en compte dans vos codes</p>
-<h4><a class="anchor" id="autotoc_md97"></a>
+<h4><a class="anchor" id="autotoc_md127"></a>
 onGameQuit [EVENT]</h4>
 <p>Cette fonction est appelée lorsque votre jeu va être sur le point de se quitter. Cela vous permet de faire une dernière action avant que le jeu s'éteigne.<br  />
  Attention : cette fonction ne suit pas un ordre logique d'appel. Elle peut être appelé avant ou après les updates. Prenez ça en compte dans vos codes</p>
-<h4><a class="anchor" id="autotoc_md98"></a>
+<h4><a class="anchor" id="autotoc_md128"></a>
 onDisable [EVENT]</h4>
 <p>Cette fonction est appelée lorsque votre composant se désactive.<br  />
  Attention : cette fonction ne suit pas un ordre logique d'appel. Elle peut être appelé avant ou après les updates. Prenez ça en compte dans vos codes</p>
-<h4><a class="anchor" id="autotoc_md99"></a>
+<h4><a class="anchor" id="autotoc_md129"></a>
 onEnable [EVENT]</h4>
 <p>Cette fonction est appelée lorsque votre composant s'active.<br  />
  Attention : cette fonction ne suit pas un ordre logique d'appel. Elle peut être appelé avant ou après les updates. Prenez ça en compte dans vos codes</p>
-<h4><a class="anchor" id="autotoc_md100"></a>
+<h4><a class="anchor" id="autotoc_md130"></a>
 onMouseEnter [BESOIN D'UN COMPOSANT]</h4>
 <p>Composant: "Mouse Detector"<br  />
  Cette fonction vous permet de détecter quand la souris rentre dans une zone que vous avez prédéfinie.<br  />
  Attention : cette fonction ne suit pas un ordre logique d'appel. Elle peut être appelé avant ou après les updates. Prenez ça en compte dans vos codes</p>
-<h4><a class="anchor" id="autotoc_md101"></a>
+<h4><a class="anchor" id="autotoc_md131"></a>
 onMouseStay [BESOIN D'UN COMPOSANT]</h4>
 <p>Composant: "Mouse Detector"<br  />
  Cette fonction vous permet de détecter quand la souris reste dans une zone que vous avez prédéfinie.<br  />
  Attention : cette fonction ne suit pas un ordre logique d'appel. Elle peut être appelé avant ou après les updates. Prenez ça en compte dans vos codes</p>
-<h4><a class="anchor" id="autotoc_md102"></a>
+<h4><a class="anchor" id="autotoc_md132"></a>
 onMouseExit [BESOIN D'UN COMPOSANT]</h4>
 <p>Composant: "Mouse Detector"<br  />
  Cette fonction vous permet de détecter quand la souris sort dans une zone que vous avez prédéfinie.<br  />
  Attention : cette fonction ne suit pas un ordre logique d'appel. Elle peut être appelé avant ou après les updates. Prenez ça en compte dans vos codes</p>
-<h4><a class="anchor" id="autotoc_md103"></a>
+<h4><a class="anchor" id="autotoc_md133"></a>
 onTriggerEnter[BESOIN D'UN COMPOSANT]</h4>
 <p>Composant: "Collider"<br  />
  Cette fonction est appelé lorsque le composant collider aura détecté un autre objet de la scène entré dans la zone de collision spécifiée.<br  />
  Attention : cette fonction ne suit pas un ordre logique d'appel. Elle peut être appelé avant ou après les updates. Prenez ça en compte dans vos codes</p>
-<h4><a class="anchor" id="autotoc_md104"></a>
+<h4><a class="anchor" id="autotoc_md134"></a>
 onTriggerStay[BESOIN D'UN COMPOSANT]</h4>
 <p>Composant: "Collider"<br  />
  Cette fonction est appelé lorsque le composant collider aura détecté un autre objet de la scène rester dans la zone de collision spécifiée.<br  />
  Attention : cette fonction ne suit pas un ordre logique d'appel. Elle peut être appelé avant ou après les updates. Prenez ça en compte dans vos codes</p>
-<h4><a class="anchor" id="autotoc_md105"></a>
+<h4><a class="anchor" id="autotoc_md135"></a>
 onTriggerExit[BESOIN D'UN COMPOSANT]</h4>
 <p>Composant: "Collider"<br  />
  Cette fonction est appelé lorsque le composant collider aura détecté un autre objet de la scène sortir dans la zone de collision spécifiée.<br  />
  Attention : cette fonction ne suit pas un ordre logique d'appel. Elle peut être appelé avant ou après les updates. Prenez ça en compte dans vos codes</p>
-<h2><a class="anchor" id="autotoc_md106"></a>
+<h2><a class="anchor" id="autotoc_md136"></a>
 Démarrage Rapide</h2>
 <div class="fragment"><div class="line"> {C++}</div>
 <div class="line"> </div>

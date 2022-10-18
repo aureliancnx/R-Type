@@ -24,6 +24,8 @@ var classKapEngine_1_1Graphical_1_1GraphicalLib =
     [ "resumMusic", "classKapEngine_1_1Graphical_1_1GraphicalLib.html#afe3eedef9d1d13e55208f48541eb9122", null ],
     [ "setDrawImage", "classKapEngine_1_1Graphical_1_1GraphicalLib.html#a1de2221313b8ba5865e5832a8cb766c0", null ],
     [ "setDrawText", "classKapEngine_1_1Graphical_1_1GraphicalLib.html#a55cd40ade0a8130cfb357249fb02ced0", null ],
+    [ "setMusicVolume", "classKapEngine_1_1Graphical_1_1GraphicalLib.html#a5cd9c01eb948e4d63d7fc44350ef263b", null ],
+    [ "setSoundVolume", "classKapEngine_1_1Graphical_1_1GraphicalLib.html#ab32518973ff9915ed072b2e886564112", null ],
     [ "startDisplay", "classKapEngine_1_1Graphical_1_1GraphicalLib.html#a3d38f7b960c24980b485f600b44958bb", null ],
     [ "stopDisplay", "classKapEngine_1_1Graphical_1_1GraphicalLib.html#a1c00a1bc7b8d1cdcb5f26cf404477c00", null ],
     [ "stopMusic", "classKapEngine_1_1Graphical_1_1GraphicalLib.html#a0be71b7a37458abe062465dde6c71bbb", null ],
@@ -33,5 +35,6 @@ var classKapEngine_1_1Graphical_1_1GraphicalLib =
     [ "_newPressedInputs", "classKapEngine_1_1Graphical_1_1GraphicalLib.html#ae87f74d55fd3e772d01cce3442742ff9", null ],
     [ "_pressedInputs", "classKapEngine_1_1Graphical_1_1GraphicalLib.html#aadb42f0f2c52f3f39b24f77a94c44cf1", null ],
     [ "_releasedInputs", "classKapEngine_1_1Graphical_1_1GraphicalLib.html#aa73bd19db6c86bbceb6f578dcb95d087", null ],
+    [ "_soundVolume", "classKapEngine_1_1Graphical_1_1GraphicalLib.html#aba6456fb2ce35a7764885b9a99b518c6", null ],
     [ "manager", "classKapEngine_1_1Graphical_1_1GraphicalLib.html#a50fd18ea50698715a472ae8933408b31", null ]
 ];

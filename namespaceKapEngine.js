@@ -6,15 +6,8 @@ var namespaceKapEngine =
     [ "Prefabs", null, [
       [ "PrefabManager", "classKapEngine_1_1Prefabs_1_1PrefabManager.html", "classKapEngine_1_1Prefabs_1_1PrefabManager" ]
     ] ],
-    [ "SceneManagement", null, [
-      [ "Scene", "classKapEngine_1_1SceneManagement_1_1Scene.html", "classKapEngine_1_1SceneManagement_1_1Scene" ],
-      [ "SceneManager", "classKapEngine_1_1SceneManagement_1_1SceneManager.html", "classKapEngine_1_1SceneManagement_1_1SceneManager" ],
-      [ "SplashScreen", "classKapEngine_1_1SceneManagement_1_1SplashScreen.html", "classKapEngine_1_1SceneManagement_1_1SplashScreen" ]
-    ] ],
-    [ "Time", null, [
-      [ "EClock", "classKapEngine_1_1Time_1_1EClock.html", "classKapEngine_1_1Time_1_1EClock" ],
-      [ "ETime", "classKapEngine_1_1Time_1_1ETime.html", "classKapEngine_1_1Time_1_1ETime" ]
-    ] ],
+    [ "SceneManagement", "namespaceKapEngine_1_1SceneManagement.html", "namespaceKapEngine_1_1SceneManagement" ],
+    [ "Time", "namespaceKapEngine_1_1Time.html", "namespaceKapEngine_1_1Time" ],
     [ "Tools", "namespaceKapEngine_1_1Tools.html", "namespaceKapEngine_1_1Tools" ],
     [ "UI", "namespaceKapEngine_1_1UI.html", "namespaceKapEngine_1_1UI" ],
     [ "Animation", "classKapEngine_1_1Animation.html", "classKapEngine_1_1Animation" ],

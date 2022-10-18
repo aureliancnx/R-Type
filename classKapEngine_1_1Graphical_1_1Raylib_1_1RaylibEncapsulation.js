@@ -48,7 +48,7 @@ var classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation =
     [ "openWindow", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#ab2c0bdf2cf0739014b640b8919fb195f", null ],
     [ "pauseMusic", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a1aee7c9a6ce3d93d4f5b02d2c803c863", null ],
     [ "playMusic", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a3c942a4f69bf7e88ebff5784cd16df8b", null ],
-    [ "playSound", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a8770985fc83fbee0586cd5e771eeb9ce", null ],
+    [ "playSound", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a8d912360d0e016a77cb925d876c75599", null ],
     [ "restartMusic", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#ad88b59a7fb8c8b3b25ad0fd22bd1a0c0", null ],
     [ "resumeMusic", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a9245dd12653ab4570d21a16d8f80e4ff", null ],
     [ "setBackgroundColor", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a9e74dd7c13d4be14235b5e8beb9b9160", null ],

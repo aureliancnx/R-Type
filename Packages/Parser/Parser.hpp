@@ -15,41 +15,44 @@
 #include <fstream>
 #include <map>
 
-namespace RType {
-    namespace Parser {
+namespace RType
+{
+    namespace Parser
+    {
 
-        class Parser {
-            public:
-                Parser(const std::string& path = "Maps/");
-                ~Parser();
+        class Parser
+        {
+          public:
+            Parser(const std::string &path = "Maps/");
+            ~Parser();
 
-                void run();
+            void run();
 
-                void setPath(const std::string& path);
+            void setPath(const std::string &path);
 
-                bool hasError() const;
-                std::vector<std::string> getFilesError() const;
-                std::vector<std::string> getFilesPath() const;
-                std::map<std::string, std::string> getErrorsInFiles() const;
+            bool hasError() const;
+            std::vector<std::string> getFilesError() const;
+            std::vector<std::string> getFilesPath() const;
+            std::map<std::string, std::string> getErrorsInFiles() const;
 
-            private:
-                // Variables
-                std::string _path;
-                bool _hasError;
-                int _nbFiles;
-                std::vector<std::string> _filesPath;
-                std::vector<std::string> _filesError;
-                std::map<std::string, std::string> _errorsInFiles;
+          private:
+            // Variables
+            std::string _path;
+            bool _hasError;
+            int _nbFiles;
+            std::vector<std::string> _filesPath;
+            std::vector<std::string> _filesError;
+            std::map<std::string, std::string> _errorsInFiles;
 
-                // Methods
-                bool directoryExist();
-                void getFiles();
-                void getHeaderFile();
-                bool checkHeaderFile(std::vector<std::string> header);
-                void hasMandatory();
+            // Methods
+            bool directoryExist();
+            void getFiles();
+            void getHeaderFile();
+            bool checkHeaderFile(std::vector<std::string> header);
+            void hasMandatory();
         };
 
-    } // RType
-} // Parser
+    } // namespace Parser
+} // namespace RType
 
-#endif //RTYPE_PARSER_HPP
+#endif // RTYPE_PARSER_HPP

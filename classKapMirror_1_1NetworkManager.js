@@ -1,0 +1,26 @@
+var classKapMirror_1_1NetworkManager =
+[
+    [ "NetworkManager", "classKapMirror_1_1NetworkManager.html#a8aaaeddf02f51e4299a94c6663f700e0", null ],
+    [ "~NetworkManager", "classKapMirror_1_1NetworkManager.html#a2cfe4223139cf58587a9f066b956cb23", null ],
+    [ "getClient", "classKapMirror_1_1NetworkManager.html#ac1d4acc54aeb268adfc4297885882a91", null ],
+    [ "getServer", "classKapMirror_1_1NetworkManager.html#afd8ed5f03f7d228a12b90437525622ff", null ],
+    [ "onAwake", "classKapMirror_1_1NetworkManager.html#ad14be296254012a1d0c7731dfe2ce3d4", null ],
+    [ "onClientConnected", "classKapMirror_1_1NetworkManager.html#a9470386e32f4c5c9fd2048e00969fd9c", null ],
+    [ "onClientDisconnected", "classKapMirror_1_1NetworkManager.html#a16fab296c29f8e8d929606be1c85637a", null ],
+    [ "onFixedUpdate", "classKapMirror_1_1NetworkManager.html#a2ed4d855890ef118e9de912e43ef41b0", null ],
+    [ "onServerClientConnected", "classKapMirror_1_1NetworkManager.html#a7c5d8111eb6a62b4b1ae9617964bfe27", null ],
+    [ "onServerClientDisconnected", "classKapMirror_1_1NetworkManager.html#a4c39c47d9c7f739872bf66c3ca0233f3", null ],
+    [ "onStartClient", "classKapMirror_1_1NetworkManager.html#ae620a3dc3df025690086231d16a0dd22", null ],
+    [ "onStartServer", "classKapMirror_1_1NetworkManager.html#a4620a41df500e2c9ce2be009f551a9ff", null ],
+    [ "onStopClient", "classKapMirror_1_1NetworkManager.html#adff130942ee8e3f3f4c0105c29896127", null ],
+    [ "onStopServer", "classKapMirror_1_1NetworkManager.html#abc0f99dc5887e6111ff41e5434e87bbf", null ],
+    [ "setCompression", "classKapMirror_1_1NetworkManager.html#a3d0f60679c8218ac815f28e6328eb331", null ],
+    [ "setTransport", "classKapMirror_1_1NetworkManager.html#aad796b246fd1b9b11bdfb2585c3f3ce8", null ],
+    [ "startClient", "classKapMirror_1_1NetworkManager.html#aab39ff3608dd89ee285738dbd0177549", null ],
+    [ "startServer", "classKapMirror_1_1NetworkManager.html#af361185494835277d2b528cee7539dc8", null ],
+    [ "stopClient", "classKapMirror_1_1NetworkManager.html#aef220c66679db23f7e486a97a1b9385f", null ],
+    [ "stopServer", "classKapMirror_1_1NetworkManager.html#a3d46b13c5ca5f4648fafa972fc2a032f", null ],
+    [ "maxConnections", "classKapMirror_1_1NetworkManager.html#a30571d23ba26a1e6c4b370dbf236f917", null ],
+    [ "networkAddress", "classKapMirror_1_1NetworkManager.html#adf74c2d5b8e0e55bbb18bfc904dcac65", null ],
+    [ "networkPort", "classKapMirror_1_1NetworkManager.html#a0c5559f831997a3e3bf41dd18280e161", null ]
+];

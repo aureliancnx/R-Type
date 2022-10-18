@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"classKapMirror_1_1Sylph_1_1UdpListener.html#a7b70131f0f811ce45bb4a6065f171ddb":[26,0,1,1,9,5],
 "classKapMirror_1_1Sylph_1_1UdpListener.html#a8433022888ff1cb78c73d0731faa0787":[26,0,1,1,9,7],
 "classKapMirror_1_1Sylph_1_1UdpListener.html#adc31adc8e184e66a979c669b2486228f":[26,0,1,1,9,3],
 "classKapMirror_1_1Sylph_1_1UdpListener.html#ae0f5ecfe540f664255f6edcd84fa8803":[26,0,1,1,9,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "classRType_1_1Parser_1_1Summon.html#a23200a317803ae3500b55ae1afd01e81":[26,0,3,0,2,5],
 "classRType_1_1Parser_1_1Summon.html#a2ab16212c59d02a02329fdbd363858f5":[26,0,3,0,2,7],
 "classRType_1_1Parser_1_1Summon.html#a33530198d5d44bb5926d91b37bc58da5":[26,0,3,0,2,10],
-"classRType_1_1Parser_1_1Summon.html#a4b9ef85ebfda856b90759369a5b6aff2":[26,0,3,0,2,0],
-"classRType_1_1Parser_1_1Summon.html#a54bac9440ddff877332d7d1d4bdc0279":[26,0,3,0,2,9]
+"classRType_1_1Parser_1_1Summon.html#a4b9ef85ebfda856b90759369a5b6aff2":[26,0,3,0,2,0]
 };

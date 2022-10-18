@@ -22,6 +22,7 @@ var classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical =
     [ "playSound", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#a0570fdfbcdb08c64f1e9c80525d18da3", null ],
     [ "restartMusic", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#afb097f5d0f55aeecf1d78bd7c5ee93cc", null ],
     [ "resumMusic", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#aa34c63ea366d88ddfe0afc4c59acf928", null ],
+    [ "setMusicVolume", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#a3620a7891d05af035f52dc5d8c720c8c", null ],
     [ "startDisplay", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#af08e4527751d134637292559e26814e4", null ],
     [ "stopDisplay", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#a7aef22a764e6790d065844ab41f4fd97", null ],
     [ "stopMusic", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#af057b9fdc36c30f5da50e36ac2a37ba4", null ],

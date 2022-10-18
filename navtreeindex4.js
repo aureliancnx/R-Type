@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"classKapEngine_1_1Time_1_1ETime.html#a6e59c5f8de8bdec18aabd3459bd9314e":[26,0,0,5,1,14],
 "classKapEngine_1_1Time_1_1ETime.html#a78fa672c56c9f41cdacbd31c497c037a":[26,0,0,5,1,6],
 "classKapEngine_1_1Time_1_1ETime.html#a7a6f754118dbc7d0d6eae28d25b0d713":[26,0,0,5,1,19],
 "classKapEngine_1_1Time_1_1ETime.html#a827544ac93781d917a29e971a19f25bb":[26,0,0,5,1,16],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "classKapMirror_1_1Compression.html":[26,0,1,5],
 "classKapMirror_1_1Compression.html#a01e43f3aaff66c2cda8b9cb04624f45f":[26,0,1,5,0],
 "classKapMirror_1_1Compression.html#ac7ddf741b46a947592f76d384344537d":[26,0,1,5,1],
-"classKapMirror_1_1Compression.html#ad95a07c98a145cd32bfd52c98c0ce8ca":[26,0,1,5,2],
-"classKapMirror_1_1Experimental_1_1GZipCompression.html":[26,0,1,0,0]
+"classKapMirror_1_1Compression.html#ad95a07c98a145cd32bfd52c98c0ce8ca":[26,0,1,5,2]
 };

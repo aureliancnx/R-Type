@@ -249,7 +249,7 @@ namespace KapEngine
                  */
 
                 void playMusic(std::string const &music);
-                void playSound(std::string const &sound);
+                void playSound(std::string const &sound, float volume = 1.f);
 
                 void updateMusic()
                 {

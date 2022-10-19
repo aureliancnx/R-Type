@@ -29,7 +29,7 @@ int main(int argc, char **argv)
     engine.setEngineThread(false);
     initWindow(&engine, !isServer);
 
-    RType::GameManager gameManager(&engine);
+    RType::GameManager gameManager(&engine, false);
     if (isServer)
     {
         gameManager.launchServer();

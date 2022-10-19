@@ -17,7 +17,7 @@ using namespace RType;
 
 GameManager *GameManager::instance = nullptr;
 
-GameManager::GameManager(KapEngine::KEngine* _engine) : engine(_engine) {
+GameManager::GameManager(KapEngine::KEngine* _engine, bool b) : engine(_engine), displaySplashScreens(b) {
     instance = this;
 }
 
@@ -30,7 +30,9 @@ void GameManager::launchGame() {
     initMultiPlayer(false);
     initAxis();
     engine->getSplashScreen()->setDisplayKapEngineLogo(false);
-    initSplashScreens();
+    if (displaySplashScreens) {
+        initSplashScreens();
+    }
 
     // Show main menu
     menuManager.showMenu("MainMenu");
@@ -42,6 +44,7 @@ void GameManager::launchGame() {
 
 void GameManager::launchServer() {
     KapEngine::Debug::log("Launch server");
+    engine->getSplashScreen()->setDisplayKapEngineLogo(false);
 
     registerPrefabs();
     initMultiPlayer(true);

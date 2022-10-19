@@ -92,6 +92,8 @@ var group__Components =
     [ "Transform", "classKapEngine_1_1Transform.html", [
       [ "Transform", "classKapEngine_1_1Transform.html#a8e9c6baabf43c1c3fb085703729b6bdc", null ],
       [ "~Transform", "classKapEngine_1_1Transform.html#a145cc0614ccb74de5dd8d37b8eb64640", null ],
+      [ "__addChild", "classKapEngine_1_1Transform.html#aa1bb1d8fde59954c4261890d4dc288da", null ],
+      [ "__removeChild", "classKapEngine_1_1Transform.html#a44113e37d2cbde56f4c59e920a3048bf", null ],
       [ "allParentIsActive", "classKapEngine_1_1Transform.html#a5ac3dd6a4859f82073b1fd610c98738d", null ],
       [ "allParentsActive", "classKapEngine_1_1Transform.html#abca146c2ce6dfec9737c4647c3d0eb46", null ],
       [ "getChildren", "classKapEngine_1_1Transform.html#a1c983afbd2995326b142d6c1b1b70243", null ],

@@ -136,6 +136,9 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>getSpace</b> () cons
 <tr class="memitem:a0c299f6a7a0d0addb10f9395428d5129"><td class="memItemLeft" align="right" valign="top"><a id="a0c299f6a7a0d0addb10f9395428d5129"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>getPoliceSize</b> () const</td></tr>
 <tr class="separator:a0c299f6a7a0d0addb10f9395428d5129"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16a00e26b13153b8115e94f3d9f1180f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1UI_1_1Text.html#a16a00e26b13153b8115e94f3d9f1180f">onAwake</a> () override</td></tr>
+<tr class="memdesc:a16a00e26b13153b8115e94f3d9f1180f"><td class="mdescLeft">&#160;</td><td class="mdescRight">call component awake  <a href="classKapEngine_1_1UI_1_1Text.html#a16a00e26b13153b8115e94f3d9f1180f">More...</a><br /></td></tr>
+<tr class="separator:a16a00e26b13153b8115e94f3d9f1180f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bd4fd575fb51625d617a6b44f2cebde"><td class="memItemLeft" align="right" valign="top"><a id="a4bd4fd575fb51625d617a6b44f2cebde"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1UI_1_1Text.html#a4bd4fd575fb51625d617a6b44f2cebde">onDisplay</a> () override</td></tr>
 <tr class="memdesc:a4bd4fd575fb51625d617a6b44f2cebde"><td class="mdescLeft">&#160;</td><td class="mdescRight">use to display some things this function is call after all updates fucntion <br /></td></tr>
@@ -168,9 +171,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a15c4ebae3ca398b69c96ff4c33306970 inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#a15c4ebae3ca398b69c96ff4c33306970">onInit</a> () override</td></tr>
 <tr class="memdesc:a15c4ebae3ca398b69c96ff4c33306970 inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">call on component init  <a href="classKapEngine_1_1Component.html#a15c4ebae3ca398b69c96ff4c33306970">More...</a><br /></td></tr>
 <tr class="separator:a15c4ebae3ca398b69c96ff4c33306970 inherit pub_methods_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77bb969bbb1e9d2b0a41ad3011f59548 inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#a77bb969bbb1e9d2b0a41ad3011f59548">onAwake</a> () override</td></tr>
-<tr class="memdesc:a77bb969bbb1e9d2b0a41ad3011f59548 inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">call component awake  <a href="classKapEngine_1_1Component.html#a77bb969bbb1e9d2b0a41ad3011f59548">More...</a><br /></td></tr>
-<tr class="separator:a77bb969bbb1e9d2b0a41ad3011f59548 inherit pub_methods_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7324857a80396521eae33fef7877d5f inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#ae7324857a80396521eae33fef7877d5f">onStart</a> () override</td></tr>
 <tr class="memdesc:ae7324857a80396521eae33fef7877d5f inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">call component start  <a href="classKapEngine_1_1Component.html#ae7324857a80396521eae33fef7877d5f">More...</a><br /></td></tr>
 <tr class="separator:ae7324857a80396521eae33fef7877d5f inherit pub_methods_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -305,6 +305,36 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 false if your component is not runnable </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classKapEngine_1_1Component.html#a38ff04c83b24dd3075fc06e990ae6a71">KapEngine::Component</a>.</p>
+
+</div>
+</div>
+<a id="a16a00e26b13153b8115e94f3d9f1180f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16a00e26b13153b8115e94f3d9f1180f">&#9670;&nbsp;</a></span>onAwake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KapEngine::UI::Text::onAwake </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>call component awake </p>
+<p>will be called at runtime when the scene is first loaded or when another scene has been loaded before. </p>
+
+<p>Reimplemented from <a class="el" href="classKapEngine_1_1Component.html#a77bb969bbb1e9d2b0a41ad3011f59548">KapEngine::Component</a>.</p>
 
 </div>
 </div>

@@ -9,6 +9,7 @@ var classKapEngine_1_1UI_1_1Image =
     [ "getPathSprite", "classKapEngine_1_1UI_1_1Image.html#af58b488fe8b10eabef569a530297dd3c", null ],
     [ "getRectangle", "classKapEngine_1_1UI_1_1Image.html#aa9f28c1324c7245be520deaf3f9635cc", null ],
     [ "isUsingSprite", "classKapEngine_1_1UI_1_1Image.html#a41086bbbba2097c4ff532ccd88fbf399", null ],
+    [ "onAwake", "classKapEngine_1_1UI_1_1Image.html#ae937857ab7ab63d384cf37c7347da4e4", null ],
     [ "onDisplay", "classKapEngine_1_1UI_1_1Image.html#a4c2f081ad08777263b1813c73e08ccf5", null ],
     [ "setColor", "classKapEngine_1_1UI_1_1Image.html#a5ea25a8f5cfc78631acdb61cda1520f9", null ],
     [ "setPathSprite", "classKapEngine_1_1UI_1_1Image.html#a33fb9058106f06bf5216a2532fee38df", null ],

@@ -10,6 +10,7 @@ var classKapEngine_1_1UI_1_1Text =
     [ "getPoliceSize", "classKapEngine_1_1UI_1_1Text.html#a0c299f6a7a0d0addb10f9395428d5129", null ],
     [ "getSpace", "classKapEngine_1_1UI_1_1Text.html#ab3c52332cdd009dd5f617926dcfbd281", null ],
     [ "getText", "classKapEngine_1_1UI_1_1Text.html#a1afaa6087bba821964a0e19e255e7c6b", null ],
+    [ "onAwake", "classKapEngine_1_1UI_1_1Text.html#a16a00e26b13153b8115e94f3d9f1180f", null ],
     [ "onDisplay", "classKapEngine_1_1UI_1_1Text.html#a4bd4fd575fb51625d617a6b44f2cebde", null ],
     [ "setFont", "classKapEngine_1_1UI_1_1Text.html#ab439096e08124a2ac5d928a0c65fc8f1", null ],
     [ "setPoliceSize", "classKapEngine_1_1UI_1_1Text.html#af55501d9b6709d884aa8f21b7529e81e", null ],

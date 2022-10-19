@@ -177,7 +177,7 @@ var NAVTREEINDEX6 =
 "classRType_1_1ChangeKey.html#af341292a1fa967b7d850a58eb5ef1eb0":[26,0,3,3,5],
 "classRType_1_1GameManager.html":[26,0,3,4],
 "classRType_1_1GameManager.html#a289665674fd8c3e0880692e32b4e99db":[26,0,3,4,3],
-"classRType_1_1GameManager.html#a788037579fd802a9219cf5adb9f41aa3":[26,0,3,4,0],
+"classRType_1_1GameManager.html#a2c5e42d991abc79789abb0e73c74173b":[26,0,3,4,0],
 "classRType_1_1GameManager.html#a79ab793fdad1d0fb235afd558c78dadb":[26,0,3,4,5],
 "classRType_1_1GameManager.html#a97084bc427fc6a9ce22aa089f8ac6ce4":[26,0,3,4,1],
 "classRType_1_1GameManager.html#ad22de7d33d5bfafc1d7d354fd4ee8210":[26,0,3,4,4],

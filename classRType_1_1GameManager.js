@@ -1,6 +1,6 @@
 var classRType_1_1GameManager =
 [
-    [ "GameManager", "classRType_1_1GameManager.html#a788037579fd802a9219cf5adb9f41aa3", null ],
+    [ "GameManager", "classRType_1_1GameManager.html#a2c5e42d991abc79789abb0e73c74173b", null ],
     [ "~GameManager", "classRType_1_1GameManager.html#a97084bc427fc6a9ce22aa089f8ac6ce4", null ],
     [ "getNetworkManager", "classRType_1_1GameManager.html#ae9375e764cab519ef7b1fda50d947690", null ],
     [ "launchGame", "classRType_1_1GameManager.html#a289665674fd8c3e0880692e32b4e99db", null ],

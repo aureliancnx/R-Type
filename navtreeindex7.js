@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"classRType_1_1Parser_1_1Summon.html#a4b9ef85ebfda856b90759369a5b6aff2":[26,0,3,0,2,0],
 "classRType_1_1Parser_1_1Summon.html#a54bac9440ddff877332d7d1d4bdc0279":[26,0,3,0,2,9],
 "classRType_1_1Parser_1_1Summon.html#a6e99d5ce1cc1d45d194becfa9d422eea":[26,0,3,0,2,6],
 "classRType_1_1Parser_1_1Summon.html#a8c8bb6d695e259b697b0159f13952c6b":[26,0,3,0,2,4],
@@ -168,8 +169,8 @@ var NAVTREEINDEX7 =
 "functions_e.html":[26,3,0,5],
 "functions_enum.html":[26,3,3],
 "functions_f.html":[26,3,0,6],
-"functions_func.html":[26,3,1],
 "functions_func.html":[26,3,1,0],
+"functions_func.html":[26,3,1],
 "functions_func_a.html":[26,3,1,1],
 "functions_func_b.html":[26,3,1,2],
 "functions_func_c.html":[26,3,1,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md69":[6,0],
 "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md70":[6,1],
 "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md71":[6,2],
-"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md72":[6,3],
-"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md73":[6,4]
+"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md72":[6,3]
 };

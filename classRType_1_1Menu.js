@@ -9,5 +9,6 @@ var classRType_1_1Menu =
     [ "switchMenu", "classRType_1_1Menu.html#af4e33975162def8da659ae3f0e7dbb9a", null ],
     [ "canvas", "classRType_1_1Menu.html#aab0101d70fad273aa8f4b8167eb49fd4", null ],
     [ "engine", "classRType_1_1Menu.html#a2809c3fd7a907c82a7bc8be91f347472", null ],
-    [ "scene", "classRType_1_1Menu.html#a86097fdce542555f523b962ef35d8d2f", null ]
+    [ "scene", "classRType_1_1Menu.html#a86097fdce542555f523b962ef35d8d2f", null ],
+    [ "tmpCanvasToDisplay", "classRType_1_1Menu.html#a6c2c23bd7143c4c67aab57d1f46878dc", null ]
 ];

@@ -118,25 +118,32 @@ $(document).ready(function(){initNavTree('Menu_8hpp_source.html',''); initResiza
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">void</span> show() { canvas-&gt;setActive(<span class="keyword">true</span>); }</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">void</span> hide() { canvas-&gt;setActive(<span class="keyword">false</span>); canvas-&gt;getScene().dump(<span class="keyword">false</span>); }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;      <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> switchMenu(std::string <span class="keyword">const</span> &amp;menuName)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            tmpCanvasToDisplay = <span class="stringliteral">&quot;Canvas&quot;</span> + menuName;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            hide();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            scene.<a class="code" href="classKapEngine_1_1SceneManagement_1_1Scene.html#a3a0f496c5e4a0a5eb2a80c35c77b6e4a">registerTmpActionAfterUpdate</a>([<span class="keyword">this</span>](<a class="code" href="classKapEngine_1_1SceneManagement_1_1Scene.html">KapEngine::SceneManagement::Scene</a> &amp;scene){</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                    <span class="keyword">auto</span> menuCanvas = scene.<a class="code" href="classKapEngine_1_1SceneManagement_1_1Scene.html#a23be23db329b61301cc4d81d0db1c556">findFirstGameObject</a>(tmpCanvasToDisplay);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    menuCanvas-&gt;setActive(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                } <span class="keywordflow">catch</span>(...) {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    show();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    KAP_DEBUG_ERROR(<span class="stringliteral">&quot;Failed to switch menu: &quot;</span> + tmpCanvasToDisplay);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            });</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    };</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;} <span class="comment">// namespace RType</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">void</span> hide()</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            canvas-&gt;setActive(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            canvas-&gt;getScene().dump(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">void</span> switchMenu(std::string <span class="keyword">const</span> &amp;menuName)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            tmpCanvasToDisplay = <span class="stringliteral">&quot;Canvas&quot;</span> + menuName;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            hide();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            scene.<a class="code" href="classKapEngine_1_1SceneManagement_1_1Scene.html#a3a0f496c5e4a0a5eb2a80c35c77b6e4a">registerTmpActionAfterUpdate</a>([<span class="keyword">this</span>](<a class="code" href="classKapEngine_1_1SceneManagement_1_1Scene.html">KapEngine::SceneManagement::Scene</a> &amp;scene) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    <span class="keyword">auto</span> menuCanvas = scene.<a class="code" href="classKapEngine_1_1SceneManagement_1_1Scene.html#a23be23db329b61301cc4d81d0db1c556">findFirstGameObject</a>(tmpCanvasToDisplay);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    menuCanvas-&gt;setActive(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="keywordflow">catch</span> (...)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    show();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    KAP_DEBUG_ERROR(<span class="stringliteral">&quot;Failed to switch menu: &quot;</span> + tmpCanvasToDisplay);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            });</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    };</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;} <span class="comment">// namespace RType</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapEngine_1_1SceneManagement_1_1Scene_html_a23be23db329b61301cc4d81d0db1c556"><div class="ttname"><a href="classKapEngine_1_1SceneManagement_1_1Scene.html#a23be23db329b61301cc4d81d0db1c556">KapEngine::SceneManagement::Scene::findFirstGameObject</a></div><div class="ttdeci">std::shared_ptr&lt; GameObject &gt; findFirstGameObject(std::string const &amp;name)</div><div class="ttdoc">get first GameObject with it's name</div><div class="ttdef"><b>Definition:</b> Scene.cpp:240</div></div>

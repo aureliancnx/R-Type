@@ -130,6 +130,8 @@ void RType::VolumeMenu::init() {
                 if (currentID > 100)
                     currentID = 100;
                 KapEngine::PlayerPrefs::setInt("volumeValue", currentID);
+                engine.getGraphicalLibManager()->getCurrentLib()->setMusicVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
+                engine.getGraphicalLibManager()->getCurrentLib()->setSoundVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
             } catch (...) {}
         });
     }
@@ -162,12 +164,10 @@ void RType::VolumeMenu::init() {
                 if (currentID < 0)
                     currentID = 0;
                 KapEngine::PlayerPrefs::setInt("volumeValue", currentID);
+                engine.getGraphicalLibManager()->getCurrentLib()->setMusicVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
+                engine.getGraphicalLibManager()->getCurrentLib()->setSoundVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
             } catch (...) {}
         });
 
-    }
-    // Create music
-    {
-        engine.getGraphicalLibManager()->getCurrentLib()->playMusic("Assets/Sound/Music/music.mp3", (float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
     }
 }

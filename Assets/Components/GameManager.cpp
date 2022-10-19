@@ -29,7 +29,8 @@ void GameManager::launchGame() {
     initSinglePlayer();
     initMultiPlayer(false);
     initAxis();
-    //initSplashScreens();
+    engine->getSplashScreen()->setDisplayKapEngineLogo(false);
+    initSplashScreens();
 
     // Show main menu
     menuManager.showMenu("MainMenu");
@@ -152,6 +153,7 @@ void GameManager::startLocalMultiPlayer() {
 }
 
 void GameManager::initSplashScreens() {
+    engine->getSplashScreen()->setDisplayKapEngineLogo(true);
     auto nsplash = std::make_shared<KapEngine::SceneManagement::SplashScreen::SplashScreenNode>("Assets/Textures/Background/bg-back.png", 4);
 
     nsplash->rect = {0.f, 0.f, 272.f, 160.f};

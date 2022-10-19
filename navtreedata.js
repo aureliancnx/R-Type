@@ -257,7 +257,8 @@ var NAVTREEINDEX =
 "classKapMirror_1_1ArraySegment.html#ad33c04d2db8c1b8993375578790bcce4",
 "classKapMirror_1_1Sylph_1_1UdpClient.html#afe717888c149cb891f006b3d44a344d0",
 "classRType_1_1Parser_1_1Summon.html#a07f107b502cab7153a380f27af44efc0",
-"md_Library_KapEngine_CODE_OF_CONDUCT.html"
+"md_CONTRIBUTING.html#autotoc_md27",
+"todo.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

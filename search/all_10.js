@@ -14,10 +14,11 @@ var searchData=
   ['rectangle_333',['Rectangle',['../classKapEngine_1_1Tools_1_1Rectangle.html',1,'KapEngine::Tools']]],
   ['registeraction_334',['registerAction',['../classKapEngine_1_1Events_1_1EventAction.html#a1d79d936e3134b318bca6964959e462f',1,'KapEngine::Events::EventAction']]],
   ['registerhandler_335',['registerHandler',['../classKapMirror_1_1NetworkClient.html#a96b979578e9d13f98d8818e174c26140',1,'KapMirror::NetworkClient::registerHandler()'],['../classKapMirror_1_1NetworkServer.html#acd074a917f3b0fa8bf8ce79a309ae2f1',1,'KapMirror::NetworkServer::registerHandler()']]],
-  ['removecomponent_336',['removeComponent',['../classKapEngine_1_1GameObject.html#a3ebcbc013a84a102dab99eae212aaab8',1,'KapEngine::GameObject::removeComponent(std::shared_ptr&lt; Component &gt; comp)'],['../classKapEngine_1_1GameObject.html#ab0301bae4fe188931a31216c488bec9b',1,'KapEngine::GameObject::removeComponent(std::size_t id)']]],
-  ['reset_337',['reset',['../classKapMirror_1_1NetworkReader.html#a151455b1eafb2007158602da036acb02',1,'KapMirror::NetworkReader::reset()'],['../classKapMirror_1_1NetworkWriter.html#a35379a9ab4b78dc8650f87ea0fdfa3ac',1,'KapMirror::NetworkWriter::reset()']]],
-  ['resizearray_338',['resizeArray',['../classKapMirror_1_1Array.html#a45e6ab0a3872d773c001e30b5da75e32',1,'KapMirror::Array']]],
-  ['restart_339',['restart',['../classKapEngine_1_1Time_1_1EClock.html#aa84323220453c51ee4a3f9d77f17b0e0',1,'KapEngine::Time::EClock']]],
-  ['rtypenetworkmanager_340',['RtypeNetworkManager',['../classRType_1_1RtypeNetworkManager.html',1,'RType']]],
-  ['run_341',['run',['../classKapEngine_1_1KEngine.html#a08e0312baa30b910d00b59104e78074d',1,'KapEngine::KEngine']]]
+  ['registertmpactionafterupdate_336',['registerTmpActionAfterUpdate',['../classKapEngine_1_1SceneManagement_1_1Scene.html#a3a0f496c5e4a0a5eb2a80c35c77b6e4a',1,'KapEngine::SceneManagement::Scene']]],
+  ['removecomponent_337',['removeComponent',['../classKapEngine_1_1GameObject.html#a3ebcbc013a84a102dab99eae212aaab8',1,'KapEngine::GameObject::removeComponent(std::shared_ptr&lt; Component &gt; comp)'],['../classKapEngine_1_1GameObject.html#ab0301bae4fe188931a31216c488bec9b',1,'KapEngine::GameObject::removeComponent(std::size_t id)']]],
+  ['reset_338',['reset',['../classKapMirror_1_1NetworkReader.html#a151455b1eafb2007158602da036acb02',1,'KapMirror::NetworkReader::reset()'],['../classKapMirror_1_1NetworkWriter.html#a35379a9ab4b78dc8650f87ea0fdfa3ac',1,'KapMirror::NetworkWriter::reset()']]],
+  ['resizearray_339',['resizeArray',['../classKapMirror_1_1Array.html#a45e6ab0a3872d773c001e30b5da75e32',1,'KapMirror::Array']]],
+  ['restart_340',['restart',['../classKapEngine_1_1Time_1_1EClock.html#aa84323220453c51ee4a3f9d77f17b0e0',1,'KapEngine::Time::EClock']]],
+  ['rtypenetworkmanager_341',['RtypeNetworkManager',['../classRType_1_1RtypeNetworkManager.html',1,'RType']]],
+  ['run_342',['run',['../classKapEngine_1_1KEngine.html#a08e0312baa30b910d00b59104e78074d',1,'KapEngine::KEngine']]]
 ];

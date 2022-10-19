@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"classRType_1_1Parser_1_1Summon.html#a33530198d5d44bb5926d91b37bc58da5":[26,0,3,0,2,10],
 "classRType_1_1Parser_1_1Summon.html#a4b9ef85ebfda856b90759369a5b6aff2":[26,0,3,0,2,0],
 "classRType_1_1Parser_1_1Summon.html#a54bac9440ddff877332d7d1d4bdc0279":[26,0,3,0,2,9],
 "classRType_1_1Parser_1_1Summon.html#a6e99d5ce1cc1d45d194becfa9d422eea":[26,0,3,0,2,6],
@@ -160,8 +161,8 @@ var NAVTREEINDEX7 =
 "dir_fef29fda9d893b7850f121e644421544.html":[27,0,2,0,0,13],
 "example_8hpp_source.html":[27,0,1,0,0,0],
 "files.html":[27,0],
-"functions.html":[26,3,0,0],
 "functions.html":[26,3,0],
+"functions.html":[26,3,0,0],
 "functions_a.html":[26,3,0,1],
 "functions_b.html":[26,3,0,2],
 "functions_c.html":[26,3,0,3],
@@ -169,8 +170,8 @@ var NAVTREEINDEX7 =
 "functions_e.html":[26,3,0,5],
 "functions_enum.html":[26,3,3],
 "functions_f.html":[26,3,0,6],
-"functions_func.html":[26,3,1,0],
 "functions_func.html":[26,3,1],
+"functions_func.html":[26,3,1,0],
 "functions_func_a.html":[26,3,1,1],
 "functions_func_b.html":[26,3,1,2],
 "functions_func_c.html":[26,3,1,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "md_Library_KapEngine_CODE_OF_CONDUCT.html":[6],
 "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md69":[6,0],
 "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md70":[6,1],
-"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md71":[6,2],
-"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md72":[6,3]
+"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md71":[6,2]
 };

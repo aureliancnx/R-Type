@@ -32,5 +32,6 @@ var classKapEngine_1_1SceneManagement_1_1Scene =
     [ "operator!=", "classKapEngine_1_1SceneManagement_1_1Scene.html#abfcc60755cca63b31e19c6c8b5eb0490", null ],
     [ "operator==", "classKapEngine_1_1SceneManagement_1_1Scene.html#a76baf8811b65b6a1189a692184db00e2", null ],
     [ "operator==", "classKapEngine_1_1SceneManagement_1_1Scene.html#a150c99d9bca85da8d91c22932f846bcb", null ],
+    [ "registerTmpActionAfterUpdate", "classKapEngine_1_1SceneManagement_1_1Scene.html#a3a0f496c5e4a0a5eb2a80c35c77b6e4a", null ],
     [ "setId", "classKapEngine_1_1SceneManagement_1_1Scene.html#a55da8f06717bc471ffc6959e834b7f6b", null ]
 ];

@@ -24,12 +24,12 @@ var NAVTREE =
 [
   [ "R-Type", "index.html", [
     [ "Contributor Covenant Code of Conduct", "md_CODE_OF_CONDUCT.html", [
-      [ "R-Type", "index.html#autotoc_md158", null ],
-      [ "How do I build and run this?", "index.html#autotoc_md159", null ],
-      [ "Documentation", "index.html#autotoc_md160", null ],
-      [ "How organize project", "index.html#autotoc_md161", null ],
-      [ "Cheat warning", "index.html#autotoc_md162", null ],
-      [ "Authors", "index.html#autotoc_md163", null ],
+      [ "R-Type", "index.html#autotoc_md159", null ],
+      [ "How do I build and run this?", "index.html#autotoc_md160", null ],
+      [ "Documentation", "index.html#autotoc_md161", null ],
+      [ "How organize project", "index.html#autotoc_md162", null ],
+      [ "Cheat warning", "index.html#autotoc_md163", null ],
+      [ "Authors", "index.html#autotoc_md164", null ],
       [ "Our Pledge", "md_CODE_OF_CONDUCT.html#autotoc_md1", null ],
       [ "Our Standards", "md_CODE_OF_CONDUCT.html#autotoc_md2", null ],
       [ "Enforcement Responsibilities", "md_CODE_OF_CONDUCT.html#autotoc_md3", null ],
@@ -217,11 +217,12 @@ var NAVTREE =
       [ "KapEngine <a href=\"https://github.com/benji-35/KapEngine/actions?workflow=KapEngine+Build\"><!--lint ignore no-dead-urls--><img src=\"https://github.com/benji-35/KapEngine/workflows/KapEngine%20Build/badge.svg\" alt=\"GitHub Actions status | benji-35/KapEngine\"/></a>", "md_Library_KapEngine_Readme.html#autotoc_md145", null ]
     ] ],
     [ "README", "md_Packages_KapMirror_README.html", null ],
+    [ "README", "md_Packages_KapScript_README.html", null ],
     [ "README", "md_Packages_SylphTransport_README.html", null ],
     [ "Description", "md_pull_request_template.html", [
-      [ "Type of change", "md_pull_request_template.html#autotoc_md155", null ],
-      [ "How Has This Been Tested?", "md_pull_request_template.html#autotoc_md156", null ],
-      [ "Checklist:", "md_pull_request_template.html#autotoc_md157", null ]
+      [ "Type of change", "md_pull_request_template.html#autotoc_md156", null ],
+      [ "How Has This Been Tested?", "md_pull_request_template.html#autotoc_md157", null ],
+      [ "Checklist:", "md_pull_request_template.html#autotoc_md158", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
@@ -250,15 +251,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"classKapEngine_1_1Component.html#adcf99f72eea159651e3678e9671c1822",
-"classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65ae3907216855d3267c7779a0571c81107",
-"classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a2c05252750501eeae0f145e5a906a196",
-"classKapEngine_1_1Time_1_1ETime.html#a4f53f846d2fc8cf7527c0ac8ca35586c",
-"classKapMirror_1_1ArraySegment.html#ad33c04d2db8c1b8993375578790bcce4",
-"classKapMirror_1_1Sylph_1_1UdpClient.html#afe717888c149cb891f006b3d44a344d0",
-"classRType_1_1Parser_1_1Summon.html#a07f107b502cab7153a380f27af44efc0",
-"md_CONTRIBUTING.html#autotoc_md27",
-"todo.html"
+"classKapEngine_1_1Component.html#ad40a84f92d11295932a4d5722e845d3e",
+"classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65adfaf741363d5b04ff203ad1eb7807fb1",
+"classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a1aee7c9a6ce3d93d4f5b02d2c803c863",
+"classKapEngine_1_1Time_1_1ETime.html#a35bdb9c03082bd1c1eb71d35a0b4fdc9",
+"classKapMirror_1_1ArraySegment.html#abfee7d83a4313491452d4e9d35257602",
+"classKapMirror_1_1Sylph_1_1UdpClient.html#ac43378c6f479a9b71360b97fb08ddb5c",
+"classRType_1_1Parser_1_1Parser.html#a5ad5a7360a6161d0df3b015356007096",
+"md_CONTRIBUTING.html#autotoc_md18",
+"structRType_1_1PlayerInputMessage.html#aab47971dbd93b95bf2ccd64d192b41bc"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

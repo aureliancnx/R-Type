@@ -53,6 +53,9 @@ var annotated_dup =
       [ "TelepathyTransport", "classKapMirror_1_1TelepathyTransport.html", "classKapMirror_1_1TelepathyTransport" ],
       [ "Transport", "classKapMirror_1_1Transport.html", "classKapMirror_1_1Transport" ]
     ] ],
+    [ "KapScript", null, [
+      [ "ScriptEngine", "classKapScript_1_1ScriptEngine.html", "classKapScript_1_1ScriptEngine" ]
+    ] ],
     [ "MyLibrary", null, [
       [ "Example", "classMyLibrary_1_1Example.html", "classMyLibrary_1_1Example" ],
       [ "SubclassExample", "classMyLibrary_1_1SubclassExample.html", "classMyLibrary_1_1SubclassExample" ]

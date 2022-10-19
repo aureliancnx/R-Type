@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>R-Type: Packages Directory Reference</title>
+<title>R-Type: Packages/KapScript/KapScript/ScriptEngine.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('dir_395bafe2adc24fcfed5d14b8ce406a4f.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('ScriptEngine_8hpp_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -84,29 +84,31 @@ $(document).ready(function(){initNavTree('dir_395bafe2adc24fcfed5d14b8ce406a4f.h
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Packages Directory Reference</div>  </div>
+<div class="title">ScriptEngine.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="subdirs"></a>
-Directories</h2></td></tr>
-<tr class="memitem:dir_3b048d9529ae462ac48e3f4677d149b1"><td class="memItemLeft" align="right" valign="top">directory &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_3b048d9529ae462ac48e3f4677d149b1.html">KapMirror</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:dir_d8c9a4f3f3604f534e8eec9e32bf4a6b"><td class="memItemLeft" align="right" valign="top">directory &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_d8c9a4f3f3604f534e8eec9e32bf4a6b.html">KapRaylib</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:dir_6aa60c08165e0c25dd062500c169b8d8"><td class="memItemLeft" align="right" valign="top">directory &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_6aa60c08165e0c25dd062500c169b8d8.html">KapScript</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:dir_a94b908511d75219fecf2d3459f65505"><td class="memItemLeft" align="right" valign="top">directory &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_a94b908511d75219fecf2d3459f65505.html">KapUI</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:dir_13b6f70408ea905a877fdbea60cc9afa"><td class="memItemLeft" align="right" valign="top">directory &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_13b6f70408ea905a877fdbea60cc9afa.html">SylphTransport</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-</div><!-- contents -->
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>KapScript {</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classKapScript_1_1ScriptEngine.html">    6</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classKapScript_1_1ScriptEngine.html">ScriptEngine</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <a class="code" href="classKapScript_1_1ScriptEngine.html">ScriptEngine</a>();</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        ~<a class="code" href="classKapScript_1_1ScriptEngine.html">ScriptEngine</a>();</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordtype">void</span> parseScript(std::string source);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">void</span> loadScript(std::string path);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    };</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclassKapScript_1_1ScriptEngine_html"><div class="ttname"><a href="classKapScript_1_1ScriptEngine.html">KapScript::ScriptEngine</a></div><div class="ttdef"><b>Definition:</b> ScriptEngine.hpp:6</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_395bafe2adc24fcfed5d14b8ce406a4f.html">Packages</a></li>
+    <li class="navelem"><a class="el" href="dir_395bafe2adc24fcfed5d14b8ce406a4f.html">Packages</a></li><li class="navelem"><a class="el" href="dir_6aa60c08165e0c25dd062500c169b8d8.html">KapScript</a></li><li class="navelem"><a class="el" href="dir_c7437283451dd74aed867f48e3445165.html">KapScript</a></li><li class="navelem"><b>ScriptEngine.hpp</b></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>

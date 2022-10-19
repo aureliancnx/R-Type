@@ -21,15 +21,20 @@ int main(int argc, char **argv)
     bool isServer = false;
     bool isTestScript = false;
 
-    if (argc > 1) {
-        if (std::string(argv[1]) == "--server") {
+    if (argc > 1)
+    {
+        if (std::string(argv[1]) == "--server")
+        {
             isServer = true;
-        } else if (std::string(argv[1]) == "--test-script") {
+        }
+        else if (std::string(argv[1]) == "--test-script")
+        {
             isTestScript = true;
         }
     }
 
-    if (isTestScript) {
+    if (isTestScript)
+    {
         std::cout << "Test script" << std::endl;
         KapScript::ScriptEngine scriptEngine;
         scriptEngine.loadScript("Packages/KapScript/Exemples/Test.ks");
@@ -41,9 +46,12 @@ int main(int argc, char **argv)
     initWindow(&engine, !isServer);
 
     RType::GameManager gameManager(&engine, false);
-    if (isServer) {
+    if (isServer)
+    {
         gameManager.launchServer();
-    } else {
+    }
+    else
+    {
         gameManager.launchGame();
     }
 

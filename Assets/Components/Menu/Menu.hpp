@@ -29,21 +29,28 @@ namespace RType
 
         void show() { canvas->setActive(true); }
 
-        void hide() { canvas->setActive(false); canvas->getScene().dump(false); }
+        void hide()
+        {
+            canvas->setActive(false);
+            canvas->getScene().dump(false);
+        }
 
       protected:
         void switchMenu(std::string const &menuName)
         {
             tmpCanvasToDisplay = "Canvas" + menuName;
             hide();
-            scene.registerTmpActionAfterUpdate([this](KapEngine::SceneManagement::Scene &scene){
-                try {
+            scene.registerTmpActionAfterUpdate([this](KapEngine::SceneManagement::Scene &scene) {
+                try
+                {
                     auto menuCanvas = scene.findFirstGameObject(tmpCanvasToDisplay);
-					menuCanvas->setActive(true);
-                } catch(...) {
-					show();
-					KAP_DEBUG_ERROR("Failed to switch menu: " + tmpCanvasToDisplay);
-				}
+                    menuCanvas->setActive(true);
+                }
+                catch (...)
+                {
+                    show();
+                    KAP_DEBUG_ERROR("Failed to switch menu: " + tmpCanvasToDisplay);
+                }
             });
         }
     };

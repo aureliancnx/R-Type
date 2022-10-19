@@ -9,3 +9,6 @@ include_directories(Packages/KapMirror)
 
 # SylphTransport
 include_directories(Packages/SylphTransport)
+
+# KapScript
+include_directories(Packages/KapScript)

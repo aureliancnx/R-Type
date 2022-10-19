@@ -17,7 +17,7 @@ using namespace RType;
 
 GameManager *GameManager::instance = nullptr;
 
-GameManager::GameManager(KapEngine::KEngine* _engine) : engine(_engine) {
+GameManager::GameManager(KapEngine::KEngine* _engine, bool b) : engine(_engine), displaySplashScreens(b) {
     instance = this;
 }
 
@@ -29,16 +29,22 @@ void GameManager::launchGame() {
     initSinglePlayer();
     initMultiPlayer(false);
     initAxis();
-    //initSplashScreens();
+    engine->getSplashScreen()->setDisplayKapEngineLogo(false);
+    if (displaySplashScreens) {
+        initSplashScreens();
+    }
 
     // Show main menu
     menuManager.showMenu("MainMenu");
 
     engine->getGraphicalLibManager()->getCurrentLib()->playMusic("Assets/Sound/Music/space-asteroids.mp3");
+    engine->getGraphicalLibManager()->getCurrentLib()->setMusicVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
+    engine->getGraphicalLibManager()->getCurrentLib()->setSoundVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
 }
 
 void GameManager::launchServer() {
     KapEngine::Debug::log("Launch server");
+    engine->getSplashScreen()->setDisplayKapEngineLogo(false);
 
     registerPrefabs();
     initMultiPlayer(true);
@@ -150,6 +156,7 @@ void GameManager::startLocalMultiPlayer() {
 }
 
 void GameManager::initSplashScreens() {
+    engine->getSplashScreen()->setDisplayKapEngineLogo(true);
     auto nsplash = std::make_shared<KapEngine::SceneManagement::SplashScreen::SplashScreenNode>("Assets/Textures/Background/bg-back.png", 4);
 
     nsplash->rect = {0.f, 0.f, 272.f, 160.f};

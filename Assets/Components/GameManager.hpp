@@ -20,8 +20,10 @@ namespace RType
 
         std::shared_ptr<RtypeNetworkManager> networkManager;
 
+        bool displaySplashScreens = true;
+
       public:
-        GameManager(KapEngine::KEngine *_engine);
+        GameManager(KapEngine::KEngine *_engine, bool splashScreens = true);
         ~GameManager() = default;
 
         void launchGame();

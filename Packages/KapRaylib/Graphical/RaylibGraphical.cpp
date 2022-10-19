@@ -96,8 +96,10 @@ void KapEngine::Graphical::Raylib::RaylibGraphical::startDisplay() {
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::clear() {
-    if (_drawWindow)
+    if (_drawWindow) {
+        raylib->updateMusic();
         raylib->startDrawing();
+    }
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::display() {
@@ -522,7 +524,7 @@ bool KapEngine::Graphical::Raylib::RaylibGraphical::drawable(Tools::Vector2 cons
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::playSound(std::string const& path) {
-    raylib->playSound(path);
+    raylib->playSound(path, _soundVolume);
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::playMusic(std::string const& path, float vol) {
@@ -544,4 +546,8 @@ void KapEngine::Graphical::Raylib::RaylibGraphical::resumMusic() {
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::restartMusic() {
     raylib->restartMusic();
+}
+
+void KapEngine::Graphical::Raylib::RaylibGraphical::setMusicVolume(float vol) {
+    raylib->setMusicVolume(vol);
 }

@@ -12,6 +12,8 @@ namespace RType
         KapEngine::SceneManagement::Scene &scene;
         std::shared_ptr<KapEngine::GameObject> canvas;
 
+        std::string tmpCanvasToDisplay = "";
+
       public:
         Menu(KapEngine::SceneManagement::Scene &_scene) : engine(_scene.getEngine()), scene(_scene) {}
 
@@ -27,22 +29,29 @@ namespace RType
 
         void show() { canvas->setActive(true); }
 
-        void hide() { canvas->setActive(false); }
+        void hide()
+        {
+            canvas->setActive(false);
+            canvas->getScene().dump(false);
+        }
 
       protected:
         void switchMenu(std::string const &menuName)
         {
-            try
-            {
-                auto menuCanvas = scene.findFirstGameObject("Canvas" + menuName);
-
-                hide();
-                menuCanvas->setActive(true);
-            }
-            catch (...)
-            {
-                KAP_DEBUG_ERROR("Failed to switch menu: " + menuName);
-            }
+            tmpCanvasToDisplay = "Canvas" + menuName;
+            hide();
+            scene.registerTmpActionAfterUpdate([this](KapEngine::SceneManagement::Scene &scene) {
+                try
+                {
+                    auto menuCanvas = scene.findFirstGameObject(tmpCanvasToDisplay);
+                    menuCanvas->setActive(true);
+                }
+                catch (...)
+                {
+                    show();
+                    KAP_DEBUG_ERROR("Failed to switch menu: " + tmpCanvasToDisplay);
+                }
+            });
         }
     };
 } // namespace RType

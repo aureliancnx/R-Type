@@ -11,8 +11,6 @@ static void initWindow(KapEngine::KEngine *engine, bool draw)
     KapEngine::Tools::Vector2 screenSize(1280, 720);
     engine->setScreenSize(screenSize);
 
-    engine->getSplashScreen()->setDisplayKapEngineLogo(false);
-
     auto raylib = std::make_shared<KapEngine::Graphical::Raylib::RaylibGraphical>(*engine->getGraphicalLibManager(), draw);
     engine->getGraphicalLibManager()->addLib(raylib);
     engine->getGraphicalLibManager()->changeLib("raylib");
@@ -42,7 +40,7 @@ int main(int argc, char **argv)
     engine.setEngineThread(false);
     initWindow(&engine, !isServer);
 
-    RType::GameManager gameManager(&engine);
+    RType::GameManager gameManager(&engine, false);
     if (isServer) {
         gameManager.launchServer();
     } else {

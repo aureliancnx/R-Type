@@ -45,6 +45,7 @@ namespace KapEngine
                 void pauseMusic() override;
                 void resumMusic() override;
                 void restartMusic() override;
+                void setMusicVolume(float volume) override;
 
                 float getJoystikValue(int gamepadId, int joystickId) override;
 

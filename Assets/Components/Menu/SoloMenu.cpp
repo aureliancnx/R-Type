@@ -126,7 +126,6 @@ void SoloMenu::init() {
                 if (currentID < 0)
                     currentID = 3;
                 KapEngine::PlayerPrefs::setInt("campaignID", currentID);
-                KAP_DEBUG_LOG("campaign id = " + std::to_string(KapEngine::PlayerPrefs::getInt("campaignID")));
             } catch (...) {}
         });
     }
@@ -157,7 +156,6 @@ void SoloMenu::init() {
                 if (currentID > 3)
                     currentID = 0;
                 KapEngine::PlayerPrefs::setInt("campaignID", currentID);
-                KAP_DEBUG_LOG("campaign id = " + std::to_string(KapEngine::PlayerPrefs::getInt("campaignID")));
             } catch (...) {}
         });
     }

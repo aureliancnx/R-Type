@@ -1,6 +1,7 @@
 #include "SoloMenu.hpp"
 #include "Button/Button.hpp"
 #include "Keys/UpdateStartGameKeys.hpp"
+#include "Campaign/MenuCampaign.hpp"
 
 using namespace RType;
 
@@ -116,7 +117,17 @@ void SoloMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
-            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
+            int currentID = 0;
+
+            try {
+                if (!KapEngine::PlayerPrefs::getString("campaignID").empty())
+                    currentID = KapEngine::PlayerPrefs::getInt("campaignID");
+                currentID = currentID - 1;
+                if (currentID < 0)
+                    currentID = 3;
+                KapEngine::PlayerPrefs::setInt("campaignID", currentID);
+                KAP_DEBUG_LOG("campaign id = " + std::to_string(KapEngine::PlayerPrefs::getInt("campaignID")));
+            } catch (...) {}
         });
     }
 
@@ -137,7 +148,17 @@ void SoloMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
-            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
+            int currentID = 0;
+
+            try {
+                if (!KapEngine::PlayerPrefs::getString("campaignID").empty())
+                    currentID = KapEngine::PlayerPrefs::getInt("campaignID");
+                currentID = currentID + 1;
+                if (currentID > 3)
+                    currentID = 0;
+                KapEngine::PlayerPrefs::setInt("campaignID", currentID);
+                KAP_DEBUG_LOG("campaign id = " + std::to_string(KapEngine::PlayerPrefs::getInt("campaignID")));
+            } catch (...) {}
         });
     }
 
@@ -163,12 +184,14 @@ void SoloMenu::init() {
 
     // Creation Name lvl 1
     {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change level");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "The Lair Of The Aliens");
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Name");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto compDateCampaign = std::make_shared<MenuCampaign>(txt);
 
         compText->setPoliceSize(15);
 
+        txt->addComponent(compDateCampaign);
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3(130, 260, 0));
@@ -177,12 +200,14 @@ void SoloMenu::init() {
 
     // Creation Auteur level 1
     {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change level");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Autor : Paul Dosser");
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Author");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto compAuthorCampaign = std::make_shared<MenuCampaign>(txt);
 
         compText->setPoliceSize(15);
 
+        txt->addComponent(compAuthorCampaign);
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3(110, 300, 0));
@@ -191,12 +216,14 @@ void SoloMenu::init() {
 
     // Creation Date creation level 1
     {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change level");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Date : 22/10/2022");
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Date");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto compDateCampaign = std::make_shared<MenuCampaign>(txt);
 
         compText->setPoliceSize(15);
 
+        txt->addComponent(compDateCampaign);
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3(110, 330, 0));
@@ -223,14 +250,16 @@ void SoloMenu::init() {
         });
     }
 
-    // Creation Name lvl 1
+    // Creation Name lvl 2
     {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change level");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "The Lair Of The Aliens");
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text NameBis");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto compDateCampaign = std::make_shared<MenuCampaign>(txt);
 
         compText->setPoliceSize(15);
 
+        txt->addComponent(compDateCampaign);
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3(420, 260, 0));
@@ -239,9 +268,10 @@ void SoloMenu::init() {
 
     // Creation Auteur level 2
     {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change level");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Autor : Paul Dosser");
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text AuthorBis");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto compDateCampaign = std::make_shared<MenuCampaign>(txt);
 
         compText->setPoliceSize(15);
 
@@ -253,9 +283,10 @@ void SoloMenu::init() {
 
     // Creation Date creation level 2
     {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change level");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Date : 24/10/2022");
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text DateBis");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto compDateCampaign = std::make_shared<MenuCampaign>(txt);
 
         compText->setPoliceSize(15);
 

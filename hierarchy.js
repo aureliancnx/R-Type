@@ -95,6 +95,7 @@ var hierarchy =
         ] ],
         [ "RType::ChangeKey", "classRType_1_1ChangeKey.html", null ],
         [ "RType::KeySelector", "classRType_1_1KeySelector.html", null ],
+        [ "RType::MenuCampaign", "classRType_1_1MenuCampaign.html", null ],
         [ "RType::MenuVolume", "classRType_1_1MenuVolume.html", null ],
         [ "RType::UpdateStartGameKeys", "classRType_1_1UpdateStartGameKeys.html", null ]
       ] ]
@@ -163,8 +164,8 @@ var hierarchy =
     [ "KapScript::ScriptEngine", "classKapScript_1_1ScriptEngine.html", null ],
     [ "KapMirror::Sylph::Server", "classKapMirror_1_1Sylph_1_1Server.html", null ],
     [ "KapMirror::Telepathy::Server", "classKapMirror_1_1Telepathy_1_1Server.html", null ],
-    [ "KapMirror::Sylph::Socket", "classKapMirror_1_1Sylph_1_1Socket.html", null ],
     [ "KapMirror::Telepathy::Socket", "classKapMirror_1_1Telepathy_1_1Socket.html", null ],
+    [ "KapMirror::Sylph::Socket", "classKapMirror_1_1Sylph_1_1Socket.html", null ],
     [ "KapEngine::SceneManagement::SplashScreen", "classKapEngine_1_1SceneManagement_1_1SplashScreen.html", null ],
     [ "KapEngine::SceneManagement::SplashScreen::SplashScreenNode", "structKapEngine_1_1SceneManagement_1_1SplashScreen_1_1SplashScreenNode.html", null ],
     [ "RType::Parser::Summon", "classRType_1_1Parser_1_1Summon.html", null ],

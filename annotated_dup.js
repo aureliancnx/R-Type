@@ -75,6 +75,7 @@ var annotated_dup =
       [ "KeySelector", "classRType_1_1KeySelector.html", "classRType_1_1KeySelector" ],
       [ "MainMenu", "classRType_1_1MainMenu.html", "classRType_1_1MainMenu" ],
       [ "Menu", "classRType_1_1Menu.html", "classRType_1_1Menu" ],
+      [ "MenuCampaign", "classRType_1_1MenuCampaign.html", "classRType_1_1MenuCampaign" ],
       [ "MenuManager", "classRType_1_1MenuManager.html", "classRType_1_1MenuManager" ],
       [ "MenuVolume", "classRType_1_1MenuVolume.html", "classRType_1_1MenuVolume" ],
       [ "MultiMenu", "classRType_1_1MultiMenu.html", "classRType_1_1MultiMenu" ],

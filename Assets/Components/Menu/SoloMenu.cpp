@@ -168,7 +168,7 @@ void SoloMenu::init() {
 
         btn->addComponent(btnComp);
         btnComp->setText("");
-        btnComp->setBackground("Assets/Textures/Level Campaign/lvl1_img.png", {0, 0, 430, 433});
+        btnComp->setBackground("", {0, 0, 430, 433});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
         transform.setPosition({90, 150, 0});
@@ -236,7 +236,7 @@ void SoloMenu::init() {
 
         btn->addComponent(btnComp);
         btnComp->setText("");
-        btnComp->setBackground("Assets/Textures/Level Campaign/lvl2_img.png", {0, 0, 430, 433});
+        btnComp->setBackground("", {0, 0, 430, 433});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
         transform.setPosition({380, 150, 0});

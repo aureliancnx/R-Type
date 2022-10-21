@@ -30,6 +30,7 @@ void RType::MenuCampaign::onAwake() {
     foundDate();
     foundCreator();
     foundName();
+    foundButton();
 }
 
 void RType::MenuCampaign::onUpdate() {
@@ -37,6 +38,7 @@ void RType::MenuCampaign::onUpdate() {
         foundCreator();
         foundDate();
         foundName();
+        foundButton();
         if (_txtDate.use_count() == 0 || _txtCreator.use_count() == 0 || _txtName.use_count() == 0)
             DEBUG_ERROR("Fail something");
     }
@@ -59,18 +61,23 @@ void RType::MenuCampaign::onUpdate() {
         txtC.setText(_creator[nId]);
         auto &txtN = _txtName->getComponent<UI::Text>();
         txtN.setText(_name[nId]);
+        auto button = _button1->getComponent<UI::Button>();
+        button.setBackground(_img[nId], {0, 0, 430, 433});
         auto &txtDBis = _txtDateBis->getComponent<UI::Text>();
         auto &txtCBis = _txtCreatorBis->getComponent<UI::Text>();
         auto &txtNBis = _txtNameBis->getComponent<UI::Text>();
+        auto button2 = _button2->getComponent<UI::Button>();
         if (nId + 1 > 3) {
             txtDBis.setText(_date[0]);
             txtCBis.setText(_creator[0]);
             txtNBis.setText(_name[0]);
+            button2.setBackground(_img[0], {0, 0, 430, 433});
         }
         else {
             txtDBis.setText(_date[nId + 1]);
             txtCBis.setText(_creator[nId + 1]);
             txtNBis.setText(_name[nId + 1]);
+            button2.setBackground(_img[nId + 1], {0, 0, 430, 433});
         }
     } catch (...) {}
 }
@@ -106,7 +113,6 @@ void RType::MenuCampaign::foundDate() {
     }
     _txtDate = _found1;
     _txtDateBis = _found2;
-    KAP_DEBUG_LOG("Date Name = " + _txtDate->getName());
     try {
         auto &txt = _txtDate->getComponent<UI::Text>();
         txt.setText(_date[PlayerPrefs::getInt("campaignID")]);
@@ -201,7 +207,23 @@ void RType::MenuCampaign::foundName() {
 }
 
 void RType::MenuCampaign::foundButton() {
+    auto objs1 = getGameObjectConst().getScene().findFirstGameObject("ButtonLevel1");
+    auto objs2 = getGameObjectConst().getScene().findFirstGameObject("ButtonLevel2");
 
+    try {
+        auto &button = objs1->getComponent<UI::Button>();
+        _button1 = objs1;
+        button.setBackground(_img[PlayerPrefs::getInt("campaignID")], {0, 0, 430, 433});
+    } catch (...) {}
+
+    try {
+        auto &button = objs2->getComponent<UI::Button>();
+        _button2 = objs2;
+        if ((PlayerPrefs::getInt("campaignID") + 1) > 3)
+            button.setBackground(_img[0], {0, 0, 430, 433});
+        else
+            button.setBackground(_img[PlayerPrefs::getInt("campaignID") + 1], {0, 0, 430, 433});
+    } catch (...) {}
 }
 
 

@@ -14,7 +14,3 @@
 	path = Packages/SylphTransport
 	branch = main
 	url = git@github.com:Chaika9/SylphTransport.git
-[submodule "Packages/KapScript"]
-	path = Packages/KapScript
-	branch = main
-	url = git@github.com:Chaika9/KapScript.git

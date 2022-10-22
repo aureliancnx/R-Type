@@ -1,4 +1,0 @@
-var dir_6aa60c08165e0c25dd062500c169b8d8 =
-[
-    [ "KapScript", "dir_c7437283451dd74aed867f48e3445165.html", "dir_c7437283451dd74aed867f48e3445165" ]
-];

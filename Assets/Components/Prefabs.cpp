@@ -185,6 +185,24 @@ void Prefabs::registerTentaclesBossEnemyPrefab(KapEngine::KEngine& engine) {
         transform.setPosition({0, 0, 0});
         transform.setScale({64 * 2, 66 * 2, 0});
 
+        auto bulletIdle = std::make_shared<SpriteAnimation>(enemy);
+        enemy->addComponent(bulletIdle);
+
+        KapEngine::Time::ETime duration;
+        duration.setSeconds(.4f);
+        bulletIdle->setTiming(duration);
+        bulletIdle->loop(true);
+        bulletIdle->setRect({0, 0, 65.5, 66});
+        bulletIdle->setNbAnimations(12);
+        bulletIdle->bouncingVersion(false);
+
+        auto animator = std::make_shared<KapEngine::Animator>(enemy);
+        enemy->addComponent(animator);
+
+        animator->addAnim(bulletIdle, "Idle");
+
+        animator->addLink("Idle", "Idle");
+
         return enemy;
     });
 }

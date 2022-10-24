@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>R-Type: README</title>
+<title>R-Type: Easily embed lua into applications managed with CMake</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('md_Packages_SylphTransport_README.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('md_Library_LuaEngine_README.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -84,28 +84,25 @@ $(document).ready(function(){initNavTree('md_Packages_SylphTransport_README.html
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">README </div>  </div>
+<div class="title">Easily embed lua into applications managed with CMake </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a href="https://github.com/benji-35/KapEngine/"><object type="image/svg+xml" data="https://img.shields.io/badge/KapEngine-brightgreen.svg" style="pointer-events: none;">KapEngine</object></a> <a href="https://github.com/Chaika9/KapMirror/"><object type="image/svg+xml" data="https://img.shields.io/badge/KapMirror-brightgreen.svg" style="pointer-events: none;">KapMirror</object></a></p>
-<p><img src="Images/Sylph.png" alt="" title="Sylph" class="inline"/></p>
-<p>~~ Like UDP, the wind carries information, but sometimes it gets lost.</p>
-<p>Simple, message based, allocation free MMO Scale UDP networking in C++. And without wind magic. <br  />
-Designed for an Epitech project (UDP required)</p>
-<p>Sylph was designed with the <a href="https://en.wikipedia.org/wiki/KISS_principle">KISS Principle</a> in mind. <br  />
-Sylph is fast and extremely reliable, designed for MMO scale Networking. <br  />
-Sylph uses framing, so anything sent will be received the same way. <br  />
-Sylph is raw C++ and can be used in <a class="el" href="namespaceKapEngine.html" title="main namespace">KapEngine</a> too. <br  />
-Thanks to the based version <a href="https://github.com/vis2k/Telepathy">Github</a></p>
-<h2><a class="anchor" id="autotoc_md153"></a>
-What makes Sylph special?</h2>
+<div class="textblock"><p>Due to its simplicity and portability, <a href="https://www.lua.org">Lua</a> became a popular choice for extending applications through a scripting language. The interpreter is available on most platforms, however, depending on globally installed packages is not always reliable (outdated versions, static vs. dynamic library etc.). As compile times of the interpreter are neglible, embedding it as a <b>git submodule</b> can be preferrable. To simplify the Lua integration into <code>cmake</code>-managed projects, this repository offers two simple facilities.</p>
 <ul>
-<li>Concurrent: Sylph uses one thread per connection. It can make heavy use of multi core processors.</li>
-<li>Simple: Sylph wraps all the insanity behind Connect/Send/Disconnect/Tick.</li>
+<li>The <code>CMakeLists.txt</code> contains instructions for building the interpreter as a library. It is intended to be used via <code>cmake</code>'s <code>add_subdirectory</code> command, and sets up the <code>lua::lib</code> target that can be linked against. Public headers are taken care of and are propagated as a usage requirement.</li>
+<li>A git clone of the upstream <a href="https://github.com/lua/lua">sources</a> is configured as a submodule, such that recursive initialization of this repository pulls them in.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md154"></a>
-Credits</h2>
-<p>vis2k &amp; Paul - for <a href="https://github.com/vis2k/Telepathy">Telepathy</a> </p>
+<p>The Lua version pulled in is the current v5.4.1. The library is built as C (not C++, which is possible), with default upstream compiler flags. Whether a shared or static library is built depends on <code>cmake</code>'s <a href="https://cmake.org/cmake/help/latest/variable/BUILD_SHARED_LIBS.html"><code>BUILD_SHARED_LIBS</code></a> flag. No <code>install</code> target is configured and no standalone executable is built, given the intended use case.</p>
+<p>Here's how to use it: </p><div class="fragment"><div class="line">cd path/to/your/project</div>
+<div class="line"> </div>
+<div class="line">git submodule add https://github.com/lubgr/lua-cmake external/lua</div>
+<div class="line"> </div>
+<div class="line"># Necessary to automatically pull the upstream Lua sources:</div>
+<div class="line">git submodule update --init --recursive external/lua</div>
+</div><!-- fragment --><p>In the <code>CMakeLists.txt</code> of your application, add </p><div class="fragment"><div class="line">add_subdirectory(external/lua)</div>
+<div class="line"> </div>
+<div class="line">target_link_libraries(yourTarget PRIVATE lua::lib)</div>
+</div><!-- fragment --><p>That's it. Further integration with a library to facilitate the bindings (e.g. <a href="https://github.com/ThePhD/sol2">sol2</a>) is straightfoward. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

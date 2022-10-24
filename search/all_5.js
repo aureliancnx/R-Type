@@ -10,5 +10,6 @@ var searchData=
   ['eventaction_105',['EventAction',['../classKapEngine_1_1Events_1_1EventAction.html',1,'KapEngine::Events']]],
   ['eventmanager_106',['EventManager',['../classKapEngine_1_1Events_1_1EventManager.html',1,'KapEngine::Events']]],
   ['example_107',['Example',['../classMyLibrary_1_1Example.html',1,'MyLibrary']]],
-  ['extensions_108',['Extensions',['../md_doxygen-awesome-css_docs_extensions.html',1,'']]]
+  ['extensions_108',['Extensions',['../md_doxygen-awesome-css_docs_extensions.html',1,'']]],
+  ['easily_20embed_20lua_20into_20applications_20managed_20with_20cmake_109',['Easily embed lua into applications managed with CMake',['../md_Library_LuaEngine_README.html',1,'']]]
 ];

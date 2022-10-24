@@ -24,12 +24,12 @@ var NAVTREE =
 [
   [ "R-Type", "index.html", [
     [ "Contributor Covenant Code of Conduct", "md_CODE_OF_CONDUCT.html", [
-      [ "R-Type", "index.html#autotoc_md158", null ],
-      [ "How do I build and run this?", "index.html#autotoc_md159", null ],
-      [ "Documentation", "index.html#autotoc_md160", null ],
-      [ "How organize project", "index.html#autotoc_md161", null ],
-      [ "Cheat warning", "index.html#autotoc_md162", null ],
-      [ "Authors", "index.html#autotoc_md163", null ],
+      [ "R-Type", "index.html#autotoc_md159", null ],
+      [ "How do I build and run this?", "index.html#autotoc_md160", null ],
+      [ "Documentation", "index.html#autotoc_md161", null ],
+      [ "How organize project", "index.html#autotoc_md162", null ],
+      [ "Cheat warning", "index.html#autotoc_md163", null ],
+      [ "Authors", "index.html#autotoc_md164", null ],
       [ "Our Pledge", "md_CODE_OF_CONDUCT.html#autotoc_md1", null ],
       [ "Our Standards", "md_CODE_OF_CONDUCT.html#autotoc_md2", null ],
       [ "Enforcement Responsibilities", "md_CODE_OF_CONDUCT.html#autotoc_md3", null ],
@@ -216,12 +216,13 @@ var NAVTREE =
     [ "Readme", "md_Library_KapEngine_Readme.html", [
       [ "KapEngine <a href=\"https://github.com/benji-35/KapEngine/actions?workflow=KapEngine+Build\"><!--lint ignore no-dead-urls--><img src=\"https://github.com/benji-35/KapEngine/workflows/KapEngine%20Build/badge.svg\" alt=\"GitHub Actions status | benji-35/KapEngine\"/></a>", "md_Library_KapEngine_Readme.html#autotoc_md145", null ]
     ] ],
+    [ "Easily embed lua into applications managed with CMake", "md_Library_LuaEngine_README.html", null ],
     [ "README", "md_Packages_KapMirror_README.html", null ],
     [ "README", "md_Packages_SylphTransport_README.html", null ],
     [ "Description", "md_pull_request_template.html", [
-      [ "Type of change", "md_pull_request_template.html#autotoc_md155", null ],
-      [ "How Has This Been Tested?", "md_pull_request_template.html#autotoc_md156", null ],
-      [ "Checklist:", "md_pull_request_template.html#autotoc_md157", null ]
+      [ "Type of change", "md_pull_request_template.html#autotoc_md156", null ],
+      [ "How Has This Been Tested?", "md_pull_request_template.html#autotoc_md157", null ],
+      [ "Checklist:", "md_pull_request_template.html#autotoc_md158", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
@@ -258,7 +259,7 @@ var NAVTREEINDEX =
 "classKapMirror_1_1Sylph_1_1UdpClient.html#ae399044f2e86ecba3154151830529616",
 "classRType_1_1Parser_1_1Parser.html#a81bf47f21f8e1a8479febed6a784cf5f",
 "md_CONTRIBUTING.html#autotoc_md20",
-"structRType_1_1PlayerKeepAlive.html#a30c577170160e5efc3c18a29962e6661"
+"structRType_1_1PlayerKeepAlive.html#a0e84e8a6ceffe8396b78d857cc11131e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

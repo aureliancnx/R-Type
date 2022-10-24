@@ -3,6 +3,7 @@
 #include "KapEngine.hpp"
 
 #include "Animations/ParalaxAnimation.hpp"
+#include "Animations/SpriteAnimation.hpp"
 
 namespace RType
 {

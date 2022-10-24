@@ -137,6 +137,23 @@ void Prefabs::registerBoubouleEnemyPrefab(KapEngine::KEngine& engine) {
         transform.setPosition({0, 0, 0});
         transform.setScale({17 * 3, 18 * 3, 0});
 
+        auto bulletIdle = std::make_shared<SpriteAnimation>(enemy);
+        enemy->addComponent(bulletIdle);
+
+        KapEngine::Time::ETime duration;
+        duration.setSeconds(.5f);
+        bulletIdle->setTiming(duration);
+        bulletIdle->loop(true);
+        bulletIdle->setRect({0, 0, 17.083333333f, 18});
+        bulletIdle->setNbAnimations(12);
+
+        auto animator = std::make_shared<KapEngine::Animator>(enemy);
+        enemy->addComponent(animator);
+
+        animator->addAnim(bulletIdle, "Idle");
+
+        animator->addLink("Idle", "Idle");
+
         return enemy;
     });
 }

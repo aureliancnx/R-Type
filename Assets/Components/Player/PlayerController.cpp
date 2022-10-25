@@ -119,6 +119,7 @@ void PlayerController::shoot() {
         std::shared_ptr<KapEngine::GameObject> bullet;
         getGameObject().getEngine().getPrefabManager()->instantiatePrefab("Bullet", scene, bullet);
         bullet->getComponent<KapEngine::Transform>().setPosition(pos);
+        bullet->setName("Bullet Player");
     } else if (isClient() && isLocalAuthority) {
         PlayerShootMessage message;
         message.networkId = getNetworkId();

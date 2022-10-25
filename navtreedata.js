@@ -24,12 +24,12 @@ var NAVTREE =
 [
   [ "R-Type", "index.html", [
     [ "Contributor Covenant Code of Conduct", "md_CODE_OF_CONDUCT.html", [
-      [ "R-Type", "index.html#autotoc_md159", null ],
-      [ "How do I build and run this?", "index.html#autotoc_md160", null ],
-      [ "Documentation", "index.html#autotoc_md161", null ],
-      [ "How organize project", "index.html#autotoc_md162", null ],
-      [ "Cheat warning", "index.html#autotoc_md163", null ],
-      [ "Authors", "index.html#autotoc_md164", null ],
+      [ "R-Type", "index.html#autotoc_md161", null ],
+      [ "How do I build and run this?", "index.html#autotoc_md162", null ],
+      [ "Documentation", "index.html#autotoc_md163", null ],
+      [ "How organize project", "index.html#autotoc_md164", null ],
+      [ "Cheat warning", "index.html#autotoc_md165", null ],
+      [ "Authors", "index.html#autotoc_md166", null ],
       [ "Our Pledge", "md_CODE_OF_CONDUCT.html#autotoc_md1", null ],
       [ "Our Standards", "md_CODE_OF_CONDUCT.html#autotoc_md2", null ],
       [ "Enforcement Responsibilities", "md_CODE_OF_CONDUCT.html#autotoc_md3", null ],
@@ -218,11 +218,14 @@ var NAVTREE =
     ] ],
     [ "Easily embed lua into applications managed with CMake", "md_Library_LuaEngine_README.html", null ],
     [ "README", "md_Packages_KapMirror_README.html", null ],
+    [ "KapUi [V 0.1]", "md_Packages_KapUI_README.html", [
+      [ "Documentation", "md_Packages_KapUI_README.html#autotoc_md154", null ]
+    ] ],
     [ "README", "md_Packages_SylphTransport_README.html", null ],
     [ "Description", "md_pull_request_template.html", [
-      [ "Type of change", "md_pull_request_template.html#autotoc_md156", null ],
-      [ "How Has This Been Tested?", "md_pull_request_template.html#autotoc_md157", null ],
-      [ "Checklist:", "md_pull_request_template.html#autotoc_md158", null ]
+      [ "Type of change", "md_pull_request_template.html#autotoc_md158", null ],
+      [ "How Has This Been Tested?", "md_pull_request_template.html#autotoc_md159", null ],
+      [ "Checklist:", "md_pull_request_template.html#autotoc_md160", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
@@ -251,15 +254,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"classKapEngine_1_1Component.html#ad5f400f3fb831b23cc92f8cf2acad628",
-"classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65ae230e926b5e25d0b42f254668b61f7f1",
-"classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a1bcb0e53c95c1c2b14e0794169de2e8a",
-"classKapEngine_1_1Time_1_1ETime.html#a35e510489726efbf1436f32dde0ccbfa",
-"classKapMirror_1_1ArraySegment.html#ac02bdc04816132760e4965fa78c002df",
-"classKapMirror_1_1Sylph_1_1UdpClient.html#ae399044f2e86ecba3154151830529616",
-"classRType_1_1Parser_1_1Parser.html#a5ad5a7360a6161d0df3b015356007096",
-"md_CONTRIBUTING.html#autotoc_md19",
-"structRType_1_1PlayerKeepAlive.html"
+"classKapEngine_1_1Component.html#ace3517e90f834811b3db4f3e372eb734",
+"classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65adb55f9e69962987269191f1b3de7f29e",
+"classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a1ab506c0ca9d17b1fed8080ec1aa2668",
+"classKapEngine_1_1Time_1_1ETime.html#a1b424d7742e32b153e5ffe98e4333f89",
+"classKapMirror_1_1ArraySegment.html#a7aebc62c5e5ba7ac4360523cf6c0d72b",
+"classKapMirror_1_1Sylph_1_1UdpClient.html#a453350579fa9a9dba53c233be342dc2e",
+"classRType_1_1ParalaxAnimation.html#a0848ee0a031d9c4b1a60ba25e09cbb0a",
+"md_CODE_OF_CONDUCT.html#autotoc_md11",
+"structKapMirror_1_1Telepathy_1_1ClientConnection.html#a290decfd879030ebb172946b227ae380"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

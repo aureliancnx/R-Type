@@ -67,6 +67,7 @@ var annotated_dup =
       [ "Bullet", "classRType_1_1Bullet.html", "classRType_1_1Bullet" ],
       [ "ChangeKey", "classRType_1_1ChangeKey.html", "classRType_1_1ChangeKey" ],
       [ "GameManager", "classRType_1_1GameManager.html", "classRType_1_1GameManager" ],
+      [ "GameMenuManager", "classRType_1_1GameMenuManager.html", "classRType_1_1GameMenuManager" ],
       [ "HowToPlayMenu", "classRType_1_1HowToPlayMenu.html", "classRType_1_1HowToPlayMenu" ],
       [ "KeyboardMenu", "classRType_1_1KeyboardMenu.html", "classRType_1_1KeyboardMenu" ],
       [ "KeySelector", "classRType_1_1KeySelector.html", "classRType_1_1KeySelector" ],

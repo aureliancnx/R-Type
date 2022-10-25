@@ -5,8 +5,7 @@
 #include "SettingPlayerMenu.hpp"
 
 #include "KapEngineUi.hpp"
-#include "Button/Button.hpp"
-#include "InputField/Inputfield.hpp"
+#include "KapUI/KapUI.hpp"
 #include "Animations/SpriteAnimation.hpp"
 #include "Player/PlayerController.hpp"
 #include "Player/PlayerSkin.hpp"

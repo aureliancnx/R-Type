@@ -44,6 +44,44 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
         transform.setPosition({0, 0, 0});
         transform.setScale({79, 35, 0});
 
+        auto shipIdle = std::make_shared<SpriteAnimation>(player);
+        player->addComponent(shipIdle);
+
+        KapEngine::Time::ETime duration;
+        duration.setSeconds(.1f);
+        shipIdle->setTiming(duration);
+        shipIdle->setRect({263 * 2, 0, 263, 116});
+        shipIdle->setNbAnimations(1);
+
+        auto shipUp = std::make_shared<SpriteAnimation>(player);
+        player->addComponent(shipUp);
+
+        shipUp->setTiming(duration);
+        shipUp->setRect({263 * 4, 0, 263, 116});
+        shipUp->setNbAnimations(1);
+
+        auto shipDown = std::make_shared<SpriteAnimation>(player);
+        player->addComponent(shipDown);
+
+        shipDown->setTiming(duration);
+        shipDown->setRect({263 * 0, 0, 263, 116});
+        shipDown->setNbAnimations(1);
+
+        auto animator = std::make_shared<KapEngine::Animator>(player);
+        player->addComponent(animator);
+
+        animator->addAnim(shipIdle, "Idle");
+        animator->addAnim(shipUp, "Up");
+        animator->addAnim(shipDown, "Down");
+
+        animator->addLink("Idle", "Idle", "IdleToIdle");
+
+        animator->addLink("Idle", "Up", "IdleToUp");
+        animator->addLink("Up", "Idle", "UpToIdle");
+
+        animator->addLink("Idle", "Down", "IdleToDown");
+        animator->addLink("Down", "Idle", "DownToIdle");
+
         return player;
     });
 }

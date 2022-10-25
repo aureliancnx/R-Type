@@ -8,10 +8,12 @@
 #include "KapEngine.hpp"
 #include "KapEngineDebug.hpp"
 #include "KapEngineUi.hpp"
-namespace RType {
-    class CampaignGenerator : public KapEngine::Component {
+namespace RType
+{
+    class CampaignGenerator : public KapEngine::Component
+    {
 
-    public:
+      public:
         CampaignGenerator(std::shared_ptr<KapEngine::GameObject> go);
 
         ~CampaignGenerator();
@@ -20,12 +22,12 @@ namespace RType {
 
         void onAwake() override;
 
-        std::shared_ptr<KapEngine::GameObject> spawnMob(std::string const& mobName, KapEngine::SceneManagement::Scene &scene);
+        std::shared_ptr<KapEngine::GameObject> spawnMob(std::string const &mobName, KapEngine::SceneManagement::Scene &scene);
 
-    private:
+      private:
         std::vector<int> positionYEnemy;
         int Id;
         int delay;
     };
-}
-#endif //RTYPE_CAMPAIGNGENERATOR_HPP
+} // namespace RType
+#endif // RTYPE_CAMPAIGNGENERATOR_HPP

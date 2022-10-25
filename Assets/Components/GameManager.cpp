@@ -78,7 +78,7 @@ void GameManager::registerMenus() {
     auto mainMenu = std::make_shared<MainMenu>(scene);
     menuManager.registerMenu("MainMenu", mainMenu);
 
-    auto soloMenu = std::make_shared<SoloMenu>(scene);
+    auto soloMenu = std::make_shared<SoloMenu>(scene, *this);
     menuManager.registerMenu("SoloMenu", soloMenu);
 
     auto multiMenu = std::make_shared<MultiMenu>(scene, *this);
@@ -146,6 +146,13 @@ void GameManager::initMultiPlayer(bool isServer) {
     networkManager = std::make_shared<RtypeNetworkManager>(networkManagerObject, isServer);
     // networkManager->setTransport(std::make_shared<KapMirror::SylphTransport>());
     networkManagerObject->addComponent(networkManager);
+}
+
+// TODO: Move this to a dedicated class
+void GameManager::startCampaign() {
+    auto &scene = engine->getSceneManager()->getScene("SinglePlayer");
+
+
 }
 
 // TODO: Move this to a dedicated class

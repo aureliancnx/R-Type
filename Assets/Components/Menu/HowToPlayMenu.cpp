@@ -5,8 +5,7 @@
 #include "HowToPlayMenu.hpp"
 
 #include "KapEngineUi.hpp"
-#include "Button/Button.hpp"
-#include "InputField/Inputfield.hpp"
+#include "KapUI/KapUI.hpp"
 
 //using namespace KapEngine;
 

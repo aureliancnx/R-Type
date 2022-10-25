@@ -8,7 +8,7 @@
 #include "GameMenuManager.hpp"
 
 #include "KapEngineUi.hpp"
-#include "Button.hpp"
+#include "KapUI/KapUI.hpp"
 
 RType::GameMenuManager::GameMenuManager(std::shared_ptr<GameObject> go) : Component(go, "GameMenuManager") {
     addRequireComponent("Canvas");

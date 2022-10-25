@@ -20,4 +20,5 @@
 	url = git@github.com:lubgr/lua-cmake.git
 [submodule "Packages/KapUI"]
 	path = Packages/KapUI
+	branch = main
 	url = git@github.com:benji-35/KapUi.git

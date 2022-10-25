@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"classRType_1_1Parser_1_1Parser.html#a5ad5a7360a6161d0df3b015356007096":[27,0,3,0,1,3],
 "classRType_1_1Parser_1_1Parser.html#a81bf47f21f8e1a8479febed6a784cf5f":[27,0,3,0,1,7],
 "classRType_1_1Parser_1_1Parser.html#acce02312339d9dc17b91d72cb58ba6d8":[27,0,3,0,1,6],
 "classRType_1_1Parser_1_1Parser.html#acd0d089fc0bd5ee6bfedd09933379f56":[27,0,3,0,1,5],
@@ -60,7 +61,7 @@ var NAVTREEINDEX7 =
 "classRType_1_1ShipEnemy.html#af7fbd593bf9e13f05eed15612aa17f52":[27,0,3,25,7],
 "classRType_1_1SoloMenu.html":[27,0,3,26],
 "classRType_1_1SoloMenu.html#a02f0a55bdecae39c85911c4dd97968a8":[27,0,3,26,1],
-"classRType_1_1SoloMenu.html#a88898c8707942aeb0804f072b07e2d5b":[27,0,3,26,0],
+"classRType_1_1SoloMenu.html#a2787b933b1f4c21b0d046a795fc58a54":[27,0,3,26,0],
 "classRType_1_1SoloMenu.html#ad98325336db647c0308366e6dd47b30d":[27,0,3,26,2],
 "classRType_1_1SpriteAnimation.html":[27,0,3,27],
 "classRType_1_1SpriteAnimation.html#a1f06bf1073469cf0d649ac4ca2485c21":[27,0,3,27,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "md_CONTRIBUTING.html#autotoc_md15":[1,2],
 "md_CONTRIBUTING.html#autotoc_md16":[1,2,0],
 "md_CONTRIBUTING.html#autotoc_md17":[1,2,1],
-"md_CONTRIBUTING.html#autotoc_md18":[1,2,1,0],
-"md_CONTRIBUTING.html#autotoc_md19":[1,2,1,1]
+"md_CONTRIBUTING.html#autotoc_md18":[1,2,1,0]
 };

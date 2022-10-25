@@ -5,5 +5,6 @@ var classRType_1_1GameManager =
     [ "getNetworkManager", "classRType_1_1GameManager.html#ae9375e764cab519ef7b1fda50d947690", null ],
     [ "launchGame", "classRType_1_1GameManager.html#a289665674fd8c3e0880692e32b4e99db", null ],
     [ "launchServer", "classRType_1_1GameManager.html#ad22de7d33d5bfafc1d7d354fd4ee8210", null ],
+    [ "startCampaign", "classRType_1_1GameManager.html#adc36819f915e920abee64182143eb262", null ],
     [ "startLocalMultiPlayer", "classRType_1_1GameManager.html#a79ab793fdad1d0fb235afd558c78dadb", null ]
 ];

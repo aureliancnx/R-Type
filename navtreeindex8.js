@@ -1,5 +1,6 @@
 var NAVTREEINDEX8 =
 {
+"md_CONTRIBUTING.html#autotoc_md19":[1,2,1,1],
 "md_CONTRIBUTING.html#autotoc_md20":[1,2,2],
 "md_CONTRIBUTING.html#autotoc_md21":[1,2,2,0],
 "md_CONTRIBUTING.html#autotoc_md22":[1,2,2,1],
@@ -147,8 +148,8 @@ var NAVTREEINDEX8 =
 "modules.html":[25],
 "namespaceKapEngine.html":[27,0,0],
 "namespaceKapEngine.html":[26,0,0],
-"namespaceKapEngine_1_1Errors.html":[27,0,0,0],
 "namespaceKapEngine_1_1Errors.html":[26,0,0,0],
+"namespaceKapEngine_1_1Errors.html":[27,0,0,0],
 "namespaceKapEngine_1_1Events.html":[26,0,0,1],
 "namespaceKapEngine_1_1Events.html":[27,0,0,1],
 "namespaceKapEngine_1_1Graphical.html":[27,0,0,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX8 =
 "structRType_1_1PlayerInputMessage.html#a4159eea4dcced760aa30b88ca6b26af5":[27,0,3,17,0],
 "structRType_1_1PlayerInputMessage.html#a9225b56f77bdafd3af84a8145ba6f2a7":[27,0,3,17,2],
 "structRType_1_1PlayerInputMessage.html#aab47971dbd93b95bf2ccd64d192b41bc":[27,0,3,17,4],
-"structRType_1_1PlayerInputMessage.html#af3d6d0d4a044c6ac5a0582fe1aab734d":[27,0,3,17,3],
-"structRType_1_1PlayerKeepAlive.html":[27,0,3,18]
+"structRType_1_1PlayerInputMessage.html#af3d6d0d4a044c6ac5a0582fe1aab734d":[27,0,3,17,3]
 };

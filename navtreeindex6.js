@@ -179,9 +179,10 @@ var NAVTREEINDEX6 =
 "classRType_1_1GameManager.html":[27,0,3,4],
 "classRType_1_1GameManager.html#a289665674fd8c3e0880692e32b4e99db":[27,0,3,4,3],
 "classRType_1_1GameManager.html#a2c5e42d991abc79789abb0e73c74173b":[27,0,3,4,0],
-"classRType_1_1GameManager.html#a79ab793fdad1d0fb235afd558c78dadb":[27,0,3,4,5],
+"classRType_1_1GameManager.html#a79ab793fdad1d0fb235afd558c78dadb":[27,0,3,4,6],
 "classRType_1_1GameManager.html#a97084bc427fc6a9ce22aa089f8ac6ce4":[27,0,3,4,1],
 "classRType_1_1GameManager.html#ad22de7d33d5bfafc1d7d354fd4ee8210":[27,0,3,4,4],
+"classRType_1_1GameManager.html#adc36819f915e920abee64182143eb262":[27,0,3,4,5],
 "classRType_1_1GameManager.html#ae9375e764cab519ef7b1fda50d947690":[27,0,3,4,2],
 "classRType_1_1HowToPlayMenu.html":[27,0,3,5],
 "classRType_1_1HowToPlayMenu.html#a46276a95b4fb090196b806bd3e603d0a":[27,0,3,5,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "classRType_1_1Parser_1_1Map.html#ab59dc3636038461dc56498e60dae4b0a":[27,0,3,0,0,1],
 "classRType_1_1Parser_1_1Parser.html":[27,0,3,0,1],
 "classRType_1_1Parser_1_1Parser.html#a12fa9f9a6a52b36009a44eaaf10894f1":[27,0,3,0,1,2],
-"classRType_1_1Parser_1_1Parser.html#a15ab0ada12922f3e871d467768ba5a1f":[27,0,3,0,1,4],
-"classRType_1_1Parser_1_1Parser.html#a5ad5a7360a6161d0df3b015356007096":[27,0,3,0,1,3]
+"classRType_1_1Parser_1_1Parser.html#a15ab0ada12922f3e871d467768ba5a1f":[27,0,3,0,1,4]
 };

@@ -7,9 +7,10 @@ namespace RType
 {
     class SoloMenu : public Menu
     {
-    private:
+      private:
         GameManager &gameManager;
-    public:
+
+      public:
         SoloMenu(KapEngine::SceneManagement::Scene &_scene, GameManager &_gameManager);
         ~SoloMenu() = default;
 

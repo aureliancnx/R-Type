@@ -18,3 +18,6 @@
 	path = Library/LuaEngine
 	branch = master
 	url = git@github.com:lubgr/lua-cmake.git
+[submodule "Packages/KapUI"]
+	path = Packages/KapUI
+	url = git@github.com:benji-35/KapUi.git

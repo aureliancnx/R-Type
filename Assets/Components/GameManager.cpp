@@ -142,6 +142,24 @@ void GameManager::initSinglePlayer() {
 void GameManager::initMultiPlayer(bool isServer) {
     auto scene = engine->getSceneManager()->createScene("MultiPlayer");
 
+    std::shared_ptr<KapEngine::GameObject> paralaxGalaxy;
+    if (!engine->getPrefabManager()->instantiatePrefab("ParalaxGalaxy", *scene, paralaxGalaxy)) {
+        KAP_DEBUG_ERROR("Failed to instantiate paralax prefab");
+        return;
+    }
+
+    auto &transformPG = paralaxGalaxy->getComponent<KapEngine::Transform>();
+    transformPG.setPosition({0, 0, 0});
+
+    std::shared_ptr<KapEngine::GameObject> paralaxStars;
+    if (!engine->getPrefabManager()->instantiatePrefab("ParalaxStars", *scene, paralaxStars)) {
+        KAP_DEBUG_ERROR("Failed to instantiate paralax prefab");
+        return;
+    }
+
+    auto &transformPS = paralaxStars->getComponent<KapEngine::Transform>();
+    transformPS.setPosition({0, 0, 0});
+
     auto networkManagerObject = scene->createGameObject("NetworkManager");
     networkManager = std::make_shared<RtypeNetworkManager>(networkManagerObject, isServer);
     // networkManager->setTransport(std::make_shared<KapMirror::SylphTransport>());

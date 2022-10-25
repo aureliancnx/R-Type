@@ -37,6 +37,19 @@ void PlayerController::onUpdate() {
         }
     }
 
+    if (getInput().getKeyDown(upKey)) {
+        getGameObject().getComponent<KapEngine::Animator>().setTrigger("IdleToUp");
+    }
+    if (getInput().getKeyUp(upKey)) {
+        getGameObject().getComponent<KapEngine::Animator>().setTrigger("UpToIdle");
+    }
+    if (getInput().getKeyDown(downKey)) {
+        getGameObject().getComponent<KapEngine::Animator>().setTrigger("IdleToDown");
+    }
+    if (getInput().getKeyUp(downKey)) {
+        getGameObject().getComponent<KapEngine::Animator>().setTrigger("DownToIdle");
+    }
+
     if (getInput().getKeyDown(shootKey)) {
         playShootSound();
         shoot();

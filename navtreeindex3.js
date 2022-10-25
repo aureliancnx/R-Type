@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a1a6e33e7d145c1055b727d0e035c98fc":[28,0,0,2,0,2,12],
 "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a1ab506c0ca9d17b1fed8080ec1aa2668":[28,0,0,2,0,2,2],
 "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a1aee7c9a6ce3d93d4f5b02d2c803c863":[28,0,0,2,0,2,46],
 "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a1bcb0e53c95c1c2b14e0794169de2e8a":[28,0,0,2,0,2,64],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "classKapEngine_1_1Time_1_1EClock.html#abce3f99dd03973163fe7dcffb5122a15":[28,0,0,5,0,2],
 "classKapEngine_1_1Time_1_1ETime.html":[28,0,0,5,1],
 "classKapEngine_1_1Time_1_1ETime.html#a03f94a700debe13b0049eff43fa03eed":[28,0,0,5,1,11],
-"classKapEngine_1_1Time_1_1ETime.html#a0d119f57a38543afc6e998cd350d63d3":[28,0,0,5,1,1],
-"classKapEngine_1_1Time_1_1ETime.html#a19366e1bde6792ca3cf8313b5dfb5415":[28,0,0,5,1,3]
+"classKapEngine_1_1Time_1_1ETime.html#a0d119f57a38543afc6e998cd350d63d3":[28,0,0,5,1,1]
 };

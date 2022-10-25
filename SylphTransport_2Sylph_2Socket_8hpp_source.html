@@ -92,60 +92,67 @@ $(document).ready(function(){initNavTree('SylphTransport_2Sylph_2Socket_8hpp_sou
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Internal.hpp&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Address.hpp&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;KapMirror/Runtime/ArraySegment.hpp&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>KapMirror {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>Sylph {</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classKapMirror_1_1Sylph_1_1Socket.html">   12</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html">Socket</a> {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        std::shared_ptr&lt;Address&gt; address;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">int</span> socket_fd;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html">Socket</a>(std::shared_ptr&lt;Address&gt; _address);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html">Socket</a>(std::shared_ptr&lt;Address&gt; _address, SOCKET _socket_fd);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        ~<a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html">Socket</a>();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html#a75ee749264ccbcfc4dfbf5442e55dcb8">close</a>();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html#ace1da4f860ac0af46d702cb5fc875a51">bind</a>();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html#af876dbd03caba60d16306a9b2a784500">listen</a>();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html#a6b6e12fe65a4a47426e4dcfee7a37461">connect</a>();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        std::shared_ptr&lt;Socket&gt; <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html#afa9c64e0890aae0d464fcdbde7ab544b">accept</a>();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordtype">void</span> setBlocking(<span class="keywordtype">bool</span> blocking);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html#aa9b0465662bf7974ba0b16fd9feb6f34">send</a>(<span class="keywordtype">byte</span>* buffer, <span class="keywordtype">int</span> size, uint32_t flags = 0);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html#acae3dc4d373277b7c05fe08790518102">receive</a>(<span class="keywordtype">byte</span>* buffer, <span class="keywordtype">int</span> size, uint32_t flags = 0);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">bool</span> isInvalid() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">bool</span> isReadable() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">bool</span> isWritable() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keyword">static</span> std::shared_ptr&lt;Socket&gt; createSocket(std::shared_ptr&lt;Address&gt; address);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keyword">static</span> std::shared_ptr&lt;Socket&gt; createSocket(std::shared_ptr&lt;Address&gt; address, SOCKET socket_fd);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    };</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>KapMirror {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>Sylph {</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classKapMirror_1_1Sylph_1_1Socket.html">   11</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html">Socket</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        std::shared_ptr&lt;Address&gt; address;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">int</span> socket_fd;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html">Socket</a>(std::shared_ptr&lt;Address&gt; _address);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html">Socket</a>(std::shared_ptr&lt;Address&gt; _address, SOCKET _socket_fd);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        ~<a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html">Socket</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        std::shared_ptr&lt;Address&gt; getAddress() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html#a75ee749264ccbcfc4dfbf5442e55dcb8">close</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html#ace1da4f860ac0af46d702cb5fc875a51">bind</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html#af876dbd03caba60d16306a9b2a784500">listen</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html#a6b6e12fe65a4a47426e4dcfee7a37461">connect</a>();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        std::shared_ptr&lt;Socket&gt; <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html#afa9c64e0890aae0d464fcdbde7ab544b">accept</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">void</span> setBlocking(<span class="keywordtype">bool</span> blocking);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html#aa9b0465662bf7974ba0b16fd9feb6f34">send</a>(<span class="keywordtype">byte</span>* buffer, <span class="keywordtype">int</span> size, uint32_t flags = 0);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html#a3bd0f397fbb824054972d4c02c43dcbb">sendTo</a>(<span class="keywordtype">byte</span>* buffer, <span class="keywordtype">int</span> size, std::shared_ptr&lt;Address&gt; address, uint32_t flags = 0);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html#acae3dc4d373277b7c05fe08790518102">receive</a>(<span class="keywordtype">byte</span>* buffer, <span class="keywordtype">int</span> size, uint32_t flags = 0);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classKapMirror_1_1Sylph_1_1Socket.html#a202a8607ad26fb0f94892ad7185df814">receiveFrom</a>(<span class="keywordtype">byte</span>* buffer, <span class="keywordtype">int</span> size, std::shared_ptr&lt;Address&gt; address, uint32_t flags = 0);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordtype">bool</span> isInvalid() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordtype">bool</span> isReadable() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordtype">bool</span> isWritable() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keyword">static</span> std::shared_ptr&lt;Socket&gt; createSocket(std::shared_ptr&lt;Address&gt; address);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keyword">static</span> std::shared_ptr&lt;Socket&gt; createSocket(std::shared_ptr&lt;Address&gt; address, SOCKET socket_fd);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    };</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html_ace1da4f860ac0af46d702cb5fc875a51"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html#ace1da4f860ac0af46d702cb5fc875a51">KapMirror::Sylph::Socket::bind</a></div><div class="ttdeci">void bind()</div><div class="ttdoc">Bind the socket.</div><div class="ttdef"><b>Definition:</b> Socket.cpp:57</div></div>
-<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html_aa9b0465662bf7974ba0b16fd9feb6f34"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html#aa9b0465662bf7974ba0b16fd9feb6f34">KapMirror::Sylph::Socket::send</a></div><div class="ttdeci">void send(byte *buffer, int size, uint32_t flags=0)</div><div class="ttdoc">Send data to remote.</div><div class="ttdef"><b>Definition:</b> Socket.cpp:110</div></div>
-<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html_acae3dc4d373277b7c05fe08790518102"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html#acae3dc4d373277b7c05fe08790518102">KapMirror::Sylph::Socket::receive</a></div><div class="ttdeci">int receive(byte *buffer, int size, uint32_t flags=0)</div><div class="ttdoc">Receive data from remote.</div><div class="ttdef"><b>Definition:</b> Socket.cpp:121</div></div>
-<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html_a6b6e12fe65a4a47426e4dcfee7a37461"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html#a6b6e12fe65a4a47426e4dcfee7a37461">KapMirror::Sylph::Socket::connect</a></div><div class="ttdeci">void connect()</div><div class="ttdoc">Connect to remote.</div><div class="ttdef"><b>Definition:</b> Socket.cpp:74</div></div>
-<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html">KapMirror::Sylph::Socket</a></div><div class="ttdef"><b>Definition:</b> Socket.hpp:12</div></div>
-<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html_afa9c64e0890aae0d464fcdbde7ab544b"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html#afa9c64e0890aae0d464fcdbde7ab544b">KapMirror::Sylph::Socket::accept</a></div><div class="ttdeci">std::shared_ptr&lt; Socket &gt; accept()</div><div class="ttdoc">Accept an incoming connection.</div><div class="ttdef"><b>Definition:</b> Socket.cpp:90</div></div>
-<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html_a75ee749264ccbcfc4dfbf5442e55dcb8"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html#a75ee749264ccbcfc4dfbf5442e55dcb8">KapMirror::Sylph::Socket::close</a></div><div class="ttdeci">void close()</div><div class="ttdoc">Close the socket.</div><div class="ttdef"><b>Definition:</b> Socket.cpp:45</div></div>
-<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html_af876dbd03caba60d16306a9b2a784500"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html#af876dbd03caba60d16306a9b2a784500">KapMirror::Sylph::Socket::listen</a></div><div class="ttdeci">void listen()</div><div class="ttdoc">Listen for incoming connections.</div><div class="ttdef"><b>Definition:</b> Socket.cpp:66</div></div>
+<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html_ace1da4f860ac0af46d702cb5fc875a51"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html#ace1da4f860ac0af46d702cb5fc875a51">KapMirror::Sylph::Socket::bind</a></div><div class="ttdeci">void bind()</div><div class="ttdoc">Bind the socket.</div><div class="ttdef"><b>Definition:</b> Socket.cpp:62</div></div>
+<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html_a3bd0f397fbb824054972d4c02c43dcbb"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html#a3bd0f397fbb824054972d4c02c43dcbb">KapMirror::Sylph::Socket::sendTo</a></div><div class="ttdeci">void sendTo(byte *buffer, int size, std::shared_ptr&lt; Address &gt; address, uint32_t flags=0)</div><div class="ttdoc">Send data to remote.</div><div class="ttdef"><b>Definition:</b> Socket.cpp:126</div></div>
+<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html_a202a8607ad26fb0f94892ad7185df814"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html#a202a8607ad26fb0f94892ad7185df814">KapMirror::Sylph::Socket::receiveFrom</a></div><div class="ttdeci">int receiveFrom(byte *buffer, int size, std::shared_ptr&lt; Address &gt; address, uint32_t flags=0)</div><div class="ttdoc">Receive data from remote.</div><div class="ttdef"><b>Definition:</b> Socket.cpp:150</div></div>
+<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html_aa9b0465662bf7974ba0b16fd9feb6f34"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html#aa9b0465662bf7974ba0b16fd9feb6f34">KapMirror::Sylph::Socket::send</a></div><div class="ttdeci">void send(byte *buffer, int size, uint32_t flags=0)</div><div class="ttdoc">Send data to remote.</div><div class="ttdef"><b>Definition:</b> Socket.cpp:115</div></div>
+<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html_acae3dc4d373277b7c05fe08790518102"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html#acae3dc4d373277b7c05fe08790518102">KapMirror::Sylph::Socket::receive</a></div><div class="ttdeci">int receive(byte *buffer, int size, uint32_t flags=0)</div><div class="ttdoc">Receive data from remote.</div><div class="ttdef"><b>Definition:</b> Socket.cpp:138</div></div>
+<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html_a6b6e12fe65a4a47426e4dcfee7a37461"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html#a6b6e12fe65a4a47426e4dcfee7a37461">KapMirror::Sylph::Socket::connect</a></div><div class="ttdeci">void connect()</div><div class="ttdoc">Connect to remote.</div><div class="ttdef"><b>Definition:</b> Socket.cpp:79</div></div>
+<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html">KapMirror::Sylph::Socket</a></div><div class="ttdef"><b>Definition:</b> Socket.hpp:11</div></div>
+<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html_afa9c64e0890aae0d464fcdbde7ab544b"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html#afa9c64e0890aae0d464fcdbde7ab544b">KapMirror::Sylph::Socket::accept</a></div><div class="ttdeci">std::shared_ptr&lt; Socket &gt; accept()</div><div class="ttdoc">Accept an incoming connection.</div><div class="ttdef"><b>Definition:</b> Socket.cpp:95</div></div>
+<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html_a75ee749264ccbcfc4dfbf5442e55dcb8"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html#a75ee749264ccbcfc4dfbf5442e55dcb8">KapMirror::Sylph::Socket::close</a></div><div class="ttdeci">void close()</div><div class="ttdoc">Close the socket.</div><div class="ttdef"><b>Definition:</b> Socket.cpp:50</div></div>
+<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Socket_html_af876dbd03caba60d16306a9b2a784500"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Socket.html#af876dbd03caba60d16306a9b2a784500">KapMirror::Sylph::Socket::listen</a></div><div class="ttdeci">void listen()</div><div class="ttdoc">Listen for incoming connections.</div><div class="ttdef"><b>Definition:</b> Socket.cpp:71</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

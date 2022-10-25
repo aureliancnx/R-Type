@@ -103,12 +103,6 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Sylph_1_1UdpClient.html#a48cc5f9ce547f5b0505fb8395ac93d32">close</a> ()</td></tr>
 <tr class="memdesc:a48cc5f9ce547f5b0505fb8395ac93d32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the connection. <br /></td></tr>
 <tr class="separator:a48cc5f9ce547f5b0505fb8395ac93d32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a103599d8a7b92e13f2d348274a2cea7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Sylph_1_1UdpClient.html#a103599d8a7b92e13f2d348274a2cea7c">connect</a> ()</td></tr>
-<tr class="memdesc:a103599d8a7b92e13f2d348274a2cea7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to a server.  <a href="classKapMirror_1_1Sylph_1_1UdpClient.html#a103599d8a7b92e13f2d348274a2cea7c">More...</a><br /></td></tr>
-<tr class="separator:a103599d8a7b92e13f2d348274a2cea7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac43378c6f479a9b71360b97fb08ddb5c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Sylph_1_1UdpClient.html#ac43378c6f479a9b71360b97fb08ddb5c">connected</a> () const</td></tr>
-<tr class="memdesc:ac43378c6f479a9b71360b97fb08ddb5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the client connected to a server.  <a href="classKapMirror_1_1Sylph_1_1UdpClient.html#ac43378c6f479a9b71360b97fb08ddb5c">More...</a><br /></td></tr>
-<tr class="separator:ac43378c6f479a9b71360b97fb08ddb5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb8fc5173e34276e2fa6ff95ff384d20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Sylph_1_1UdpClient.html#abb8fc5173e34276e2fa6ff95ff384d20">send</a> (byte *buffer, int size)</td></tr>
 <tr class="memdesc:abb8fc5173e34276e2fa6ff95ff384d20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to the server.  <a href="classKapMirror_1_1Sylph_1_1UdpClient.html#abb8fc5173e34276e2fa6ff95ff384d20">More...</a><br /></td></tr>
 <tr class="separator:abb8fc5173e34276e2fa6ff95ff384d20"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -126,66 +120,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setBlocking</b> (bool
 <tr class="separator:aac77e28850efac2d903ba59c1422e2df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a103599d8a7b92e13f2d348274a2cea7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a103599d8a7b92e13f2d348274a2cea7c">&#9670;&nbsp;</a></span>connect()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void UdpClient::connect </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Connect to a server. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">host</td><td>Hostname or IP address </td></tr>
-    <tr><td class="paramname">port</td><td>Port number</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classKapMirror_1_1Sylph_1_1SocketException.html">SocketException</a></td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ac43378c6f479a9b71360b97fb08ddb5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac43378c6f479a9b71360b97fb08ddb5c">&#9670;&nbsp;</a></span>connected()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool KapMirror::Sylph::UdpClient::connected </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Is the client connected to a server. </p>
-<dl class="section return"><dt>Returns</dt><dd>True if connected </dd></dl>
-
-</div>
-</div>
 <a id="a8008fd43be19ba2ad37ff3689e87d52c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8008fd43be19ba2ad37ff3689e87d52c">&#9670;&nbsp;</a></span>receive()</h2>
 
@@ -226,7 +160,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setBlocking</b> (bool
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Connection is closed </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classKapMirror_1_1Sylph_1_1Connection.html">Connection</a> is closed </dd></dl>
 
 </div>
 </div>

@@ -1,14 +1,8 @@
 var group__Components =
 [
-    [ "KapMirror", "md_Packages_KapMirror_README.html#autotoc_md149", null ],
-    [ "Architecture", "md_Packages_KapMirror_README.html#autotoc_md150", null ],
-    [ "Getting Started", "md_Packages_KapMirror_README.html#autotoc_md151", null ],
-    [ "Low Level Transports", "md_Packages_KapMirror_README.html#autotoc_md152", null ],
-    [ "What makes Sylph special?", "md_Packages_SylphTransport_README.html#autotoc_md155", null ],
-    [ "Credits", "md_Packages_SylphTransport_README.html#autotoc_md156", null ],
+    [ "What makes Sylph special?", "md_Packages_SylphTransport_README.html#autotoc_md183", null ],
+    [ "Credits", "md_Packages_SylphTransport_README.html#autotoc_md184", null ],
     [ "Animation", "classKapEngine_1_1Animation.html", [
-      [ "Game Example", "md_Library_KapEngine_Readme.html#autotoc_md146", null ],
-      [ "Documentation", "md_Library_KapEngine_Readme.html#autotoc_md147", null ],
       [ "Animation", "classKapEngine_1_1Animation.html#a846f1bc3cb433a52fb121776bfae15c6", null ],
       [ "~Animation", "classKapEngine_1_1Animation.html#a814a78bdaf817c4b5426a40f816381aa", null ],
       [ "getOnEnd", "classKapEngine_1_1Animation.html#a53bd8e97e081715de14962af43ab7dce", null ],

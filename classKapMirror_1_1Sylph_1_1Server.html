@@ -94,42 +94,33 @@ $(document).ready(function(){initNavTree('classKapMirror_1_1Sylph_1_1Server.html
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa6853b11609f8f153ddd84760915f489"><td class="memItemLeft" align="right" valign="top"><a id="aa6853b11609f8f153ddd84760915f489"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Server</b> (int _maxMessageSize=1024)</td></tr>
-<tr class="separator:aa6853b11609f8f153ddd84760915f489"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1a4b1650214d156491a98ff6b96d787"><td class="memItemLeft" align="right" valign="top"><a id="ad1a4b1650214d156491a98ff6b96d787"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr>
 <tr class="separator:ad1a4b1650214d156491a98ff6b96d787"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ebba75484fe844bb3e2920205455a74"><td class="memItemLeft" align="right" valign="top"><a id="a7ebba75484fe844bb3e2920205455a74"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> (int port)</td></tr>
 <tr class="separator:a7ebba75484fe844bb3e2920205455a74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cc77a0e8190279d21c3355d60e16bc8"><td class="memItemLeft" align="right" valign="top"><a id="a9cc77a0e8190279d21c3355d60e16bc8"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>tick</b> (int processLimit)</td></tr>
-<tr class="separator:a9cc77a0e8190279d21c3355d60e16bc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4389ad1cc492678197017d399fc7f577"><td class="memItemLeft" align="right" valign="top"><a id="a4389ad1cc492678197017d399fc7f577"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnectClient</b> (int clientId)</td></tr>
-<tr class="separator:a4389ad1cc492678197017d399fc7f577"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9bb05a0316129c12ba96b3168dcd133"><td class="memItemLeft" align="right" valign="top"><a id="ac9bb05a0316129c12ba96b3168dcd133"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>send</b> (int clientId, std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; message)</td></tr>
-<tr class="separator:ac9bb05a0316129c12ba96b3168dcd133"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2100dbbb385e2e1c57a908803414fd5"><td class="memItemLeft" align="right" valign="top"><a id="ac2100dbbb385e2e1c57a908803414fd5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnect</b> (int connectionId)</td></tr>
+<tr class="separator:ac2100dbbb385e2e1c57a908803414fd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a349d95b92b7903ab0d44bb188e339a55"><td class="memItemLeft" align="right" valign="top"><a id="a349d95b92b7903ab0d44bb188e339a55"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>send</b> (int connectionId, std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; message)</td></tr>
+<tr class="separator:a349d95b92b7903ab0d44bb188e339a55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dd422dc25689dc106a6d5fe1d3b3298"><td class="memItemLeft" align="right" valign="top"><a id="a2dd422dc25689dc106a6d5fe1d3b3298"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>tick</b> ()</td></tr>
+<tr class="separator:a2dd422dc25689dc106a6d5fe1d3b3298"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a5db4dc519bde996ea50addbf20f2657c"><td class="memItemLeft" align="right" valign="top"><a id="a5db4dc519bde996ea50addbf20f2657c"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>sendQueueLimit</b> = 10000</td></tr>
-<tr class="separator:a5db4dc519bde996ea50addbf20f2657c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a0fe3233ccc8ab51b4ffa7df3b97c05"><td class="memItemLeft" align="right" valign="top"><a id="a3a0fe3233ccc8ab51b4ffa7df3b97c05"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>receiveQueueLimit</b> = 10000</td></tr>
-<tr class="separator:a3a0fe3233ccc8ab51b4ffa7df3b97c05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2781e398b21e210ce17535f1546ff837"><td class="memItemLeft" align="right" valign="top"><a id="a2781e398b21e210ce17535f1546ff837"></a>
-std::function&lt; void(int)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>onConnected</b></td></tr>
-<tr class="separator:a2781e398b21e210ce17535f1546ff837"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f6e443d74e6bf704365b992b5fa5daa"><td class="memItemLeft" align="right" valign="top"><a id="a1f6e443d74e6bf704365b992b5fa5daa"></a>
-std::function&lt; void(int)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>onDisconnected</b></td></tr>
-<tr class="separator:a1f6e443d74e6bf704365b992b5fa5daa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06e11af661bef0e5b045750d25c61218"><td class="memItemLeft" align="right" valign="top"><a id="a06e11af661bef0e5b045750d25c61218"></a>
-std::function&lt; void(int, std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>onData</b></td></tr>
-<tr class="separator:a06e11af661bef0e5b045750d25c61218"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40a68f732de5d6d794ded373dc16a902"><td class="memItemLeft" align="right" valign="top"><a id="a40a68f732de5d6d794ded373dc16a902"></a>
+std::function&lt; void(<a class="el" href="classKapMirror_1_1Sylph_1_1Server.html">Server</a> &amp;, int)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>onConnected</b> = nullptr</td></tr>
+<tr class="separator:a40a68f732de5d6d794ded373dc16a902"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af02b20bceea6faf45793fad994e6aab9"><td class="memItemLeft" align="right" valign="top"><a id="af02b20bceea6faf45793fad994e6aab9"></a>
+std::function&lt; void(<a class="el" href="classKapMirror_1_1Sylph_1_1Server.html">Server</a> &amp;, int)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>onDisconnected</b> = nullptr</td></tr>
+<tr class="separator:af02b20bceea6faf45793fad994e6aab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21e9098ec9dfee95cb747e4ab02cd03c"><td class="memItemLeft" align="right" valign="top"><a id="a21e9098ec9dfee95cb747e4ab02cd03c"></a>
+std::function&lt; void(<a class="el" href="classKapMirror_1_1Sylph_1_1Server.html">Server</a> &amp;, int, std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>onData</b> = nullptr</td></tr>
+<tr class="separator:a21e9098ec9dfee95cb747e4ab02cd03c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Packages/SylphTransport/Sylph/<a class="el" href="SylphTransport_2Sylph_2Server_8hpp_source.html">Server.hpp</a></li>

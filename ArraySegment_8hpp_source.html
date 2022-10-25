@@ -125,11 +125,11 @@ $(document).ready(function(){initNavTree('ArraySegment_8hpp_source.html',''); in
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classKapMirror_1_1ArraySegment.html#a8520676c27d2af1d42deda7ba617672c">   43</a></span>&#160;        T *<a class="code" href="classKapMirror_1_1ArraySegment.html#a8520676c27d2af1d42deda7ba617672c">toArray</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">return</span> array;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">return</span> array + offset;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">operator</span> T*() <span class="keyword">const</span> {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">return</span> array;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">return</span> array + offset;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classKapMirror_1_1ArraySegment.html#abfee7d83a4313491452d4e9d35257602">   56</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classKapMirror_1_1ArraySegment.html#abfee7d83a4313491452d4e9d35257602">getOffset</a>()<span class="keyword"> const </span>{</div>
@@ -170,8 +170,12 @@ $(document).ready(function(){initNavTree('ArraySegment_8hpp_source.html',''); in
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keyword">static</span> std::shared_ptr&lt;ArraySegment&lt;T&gt;&gt; createArraySegment(T* array, <span class="keywordtype">int</span> size) {</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">return</span> std::make_shared&lt;ArraySegment&lt;T&gt;&gt;(array, size);</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    };</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keyword">static</span> std::shared_ptr&lt;ArraySegment&lt;T&gt;&gt; createArraySegment(T* array, <span class="keywordtype">int</span> offset, <span class="keywordtype">int</span> size) {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">return</span> std::make_shared&lt;ArraySegment&lt;T&gt;&gt;(array, offset, size);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    };</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapMirror_1_1ArraySegment_html_abfee7d83a4313491452d4e9d35257602"><div class="ttname"><a href="classKapMirror_1_1ArraySegment.html#abfee7d83a4313491452d4e9d35257602">KapMirror::ArraySegment::getOffset</a></div><div class="ttdeci">int getOffset() const</div><div class="ttdoc">Get the offset of the array.</div><div class="ttdef"><b>Definition:</b> ArraySegment.hpp:56</div></div>

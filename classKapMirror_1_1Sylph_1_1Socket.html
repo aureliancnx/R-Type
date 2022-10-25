@@ -100,6 +100,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a56e642b61a4f3169b6bf84b543947722"><td class="memItemLeft" align="right" valign="top"><a id="a56e642b61a4f3169b6bf84b543947722"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Socket</b> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Sylph_1_1Address.html">Address</a> &gt; _address, SOCKET _socket_fd)</td></tr>
 <tr class="separator:a56e642b61a4f3169b6bf84b543947722"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ba75be229400cf7b9154e325fa84996"><td class="memItemLeft" align="right" valign="top"><a id="a4ba75be229400cf7b9154e325fa84996"></a>
+std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Sylph_1_1Address.html">Address</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getAddress</b> () const</td></tr>
+<tr class="separator:a4ba75be229400cf7b9154e325fa84996"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75ee749264ccbcfc4dfbf5442e55dcb8"><td class="memItemLeft" align="right" valign="top"><a id="a75ee749264ccbcfc4dfbf5442e55dcb8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Sylph_1_1Socket.html#a75ee749264ccbcfc4dfbf5442e55dcb8">close</a> ()</td></tr>
 <tr class="memdesc:a75ee749264ccbcfc4dfbf5442e55dcb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the socket. <br /></td></tr>
@@ -125,9 +128,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setBlocking</b> (bool
 <tr class="memitem:aa9b0465662bf7974ba0b16fd9feb6f34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Sylph_1_1Socket.html#aa9b0465662bf7974ba0b16fd9feb6f34">send</a> (byte *buffer, int size, uint32_t flags=0)</td></tr>
 <tr class="memdesc:aa9b0465662bf7974ba0b16fd9feb6f34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to remote.  <a href="classKapMirror_1_1Sylph_1_1Socket.html#aa9b0465662bf7974ba0b16fd9feb6f34">More...</a><br /></td></tr>
 <tr class="separator:aa9b0465662bf7974ba0b16fd9feb6f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bd0f397fbb824054972d4c02c43dcbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Sylph_1_1Socket.html#a3bd0f397fbb824054972d4c02c43dcbb">sendTo</a> (byte *buffer, int size, std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Sylph_1_1Address.html">Address</a> &gt; address, uint32_t flags=0)</td></tr>
+<tr class="memdesc:a3bd0f397fbb824054972d4c02c43dcbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to remote.  <a href="classKapMirror_1_1Sylph_1_1Socket.html#a3bd0f397fbb824054972d4c02c43dcbb">More...</a><br /></td></tr>
+<tr class="separator:a3bd0f397fbb824054972d4c02c43dcbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acae3dc4d373277b7c05fe08790518102"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Sylph_1_1Socket.html#acae3dc4d373277b7c05fe08790518102">receive</a> (byte *buffer, int size, uint32_t flags=0)</td></tr>
 <tr class="memdesc:acae3dc4d373277b7c05fe08790518102"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive data from remote.  <a href="classKapMirror_1_1Sylph_1_1Socket.html#acae3dc4d373277b7c05fe08790518102">More...</a><br /></td></tr>
 <tr class="separator:acae3dc4d373277b7c05fe08790518102"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a202a8607ad26fb0f94892ad7185df814"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Sylph_1_1Socket.html#a202a8607ad26fb0f94892ad7185df814">receiveFrom</a> (byte *buffer, int size, std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Sylph_1_1Address.html">Address</a> &gt; address, uint32_t flags=0)</td></tr>
+<tr class="memdesc:a202a8607ad26fb0f94892ad7185df814"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive data from remote.  <a href="classKapMirror_1_1Sylph_1_1Socket.html#a202a8607ad26fb0f94892ad7185df814">More...</a><br /></td></tr>
+<tr class="separator:a202a8607ad26fb0f94892ad7185df814"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad308d6c61cbe5cedaac1393a23748b04"><td class="memItemLeft" align="right" valign="top"><a id="ad308d6c61cbe5cedaac1393a23748b04"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>isInvalid</b> () const</td></tr>
 <tr class="separator:ad308d6c61cbe5cedaac1393a23748b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,6 +221,57 @@ static std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Sylph_1_1Socket
 
 </div>
 </div>
+<a id="a202a8607ad26fb0f94892ad7185df814"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a202a8607ad26fb0f94892ad7185df814">&#9670;&nbsp;</a></span>receiveFrom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Socket::receiveFrom </td>
+          <td>(</td>
+          <td class="paramtype">byte *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Sylph_1_1Address.html">Address</a> &gt;&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>flags</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Receive data from remote. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>The buffer to receive data into </td></tr>
+    <tr><td class="paramname">size</td><td>The size of the buffer </td></tr>
+    <tr><td class="paramname">address</td><td>The address to receive from</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int The number of bytes received </dd></dl>
+
+</div>
+</div>
 <a id="aa9b0465662bf7974ba0b16fd9feb6f34"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa9b0465662bf7974ba0b16fd9feb6f34">&#9670;&nbsp;</a></span>send()</h2>
 
@@ -248,6 +308,55 @@ static std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Sylph_1_1Socket
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>The data to send </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3bd0f397fbb824054972d4c02c43dcbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bd0f397fbb824054972d4c02c43dcbb">&#9670;&nbsp;</a></span>sendTo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Socket::sendTo </td>
+          <td>(</td>
+          <td class="paramtype">byte *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Sylph_1_1Address.html">Address</a> &gt;&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>flags</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send data to remote. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The data to receive </td></tr>
+    <tr><td class="paramname">address</td><td>The address to send to </td></tr>
   </table>
   </dd>
 </dl>

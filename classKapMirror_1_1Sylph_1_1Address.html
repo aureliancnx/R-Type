@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('classKapMirror_1_1Sylph_1_1Address.htm
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classKapMirror_1_1Sylph_1_1Address-members.html">List of all members</a>  </div>
@@ -92,26 +93,39 @@ $(document).ready(function(){initNavTree('classKapMirror_1_1Sylph_1_1Address.htm
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a7028c1fb09ff8196b9531273904df2ec"><td class="memItemLeft" align="right" valign="top"><a id="a7028c1fb09ff8196b9531273904df2ec"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>SocketType</b> { <b>TCP</b> = SOCK_STREAM, 
+<b>UDP</b> = SOCK_DGRAM
+ }</td></tr>
+<tr class="separator:a7028c1fb09ff8196b9531273904df2ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a46e83b715f13f44db43995b54b9eebcb"><td class="memItemLeft" align="right" valign="top"><a id="a46e83b715f13f44db43995b54b9eebcb"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Address</b> (std::string host, int port)</td></tr>
-<tr class="separator:a46e83b715f13f44db43995b54b9eebcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf88433a5a68a7d77b4b2e517c662655"><td class="memItemLeft" align="right" valign="top"><a id="aaf88433a5a68a7d77b4b2e517c662655"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Address</b> (int port, bool passive=true)</td></tr>
-<tr class="separator:aaf88433a5a68a7d77b4b2e517c662655"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01dcb2d91bb1245edbcc79b71e1c98c9"><td class="memItemLeft" align="right" valign="top"><a id="a01dcb2d91bb1245edbcc79b71e1c98c9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Address</b> (std::string host, int port, SocketType type=SocketType::TCP)</td></tr>
+<tr class="separator:a01dcb2d91bb1245edbcc79b71e1c98c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73199efdc5c13faefdd68e2442f106b8"><td class="memItemLeft" align="right" valign="top"><a id="a73199efdc5c13faefdd68e2442f106b8"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Address</b> (int port, bool passive=true, SocketType type=SocketType::TCP)</td></tr>
+<tr class="separator:a73199efdc5c13faefdd68e2442f106b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40f36dba227656f97a3fbb04e6fb7dca"><td class="memItemLeft" align="right" valign="top">addrinfo *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Sylph_1_1Address.html#a40f36dba227656f97a3fbb04e6fb7dca">getAddress</a> () const</td></tr>
 <tr class="memdesc:a40f36dba227656f97a3fbb04e6fb7dca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get <a class="el" href="classKapMirror_1_1Sylph_1_1Address.html">Address</a> Info.  <a href="classKapMirror_1_1Sylph_1_1Address.html#a40f36dba227656f97a3fbb04e6fb7dca">More...</a><br /></td></tr>
 <tr class="separator:a40f36dba227656f97a3fbb04e6fb7dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f077b4cd024d87430c74058ce8584bd"><td class="memItemLeft" align="right" valign="top"><a id="a1f077b4cd024d87430c74058ce8584bd"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> () const</td></tr>
+<tr class="separator:a1f077b4cd024d87430c74058ce8584bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ac37a0268e3149d583fd1985877aeb785"><td class="memItemLeft" align="right" valign="top"><a id="ac37a0268e3149d583fd1985877aeb785"></a>
-static std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Sylph_1_1Address.html">Address</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>createAddress</b> (std::string host, int port)</td></tr>
-<tr class="separator:ac37a0268e3149d583fd1985877aeb785"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a471ea8e35081176596cd4b6a0110f1a2"><td class="memItemLeft" align="right" valign="top"><a id="a471ea8e35081176596cd4b6a0110f1a2"></a>
-static std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Sylph_1_1Address.html">Address</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>createAddress</b> (int port, bool passive=true)</td></tr>
-<tr class="separator:a471ea8e35081176596cd4b6a0110f1a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8025051929beb92b79ab329531176bef"><td class="memItemLeft" align="right" valign="top"><a id="a8025051929beb92b79ab329531176bef"></a>
+static std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Sylph_1_1Address.html">Address</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>createAddress</b> ()</td></tr>
+<tr class="separator:a8025051929beb92b79ab329531176bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f23a2dbf93869af909d027aa528838e"><td class="memItemLeft" align="right" valign="top"><a id="a9f23a2dbf93869af909d027aa528838e"></a>
+static std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Sylph_1_1Address.html">Address</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>createAddress</b> (std::string host, int port, SocketType type=SocketType::TCP)</td></tr>
+<tr class="separator:a9f23a2dbf93869af909d027aa528838e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31e195ca944cf6825ce2c6218933f7b6"><td class="memItemLeft" align="right" valign="top"><a id="a31e195ca944cf6825ce2c6218933f7b6"></a>
+static std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Sylph_1_1Address.html">Address</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>createAddress</b> (int port, bool passive=true, SocketType type=SocketType::TCP)</td></tr>
+<tr class="separator:a31e195ca944cf6825ce2c6218933f7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a40f36dba227656f97a3fbb04e6fb7dca"></a>

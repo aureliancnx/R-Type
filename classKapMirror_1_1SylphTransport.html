@@ -85,7 +85,6 @@ $(document).ready(function(){initNavTree('classKapMirror_1_1SylphTransport.html'
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classKapMirror_1_1SylphTransport-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">KapMirror::SylphTransport Class Reference</div>  </div>
@@ -118,7 +117,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clientSend</b> (std::
 <tr class="memitem:a1b5cd0eae53b6323722d21b60050c598"><td class="memItemLeft" align="right" valign="top"><a id="a1b5cd0eae53b6323722d21b60050c598"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clientEarlyUpdate</b> () override</td></tr>
 <tr class="separator:a1b5cd0eae53b6323722d21b60050c598"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41d981a5a39a9013a09dc5f145d0e7e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1SylphTransport.html#a41d981a5a39a9013a09dc5f145d0e7e1">serverStart</a> (int port) override</td></tr>
+<tr class="memitem:a41d981a5a39a9013a09dc5f145d0e7e1"><td class="memItemLeft" align="right" valign="top"><a id="a41d981a5a39a9013a09dc5f145d0e7e1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>serverStart</b> (int port) override</td></tr>
 <tr class="separator:a41d981a5a39a9013a09dc5f145d0e7e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebf432be284689c7f5d46cdac9cce375"><td class="memItemLeft" align="right" valign="top"><a id="aebf432be284689c7f5d46cdac9cce375"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>serverStop</b> () override</td></tr>
@@ -133,32 +133,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>serverDisconnect</b> 
 void&#160;</td><td class="memItemRight" valign="bottom"><b>serverEarlyUpdate</b> () override</td></tr>
 <tr class="separator:ab221ab282dafd1c0362176e929d7f859"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a41cb91995493faa08ee7f8a3eff869af"><td class="memItemLeft" align="right" valign="top"><a id="a41cb91995493faa08ee7f8a3eff869af"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>clientMaxMessageSize</b> = 16 * 1024</td></tr>
-<tr class="separator:a41cb91995493faa08ee7f8a3eff869af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa87231dd6327f61dbf28ebeae65fcf7f"><td class="memItemLeft" align="right" valign="top"><a id="aa87231dd6327f61dbf28ebeae65fcf7f"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>clientMaxReceivesPerTick</b> = 1000</td></tr>
-<tr class="separator:aa87231dd6327f61dbf28ebeae65fcf7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93935f69ca1700186ec70ee104e263e3"><td class="memItemLeft" align="right" valign="top"><a id="a93935f69ca1700186ec70ee104e263e3"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>clientSendQueueLimit</b> = 10000</td></tr>
-<tr class="separator:a93935f69ca1700186ec70ee104e263e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31c8161c609163b42f3667d2a6522848"><td class="memItemLeft" align="right" valign="top"><a id="a31c8161c609163b42f3667d2a6522848"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>clientReceiveQueueLimit</b> = 10000</td></tr>
-<tr class="separator:a31c8161c609163b42f3667d2a6522848"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3a88483967789dda267b843ee306841"><td class="memItemLeft" align="right" valign="top"><a id="af3a88483967789dda267b843ee306841"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>serverMaxMessageSize</b> = 16 * 1024</td></tr>
-<tr class="separator:af3a88483967789dda267b843ee306841"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33e6d98e05a04d2e3aab045a1312b2fc"><td class="memItemLeft" align="right" valign="top"><a id="a33e6d98e05a04d2e3aab045a1312b2fc"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>serverMaxReceivesPerTick</b> = 10000</td></tr>
-<tr class="separator:a33e6d98e05a04d2e3aab045a1312b2fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2ba816f6ae53751d2f6bf659a1c3cdb"><td class="memItemLeft" align="right" valign="top"><a id="ab2ba816f6ae53751d2f6bf659a1c3cdb"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>serverSendQueueLimitPerConnection</b> = 10000</td></tr>
-<tr class="separator:ab2ba816f6ae53751d2f6bf659a1c3cdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e0d3d1e6cb6175fc2803103c0d656d6"><td class="memItemLeft" align="right" valign="top"><a id="a0e0d3d1e6cb6175fc2803103c0d656d6"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>serverReceiveQueueLimitPerConnection</b> = 10000</td></tr>
-<tr class="separator:a0e0d3d1e6cb6175fc2803103c0d656d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_attribs_classKapMirror_1_1Transport"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classKapMirror_1_1Transport')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classKapMirror_1_1Transport.html">KapMirror::Transport</a></td></tr>
 <tr class="memitem:adbe0efda40c2ea4df2fe297fb6cd2d81 inherit pub_attribs_classKapMirror_1_1Transport"><td class="memItemLeft" align="right" valign="top"><a id="adbe0efda40c2ea4df2fe297fb6cd2d81"></a>
 std::function&lt; void(<a class="el" href="classKapMirror_1_1Transport.html">Transport</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>onClientConnected</b></td></tr>
@@ -178,44 +154,11 @@ std::function&lt; void(<a class="el" href="classKapMirror_1_1Transport.html">Tra
 <tr class="memitem:ae4afc37f2ffccba3a59322f787312cfc inherit pub_attribs_classKapMirror_1_1Transport"><td class="memItemLeft" align="right" valign="top"><a id="ae4afc37f2ffccba3a59322f787312cfc"></a>
 std::function&lt; void(<a class="el" href="classKapMirror_1_1Transport.html">Transport</a> &amp;, int, std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>onServerDataReceived</b></td></tr>
 <tr class="separator:ae4afc37f2ffccba3a59322f787312cfc inherit pub_attribs_classKapMirror_1_1Transport"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_attribs_classKapMirror_1_1Transport"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_classKapMirror_1_1Transport')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="classKapMirror_1_1Transport.html">KapMirror::Transport</a></td></tr>
 <tr class="memitem:ad47169fc73a674cde3dc9176b9c3c476 inherit pub_static_attribs_classKapMirror_1_1Transport"><td class="memItemLeft" align="right" valign="top"><a id="ad47169fc73a674cde3dc9176b9c3c476"></a>
 static std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Transport.html">Transport</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>activeTransport</b> = nullptr</td></tr>
 <tr class="separator:ad47169fc73a674cde3dc9176b9c3c476 inherit pub_static_attribs_classKapMirror_1_1Transport"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a41d981a5a39a9013a09dc5f145d0e7e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41d981a5a39a9013a09dc5f145d0e7e1">&#9670;&nbsp;</a></span>serverStart()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SylphTransport::serverStart </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>port</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Server </p>
-
-<p>Implements <a class="el" href="classKapMirror_1_1Transport.html">KapMirror::Transport</a>.</p>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Packages/SylphTransport/Sylph/<a class="el" href="SylphTransport_8hpp_source.html">SylphTransport.hpp</a></li>
 <li>Packages/SylphTransport/Sylph/SylphTransport.cpp</li>

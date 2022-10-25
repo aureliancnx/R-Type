@@ -11,13 +11,5 @@ var classKapMirror_1_1SylphTransport =
     [ "serverEarlyUpdate", "classKapMirror_1_1SylphTransport.html#ab221ab282dafd1c0362176e929d7f859", null ],
     [ "serverSend", "classKapMirror_1_1SylphTransport.html#a3125d28e15e2a0b563721c37bcff3fe3", null ],
     [ "serverStart", "classKapMirror_1_1SylphTransport.html#a41d981a5a39a9013a09dc5f145d0e7e1", null ],
-    [ "serverStop", "classKapMirror_1_1SylphTransport.html#aebf432be284689c7f5d46cdac9cce375", null ],
-    [ "clientMaxMessageSize", "classKapMirror_1_1SylphTransport.html#a41cb91995493faa08ee7f8a3eff869af", null ],
-    [ "clientMaxReceivesPerTick", "classKapMirror_1_1SylphTransport.html#aa87231dd6327f61dbf28ebeae65fcf7f", null ],
-    [ "clientReceiveQueueLimit", "classKapMirror_1_1SylphTransport.html#a31c8161c609163b42f3667d2a6522848", null ],
-    [ "clientSendQueueLimit", "classKapMirror_1_1SylphTransport.html#a93935f69ca1700186ec70ee104e263e3", null ],
-    [ "serverMaxMessageSize", "classKapMirror_1_1SylphTransport.html#af3a88483967789dda267b843ee306841", null ],
-    [ "serverMaxReceivesPerTick", "classKapMirror_1_1SylphTransport.html#a33e6d98e05a04d2e3aab045a1312b2fc", null ],
-    [ "serverReceiveQueueLimitPerConnection", "classKapMirror_1_1SylphTransport.html#a0e0d3d1e6cb6175fc2803103c0d656d6", null ],
-    [ "serverSendQueueLimitPerConnection", "classKapMirror_1_1SylphTransport.html#ab2ba816f6ae53751d2f6bf659a1c3cdb", null ]
+    [ "serverStop", "classKapMirror_1_1SylphTransport.html#aebf432be284689c7f5d46cdac9cce375", null ]
 ];

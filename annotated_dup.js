@@ -8,10 +8,10 @@ var annotated_dup =
       [ "Sylph", null, [
         [ "Address", "classKapMirror_1_1Sylph_1_1Address.html", "classKapMirror_1_1Sylph_1_1Address" ],
         [ "Client", "classKapMirror_1_1Sylph_1_1Client.html", "classKapMirror_1_1Sylph_1_1Client" ],
-        [ "ClientConnection", "structKapMirror_1_1Sylph_1_1ClientConnection.html", "structKapMirror_1_1Sylph_1_1ClientConnection" ],
-        [ "MagnificentReceivePipe", "classKapMirror_1_1Sylph_1_1MagnificentReceivePipe.html", "classKapMirror_1_1Sylph_1_1MagnificentReceivePipe" ],
-        [ "MagnificentSendPipe", "classKapMirror_1_1Sylph_1_1MagnificentSendPipe.html", "classKapMirror_1_1Sylph_1_1MagnificentSendPipe" ],
+        [ "ClientConnection", "classKapMirror_1_1Sylph_1_1ClientConnection.html", "classKapMirror_1_1Sylph_1_1ClientConnection" ],
+        [ "Connection", "classKapMirror_1_1Sylph_1_1Connection.html", "classKapMirror_1_1Sylph_1_1Connection" ],
         [ "Server", "classKapMirror_1_1Sylph_1_1Server.html", "classKapMirror_1_1Sylph_1_1Server" ],
+        [ "ServerConnection", "classKapMirror_1_1Sylph_1_1ServerConnection.html", "classKapMirror_1_1Sylph_1_1ServerConnection" ],
         [ "Socket", "classKapMirror_1_1Sylph_1_1Socket.html", "classKapMirror_1_1Sylph_1_1Socket" ],
         [ "SocketException", "classKapMirror_1_1Sylph_1_1SocketException.html", "classKapMirror_1_1Sylph_1_1SocketException" ],
         [ "UdpClient", "classKapMirror_1_1Sylph_1_1UdpClient.html", "classKapMirror_1_1Sylph_1_1UdpClient" ],

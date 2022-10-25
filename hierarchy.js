@@ -7,15 +7,19 @@ var hierarchy =
     [ "KapEngine::Events::Input::Axis", "structKapEngine_1_1Events_1_1Input_1_1Axis.html", null ],
     [ "KapMirror::Sylph::Client", "classKapMirror_1_1Sylph_1_1Client.html", null ],
     [ "KapMirror::Telepathy::Client", "classKapMirror_1_1Telepathy_1_1Client.html", null ],
-    [ "KapMirror::Sylph::ClientConnection", "structKapMirror_1_1Sylph_1_1ClientConnection.html", null ],
     [ "KapMirror::Telepathy::ClientConnection", "structKapMirror_1_1Telepathy_1_1ClientConnection.html", null ],
     [ "KapEngine::Tools::Color", "classKapEngine_1_1Tools_1_1Color.html", null ],
     [ "KapMirror::Compression", "classKapMirror_1_1Compression.html", [
       [ "KapMirror::Experimental::GZipCompression", "classKapMirror_1_1Experimental_1_1GZipCompression.html", null ]
     ] ],
+    [ "KapMirror::Sylph::Connection", "classKapMirror_1_1Sylph_1_1Connection.html", [
+      [ "KapMirror::Sylph::ClientConnection", "classKapMirror_1_1Sylph_1_1ClientConnection.html", null ],
+      [ "KapMirror::Sylph::ServerConnection", "classKapMirror_1_1Sylph_1_1ServerConnection.html", null ]
+    ] ],
     [ "KapEngine::Dictionary< TKey, TValue >::ConstIterator", "classKapEngine_1_1Dictionary_1_1ConstIterator.html", null ],
     [ "KapEngine::Debug", "classKapEngine_1_1Debug.html", null ],
     [ "KapEngine::Dictionary< TKey, TValue >", "classKapEngine_1_1Dictionary.html", null ],
+    [ "KapEngine::Dictionary< int, std::shared_ptr< KapMirror::Sylph::ServerConnection > >", "classKapEngine_1_1Dictionary.html", null ],
     [ "KapEngine::Dictionary< std::string, std::shared_ptr< Prefab > >", "classKapEngine_1_1Dictionary.html", null ],
     [ "KapEngine::Dictionary< std::string, std::shared_ptr< RType::Menu > >", "classKapEngine_1_1Dictionary.html", null ],
     [ "KapEngine::Dictionary< unsigned int, std::shared_ptr< KapEngine::GameObject > >", "classKapEngine_1_1Dictionary.html", null ],
@@ -38,7 +42,6 @@ var hierarchy =
         [ "KapEngine::Graphical::Raylib::RaylibGraphical", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html", null ]
       ] ]
     ] ],
-    [ "KapMirror::Sylph::MagnificentReceivePipe::Entry", "structKapMirror_1_1Sylph_1_1MagnificentReceivePipe_1_1Entry.html", null ],
     [ "KapMirror::Telepathy::MagnificentReceivePipe::Entry", "structKapMirror_1_1Telepathy_1_1MagnificentReceivePipe_1_1Entry.html", null ],
     [ "KapEngine::Time::ETime", "classKapEngine_1_1Time_1_1ETime.html", null ],
     [ "KapEngine::Events::EventAction", "classKapEngine_1_1Events_1_1EventAction.html", null ],
@@ -116,9 +119,7 @@ var hierarchy =
     [ "KapEngine::KEngine", "classKapEngine_1_1KEngine.html", null ],
     [ "KapEngine::Events::Key", "classKapEngine_1_1Events_1_1Key.html", null ],
     [ "KapEngine::Animator::LinkAnim", "structKapEngine_1_1Animator_1_1LinkAnim.html", null ],
-    [ "KapMirror::Sylph::MagnificentReceivePipe", "classKapMirror_1_1Sylph_1_1MagnificentReceivePipe.html", null ],
     [ "KapMirror::Telepathy::MagnificentReceivePipe", "classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html", null ],
-    [ "KapMirror::Sylph::MagnificentSendPipe", "classKapMirror_1_1Sylph_1_1MagnificentSendPipe.html", null ],
     [ "KapMirror::Telepathy::MagnificentSendPipe", "classKapMirror_1_1Telepathy_1_1MagnificentSendPipe.html", null ],
     [ "RType::Parser::Map", "classRType_1_1Parser_1_1Map.html", null ],
     [ "RType::Menu", "classRType_1_1Menu.html", [

@@ -104,9 +104,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Sylph_1_1UdpListener.html#a8433022888ff1cb78c73d0731faa0787">start</a> ()</td></tr>
 <tr class="memdesc:a8433022888ff1cb78c73d0731faa0787"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start listening for connections. <br /></td></tr>
 <tr class="separator:a8433022888ff1cb78c73d0731faa0787"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee877edc73bd8cf422fc1d77ce34ec71"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Sylph_1_1UdpClient.html">UdpClient</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Sylph_1_1UdpListener.html#aee877edc73bd8cf422fc1d77ce34ec71">acceptUdpClient</a> ()</td></tr>
-<tr class="memdesc:aee877edc73bd8cf422fc1d77ce34ec71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accept a connection.  <a href="classKapMirror_1_1Sylph_1_1UdpListener.html#aee877edc73bd8cf422fc1d77ce34ec71">More...</a><br /></td></tr>
-<tr class="separator:aee877edc73bd8cf422fc1d77ce34ec71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6929529c38e3251215896603d0f34ca"><td class="memItemLeft" align="right" valign="top"><a id="ab6929529c38e3251215896603d0f34ca"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>sendTo</b> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Sylph_1_1Address.html">Address</a> &gt; address, byte *buffer, int size)</td></tr>
+<tr class="separator:ab6929529c38e3251215896603d0f34ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf5103f34687c4cddf9716be3dc34123"><td class="memItemLeft" align="right" valign="top"><a id="abf5103f34687c4cddf9716be3dc34123"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>receiveFrom</b> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Sylph_1_1Address.html">Address</a> &gt; address, int maxMessageSize, byte *buffer, int &amp;size)</td></tr>
+<tr class="separator:abf5103f34687c4cddf9716be3dc34123"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c6b2875ccb46f925cd3941e31c5f3d4"><td class="memItemLeft" align="right" valign="top"><a id="a6c6b2875ccb46f925cd3941e31c5f3d4"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>isReadable</b> () const</td></tr>
 <tr class="separator:a6c6b2875ccb46f925cd3941e31c5f3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,27 +120,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>isWritable</b> () con
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setBlocking</b> (bool blocking)</td></tr>
 <tr class="separator:a0aacf4b94e68eff7ab19a0ff58a3faa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="aee877edc73bd8cf422fc1d77ce34ec71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee877edc73bd8cf422fc1d77ce34ec71">&#9670;&nbsp;</a></span>acceptUdpClient()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Sylph_1_1UdpClient.html">UdpClient</a> &gt; UdpListener::acceptUdpClient </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Accept a connection. </p>
-<dl class="section return"><dt>Returns</dt><dd>The client socket </dd></dl>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Packages/SylphTransport/Sylph/<a class="el" href="UdpListener_8hpp_source.html">UdpListener.hpp</a></li>
 <li>Packages/SylphTransport/Sylph/UdpListener.cpp</li>

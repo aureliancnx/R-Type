@@ -6,6 +6,7 @@
 #include "Enemies/ShipEnemy.hpp"
 #include "Enemies/BoubouleEnemy.hpp"
 #include "Enemies/Boss/TentaclesBossEnemy.hpp"
+#include "GameMenuManager.hpp"
 
 using namespace RType;
 
@@ -112,6 +113,20 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
         transform.setScale({19, 6});
 
         return bullet;
+    });
+}
+
+void Prefabs::registerInGameMenuPrefab(KapEngine::KEngine &engine) {
+    engine.getPrefabManager()->createPrefab("InGameMenu", [](KapEngine::SceneManagement::Scene &scene) {
+        auto menu = KapEngine::UI::UiFactory::createCanvas(scene, "InGameMenu");
+
+        auto menuManager = std::make_shared<GameMenuManager>(menu);
+        menu->addComponent(menuManager);
+
+        auto& canvas = menu->getComponent<KapEngine::UI::Canvas>();
+        canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
+
+        return menu;
     });
 }
 

@@ -10,6 +10,8 @@
 #include "KapEngineUi.hpp"
 #include "KapUI/KapUI.hpp"
 
+using namespace KapEngine;
+
 RType::GameMenuManager::GameMenuManager(std::shared_ptr<GameObject> go) : Component(go, "GameMenuManager") {
     addRequireComponent("Canvas");
 

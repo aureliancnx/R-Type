@@ -80,9 +80,17 @@ void TentaclesBossEnemy::onSceneUpdated() {
             life -= 1;
             if (life <= 0) {
                 getGameObject().destroy();
-                getServer()->destroyObject(getGameObject().getScene().getGameObject(getGameObject().getId()));
+                if (isLocal()) {
+                    getGameObject().destroy();
+                } else {
+                    getServer()->destroyObject(getGameObject().getScene().getGameObject(getGameObject().getId()));
+                }
             }
-            getServer()->destroyObject(other);
+            if (isLocal()) {
+                other->destroy();
+            } else {
+                getServer()->destroyObject(other);
+            }
         }
     }
     collidedObjects.clear();

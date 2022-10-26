@@ -156,11 +156,12 @@ $(document).ready(function(){initNavTree('Collider_8hpp_source.html',''); initRe
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordtype">bool</span> __colliderAlreadyCollide(std::shared_ptr&lt;Collider&gt; &amp;collider);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordtype">bool</span> __currentlyCollided(std::shared_ptr&lt;Collider&gt; &amp;collider);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordtype">bool</span> __alreayCalculated(std::shared_ptr&lt;Collider&gt; &amp;collider);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    };</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !COLLIDER_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordtype">void</span> __checkCollidersExists();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    };</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !COLLIDER_HPP_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapEngine_1_1Collider_html_a6091f25d9b88e34c964cf98eb17f81b6"><div class="ttname"><a href="classKapEngine_1_1Collider.html#a6091f25d9b88e34c964cf98eb17f81b6">KapEngine::Collider::setTrigger</a></div><div class="ttdeci">void setTrigger(bool isTrigger)</div><div class="ttdoc">Set the Trigger.</div><div class="ttdef"><b>Definition:</b> Collider.hpp:37</div></div>
@@ -172,7 +173,7 @@ $(document).ready(function(){initNavTree('Collider_8hpp_source.html',''); initRe
 <div class="ttc" id="aclassKapEngine_1_1Collider_html_a05e56985243829fbe5a8b02fb9283924"><div class="ttname"><a href="classKapEngine_1_1Collider.html#a05e56985243829fbe5a8b02fb9283924">KapEngine::Collider::onSceneUpdated</a></div><div class="ttdeci">void onSceneUpdated() override</div><div class="ttdoc">call when scene is updated (not threaded)</div><div class="ttdef"><b>Definition:</b> Collider.cpp:34</div></div>
 <div class="ttc" id="anamespaceKapEngine_html"><div class="ttname"><a href="namespaceKapEngine.html">KapEngine</a></div><div class="ttdoc">main namespace</div><div class="ttdef"><b>Definition:</b> Component.hpp:16</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Tools_1_1Rectangle_html"><div class="ttname"><a href="classKapEngine_1_1Tools_1_1Rectangle.html">KapEngine::Tools::Rectangle</a></div><div class="ttdef"><b>Definition:</b> Rectangle.hpp:23</div></div>
-<div class="ttc" id="aclassKapEngine_1_1Collider_html_adef6b11159ce0993bcb8d54bf6063be4"><div class="ttname"><a href="classKapEngine_1_1Collider.html#adef6b11159ce0993bcb8d54bf6063be4">KapEngine::Collider::getCalculatedRectangle</a></div><div class="ttdeci">Tools::Rectangle getCalculatedRectangle() const</div><div class="ttdoc">get calculated rectangle</div><div class="ttdef"><b>Definition:</b> Collider.cpp:138</div></div>
+<div class="ttc" id="aclassKapEngine_1_1Collider_html_adef6b11159ce0993bcb8d54bf6063be4"><div class="ttname"><a href="classKapEngine_1_1Collider.html#adef6b11159ce0993bcb8d54bf6063be4">KapEngine::Collider::getCalculatedRectangle</a></div><div class="ttdeci">Tools::Rectangle getCalculatedRectangle() const</div><div class="ttdoc">get calculated rectangle</div><div class="ttdef"><b>Definition:</b> Collider.cpp:139</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Collider_html_a96e08f0d17e623a3515aae591fec5601"><div class="ttname"><a href="classKapEngine_1_1Collider.html#a96e08f0d17e623a3515aae591fec5601">KapEngine::Collider::isTrigger</a></div><div class="ttdeci">bool isTrigger() const</div><div class="ttdoc">get if collider is trigger</div><div class="ttdef"><b>Definition:</b> Collider.hpp:47</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

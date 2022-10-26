@@ -300,12 +300,12 @@ var NAVTREEINDEX =
 "classKapEngine_1_1Component.html#ab250709b4dceb560b1e7d15a5cc9bf93",
 "classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65ad5f154d2e25f0a5a7cd9f0c5fe10d91a",
 "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a0c2cb02b33dcb167a287fa6bf9b05d44",
-"classKapEngine_1_1Time_1_1ETime.html",
-"classKapEngine_1_1UI_1_1UiFactory.html",
-"classKapMirror_1_1Sylph_1_1Socket.html#a6b6e12fe65a4a47426e4dcfee7a37461",
-"classRType_1_1Menu.html#adee0763ddeb6685e1ee6fb55f76de2a3",
-"functions_k.html",
-"structKapEngine_1_1Events_1_1Input_1_1Axis.html#a39639c63c94b6589df0088683aed3deb"
+"classKapEngine_1_1Time_1_1EClock.html#ab85f27796fb37db9fdd2dfffad09b1d0",
+"classKapEngine_1_1UI_1_1Text.html#afaf2ed1e2f9fcb123e30dd2ac79a4485",
+"classKapMirror_1_1Sylph_1_1Socket.html#a4ba75be229400cf7b9154e325fa84996",
+"classRType_1_1Menu.html#aa7bf66bb2251814da391eac25d2e1051",
+"functions_h.html",
+"structKapEngine_1_1Events_1_1Input_1_1Axis.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -20,13 +20,14 @@ var searchData=
   ['isenable_219',['isEnable',['../classKapEngine_1_1Component.html#a3414dab00832f6387db8ed9a8e60af4d',1,'KapEngine::Component']]],
   ['isended_220',['isEnded',['../classKapEngine_1_1Animation.html#a8a25fbec58b2707a3984c191e1b6a08f',1,'KapEngine::Animation']]],
   ['isenginethreaded_221',['isEngineThreaded',['../classKapEngine_1_1KEngine.html#aeb2bbe226326a107af433d5b30fec0a4',1,'KapEngine::KEngine']]],
-  ['isgamepadconnected_222',['isGamepadConnected',['../classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a9df7de7642b0fb072260021b22cfee4b',1,'KapEngine::Graphical::Raylib::RaylibEncapsulation']]],
-  ['isgamepadkey_223',['isGamepadKey',['../classKapEngine_1_1Events_1_1Key.html#a1abf05517268dbe377b15893b5bdf114',1,'KapEngine::Events::Key']]],
-  ['isgraphicallibexists_224',['isGraphicalLibExists',['../classKapEngine_1_1KEngine.html#ae69eb009c532e2445f656260e7d5b9c4',1,'KapEngine::KEngine::isGraphicalLibExists(std::size_t const &amp;index) const'],['../classKapEngine_1_1KEngine.html#aa9b2a5f890ad06602b07ad11ab6b1a0f',1,'KapEngine::KEngine::isGraphicalLibExists(std::string const &amp;name) const']]],
-  ['iskeyboardkey_225',['isKeyboardKey',['../classKapEngine_1_1Events_1_1Key.html#a7f24251ddc6edad03685b9855c5e446f',1,'KapEngine::Events::Key']]],
-  ['ismousekey_226',['isMouseKey',['../classKapEngine_1_1Events_1_1Key.html#a59ff9c1b383859e3e93d64431a434961',1,'KapEngine::Events::Key']]],
-  ['isrunning_227',['isRunning',['../classKapEngine_1_1KEngine.html#a5f93441dbd9ba82dfc6cc4745cca7074',1,'KapEngine::KEngine']]],
-  ['isserver_228',['isServer',['../classKapMirror_1_1NetworkComponent.html#a297f8f8da9870d4615d78cd5afe0f563',1,'KapMirror::NetworkComponent::isServer()'],['../classKapMirror_1_1NetworkIdentity.html#a40b0ff224932163f73790d71c298d195',1,'KapMirror::NetworkIdentity::isServer()']]],
-  ['istrigger_229',['isTrigger',['../classKapEngine_1_1Collider.html#a96e08f0d17e623a3515aae591fec5601',1,'KapEngine::Collider']]],
-  ['iterator_230',['Iterator',['../classKapEngine_1_1Dictionary_1_1Iterator.html',1,'KapEngine::Dictionary']]]
+  ['isgameobjectexists_222',['isGameObjectExists',['../classKapEngine_1_1SceneManagement_1_1Scene.html#a681f2824208b92980f501badb5053543',1,'KapEngine::SceneManagement::Scene::isGameObjectExists(std::size_t const &amp;index)'],['../classKapEngine_1_1SceneManagement_1_1Scene.html#aa6cfafecb74ff73a9530f6c741dbbf6d',1,'KapEngine::SceneManagement::Scene::isGameObjectExists(Entity const &amp;en)']]],
+  ['isgamepadconnected_223',['isGamepadConnected',['../classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html#a9df7de7642b0fb072260021b22cfee4b',1,'KapEngine::Graphical::Raylib::RaylibEncapsulation']]],
+  ['isgamepadkey_224',['isGamepadKey',['../classKapEngine_1_1Events_1_1Key.html#a1abf05517268dbe377b15893b5bdf114',1,'KapEngine::Events::Key']]],
+  ['isgraphicallibexists_225',['isGraphicalLibExists',['../classKapEngine_1_1KEngine.html#ae69eb009c532e2445f656260e7d5b9c4',1,'KapEngine::KEngine::isGraphicalLibExists(std::size_t const &amp;index) const'],['../classKapEngine_1_1KEngine.html#aa9b2a5f890ad06602b07ad11ab6b1a0f',1,'KapEngine::KEngine::isGraphicalLibExists(std::string const &amp;name) const']]],
+  ['iskeyboardkey_226',['isKeyboardKey',['../classKapEngine_1_1Events_1_1Key.html#a7f24251ddc6edad03685b9855c5e446f',1,'KapEngine::Events::Key']]],
+  ['ismousekey_227',['isMouseKey',['../classKapEngine_1_1Events_1_1Key.html#a59ff9c1b383859e3e93d64431a434961',1,'KapEngine::Events::Key']]],
+  ['isrunning_228',['isRunning',['../classKapEngine_1_1KEngine.html#a5f93441dbd9ba82dfc6cc4745cca7074',1,'KapEngine::KEngine']]],
+  ['isserver_229',['isServer',['../classKapMirror_1_1NetworkComponent.html#a297f8f8da9870d4615d78cd5afe0f563',1,'KapMirror::NetworkComponent::isServer()'],['../classKapMirror_1_1NetworkIdentity.html#a40b0ff224932163f73790d71c298d195',1,'KapMirror::NetworkIdentity::isServer()']]],
+  ['istrigger_230',['isTrigger',['../classKapEngine_1_1Collider.html#a96e08f0d17e623a3515aae591fec5601',1,'KapEngine::Collider']]],
+  ['iterator_231',['Iterator',['../classKapEngine_1_1Dictionary_1_1Iterator.html',1,'KapEngine::Dictionary']]]
 ];

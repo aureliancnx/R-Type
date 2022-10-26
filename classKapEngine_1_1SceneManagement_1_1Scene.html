@@ -166,6 +166,12 @@ std::vector&lt; std::shared_ptr&lt; <a class="el" href="classKapEngine_1_1GameOb
 <tr class="memitem:ac2441d480c4c38fc8ecdf4ebc9a28533"><td class="memItemLeft" align="right" valign="top"><a id="ac2441d480c4c38fc8ecdf4ebc9a28533"></a>
 <a class="el" href="classKapEngine_1_1KEngine.html">KEngine</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getEngine</b> ()</td></tr>
 <tr class="separator:ac2441d480c4c38fc8ecdf4ebc9a28533"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a681f2824208b92980f501badb5053543"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1SceneManagement_1_1Scene.html#a681f2824208b92980f501badb5053543">isGameObjectExists</a> (std::size_t const &amp;index)</td></tr>
+<tr class="memdesc:a681f2824208b92980f501badb5053543"><td class="mdescLeft">&#160;</td><td class="mdescRight">return if <a class="el" href="classKapEngine_1_1GameObject.html">GameObject</a> exists  <a href="classKapEngine_1_1SceneManagement_1_1Scene.html#a681f2824208b92980f501badb5053543">More...</a><br /></td></tr>
+<tr class="separator:a681f2824208b92980f501badb5053543"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6cfafecb74ff73a9530f6c741dbbf6d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1SceneManagement_1_1Scene.html#aa6cfafecb74ff73a9530f6c741dbbf6d">isGameObjectExists</a> (<a class="el" href="classKapEngine_1_1Entity.html">Entity</a> const &amp;en)</td></tr>
+<tr class="memdesc:aa6cfafecb74ff73a9530f6c741dbbf6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">return if <a class="el" href="classKapEngine_1_1GameObject.html">GameObject</a> exists  <a href="classKapEngine_1_1SceneManagement_1_1Scene.html#aa6cfafecb74ff73a9530f6c741dbbf6d">More...</a><br /></td></tr>
+<tr class="separator:aa6cfafecb74ff73a9530f6c741dbbf6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb715aa55615b11683d03c1146cbe640"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1SceneManagement_1_1Scene.html#aeb715aa55615b11683d03c1146cbe640">__update</a> ()</td></tr>
 <tr class="separator:aeb715aa55615b11683d03c1146cbe640"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47d5468ae5d760536f6b9d66dc908f8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1SceneManagement_1_1Scene.html#a47d5468ae5d760536f6b9d66dc908f8c">__changingScene</a> ()</td></tr>
@@ -546,6 +552,64 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::shared_ptr&lt;GameObject&gt; </dd></dl>
 <dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000008">Deprecated:</a></b></dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="aa6cfafecb74ff73a9530f6c741dbbf6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6cfafecb74ff73a9530f6c741dbbf6d">&#9670;&nbsp;</a></span>isGameObjectExists() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KapEngine::SceneManagement::Scene::isGameObjectExists </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classKapEngine_1_1Entity.html">Entity</a> const &amp;&#160;</td>
+          <td class="paramname"><em>en</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>return if <a class="el" href="classKapEngine_1_1GameObject.html">GameObject</a> exists </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true </dd>
+<dd>
+false </dd></dl>
+
+</div>
+</div>
+<a id="a681f2824208b92980f501badb5053543"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a681f2824208b92980f501badb5053543">&#9670;&nbsp;</a></span>isGameObjectExists() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KapEngine::SceneManagement::Scene::isGameObjectExists </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t const &amp;&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>return if <a class="el" href="classKapEngine_1_1GameObject.html">GameObject</a> exists </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true </dd>
+<dd>
+false </dd></dl>
 
 </div>
 </div>

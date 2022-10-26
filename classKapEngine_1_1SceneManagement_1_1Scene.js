@@ -28,6 +28,8 @@ var classKapEngine_1_1SceneManagement_1_1Scene =
     [ "getObject", "classKapEngine_1_1SceneManagement_1_1Scene.html#ae9e28265838d58bc9088e5e6528a2f50", null ],
     [ "getObject", "classKapEngine_1_1SceneManagement_1_1Scene.html#a5d5cd4bc39e063913f06423fca8d1c1e", null ],
     [ "getObjectConst", "classKapEngine_1_1SceneManagement_1_1Scene.html#addbdc07ac777c46cd7f5ffbadcb161e8", null ],
+    [ "isGameObjectExists", "classKapEngine_1_1SceneManagement_1_1Scene.html#aa6cfafecb74ff73a9530f6c741dbbf6d", null ],
+    [ "isGameObjectExists", "classKapEngine_1_1SceneManagement_1_1Scene.html#a681f2824208b92980f501badb5053543", null ],
     [ "operator!=", "classKapEngine_1_1SceneManagement_1_1Scene.html#a84314976547de551376e300f6617adb1", null ],
     [ "operator!=", "classKapEngine_1_1SceneManagement_1_1Scene.html#abfcc60755cca63b31e19c6c8b5eb0490", null ],
     [ "operator==", "classKapEngine_1_1SceneManagement_1_1Scene.html#a76baf8811b65b6a1189a692184db00e2", null ],

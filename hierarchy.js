@@ -35,6 +35,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "KapEngine::Time::EClock", "classKapEngine_1_1Time_1_1EClock.html", null ],
+    [ "RType::CampaignGenerator::Enemy", "structRType_1_1CampaignGenerator_1_1Enemy.html", null ],
     [ "KapEngine::Entity", "classKapEngine_1_1Entity.html", [
       [ "KapEngine::GameObject", "classKapEngine_1_1GameObject.html", null ],
       [ "KapEngine::Graphical::GraphicalLib", "classKapEngine_1_1Graphical_1_1GraphicalLib.html", [
@@ -165,8 +166,8 @@ var hierarchy =
     [ "KapEngine::Tools::Rectangle", "classKapEngine_1_1Tools_1_1Rectangle.html", null ],
     [ "KapEngine::SceneManagement::Scene", "classKapEngine_1_1SceneManagement_1_1Scene.html", null ],
     [ "KapEngine::SceneManagement::SceneManager", "classKapEngine_1_1SceneManagement_1_1SceneManager.html", null ],
-    [ "KapMirror::Telepathy::Server", "classKapMirror_1_1Telepathy_1_1Server.html", null ],
     [ "KapMirror::Sylph::Server", "classKapMirror_1_1Sylph_1_1Server.html", null ],
+    [ "KapMirror::Telepathy::Server", "classKapMirror_1_1Telepathy_1_1Server.html", null ],
     [ "KapMirror::Sylph::Socket", "classKapMirror_1_1Sylph_1_1Socket.html", null ],
     [ "KapMirror::Telepathy::Socket", "classKapMirror_1_1Telepathy_1_1Socket.html", null ],
     [ "KapEngine::SceneManagement::SplashScreen", "classKapEngine_1_1SceneManagement_1_1SplashScreen.html", null ],

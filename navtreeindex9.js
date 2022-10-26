@@ -1,5 +1,6 @@
 var NAVTREEINDEX9 =
 {
+"structKapEngine_1_1Animator_1_1NodeAnim.html#af8b535537876db7addabc1cdaa41b6ef":[29,0,3,1,1],
 "structKapEngine_1_1Events_1_1Input_1_1Axis.html":[31,0,0,1,2,0],
 "structKapEngine_1_1Events_1_1Input_1_1Axis.html#a3930c155e4bd13206345ddb3753f5fe3":[31,0,0,1,2,0,1],
 "structKapEngine_1_1Events_1_1Input_1_1Axis.html#a39639c63c94b6589df0088683aed3deb":[31,0,0,1,2,0,5],
@@ -55,6 +56,11 @@ var NAVTREEINDEX9 =
 "structKapMirror_1_1Telepathy_1_1MagnificentReceivePipe_1_1Entry.html#a200bdaff4f41ccc7b38935ea056953f5":[31,0,1,2,3,0,2],
 "structKapMirror_1_1Telepathy_1_1MagnificentReceivePipe_1_1Entry.html#a56a5103d5b5d1a1bc06138d9ba97195e":[31,0,1,2,3,0,1],
 "structKapMirror_1_1Telepathy_1_1MagnificentReceivePipe_1_1Entry.html#a9e478bf485c2c15912c15b5f896be7e7":[31,0,1,2,3,0,0],
+"structRType_1_1CampaignGenerator_1_1Enemy.html":[31,0,3,3,0],
+"structRType_1_1CampaignGenerator_1_1Enemy.html#a023b471ff52af10c2a7177da08bf09c5":[31,0,3,3,0,1],
+"structRType_1_1CampaignGenerator_1_1Enemy.html#a5b087c4309e078cfac65d2c07e8d8db1":[31,0,3,3,0,0],
+"structRType_1_1CampaignGenerator_1_1Enemy.html#aa1cde07efbddd1decea43b83b948b5f8":[31,0,3,3,0,2],
+"structRType_1_1CampaignGenerator_1_1Enemy.html#abd9f79b03baac60d2c48d6a5c2e91c69":[31,0,3,3,0,3],
 "structRType_1_1PlayerAuthorityMessage.html":[31,0,3,17],
 "structRType_1_1PlayerAuthorityMessage.html#a227357349cffc5ec983e9ac0a1a60682":[31,0,3,17,0],
 "structRType_1_1PlayerAuthorityMessage.html#a806a7cf499abe92e116d5739a05bc205":[31,0,3,17,2],

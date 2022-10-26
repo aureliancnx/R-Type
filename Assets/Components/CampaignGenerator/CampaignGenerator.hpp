@@ -18,13 +18,15 @@ namespace RType
         struct Enemy
         {
             int _positionY;
+            int _positionX;
             int _time;
             std::string _mobName;
-            explicit Enemy(std::string mobName, int positionY = 0, int time = 10)
+            explicit Enemy(std::string mobName, int positionY = 0, int time = 10, int positionX = 1280)
             {
                 _mobName = std::move(mobName);
                 _time = time;
                 _positionY = positionY;
+                _positionX = positionX;
             }
         };
         explicit CampaignGenerator(std::shared_ptr<KapEngine::GameObject> go);

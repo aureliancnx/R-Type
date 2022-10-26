@@ -23,5 +23,7 @@ namespace RType
         static void registerBoubouleEnemyPrefab(KapEngine::KEngine &engine);
 
         static void registerTentaclesBossEnemyPrefab(KapEngine::KEngine &engine);
+
+        static void registerInGameMenuPrefab(KapEngine::KEngine &engine);
     };
 } // namespace RType

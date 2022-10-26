@@ -8,17 +8,15 @@
 #ifndef GAMEMENUMANAGER_HPP_
 #define GAMEMENUMANAGER_HPP_
 
-#include "KapEngine.hpp"
-
-using namespace KapEngine;
+#include "GameObject.hpp"
 
 namespace RType
 {
 
-    class GameMenuManager : public Component
+    class GameMenuManager : public KapEngine::Component
     {
       public:
-        GameMenuManager(std::shared_ptr<GameObject> go);
+        GameMenuManager(std::shared_ptr<KapEngine::GameObject> go);
         ~GameMenuManager();
 
         void onAwake() override;
@@ -32,19 +30,22 @@ namespace RType
         void initBonusMenu();
         void initPauseMenu();
 
-        void initBackground(std::shared_ptr<GameObject> parent);
-        std::shared_ptr<GameObject> initButton(std::shared_ptr<GameObject> parent, std::string name, std::string text,
-                                               std::function<void()> callback, Tools::Color color = Tools::Color::white(),
-                                               Tools::Color textColor = Tools::Color::black());
-        std::shared_ptr<GameObject> initButton(std::shared_ptr<GameObject> parent, std::string name, std::string text,
-                                               std::function<void()> callback, std::string pathSprite, Tools::Rectangle rect,
-                                               Tools::Color color = Tools::Color::white(), Tools::Color textColor = Tools::Color::black());
+        void initBackground(std::shared_ptr<KapEngine::GameObject> parent);
+        std::shared_ptr<KapEngine::GameObject> initButton(std::shared_ptr<KapEngine::GameObject> parent, std::string name, std::string text,
+                                                          std::function<void()> callback,
+                                                          KapEngine::Tools::Color color = KapEngine::Tools::Color::white(),
+                                                          KapEngine::Tools::Color textColor = KapEngine::Tools::Color::black());
+        std::shared_ptr<KapEngine::GameObject> initButton(std::shared_ptr<KapEngine::GameObject> parent, std::string name, std::string text,
+                                                          std::function<void()> callback, std::string pathSprite,
+                                                          KapEngine::Tools::Rectangle rect,
+                                                          KapEngine::Tools::Color color = KapEngine::Tools::Color::white(),
+                                                          KapEngine::Tools::Color textColor = KapEngine::Tools::Color::black());
 
         // variables
       private:
-        std::shared_ptr<GameObject> mainMenu;
-        std::shared_ptr<GameObject> pauseMenu;
-        std::shared_ptr<GameObject> bonusMenu;
+        std::shared_ptr<KapEngine::GameObject> mainMenu;
+        std::shared_ptr<KapEngine::GameObject> pauseMenu;
+        std::shared_ptr<KapEngine::GameObject> bonusMenu;
     };
 
 } // namespace RType

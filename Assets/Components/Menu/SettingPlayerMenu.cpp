@@ -116,10 +116,15 @@ void RType::SettingPlayerMenu::init() {
     // create button to change spaceship
     {
         auto btn = scene.createGameObject("Choose Ship");
-        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn, ">");
+        std::shared_ptr<KapEngine::UI::Button> btnComp;
+        if (IS_MAX_KAPUI_VERSION(0, 1)) {
+            btnComp = std::make_shared<KapEngine::UI::Button>(btn, ">");
+            btn->addComponent(btnComp);
+        } else {
+            btnComp = KapEngine::UI::KapUiFactory::createButton(btn, ">");
+        }
         btnComp->setTextColor(KapEngine::Tools::Color::white());
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
-        btn->addComponent(btnComp);
 
         auto& transform = btn->getComponent<KapEngine::Transform>();
         transform.setPosition(KapEngine::Tools::Vector3(350, 200, 0));

@@ -60,6 +60,8 @@ void GameManager::registerPrefabs() {
 
     Prefabs::registerBulletPrefab(*engine);
 
+    Prefabs::registerInGameMenuPrefab(*engine);
+
     // Enemies
     Prefabs::registerShipEnemyPrefab(*engine);
     Prefabs::registerBoubouleEnemyPrefab(*engine);
@@ -134,6 +136,12 @@ void GameManager::initSinglePlayer() {
 
     auto& playerController = player->getComponent<PlayerController>();
     playerController.setLocalAuthority(true);
+
+    std::shared_ptr<GameObject> gameMenu;
+    if (!engine->getPrefabManager()->instantiatePrefab("InGameMenu", *scene, gameMenu)) {
+        KAP_DEBUG_ERROR("Failed to instantiate in game menu prefab");
+        return;
+    }
 
     // TODO: Fix animation (move animation)
     // https://github.com/aureliancnx/R-Type/blob/ae652adfdf49c702bd8513c27b8bef6dcfeaebc2/Assets/Components/GameManager.cpp#L84

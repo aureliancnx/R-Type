@@ -11,34 +11,35 @@ RType::CampaignGenerator::CampaignGenerator(std::shared_ptr<GameObject> go) : Co
 
 RType::CampaignGenerator::~CampaignGenerator() {}
 
+void RType::CampaignGenerator::addEnemy(const RType::CampaignGenerator::Enemy &enemy) {
+    _enemies.push_back(enemy);
+}
+
 void RType::CampaignGenerator::onAwake() {
-    Id = 0;
-    delay = 0;
-    positionYEnemy.push_back(100);
-    positionYEnemy.push_back(200);
-    positionYEnemy.push_back(300);
-    positionYEnemy.push_back(400);
-    positionYEnemy.push_back(500);
-    positionYEnemy.push_back(600);
+    addEnemy(Enemy("Enemy:BoubouleEnemy"));
+    addEnemy(Enemy("Enemy:BoubouleEnemy", 200, 20));
+    addEnemy(Enemy("Enemy:BoubouleEnemy", 300, 30));
+    addEnemy(Enemy("Enemy:BoubouleEnemy", 400, 40));
+    _clock.restart();
+    _time.setSeconds(0);
 }
 
 void RType::CampaignGenerator::onFixedUpdate() {
     auto &scene = getGameObjectConst().getScene();
 
+    KapEngine::Time::ETime tmp = _clock.getElapseTime();
 
-    if (delay == 100) {
-        auto enemy = spawnMob("Enemy:BoubouleEnemy", scene);
-        auto &trEnemy = enemy->getComponent<KapEngine::Transform>();
+    for (std::size_t i = 0; i < _enemies.size(); i++) {
+        if (_time.asSecond() < _enemies[i]._time && _enemies[i]._time <= tmp.asSecond()) {
+            auto enemy = spawnMob(_enemies[i]._mobName, scene);
+            auto &trEnemy = enemy->getComponent<KapEngine::Transform>();
 
-        trEnemy.setPosition({1280, static_cast<float>(positionYEnemy[Id]), 0});
-
-        if (Id > 5)
-            Id = 0;
-        else
-            Id++;
-        delay = -1;
+            trEnemy.setPosition({1280, static_cast<float>(_enemies[i]._positionY), 0});
+            _enemies.erase(_enemies.begin() + i);
+            i--;
+        }
     }
-    delay++;
+    _time = tmp;
 }
 
 std::shared_ptr<KapEngine::GameObject> RType::CampaignGenerator::spawnMob(const std::string &mobName, KapEngine::SceneManagement::Scene &scene) {

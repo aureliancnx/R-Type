@@ -17,13 +17,10 @@ RType::GameMenuManager::GameMenuManager(std::shared_ptr<GameObject> go) : Compon
 
     auto screenSize = getGameObject().getEngine().getScreenSize();
 
-    getTransform().setScale({screenSize.getX(), 113, 0});
-    getTransform().setPosition({0, screenSize.getY() - 113, 0});
-}
+    float sizeY = 90;
 
-RType::GameMenuManager::~GameMenuManager() {}
-
-void RType::GameMenuManager::onAwake() {
+    getTransform().setScale({screenSize.getX(), sizeY, 0});
+    getTransform().setPosition({0, screenSize.getY() - sizeY, 0});
     if (!getGameObject().hasComponent<UI::Canvas>()) {
         auto canvas = std::make_shared<UI::Canvas>(getGameObject().getScene().getGameObject(getGameObject().getId()));
         getGameObject().addComponent(canvas);
@@ -32,6 +29,12 @@ void RType::GameMenuManager::onAwake() {
     initMainMenu();
     initBonusMenu();
     initPauseMenu();
+}
+
+RType::GameMenuManager::~GameMenuManager() {}
+
+void RType::GameMenuManager::onAwake() {
+    
 }
 
 void RType::GameMenuManager::displayMainMenu() {

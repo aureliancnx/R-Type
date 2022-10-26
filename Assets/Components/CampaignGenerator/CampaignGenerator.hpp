@@ -15,12 +15,16 @@ namespace RType
     class CampaignGenerator : public KapEngine::Component
     {
       public:
-        struct Enemy {
+        struct Enemy
+        {
             int _positionY;
             int _time;
             std::string _mobName;
-            explicit Enemy(std::string mobName, int positionY=0, int time=10) {
-                _mobName = std::move(mobName); _time = time; _positionY = positionY;
+            explicit Enemy(std::string mobName, int positionY = 0, int time = 10)
+            {
+                _mobName = std::move(mobName);
+                _time = time;
+                _positionY = positionY;
             }
         };
         explicit CampaignGenerator(std::shared_ptr<KapEngine::GameObject> go);
@@ -34,6 +38,7 @@ namespace RType
         std::shared_ptr<KapEngine::GameObject> spawnMob(std::string const &mobName, KapEngine::SceneManagement::Scene &scene);
 
         void addEnemy(Enemy const &enemy);
+
       private:
         std::vector<Enemy> _enemies;
         KapEngine::Time::EClock _clock;
@@ -41,4 +46,3 @@ namespace RType
     };
 } // namespace RType
 #endif // RTYPE_CAMPAIGNGENERATOR_HPP
-

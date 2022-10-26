@@ -13,7 +13,6 @@
 RType::SettingPlayerMenu::SettingPlayerMenu(KapEngine::SceneManagement::Scene &_scene) : Menu(_scene){}
 
 void RType::SettingPlayerMenu::init() {
-
     // Change type of display for canvas
     {
         try {
@@ -132,31 +131,23 @@ void RType::SettingPlayerMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
-            int currentID = 0;
+            int currentID = 1;
 
-            auto &compSkin = player->getComponent<PlayerSkin>();
-            player->getComponent<KapEngine::Transform>().setPosition({200, 200, 0});
-            player->getComponent<KapEngine::Transform>().setParent(canvas);
-
-            try {
-                player->getComponent<KapEngine::UI::Canvas>().setActive(false);
-                if (!KapEngine::PlayerPrefs::getString("shipID").empty()) {
-                    currentID = KapEngine::PlayerPrefs::getInt("shipID");
-                }
-            } catch(...) {}
-
+            if (KapEngine::PlayerPrefs::hasKey("shipID")) {
+                currentID = KapEngine::PlayerPrefs::getInt("shipID");
+            }
             currentID++;
-            if (currentID > 5)
+            if (currentID > 5) {
                 currentID = 1;
+            }
             KapEngine::PlayerPrefs::setInt("shipID", currentID);
-            compSkin.setSkinId(KapEngine::PlayerPrefs::getInt("shipID"));
+            player->getComponent<PlayerSkin>().setSkinId(currentID);
         });
     }
-    // create spaceship animated
+
+        // create spaceship animated
     {
         engine.getPrefabManager()->instantiatePrefab("Player", scene, player);
-        auto &compSkin = player->getComponent<PlayerSkin>();
-
         player->getComponent<KapEngine::Transform>().setPosition({200, 200, 0});
         player->getComponent<KapEngine::Transform>().setParent(canvas);
         try {

@@ -89,6 +89,8 @@ void RType::GameMenuManager::initMainMenu() {
     mainMenu = getGameObject().getScene().createGameObject("MainMenu");
     mainMenu->getComponent<Transform>().setParent(getGameObject().getId());
 
+    
+
     initBackground(mainMenu);
 }
 
@@ -121,30 +123,43 @@ void RType::GameMenuManager::initBackground(std::shared_ptr<GameObject> parent) 
 }
 
 std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<GameObject> parent, std::string name, std::string text, std::function<void()> callback, Tools::Color color, Tools::Color textColor) {
-    auto button = parent->getScene().createGameObject(name);
-    button->getComponent<Transform>().setParent(parent->getId());
-    button->getComponent<Transform>().setPosition({0, 0, 0});
+    std::shared_ptr<GameObject> button = parent->getScene().createGameObject(name);
 
-    auto buttonImage = std::make_shared<UI::Button>(button);
-    buttonImage->setText(text);
-    buttonImage->getOnClick().registerAction(callback);
-    // buttonImage->setColor(color);
-    buttonImage->setTextColor(textColor);
-    button->addComponent(buttonImage);
+    if (IS_MAX_KAPUI_VERSION(0, 101)) {
+        auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text);
+        btnComp->setTextColor(textColor);
+        btnComp->setNormalColor(color);
+        btnComp->getOnClick().registerAction(callback);
+    } else {
+        KapEngine::UI::KapUiFactory::createButton(button, text, callback, textColor, color);
+    }
+
+    try {
+        button->getComponent<Transform>().setParent(parent->getId());
+    } catch (...) {
+        KAP_DEBUG_ERROR("Failled to set button " + name + " parent");
+    }
     return button;
 }
 
 std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<GameObject> parent, std::string name, std::string text, std::function<void()> callback, std::string pathSprite, Tools::Rectangle rect, Tools::Color color, Tools::Color textColor) {
-    auto button = parent->getScene().createGameObject(name);
-    button->getComponent<Transform>().setParent(parent->getId());
-    button->getComponent<Transform>().setPosition({0, 0, 0});
+    std::shared_ptr<GameObject> button = parent->getScene().createGameObject(name);
 
-    auto buttonImage = std::make_shared<UI::Button>(button);
-    buttonImage->setText(text);
-    buttonImage->getOnClick().registerAction(callback);
-    // buttonImage->setColor(color);
-    buttonImage->setTextColor(textColor);
-    buttonImage->setBackground(pathSprite, rect);
-    button->addComponent(buttonImage);
+    if (IS_MAX_KAPUI_VERSION(0, 101)) {
+        auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text);
+        btnComp->setTextColor(textColor);
+        btnComp->setNormalColor(color);
+        btnComp->getOnClick().registerAction(callback);
+        btnComp->setBackground(pathSprite, rect);
+    } else {
+        auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text, callback, textColor, color);
+        btnComp->setBackground(pathSprite, rect);
+    }
+
+    try {
+        button->getComponent<Transform>().setParent(parent->getId());
+    } catch (...) {
+        KAP_DEBUG_ERROR("Failled to set button " + name + " parent");
+    }
     return button;
 }

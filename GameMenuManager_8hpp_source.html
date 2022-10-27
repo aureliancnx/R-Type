@@ -111,38 +111,32 @@ $(document).ready(function(){initNavTree('GameMenuManager_8hpp_source.html','');
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1GameMenuManager.html#aa217a1ede31d307035fe79f438580c48">onAwake</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">void</span> displayMainMenu();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">void</span> displayBonusMenu();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">void</span> displayPauseMenu();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;      <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span> initMainMenu();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">void</span> initBonusMenu();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> initPauseMenu();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span> initBackground(std::shared_ptr&lt;KapEngine::GameObject&gt; parent);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;      <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">void</span> initMainMenu();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span> initBackground(std::shared_ptr&lt;KapEngine::GameObject&gt; parent);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; initButton(std::shared_ptr&lt;KapEngine::GameObject&gt; parent, std::string name, std::string text,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                                                          std::function&lt;<span class="keywordtype">void</span>()&gt; callback,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Color.html">KapEngine::Tools::Color</a> color = KapEngine::Tools::Color::white(),</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Color.html">KapEngine::Tools::Color</a> textColor = KapEngine::Tools::Color::black());</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; initButton(std::shared_ptr&lt;KapEngine::GameObject&gt; parent, std::string name, std::string text,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                                          std::function&lt;<span class="keywordtype">void</span>()&gt; callback,</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Color.html">KapEngine::Tools::Color</a> color = KapEngine::Tools::Color::white(),</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Color.html">KapEngine::Tools::Color</a> textColor = KapEngine::Tools::Color::black());</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; initButton(std::shared_ptr&lt;KapEngine::GameObject&gt; parent, std::string name, std::string text,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                                          std::function&lt;<span class="keywordtype">void</span>()&gt; callback, std::string pathSprite,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Rectangle.html">KapEngine::Tools::Rectangle</a> rect,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Color.html">KapEngine::Tools::Color</a> color = KapEngine::Tools::Color::white(),</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Color.html">KapEngine::Tools::Color</a> textColor = KapEngine::Tools::Color::black());</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="comment">// variables</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; mainMenu;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; pauseMenu;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; bonusMenu;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    };</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;} <span class="comment">// namespace RType</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !GAMEMENUMANAGER_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                                          std::function&lt;<span class="keywordtype">void</span>()&gt; callback, std::string pathSprite,</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Rectangle.html">KapEngine::Tools::Rectangle</a> rect,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Color.html">KapEngine::Tools::Color</a> color = KapEngine::Tools::Color::white(),</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Color.html">KapEngine::Tools::Color</a> textColor = KapEngine::Tools::Color::black());</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="comment">// variables</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; mainMenu;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    };</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;} <span class="comment">// namespace RType</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !GAMEMENUMANAGER_HPP_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassRType_1_1GameMenuManager_html_aa217a1ede31d307035fe79f438580c48"><div class="ttname"><a href="classRType_1_1GameMenuManager.html#aa217a1ede31d307035fe79f438580c48">RType::GameMenuManager::onAwake</a></div><div class="ttdeci">void onAwake() override</div><div class="ttdoc">call component awake</div><div class="ttdef"><b>Definition:</b> GameMenuManager.cpp:36</div></div>
+<div class="ttc" id="aclassRType_1_1GameMenuManager_html_aa217a1ede31d307035fe79f438580c48"><div class="ttname"><a href="classRType_1_1GameMenuManager.html#aa217a1ede31d307035fe79f438580c48">RType::GameMenuManager::onAwake</a></div><div class="ttdeci">void onAwake() override</div><div class="ttdoc">call component awake</div><div class="ttdef"><b>Definition:</b> GameMenuManager.cpp:31</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Component_html"><div class="ttname"><a href="classKapEngine_1_1Component.html">KapEngine::Component</a></div><div class="ttdef"><b>Definition:</b> Component.hpp:32</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Tools_1_1Color_html"><div class="ttname"><a href="classKapEngine_1_1Tools_1_1Color.html">KapEngine::Tools::Color</a></div><div class="ttdef"><b>Definition:</b> Colors.hpp:22</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Tools_1_1Rectangle_html"><div class="ttname"><a href="classKapEngine_1_1Tools_1_1Rectangle.html">KapEngine::Tools::Rectangle</a></div><div class="ttdef"><b>Definition:</b> Rectangle.hpp:23</div></div>

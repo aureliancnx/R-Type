@@ -105,48 +105,73 @@ $(document).ready(function(){initNavTree('Packages_2KapUI_2KapUI_2Factory_2Facto
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classKapEngine_1_1UI_1_1KapUiFactory.html">   17</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classKapEngine_1_1UI_1_1KapUiFactory.html">KapUiFactory</a> {</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                <span class="keyword">static</span> std::shared_ptr&lt;Button&gt; createButton(std::shared_ptr&lt;GameObject&gt; go, std::string text) {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                    <span class="keyword">auto</span> result = std::make_shared&lt;Button&gt;(go, text);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                    go-&gt;addComponent(result);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                <span class="keyword">static</span> std::shared_ptr&lt;Button&gt; createButton(std::shared_ptr&lt;GameObject&gt; <span class="keywordtype">object</span>, std::string text,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Color.html">Tools::Color</a> color = Tools::Color::white(),</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Color.html">Tools::Color</a> textColor = Tools::Color::black()) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                    <span class="keyword">auto</span> result = std::make_shared&lt;Button&gt;(<span class="keywordtype">object</span>, text);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                    <span class="keywordtype">object</span>-&gt;addComponent(result);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                <span class="keyword">static</span> std::shared_ptr&lt;Button&gt; createButton(<a class="code" href="classKapEngine_1_1GameObject.html">GameObject</a> &amp;go, std::string text) {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                    <span class="keyword">auto</span> gGo = go.<a class="code" href="classKapEngine_1_1GameObject.html#ab433e8e6b3d73f71f7defe515fb66003">getScene</a>().<a class="code" href="classKapEngine_1_1SceneManagement_1_1Scene.html#a6ee7d492cfe2712c09390893a4c877fa">getGameObject</a>(go.<a class="code" href="classKapEngine_1_1Entity.html#a46ba8d055caf7b87c912bd0c6add44d5">getId</a>());</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    <span class="keyword">auto</span> result = std::make_shared&lt;Button&gt;(gGo, text);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                    gGo-&gt;addComponent(result);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="keyword">static</span> std::shared_ptr&lt;Inputfield&gt; createInputfield(std::shared_ptr&lt;GameObject&gt; go) {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    <span class="keyword">auto</span> result = std::make_shared&lt;Inputfield&gt;(go);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    go-&gt;addComponent(result);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                    result-&gt;setNormalColor(color);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                    result-&gt;setTextColor(textColor);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <span class="keyword">static</span> std::shared_ptr&lt;Button&gt; createButton(<a class="code" href="classKapEngine_1_1GameObject.html">GameObject</a> &amp;go, std::string text,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Color.html">Tools::Color</a> color = Tools::Color::white(),</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Color.html">Tools::Color</a> textColor = Tools::Color::black()) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    <span class="keywordflow">return</span> createButton(go.<a class="code" href="classKapEngine_1_1GameObject.html#ab433e8e6b3d73f71f7defe515fb66003">getScene</a>().<a class="code" href="classKapEngine_1_1SceneManagement_1_1Scene.html#a6ee7d492cfe2712c09390893a4c877fa">getGameObject</a>(go.<a class="code" href="classKapEngine_1_1Entity.html#a46ba8d055caf7b87c912bd0c6add44d5">getId</a>()), text, color, textColor);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                }</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                <span class="keyword">static</span> std::shared_ptr&lt;Inputfield&gt; createInputfield(<a class="code" href="classKapEngine_1_1GameObject.html">GameObject</a> &amp;go) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    <span class="keyword">auto</span> gGo = go.<a class="code" href="classKapEngine_1_1GameObject.html#ab433e8e6b3d73f71f7defe515fb66003">getScene</a>().<a class="code" href="classKapEngine_1_1SceneManagement_1_1Scene.html#a6ee7d492cfe2712c09390893a4c877fa">getGameObject</a>(go.<a class="code" href="classKapEngine_1_1Entity.html#a46ba8d055caf7b87c912bd0c6add44d5">getId</a>());</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                    <span class="keyword">auto</span> result = std::make_shared&lt;Inputfield&gt;(gGo);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    gGo-&gt;addComponent(result);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        };</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <span class="keyword">static</span> std::shared_ptr&lt;Button&gt; createButton(std::shared_ptr&lt;GameObject&gt; <span class="keywordtype">object</span>, std::string text,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                                          std::function&lt;<span class="keywordtype">void</span>()&gt; callback,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Color.html">Tools::Color</a> color = Tools::Color::white(),</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Color.html">Tools::Color</a> textColor = Tools::Color::black()) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    <span class="keyword">auto</span> result = std::make_shared&lt;Button&gt;(<span class="keywordtype">object</span>, text);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                    <span class="keywordtype">object</span>-&gt;addComponent(result);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    result-&gt;setNormalColor(color);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    result-&gt;setTextColor(textColor);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    result-&gt;getOnClick().registerAction(callback);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                }</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !KAPUI_FACTORY_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <span class="keyword">static</span> std::shared_ptr&lt;Button&gt; createButton(<a class="code" href="classKapEngine_1_1GameObject.html">GameObject</a>&amp; <span class="keywordtype">object</span>, std::string text,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                                          std::function&lt;<span class="keywordtype">void</span>()&gt; callback,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Color.html">Tools::Color</a> color = Tools::Color::white(),</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                                          <a class="code" href="classKapEngine_1_1Tools_1_1Color.html">Tools::Color</a> textColor = Tools::Color::black()) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                    <span class="keywordflow">return</span> createButton(<span class="keywordtype">object</span>.getScene().getGameObject(<span class="keywordtype">object</span>.getId()), text, callback, color, textColor);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="keyword">static</span> std::shared_ptr&lt;Inputfield&gt; createInputfield(std::shared_ptr&lt;GameObject&gt; go, Inputfield::InputType inputTye = Inputfield::InputType::TEXT, std::string <span class="keyword">const</span>&amp; placeHolder = <span class="stringliteral">&quot;Enter text here...&quot;</span>) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                    <span class="keyword">auto</span> result = std::make_shared&lt;Inputfield&gt;(go);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                    go-&gt;addComponent(result);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    result-&gt;setPlaceholderText(placeHolder);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                    result-&gt;setInputType(inputTye);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="keyword">static</span> std::shared_ptr&lt;Inputfield&gt; createInputfield(<a class="code" href="classKapEngine_1_1GameObject.html">GameObject</a> &amp;go, Inputfield::InputType inputTye = Inputfield::InputType::TEXT, std::string <span class="keyword">const</span>&amp; placeHolder = <span class="stringliteral">&quot;Enter text here...&quot;</span>) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    <span class="keywordflow">return</span> createInputfield(go.<a class="code" href="classKapEngine_1_1GameObject.html#ab433e8e6b3d73f71f7defe515fb66003">getScene</a>().<a class="code" href="classKapEngine_1_1SceneManagement_1_1Scene.html#a6ee7d492cfe2712c09390893a4c877fa">getGameObject</a>(go.<a class="code" href="classKapEngine_1_1Entity.html#a46ba8d055caf7b87c912bd0c6add44d5">getId</a>()));</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        };</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !KAPUI_FACTORY_HPP_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapEngine_1_1Entity_html_a46ba8d055caf7b87c912bd0c6add44d5"><div class="ttname"><a href="classKapEngine_1_1Entity.html#a46ba8d055caf7b87c912bd0c6add44d5">KapEngine::Entity::getId</a></div><div class="ttdeci">std::size_t getId() const</div><div class="ttdoc">Get the entity id.</div><div class="ttdef"><b>Definition:</b> Entity.hpp:34</div></div>
 <div class="ttc" id="aclassKapEngine_1_1GameObject_html"><div class="ttname"><a href="classKapEngine_1_1GameObject.html">KapEngine::GameObject</a></div><div class="ttdef"><b>Definition:</b> GameObject.hpp:34</div></div>
 <div class="ttc" id="aclassKapEngine_1_1UI_1_1KapUiFactory_html"><div class="ttname"><a href="classKapEngine_1_1UI_1_1KapUiFactory.html">KapEngine::UI::KapUiFactory</a></div><div class="ttdef"><b>Definition:</b> Factory.hpp:17</div></div>
 <div class="ttc" id="aclassKapEngine_1_1GameObject_html_ab433e8e6b3d73f71f7defe515fb66003"><div class="ttname"><a href="classKapEngine_1_1GameObject.html#ab433e8e6b3d73f71f7defe515fb66003">KapEngine::GameObject::getScene</a></div><div class="ttdeci">SceneManagement::Scene &amp; getScene()</div><div class="ttdoc">Get the Scene.</div><div class="ttdef"><b>Definition:</b> GameObject.hpp:212</div></div>
+<div class="ttc" id="aclassKapEngine_1_1Tools_1_1Color_html"><div class="ttname"><a href="classKapEngine_1_1Tools_1_1Color.html">KapEngine::Tools::Color</a></div><div class="ttdef"><b>Definition:</b> Colors.hpp:22</div></div>
 <div class="ttc" id="anamespaceKapEngine_html"><div class="ttname"><a href="namespaceKapEngine.html">KapEngine</a></div><div class="ttdoc">main namespace</div><div class="ttdef"><b>Definition:</b> Component.hpp:16</div></div>
 <div class="ttc" id="aclassKapEngine_1_1SceneManagement_1_1Scene_html_a6ee7d492cfe2712c09390893a4c877fa"><div class="ttname"><a href="classKapEngine_1_1SceneManagement_1_1Scene.html#a6ee7d492cfe2712c09390893a4c877fa">KapEngine::SceneManagement::Scene::getGameObject</a></div><div class="ttdeci">std::shared_ptr&lt; GameObject &gt; &amp; getGameObject(std::size_t id)</div><div class="ttdoc">Get the Game Object object.</div><div class="ttdef"><b>Definition:</b> Scene.cpp:57</div></div>
 <!-- start footer part -->

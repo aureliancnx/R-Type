@@ -1,7 +1,5 @@
 var NAVTREEINDEX9 =
 {
-"structKapEngine_1_1Animator_1_1NodeAnim.html#af8b535537876db7addabc1cdaa41b6ef":[29,0,3,1,1],
-"structKapEngine_1_1Events_1_1Input_1_1Axis.html":[31,0,0,1,2,0],
 "structKapEngine_1_1Events_1_1Input_1_1Axis.html#a3930c155e4bd13206345ddb3753f5fe3":[31,0,0,1,2,0,1],
 "structKapEngine_1_1Events_1_1Input_1_1Axis.html#a39639c63c94b6589df0088683aed3deb":[31,0,0,1,2,0,5],
 "structKapEngine_1_1Events_1_1Input_1_1Axis.html#a489d0db470fc925ee9928fa0f701cdcc":[31,0,0,1,2,0,4],

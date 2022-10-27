@@ -303,9 +303,9 @@ var NAVTREEINDEX =
 "classKapEngine_1_1Time_1_1EClock.html#ab85f27796fb37db9fdd2dfffad09b1d0",
 "classKapEngine_1_1UI_1_1Text.html#afaf2ed1e2f9fcb123e30dd2ac79a4485",
 "classKapMirror_1_1Sylph_1_1Socket.html#a4ba75be229400cf7b9154e325fa84996",
-"classRType_1_1Menu.html#a95bf6ef5ff84a6f2f31d33dfadb6f972",
-"functions_g.html",
-"structKapEngine_1_1Animator_1_1NodeAnim.html#af8b535537876db7addabc1cdaa41b6ef"
+"classRType_1_1Menu.html#aab0101d70fad273aa8f4b8167eb49fd4",
+"functions_i.html",
+"structKapEngine_1_1Events_1_1Input_1_1Axis.html#a3930c155e4bd13206345ddb3753f5fe3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

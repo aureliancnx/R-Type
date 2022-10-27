@@ -6,9 +6,9 @@
 
 #include "KapEngineUi.hpp"
 #include "Button/Button.hpp"
-#include "InputField/Inputfield.hpp"
-#include "Player/PlayerSkin.hpp"
+#include "KapEngineUi.hpp"
 #include "Animations/SpriteAnimation.hpp"
+// #include "Animations/HowToPlayAnimation.hpp"
 
 //using namespace KapEngine;
 
@@ -119,7 +119,7 @@ void RType::HowToPlayMenu::init() {
         try {
             auto &imageComp = bubulle->getComponent<KapEngine::UI::Image>();
             imageComp.setPathSprite("Assets/Textures/bubulle.png");
-            imageComp.setRectangle({0, 0, 18, 19});
+            imageComp.setRectangle({0, 0, 17, 18});
 
             auto& transform = bubulle->getComponent<KapEngine::Transform>();
             transform.setPosition(KapEngine::Tools::Vector3(600, 200, 0));
@@ -129,14 +129,71 @@ void RType::HowToPlayMenu::init() {
             KAP_DEBUG_ERROR("Failed to set bubulle img");
         }
 
-        //fight animation
-        auto fightAnimation = std::make_shared<HowToPlayAnimation>(fight);
-        fight->addComponent(fightAnimation);
+        // try {
+        //     ship->getComponent<KapEngine::UI::Image>();
+        //     KAP_DEBUG_WARNING("SUCCESS");
+        // } catch (...) {
+        //     KAP_DEBUG_ERROR("Failed to set bubulle img");
+        // }
 
-        auto animator = std::make_shared<KapEngine::Animator>(fight);
-        fight->addComponent(animator);
-        animator->addAnim(fightAnimation, "idle");
-        animator->addLink("idle", "idle");
+        //fight animation
+        // auto shipAnimation = std::make_shared<SpriteAnimation>(ship, 5, (KapEngine::Tools::Rectangle){0, 0, 263, 116}, 1);
+        // auto bulletAnimation = std::make_shared<HowToPlayAnimation>(bullet);
+        // auto bubulleAnimation = std::make_shared<HowToPlayAnimation>(bubulle);
+        // auto explosionAnimation = std::make_shared<HowToPlayAnimation>(explosion);
+        // fight->addComponent(shipAnimation);
+        // fight->addComponent(bulletAnimation);
+        // fight->addComponent(bubulleAnimation);
+        // fight->addComponent(explosionAnimation);
+
+        //fight animation
+        {
+            auto shipAnimation = std::make_shared<SpriteAnimation>(ship);
+            KapEngine::Time::ETime timer;
+            timer.setSeconds(.8);
+            ship->addComponent(shipAnimation);
+            shipAnimation->setTiming(timer);
+            shipAnimation->loop(true);
+            shipAnimation->setRect({0, 0, 263, 116});
+            shipAnimation->setNbAnimations(6);
+
+            auto animator = std::make_shared<KapEngine::Animator>(ship);
+            ship->addComponent(animator);
+            animator->addAnim(shipAnimation, "idle");
+            animator->addLink("idle", "idle");
+        }
+
+        {
+            auto bubulleAnimation = std::make_shared<SpriteAnimation>(bubulle);
+            KapEngine::Time::ETime timer;
+            timer.setSeconds(.8);
+            bubulle->addComponent(bubulleAnimation);
+            bubulleAnimation->setTiming(timer);
+            bubulleAnimation->loop(true);
+            bubulleAnimation->setRect({0, 0, 17, 18});
+            bubulleAnimation->setNbAnimations(12);
+
+            auto animator = std::make_shared<KapEngine::Animator>(bubulle);
+            bubulle->addComponent(animator);
+            animator->addAnim(bubulleAnimation, "idle");
+            animator->addLink("idle", "idle");
+        }
+
+        {
+            auto bulletAnimation = std::make_shared<SpriteAnimation>(bullet);
+            KapEngine::Time::ETime timer;
+            timer.setSeconds(.8);
+            bullet->addComponent(bulletAnimation);
+            bulletAnimation->setTiming(timer);
+            bulletAnimation->loop(true);
+            bulletAnimation->setRect({0, 0, 19, 6});
+            bulletAnimation->setNbAnimations(2);
+
+            auto animator = std::make_shared<KapEngine::Animator>(bullet);
+            bullet->addComponent(animator);
+            animator->addAnim(bulletAnimation, "idle");
+            animator->addLink("idle", "idle");
+        }
     }
 
     // create text for Move Down
@@ -151,17 +208,9 @@ void RType::HowToPlayMenu::init() {
         transform.setParent(canvas);
     }
 
-    // // create text for Move Down input command
-    // {
-    //     auto moveKey = canvas->getComponent<ChangeKey>();
-    //     auto txt = KapEngine::UI::UiFactory::createText(scene, "Move Down");
-    //     auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Flèche");
-    //     auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
-
-    //     txt->addComponent(compText);
-    //     transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-    //     transform.setPosition(KapEngine::Tools::Vector3(50, 150, 0));
-    //     transform.setParent(canvas);
+    // int value = KapEngine::PlayerPrefs::getInt("downInput");
+    // if (KapEngine::Events::Key::intInEnum(value)) {
+    //     KapEngine::Events::Key::EKey upKey = static_cast<KapEngine::Events::Key::EKey>(value);
     // }
 
     // create text for Move Left
@@ -176,6 +225,11 @@ void RType::HowToPlayMenu::init() {
         transform.setParent(canvas);
     }
 
+    // int value = KapEngine::PlayerPrefs::getInt("leftInput");
+    // if (KapEngine::Events::Key::intInEnum(value)) {
+    //     KapEngine::Events::Key::EKey upKey = static_cast<KapEngine::Events::Key::EKey>(value);
+    // }
+
     // create text for Move Right
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Move Right");
@@ -188,6 +242,11 @@ void RType::HowToPlayMenu::init() {
         transform.setParent(canvas);
     }
 
+    // int value = KapEngine::PlayerPrefs::getInt("rightInput");
+    // if (KapEngine::Events::Key::intInEnum(value)) {
+    //     KapEngine::Events::Key::EKey upKey = static_cast<KapEngine::Events::Key::EKey>(value);
+    // }
+
     // create text for Shoot
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Shoot");
@@ -199,6 +258,11 @@ void RType::HowToPlayMenu::init() {
         transform.setPosition(KapEngine::Tools::Vector3(150, 300, 0));
         transform.setParent(canvas);
     }
+
+    // int value = KapEngine::PlayerPrefs::getInt("shootInput");
+    // if (KapEngine::Events::Key::intInEnum(value)) {
+    //     KapEngine::Events::Key::EKey upKey = static_cast<KapEngine::Events::Key::EKey>(value);
+    // }
 
         // //create Move Down keyboard img
     // {

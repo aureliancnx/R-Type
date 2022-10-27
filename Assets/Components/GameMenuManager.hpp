@@ -37,9 +37,16 @@ namespace RType
                                                           KapEngine::Tools::Color color = KapEngine::Tools::Color::white(),
                                                           KapEngine::Tools::Color textColor = KapEngine::Tools::Color::black());
 
+        void initHeart();
+        void addLife();
+        void removeLife();
+
         // variables
       private:
         std::shared_ptr<KapEngine::GameObject> mainMenu;
+        std::shared_ptr<KapEngine::GameObject> heart1;
+        std::shared_ptr<KapEngine::GameObject> heart2;
+        std::shared_ptr<KapEngine::GameObject> heart3;
     };
 
 } // namespace RType

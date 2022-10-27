@@ -77,14 +77,14 @@ void RType::GameMenuManager::initBackground(std::shared_ptr<GameObject> parent) 
 std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<GameObject> parent, std::string name, std::string text, std::function<void()> callback, Tools::Color color, Tools::Color textColor) {
     std::shared_ptr<GameObject> button = parent->getScene().createGameObject(name);
 
-    if (IS_MAX_KAPUI_VERSION(0, 101)) {
+    #if IS_MAX_KAPUI_VERSION(0, 101)
         auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text);
         btnComp->setTextColor(textColor);
         btnComp->setNormalColor(color);
         btnComp->getOnClick().registerAction(callback);
-    } else {
+    #else
         KapEngine::UI::KapUiFactory::createButton(button, text, callback, textColor, color);
-    }
+    #endif
 
     try {
         button->getComponent<Transform>().setParent(parent->getId());
@@ -97,16 +97,16 @@ std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<G
 std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<GameObject> parent, std::string name, std::string text, std::function<void()> callback, std::string pathSprite, Tools::Rectangle rect, Tools::Color color, Tools::Color textColor) {
     std::shared_ptr<GameObject> button = parent->getScene().createGameObject(name);
 
-    if (IS_MAX_KAPUI_VERSION(0, 101)) {
+    #if IS_MAX_KAPUI_VERSION(0, 101)
         auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text);
         btnComp->setTextColor(textColor);
         btnComp->setNormalColor(color);
         btnComp->getOnClick().registerAction(callback);
         btnComp->setBackground(pathSprite, rect);
-    } else {
+    #else
         auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text, callback, textColor, color);
         btnComp->setBackground(pathSprite, rect);
-    }
+    #endif
 
     try {
         button->getComponent<Transform>().setParent(parent->getId());
@@ -114,4 +114,31 @@ std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<G
         KAP_DEBUG_ERROR("Failled to set button " + name + " parent");
     }
     return button;
+}
+
+void RType::GameMenuManager::initHeart() {
+    #if IS_MIN_KAPENGINE_VERSION(1, 215)
+        heart1 = KapEngine::UI::UiFactory::createImage(getGameObject().getScene(), "Heart1", "Assets/Textures/Icons/heart.png", {0, 0, 512, 512});
+        heart2 = KapEngine::UI::UiFactory::createImage(getGameObject().getScene(), "Heart2", "Assets/Textures/Icons/heart.png", {0, 0, 512, 512});
+        heart3 = KapEngine::UI::UiFactory::createImage(getGameObject().getScene(), "Heart3", "Assets/Textures/Icons/heart.png", {0, 0, 512, 512});
+    #else
+        heart1 = KapEngine::UI::UiFactory::createImage(getGameObject().getScene(), "Heart1", "Assets/Textures/Icons/heart.png");
+        {
+            auto &img = heart1->getComponent<KapEngine::UI::Image>();
+            img.setRectangle({0, 0, 512, 512});
+        }
+
+        heart2 = KapEngine::UI::UiFactory::createImage(getGameObject().getScene(), "Heart2", "Assets/Textures/Icons/heart.png");
+        {
+            auto &img = heart2->getComponent<KapEngine::UI::Image>();
+            img.setRectangle({0, 0, 512, 512});
+        }
+
+        heart3 = KapEngine::UI::UiFactory::createImage(getGameObject().getScene(), "Heart3", "Assets/Textures/Icons/heart.png");
+        {
+            auto &img = heart3->getComponent<KapEngine::UI::Image>();
+            img.setRectangle({0, 0, 512, 512});
+        }
+    #endif
+
 }

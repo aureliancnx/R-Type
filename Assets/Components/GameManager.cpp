@@ -8,6 +8,7 @@
 #include "Menu/VolumeMenu.hpp"
 #include "Menu/HowToPlayMenu.hpp"
 #include "Menu/SettingPlayerMenu.hpp"
+#include "CampaignGenerator/CampaignGenerator.hpp"
 
 #include "KapMirror/KapMirror.hpp"
 #include "Sylph/SylphTransport.hpp"
@@ -170,7 +171,7 @@ void GameManager::initMultiPlayer(bool isServer) {
 
     auto networkManagerObject = scene->createGameObject("NetworkManager");
     networkManager = std::make_shared<RtypeNetworkManager>(networkManagerObject, isServer);
-    // networkManager->setTransport(std::make_shared<KapMirror::SylphTransport>());
+    networkManager->setTransport(std::make_shared<KapMirror::SylphTransport>());
     networkManagerObject->addComponent(networkManager);
 }
 
@@ -178,7 +179,9 @@ void GameManager::initMultiPlayer(bool isServer) {
 void GameManager::startCampaign() {
     auto &scene = engine->getSceneManager()->getScene("SinglePlayer");
 
-
+    auto enemies = scene.createGameObject("Enemies Generator");
+    auto compEnemies = std::make_shared<CampaignGenerator>(enemies);
+    enemies->addComponent(compEnemies);
 }
 
 // TODO: Move this to a dedicated class
@@ -220,3 +223,4 @@ void GameManager::initAxis() {
 std::shared_ptr<RtypeNetworkManager> &GameManager::getNetworkManager() {
     return networkManager;
 }
+

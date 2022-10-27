@@ -22,13 +22,9 @@ namespace RType
         void onAwake() override;
 
         void displayMainMenu();
-        void displayBonusMenu();
-        void displayPauseMenu();
 
       private:
         void initMainMenu();
-        void initBonusMenu();
-        void initPauseMenu();
 
         void initBackground(std::shared_ptr<KapEngine::GameObject> parent);
         std::shared_ptr<KapEngine::GameObject> initButton(std::shared_ptr<KapEngine::GameObject> parent, std::string name, std::string text,
@@ -44,8 +40,6 @@ namespace RType
         // variables
       private:
         std::shared_ptr<KapEngine::GameObject> mainMenu;
-        std::shared_ptr<KapEngine::GameObject> pauseMenu;
-        std::shared_ptr<KapEngine::GameObject> bonusMenu;
     };
 
 } // namespace RType

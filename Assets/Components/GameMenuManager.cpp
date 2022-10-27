@@ -14,11 +14,9 @@ using namespace KapEngine;
 
 RType::GameMenuManager::GameMenuManager(std::shared_ptr<GameObject> go) : Component(go, "GameMenuManager") {
     addRequireComponent("Canvas");
-
     auto screenSize = getGameObject().getEngine().getScreenSize();
 
     float sizeY = 90;
-
     getTransform().setScale({screenSize.getX(), sizeY, 0});
     getTransform().setPosition({0, screenSize.getY() - sizeY, 0});
     if (!getGameObject().hasComponent<UI::Canvas>()) {
@@ -26,15 +24,12 @@ RType::GameMenuManager::GameMenuManager(std::shared_ptr<GameObject> go) : Compon
         getGameObject().addComponent(canvas);
         canvas->setResizeType(UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
     }
-    initMainMenu();
-    initBonusMenu();
-    initPauseMenu();
 }
 
 RType::GameMenuManager::~GameMenuManager() {}
 
 void RType::GameMenuManager::onAwake() {
-    
+    initMainMenu();
 }
 
 void RType::GameMenuManager::displayMainMenu() {
@@ -43,45 +38,6 @@ void RType::GameMenuManager::displayMainMenu() {
     } else {
         initMainMenu();
     }
-
-    if (pauseMenu.use_count() != 0) {
-        pauseMenu->setActive(false);
-    }
-    if (bonusMenu.use_count() != 0) {
-        bonusMenu->setActive(false);
-    }
-}
-
-void RType::GameMenuManager::displayBonusMenu() {
-    if (bonusMenu.use_count() != 0) {
-        bonusMenu->setActive(true);
-    } else {
-        initBonusMenu();
-        bonusMenu->setActive(true);
-    }
-
-    if (pauseMenu.use_count() != 0) {
-        pauseMenu->setActive(false);
-    }
-    if (mainMenu.use_count() != 0) {
-        mainMenu->setActive(false);
-    }
-}
-
-void RType::GameMenuManager::displayPauseMenu() {
-    if (pauseMenu.use_count() != 0) {
-        pauseMenu->setActive(true);
-    } else {
-        initPauseMenu();
-        pauseMenu->setActive(true);
-    }
-
-    if (mainMenu.use_count() != 0) {
-        mainMenu->setActive(false);
-    }
-    if (bonusMenu.use_count() != 0) {
-        bonusMenu->setActive(false);
-    }
 }
 
 void RType::GameMenuManager::initMainMenu() {
@@ -89,25 +45,23 @@ void RType::GameMenuManager::initMainMenu() {
     mainMenu = getGameObject().getScene().createGameObject("MainMenu");
     mainMenu->getComponent<Transform>().setParent(getGameObject().getId());
 
+    Tools::Vector3 btnSize = {80.f / getGameObject().getEngine().getScreenSize().getX(), 80.f / 90.f, 0};
+    Tools::Vector3 btnBasePos;
+
+    KAP_DEBUG_LOG("Button size: " + btnSize.to_string());
+
     initBackground(mainMenu);
-}
 
-void RType::GameMenuManager::initPauseMenu() {
-    //menu set
-    pauseMenu = getGameObject().getScene().createGameObject("PauseMenu");
-    pauseMenu->getComponent<Transform>().setParent(getGameObject().getId());
-    pauseMenu->setActive(false);
+    //create quit button
+    {
+        auto btn = initButton(mainMenu, "QuitBtn", "", [this](){
+            getGameObject().getEngine().getSceneManager()->loadScene(1);
+        }, "Assets/Textures/Icons/logout.png", {0, 0, 512, 512});
+        auto &tr = btn->getComponent<Transform>();
 
-    initBackground(pauseMenu);
-}
-
-void RType::GameMenuManager::initBonusMenu() {
-    //menu set
-    bonusMenu = getGameObject().getScene().createGameObject("BonusMenu");
-    bonusMenu->getComponent<Transform>().setParent(getGameObject().getId());
-    bonusMenu->setActive(false);
-
-    initBackground(bonusMenu);
+        tr.setScale(btnSize);
+        tr.setPosition(btnBasePos + Tools::Vector3(160, 0, 0));
+    }
 }
 
 void RType::GameMenuManager::initBackground(std::shared_ptr<GameObject> parent) {
@@ -121,30 +75,43 @@ void RType::GameMenuManager::initBackground(std::shared_ptr<GameObject> parent) 
 }
 
 std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<GameObject> parent, std::string name, std::string text, std::function<void()> callback, Tools::Color color, Tools::Color textColor) {
-    auto button = parent->getScene().createGameObject(name);
-    button->getComponent<Transform>().setParent(parent->getId());
-    button->getComponent<Transform>().setPosition({0, 0, 0});
+    std::shared_ptr<GameObject> button = parent->getScene().createGameObject(name);
 
-    auto buttonImage = std::make_shared<UI::Button>(button);
-    buttonImage->setText(text);
-    buttonImage->getOnClick().registerAction(callback);
-    // buttonImage->setColor(color);
-    buttonImage->setTextColor(textColor);
-    button->addComponent(buttonImage);
+    if (IS_MAX_KAPUI_VERSION(0, 101)) {
+        auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text);
+        btnComp->setTextColor(textColor);
+        btnComp->setNormalColor(color);
+        btnComp->getOnClick().registerAction(callback);
+    } else {
+        KapEngine::UI::KapUiFactory::createButton(button, text, callback, textColor, color);
+    }
+
+    try {
+        button->getComponent<Transform>().setParent(parent->getId());
+    } catch (...) {
+        KAP_DEBUG_ERROR("Failled to set button " + name + " parent");
+    }
     return button;
 }
 
 std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<GameObject> parent, std::string name, std::string text, std::function<void()> callback, std::string pathSprite, Tools::Rectangle rect, Tools::Color color, Tools::Color textColor) {
-    auto button = parent->getScene().createGameObject(name);
-    button->getComponent<Transform>().setParent(parent->getId());
-    button->getComponent<Transform>().setPosition({0, 0, 0});
+    std::shared_ptr<GameObject> button = parent->getScene().createGameObject(name);
 
-    auto buttonImage = std::make_shared<UI::Button>(button);
-    buttonImage->setText(text);
-    buttonImage->getOnClick().registerAction(callback);
-    // buttonImage->setColor(color);
-    buttonImage->setTextColor(textColor);
-    buttonImage->setBackground(pathSprite, rect);
-    button->addComponent(buttonImage);
+    if (IS_MAX_KAPUI_VERSION(0, 101)) {
+        auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text);
+        btnComp->setTextColor(textColor);
+        btnComp->setNormalColor(color);
+        btnComp->getOnClick().registerAction(callback);
+        btnComp->setBackground(pathSprite, rect);
+    } else {
+        auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text, callback, textColor, color);
+        btnComp->setBackground(pathSprite, rect);
+    }
+
+    try {
+        button->getComponent<Transform>().setParent(parent->getId());
+    } catch (...) {
+        KAP_DEBUG_ERROR("Failled to set button " + name + " parent");
+    }
     return button;
 }

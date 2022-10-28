@@ -111,13 +111,6 @@ jobs:
       - name: Build
         shell: bash
         run: cmake --build build --config ${{ matrix.config.build_type }}
-      - name: Pack
-        shell: bash
-        run: |
-          cd build/
-          cpack -G
-          ls -lah
-          cd ..
       - name: Prepare release files (Linux)
         if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') || startsWith(matrix.config.name, 'macos') }}
         run: |

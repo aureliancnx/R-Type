@@ -71,6 +71,7 @@ var hierarchy =
           [ "KapEngine::AnimationFadeIn", "classKapEngine_1_1AnimationFadeIn.html", null ],
           [ "KapEngine::AnimationFadeOut", "classKapEngine_1_1AnimationFadeOut.html", null ],
           [ "KapEngine::AnimationSplashScreen", "classKapEngine_1_1AnimationSplashScreen.html", null ],
+          [ "RType::HowToPlayAnimation", "classRType_1_1HowToPlayAnimation.html", null ],
           [ "RType::ParalaxAnimation", "classRType_1_1ParalaxAnimation.html", null ],
           [ "RType::SpriteAnimation", "classRType_1_1SpriteAnimation.html", null ]
         ] ],

@@ -47,6 +47,7 @@ var NAVTREEINDEX0 =
 "GameObject_8hpp_source.html":[32,0,2,0,0,7,0],
 "GraphicalLibManager_8hpp_source.html":[32,0,2,0,0,8,1],
 "GraphicalLib_8hpp_source.html":[32,0,2,0,0,8,0],
+"HowToPlayAnimation_8hpp_source.html":[32,0,0,0,0,0],
 "HowToPlayMenu_8hpp_source.html":[32,0,0,0,6,0],
 "IComponent_8hpp_source.html":[32,0,2,0,0,0,1],
 "IgraphicalLib_8hpp_source.html":[32,0,2,0,0,8,2],
@@ -99,7 +100,7 @@ var NAVTREEINDEX0 =
 "NetworkWriter_8hpp_source.html":[32,0,3,0,0,2,11],
 "Packages_2KapMirror_2KapMirror_2Messages_8hpp_source.html":[32,0,3,0,0,4],
 "Packages_2KapUI_2KapUI_2Factory_2Factory_8hpp_source.html":[32,0,3,2,0,1,0],
-"ParalaxAnimation_8hpp_source.html":[32,0,0,0,0,0],
+"ParalaxAnimation_8hpp_source.html":[32,0,0,0,0,1],
 "Parser_8hpp_source.html":[32,0,3,3,2],
 "Platform_8hpp_source.html":[32,0,2,0,0,15,1],
 "PlayerController_8hpp_source.html":[32,0,0,0,7,0],
@@ -120,7 +121,7 @@ var NAVTREEINDEX0 =
 "ShipEnemy_8hpp_source.html":[32,0,0,0,4,2],
 "SoloMenu_8hpp_source.html":[32,0,0,0,6,7],
 "SplashScreen_8hpp_source.html":[32,0,2,0,0,12,2,0],
-"SpriteAnimation_8hpp_source.html":[32,0,0,0,0,1],
+"SpriteAnimation_8hpp_source.html":[32,0,0,0,0,2],
 "Summon_8hpp_source.html":[32,0,3,3,1,0],
 "SylphTransport_2Sylph_2Address_8hpp_source.html":[32,0,3,4,0,0],
 "SylphTransport_2Sylph_2Client_8hpp_source.html":[32,0,3,4,0,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "classKapEngine_1_1Component.html#a8c5bf2477b3c13dac2d31229c12f3dab":[31,0,0,15,12],
 "classKapEngine_1_1Component.html#a923ba8a08cbf090602e913481606ca5f":[31,0,0,15,15],
 "classKapEngine_1_1Component.html#a96e6047b7b4de748942969ad2e6db563":[31,0,0,15,6],
-"classKapEngine_1_1Component.html#a9f72bf6a001d632e69e9ca09e503a23f":[31,0,0,15,11],
-"classKapEngine_1_1Component.html#aaad927d96f8a50e917d3ecd29030cc8f":[31,0,0,15,31]
+"classKapEngine_1_1Component.html#a9f72bf6a001d632e69e9ca09e503a23f":[31,0,0,15,11]
 };

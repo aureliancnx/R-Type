@@ -95,26 +95,27 @@ $(document).ready(function(){initNavTree('HowToPlayMenu_8hpp_source.html',''); i
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define RTYPE_HOWTOPLAYMENU_HPP</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;Menu.hpp&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>RType</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classRType_1_1HowToPlayMenu.html">   12</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classRType_1_1HowToPlayMenu.html">HowToPlayMenu</a> : <span class="keyword">public</span> <a class="code" href="classRType_1_1Menu.html">Menu</a></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;      <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classRType_1_1HowToPlayMenu.html">HowToPlayMenu</a>(<a class="code" href="classKapEngine_1_1SceneManagement_1_1Scene.html">KapEngine::SceneManagement::Scene</a> &amp;_scene);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        ~<a class="code" href="classRType_1_1HowToPlayMenu.html">HowToPlayMenu</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">void</span> init() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;      <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;      <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    };</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;} <span class="comment">// namespace RType</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif // RTYPE_HOWTOPLAYMENU_HPP</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;Animations/HowToPlayAnimation.hpp&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>RType</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classRType_1_1HowToPlayMenu.html">   13</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classRType_1_1HowToPlayMenu.html">HowToPlayMenu</a> : <span class="keyword">public</span> <a class="code" href="classRType_1_1Menu.html">Menu</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;      <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classRType_1_1HowToPlayMenu.html">HowToPlayMenu</a>(<a class="code" href="classKapEngine_1_1SceneManagement_1_1Scene.html">KapEngine::SceneManagement::Scene</a> &amp;_scene);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        ~<a class="code" href="classRType_1_1HowToPlayMenu.html">HowToPlayMenu</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">void</span> init() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;      <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;      <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    };</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;} <span class="comment">// namespace RType</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif // RTYPE_HOWTOPLAYMENU_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassRType_1_1HowToPlayMenu_html"><div class="ttname"><a href="classRType_1_1HowToPlayMenu.html">RType::HowToPlayMenu</a></div><div class="ttdef"><b>Definition:</b> HowToPlayMenu.hpp:12</div></div>
+<div class="ttc" id="aclassRType_1_1HowToPlayMenu_html"><div class="ttname"><a href="classRType_1_1HowToPlayMenu.html">RType::HowToPlayMenu</a></div><div class="ttdef"><b>Definition:</b> HowToPlayMenu.hpp:13</div></div>
 <div class="ttc" id="aclassRType_1_1Menu_html"><div class="ttname"><a href="classRType_1_1Menu.html">RType::Menu</a></div><div class="ttdef"><b>Definition:</b> Menu.hpp:8</div></div>
 <div class="ttc" id="aclassKapEngine_1_1SceneManagement_1_1Scene_html"><div class="ttname"><a href="classKapEngine_1_1SceneManagement_1_1Scene.html">KapEngine::SceneManagement::Scene</a></div><div class="ttdef"><b>Definition:</b> Scene.hpp:35</div></div>
 <!-- start footer part -->

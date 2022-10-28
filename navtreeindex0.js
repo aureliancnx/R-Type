@@ -57,8 +57,9 @@ var NAVTREEINDEX0 =
 "KapEngineDebug_8hpp_source.html":[32,0,2,0,0,17],
 "KapEngineEvents_8hpp_source.html":[32,0,2,0,0,18],
 "KapEngineGraphical_8hpp_source.html":[32,0,2,0,0,19],
-"KapEngineUi_8hpp_source.html":[32,0,2,0,0,20],
-"KapEngineVersion_8hpp_source.html":[32,0,2,0,0,21],
+"KapEngineSettings_8hpp_source.html":[32,0,2,0,0,20],
+"KapEngineUi_8hpp_source.html":[32,0,2,0,0,21],
+"KapEngineVersion_8hpp_source.html":[32,0,2,0,0,22],
 "KapEngine_8hpp_source.html":[32,0,2,0,0,16],
 "KapMirror_2KapMirror_2Runtime_2Transports_2Telepathy_2Address_8hpp_source.html":[32,0,3,0,0,2,0,0,0],
 "KapMirror_2KapMirror_2Runtime_2Transports_2Telepathy_2Client_8hpp_source.html":[32,0,3,0,0,2,0,0,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "classKapEngine_1_1Component.html#a8b91d8cfa5390bc2abd715615d23f930":[31,0,0,15,18],
 "classKapEngine_1_1Component.html#a8c5bf2477b3c13dac2d31229c12f3dab":[31,0,0,15,12],
 "classKapEngine_1_1Component.html#a923ba8a08cbf090602e913481606ca5f":[31,0,0,15,15],
-"classKapEngine_1_1Component.html#a96e6047b7b4de748942969ad2e6db563":[31,0,0,15,6],
-"classKapEngine_1_1Component.html#a9f72bf6a001d632e69e9ca09e503a23f":[31,0,0,15,11]
+"classKapEngine_1_1Component.html#a96e6047b7b4de748942969ad2e6db563":[31,0,0,15,6]
 };

@@ -20,6 +20,7 @@ var dir_629de11cc8787cef9eb2a98955a265e9 =
     [ "KapEngineDebug.hpp", "KapEngineDebug_8hpp_source.html", null ],
     [ "KapEngineEvents.hpp", "KapEngineEvents_8hpp_source.html", null ],
     [ "KapEngineGraphical.hpp", "KapEngineGraphical_8hpp_source.html", null ],
+    [ "KapEngineSettings.hpp", "KapEngineSettings_8hpp_source.html", null ],
     [ "KapEngineUi.hpp", "KapEngineUi_8hpp_source.html", null ],
     [ "KapEngineVersion.hpp", "KapEngineVersion_8hpp_source.html", null ]
 ];

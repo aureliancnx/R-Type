@@ -6,6 +6,7 @@ var classKapEngine_1_1SceneManagement_1_1Scene =
     [ "__engineStop", "classKapEngine_1_1SceneManagement_1_1Scene.html#a3e52f3212d332dc96dcce3760b165141", null ],
     [ "__finit", "classKapEngine_1_1SceneManagement_1_1Scene.html#a3a92b4a9344320510a2d5c699d880383", null ],
     [ "__init", "classKapEngine_1_1SceneManagement_1_1Scene.html#acd98abbe4d89d4adc24a886505c1bd8c", null ],
+    [ "__isChangingScene", "classKapEngine_1_1SceneManagement_1_1Scene.html#a42243fee303670a0ef279ff3f70255a8", null ],
     [ "__update", "classKapEngine_1_1SceneManagement_1_1Scene.html#aeb715aa55615b11683d03c1146cbe640", null ],
     [ "addGameObject", "classKapEngine_1_1SceneManagement_1_1Scene.html#a60df45449bf49f5fc1dc1c1f9e70c2fd", null ],
     [ "createGameObject", "classKapEngine_1_1SceneManagement_1_1Scene.html#aaf85bf346b787b260a8c00ac037d821e", null ],

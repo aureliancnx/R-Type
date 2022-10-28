@@ -9,7 +9,7 @@ if(${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_BINARY_DIR} AND NOT WIN3
             "(either below this directory or elsewhere), and then re-run CMake from there.")
 endif(${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_BINARY_DIR} AND NOT WIN32)
 
-project(RType LANGUAGES CXX)
+project(RType LANGUAGES CXX VERSION 1.0.1)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake" ${CMAKE_MODULE_PATH})
 
@@ -54,6 +54,14 @@ include_directories(Assets/Components)
 # Packages
 include(Packages/packages.cmake)
 
+include(InstallRequiredSystemLibraries)
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
+set(CPACK_PACKAGE_VERSION_MAJOR "${RTYPE_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${RTYPE_VERSION_MINOR}")
+include(CPack)
+
 if (VALGRIND)
     target_compile_options(RType PRIVATE -g)
 endif()
+target_compile_options(RType PRIVATE -O2)
+target_compile_options(RType PRIVATE -pthread)

@@ -8,6 +8,8 @@
 #include "RaylibGraphical.hpp"
 #include "KapEngineUi.hpp"
 
+#include "KapEngineSettings.hpp"
+
 KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManager &manager, bool drawWindow) : GraphicalLib("raylib", manager) {
 
     _drawWindow = drawWindow;
@@ -34,7 +36,7 @@ KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManag
             Tools::Color color = img.getColorSprite();
 
 
-            this->raylib->drawTexture(img.getPathSprite(), pos.getX(), pos.getY(), scale.getX(), scale.getY(), tr.getWorldRotation().getX(),
+            this->raylib->drawTexture(KAPENGINE_PREFIX_ASSETS_PATH + img.getPathSprite(), pos.getX(), pos.getY(), scale.getX(), scale.getY(), tr.getWorldRotation().getX(),
                 engineToRaylib(img.getRectangle()), engineToRaylib(color));
         } else {
             Tools::Vector2 pos = img.getCalculatedPosition();
@@ -69,7 +71,7 @@ KapEngine::Graphical::Raylib::RaylibGraphical::RaylibGraphical(GraphicalLibManag
 
         Vector2 pos = engineToRaylib(posTr);
 
-        this->raylib->drawText(txt.getFontPath(), txt.getText(), pos, scale, txt.getSpace(), engineToRaylib(txt.getColor()));
+        this->raylib->drawText(KAPENGINE_PREFIX_ASSETS_PATH + txt.getFontPath(), txt.getText(), pos, scale, txt.getSpace(), engineToRaylib(txt.getColor()));
     });
 
 }
@@ -524,11 +526,11 @@ bool KapEngine::Graphical::Raylib::RaylibGraphical::drawable(Tools::Vector2 cons
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::playSound(std::string const& path) {
-    raylib->playSound(path, _soundVolume);
+    raylib->playSound(KAPENGINE_PREFIX_ASSETS_PATH + path, _soundVolume);
 }
 
 void KapEngine::Graphical::Raylib::RaylibGraphical::playMusic(std::string const& path, float vol) {
-    raylib->playMusic(path);
+    raylib->playMusic(KAPENGINE_PREFIX_ASSETS_PATH + path);
     raylib->setMusicVolume(vol);
 }
 

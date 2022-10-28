@@ -47,6 +47,7 @@ namespace RType
 
       public:
         void startLocalMultiPlayer();
+        void startCampaign();
 
         std::shared_ptr<RtypeNetworkManager> &getNetworkManager();
 

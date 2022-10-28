@@ -37,6 +37,19 @@ void PlayerController::onUpdate() {
         }
     }
 
+    if (getInput().getKeyDown(upKey)) {
+        getGameObject().getComponent<KapEngine::Animator>().setTrigger("IdleToUp");
+    }
+    if (getInput().getKeyUp(upKey)) {
+        getGameObject().getComponent<KapEngine::Animator>().setTrigger("UpToIdle");
+    }
+    if (getInput().getKeyDown(downKey)) {
+        getGameObject().getComponent<KapEngine::Animator>().setTrigger("IdleToDown");
+    }
+    if (getInput().getKeyUp(downKey)) {
+        getGameObject().getComponent<KapEngine::Animator>().setTrigger("DownToIdle");
+    }
+
     if (getInput().getKeyDown(shootKey)) {
         playShootSound();
         shoot();
@@ -106,6 +119,7 @@ void PlayerController::shoot() {
         std::shared_ptr<KapEngine::GameObject> bullet;
         getGameObject().getEngine().getPrefabManager()->instantiatePrefab("Bullet", scene, bullet);
         bullet->getComponent<KapEngine::Transform>().setPosition(pos);
+        bullet->setName("Bullet Player");
     } else if (isClient() && isLocalAuthority) {
         PlayerShootMessage message;
         message.networkId = getNetworkId();

@@ -27,7 +27,7 @@ int main(int argc, char **argv)
     }
 
     KapEngine::KEngine engine(false, "R-Type", "1.0.0", "Epitech");
-    engine.setEngineThread(false);
+
     initWindow(&engine, !isServer);
 
     RType::GameManager gameManager(&engine, false);

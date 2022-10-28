@@ -1,11 +1,11 @@
 #include "SoloMenu.hpp"
-#include "Button/Button.hpp"
+#include "KapUI/KapUI.hpp"
 #include "Keys/UpdateStartGameKeys.hpp"
 #include "Campaign/MenuCampaign.hpp"
 
 using namespace RType;
 
-SoloMenu::SoloMenu(KapEngine::SceneManagement::Scene& _scene) : Menu(_scene) {}
+SoloMenu::SoloMenu(KapEngine::SceneManagement::Scene& _scene, GameManager& _gameManager) : Menu(_scene), gameManager(_gameManager) {}
 
 void SoloMenu::init() {
     // change type of display for canvas
@@ -61,6 +61,7 @@ void SoloMenu::init() {
             }
 
             scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
+            gameManager.startCampaign();
         });
     }
 

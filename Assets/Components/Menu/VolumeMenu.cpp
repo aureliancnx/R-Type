@@ -4,8 +4,7 @@
 
 #include "VolumeMenu.hpp"
 #include "KapEngineUi.hpp"
-#include "Button/Button.hpp"
-#include "InputField/Inputfield.hpp"
+#include "KapUI/KapUI.hpp"
 
 #include "KapEngine.hpp"
 #include "KapEngineDebug.hpp"

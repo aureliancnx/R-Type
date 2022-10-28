@@ -1,7 +1,6 @@
 #include "MultiMenu.hpp"
 #include "KapEngineUi.hpp"
-#include "Button/Button.hpp"
-#include "InputField/Inputfield.hpp"
+#include "KapUI/KapUI.hpp"
 #include "Animations/SpriteAnimation.hpp"
 
 using namespace RType;

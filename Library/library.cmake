@@ -1,4 +1,9 @@
 # KapEngine
+# options for KapEngine compile
+option(KAPENGINE_THREAD "" OFF)
+option(KAPENGINE_BETA "" OFF)
+option(KAPENGINE_DEBUG "" ON)
+option(KAPENGINE_EDITOR "" OFF)
 add_subdirectory(Library/KapEngine)
 target_link_libraries(RType KapEngine)
 include(Library/KapEngine/CMake/engine_include.cmake)

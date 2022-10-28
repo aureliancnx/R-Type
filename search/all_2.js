@@ -4,5 +4,6 @@ var searchData=
   ['boubouleenemy_42',['BoubouleEnemy',['../classRType_1_1BoubouleEnemy.html',1,'RType']]],
   ['bouncingversion_43',['bouncingVersion',['../classRType_1_1SpriteAnimation.html#a65b299565b2f03f63a045e2fcb5c8908',1,'RType::SpriteAnimation']]],
   ['bug_20list_44',['Bug List',['../bug.html',1,'']]],
-  ['bullet_45',['Bullet',['../classRType_1_1Bullet.html',1,'RType']]]
+  ['bullet_45',['Bullet',['../classRType_1_1Bullet.html',1,'RType']]],
+  ['button_46',['Button',['../classKapEngine_1_1UI_1_1Button.html',1,'KapEngine::UI']]]
 ];

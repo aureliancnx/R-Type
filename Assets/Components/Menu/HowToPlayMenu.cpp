@@ -5,8 +5,7 @@
 #include "HowToPlayMenu.hpp"
 
 #include "KapEngineUi.hpp"
-#include "Button/Button.hpp"
-#include "KapEngineUi.hpp"
+#include "KapUI/KapUI.hpp"
 #include "Animations/SpriteAnimation.hpp"
 // #include "Animations/HowToPlayAnimation.hpp"
 

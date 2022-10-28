@@ -65,18 +65,25 @@ void BoubouleEnemy::deserialize(KapMirror::NetworkReader& reader) {
 }
 
 void BoubouleEnemy::onSceneUpdated() {
-    if (isClient()) {
+    if (isClient() && !isLocal()) {
         return;
     }
     for (std::size_t i = 0; i < collidedObjects.size(); i++) {
         auto& other = collidedObjects[i];
-        KAP_DEBUG_LOG("Collision with " + other->getName());
-        if (other->getName() == "Bullet Player") {
+        if (other.use_count() > 1 && other->getName() == "Bullet Player") {
             life -= 1;
             if (life <= 0) {
-                getServer()->destroyObject(getGameObject().getScene().getGameObject(getGameObject().getId()));
+                if (isLocal()) {
+                    getGameObject().destroy();
+                } else {
+                    getServer()->destroyObject(getGameObject().getScene().getGameObject(getGameObject().getId()));
+                }
             }
-            getServer()->destroyObject(other);
+            if (isLocal()) {
+                other->destroy();
+            } else {
+                getServer()->destroyObject(other);
+            }
         }
     }
     collidedObjects.clear();

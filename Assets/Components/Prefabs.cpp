@@ -6,6 +6,7 @@
 #include "Enemies/ShipEnemy.hpp"
 #include "Enemies/BoubouleEnemy.hpp"
 #include "Enemies/Boss/TentaclesBossEnemy.hpp"
+#include "GameMenuManager.hpp"
 
 using namespace RType;
 
@@ -44,6 +45,44 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
         transform.setPosition({0, 0, 0});
         transform.setScale({79, 35, 0});
 
+        auto shipIdle = std::make_shared<SpriteAnimation>(player);
+        player->addComponent(shipIdle);
+
+        KapEngine::Time::ETime duration;
+        duration.setSeconds(.1f);
+        shipIdle->setTiming(duration);
+        shipIdle->setRect({263 * 2, 0, 263, 116});
+        shipIdle->setNbAnimations(1);
+
+        auto shipUp = std::make_shared<SpriteAnimation>(player);
+        player->addComponent(shipUp);
+
+        shipUp->setTiming(duration);
+        shipUp->setRect({263 * 4, 0, 263, 116});
+        shipUp->setNbAnimations(1);
+
+        auto shipDown = std::make_shared<SpriteAnimation>(player);
+        player->addComponent(shipDown);
+
+        shipDown->setTiming(duration);
+        shipDown->setRect({263 * 0, 0, 263, 116});
+        shipDown->setNbAnimations(1);
+
+        auto animator = std::make_shared<KapEngine::Animator>(player);
+        player->addComponent(animator);
+
+        animator->addAnim(shipIdle, "Idle");
+        animator->addAnim(shipUp, "Up");
+        animator->addAnim(shipDown, "Down");
+
+        animator->addLink("Idle", "Idle", "IdleToIdle");
+
+        animator->addLink("Idle", "Up", "IdleToUp");
+        animator->addLink("Up", "Idle", "UpToIdle");
+
+        animator->addLink("Idle", "Down", "IdleToDown");
+        animator->addLink("Down", "Idle", "DownToIdle");
+
         return player;
     });
 }
@@ -74,6 +113,20 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
         transform.setScale({19, 6});
 
         return bullet;
+    });
+}
+
+void Prefabs::registerInGameMenuPrefab(KapEngine::KEngine &engine) {
+    engine.getPrefabManager()->createPrefab("InGameMenu", [](KapEngine::SceneManagement::Scene &scene) {
+        auto menu = KapEngine::UI::UiFactory::createCanvas(scene, "InGameMenu");
+
+        auto menuManager = std::make_shared<GameMenuManager>(menu);
+        menu->addComponent(menuManager);
+
+        auto& canvas = menu->getComponent<KapEngine::UI::Canvas>();
+        canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
+
+        return menu;
     });
 }
 
@@ -137,6 +190,23 @@ void Prefabs::registerBoubouleEnemyPrefab(KapEngine::KEngine& engine) {
         transform.setPosition({0, 0, 0});
         transform.setScale({17 * 3, 18 * 3, 0});
 
+        auto bulletIdle = std::make_shared<SpriteAnimation>(enemy);
+        enemy->addComponent(bulletIdle);
+
+        KapEngine::Time::ETime duration;
+        duration.setSeconds(.5f);
+        bulletIdle->setTiming(duration);
+        bulletIdle->loop(true);
+        bulletIdle->setRect({0, 0, 17.083333333f, 18});
+        bulletIdle->setNbAnimations(12);
+
+        auto animator = std::make_shared<KapEngine::Animator>(enemy);
+        enemy->addComponent(animator);
+
+        animator->addAnim(bulletIdle, "Idle");
+
+        animator->addLink("Idle", "Idle");
+
         return enemy;
     });
 }
@@ -167,6 +237,24 @@ void Prefabs::registerTentaclesBossEnemyPrefab(KapEngine::KEngine& engine) {
         auto& transform = enemy->getComponent<KapEngine::Transform>();
         transform.setPosition({0, 0, 0});
         transform.setScale({64 * 2, 66 * 2, 0});
+
+        auto bulletIdle = std::make_shared<SpriteAnimation>(enemy);
+        enemy->addComponent(bulletIdle);
+
+        KapEngine::Time::ETime duration;
+        duration.setSeconds(.4f);
+        bulletIdle->setTiming(duration);
+        bulletIdle->loop(true);
+        bulletIdle->setRect({0, 0, 65.5, 66});
+        bulletIdle->setNbAnimations(12);
+        bulletIdle->bouncingVersion(false);
+
+        auto animator = std::make_shared<KapEngine::Animator>(enemy);
+        enemy->addComponent(animator);
+
+        animator->addAnim(bulletIdle, "Idle");
+
+        animator->addLink("Idle", "Idle");
 
         return enemy;
     });

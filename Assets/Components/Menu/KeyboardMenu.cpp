@@ -2,8 +2,7 @@
 #include "KeyboardMenu.hpp"
 #include "KapEngineDebug.hpp"
 #include "KapEngineUi.hpp"
-#include "Button/Button.hpp"
-#include "InputField/Inputfield.hpp"
+#include "KapUI/KapUI.hpp"
 #include "Keys/ChangeKey.hpp"
 
 using namespace KapEngine;

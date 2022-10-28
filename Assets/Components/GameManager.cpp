@@ -8,6 +8,7 @@
 #include "Menu/VolumeMenu.hpp"
 #include "Menu/HowToPlayMenu.hpp"
 #include "Menu/SettingPlayerMenu.hpp"
+#include "CampaignGenerator/CampaignGenerator.hpp"
 
 #include "KapMirror/KapMirror.hpp"
 #include "Sylph/SylphTransport.hpp"
@@ -59,6 +60,8 @@ void GameManager::registerPrefabs() {
 
     Prefabs::registerBulletPrefab(*engine);
 
+    Prefabs::registerInGameMenuPrefab(*engine);
+
     // Enemies
     Prefabs::registerShipEnemyPrefab(*engine);
     Prefabs::registerBoubouleEnemyPrefab(*engine);
@@ -78,7 +81,7 @@ void GameManager::registerMenus() {
     auto mainMenu = std::make_shared<MainMenu>(scene);
     menuManager.registerMenu("MainMenu", mainMenu);
 
-    auto soloMenu = std::make_shared<SoloMenu>(scene);
+    auto soloMenu = std::make_shared<SoloMenu>(scene, *this);
     menuManager.registerMenu("SoloMenu", soloMenu);
 
     auto multiMenu = std::make_shared<MultiMenu>(scene, *this);
@@ -134,6 +137,12 @@ void GameManager::initSinglePlayer() {
     auto& playerController = player->getComponent<PlayerController>();
     playerController.setLocalAuthority(true);
 
+    std::shared_ptr<GameObject> gameMenu;
+    if (!engine->getPrefabManager()->instantiatePrefab("InGameMenu", *scene, gameMenu)) {
+        KAP_DEBUG_ERROR("Failed to instantiate in game menu prefab");
+        return;
+    }
+
     // TODO: Fix animation (move animation)
     // https://github.com/aureliancnx/R-Type/blob/ae652adfdf49c702bd8513c27b8bef6dcfeaebc2/Assets/Components/GameManager.cpp#L84
 }
@@ -142,10 +151,37 @@ void GameManager::initSinglePlayer() {
 void GameManager::initMultiPlayer(bool isServer) {
     auto scene = engine->getSceneManager()->createScene("MultiPlayer");
 
+    std::shared_ptr<KapEngine::GameObject> paralaxGalaxy;
+    if (!engine->getPrefabManager()->instantiatePrefab("ParalaxGalaxy", *scene, paralaxGalaxy)) {
+        KAP_DEBUG_ERROR("Failed to instantiate paralax prefab");
+        return;
+    }
+
+    auto &transformPG = paralaxGalaxy->getComponent<KapEngine::Transform>();
+    transformPG.setPosition({0, 0, 0});
+
+    std::shared_ptr<KapEngine::GameObject> paralaxStars;
+    if (!engine->getPrefabManager()->instantiatePrefab("ParalaxStars", *scene, paralaxStars)) {
+        KAP_DEBUG_ERROR("Failed to instantiate paralax prefab");
+        return;
+    }
+
+    auto &transformPS = paralaxStars->getComponent<KapEngine::Transform>();
+    transformPS.setPosition({0, 0, 0});
+
     auto networkManagerObject = scene->createGameObject("NetworkManager");
     networkManager = std::make_shared<RtypeNetworkManager>(networkManagerObject, isServer);
-    // networkManager->setTransport(std::make_shared<KapMirror::SylphTransport>());
+    networkManager->setTransport(std::make_shared<KapMirror::SylphTransport>());
     networkManagerObject->addComponent(networkManager);
+}
+
+// TODO: Move this to a dedicated class
+void GameManager::startCampaign() {
+    auto &scene = engine->getSceneManager()->getScene("SinglePlayer");
+
+    auto enemies = scene.createGameObject("Enemies Generator");
+    auto compEnemies = std::make_shared<CampaignGenerator>(enemies);
+    enemies->addComponent(compEnemies);
 }
 
 // TODO: Move this to a dedicated class
@@ -187,3 +223,4 @@ void GameManager::initAxis() {
 std::shared_ptr<RtypeNetworkManager> &GameManager::getNetworkManager() {
     return networkManager;
 }
+

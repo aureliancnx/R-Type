@@ -8,7 +8,7 @@
 #include "KapEngine.hpp"
 #include "KapEngineDebug.hpp"
 #include "KapEngineUi.hpp"
-#include "Button/Button.hpp"
+#include "KapUI/KapUI.hpp"
 
 namespace RType
 {
@@ -41,7 +41,7 @@ namespace RType
         std::shared_ptr<KapEngine::GameObject> _imgCampaignBis;
         std::shared_ptr<KapEngine::GameObject> _button1;
         std::shared_ptr<KapEngine::GameObject> _button2;
-        int lastValue;
+        int lastValue = 0;
     };
 } // namespace RType
 

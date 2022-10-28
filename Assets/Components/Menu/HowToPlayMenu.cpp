@@ -195,6 +195,37 @@ void RType::HowToPlayMenu::init() {
         }
     }
 
+    // create text for Move Up
+    {
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Move Up");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Move Up");
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+
+        txt->addComponent(compText);
+        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(150, 100, 0));
+        transform.setParent(canvas);
+    }
+
+    // create text keyboard for Move Up
+    {
+        std::string inputUp = "UNDEFINED";
+        int value = KapEngine::PlayerPrefs::getInt("upInput");
+        if (KapEngine::Events::Key::intInEnum(value)) {
+            KapEngine::Events::Key inputKey;
+            inputKey = (KapEngine::Events::Key::EKey)value;
+            inputUp = inputKey.toString();
+        }
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move up");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, inputUp);
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+
+        txt->addComponent(compText);
+        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(25, 100, 0));
+        transform.setParent(canvas);
+    }
+
     // create text for Move Down
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Move Down");
@@ -205,12 +236,26 @@ void RType::HowToPlayMenu::init() {
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3(150, 150, 0));
         transform.setParent(canvas);
-    }
+    }  
 
-    // int value = KapEngine::PlayerPrefs::getInt("downInput");
-    // if (KapEngine::Events::Key::intInEnum(value)) {
-    //     KapEngine::Events::Key::EKey upKey = static_cast<KapEngine::Events::Key::EKey>(value);
-    // }
+    // create text keyboard for Move Down
+    {
+        std::string inputDown = "UNDEFINED";
+        int value = KapEngine::PlayerPrefs::getInt("downInput");
+        if (KapEngine::Events::Key::intInEnum(value)) {
+            KapEngine::Events::Key inputKey;
+            inputKey = (KapEngine::Events::Key::EKey)value;
+            inputDown = inputKey.toString();
+        }
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move Down");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, inputDown);
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+
+        txt->addComponent(compText);
+        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(25, 150, 0));
+        transform.setParent(canvas);
+    }
 
     // create text for Move Left
     {
@@ -224,10 +269,24 @@ void RType::HowToPlayMenu::init() {
         transform.setParent(canvas);
     }
 
-    // int value = KapEngine::PlayerPrefs::getInt("leftInput");
-    // if (KapEngine::Events::Key::intInEnum(value)) {
-    //     KapEngine::Events::Key::EKey upKey = static_cast<KapEngine::Events::Key::EKey>(value);
-    // }
+    // create text keyboard for Move Left
+    {
+        std::string inputLeft = "UNDEFINED";
+        int value = KapEngine::PlayerPrefs::getInt("leftInput");
+        if (KapEngine::Events::Key::intInEnum(value)) {
+            KapEngine::Events::Key inputKey;
+            inputKey = (KapEngine::Events::Key::EKey)value;
+            inputLeft = inputKey.toString();
+        }
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move Left");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, inputLeft);
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+
+        txt->addComponent(compText);
+        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(25, 200, 0));
+        transform.setParent(canvas);
+    }
 
     // create text for Move Right
     {
@@ -241,10 +300,24 @@ void RType::HowToPlayMenu::init() {
         transform.setParent(canvas);
     }
 
-    // int value = KapEngine::PlayerPrefs::getInt("rightInput");
-    // if (KapEngine::Events::Key::intInEnum(value)) {
-    //     KapEngine::Events::Key::EKey upKey = static_cast<KapEngine::Events::Key::EKey>(value);
-    // }
+    // create text keyboard for Move Right
+    {
+        std::string inputRight = "UNDEFINED";
+        int value = KapEngine::PlayerPrefs::getInt("rightInput");
+        if (KapEngine::Events::Key::intInEnum(value)) {
+            KapEngine::Events::Key inputKey;
+            inputKey = (KapEngine::Events::Key::EKey)value;
+            inputRight = inputKey.toString();
+        }
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move Right");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, inputRight);
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+
+        txt->addComponent(compText);
+        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(25, 250, 0));
+        transform.setParent(canvas);
+    }
 
     // create text for Shoot
     {
@@ -258,10 +331,24 @@ void RType::HowToPlayMenu::init() {
         transform.setParent(canvas);
     }
 
-    // int value = KapEngine::PlayerPrefs::getInt("shootInput");
-    // if (KapEngine::Events::Key::intInEnum(value)) {
-    //     KapEngine::Events::Key::EKey upKey = static_cast<KapEngine::Events::Key::EKey>(value);
-    // }
+    //create text keyboard for Shoot
+    {
+        std::string inputShoot = "UNDEFINED";
+        // int value = KapEngine::PlayerPrefs::getInt("shootInput");
+        // if (KapEngine::Events::Key::intInEnum(value)) {
+        //     KapEngine::Events::Key inputKey;
+        //     inputKey = (KapEngine::Events::Key::EKey)value;
+        //     inputShoot = inputKey.toString();
+        // }
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move Shoot");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, inputShoot);
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+
+        txt->addComponent(compText);
+        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(25, 300, 0));
+        transform.setParent(canvas);
+    }
 
         // //create Move Down keyboard img
     // {

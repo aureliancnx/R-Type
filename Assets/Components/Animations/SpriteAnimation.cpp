@@ -40,7 +40,10 @@ namespace RType {
 
         Tools::Vector2 pos = _rect.getPos();
         if (!goBouncing) {
-            pos.setX(pos.getX() + (_rect.getSize().getX() * crossProduct));
+            if (!_reverse)
+                pos.setX(pos.getX() + _rect.getSize().getX());
+            else
+                pos.setX(pos.getX() - _rect.getSize().getX());
         } else {
             pos.setX(pos.getX() + (_rect.getSize().getX() * (_nbAnimation - crossProduct)));
         }

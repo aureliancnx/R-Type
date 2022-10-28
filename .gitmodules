@@ -14,3 +14,7 @@
 	path = Packages/SylphTransport
 	branch = main
 	url = git@github.com:Chaika9/SylphTransport.git
+[submodule "Library/LuaEngine"]
+	path = Library/LuaEngine
+	branch = master
+	url = git@github.com:lubgr/lua-cmake.git

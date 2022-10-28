@@ -170,9 +170,11 @@ void KapEngine::Graphical::Raylib::RaylibEncapsulation::playMusic(std::string co
     startMusic();
 }
 
-void KapEngine::Graphical::Raylib::RaylibEncapsulation::playSound(std::string const& sound) {
+void KapEngine::Graphical::Raylib::RaylibEncapsulation::playSound(std::string const& sound, float volume) {
     try {
-        PlaySoundMulti(getSound(sound));
+        auto &s = getSound(sound);
+        SetSoundVolume(s, volume);
+        PlaySoundMulti(s);
     } catch(...) {
         DEBUG_ERROR("Failed to play sound");
     }

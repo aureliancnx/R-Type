@@ -22,13 +22,9 @@ namespace RType
         void onAwake() override;
 
         void displayMainMenu();
-        void displayBonusMenu();
-        void displayPauseMenu();
 
       private:
         void initMainMenu();
-        void initBonusMenu();
-        void initPauseMenu();
 
         void initBackground(std::shared_ptr<KapEngine::GameObject> parent);
         std::shared_ptr<KapEngine::GameObject> initButton(std::shared_ptr<KapEngine::GameObject> parent, std::string name, std::string text,
@@ -41,11 +37,16 @@ namespace RType
                                                           KapEngine::Tools::Color color = KapEngine::Tools::Color::white(),
                                                           KapEngine::Tools::Color textColor = KapEngine::Tools::Color::black());
 
+        void initHeart();
+        void addLife();
+        void removeLife();
+
         // variables
       private:
         std::shared_ptr<KapEngine::GameObject> mainMenu;
-        std::shared_ptr<KapEngine::GameObject> pauseMenu;
-        std::shared_ptr<KapEngine::GameObject> bonusMenu;
+        std::shared_ptr<KapEngine::GameObject> heart1;
+        std::shared_ptr<KapEngine::GameObject> heart2;
+        std::shared_ptr<KapEngine::GameObject> heart3;
     };
 
 } // namespace RType

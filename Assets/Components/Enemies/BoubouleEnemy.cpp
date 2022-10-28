@@ -70,8 +70,7 @@ void BoubouleEnemy::onSceneUpdated() {
     }
     for (std::size_t i = 0; i < collidedObjects.size(); i++) {
         auto& other = collidedObjects[i];
-        KAP_DEBUG_LOG("Collision with " + other->getName());
-        if (other->getName() == "Bullet Player") {
+        if (other.use_count() > 1 && other->getName() == "Bullet Player") {
             life -= 1;
             if (life <= 0) {
                 if (isLocal()) {

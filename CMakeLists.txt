@@ -54,14 +54,10 @@ include_directories(Assets/Components)
 # Packages
 include(Packages/packages.cmake)
 
-include(InstallRequiredSystemLibraries)
-set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
-set(CPACK_PACKAGE_VERSION_MAJOR "${RTYPE_VERSION_MAJOR}")
-set(CPACK_PACKAGE_VERSION_MINOR "${RTYPE_VERSION_MINOR}")
-include(CPack)
-
 if (VALGRIND)
     target_compile_options(RType PRIVATE -g)
 endif()
-target_compile_options(RType PRIVATE -O2)
+IF (NOT WIN32)
+    target_compile_options(RType PRIVATE -O2)
+ENDIF()
 target_compile_options(RType PRIVATE -pthread)

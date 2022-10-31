@@ -6,7 +6,6 @@
 #define RTYPE_HOWTOPLAYMENU_HPP
 
 #include "Menu.hpp"
-#include "Animations/HowToPlayAnimation.hpp"
 
 namespace RType
 {

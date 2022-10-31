@@ -27,13 +27,6 @@ var hierarchy =
     [ "KapEngine::Dictionary< unsigned int, std::vector< long long > >", "classKapEngine_1_1Dictionary.html", null ],
     [ "KapEngine::Dictionary< ushort, std::shared_ptr< std::function< void(std::shared_ptr< KapMirror::NetworkConnectionToClient >, KapMirror::NetworkReader &)> > >", "classKapEngine_1_1Dictionary.html", null ],
     [ "KapEngine::Dictionary< ushort, std::shared_ptr< std::function< void(std::shared_ptr< KapMirror::NetworkConnectionToServer >, KapMirror::NetworkReader &)> > >", "classKapEngine_1_1Dictionary.html", null ],
-    [ "KapEngine::Graphical::Raylib::Draw::DrawUI", "classKapEngine_1_1Graphical_1_1Raylib_1_1Draw_1_1DrawUI.html", [
-      [ "KapEngine::Graphical::Raylib::Draw::RaylibDrawing", "classKapEngine_1_1Graphical_1_1Raylib_1_1Draw_1_1RaylibDrawing.html", [
-        [ "KapEngine::Graphical::Raylib::Draw::DrawSpriteColor", "classKapEngine_1_1Graphical_1_1Raylib_1_1Draw_1_1DrawSpriteColor.html", null ],
-        [ "KapEngine::Graphical::Raylib::Draw::DrawSpriteTexture", "classKapEngine_1_1Graphical_1_1Raylib_1_1Draw_1_1DrawSpriteTexture.html", null ],
-        [ "KapEngine::Graphical::Raylib::Draw::DrawText", "classKapEngine_1_1Graphical_1_1Raylib_1_1Draw_1_1DrawText.html", null ]
-      ] ]
-    ] ],
     [ "KapEngine::Time::EClock", "classKapEngine_1_1Time_1_1EClock.html", null ],
     [ "RType::CampaignGenerator::Enemy", "structRType_1_1CampaignGenerator_1_1Enemy.html", null ],
     [ "KapEngine::Entity", "classKapEngine_1_1Entity.html", [
@@ -110,12 +103,7 @@ var hierarchy =
     [ "KapEngine::Graphical::IgraphicalLib", "classKapEngine_1_1Graphical_1_1IgraphicalLib.html", null ],
     [ "KapEngine::Events::Input", "classKapEngine_1_1Events_1_1Input.html", null ],
     [ "KapEngine::Graphical::Raylib::Cache::IRaylibCache", "classKapEngine_1_1Graphical_1_1Raylib_1_1Cache_1_1IRaylibCache.html", [
-      [ "KapEngine::Graphical::Raylib::Cache::RaylibCache", "classKapEngine_1_1Graphical_1_1Raylib_1_1Cache_1_1RaylibCache.html", [
-        [ "KapEngine::Graphical::Raylib::Cache::FontCache", "classKapEngine_1_1Graphical_1_1Raylib_1_1Cache_1_1FontCache.html", null ],
-        [ "KapEngine::Graphical::Raylib::Cache::ImageCache", "classKapEngine_1_1Graphical_1_1Raylib_1_1Cache_1_1ImageCache.html", null ],
-        [ "KapEngine::Graphical::Raylib::Cache::MusicCache", "classKapEngine_1_1Graphical_1_1Raylib_1_1Cache_1_1MusicCache.html", null ],
-        [ "KapEngine::Graphical::Raylib::Cache::SoundCache", "classKapEngine_1_1Graphical_1_1Raylib_1_1Cache_1_1SoundCache.html", null ]
-      ] ]
+      [ "KapEngine::Graphical::Raylib::Cache::RaylibCache", "classKapEngine_1_1Graphical_1_1Raylib_1_1Cache_1_1RaylibCache.html", null ]
     ] ],
     [ "KapEngine::Dictionary< TKey, TValue >::Iterator", "classKapEngine_1_1Dictionary_1_1Iterator.html", null ],
     [ "KapEngine::UI::KapUiFactory", "classKapEngine_1_1UI_1_1KapUiFactory.html", null ],

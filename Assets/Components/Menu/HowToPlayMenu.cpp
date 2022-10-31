@@ -334,12 +334,12 @@ void RType::HowToPlayMenu::init() {
     //create text keyboard for Shoot
     {
         std::string inputShoot = "UNDEFINED";
-        // int value = KapEngine::PlayerPrefs::getInt("shootInput");
-        // if (KapEngine::Events::Key::intInEnum(value)) {
-        //     KapEngine::Events::Key inputKey;
-        //     inputKey = (KapEngine::Events::Key::EKey)value;
-        //     inputShoot = inputKey.toString();
-        // }
+        int value = KapEngine::PlayerPrefs::getInt("shootInput");
+        if (KapEngine::Events::Key::intInEnum(value)) {
+            KapEngine::Events::Key inputKey;
+            inputKey = (KapEngine::Events::Key::EKey)value;
+            inputShoot = inputKey.toString();
+        }
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move Shoot");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, inputShoot);
         auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();

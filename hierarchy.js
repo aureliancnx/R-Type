@@ -53,7 +53,8 @@ var hierarchy =
         [ "KapEngine::Errors::SceneError", "classKapEngine_1_1Errors_1_1SceneError.html", null ]
       ] ],
       [ "KapMirror::Sylph::SocketException", "classKapMirror_1_1Sylph_1_1SocketException.html", null ],
-      [ "KapMirror::Telepathy::SocketException", "classKapMirror_1_1Telepathy_1_1SocketException.html", null ]
+      [ "KapMirror::Telepathy::SocketException", "classKapMirror_1_1Telepathy_1_1SocketException.html", null ],
+      [ "RType::LuaException", "classRType_1_1LuaException.html", null ]
     ] ],
     [ "KapEngine::Factory", "classKapEngine_1_1Factory.html", null ],
     [ "RType::GameManager", "classRType_1_1GameManager.html", null ],
@@ -113,6 +114,8 @@ var hierarchy =
     [ "KapMirror::Telepathy::MagnificentReceivePipe", "classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html", null ],
     [ "KapMirror::Telepathy::MagnificentSendPipe", "classKapMirror_1_1Telepathy_1_1MagnificentSendPipe.html", null ],
     [ "RType::Parser::Map", "classRType_1_1Parser_1_1Map.html", null ],
+    [ "RType::MapEnemy", "classRType_1_1MapEnemy.html", null ],
+    [ "RType::MapScript", "classRType_1_1MapScript.html", null ],
     [ "RType::Menu", "classRType_1_1Menu.html", [
       [ "RType::HowToPlayMenu", "classRType_1_1HowToPlayMenu.html", null ],
       [ "RType::KeyboardMenu", "classRType_1_1KeyboardMenu.html", null ],

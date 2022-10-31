@@ -14,6 +14,18 @@ static void initWindow(KapEngine::KEngine *engine, bool draw)
     engine->getGraphicalLibManager()->changeLib("raylib");
 }
 
+// #include "MapScript/MapScript.hpp"
+
+// static void test_main() {
+//     RType::MapScript script;
+
+//     try {
+//         script.loadScript("Maps/testMap.lua");
+//     } catch (RType::LuaException& e) {
+//         KapEngine::Debug::error(e.what());
+//     }
+// }
+
 int main(int argc, char **argv)
 {
     bool isServer = false;

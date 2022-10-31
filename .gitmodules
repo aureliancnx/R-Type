@@ -22,3 +22,7 @@
 	path = Packages/KapUI
 	branch = main
 	url = git@github.com:benji-35/KapUi.git
+[submodule "Packages/KapRaylib"]
+	path = Packages/KapRaylib
+	branch = main
+	url = git@github.com:benji-35/KapRaylib.git

@@ -2,17 +2,24 @@
 
 #include "Debug.hpp"
 #include "Lua.hpp"
-#include "MapEnemy.hpp"
+#include "Script/EnemyScript.hpp"
 #include "LuaException.hpp"
 #include <vector>
 #include <iostream>
 #include <cstring>
 #include <assert.h>
 
+namespace RType::Script {
+    class Enemy;
+}
+
 namespace RType {
     class MapScript {
         private:
-        std::vector<MapEnemy*> enemies;
+        std::string name = "";
+        std::string author = "";
+        std::string description = "";
+        std::vector<Script::Enemy*> newEnemies;
 
         public:
         MapScript() = default;
@@ -20,13 +27,22 @@ namespace RType {
 
         void loadScript(const std::string& scriptPath);
 
-        void __registerEnemy(MapEnemy* enemy);
+        std::string getName() const { return name; }
+
+        std::string getAuthor() const { return author; }
+
+        std::string getDescription() const { return description; }
+
+        void __setMapName(const std::string& name);
+        void __setMapAuthor(const std::string& author);
+        void __setMapDescription(const std::string& description);
+        void __registerNewEnemy(Script::Enemy* enemy);
 
         private:
         void executeScript(const std::string& script);
 
-        void destroyEnemies();
+        void initScript(lua_State* L);
 
-        void showEnemies();
+        void destroyEnemies();
     };
 }

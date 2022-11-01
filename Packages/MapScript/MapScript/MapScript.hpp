@@ -25,7 +25,7 @@ namespace RType {
         MapScript() = default;
         ~MapScript() = default;
 
-        void loadScript(const std::string& scriptPath);
+        void loadScript(const std::string &scriptPath);
 
         std::string getName() const { return name; }
 
@@ -38,11 +38,11 @@ namespace RType {
         void __setMapDescription(const std::string& description);
         void __registerNewEnemy(Script::Enemy* enemy);
 
-        private:
-        void executeScript(const std::string& script);
+      private:
+        void executeScript(const std::string &script);
 
         void initScript(lua_State* L);
 
         void destroyEnemies();
     };
-}
+} // namespace RType

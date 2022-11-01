@@ -1,7 +1,7 @@
 var searchData=
 [
   ['eclock_477',['EClock',['../classKapEngine_1_1Time_1_1EClock.html',1,'KapEngine::Time']]],
-  ['enemy_478',['Enemy',['../structRType_1_1CampaignGenerator_1_1Enemy.html',1,'RType::CampaignGenerator']]],
+  ['enemy_478',['Enemy',['../classRType_1_1Script_1_1Enemy.html',1,'RType::Script::Enemy'],['../structRType_1_1CampaignGenerator_1_1Enemy.html',1,'RType::CampaignGenerator::Enemy']]],
   ['engineerror_479',['EngineError',['../classKapEngine_1_1Errors_1_1EngineError.html',1,'KapEngine::Errors']]],
   ['entity_480',['Entity',['../classKapEngine_1_1Entity.html',1,'KapEngine']]],
   ['entry_481',['Entry',['../structKapMirror_1_1Telepathy_1_1MagnificentReceivePipe_1_1Entry.html',1,'KapMirror::Telepathy::MagnificentReceivePipe']]],

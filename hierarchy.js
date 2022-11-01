@@ -17,6 +17,7 @@ var hierarchy =
       [ "KapMirror::Sylph::ServerConnection", "classKapMirror_1_1Sylph_1_1ServerConnection.html", null ]
     ] ],
     [ "KapEngine::Dictionary< TKey, TValue >::ConstIterator", "classKapEngine_1_1Dictionary_1_1ConstIterator.html", null ],
+    [ "RType::Script::Debug", "classRType_1_1Script_1_1Debug.html", null ],
     [ "KapEngine::Debug", "classKapEngine_1_1Debug.html", null ],
     [ "KapEngine::Dictionary< TKey, TValue >", "classKapEngine_1_1Dictionary.html", null ],
     [ "KapEngine::Dictionary< int, std::shared_ptr< KapMirror::Sylph::ServerConnection > >", "classKapEngine_1_1Dictionary.html", null ],
@@ -28,6 +29,7 @@ var hierarchy =
     [ "KapEngine::Dictionary< ushort, std::shared_ptr< std::function< void(std::shared_ptr< KapMirror::NetworkConnectionToClient >, KapMirror::NetworkReader &)> > >", "classKapEngine_1_1Dictionary.html", null ],
     [ "KapEngine::Dictionary< ushort, std::shared_ptr< std::function< void(std::shared_ptr< KapMirror::NetworkConnectionToServer >, KapMirror::NetworkReader &)> > >", "classKapEngine_1_1Dictionary.html", null ],
     [ "KapEngine::Time::EClock", "classKapEngine_1_1Time_1_1EClock.html", null ],
+    [ "RType::Script::Enemy", "classRType_1_1Script_1_1Enemy.html", null ],
     [ "RType::CampaignGenerator::Enemy", "structRType_1_1CampaignGenerator_1_1Enemy.html", null ],
     [ "KapEngine::Entity", "classKapEngine_1_1Entity.html", [
       [ "KapEngine::GameObject", "classKapEngine_1_1GameObject.html", null ],
@@ -156,10 +158,11 @@ var hierarchy =
     [ "RType::Prefabs", "classRType_1_1Prefabs.html", null ],
     [ "KapEngine::Graphical::Raylib::RaylibEncapsulation", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html", null ],
     [ "KapEngine::Tools::Rectangle", "classKapEngine_1_1Tools_1_1Rectangle.html", null ],
+    [ "RType::Script::Rectangle", "classRType_1_1Script_1_1Rectangle.html", null ],
     [ "KapEngine::SceneManagement::Scene", "classKapEngine_1_1SceneManagement_1_1Scene.html", null ],
     [ "KapEngine::SceneManagement::SceneManager", "classKapEngine_1_1SceneManagement_1_1SceneManager.html", null ],
-    [ "KapMirror::Sylph::Server", "classKapMirror_1_1Sylph_1_1Server.html", null ],
     [ "KapMirror::Telepathy::Server", "classKapMirror_1_1Telepathy_1_1Server.html", null ],
+    [ "KapMirror::Sylph::Server", "classKapMirror_1_1Sylph_1_1Server.html", null ],
     [ "KapMirror::Sylph::Socket", "classKapMirror_1_1Sylph_1_1Socket.html", null ],
     [ "KapMirror::Telepathy::Socket", "classKapMirror_1_1Telepathy_1_1Socket.html", null ],
     [ "KapEngine::SceneManagement::SplashScreen", "classKapEngine_1_1SceneManagement_1_1SplashScreen.html", null ],
@@ -176,6 +179,7 @@ var hierarchy =
     [ "KapMirror::Sylph::UdpClient", "classKapMirror_1_1Sylph_1_1UdpClient.html", null ],
     [ "KapMirror::Sylph::UdpListener", "classKapMirror_1_1Sylph_1_1UdpListener.html", null ],
     [ "KapEngine::UI::UiFactory", "classKapEngine_1_1UI_1_1UiFactory.html", null ],
+    [ "RType::Script::Vector2", "classRType_1_1Script_1_1Vector2.html", null ],
     [ "KapEngine::Tools::Vector2", "classKapEngine_1_1Tools_1_1Vector2.html", null ],
     [ "KapEngine::Tools::Vector3", "classKapEngine_1_1Tools_1_1Vector3.html", null ]
 ];

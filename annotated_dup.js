@@ -63,6 +63,12 @@ var annotated_dup =
         [ "Parser", "classRType_1_1Parser_1_1Parser.html", "classRType_1_1Parser_1_1Parser" ],
         [ "Summon", "classRType_1_1Parser_1_1Summon.html", "classRType_1_1Parser_1_1Summon" ]
       ] ],
+      [ "Script", null, [
+        [ "Debug", "classRType_1_1Script_1_1Debug.html", "classRType_1_1Script_1_1Debug" ],
+        [ "Enemy", "classRType_1_1Script_1_1Enemy.html", "classRType_1_1Script_1_1Enemy" ],
+        [ "Rectangle", "classRType_1_1Script_1_1Rectangle.html", "classRType_1_1Script_1_1Rectangle" ],
+        [ "Vector2", "classRType_1_1Script_1_1Vector2.html", "classRType_1_1Script_1_1Vector2" ]
+      ] ],
       [ "BoubouleEnemy", "classRType_1_1BoubouleEnemy.html", "classRType_1_1BoubouleEnemy" ],
       [ "Bullet", "classRType_1_1Bullet.html", "classRType_1_1Bullet" ],
       [ "CampaignGenerator", "classRType_1_1CampaignGenerator.html", "classRType_1_1CampaignGenerator" ],

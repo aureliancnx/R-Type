@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['debug_467',['Debug',['../classKapEngine_1_1Debug.html',1,'KapEngine']]],
+  ['debug_467',['Debug',['../classRType_1_1Script_1_1Debug.html',1,'RType::Script::Debug'],['../classKapEngine_1_1Debug.html',1,'KapEngine::Debug']]],
   ['dictionary_468',['Dictionary',['../classKapEngine_1_1Dictionary.html',1,'KapEngine']]],
   ['dictionary_3c_20int_2c_20std_3a_3ashared_5fptr_3c_20kapmirror_3a_3asylph_3a_3aserverconnection_20_3e_20_3e_469',['Dictionary&lt; int, std::shared_ptr&lt; KapMirror::Sylph::ServerConnection &gt; &gt;',['../classKapEngine_1_1Dictionary.html',1,'KapEngine']]],
   ['dictionary_3c_20std_3a_3astring_2c_20std_3a_3ashared_5fptr_3c_20prefab_20_3e_20_3e_470',['Dictionary&lt; std::string, std::shared_ptr&lt; Prefab &gt; &gt;',['../classKapEngine_1_1Dictionary.html',1,'KapEngine']]],

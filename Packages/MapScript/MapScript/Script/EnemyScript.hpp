@@ -8,30 +8,33 @@
 #include <string>
 #include <iostream>
 
-namespace RType {
+namespace RType
+{
     class MapScript;
 }
 
-namespace RType::Script {
-    class Enemy {
-        public:
+namespace RType::Script
+{
+    class Enemy
+    {
+      public:
         std::string name = "";
         std::string pathSprite = "";
-        Rectangle* rectangle;
-        Vector2* scale;
+        Rectangle *rectangle;
+        Vector2 *scale;
 
         Enemy() = default;
         ~Enemy() = default;
 
         void dump() const;
 
-        static void initScript(lua_State* L, RType::MapScript* mapScript);
+        static void initScript(lua_State *L, RType::MapScript *mapScript);
 
-        private:
-        static int __create(lua_State* L);
-        static int __destroy(lua_State* L);
-        static int __index(lua_State* L);
-        static int __newIndex(lua_State* L);
-        static int __dump(lua_State* L);
+      private:
+        static int __create(lua_State *L);
+        static int __destroy(lua_State *L);
+        static int __index(lua_State *L);
+        static int __newIndex(lua_State *L);
+        static int __dump(lua_State *L);
     };
-}
+} // namespace RType::Script

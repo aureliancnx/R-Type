@@ -349,9 +349,9 @@ var NAVTREEINDEX =
 "classKapEngine_1_1Tools_1_1Vector3.html#a3f1685434c8e1383617af69b41e46d54",
 "classKapMirror_1_1NetworkManager.html#af361185494835277d2b528cee7539dc8",
 "classKapMirror_1_1Telepathy_1_1Socket.html#aa1db51d421f259aacece7e567fa7d39e",
-"classRType_1_1RtypeNetworkManager.html#ade2c7794c42070ea374d06e2c07a14fd",
-"md_CONTRIBUTING.html#autotoc_md27",
-"structKapEngine_1_1SceneManagement_1_1SplashScreen_1_1SplashScreenNode.html#a4f3268ea7d2f636859e6dfdc51003cae"
+"classRType_1_1RtypeNetworkManager.html#a65d60e68ab133017c02e3a689b0e40ca",
+"md_CONTRIBUTING.html#autotoc_md25",
+"structKapEngine_1_1PlayerPrefs_1_1PlayerPrefIntel.html#a71e33dcd2dce00a1d4f19a9be3760119"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

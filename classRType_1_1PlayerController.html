@@ -114,6 +114,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setLocalAuthority</b>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType_1_1PlayerController.html#a9b721024bacb50fdbe6a24d154db12d7">onUpdate</a> () override</td></tr>
 <tr class="memdesc:a9b721024bacb50fdbe6a24d154db12d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">call each frame <br /></td></tr>
 <tr class="separator:a9b721024bacb50fdbe6a24d154db12d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a594b47ff7a1d7dff46d7c4b26564aeb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType_1_1PlayerController.html#a594b47ff7a1d7dff46d7c4b26564aeb0">onStart</a> () override</td></tr>
+<tr class="memdesc:a594b47ff7a1d7dff46d7c4b26564aeb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">call component start  <a href="classRType_1_1PlayerController.html#a594b47ff7a1d7dff46d7c4b26564aeb0">More...</a><br /></td></tr>
+<tr class="separator:a594b47ff7a1d7dff46d7c4b26564aeb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d625e4c36a3ecd21d0cc3bafe9f19ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType_1_1PlayerController.html#a3d625e4c36a3ecd21d0cc3bafe9f19ba">onFixedUpdate</a> () override</td></tr>
 <tr class="memdesc:a3d625e4c36a3ecd21d0cc3bafe9f19ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">call eachv x ms  <a href="classRType_1_1PlayerController.html#a3d625e4c36a3ecd21d0cc3bafe9f19ba">More...</a><br /></td></tr>
 <tr class="separator:a3d625e4c36a3ecd21d0cc3bafe9f19ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -197,9 +200,6 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:a15c4ebae3ca398b69c96ff4c33306970 inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#a15c4ebae3ca398b69c96ff4c33306970">onInit</a> () override</td></tr>
 <tr class="memdesc:a15c4ebae3ca398b69c96ff4c33306970 inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">call on component init  <a href="classKapEngine_1_1Component.html#a15c4ebae3ca398b69c96ff4c33306970">More...</a><br /></td></tr>
 <tr class="separator:a15c4ebae3ca398b69c96ff4c33306970 inherit pub_methods_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7324857a80396521eae33fef7877d5f inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#ae7324857a80396521eae33fef7877d5f">onStart</a> () override</td></tr>
-<tr class="memdesc:ae7324857a80396521eae33fef7877d5f inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">call component start  <a href="classKapEngine_1_1Component.html#ae7324857a80396521eae33fef7877d5f">More...</a><br /></td></tr>
-<tr class="separator:ae7324857a80396521eae33fef7877d5f inherit pub_methods_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace3517e90f834811b3db4f3e372eb734 inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="ace3517e90f834811b3db4f3e372eb734"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#ace3517e90f834811b3db4f3e372eb734">onDisplay</a> () override</td></tr>
 <tr class="memdesc:ace3517e90f834811b3db4f3e372eb734 inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">use to display some things this function is call after all updates fucntion <br /></td></tr>
@@ -332,6 +332,36 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <p>call eachv x ms </p>
 
 <p>Reimplemented from <a class="el" href="classKapEngine_1_1Component.html#a6da1dd9c9f7f19bb7aa05276142d4a5b">KapEngine::Component</a>.</p>
+
+</div>
+</div>
+<a id="a594b47ff7a1d7dff46d7c4b26564aeb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a594b47ff7a1d7dff46d7c4b26564aeb0">&#9670;&nbsp;</a></span>onStart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlayerController::onStart </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>call component start </p>
+<p>will be called when the scene is loaded or when its <a class="el" href="classKapEngine_1_1GameObject.html">KapEngine::GameObject</a> is active after it is disabled </p>
+
+<p>Reimplemented from <a class="el" href="classKapEngine_1_1Component.html#ae7324857a80396521eae33fef7877d5f">KapEngine::Component</a>.</p>
 
 </div>
 </div>

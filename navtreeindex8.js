@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"md_CONTRIBUTING.html#autotoc_md25":[1,3],
+"md_CONTRIBUTING.html#autotoc_md26":[1,3,0],
 "md_CONTRIBUTING.html#autotoc_md27":[1,3,1],
 "md_Library_KapEngine_CODE_OF_CONDUCT.html":[6],
 "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md69":[6,0],
@@ -205,12 +207,12 @@ var NAVTREEINDEX8 =
 "md_pull_request_template.html#autotoc_md222":[29,1],
 "md_pull_request_template.html#autotoc_md223":[29,2],
 "modules.html":[33],
-"namespaceKapEngine.html":[34,0,0],
 "namespaceKapEngine.html":[35,0,0],
+"namespaceKapEngine.html":[34,0,0],
 "namespaceKapEngine_1_1Errors.html":[34,0,0,0],
 "namespaceKapEngine_1_1Errors.html":[35,0,0,0],
-"namespaceKapEngine_1_1Events.html":[35,0,0,1],
 "namespaceKapEngine_1_1Events.html":[34,0,0,1],
+"namespaceKapEngine_1_1Events.html":[35,0,0,1],
 "namespaceKapEngine_1_1Graphical.html":[35,0,0,2],
 "namespaceKapEngine_1_1Graphical.html":[34,0,0,2],
 "namespaceKapEngine_1_1Prefab.html":[34,0,0,3],
@@ -218,8 +220,8 @@ var NAVTREEINDEX8 =
 "namespaceKapEngine_1_1SceneManagement.html":[35,0,0,4],
 "namespaceKapEngine_1_1Time.html":[34,0,0,5],
 "namespaceKapEngine_1_1Time.html":[35,0,0,5],
-"namespaceKapEngine_1_1Tools.html":[35,0,0,6],
 "namespaceKapEngine_1_1Tools.html":[34,0,0,6],
+"namespaceKapEngine_1_1Tools.html":[35,0,0,6],
 "namespaceKapEngine_1_1UI.html":[35,0,0,7],
 "namespaceKapEngine_1_1UI.html":[34,0,0,7],
 "namespaces.html":[34,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX8 =
 "structKapEngine_1_1Events_1_1Input_1_1Axis.html#ae38d3f81abbb37702a9b4ebb03838ec1":[35,0,0,1,2,0,0],
 "structKapEngine_1_1Events_1_1Input_1_1Axis.html#aece13e0723e2f91800274bd39a39f84e":[35,0,0,1,2,0,3],
 "structKapEngine_1_1PlayerPrefs_1_1PlayerPrefIntel.html":[35,0,0,24,0],
-"structKapEngine_1_1PlayerPrefs_1_1PlayerPrefIntel.html#a2896c06f8843a1689f03dc6e6f5fc316":[35,0,0,24,0,0],
-"structKapEngine_1_1PlayerPrefs_1_1PlayerPrefIntel.html#a71e33dcd2dce00a1d4f19a9be3760119":[35,0,0,24,0,1],
-"structKapEngine_1_1SceneManagement_1_1SplashScreen_1_1SplashScreenNode.html":[35,0,0,4,2,0]
+"structKapEngine_1_1PlayerPrefs_1_1PlayerPrefIntel.html#a2896c06f8843a1689f03dc6e6f5fc316":[35,0,0,24,0,0]
 };

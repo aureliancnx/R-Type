@@ -1,8 +1,8 @@
 # KapRaylib
-include_directories(Packages/KapRaylib)
+include(Packages/KapRaylib/KapRaylib.cmake)
 
 # KapUI
-include_directories(Packages/KapUI)
+include(Packages/KapUI/KapUI.cmake)
 
 # KapRaylib
 include_directories(Packages/KapRaylib)

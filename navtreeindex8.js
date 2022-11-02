@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"md_Library_KapEngine_CODE_OF_CONDUCT.html":[6],
+"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md69":[6,0],
 "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md70":[6,1],
 "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md71":[6,2],
 "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md72":[6,3],
@@ -202,8 +204,8 @@ var NAVTREEINDEX8 =
 "md_pull_request_template.html#autotoc_md222":[29,1],
 "md_pull_request_template.html#autotoc_md223":[29,2],
 "modules.html":[33],
-"namespaceKapEngine.html":[34,0,0],
 "namespaceKapEngine.html":[35,0,0],
+"namespaceKapEngine.html":[34,0,0],
 "namespaceKapEngine_1_1Errors.html":[35,0,0,0],
 "namespaceKapEngine_1_1Errors.html":[34,0,0,0],
 "namespaceKapEngine_1_1Events.html":[34,0,0,1],
@@ -213,12 +215,12 @@ var NAVTREEINDEX8 =
 "namespaceKapEngine_1_1Prefab.html":[34,0,0,3],
 "namespaceKapEngine_1_1SceneManagement.html":[35,0,0,4],
 "namespaceKapEngine_1_1SceneManagement.html":[34,0,0,4],
-"namespaceKapEngine_1_1Time.html":[34,0,0,5],
 "namespaceKapEngine_1_1Time.html":[35,0,0,5],
-"namespaceKapEngine_1_1Tools.html":[35,0,0,6],
+"namespaceKapEngine_1_1Time.html":[34,0,0,5],
 "namespaceKapEngine_1_1Tools.html":[34,0,0,6],
-"namespaceKapEngine_1_1UI.html":[34,0,0,7],
+"namespaceKapEngine_1_1Tools.html":[35,0,0,6],
 "namespaceKapEngine_1_1UI.html":[35,0,0,7],
+"namespaceKapEngine_1_1UI.html":[34,0,0,7],
 "namespaces.html":[34,0],
 "pages.html":[],
 "structKapEngine_1_1Animator_1_1LinkAnim.html":[33,0,3,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX8 =
 "structKapEngine_1_1PlayerPrefs_1_1PlayerPrefIntel.html#a2896c06f8843a1689f03dc6e6f5fc316":[35,0,0,24,0,0],
 "structKapEngine_1_1PlayerPrefs_1_1PlayerPrefIntel.html#a71e33dcd2dce00a1d4f19a9be3760119":[35,0,0,24,0,1],
 "structKapEngine_1_1SceneManagement_1_1SplashScreen_1_1SplashScreenNode.html":[35,0,0,4,2,0],
-"structKapEngine_1_1SceneManagement_1_1SplashScreen_1_1SplashScreenNode.html#a4f3268ea7d2f636859e6dfdc51003cae":[35,0,0,4,2,0,3],
-"structKapEngine_1_1SceneManagement_1_1SplashScreen_1_1SplashScreenNode.html#a55fb6c6acc1d6e173ca834466d725bf7":[35,0,0,4,2,0,5],
-"structKapEngine_1_1SceneManagement_1_1SplashScreen_1_1SplashScreenNode.html#a57f359b96f5aa3f1df5e31adb04d17a7":[35,0,0,4,2,0,4]
+"structKapEngine_1_1SceneManagement_1_1SplashScreen_1_1SplashScreenNode.html#a4f3268ea7d2f636859e6dfdc51003cae":[35,0,0,4,2,0,3]
 };

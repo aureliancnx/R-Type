@@ -5,6 +5,7 @@ var classKapEngine_1_1GameObject =
     [ "__destroyIt", "classKapEngine_1_1GameObject.html#aee60e0725027eacd8ddd00027511d17b", null ],
     [ "__engineStop", "classKapEngine_1_1GameObject.html#ae9c1f7dde6287843c50812c33d299591", null ],
     [ "__init", "classKapEngine_1_1GameObject.html#a80ea44c11eb92139a06789e176e2a0de", null ],
+    [ "__onSceneChanged", "classKapEngine_1_1GameObject.html#a34e0dab1c262b3fc7fe763e887a1a001", null ],
     [ "__onSceneGonnaUpdated", "classKapEngine_1_1GameObject.html#afdcb63fd42ae7f532fd892db84e6c72b", null ],
     [ "__onSceneUpdated", "classKapEngine_1_1GameObject.html#aa8247f86dc5891cbea04aad9e51744c1", null ],
     [ "__setPrefab", "classKapEngine_1_1GameObject.html#a2aa8e7658c23a3f2232adfc867636efb", null ],

@@ -6,6 +6,7 @@ var classKapEngine_1_1Component =
     [ "__engineStop", "classKapEngine_1_1Component.html#a33d42ff5dd16585a3112840f1f99e636", null ],
     [ "__fixedUpdate", "classKapEngine_1_1Component.html#a4ea1d50a5139358763cfdd20c3040508", null ],
     [ "__isPhysics", "classKapEngine_1_1Component.html#a84108745aefbda0f3ee00b4bd1fa4e61", null ],
+    [ "__sceneChanged", "classKapEngine_1_1Component.html#a6727a44093df0518283e0b32e1abdb3d", null ],
     [ "__setId", "classKapEngine_1_1Component.html#a96e6047b7b4de748942969ad2e6db563", null ],
     [ "__setPhysics", "classKapEngine_1_1Component.html#a34f2819a21b2da47f94a1a2041a86829", null ],
     [ "__update", "classKapEngine_1_1Component.html#ab9cb6969e23d14f8ed1cbd16f3e6dd3c", null ],

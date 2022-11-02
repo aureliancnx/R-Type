@@ -82,6 +82,31 @@ void RType::GameMenuManager::initMainMenu() {
             DEBUG_ERROR("Error: " + std::string(e.what()));
         }
     }
+
+    //create weapon intel
+    {
+        auto weaponIntel = UI::UiFactory::createImage(scene, "WeaponIntel", "Assets/Textures/Weapons/Empty.png", {0, 0, 32, 32});
+        auto &tr = weaponIntel->getComponent<Transform>();
+        tr.setParent(mainMenu->getId());
+        Tools::Vector3 calculatedPos;
+        calculatedPos.setX(getGameObject().getEngine().getScreenSize().getX() - 80.0f - 10);
+        calculatedPos.setY(5);
+        tr.setPosition(calculatedPos);
+        tr.setScale(btnSize);
+    }
+
+    //create load missile
+    {
+        auto weaponIntel = UI::UiFactory::createImage(scene, "WeaponIntel", "Assets/Textures/Weapons/LoadingMissile.png", {0, 0, 31, 31});
+        auto &tr = weaponIntel->getComponent<Transform>();
+        tr.setParent(mainMenu->getId());
+        Tools::Vector3 calculatedPos;
+        calculatedPos.setX(getGameObject().getEngine().getScreenSize().getX() - 160.0f - 20);
+        calculatedPos.setY(5);
+        tr.setPosition(calculatedPos);
+        tr.setRotation({90, 0, 0});
+        tr.setScale(btnSize);
+    }
 }
 
 void RType::GameMenuManager::initBackground(std::shared_ptr<GameObject> parent) {

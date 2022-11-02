@@ -51,8 +51,21 @@ void PlayerController::onUpdate() {
     }
 
     if (getInput().getKeyDown(shootKey)) {
+        clockMissile.restart();
+        if (menuManager.use_count() > 0) {
+            menuManager->getMissileAnimator()->setTrigger("Load");
+            KAP_DEBUG_LOG("Load missile");
+        }
+    }
+    if (getInput().getKeyUp(shootKey)) {
+        if (menuManager.use_count() > 0)
+            menuManager->getMissileAnimator()->setTrigger("Unload");
+        if (clockMissile.getElapseTime().asSecond() >= 4.5f) {
+            shootMissile = true;
+        }
         playShootSound();
         shoot();
+        shootMissile = false;
     }
 }
 
@@ -117,18 +130,29 @@ void PlayerController::shoot() {
     if (isLocal()) {
         auto& scene = getGameObject().getScene();
         std::shared_ptr<KapEngine::GameObject> bullet;
-        getGameObject().getEngine().getPrefabManager()->instantiatePrefab("Bullet", scene, bullet);
+        if (shootMissile) {
+            getGameObject().getEngine().getPrefabManager()->instantiatePrefab("Missile", scene, bullet);
+            bullet->setName("Missile Player");
+        } else {
+            getGameObject().getEngine().getPrefabManager()->instantiatePrefab("Bullet", scene, bullet);
+            bullet->setName("Bullet Player");
+        }
         bullet->getComponent<KapEngine::Transform>().setPosition(pos);
-        bullet->setName("Bullet Player");
     } else if (isClient() && isLocalAuthority) {
         PlayerShootMessage message;
         message.networkId = getNetworkId();
         getClient()->send(message);
     } else if (isServer()) {
         std::shared_ptr<KapEngine::GameObject> bullet;
-        getServer()->spawnObject("Bullet", pos, [this](std::shared_ptr<KapEngine::GameObject> bullet) {
-            bullet->setName("Bullet Player");
-        }, bullet);
+        if (shootMissile) {
+            getServer()->spawnObject("Missile", pos, [this](std::shared_ptr<KapEngine::GameObject> bullet) {
+                bullet->setName("Missile Player");
+            }, bullet);
+        } else {
+            getServer()->spawnObject("Bullet", pos, [this](std::shared_ptr<KapEngine::GameObject> bullet) {
+                bullet->setName("Bullet Player");
+            }, bullet);
+        }
     }
 }
 
@@ -188,4 +212,32 @@ void PlayerController::initSettings() {
 
 void PlayerController::onStartClient() {
     initSettings();
+    try {
+        auto go = getGameObject().getScene().findFirstGameObject("MenuManager");
+        if (go) {
+            auto menuManagers = go->getComponents<GameMenuManager>();
+            if (!menuManagers.empty()) {
+                menuManager = menuManagers[0];
+            }
+        }
+    } catch(...) {
+        KAP_DEBUG_LOG("MenuManager not found");
+    }
+}
+
+void PlayerController::onStart() {
+    if (isLocal()) {
+        initSettings();
+        try {
+            auto go = getGameObject().getScene().findFirstGameObject("MenuManager");
+            if (go) {
+                auto menuManagers = go->getComponents<GameMenuManager>();
+                if (!menuManagers.empty()) {
+                    menuManager = menuManagers[0];
+                }
+            }
+        } catch(...) {
+            KAP_DEBUG_LOG("MenuManager not found");
+        }
+    }
 }

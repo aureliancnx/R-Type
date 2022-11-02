@@ -8,7 +8,7 @@
 #ifndef GAMEMENUMANAGER_HPP_
 #define GAMEMENUMANAGER_HPP_
 
-#include "GameObject.hpp"
+#include "KapEngine.hpp"
 
 namespace RType
 {
@@ -22,6 +22,10 @@ namespace RType
         void onAwake() override;
 
         void displayMainMenu();
+
+        std::shared_ptr<KapEngine::Animator> getMissileAnimator() const {
+            return missileAnimator;
+        }
 
       private:
         void initMainMenu();
@@ -47,6 +51,7 @@ namespace RType
         std::shared_ptr<KapEngine::GameObject> heart1;
         std::shared_ptr<KapEngine::GameObject> heart2;
         std::shared_ptr<KapEngine::GameObject> heart3;
+        std::shared_ptr<KapEngine::Animator> missileAnimator;
     };
 
 } // namespace RType

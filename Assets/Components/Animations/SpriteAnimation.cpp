@@ -35,30 +35,34 @@ namespace RType {
         bool goBouncing = false;
         int crossProduct = (_nbAnimation * _currTime) / _timing.asMicroSecond();
 
-        if (crossProduct > _nbAnimation / 2)
+        if (crossProduct > _nbAnimation / 2 && _bounce)
             goBouncing = true;
 
         Tools::Vector2 pos = _rect.getPos();
+        Tools::Vector2 size = _rect.getSize();
+        Tools::Vector2 newPos = pos;
         if (!goBouncing) {
             if (!_reverse) {
-                if (_changeWithY)
-                    pos.setY(pos.getY() + _rect.getSize().getY());
-                else
-                    pos.setX(pos.getX() + _rect.getSize().getX());
+                if (_changeWithY) {
+                    newPos.setY(pos.getY() + size.getY() * crossProduct);
+                } else {
+                    newPos.setX(pos.getX() + size.getX() * crossProduct);
+                }
             } else {
-                if (_changeWithY)
-                    pos.setY(pos.getY() - _rect.getSize().getY());
-                else
-                    pos.setX(pos.getX() - _rect.getSize().getX());
+                if (_changeWithY) {
+                    newPos.setY(pos.getY() - size.getY() * crossProduct);
+                } else {
+                    newPos.setX(pos.getX() - size.getX() * crossProduct);
+                }
             }
         } else {
             if (_changeWithY) {
-                pos.setY(pos.getY() + (_rect.getSize().getY() * (_nbAnimation - crossProduct)));
+                newPos.setY(pos.getY() + (size.getY() * (_nbAnimation - crossProduct)));
             } else {
-                pos.setX(pos.getX() + (_rect.getSize().getX() * (_nbAnimation - crossProduct)));
+                newPos.setX(pos.getX() + (size.getX() * (_nbAnimation - crossProduct)));
             }
         }
-        getImage().setRectangle({pos, _rect.getSize()});
+        getImage().setRectangle({newPos, size});
     }
 
     void SpriteAnimation::onResetAnim() {

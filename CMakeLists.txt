@@ -9,7 +9,7 @@ if(${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_BINARY_DIR} AND NOT WIN3
             "(either below this directory or elsewhere), and then re-run CMake from there.")
 endif(${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_BINARY_DIR} AND NOT WIN32)
 
-project(RType LANGUAGES CXX)
+project(RType LANGUAGES CXX VERSION 1.0.1)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake" ${CMAKE_MODULE_PATH})
 
@@ -57,3 +57,7 @@ include(Packages/packages.cmake)
 if (VALGRIND)
     target_compile_options(RType PRIVATE -g)
 endif()
+IF (NOT WIN32)
+    target_compile_options(RType PRIVATE -O2)
+ENDIF()
+target_compile_options(RType PRIVATE -pthread)

@@ -5,6 +5,8 @@
 #include "KapEngineUi.hpp"
 #include "KapMirror/KapMirror.hpp"
 
+#include "GameMenuManager.hpp"
+
 namespace RType
 {
     class PlayerController : public KapMirror::NetworkComponent
@@ -20,6 +22,10 @@ namespace RType
         long long lastRefreshTime = 0;
         long long lastKeepAliveTime = 0;
 
+        std::shared_ptr<GameMenuManager> menuManager;
+        KapEngine::Time::EClock clockMissile;
+        bool shootMissile = false;
+
         KapEngine::Events::Key::EKey upKey = KapEngine::Events::Key::UP;
         KapEngine::Events::Key::EKey downKey = KapEngine::Events::Key::DOWN;
         KapEngine::Events::Key::EKey leftKey = KapEngine::Events::Key::LEFT;
@@ -33,6 +39,8 @@ namespace RType
         void setLocalAuthority(bool _isLocalAuthority);
 
         void onUpdate() override;
+
+        void onStart() override;
 
         void onFixedUpdate() override;
 

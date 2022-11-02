@@ -1,21 +1,36 @@
 #include "GameManager.hpp"
 #include "KapEngine.hpp"
 #include "Factory.hpp"
-#include "Graphical/RaylibGraphical.hpp"
 #include "Debug.hpp"
+#include "KapRaylib/KapRaylib.hpp"
 
 static void initWindow(KapEngine::KEngine *engine, bool draw)
 {
     KapEngine::Tools::Vector2 screenSize(1280, 720);
     engine->setScreenSize(screenSize);
 
-    auto raylib = std::make_shared<KapEngine::Graphical::Raylib::RaylibGraphical>(*engine->getGraphicalLibManager(), draw);
-    engine->getGraphicalLibManager()->addLib(raylib);
-    engine->getGraphicalLibManager()->changeLib("raylib");
+    auto libManager = engine->getGraphicalLibManager();
+    auto raylib = std::make_shared<KapEngine::Graphical::Raylib::RaylibGraphical>(*libManager);
+
+    libManager->addLib(raylib);
+    libManager->changeLib(raylib->getName());
 }
+
+// #include "MapScript/MapScript.hpp"
+
+// static void test_main() {
+//     RType::MapScript script;
+
+//     try {
+//         script.loadScript("Maps/testMap.lua");
+//     } catch (RType::LuaException& e) {
+//         KapEngine::Debug::error(e.what());
+//     }
+// }
 
 int main(int argc, char **argv)
 {
+    // test_main();
     bool isServer = false;
 
     if (argc > 1)

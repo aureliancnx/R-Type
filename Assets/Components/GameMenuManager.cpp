@@ -7,6 +7,8 @@
 
 #include "GameMenuManager.hpp"
 
+#include "Animations/SpriteAnimation.hpp"
+
 #include "KapEngineUi.hpp"
 #include "KapUI/KapUI.hpp"
 
@@ -24,6 +26,7 @@ RType::GameMenuManager::GameMenuManager(std::shared_ptr<GameObject> go) : Compon
         getGameObject().addComponent(canvas);
         canvas->setResizeType(UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
     }
+    go->setName("MenuManager");
 }
 
 RType::GameMenuManager::~GameMenuManager() {}
@@ -46,11 +49,13 @@ void RType::GameMenuManager::initMainMenu() {
     mainMenu->getComponent<Transform>().setParent(getGameObject().getId());
 
     Tools::Vector3 btnSize = {80.f / getGameObject().getEngine().getScreenSize().getX(), 80.f / 90.f, 0};
-    Tools::Vector3 btnBasePos;
+    Tools::Vector3 btnBasePos = {10, 5, 0};
 
     KAP_DEBUG_LOG("Button size: " + btnSize.to_string());
 
     initBackground(mainMenu);
+
+    auto &scene = getGameObject().getScene();
 
     //create quit button
     {
@@ -60,7 +65,100 @@ void RType::GameMenuManager::initMainMenu() {
         auto &tr = btn->getComponent<Transform>();
 
         tr.setScale(btnSize);
-        tr.setPosition(btnBasePos + Tools::Vector3(160, 0, 0));
+        tr.setPosition(btnBasePos);
+    }
+
+    //create hearts
+    for (std::size_t i = 0; i < 3; i++) {
+        std::string goName = "Heart" + std::to_string(i);
+        Tools::Vector3 calculatedPos = btnBasePos;
+        calculatedPos.setX(calculatedPos.getX() + 80.0f * i * 1.05f);
+        calculatedPos.setX(calculatedPos.getX() + 80.0f * 1.5f);
+
+        auto heart = UI::UiFactory::createImage(scene, goName, "Assets/Textures/heart.png", {0, 0, 512, 512});
+        try {
+            auto &tr = heart->getComponent<Transform>();
+            tr.setParent(mainMenu->getId());
+            tr.setPosition(calculatedPos);
+            tr.setScale(btnSize);
+        } catch(const std::exception& e) {
+            DEBUG_ERROR("Error: " + std::string(e.what()));
+        }
+    }
+
+    //create weapon intel
+    {
+        auto weaponIntel = UI::UiFactory::createImage(scene, "WeaponIntel", "Assets/Textures/Weapons/Empty.png", {0, 0, 32, 32});
+        auto &tr = weaponIntel->getComponent<Transform>();
+        tr.setParent(mainMenu->getId());
+        Tools::Vector3 calculatedPos;
+        calculatedPos.setX(getGameObject().getEngine().getScreenSize().getX() - 80.0f - 10);
+        calculatedPos.setY(5);
+        tr.setPosition(calculatedPos);
+        tr.setScale(btnSize);
+    }
+
+    //create load missile
+    {
+        auto weaponIntel = UI::UiFactory::createImage(scene, "WeaponIntel", "Assets/Textures/Weapons/LoadingMissile.png", {0, 0, 31, 31});
+        auto &tr = weaponIntel->getComponent<Transform>();
+        tr.setParent(mainMenu->getId());
+        Tools::Vector3 calculatedPos;
+        calculatedPos.setX(getGameObject().getEngine().getScreenSize().getX() - 160.0f - 20);
+        calculatedPos.setY(5);
+        tr.setPosition(calculatedPos);
+        tr.setRotation({90, 0, 0});
+        tr.setScale(btnSize);
+
+        missileAnimator = std::make_shared<Animator>(weaponIntel);
+        weaponIntel->addComponent(missileAnimator);
+
+        //idle animation missile
+        {
+            Time::ETime timeAnim;
+            timeAnim.setSeconds(1.f);
+            auto anim = std::make_shared<SpriteAnimation>(weaponIntel);
+            weaponIntel->addComponent(anim);
+            anim->setChangeWithY(true);
+            anim->setNbAnimations(1);
+            anim->setRect({0, 0, 31, 31});
+            anim->setTiming(timeAnim);
+            anim->loop(true);
+            missileAnimator->addAnim(anim, "Idle");
+        }
+
+        //loading animation missile
+        {
+            float totalTimeAnim = 4.5f;
+            Time::ETime timeAnim;
+            timeAnim.setSeconds(totalTimeAnim / 8.f);
+            auto anim = std::make_shared<SpriteAnimation>(weaponIntel);
+            weaponIntel->addComponent(anim);
+            anim->setChangeWithY(true);
+            anim->setNbAnimations(8);
+            anim->setRect({0, 0, 31, 31});
+            anim->setTiming(timeAnim);
+            missileAnimator->addAnim(anim, "Loading");
+        }
+
+        //ready to fire misssile
+        {
+            Time::ETime timeAnim;
+            timeAnim.setSeconds(1.f);
+            auto anim = std::make_shared<SpriteAnimation>(weaponIntel);
+            weaponIntel->addComponent(anim);
+            anim->setChangeWithY(true);
+            anim->setNbAnimations(1);
+            anim->setRect({0, 7 * 31, 31, 31});
+            anim->setTiming(timeAnim);
+            anim->loop(true);
+            missileAnimator->addAnim(anim, "Ready");
+        }
+
+        missileAnimator->addLink("Idle", "Loading", "Load");
+        missileAnimator->addLink("Loading", "Ready");
+        missileAnimator->addLink("Loading", "Idle", "Unload");
+        missileAnimator->addLink("Ready", "Idle", "Unload");
     }
 }
 
@@ -83,7 +181,7 @@ std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<G
         btnComp->setNormalColor(color);
         btnComp->getOnClick().registerAction(callback);
     #else
-        KapEngine::UI::KapUiFactory::createButton(button, text, callback, textColor, color);
+        KapEngine::UI::KapUiFactory::createButton(button, text, callback, color, textColor);
     #endif
 
     try {
@@ -104,7 +202,7 @@ std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<G
         btnComp->getOnClick().registerAction(callback);
         btnComp->setBackground(pathSprite, rect);
     #else
-        auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text, callback, textColor, color);
+        auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text, callback, color, textColor);
         btnComp->setBackground(pathSprite, rect);
     #endif
 

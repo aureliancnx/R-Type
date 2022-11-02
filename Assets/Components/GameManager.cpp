@@ -59,6 +59,7 @@ void GameManager::registerPrefabs() {
     Prefabs::registerPlayerPrefab(*engine);
 
     Prefabs::registerBulletPrefab(*engine);
+    Prefabs::registerMissilePrefab(*engine);
 
     Prefabs::registerInGameMenuPrefab(*engine);
 

@@ -44,12 +44,15 @@ namespace RType
 
         void reverseAnim(bool reverse) { _reverse = reverse; }
 
+        void setChangeWithY(bool changeWithY) { _changeWithY = changeWithY; }
+
       protected:
       private:
         // Variables
         int _nbAnimation = 0;
         bool _bounce = false;
         bool _reverse = false;
+        bool _changeWithY = false;
         KapEngine::Tools::Rectangle _rect;
         // Functions
         void init(std::shared_ptr<KapEngine::GameObject> gameObject);

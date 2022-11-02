@@ -83,7 +83,7 @@ std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<G
         btnComp->setNormalColor(color);
         btnComp->getOnClick().registerAction(callback);
     #else
-        KapEngine::UI::KapUiFactory::createButton(button, text, callback, textColor, color);
+        KapEngine::UI::KapUiFactory::createButton(button, text, callback, color, textColor);
     #endif
 
     try {
@@ -104,7 +104,7 @@ std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<G
         btnComp->getOnClick().registerAction(callback);
         btnComp->setBackground(pathSprite, rect);
     #else
-        auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text, callback, textColor, color);
+        auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text, callback, color, textColor);
         btnComp->setBackground(pathSprite, rect);
     #endif
 

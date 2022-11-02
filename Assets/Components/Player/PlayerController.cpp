@@ -51,18 +51,9 @@ void PlayerController::onUpdate() {
     }
 
     if (getInput().getKeyDown(shootKey)) {
-        clockMissile.restart();
-        if (menuManager.use_count() > 0) {
-            menuManager->getMissileAnimator()->setTrigger("Load");
-            KAP_DEBUG_LOG("Load missile");
-        }
+        prepareShoot();
     }
     if (getInput().getKeyUp(shootKey)) {
-        if (menuManager.use_count() > 0)
-            menuManager->getMissileAnimator()->setTrigger("Unload");
-        if (clockMissile.getElapseTime().asSecond() >= 4.5f) {
-            shootMissile = true;
-        }
         playShootSound();
         shoot();
         shootMissile = false;
@@ -124,13 +115,46 @@ void PlayerController::movePlayer(KapEngine::Tools::Vector2 input) {
     inputToMove = input;
 }
 
+void PlayerController::prepareShoot() {
+    if (isLocal()) {
+        clockMissile.restart();
+        if (menuManager.use_count() > 0) {
+            menuManager->getMissileAnimator()->setTrigger("Load");
+            KAP_DEBUG_LOG("Load missile");
+        }
+    } else if (isClient() && isLocalAuthority) {
+        clockMissile.restart();
+        if (menuManager.use_count() > 0) {
+            menuManager->getMissileAnimator()->setTrigger("Load");
+            KAP_DEBUG_LOG("Load missile");
+        }
+    } else if (isServer()) {
+        KAP_DEBUG_LOG("Server prepare shoot");
+        clockMissile.restart();
+    } else if (isClient() && !isLocalAuthority) {
+        if (menuManager.use_count() > 0) {
+            menuManager->getMissileAnimator()->setTrigger("Load");
+            KAP_DEBUG_LOG("Load missile");
+        }
+    }
+}
+
 void PlayerController::shoot() {
     KapEngine::Tools::Vector3 pos = getTransform().getLocalPosition() + KapEngine::Tools::Vector3(70, 15, 0);
 
+    bool isMissile = false;
+
     if (isLocal()) {
+
+        if (clockMissile.getElapseTime().asSecond() >= 4.5f) {
+            isMissile = true;
+        }
+        if (menuManager.use_count() > 0)
+                menuManager->getMissileAnimator()->setTrigger("Unload");
+
         auto& scene = getGameObject().getScene();
         std::shared_ptr<KapEngine::GameObject> bullet;
-        if (shootMissile) {
+        if (isMissile) {
             getGameObject().getEngine().getPrefabManager()->instantiatePrefab("Missile", scene, bullet);
             bullet->setName("Missile Player");
         } else {
@@ -144,7 +168,7 @@ void PlayerController::shoot() {
         getClient()->send(message);
     } else if (isServer()) {
         std::shared_ptr<KapEngine::GameObject> bullet;
-        if (shootMissile) {
+        if (isMissile) {
             getServer()->spawnObject("Missile", pos, [this](std::shared_ptr<KapEngine::GameObject> bullet) {
                 bullet->setName("Missile Player");
             }, bullet);
@@ -153,6 +177,9 @@ void PlayerController::shoot() {
                 bullet->setName("Bullet Player");
             }, bullet);
         }
+    } else if (isClient() && !isLocalAuthority) {
+        if (menuManager.use_count() > 0)
+            menuManager->getMissileAnimator()->setTrigger("Unload");
     }
 }
 

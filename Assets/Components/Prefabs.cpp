@@ -150,6 +150,9 @@ void Prefabs::registerInGameMenuPrefab(KapEngine::KEngine &engine) {
     engine.getPrefabManager()->createPrefab("InGameMenu", [](KapEngine::SceneManagement::Scene &scene) {
         auto menu = KapEngine::UI::UiFactory::createCanvas(scene, "InGameMenu");
 
+        auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(menu);
+        menu->addComponent(networkIdentityComp);
+
         auto menuManager = std::make_shared<GameMenuManager>(menu);
         menu->addComponent(menuManager);
 

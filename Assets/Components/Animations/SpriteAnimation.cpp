@@ -40,12 +40,23 @@ namespace RType {
 
         Tools::Vector2 pos = _rect.getPos();
         if (!goBouncing) {
-            if (!_reverse)
-                pos.setX(pos.getX() + _rect.getSize().getX());
-            else
-                pos.setX(pos.getX() - _rect.getSize().getX());
+            if (!_reverse) {
+                if (_changeWithY)
+                    pos.setY(pos.getY() + _rect.getSize().getY());
+                else
+                    pos.setX(pos.getX() + _rect.getSize().getX());
+            } else {
+                if (_changeWithY)
+                    pos.setY(pos.getY() - _rect.getSize().getY());
+                else
+                    pos.setX(pos.getX() - _rect.getSize().getX());
+            }
         } else {
-            pos.setX(pos.getX() + (_rect.getSize().getX() * (_nbAnimation - crossProduct)));
+            if (_changeWithY) {
+                pos.setY(pos.getY() + (_rect.getSize().getY() * (_nbAnimation - crossProduct)));
+            } else {
+                pos.setX(pos.getX() + (_rect.getSize().getX() * (_nbAnimation - crossProduct)));
+            }
         }
         getImage().setRectangle({pos, _rect.getSize()});
     }

@@ -23,9 +23,7 @@ namespace RType
 
         void displayMainMenu();
 
-        std::shared_ptr<KapEngine::Animator> getMissileAnimator() const {
-            return missileAnimator;
-        }
+        std::shared_ptr<KapEngine::Animator> getMissileAnimator() const { return missileAnimator; }
 
       private:
         void initMainMenu();

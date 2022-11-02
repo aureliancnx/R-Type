@@ -46,11 +46,13 @@ void RType::GameMenuManager::initMainMenu() {
     mainMenu->getComponent<Transform>().setParent(getGameObject().getId());
 
     Tools::Vector3 btnSize = {80.f / getGameObject().getEngine().getScreenSize().getX(), 80.f / 90.f, 0};
-    Tools::Vector3 btnBasePos;
+    Tools::Vector3 btnBasePos = {10, 5, 0};
 
     KAP_DEBUG_LOG("Button size: " + btnSize.to_string());
 
     initBackground(mainMenu);
+
+    auto &scene = getGameObject().getScene();
 
     //create quit button
     {
@@ -60,7 +62,25 @@ void RType::GameMenuManager::initMainMenu() {
         auto &tr = btn->getComponent<Transform>();
 
         tr.setScale(btnSize);
-        tr.setPosition(btnBasePos + Tools::Vector3(160, 0, 0));
+        tr.setPosition(btnBasePos);
+    }
+
+    //create hearts
+    for (std::size_t i = 0; i < 3; i++) {
+        std::string goName = "Heart" + std::to_string(i);
+        Tools::Vector3 calculatedPos = btnBasePos;
+        calculatedPos.setX(calculatedPos.getX() + 80.0f * i * 1.05f);
+        calculatedPos.setX(calculatedPos.getX() + 80.0f * 1.5f);
+
+        auto heart = UI::UiFactory::createImage(scene, goName, "Assets/Textures/heart.png", {0, 0, 512, 512});
+        try {
+            auto &tr = heart->getComponent<Transform>();
+            tr.setParent(mainMenu->getId());
+            tr.setPosition(calculatedPos);
+            tr.setScale(btnSize);
+        } catch(const std::exception& e) {
+            DEBUG_ERROR("Error: " + std::string(e.what()));
+        }
     }
 }
 
@@ -83,7 +103,7 @@ std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<G
         btnComp->setNormalColor(color);
         btnComp->getOnClick().registerAction(callback);
     #else
-        KapEngine::UI::KapUiFactory::createButton(button, text, callback, textColor, color);
+        KapEngine::UI::KapUiFactory::createButton(button, text, callback, color, textColor);
     #endif
 
     try {
@@ -104,7 +124,7 @@ std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<G
         btnComp->getOnClick().registerAction(callback);
         btnComp->setBackground(pathSprite, rect);
     #else
-        auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text, callback, textColor, color);
+        auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text, callback, color, textColor);
         btnComp->setBackground(pathSprite, rect);
     #endif
 

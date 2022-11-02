@@ -7,6 +7,8 @@
 
 #include "GameMenuManager.hpp"
 
+#include "Animations/SpriteAnimation.hpp"
+
 #include "KapEngineUi.hpp"
 #include "KapUI/KapUI.hpp"
 
@@ -24,6 +26,7 @@ RType::GameMenuManager::GameMenuManager(std::shared_ptr<GameObject> go) : Compon
         getGameObject().addComponent(canvas);
         canvas->setResizeType(UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
     }
+    go->setName("MenuManager");
 }
 
 RType::GameMenuManager::~GameMenuManager() {}
@@ -106,6 +109,56 @@ void RType::GameMenuManager::initMainMenu() {
         tr.setPosition(calculatedPos);
         tr.setRotation({90, 0, 0});
         tr.setScale(btnSize);
+
+        missileAnimator = std::make_shared<Animator>(weaponIntel);
+        weaponIntel->addComponent(missileAnimator);
+
+        //idle animation missile
+        {
+            Time::ETime timeAnim;
+            timeAnim.setSeconds(1.f);
+            auto anim = std::make_shared<SpriteAnimation>(weaponIntel);
+            weaponIntel->addComponent(anim);
+            anim->setChangeWithY(true);
+            anim->setNbAnimations(1);
+            anim->setRect({0, 0, 31, 31});
+            anim->setTiming(timeAnim);
+            anim->loop(true);
+            missileAnimator->addAnim(anim, "Idle");
+        }
+
+        //loading animation missile
+        {
+            float totalTimeAnim = 4.5f;
+            Time::ETime timeAnim;
+            timeAnim.setSeconds(totalTimeAnim / 8.f);
+            auto anim = std::make_shared<SpriteAnimation>(weaponIntel);
+            weaponIntel->addComponent(anim);
+            anim->setChangeWithY(true);
+            anim->setNbAnimations(8);
+            anim->setRect({0, 0, 31, 31});
+            anim->setTiming(timeAnim);
+            missileAnimator->addAnim(anim, "Loading");
+        }
+
+        //ready to fire misssile
+        {
+            Time::ETime timeAnim;
+            timeAnim.setSeconds(1.f);
+            auto anim = std::make_shared<SpriteAnimation>(weaponIntel);
+            weaponIntel->addComponent(anim);
+            anim->setChangeWithY(true);
+            anim->setNbAnimations(1);
+            anim->setRect({0, 7 * 31, 31, 31});
+            anim->setTiming(timeAnim);
+            anim->loop(true);
+            missileAnimator->addAnim(anim, "Ready");
+        }
+
+        missileAnimator->addLink("Idle", "Loading", "Load");
+        missileAnimator->addLink("Loading", "Ready");
+        missileAnimator->addLink("Loading", "Idle", "Unload");
+        missileAnimator->addLink("Ready", "Idle", "Unload");
     }
 }
 

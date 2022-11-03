@@ -152,16 +152,12 @@ $(document).ready(function(){initNavTree('Assets_2Components_2Messages_8hpp_sour
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    {</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        std::string errorMessage;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> serialize(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a> &amp;writer) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#a704007d9eba6898caed61b16feeb4569">writeString</a>(errorMessage);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">void</span> deserialize(<a class="code" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a> &amp;reader) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            errorMessage = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#ae99516a742ebd56ec02561c15fe59ed2">readString</a>();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    };</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;} <span class="comment">// namespace RType</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> serialize(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a> &amp;writer) { writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#a704007d9eba6898caed61b16feeb4569">writeString</a>(errorMessage); }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">void</span> deserialize(<a class="code" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a> &amp;reader) { errorMessage = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#ae99516a742ebd56ec02561c15fe59ed2">readString</a>(); }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    };</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;} <span class="comment">// namespace RType</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapMirror_1_1NetworkReader_html_ae99516a742ebd56ec02561c15fe59ed2"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html#ae99516a742ebd56ec02561c15fe59ed2">KapMirror::NetworkReader::readString</a></div><div class="ttdeci">std::string readString()</div><div class="ttdoc">Read a string from the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:69</div></div>

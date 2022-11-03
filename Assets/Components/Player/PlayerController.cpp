@@ -167,6 +167,9 @@ void PlayerController::shoot() {
         message.networkId = getNetworkId();
         getClient()->send(message);
     } else if (isServer()) {
+        if (clockMissile.getElapseTime().asSecond() >= 4.5f) {
+            isMissile = true;
+        }
         std::shared_ptr<KapEngine::GameObject> bullet;
         if (isMissile) {
             getServer()->spawnObject("Missile", pos, [this](std::shared_ptr<KapEngine::GameObject> bullet) {

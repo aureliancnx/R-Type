@@ -11,15 +11,15 @@ namespace RType
 {
     class WinMenu : public Menu
     {
-    public:
+      public:
         explicit WinMenu(KapEngine::SceneManagement::Scene &_scene);
         ~WinMenu() = default;
 
         void init() override;
 
-    protected:
-    private:
+      protected:
+      private:
     };
 } // namespace RType
 
-#endif //RTYPE_WINMENU_HPP
+#endif // RTYPE_WINMENU_HPP

@@ -11,15 +11,15 @@ namespace RType
 {
     class LooseMenu : public Menu
     {
-    public:
+      public:
         explicit LooseMenu(KapEngine::SceneManagement::Scene &_scene);
         ~LooseMenu() = default;
 
         void init() override;
 
-    protected:
-    private:
+      protected:
+      private:
     };
 } // namespace RType
 
-#endif //RTYPE_LOOSEMENU_HPP
+#endif // RTYPE_LOOSEMENU_HPP

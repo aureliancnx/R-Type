@@ -182,8 +182,8 @@ void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine &engine) {
             float totalTimeAnim = 1.5f;
             KapEngine::Time::ETime timeAnim;
             timeAnim.setSeconds(totalTimeAnim / (float)nbAnimations);
-            auto anim = std::make_shared<SpriteAnimation>(menu);
-            menu->addComponent(anim);
+            auto anim = std::make_shared<SpriteAnimation>(img);
+            img->addComponent(anim);
 
             anim->setNbAnimations(71, 10, 8);
             anim->setRect({0, 0, 31, 31});
@@ -194,6 +194,12 @@ void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine &engine) {
                 menu->destroy();
             });
         }
+
+        auto &tr = menu->getComponent<KapEngine::Transform>();
+        tr.setScale({20.f, 20.f, 0.f});
+
+        auto &canvas = menu->getComponent<KapEngine::UI::Canvas>();
+        canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
 
         return menu;
     });
@@ -215,7 +221,7 @@ void Prefabs::registerBulletExplodePrefab(KapEngine::KEngine &engine) {
 
         {
             int nbAnimations = 16;
-            float totalTimeAnim = 1.5f;
+            float totalTimeAnim = 6.5f;
             KapEngine::Time::ETime timeAnim;
             timeAnim.setSeconds(totalTimeAnim / (float)nbAnimations);
             auto anim = std::make_shared<SpriteAnimation>(img);
@@ -230,6 +236,12 @@ void Prefabs::registerBulletExplodePrefab(KapEngine::KEngine &engine) {
                 menu->destroy();
             });
         }
+
+        auto &tr = menu->getComponent<KapEngine::Transform>();
+        tr.setScale({20.f, 20.f, 0.f});
+
+        auto &canvas = menu->getComponent<KapEngine::UI::Canvas>();
+        canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
 
         return menu;
     });

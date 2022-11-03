@@ -63,13 +63,9 @@ namespace RType
     {
         std::string errorMessage;
 
-        void serialize(KapMirror::NetworkWriter &writer) {
-            writer.writeString(errorMessage);
-        }
+        void serialize(KapMirror::NetworkWriter &writer) { writer.writeString(errorMessage); }
 
-        void deserialize(KapMirror::NetworkReader &reader) {
-            errorMessage = reader.readString();
-        }
+        void deserialize(KapMirror::NetworkReader &reader) { errorMessage = reader.readString(); }
     };
 
 } // namespace RType

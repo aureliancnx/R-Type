@@ -35,42 +35,21 @@ namespace RType {
         bool goBouncing = false;
         int crossProduct = (_nbAnimation * _currTime) / _timing.asMicroSecond();
 
-        if (crossProduct > _nbAnimation / 2 && _bounce)
-            goBouncing = true;
-
-        Tools::Vector2 pos = _rect.getPos();
-        Tools::Vector2 size = _rect.getSize();
-        Tools::Vector2 newPos = pos;
-        if (!goBouncing) {
-            if (!_reverse) {
-                if (_changeWithY) {
-                    newPos.setY(pos.getY() + size.getY() * crossProduct);
-                } else {
-                    newPos.setX(pos.getX() + size.getX() * crossProduct);
-                }
-            } else {
-                if (_changeWithY) {
-                    newPos.setY(pos.getY() - size.getY() * crossProduct);
-                } else {
-                    newPos.setX(pos.getX() - size.getX() * crossProduct);
-                }
-            }
-        } else {
-            if (_changeWithY) {
-                newPos.setY(pos.getY() + (size.getY() * (_nbAnimation - crossProduct)));
-            } else {
-                newPos.setX(pos.getX() + (size.getX() * (_nbAnimation - crossProduct)));
-            }
-        }
-        getImage().setRectangle({newPos, size});
+        getImage().setRectangle({calculateNewPos(crossProduct), _rect.getSize()});
     }
 
     void SpriteAnimation::onResetAnim() {
         getImage().setRectangle(_rect);
     }
 
-    void SpriteAnimation::setNbAnimations(int nbAnimations) {
+    void SpriteAnimation::setNbAnimations(int nbAnimations, std::size_t xAnims, std::size_t yAnims) {
         _nbAnimation = nbAnimations;
+        _nbXTextures = xAnims;
+        _nbYTextures = yAnims;
+        if (xAnims == 0 && yAnims == 0) {
+            _nbXTextures = _nbAnimation;
+            _nbYTextures = 1;
+        }
     }
 
     void SpriteAnimation::setRect(Tools::Rectangle rect) {
@@ -81,9 +60,37 @@ namespace RType {
         try {
             return getGameObject().getComponent<UI::Image>();
         } catch (...) {
-           Debug::error("Failed to get image of button " + getGameObject().getName());
+            DEBUG_ERROR("Failed to get image of button " + getGameObject().getName());
         }
         throw Errors::ComponentError("Failed to get image of button");
+    }
+
+    KapEngine::Tools::Vector2 SpriteAnimation::calculateNewPos(int crossProduct) {
+        bool goBouncing = false;
+        int nbYPassed = 0;
+        while (crossProduct >= _nbXTextures) {
+            crossProduct -= _nbXTextures;
+            nbYPassed++;
+        }
+        int nbTotpassed = nbYPassed * _nbXTextures;
+
+        Tools::Vector2 nPos = _rect.getPos();
+        if (crossProduct > _nbAnimation / 2 && _bounce)
+            goBouncing = true;
+        if (goBouncing) {
+            if (crossProduct == 0) {
+                nbYPassed--;
+                crossProduct = _nbXTextures - 1;
+            } else {
+                crossProduct--;
+            }
+            nPos.setX(crossProduct * _rect.getSize().getX());
+            nPos.setY(nbYPassed * _rect.getSize().getY());
+        } else {
+            nPos.setX(_rect.getPos().getX() + (_rect.getSize().getX() * crossProduct));
+            nPos.setY(_rect.getPos().getY() + (_rect.getSize().getY() * nbYPassed));
+        }
+        return nPos;
     }
 
 } // RType

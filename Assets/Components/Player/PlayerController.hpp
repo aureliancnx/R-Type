@@ -50,6 +50,8 @@ namespace RType
 
         void shoot();
 
+        void prepareShoot();
+
       private:
         void sendInput(KapEngine::Tools::Vector2 input);
 

@@ -25,7 +25,7 @@ namespace RType
         void onPlay() override;
         void onUpdateAnim() override;
         void onResetAnim() override;
-        void setNbAnimations(int nbAnimations);
+        void setNbAnimations(int nbAnimations, std::size_t xAnims = 0, std::size_t yAnims = 0);
         void setRect(KapEngine::Tools::Rectangle rect);
 
         /**
@@ -54,9 +54,12 @@ namespace RType
         bool _reverse = false;
         bool _changeWithY = false;
         KapEngine::Tools::Rectangle _rect;
+        std::size_t _nbXTextures;
+        std::size_t _nbYTextures = 0;
         // Functions
         void init(std::shared_ptr<KapEngine::GameObject> gameObject);
         KapEngine::UI::Image &getImage();
+        KapEngine::Tools::Vector2 calculateNewPos(int crossProduct);
     };
 } // namespace RType
 

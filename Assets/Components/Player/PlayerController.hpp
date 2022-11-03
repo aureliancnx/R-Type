@@ -33,6 +33,7 @@ namespace RType
         KapEngine::Events::Key::EKey shootKey = KapEngine::Events::Key::SPACE;
 
         int life = 100;
+        bool isDead = false;
 
       public:
         PlayerController(std::shared_ptr<KapEngine::GameObject> _gameObject);
@@ -55,6 +56,10 @@ namespace RType
         void prepareShoot();
 
         int getLife() const;
+
+        bool dead() const;
+
+        void takeDamage(int damage);
 
         void serialize(KapMirror::NetworkWriter &writer) override;
 

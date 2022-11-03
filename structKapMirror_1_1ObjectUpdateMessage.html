@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>R-Type: Class Members - Functions</title>
+<title>R-Type: KapMirror::ObjectUpdateMessage Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('functions_func_u.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('structKapMirror_1_1ObjectUpdateMessage.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -82,27 +82,52 @@ $(document).ready(function(){initNavTree('functions_func_u.html',''); initResiza
 </iframe>
 </div>
 
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structKapMirror_1_1ObjectUpdateMessage-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">KapMirror::ObjectUpdateMessage Struct Reference</div>  </div>
+</div><!--header-->
 <div class="contents">
-&#160;
-
-<h3><a id="index_u"></a>- u -</h3><ul>
-<li>unregisterHandler()
-: <a class="el" href="classKapMirror_1_1NetworkClient.html#a8f11a3df5ad53e8a2129bf3c4223b49b">KapMirror::NetworkClient</a>
-, <a class="el" href="classKapMirror_1_1NetworkServer.html#a0b13391fdaec070748238aba92dc8bb7">KapMirror::NetworkServer</a>
-</li>
-<li>unSpawn()
-: <a class="el" href="classKapMirror_1_1NetworkServer.html#a2657cdcefc7c599bdd6c42f6abe8f3cc">KapMirror::NetworkServer</a>
-</li>
-<li>updateObject()
-: <a class="el" href="classKapMirror_1_1NetworkClient.html#aab3767b6d9e2fc95530701fb9f0ed454">KapMirror::NetworkClient</a>
-, <a class="el" href="classKapMirror_1_1NetworkServer.html#aebf650208b012e8bb166ba00d932890b">KapMirror::NetworkServer</a>
-</li>
+<div class="dynheader">
+Inheritance diagram for KapMirror::ObjectUpdateMessage:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="structKapMirror_1_1ObjectUpdateMessage.png" usemap="#KapMirror::ObjectUpdateMessage_map" alt=""/>
+  <map id="KapMirror::ObjectUpdateMessage_map" name="KapMirror::ObjectUpdateMessage_map">
+<area href="structKapMirror_1_1NetworkMessage.html" alt="KapMirror::NetworkMessage" shape="rect" coords="0,0,203,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a48e6f7f1576f7e3edfb2e66cf9b3e829"><td class="memItemLeft" align="right" valign="top"><a id="a48e6f7f1576f7e3edfb2e66cf9b3e829"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>serialize</b> (<a class="el" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a> &amp;writer)</td></tr>
+<tr class="separator:a48e6f7f1576f7e3edfb2e66cf9b3e829"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dbd72a49322d4abf67ac50d2e1db3e8"><td class="memItemLeft" align="right" valign="top"><a id="a0dbd72a49322d4abf67ac50d2e1db3e8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>deserialize</b> (<a class="el" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a> &amp;reader)</td></tr>
+<tr class="separator:a0dbd72a49322d4abf67ac50d2e1db3e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a0dddd197f67bd49ca2dece9abaf15eee"><td class="memItemLeft" align="right" valign="top"><a id="a0dddd197f67bd49ca2dece9abaf15eee"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>networkId</b></td></tr>
+<tr class="separator:a0dddd197f67bd49ca2dece9abaf15eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d3e357e02f9d2f19ce42924fa9a6397"><td class="memItemLeft" align="right" valign="top"><a id="a5d3e357e02f9d2f19ce42924fa9a6397"></a>
+std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>payload</b></td></tr>
+<tr class="separator:a5d3e357e02f9d2f19ce42924fa9a6397"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>Packages/KapMirror/KapMirror/<a class="el" href="Packages_2KapMirror_2KapMirror_2Messages_8hpp_source.html">Messages.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><b>KapMirror</b></li><li class="navelem"><a class="el" href="structKapMirror_1_1ObjectUpdateMessage.html">ObjectUpdateMessage</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>

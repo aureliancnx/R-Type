@@ -49,6 +49,7 @@ var annotated_dup =
       [ "ObjectDestroyMessage", "structKapMirror_1_1ObjectDestroyMessage.html", "structKapMirror_1_1ObjectDestroyMessage" ],
       [ "ObjectSpawnMessage", "structKapMirror_1_1ObjectSpawnMessage.html", "structKapMirror_1_1ObjectSpawnMessage" ],
       [ "ObjectTransformMessage", "structKapMirror_1_1ObjectTransformMessage.html", "structKapMirror_1_1ObjectTransformMessage" ],
+      [ "ObjectUpdateMessage", "structKapMirror_1_1ObjectUpdateMessage.html", "structKapMirror_1_1ObjectUpdateMessage" ],
       [ "SylphTransport", "classKapMirror_1_1SylphTransport.html", "classKapMirror_1_1SylphTransport" ],
       [ "TelepathyTransport", "classKapMirror_1_1TelepathyTransport.html", "classKapMirror_1_1TelepathyTransport" ],
       [ "Transport", "classKapMirror_1_1Transport.html", "classKapMirror_1_1Transport" ]

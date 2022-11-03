@@ -19,6 +19,8 @@ var classKapMirror_1_1NetworkServer =
     [ "spawnObject", "classKapMirror_1_1NetworkServer.html#ac8ea7e877c2da93b2550b9b26cdfbbbf", null ],
     [ "unregisterHandler", "classKapMirror_1_1NetworkServer.html#a0b13391fdaec070748238aba92dc8bb7", null ],
     [ "unSpawn", "classKapMirror_1_1NetworkServer.html#a2657cdcefc7c599bdd6c42f6abe8f3cc", null ],
+    [ "updateObject", "classKapMirror_1_1NetworkServer.html#a988e12fc014f70223cf29570f1702254", null ],
+    [ "updateObject", "classKapMirror_1_1NetworkServer.html#aebf650208b012e8bb166ba00d932890b", null ],
     [ "onConnectedEvent", "classKapMirror_1_1NetworkServer.html#a691f475bdabaddb107da6aa55cb49062", null ],
     [ "onDisconnectedEvent", "classKapMirror_1_1NetworkServer.html#a19501d4d9ae313cedf438cc06db63c80", null ]
 ];

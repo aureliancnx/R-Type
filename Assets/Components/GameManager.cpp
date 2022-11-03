@@ -8,6 +8,8 @@
 #include "Menu/VolumeMenu.hpp"
 #include "Menu/HowToPlayMenu.hpp"
 #include "Menu/SettingPlayerMenu.hpp"
+#include "Menu/WinMenu.hpp"
+#include "Menu/LooseMenu.hpp"
 #include "CampaignGenerator/CampaignGenerator.hpp"
 #include "Player/PlayerSkin.hpp"
 
@@ -92,8 +94,8 @@ void GameManager::registerMenus() {
     auto multiMenu = std::make_shared<MultiMenu>(scene, *this);
     menuManager.registerMenu("MultiMenu", multiMenu);
 
-    auto keymenu = std::make_shared<KeyboardMenu>(scene);
-    menuManager.registerMenu("KeysMenu", keymenu);
+    auto keyMenu = std::make_shared<KeyboardMenu>(scene);
+    menuManager.registerMenu("KeysMenu", keyMenu);
 
     auto settingsMenu = std::make_shared<SettingsMenu>(scene);
     menuManager.registerMenu("SettingsMenu", settingsMenu);
@@ -106,6 +108,12 @@ void GameManager::registerMenus() {
 
     auto settingPlayerMenu = std::make_shared<SettingPlayerMenu>(scene);
     menuManager.registerMenu("SettingPlayerMenu", settingPlayerMenu);
+
+    auto winMenu = std::make_shared<WinMenu>(scene);
+    menuManager.registerMenu("WinMenu", winMenu);
+
+    auto looseMenu = std::make_shared<LooseMenu>(scene);
+    menuManager.registerMenu("LooseMenu", looseMenu);
 }
 
 // TODO: Move this to a dedicated class

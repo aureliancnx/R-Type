@@ -12,6 +12,8 @@ namespace RType
       private:
         bool isServer = false;
 
+        bool isGameStarted = false;
+
         KapEngine::Dictionary<unsigned int, std::shared_ptr<KapEngine::GameObject>> players;
         KapEngine::Dictionary<unsigned int, std::vector<long long>> keepAlives;
 

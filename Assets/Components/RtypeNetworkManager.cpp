@@ -146,12 +146,18 @@ void RtypeNetworkManager::onPlayerShootMessage(std::shared_ptr<KapMirror::Networ
 }
 
 void RtypeNetworkManager::onStartGameMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, StartGameMessage& message) {
+    if (isGameStarted) {
+        KAP_DEBUG_LOG("Game already started");
+        sendErrorOnStartGame(connection, "Game already started");
+        return;
+    }
     if (players.size() < 2) {
         KAP_DEBUG_LOG("Not enough players to start the game");
         sendErrorOnStartGame(connection, "Not enough players to start the game");
         return;
     }
 
+    isGameStarted = true;
     startGame();
 }
 

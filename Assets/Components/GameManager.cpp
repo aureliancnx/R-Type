@@ -8,8 +8,7 @@
 #include "Menu/VolumeMenu.hpp"
 #include "Menu/HowToPlayMenu.hpp"
 #include "Menu/SettingPlayerMenu.hpp"
-#include "Menu/WinMenu.hpp"
-#include "Menu/LooseMenu.hpp"
+#include "Menu/EndMenu.hpp"
 #include "CampaignGenerator/CampaignGenerator.hpp"
 #include "Player/PlayerSkin.hpp"
 
@@ -29,6 +28,7 @@ void GameManager::launchGame() {
     KapEngine::Debug::log("Launch game");
 
     registerPrefabs();
+    initEndScene();
     registerMenus();
     initSinglePlayer();
     initMultiPlayer(false);
@@ -83,6 +83,7 @@ void GameManager::registerMenus() {
     KapEngine::Debug::log("Register menus");
 
     auto& scene = engine->getSceneManager()->getScene(1);
+    auto& endScene = engine->getSceneManager()->getScene("EndScene");
 
     // Register menus
     auto mainMenu = std::make_shared<MainMenu>(scene);
@@ -109,11 +110,12 @@ void GameManager::registerMenus() {
     auto settingPlayerMenu = std::make_shared<SettingPlayerMenu>(scene);
     menuManager.registerMenu("SettingPlayerMenu", settingPlayerMenu);
 
-    auto winMenu = std::make_shared<WinMenu>(scene);
-    menuManager.registerMenu("WinMenu", winMenu);
+    auto endMenu = std::make_shared<EndMenu>(endScene);
+    menuManager.registerMenu("EndMenu", endMenu);
+}
 
-    auto looseMenu = std::make_shared<LooseMenu>(scene);
-    menuManager.registerMenu("LooseMenu", looseMenu);
+void GameManager::initEndScene() {
+    auto scene = engine->getSceneManager()->createScene("EndScene");
 }
 
 // TODO: Move this to a dedicated class

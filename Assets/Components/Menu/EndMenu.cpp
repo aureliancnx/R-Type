@@ -2,15 +2,15 @@
 // Created by leq on 03/11/22.
 //
 
-#include "WinMenu.hpp"
+#include "EndMenu.hpp"
 #include "KapUI/KapUI.hpp"
 #include "Keys/UpdateStartGameKeys.hpp"
 
 using namespace RType;
 
-WinMenu::WinMenu(KapEngine::SceneManagement::Scene &_scene) : Menu(_scene) {}
+EndMenu::EndMenu(KapEngine::SceneManagement::Scene &_scene) : Menu(_scene) {}
 
-void WinMenu::init() {
+void EndMenu::init() {
 
     // Change type of display for canvas
     {
@@ -61,8 +61,8 @@ void WinMenu::init() {
 
     // Create Title Scene
     {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Win Menu");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "You Win !");
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text End Menu");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "À changer");
         auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         compText->setPoliceSize(30);
@@ -75,7 +75,7 @@ void WinMenu::init() {
 
     // Create Score Text
     {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Win Score Text");
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "End Score Text");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Your final score : ");
         auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
 

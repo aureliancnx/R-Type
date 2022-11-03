@@ -43,6 +43,8 @@ namespace RType
 
         void initMultiPlayer(bool isServer);
 
+        void initEndScene();
+
         void initAxis();
 
       public:

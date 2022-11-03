@@ -95,16 +95,21 @@ void BoubouleEnemy::onSceneUpdated() {
             life -= 10;
             if (life <= 0) {
                 if (isLocal()) {
-                    std::shared_ptr<KapEngine::GameObject> explosion;
+                    getGameObject().destroy();
+                } else {
+                    getServer()->destroyObject(getGameObject().getScene().getGameObject(getGameObject().getId()));
+                }
+            }
+            if (isLocal()) {
+                std::shared_ptr<KapEngine::GameObject> explosion;
                     if (getGameObject().getEngine().getPrefabManager()->instantiatePrefab("MissileExplode", getGameObject().getScene(), explosion)) {
                         explosion->getComponent<KapEngine::Transform>().setPosition(other->getComponent<KapEngine::Transform>().getWorldPosition());
                     } else {
-                        KAP_DEBUG_ERROR("Cannot instantiate prefab MissileExplode");
+                        KAP_DEBUG_ERROR("Cannot instantiate prefab MissiletExplode");
                     }
-                    getGameObject().destroy();
-                } else if (isServer()) {
-                    getServer()->destroyObject(getGameObject().getScene().getGameObject(getGameObject().getId()));
-                }
+                other->destroy();
+            } else if (isServer()) {
+                getServer()->destroyObject(other);
             }
         }
     }

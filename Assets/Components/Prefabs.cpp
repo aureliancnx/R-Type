@@ -179,7 +179,7 @@ void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine &engine) {
 
         {
             int nbAnimations = 16;
-            float totalTimeAnim = 1.5f;
+            float totalTimeAnim = 5.5f;
             KapEngine::Time::ETime timeAnim;
             timeAnim.setSeconds(totalTimeAnim / (float)nbAnimations);
             auto anim = std::make_shared<SpriteAnimation>(img);
@@ -196,7 +196,7 @@ void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine &engine) {
         }
 
         auto &tr = menu->getComponent<KapEngine::Transform>();
-        tr.setScale({90.f, 90.f, 0.f});
+        tr.setScale({120.f, 120.f, 0.f});
 
         auto &canvas = menu->getComponent<KapEngine::UI::Canvas>();
         canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);

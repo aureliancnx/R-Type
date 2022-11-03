@@ -132,7 +132,7 @@ $(document).ready(function(){initNavTree('Assets_2Components_2Messages_8hpp_sour
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">void</span> deserialize(<a class="code" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a> &amp;reader) { networkId = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&gt;(); }</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    };</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structRType_1_1PlayerKeepAlive.html">   46</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structRType_1_1PlayerKeepAlive.html">PlayerKeepAlive</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">KapMirror::NetworkMessage</a></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structRType_1_1PlayerKeepAliveMessage.html">   46</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structRType_1_1PlayerKeepAliveMessage.html">PlayerKeepAliveMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">KapMirror::NetworkMessage</a></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">long</span> <span class="keywordtype">long</span> timestamp;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
@@ -141,18 +141,42 @@ $(document).ready(function(){initNavTree('Assets_2Components_2Messages_8hpp_sour
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">void</span> deserialize(<a class="code" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a> &amp;reader) { timestamp = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">long</span> <span class="keywordtype">long</span>&gt;(); }</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    };</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;} <span class="comment">// namespace RType</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structRType_1_1StartGameMessage.html">   55</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structRType_1_1StartGameMessage.html">StartGameMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">KapMirror::NetworkMessage</a></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">void</span> serialize(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a> &amp;writer) {}</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">void</span> deserialize(<a class="code" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a> &amp;reader) {}</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    };</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structRType_1_1ErrorOnStartGameMessage.html">   62</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structRType_1_1ErrorOnStartGameMessage.html">ErrorOnStartGameMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">KapMirror::NetworkMessage</a></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        std::string errorMessage;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> serialize(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a> &amp;writer) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#a704007d9eba6898caed61b16feeb4569">writeString</a>(errorMessage);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">void</span> deserialize(<a class="code" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a> &amp;reader) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            errorMessage = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#ae99516a742ebd56ec02561c15fe59ed2">readString</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    };</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;} <span class="comment">// namespace RType</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclassKapMirror_1_1NetworkReader_html_ae99516a742ebd56ec02561c15fe59ed2"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html#ae99516a742ebd56ec02561c15fe59ed2">KapMirror::NetworkReader::readString</a></div><div class="ttdeci">std::string readString()</div><div class="ttdoc">Read a string from the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:69</div></div>
+<div class="ttc" id="aclassKapMirror_1_1NetworkWriter_html_a704007d9eba6898caed61b16feeb4569"><div class="ttname"><a href="classKapMirror_1_1NetworkWriter.html#a704007d9eba6898caed61b16feeb4569">KapMirror::NetworkWriter::writeString</a></div><div class="ttdeci">void writeString(std::string value)</div><div class="ttdoc">Write a string to the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkWriter.hpp:113</div></div>
 <div class="ttc" id="astructRType_1_1PlayerInputMessage_html"><div class="ttname"><a href="structRType_1_1PlayerInputMessage.html">RType::PlayerInputMessage</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:7</div></div>
+<div class="ttc" id="astructRType_1_1PlayerKeepAliveMessage_html"><div class="ttname"><a href="structRType_1_1PlayerKeepAliveMessage.html">RType::PlayerKeepAliveMessage</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:46</div></div>
 <div class="ttc" id="astructRType_1_1PlayerAuthorityMessage_html"><div class="ttname"><a href="structRType_1_1PlayerAuthorityMessage.html">RType::PlayerAuthorityMessage</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:37</div></div>
+<div class="ttc" id="astructRType_1_1ErrorOnStartGameMessage_html"><div class="ttname"><a href="structRType_1_1ErrorOnStartGameMessage.html">RType::ErrorOnStartGameMessage</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:62</div></div>
 <div class="ttc" id="aclassKapMirror_1_1NetworkReader_html"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a></div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:10</div></div>
 <div class="ttc" id="aclassKapMirror_1_1NetworkWriter_html_ae70d7477abd36330e66df41082f7f178"><div class="ttname"><a href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">KapMirror::NetworkWriter::write</a></div><div class="ttdeci">void write(T value)</div><div class="ttdoc">Write a value to the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkWriter.hpp:43</div></div>
 <div class="ttc" id="aclassKapMirror_1_1NetworkWriter_html"><div class="ttname"><a href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a></div><div class="ttdef"><b>Definition:</b> NetworkWriter.hpp:12</div></div>
 <div class="ttc" id="aclassKapMirror_1_1NetworkReader_html_a0259666ccf40cb62ae3494b05edcc667"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">KapMirror::NetworkReader::read</a></div><div class="ttdeci">T read()</div><div class="ttdoc">Read a value from the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:46</div></div>
-<div class="ttc" id="astructRType_1_1PlayerKeepAlive_html"><div class="ttname"><a href="structRType_1_1PlayerKeepAlive.html">RType::PlayerKeepAlive</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:46</div></div>
 <div class="ttc" id="astructKapMirror_1_1NetworkMessage_html"><div class="ttname"><a href="structKapMirror_1_1NetworkMessage.html">KapMirror::NetworkMessage</a></div><div class="ttdef"><b>Definition:</b> NetworkMessage.hpp:7</div></div>
 <div class="ttc" id="astructRType_1_1PlayerShootMessage_html"><div class="ttname"><a href="structRType_1_1PlayerShootMessage.html">RType::PlayerShootMessage</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:28</div></div>
+<div class="ttc" id="astructRType_1_1StartGameMessage_html"><div class="ttname"><a href="structRType_1_1StartGameMessage.html">RType::StartGameMessage</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:55</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

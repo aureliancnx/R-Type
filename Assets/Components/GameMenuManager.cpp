@@ -144,8 +144,7 @@ void RType::GameMenuManager::initMainMenu(bool local) {
             timeAnim.setSeconds(totalTimeAnim / 8.f);
             auto anim = std::make_shared<SpriteAnimation>(weaponIntel);
             weaponIntel->addComponent(anim);
-            anim->setChangeWithY(true);
-            anim->setNbAnimations(8);
+            anim->setNbAnimations(8, 1, 8);
             anim->setRect({0, 0, 31, 31});
             anim->setTiming(timeAnim);
             missileAnimator->addAnim(anim, "Loading");

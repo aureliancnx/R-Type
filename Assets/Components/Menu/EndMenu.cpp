@@ -8,7 +8,7 @@
 
 using namespace RType;
 
-EndMenu::EndMenu(KapEngine::SceneManagement::Scene &_scene) : Menu(_scene) {}
+EndMenu::EndMenu(KapEngine::SceneManagement::Scene &_scene, GameManager &_gameManager) : Menu(_scene), gameManager(_gameManager) {}
 
 void EndMenu::init() {
 
@@ -49,7 +49,7 @@ void EndMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 366, 0});
+        transform.setPosition({369, 366, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
@@ -79,9 +79,45 @@ void EndMenu::init() {
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Your final score : ");
         auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
+        compText->setPoliceSize(20);
         txt->addComponent(compText);
         transform.setScale({150, 35, 0});
-        transform.setPosition({50, 150, 0});
+        transform.setPosition({50, 250, 0});
         transform.setParent(canvas);
+    }
+
+    // Create Final text
+    {
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Final Text");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "FINAL TEXT");
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+
+        txt->addComponent(compText);
+        transform.setScale({150, 35, 0});
+        transform.setPosition({100, 150, 0});
+        transform.setParent(canvas);
+    }
+
+    // Create button replay game
+    {
+        auto btn = scene.createGameObject("ButtonReplayGame");
+        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+        auto &transform = btn->getComponent<KapEngine::Transform>();
+
+        btn->addComponent(btnComp);
+        btnComp->setText("Replay Game");
+        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+        btnComp->setTextPosition({75, 12});
+        btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+        transform.setPosition({129, 366, 0});
+        transform.setScale({222, 39, 0});
+        transform.setParent(canvas);
+
+        btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
+            scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
+            gameManager.startCampaign();
+        });
     }
 }

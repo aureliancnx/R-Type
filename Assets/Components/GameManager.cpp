@@ -111,7 +111,7 @@ void GameManager::registerMenus() {
     auto settingPlayerMenu = std::make_shared<SettingPlayerMenu>(scene);
     menuManager.registerMenu("SettingPlayerMenu", settingPlayerMenu);
 
-    auto endMenu = std::make_shared<EndMenu>(endScene);
+    auto endMenu = std::make_shared<EndMenu>(endScene, *this);
     menuManager.registerMenu("EndMenu", endMenu);
 }
 

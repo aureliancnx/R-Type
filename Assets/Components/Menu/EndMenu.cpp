@@ -86,15 +86,29 @@ void EndMenu::init() {
         transform.setParent(canvas);
     }
 
+    // Create Value score
+    {
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Value Score Text");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "100"); // à changer en "" quand on aura un playerpref du score
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+
+        compText->setPoliceSize(20);
+        //compText->setText(std::to_string(KapEngine::PlayerPrefs::getInt("ScorePlayer")));
+        txt->addComponent(compText);
+        transform.setScale({150, 35, 0});
+        transform.setPosition({250, 250, 0});
+        transform.setParent(canvas);
+    }
+
     // Create Final text
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Final Text");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "FINAL TEXT");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Your game is over, here is your score from the previous game.");
         auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale({150, 35, 0});
-        transform.setPosition({100, 150, 0});
+        transform.setPosition({120, 150, 0});
         transform.setParent(canvas);
     }
 

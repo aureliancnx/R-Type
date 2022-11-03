@@ -87,12 +87,20 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
     });
 }
 
+#pragma region Bullets
+
 void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("Bullet", [](KapEngine::SceneManagement::Scene& scene) {
         auto bullet = KapEngine::UI::UiFactory::createCanvas(scene, "Bullet");
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(bullet);
         bullet->addComponent(networkIdentityComp);
+
+        auto networkTransformComponent = std::make_shared<KapMirror::NetworkTransform>(bullet);
+        networkTransformComponent->setClientAuthority(false);
+        networkTransformComponent->setActiveUpdate(false);
+        networkTransformComponent->setActiveLateUpdate(true);
+        bullet->addComponent(networkTransformComponent);
 
         auto bulletComp = std::make_shared<Bullet>(bullet);
         bullet->addComponent(bulletComp);
@@ -123,6 +131,12 @@ void Prefabs::registerMissilePrefab(KapEngine::KEngine &engine) {
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(missile);
         missile->addComponent(networkIdentityComp);
 
+        auto networkTransformComponent = std::make_shared<KapMirror::NetworkTransform>(missile);
+        networkTransformComponent->setClientAuthority(false);
+        networkTransformComponent->setActiveUpdate(false);
+        networkTransformComponent->setActiveLateUpdate(true);
+        missile->addComponent(networkTransformComponent);
+
         auto missileComp = std::make_shared<Bullet>(missile);
         missile->addComponent(missileComp);
 
@@ -143,23 +157,6 @@ void Prefabs::registerMissilePrefab(KapEngine::KEngine &engine) {
         transform.setRotation({90, 0, 0});
 
         return missile;
-    });
-}
-
-void Prefabs::registerInGameMenuPrefab(KapEngine::KEngine &engine) {
-    engine.getPrefabManager()->createPrefab("InGameMenu", [](KapEngine::SceneManagement::Scene &scene) {
-        auto menu = KapEngine::UI::UiFactory::createCanvas(scene, "InGameMenu");
-
-        auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(menu);
-        menu->addComponent(networkIdentityComp);
-
-        auto menuManager = std::make_shared<GameMenuManager>(menu);
-        menu->addComponent(menuManager);
-
-        auto& canvas = menu->getComponent<KapEngine::UI::Canvas>();
-        canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
-
-        return menu;
     });
 }
 
@@ -247,6 +244,29 @@ void Prefabs::registerBulletExplodePrefab(KapEngine::KEngine &engine) {
     });
 }
 
+#pragma endregion
+
+#pragma region IngameMenu
+
+void Prefabs::registerInGameMenuPrefab(KapEngine::KEngine &engine) {
+    engine.getPrefabManager()->createPrefab("InGameMenu", [](KapEngine::SceneManagement::Scene &scene) {
+        auto menu = KapEngine::UI::UiFactory::createCanvas(scene, "InGameMenu");
+
+        auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(menu);
+        menu->addComponent(networkIdentityComp);
+
+        auto menuManager = std::make_shared<GameMenuManager>(menu);
+        menu->addComponent(menuManager);
+
+        auto& canvas = menu->getComponent<KapEngine::UI::Canvas>();
+        canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
+
+        return menu;
+    });
+}
+
+#pragma endregion
+
 #pragma region Enemies
 
 void Prefabs::registerShipEnemyPrefab(KapEngine::KEngine& engine) {
@@ -256,6 +276,13 @@ void Prefabs::registerShipEnemyPrefab(KapEngine::KEngine& engine) {
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
         enemy->addComponent(networkIdentityComp);
+
+
+        auto networkTransformComponent = std::make_shared<KapMirror::NetworkTransform>(enemy);
+        networkTransformComponent->setClientAuthority(false);
+        networkTransformComponent->setActiveUpdate(false);
+        networkTransformComponent->setActiveLateUpdate(true);
+        enemy->addComponent(networkTransformComponent);
 
         auto enemyComp = std::make_shared<ShipEnemy>(enemy);
         enemy->addComponent(enemyComp);
@@ -287,6 +314,12 @@ void Prefabs::registerBoubouleEnemyPrefab(KapEngine::KEngine& engine) {
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
         enemy->addComponent(networkIdentityComp);
+
+        auto networkTransformComponent = std::make_shared<KapMirror::NetworkTransform>(enemy);
+        networkTransformComponent->setClientAuthority(false);
+        networkTransformComponent->setActiveUpdate(false);
+        networkTransformComponent->setActiveLateUpdate(true);
+        enemy->addComponent(networkTransformComponent);
 
         auto enemyComp = std::make_shared<BoubouleEnemy>(enemy);
         enemy->addComponent(enemyComp);
@@ -335,6 +368,12 @@ void Prefabs::registerTentaclesBossEnemyPrefab(KapEngine::KEngine& engine) {
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
         enemy->addComponent(networkIdentityComp);
+
+        auto networkTransformComponent = std::make_shared<KapMirror::NetworkTransform>(enemy);
+        networkTransformComponent->setClientAuthority(false);
+        networkTransformComponent->setActiveUpdate(false);
+        networkTransformComponent->setActiveLateUpdate(true);
+        enemy->addComponent(networkTransformComponent);
 
         auto enemyComp = std::make_shared<TentaclesBossEnemy>(enemy);
         enemy->addComponent(enemyComp);

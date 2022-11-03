@@ -14,7 +14,7 @@
 
 using namespace KapEngine;
 
-RType::GameMenuManager::GameMenuManager(std::shared_ptr<GameObject> go) : Component(go, "GameMenuManager") {
+RType::GameMenuManager::GameMenuManager(std::shared_ptr<GameObject> go) : KapMirror::NetworkComponent(go, "GameMenuManager") {
     addRequireComponent("Canvas");
     auto screenSize = getGameObject().getEngine().getScreenSize();
 
@@ -31,7 +31,7 @@ RType::GameMenuManager::GameMenuManager(std::shared_ptr<GameObject> go) : Compon
 
 RType::GameMenuManager::~GameMenuManager() {}
 
-void RType::GameMenuManager::onAwake() {
+void RType::GameMenuManager::onStart() {
     initMainMenu();
 }
 
@@ -43,7 +43,7 @@ void RType::GameMenuManager::displayMainMenu() {
     }
 }
 
-void RType::GameMenuManager::initMainMenu() {
+void RType::GameMenuManager::initMainMenu(bool local) {
     //menu set
     mainMenu = getGameObject().getScene().createGameObject("MainMenu");
     mainMenu->getComponent<Transform>().setParent(getGameObject().getId());
@@ -59,9 +59,19 @@ void RType::GameMenuManager::initMainMenu() {
 
     //create quit button
     {
-        auto btn = initButton(mainMenu, "QuitBtn", "", [this](){
-            getGameObject().getEngine().getSceneManager()->loadScene(1);
-        }, "Assets/Textures/Icons/logout.png", {0, 0, 512, 512});
+        std::shared_ptr<GameObject> btn;
+
+        if (local) {
+            btn = initButton(mainMenu, "QuitBtn", "", [this](){
+                getGameObject().getEngine().getSceneManager()->loadScene(1);
+            }, "Assets/Textures/Icons/logout.png", {0, 0, 512, 512});
+        } else if (isClient()) {
+            btn = initButton(mainMenu, "QuitBtn", "", [this](){
+                getClient()->disconnect();
+                getGameObject().getEngine().getSceneManager()->loadScene(1);
+            }, "Assets/Textures/Icons/logout.png", {0, 0, 512, 512});
+        }
+
         auto &tr = btn->getComponent<Transform>();
 
         tr.setScale(btnSize);
@@ -134,8 +144,7 @@ void RType::GameMenuManager::initMainMenu() {
             timeAnim.setSeconds(totalTimeAnim / 8.f);
             auto anim = std::make_shared<SpriteAnimation>(weaponIntel);
             weaponIntel->addComponent(anim);
-            anim->setChangeWithY(true);
-            anim->setNbAnimations(8);
+            anim->setNbAnimations(8, 1, 8);
             anim->setRect({0, 0, 31, 31});
             anim->setTiming(timeAnim);
             missileAnimator->addAnim(anim, "Loading");
@@ -168,7 +177,9 @@ void RType::GameMenuManager::initBackground(std::shared_ptr<GameObject> parent) 
     background->getComponent<Transform>().setPosition({0, 0, 0});
 
     auto backgroundImage = std::make_shared<UI::Image>(background);
-    backgroundImage->setColor(Tools::Color::grey());
+    Tools::Color color = Tools::Color::grey();
+    color.setA(126);
+    backgroundImage->setColor(color);
     background->addComponent(backgroundImage);
 }
 
@@ -239,4 +250,8 @@ void RType::GameMenuManager::initHeart() {
         }
     #endif
 
+}
+
+void RType::GameMenuManager::onStartClient() {
+    initMainMenu(false);
 }

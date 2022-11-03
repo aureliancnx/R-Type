@@ -9,6 +9,7 @@
 #include "Menu/HowToPlayMenu.hpp"
 #include "Menu/SettingPlayerMenu.hpp"
 #include "CampaignGenerator/CampaignGenerator.hpp"
+#include "Player/PlayerSkin.hpp"
 
 #include "KapMirror/KapMirror.hpp"
 #include "Sylph/SylphTransport.hpp"
@@ -60,6 +61,9 @@ void GameManager::registerPrefabs() {
 
     Prefabs::registerBulletPrefab(*engine);
     Prefabs::registerMissilePrefab(*engine);
+
+    Prefabs::registerBulletExplodePrefab(*engine);
+    Prefabs::registerMissileExplodePrefab(*engine);
 
     Prefabs::registerInGameMenuPrefab(*engine);
 
@@ -132,6 +136,8 @@ void GameManager::initSinglePlayer() {
         return;
     }
 
+    player->getComponent<PlayerSkin>().setSkinId(player->getComponent<PlayerSkin>().getSkinId());
+
     auto& transform = player->getComponent<KapEngine::Transform>();
     transform.setPosition({0, 0, 0});
 
@@ -174,6 +180,14 @@ void GameManager::initMultiPlayer(bool isServer) {
     networkManager = std::make_shared<RtypeNetworkManager>(networkManagerObject, isServer);
     networkManager->setTransport(std::make_shared<KapMirror::SylphTransport>());
     networkManagerObject->addComponent(networkManager);
+
+    if (!isServer) {
+        std::shared_ptr<GameObject> gameMenu;
+        if (!engine->getPrefabManager()->instantiatePrefab("InGameMenu", *scene, gameMenu)) {
+            KAP_DEBUG_ERROR("Failed to instantiate in game menu prefab");
+            return;
+        }
+    }
 }
 
 // TODO: Move this to a dedicated class

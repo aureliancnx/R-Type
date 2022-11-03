@@ -140,6 +140,7 @@ void RType::SettingPlayerMenu::init() {
             if (currentID > 5) {
                 currentID = 1;
             }
+            //KAP_DEBUG_WARNING("currentID = " + std::to_string(currentID));
             KapEngine::PlayerPrefs::setInt("shipID", currentID);
             player->getComponent<PlayerSkin>().setSkinId(currentID);
         });

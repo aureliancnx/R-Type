@@ -18,6 +18,10 @@ namespace RType
 
         void setSkinId(int _skinId);
 
+        int getSkinId() const;
+
+        void onStart() override;
+
         void onStartClient() override;
 
         void serialize(KapMirror::NetworkWriter &writer) override;

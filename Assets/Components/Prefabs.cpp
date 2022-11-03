@@ -163,6 +163,78 @@ void Prefabs::registerInGameMenuPrefab(KapEngine::KEngine &engine) {
     });
 }
 
+void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine &engine) {
+    engine.getPrefabManager()->createPrefab("MissileExplode", [](KapEngine::SceneManagement::Scene &scene) {
+        auto menu = KapEngine::UI::UiFactory::createCanvas(scene, "MissileExplode");
+        auto img = KapEngine::UI::UiFactory::createImage(scene, "MissileExplodeImg",
+            "Assets/Textures/Explosion/wills_pixel_explosions_sample/round_explosion/spritesheet/spritesheet.png", {0, 0, 100, 100});
+
+        try {
+            auto &tr = img->getComponent<KapEngine::Transform>();
+            tr.setParent(menu->getId());
+        } catch(...) {}
+
+        auto animator = std::make_shared<KapEngine::Animator>(menu);
+        menu->addComponent(animator);
+
+        {
+            int nbAnimations = 16;
+            float totalTimeAnim = 1.5f;
+            KapEngine::Time::ETime timeAnim;
+            timeAnim.setSeconds(totalTimeAnim / (float)nbAnimations);
+            auto anim = std::make_shared<SpriteAnimation>(menu);
+            menu->addComponent(anim);
+
+            anim->setNbAnimations(71, 10, 8);
+            anim->setRect({0, 0, 31, 31});
+            anim->setTiming(timeAnim);
+            animator->addAnim(anim, "Explosion");
+
+            anim->getOnEnd().registerAction([menu](){
+                menu->destroy();
+            });
+        }
+
+        return menu;
+    });
+}
+
+void Prefabs::registerBulletExplodePrefab(KapEngine::KEngine &engine) {
+    engine.getPrefabManager()->createPrefab("BulletExplode", [](KapEngine::SceneManagement::Scene &scene) {
+        auto menu = KapEngine::UI::UiFactory::createCanvas(scene, "MissileExplode");
+        auto img = KapEngine::UI::UiFactory::createImage(scene, "MissileExplodeImg",
+            "Assets/Textures/Explosion/wills_pixel_explosions_sample/vertical_explosion/spritesheet/spritesheet.png", {0, 0, 100, 100});
+
+        try {
+            auto &tr = img->getComponent<KapEngine::Transform>();
+            tr.setParent(menu->getId());
+        } catch(...) {}
+
+        auto animator = std::make_shared<KapEngine::Animator>(menu);
+        menu->addComponent(animator);
+
+        {
+            int nbAnimations = 16;
+            float totalTimeAnim = 1.5f;
+            KapEngine::Time::ETime timeAnim;
+            timeAnim.setSeconds(totalTimeAnim / (float)nbAnimations);
+            auto anim = std::make_shared<SpriteAnimation>(img);
+            img->addComponent(anim);
+
+            anim->setNbAnimations(74, 10, 8);
+            anim->setRect({0, 0, 31, 31});
+            anim->setTiming(timeAnim);
+            animator->addAnim(anim, "Explosion");
+
+            anim->getOnEnd().registerAction([menu](){
+                menu->destroy();
+            });
+        }
+
+        return menu;
+    });
+}
+
 #pragma region Enemies
 
 void Prefabs::registerShipEnemyPrefab(KapEngine::KEngine& engine) {

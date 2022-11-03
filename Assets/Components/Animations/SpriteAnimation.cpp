@@ -60,7 +60,7 @@ namespace RType {
         try {
             return getGameObject().getComponent<UI::Image>();
         } catch (...) {
-           Debug::error("Failed to get image of button " + getGameObject().getName());
+            DEBUG_ERROR("Failed to get image of button " + getGameObject().getName());
         }
         throw Errors::ComponentError("Failed to get image of button");
     }

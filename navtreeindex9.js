@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"structKapEngine_1_1PlayerPrefs_1_1PlayerPrefIntel.html":[35,0,0,24,0],
+"structKapEngine_1_1PlayerPrefs_1_1PlayerPrefIntel.html#a2896c06f8843a1689f03dc6e6f5fc316":[35,0,0,24,0,0],
 "structKapEngine_1_1PlayerPrefs_1_1PlayerPrefIntel.html#a71e33dcd2dce00a1d4f19a9be3760119":[35,0,0,24,0,1],
 "structKapEngine_1_1SceneManagement_1_1SplashScreen_1_1SplashScreenNode.html":[35,0,0,4,2,0],
 "structKapEngine_1_1SceneManagement_1_1SplashScreen_1_1SplashScreenNode.html#a4f3268ea7d2f636859e6dfdc51003cae":[35,0,0,4,2,0,3],

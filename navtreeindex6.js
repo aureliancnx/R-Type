@@ -108,8 +108,9 @@ var NAVTREEINDEX6 =
 "classRType_1_1GameMenuManager.html":[35,0,3,7],
 "classRType_1_1GameMenuManager.html#a1c21965c04d9a3662e9fc39c5280f89a":[35,0,3,7,0],
 "classRType_1_1GameMenuManager.html#a20441db59e76dfc20d7f57c87fcedc4b":[35,0,3,7,1],
-"classRType_1_1GameMenuManager.html#aa217a1ede31d307035fe79f438580c48":[35,0,3,7,4],
+"classRType_1_1GameMenuManager.html#a8ada885ad8df988e5050f8bb4183a7ca":[35,0,3,7,4],
 "classRType_1_1GameMenuManager.html#aa34dff9b5733314cd89492dad8e3dc38":[35,0,3,7,2],
+"classRType_1_1GameMenuManager.html#acfc81ca1aed37a0f83bb97199b605b27":[35,0,3,7,5],
 "classRType_1_1GameMenuManager.html#ae13fa7d409f59a60f860bd0f094b8f26":[35,0,3,7,3],
 "classRType_1_1HowToPlayAnimation.html":[35,0,3,8],
 "classRType_1_1HowToPlayAnimation.html#a23b7b087c42516caa88ee01cf860f582":[35,0,3,8,4],
@@ -233,10 +234,11 @@ var NAVTREEINDEX6 =
 "classRType_1_1PlayerController.html#a4d5a988a52d66d2bb27c4943d3f19511":[35,0,3,23,0],
 "classRType_1_1PlayerController.html#a594b47ff7a1d7dff46d7c4b26564aeb0":[35,0,3,23,4],
 "classRType_1_1PlayerController.html#a773ddf264fb672713baeef775dac34b9":[35,0,3,23,1],
+"classRType_1_1PlayerController.html#a9855aa27d985b9cb1b535d865cfebe45":[35,0,3,23,7],
 "classRType_1_1PlayerController.html#a9b721024bacb50fdbe6a24d154db12d7":[35,0,3,23,6],
-"classRType_1_1PlayerController.html#aafbd2cf6c27bf1783d7effcfefb46224":[35,0,3,23,7],
+"classRType_1_1PlayerController.html#aafbd2cf6c27bf1783d7effcfefb46224":[35,0,3,23,8],
 "classRType_1_1PlayerController.html#ad47d8e228c7d1981792f856a44912f17":[35,0,3,23,2],
-"classRType_1_1PlayerController.html#aedd3172408aa8225dcff51ee217e3ece":[35,0,3,23,8],
+"classRType_1_1PlayerController.html#aedd3172408aa8225dcff51ee217e3ece":[35,0,3,23,9],
 "classRType_1_1PlayerController.html#af09361440c87669874ce353493a207cd":[35,0,3,23,5],
 "classRType_1_1PlayerSkin.html":[35,0,3,27],
 "classRType_1_1PlayerSkin.html#a327cf87bb3bdab6b46a7e431eab08c20":[35,0,3,27,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX6 =
 "classRType_1_1PlayerSkin.html#af6f9834db6bfcaba1774724acc2d0d59":[35,0,3,27,4],
 "classRType_1_1Prefabs.html":[35,0,3,28],
 "classRType_1_1RtypeNetworkManager.html":[35,0,3,29],
-"classRType_1_1RtypeNetworkManager.html#a33f763d53885e21e44e11fb7abd81699":[35,0,3,29,5],
-"classRType_1_1RtypeNetworkManager.html#a4a4a462c1f063898d839f21fb8b5c593":[35,0,3,29,0],
-"classRType_1_1RtypeNetworkManager.html#a4b7a91afcb8e9a974df9fcd04d37e4a4":[35,0,3,29,2]
+"classRType_1_1RtypeNetworkManager.html#a33f763d53885e21e44e11fb7abd81699":[35,0,3,29,5]
 };

@@ -9,6 +9,7 @@
 #include "Menu/HowToPlayMenu.hpp"
 #include "Menu/SettingPlayerMenu.hpp"
 #include "CampaignGenerator/CampaignGenerator.hpp"
+#include "Player/PlayerSkin.hpp"
 
 #include "KapMirror/KapMirror.hpp"
 #include "Sylph/SylphTransport.hpp"
@@ -131,6 +132,8 @@ void GameManager::initSinglePlayer() {
         KAP_DEBUG_ERROR("Failed to instantiate player prefab");
         return;
     }
+
+    player->getComponent<PlayerSkin>().setSkinId(player->getComponent<PlayerSkin>().getSkinId());
 
     auto& transform = player->getComponent<KapEngine::Transform>();
     transform.setPosition({0, 0, 0});

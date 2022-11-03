@@ -85,7 +85,7 @@ void PlayerController::onFixedUpdate() {
 }
 
 void PlayerController::sendKeepAlive() {
-    PlayerKeepAlive keepAlive;
+    PlayerKeepAliveMessage keepAlive;
     keepAlive.timestamp = KapMirror::NetworkTime::localTime();
 
     if (isLocal()) {
@@ -270,4 +270,12 @@ void PlayerController::onStart() {
             KAP_DEBUG_LOG("MenuManager not found");
         }
     }
+}
+
+void PlayerController::serialize(KapMirror::NetworkWriter& writer) {
+    writer.write(life);
+}
+
+void PlayerController::deserialize(KapMirror::NetworkReader& reader) {
+    life = reader.read<int>();
 }

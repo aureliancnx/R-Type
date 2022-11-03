@@ -43,13 +43,33 @@ namespace RType
         void deserialize(KapMirror::NetworkReader &reader) { networkId = reader.read<unsigned int>(); }
     };
 
-    struct PlayerKeepAlive : KapMirror::NetworkMessage
+    struct PlayerKeepAliveMessage : KapMirror::NetworkMessage
     {
         long long timestamp;
 
         void serialize(KapMirror::NetworkWriter &writer) { writer.write(timestamp); }
 
         void deserialize(KapMirror::NetworkReader &reader) { timestamp = reader.read<long long>(); }
+    };
+
+    struct StartGameMessage : KapMirror::NetworkMessage
+    {
+        void serialize(KapMirror::NetworkWriter &writer) {}
+
+        void deserialize(KapMirror::NetworkReader &reader) {}
+    };
+
+    struct ErrorOnStartGameMessage : KapMirror::NetworkMessage
+    {
+        std::string errorMessage;
+
+        void serialize(KapMirror::NetworkWriter &writer) {
+            writer.writeString(errorMessage);
+        }
+
+        void deserialize(KapMirror::NetworkReader &reader) {
+            errorMessage = reader.readString();
+        }
     };
 
 } // namespace RType

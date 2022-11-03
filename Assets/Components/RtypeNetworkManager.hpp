@@ -32,15 +32,21 @@ namespace RType
 
         void onPlayerAuthorityMessage(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerAuthorityMessage &message);
 
-        void onServerSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerKeepAlive &message);
+        void onServerSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerKeepAliveMessage &message);
+
+        void onErrorOnStartGameMessage(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, ErrorOnStartGameMessage &message);
 
         void registerServerHandlers();
 
-        void onClientSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerKeepAlive &message);
+        void onClientSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerKeepAliveMessage &message);
 
         void onPlayerInputMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerInputMessage &message);
 
         void onPlayerShootMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerShootMessage &message);
+
+        void onStartGameMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, StartGameMessage &message);
+
+        void sendErrorOnStartGame(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, const std::string &errorMessage);
 
         void startGame();
     };

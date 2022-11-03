@@ -55,7 +55,7 @@ void EndMenu::init() {
 
         btnComp->getOnClick().registerAction([this]() {
             engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
-            switchMenu("MainMenu");
+            scene.getEngine().getSceneManager()->loadScene(1);
         });
     }
 

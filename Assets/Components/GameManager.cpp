@@ -40,6 +40,7 @@ void GameManager::launchGame() {
 
     // Show main menu
     menuManager.showMenu("MainMenu");
+    menuManager.showMenu("EndMenu");
 
     engine->getGraphicalLibManager()->getCurrentLib()->playMusic("Assets/Sound/Music/space-asteroids.mp3");
     engine->getGraphicalLibManager()->getCurrentLib()->setMusicVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));

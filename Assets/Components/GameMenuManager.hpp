@@ -9,24 +9,27 @@
 #define GAMEMENUMANAGER_HPP_
 
 #include "KapEngine.hpp"
+#include "KapMirror/KapMirror.hpp"
 
 namespace RType
 {
 
-    class GameMenuManager : public KapEngine::Component
+    class GameMenuManager : public KapMirror::NetworkComponent
     {
       public:
         GameMenuManager(std::shared_ptr<KapEngine::GameObject> go);
         ~GameMenuManager();
 
-        void onAwake() override;
+        void onStart() override;
+
+        void onStartClient() override;
 
         void displayMainMenu();
 
         std::shared_ptr<KapEngine::Animator> getMissileAnimator() const { return missileAnimator; }
 
       private:
-        void initMainMenu();
+        void initMainMenu(bool local = true);
 
         void initBackground(std::shared_ptr<KapEngine::GameObject> parent);
         std::shared_ptr<KapEngine::GameObject> initButton(std::shared_ptr<KapEngine::GameObject> parent, std::string name, std::string text,

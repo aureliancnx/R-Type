@@ -11,15 +11,15 @@ namespace RType
 {
     class EndMenu : public Menu
     {
-    public:
+      public:
         EndMenu(KapEngine::SceneManagement::Scene &_scene);
         ~EndMenu() = default;
 
         void init() override;
 
-    protected:
-    private:
+      protected:
+      private:
     };
 } // namespace RType
 
-#endif //RTYPE_ENDMENU_HPP
+#endif // RTYPE_ENDMENU_HPP

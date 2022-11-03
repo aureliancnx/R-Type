@@ -186,7 +186,7 @@ void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine &engine) {
             img->addComponent(anim);
 
             anim->setNbAnimations(71, 10, 8);
-            anim->setRect({0, 0, 31, 31});
+            anim->setRect({0, 0, 100, 100});
             anim->setTiming(timeAnim);
             animator->addAnim(anim, "Explosion");
 
@@ -196,7 +196,7 @@ void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine &engine) {
         }
 
         auto &tr = menu->getComponent<KapEngine::Transform>();
-        tr.setScale({20.f, 20.f, 0.f});
+        tr.setScale({90.f, 90.f, 0.f});
 
         auto &canvas = menu->getComponent<KapEngine::UI::Canvas>();
         canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
@@ -228,7 +228,7 @@ void Prefabs::registerBulletExplodePrefab(KapEngine::KEngine &engine) {
             img->addComponent(anim);
 
             anim->setNbAnimations(74, 10, 8);
-            anim->setRect({0, 0, 31, 31});
+            anim->setRect({0, 0, 100, 100});
             anim->setTiming(timeAnim);
             animator->addAnim(anim, "Explosion");
 
@@ -238,7 +238,7 @@ void Prefabs::registerBulletExplodePrefab(KapEngine::KEngine &engine) {
         }
 
         auto &tr = menu->getComponent<KapEngine::Transform>();
-        tr.setScale({20.f, 20.f, 0.f});
+        tr.setScale({70.f, 70.f, 0.f});
 
         auto &canvas = menu->getComponent<KapEngine::UI::Canvas>();
         canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);

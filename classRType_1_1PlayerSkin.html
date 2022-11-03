@@ -110,6 +110,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aae7a37dde51fccbb2d99544ed535bcad"><td class="memItemLeft" align="right" valign="top"><a id="aae7a37dde51fccbb2d99544ed535bcad"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setSkinId</b> (int _skinId)</td></tr>
 <tr class="separator:aae7a37dde51fccbb2d99544ed535bcad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3f6ee3513f3f3ebfd07972d91d4eb0d"><td class="memItemLeft" align="right" valign="top"><a id="ab3f6ee3513f3f3ebfd07972d91d4eb0d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getSkinId</b> () const</td></tr>
+<tr class="separator:ab3f6ee3513f3f3ebfd07972d91d4eb0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad833ed85ddfb5b3df6cd1a212475920f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType_1_1PlayerSkin.html#ad833ed85ddfb5b3df6cd1a212475920f">onStart</a> () override</td></tr>
+<tr class="memdesc:ad833ed85ddfb5b3df6cd1a212475920f"><td class="mdescLeft">&#160;</td><td class="mdescRight">call component start  <a href="classRType_1_1PlayerSkin.html#ad833ed85ddfb5b3df6cd1a212475920f">More...</a><br /></td></tr>
+<tr class="separator:ad833ed85ddfb5b3df6cd1a212475920f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a327cf87bb3bdab6b46a7e431eab08c20"><td class="memItemLeft" align="right" valign="top"><a id="a327cf87bb3bdab6b46a7e431eab08c20"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType_1_1PlayerSkin.html#a327cf87bb3bdab6b46a7e431eab08c20">onStartClient</a> () override</td></tr>
 <tr class="memdesc:a327cf87bb3bdab6b46a7e431eab08c20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Like start(), but only called on client. <br /></td></tr>
@@ -184,9 +190,6 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:a15c4ebae3ca398b69c96ff4c33306970 inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#a15c4ebae3ca398b69c96ff4c33306970">onInit</a> () override</td></tr>
 <tr class="memdesc:a15c4ebae3ca398b69c96ff4c33306970 inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">call on component init  <a href="classKapEngine_1_1Component.html#a15c4ebae3ca398b69c96ff4c33306970">More...</a><br /></td></tr>
 <tr class="separator:a15c4ebae3ca398b69c96ff4c33306970 inherit pub_methods_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7324857a80396521eae33fef7877d5f inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#ae7324857a80396521eae33fef7877d5f">onStart</a> () override</td></tr>
-<tr class="memdesc:ae7324857a80396521eae33fef7877d5f inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">call component start  <a href="classKapEngine_1_1Component.html#ae7324857a80396521eae33fef7877d5f">More...</a><br /></td></tr>
-<tr class="separator:ae7324857a80396521eae33fef7877d5f inherit pub_methods_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ddabe99b1a7ef5c9a5eba56b20b05eb inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="a2ddabe99b1a7ef5c9a5eba56b20b05eb"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#a2ddabe99b1a7ef5c9a5eba56b20b05eb">onUpdate</a> () override</td></tr>
 <tr class="memdesc:a2ddabe99b1a7ef5c9a5eba56b20b05eb inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">call each frame <br /></td></tr>
@@ -299,6 +302,37 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <tr class="memdesc:adcf99f72eea159651e3678e9671c1822 inherit pro_attribs_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classKapEngine_1_1Component.html">Component</a> name. <br /></td></tr>
 <tr class="separator:adcf99f72eea159651e3678e9671c1822 inherit pro_attribs_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad833ed85ddfb5b3df6cd1a212475920f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad833ed85ddfb5b3df6cd1a212475920f">&#9670;&nbsp;</a></span>onStart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlayerSkin::onStart </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>call component start </p>
+<p>will be called when the scene is loaded or when its <a class="el" href="classKapEngine_1_1GameObject.html">KapEngine::GameObject</a> is active after it is disabled </p>
+
+<p>Reimplemented from <a class="el" href="classKapEngine_1_1Component.html#ae7324857a80396521eae33fef7877d5f">KapEngine::Component</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Assets/Components/Player/<a class="el" href="PlayerSkin_8hpp_source.html">PlayerSkin.hpp</a></li>
 <li>Assets/Components/Player/PlayerSkin.cpp</li>

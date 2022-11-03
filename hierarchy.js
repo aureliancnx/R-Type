@@ -119,6 +119,7 @@ var hierarchy =
     [ "RType::MapEnemy", "classRType_1_1MapEnemy.html", null ],
     [ "RType::MapScript", "classRType_1_1MapScript.html", null ],
     [ "RType::Menu", "classRType_1_1Menu.html", [
+      [ "RType::EndMenu", "classRType_1_1EndMenu.html", null ],
       [ "RType::HowToPlayMenu", "classRType_1_1HowToPlayMenu.html", null ],
       [ "RType::KeyboardMenu", "classRType_1_1KeyboardMenu.html", null ],
       [ "RType::MainMenu", "classRType_1_1MainMenu.html", null ],
@@ -160,8 +161,8 @@ var hierarchy =
     [ "KapEngine::Prefabs::PrefabManager", "classKapEngine_1_1Prefabs_1_1PrefabManager.html", null ],
     [ "RType::Prefabs", "classRType_1_1Prefabs.html", null ],
     [ "KapEngine::Graphical::Raylib::RaylibEncapsulation", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html", null ],
-    [ "KapEngine::Tools::Rectangle", "classKapEngine_1_1Tools_1_1Rectangle.html", null ],
     [ "RType::Script::Rectangle", "classRType_1_1Script_1_1Rectangle.html", null ],
+    [ "KapEngine::Tools::Rectangle", "classKapEngine_1_1Tools_1_1Rectangle.html", null ],
     [ "KapEngine::SceneManagement::Scene", "classKapEngine_1_1SceneManagement_1_1Scene.html", null ],
     [ "KapEngine::SceneManagement::SceneManager", "classKapEngine_1_1SceneManagement_1_1SceneManager.html", null ],
     [ "KapMirror::Sylph::Server", "classKapMirror_1_1Sylph_1_1Server.html", null ],

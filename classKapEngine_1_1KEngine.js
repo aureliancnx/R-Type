@@ -9,6 +9,7 @@ var classKapEngine_1_1KEngine =
     [ "getCurrentGraphicalLibIndex", "classKapEngine_1_1KEngine.html#ab0317819c782d32fe5316f2396ba993d", null ],
     [ "getElapsedTime", "classKapEngine_1_1KEngine.html#a00112bfbd2e0ccd8f5feab0408912048", null ],
     [ "getEventManager", "classKapEngine_1_1KEngine.html#a20364d4c9c5a50dd5ea8bb91c8ebe54e", null ],
+    [ "getFixedTime", "classKapEngine_1_1KEngine.html#a6d7068f987d6021a9422cefdc74a617a", null ],
     [ "getGameCompany", "classKapEngine_1_1KEngine.html#a9a0fd31c034c832c63eb8e0c8825d5fe", null ],
     [ "getGameName", "classKapEngine_1_1KEngine.html#a0b64562fd197323a22568c7336d4ed63", null ],
     [ "getGameVersion", "classKapEngine_1_1KEngine.html#ad7c9e797a62a602406992c90785af6dc", null ],

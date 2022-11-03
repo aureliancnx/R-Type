@@ -3,8 +3,8 @@ var NAVTREEINDEX0 =
 ".html":[35,0,0,2,0],
 ".html":[35,0,0,2,0,0],
 ".html":[35,0,1],
-".html":[35,0,1,0],
 ".html":[35,0,0,3],
+".html":[35,0,1,0],
 ".html":[35,0,1,1],
 ".html":[35,0,1,2],
 ".html":[35,0,2],
@@ -73,7 +73,8 @@ var NAVTREEINDEX0 =
 "KapMirror_8hpp_source.html":[36,0,3,0,0,3],
 "KapRaylibVersion_8hpp_source.html":[36,0,3,1,0,5],
 "KapRaylib_8hpp_source.html":[36,0,3,1,0,4],
-"KapUI_8hpp_source.html":[36,0,3,2,0,3],
+"KapUISettings_8hpp_source.html":[36,0,3,2,0,5],
+"KapUI_8hpp_source.html":[36,0,3,2,0,4],
 "KeySelector_8hpp_source.html":[36,0,0,0,5,1],
 "Key_8hpp_source.html":[36,0,2,0,0,6,1,1],
 "KeyboardMenu_8hpp_source.html":[36,0,0,0,6,1],
@@ -146,6 +147,7 @@ var NAVTREEINDEX0 =
 "TelepathyTransport_8hpp_source.html":[36,0,3,0,0,2,0,0,10],
 "TentaclesBossEnemy_8hpp_source.html":[36,0,0,0,4,0,0],
 "ThreadScene_8hpp_source.html":[36,0,2,0,0,15,2],
+"Toggle_8hpp_source.html":[36,0,3,2,0,3,0],
 "Transform_8hpp_source.html":[36,0,2,0,0,1,8,0],
 "Transport_8hpp_source.html":[36,0,3,0,0,2,12],
 "Type_8hpp_source.html":[36,0,2,0,0,15,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "classKapEngine_1_1Component.html#a3aa4aee06d39a2520c3e43366a4cfd9c":[35,0,0,15,38],
 "classKapEngine_1_1Component.html#a3c2f3b1e54171db306e88d605c44e3ee":[35,0,0,15,37],
 "classKapEngine_1_1Component.html#a41fc4b01887039cb1b9b38ea68685d8b":[35,0,0,15,34],
-"classKapEngine_1_1Component.html#a49cf247357e25f3b626ac3d7b4dff2e2":[35,0,0,15,33],
-"classKapEngine_1_1Component.html#a4ea1d50a5139358763cfdd20c3040508":[35,0,0,15,4],
-"classKapEngine_1_1Component.html#a5806d3c4801f36bb9723524821e2dcac":[35,0,0,15,20]
+"classKapEngine_1_1Component.html#a49cf247357e25f3b626ac3d7b4dff2e2":[35,0,0,15,33]
 };

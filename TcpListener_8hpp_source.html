@@ -92,36 +92,34 @@ $(document).ready(function(){initNavTree('TcpListener_8hpp_source.html',''); ini
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;TcpClient.hpp&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;SocketException.hpp&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>KapMirror {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>Telepathy {</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classKapMirror_1_1Telepathy_1_1TcpListener.html">    8</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classKapMirror_1_1Telepathy_1_1TcpListener.html">TcpListener</a> {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        std::shared_ptr&lt;Socket&gt; socket;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="classKapMirror_1_1Telepathy_1_1TcpListener.html">TcpListener</a>(std::shared_ptr&lt;Address&gt; address);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        ~<a class="code" href="classKapMirror_1_1Telepathy_1_1TcpListener.html">TcpListener</a>();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Telepathy_1_1TcpListener.html#af2911b9937c28bda5cbd34f037575969">close</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Telepathy_1_1TcpListener.html#aed48ed8c30fef03e20d3f4a8195353fd">start</a>();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        std::shared_ptr&lt;TcpClient&gt; <a class="code" href="classKapMirror_1_1Telepathy_1_1TcpListener.html#adf1749fdf0a783a09da697d087c9c4d9">acceptTcpClient</a>();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">bool</span> isReadable() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">bool</span> isWritable() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">void</span> setBlocking(<span class="keywordtype">bool</span> blocking);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    };</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>KapMirror::Telepathy {</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classKapMirror_1_1Telepathy_1_1TcpListener.html">    7</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classKapMirror_1_1Telepathy_1_1TcpListener.html">TcpListener</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        std::shared_ptr&lt;Socket&gt; socket;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <a class="code" href="classKapMirror_1_1Telepathy_1_1TcpListener.html">TcpListener</a>(std::shared_ptr&lt;Address&gt; address);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        ~<a class="code" href="classKapMirror_1_1Telepathy_1_1TcpListener.html">TcpListener</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Telepathy_1_1TcpListener.html#af2911b9937c28bda5cbd34f037575969">close</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Telepathy_1_1TcpListener.html#aed48ed8c30fef03e20d3f4a8195353fd">start</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        std::shared_ptr&lt;TcpClient&gt; <a class="code" href="classKapMirror_1_1Telepathy_1_1TcpListener.html#adf1749fdf0a783a09da697d087c9c4d9">acceptTcpClient</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">bool</span> isReadable() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">bool</span> isWritable() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> setBlocking(<span class="keywordtype">bool</span> blocking);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    };</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapMirror_1_1Telepathy_1_1TcpListener_html_af2911b9937c28bda5cbd34f037575969"><div class="ttname"><a href="classKapMirror_1_1Telepathy_1_1TcpListener.html#af2911b9937c28bda5cbd34f037575969">KapMirror::Telepathy::TcpListener::close</a></div><div class="ttdeci">void close()</div><div class="ttdoc">Close the listener.</div><div class="ttdef"><b>Definition:</b> TcpListener.cpp:16</div></div>
 <div class="ttc" id="aclassKapMirror_1_1Telepathy_1_1TcpListener_html_adf1749fdf0a783a09da697d087c9c4d9"><div class="ttname"><a href="classKapMirror_1_1Telepathy_1_1TcpListener.html#adf1749fdf0a783a09da697d087c9c4d9">KapMirror::Telepathy::TcpListener::acceptTcpClient</a></div><div class="ttdeci">std::shared_ptr&lt; TcpClient &gt; acceptTcpClient()</div><div class="ttdoc">Accept a connection.</div><div class="ttdef"><b>Definition:</b> TcpListener.cpp:25</div></div>
 <div class="ttc" id="aclassKapMirror_1_1Telepathy_1_1TcpListener_html_aed48ed8c30fef03e20d3f4a8195353fd"><div class="ttname"><a href="classKapMirror_1_1Telepathy_1_1TcpListener.html#aed48ed8c30fef03e20d3f4a8195353fd">KapMirror::Telepathy::TcpListener::start</a></div><div class="ttdeci">void start()</div><div class="ttdoc">Start listening for connections.</div><div class="ttdef"><b>Definition:</b> TcpListener.cpp:20</div></div>
-<div class="ttc" id="aclassKapMirror_1_1Telepathy_1_1TcpListener_html"><div class="ttname"><a href="classKapMirror_1_1Telepathy_1_1TcpListener.html">KapMirror::Telepathy::TcpListener</a></div><div class="ttdef"><b>Definition:</b> TcpListener.hpp:8</div></div>
+<div class="ttc" id="aclassKapMirror_1_1Telepathy_1_1TcpListener_html"><div class="ttname"><a href="classKapMirror_1_1Telepathy_1_1TcpListener.html">KapMirror::Telepathy::TcpListener</a></div><div class="ttdef"><b>Definition:</b> TcpListener.hpp:7</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

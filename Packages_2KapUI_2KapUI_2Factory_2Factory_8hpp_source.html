@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('Packages_2KapUI_2KapUI_2Factory_2Facto
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef KAPUI_FACTORY_HPP_</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define KAPUI_FACTORY_HPP_</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../KapUI.hpp&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;KapUI/KapUI.hpp&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceKapEngine.html">KapEngine</a> {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
@@ -158,13 +158,30 @@ $(document).ready(function(){initNavTree('Packages_2KapUI_2KapUI_2Factory_2Facto
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="keyword">static</span> std::shared_ptr&lt;Inputfield&gt; createInputfield(<a class="code" href="classKapEngine_1_1GameObject.html">GameObject</a> &amp;go, Inputfield::InputType inputTye = Inputfield::InputType::TEXT, std::string <span class="keyword">const</span>&amp; placeHolder = <span class="stringliteral">&quot;Enter text here...&quot;</span>) {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    <span class="keywordflow">return</span> createInputfield(go.<a class="code" href="classKapEngine_1_1GameObject.html#ab433e8e6b3d73f71f7defe515fb66003">getScene</a>().<a class="code" href="classKapEngine_1_1SceneManagement_1_1Scene.html#a6ee7d492cfe2712c09390893a4c877fa">getGameObject</a>(go.<a class="code" href="classKapEngine_1_1Entity.html#a46ba8d055caf7b87c912bd0c6add44d5">getId</a>()));</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        };</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !KAPUI_FACTORY_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">                #if KAPUI_BETA</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    <span class="keyword">static</span> std::shared_ptr&lt;Toggle&gt; createToggle(<a class="code" href="classKapEngine_1_1GameObject.html">GameObject</a> &amp;go, <span class="keywordtype">bool</span> toggleValue = <span class="keyword">false</span>) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                        <span class="keywordflow">return</span> createToggle(go.<a class="code" href="classKapEngine_1_1GameObject.html#ab433e8e6b3d73f71f7defe515fb66003">getScene</a>().<a class="code" href="classKapEngine_1_1SceneManagement_1_1Scene.html#a6ee7d492cfe2712c09390893a4c877fa">getGameObject</a>(go.<a class="code" href="classKapEngine_1_1Entity.html#a46ba8d055caf7b87c912bd0c6add44d5">getId</a>()), toggleValue);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    <span class="keyword">static</span> std::shared_ptr&lt;Toggle&gt; createToggle(std::shared_ptr&lt;GameObject&gt; go, <span class="keywordtype">bool</span> toggleValue = <span class="keyword">false</span>) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                        <span class="keyword">auto</span> result = std::make_shared&lt;Toggle&gt;(go);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        go-&gt;addComponent(result);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                        result-&gt;setStartToggled(toggleValue);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">                #endif</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        };</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !KAPUI_FACTORY_HPP_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapEngine_1_1Entity_html_a46ba8d055caf7b87c912bd0c6add44d5"><div class="ttname"><a href="classKapEngine_1_1Entity.html#a46ba8d055caf7b87c912bd0c6add44d5">KapEngine::Entity::getId</a></div><div class="ttdeci">std::size_t getId() const</div><div class="ttdoc">Get the entity id.</div><div class="ttdef"><b>Definition:</b> Entity.hpp:34</div></div>

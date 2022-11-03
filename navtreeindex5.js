@@ -1,5 +1,8 @@
 var NAVTREEINDEX5 =
 {
+"classKapMirror_1_1NetworkManager.html#adff130942ee8e3f3f4c0105c29896127":[35,0,1,13,12],
+"classKapMirror_1_1NetworkManager.html#ae620a3dc3df025690086231d16a0dd22":[35,0,1,13,10],
+"classKapMirror_1_1NetworkManager.html#aef220c66679db23f7e486a97a1b9385f":[35,0,1,13,18],
 "classKapMirror_1_1NetworkManager.html#af361185494835277d2b528cee7539dc8":[35,0,1,13,17],
 "classKapMirror_1_1NetworkManager.html#afd8ed5f03f7d228a12b90437525622ff":[35,0,1,13,3],
 "classKapMirror_1_1NetworkReader.html":[35,0,1,15],
@@ -35,11 +38,14 @@ var NAVTREEINDEX5 =
 "classKapMirror_1_1NetworkServer.html#af5d533b8bb960c014c63ec97fcd02213":[35,0,1,16,13],
 "classKapMirror_1_1NetworkTime.html":[35,0,1,17],
 "classKapMirror_1_1NetworkTransform.html":[35,0,1,18],
-"classKapMirror_1_1NetworkTransform.html#a219c3ae438f3be869b2feeb74156c5b0":[35,0,1,18,4],
+"classKapMirror_1_1NetworkTransform.html#a219c3ae438f3be869b2feeb74156c5b0":[35,0,1,18,6],
 "classKapMirror_1_1NetworkTransform.html#a328532fda2d6feb2448c12a80c5caefd":[35,0,1,18,3],
+"classKapMirror_1_1NetworkTransform.html#a4c897d8e31256d300e8fd979e57a5303":[35,0,1,18,4],
+"classKapMirror_1_1NetworkTransform.html#a58869132f3937398f877e617e584f046":[35,0,1,18,5],
 "classKapMirror_1_1NetworkTransform.html#a729bfd58e6bd9856267208a15169b195":[35,0,1,18,1],
 "classKapMirror_1_1NetworkTransform.html#a7e58a0f94b33c49b250eb4fb18ca2fd0":[35,0,1,18,0],
-"classKapMirror_1_1NetworkTransform.html#ad966c0e58efb3e5122fb8ec1aaf1ca8a":[35,0,1,18,5],
+"classKapMirror_1_1NetworkTransform.html#accd1c5bf32139fb5085dde1ea9f73868":[35,0,1,18,7],
+"classKapMirror_1_1NetworkTransform.html#aee3e929b17888136c17ddb96995e011f":[35,0,1,18,8],
 "classKapMirror_1_1NetworkTransform.html#afe10494e46f016c77f60904d82f3bc27":[35,0,1,18,2],
 "classKapMirror_1_1NetworkWriter.html":[35,0,1,19],
 "classKapMirror_1_1NetworkWriter.html#a0658ab746b40588cf797cfcb43b44d44":[35,0,1,19,4],
@@ -243,11 +249,5 @@ var NAVTREEINDEX5 =
 "classKapMirror_1_1Telepathy_1_1Server.html#a9cc77a0e8190279d21c3355d60e16bc8":[35,0,1,2,5,6],
 "classKapMirror_1_1Telepathy_1_1Server.html#aa6853b11609f8f153ddd84760915f489":[35,0,1,2,5,0],
 "classKapMirror_1_1Telepathy_1_1Server.html#ac9bb05a0316129c12ba96b3168dcd133":[35,0,1,2,5,4],
-"classKapMirror_1_1Telepathy_1_1Server.html#ad1a4b1650214d156491a98ff6b96d787":[35,0,1,2,5,2],
-"classKapMirror_1_1Telepathy_1_1Server.html#ad3592a17b6e3c47cf0443cf4aa4871e2":[35,0,1,2,5,9],
-"classKapMirror_1_1Telepathy_1_1Socket.html":[35,0,1,2,6],
-"classKapMirror_1_1Telepathy_1_1Socket.html#a0bcbf95c0f1d60af5261be252ba9cc7a":[35,0,1,2,6,9],
-"classKapMirror_1_1Telepathy_1_1Socket.html#a56e642b61a4f3169b6bf84b543947722":[35,0,1,2,6,1],
-"classKapMirror_1_1Telepathy_1_1Socket.html#a6b6e12fe65a4a47426e4dcfee7a37461":[35,0,1,2,6,6],
-"classKapMirror_1_1Telepathy_1_1Socket.html#a75ee749264ccbcfc4dfbf5442e55dcb8":[35,0,1,2,6,5]
+"classKapMirror_1_1Telepathy_1_1Server.html#ad1a4b1650214d156491a98ff6b96d787":[35,0,1,2,5,2]
 };

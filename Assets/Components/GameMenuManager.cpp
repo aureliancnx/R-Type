@@ -177,7 +177,9 @@ void RType::GameMenuManager::initBackground(std::shared_ptr<GameObject> parent) 
     background->getComponent<Transform>().setPosition({0, 0, 0});
 
     auto backgroundImage = std::make_shared<UI::Image>(background);
-    backgroundImage->setColor(Tools::Color::grey());
+    Tools::Color color = Tools::Color::grey();
+    color.setA(126);
+    backgroundImage->setColor(color);
     background->addComponent(backgroundImage);
 }
 

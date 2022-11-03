@@ -116,6 +116,36 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
     });
 }
 
+void Prefabs::registerMissilePrefab(KapEngine::KEngine &engine) {
+    engine.getPrefabManager()->createPrefab("Missile", [](KapEngine::SceneManagement::Scene &scene) {
+        auto missile = KapEngine::UI::UiFactory::createCanvas(scene, "Missile");
+
+        auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(missile);
+        missile->addComponent(networkIdentityComp);
+
+        auto missileComp = std::make_shared<Bullet>(missile);
+        missile->addComponent(missileComp);
+
+        auto collider = std::make_shared<KapEngine::Collider>(missile, true);
+        missile->addComponent(collider);
+
+        auto imageComp = std::make_shared<KapEngine::UI::Image>(missile);
+        imageComp->setRectangle({0, 31 * 7, 31, 31});
+        imageComp->setPathSprite("Assets/Textures/Weapons/LoadingMissile.png"); // Default skin
+        missile->addComponent(imageComp);
+
+        auto& canvas = missile->getComponent<KapEngine::UI::Canvas>();
+        canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
+
+        auto& transform = missile->getComponent<KapEngine::Transform>();
+        transform.setPosition({0, 0, 0});
+        transform.setScale({25, 25});
+        transform.setRotation({90, 0, 0});
+
+        return missile;
+    });
+}
+
 void Prefabs::registerInGameMenuPrefab(KapEngine::KEngine &engine) {
     engine.getPrefabManager()->createPrefab("InGameMenu", [](KapEngine::SceneManagement::Scene &scene) {
         auto menu = KapEngine::UI::UiFactory::createCanvas(scene, "InGameMenu");

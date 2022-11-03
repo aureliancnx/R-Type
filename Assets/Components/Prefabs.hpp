@@ -14,6 +14,8 @@ namespace RType
 
         static void registerBulletPrefab(KapEngine::KEngine &engine);
 
+        static void registerMissilePrefab(KapEngine::KEngine &engine);
+
         static void registerShipEnemyPrefab(KapEngine::KEngine &engine);
 
         static void registerGalaxyParalaxPrefab(KapEngine::KEngine &engine);

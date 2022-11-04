@@ -338,7 +338,7 @@ void Prefabs::registerTentaclesBossEnemyPrefab(KapEngine::KEngine& engine) {
 
         auto enemyComp = std::make_shared<TentaclesBossEnemy>(enemy);
         enemy->addComponent(enemyComp);
-        enemyComp->setLife(1);
+        enemyComp->setLife(100);
 
         auto collider = std::make_shared<KapEngine::Collider>(enemy, true);
         enemy->addComponent(collider);

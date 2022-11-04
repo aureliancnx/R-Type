@@ -20,7 +20,7 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
 
         auto networkTransformComponent = std::make_shared<KapMirror::NetworkTransform>(player);
         networkTransformComponent->setClientAuthority(false);
-        networkTransformComponent->setSendRate(10);
+        networkTransformComponent->setSendRate(30);
         player->addComponent(networkTransformComponent);
 
         auto controllerComponent = std::make_shared<PlayerController>(player);
@@ -94,6 +94,10 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(bullet);
         bullet->addComponent(networkIdentityComp);
 
+        auto networkTransformComp = std::make_shared<KapMirror::NetworkTransform>(bullet);
+        bullet->addComponent(networkTransformComp);
+        networkTransformComp->setSendRate(30);
+
         auto bulletComp = std::make_shared<Bullet>(bullet);
         bullet->addComponent(bulletComp);
 
@@ -122,6 +126,10 @@ void Prefabs::registerMissilePrefab(KapEngine::KEngine &engine) {
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(missile);
         missile->addComponent(networkIdentityComp);
+
+        auto networkTransformComp = std::make_shared<KapMirror::NetworkTransform>(missile);
+        missile->addComponent(networkTransformComp);
+        networkTransformComp->setSendRate(30);
 
         auto missileComp = std::make_shared<Bullet>(missile);
         missile->addComponent(missileComp);
@@ -257,6 +265,10 @@ void Prefabs::registerShipEnemyPrefab(KapEngine::KEngine& engine) {
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
         enemy->addComponent(networkIdentityComp);
 
+        auto networkTransformComp = std::make_shared<KapMirror::NetworkTransform>(enemy);
+        enemy->addComponent(networkTransformComp);
+        networkTransformComp->setSendRate(30);
+
         auto enemyComp = std::make_shared<ShipEnemy>(enemy);
         enemy->addComponent(enemyComp);
         enemyComp->setLife(1);
@@ -287,6 +299,10 @@ void Prefabs::registerBoubouleEnemyPrefab(KapEngine::KEngine& engine) {
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
         enemy->addComponent(networkIdentityComp);
+
+        auto networkTransformComp = std::make_shared<KapMirror::NetworkTransform>(enemy);
+        enemy->addComponent(networkTransformComp);
+        networkTransformComp->setSendRate(30);
 
         auto enemyComp = std::make_shared<BoubouleEnemy>(enemy);
         enemy->addComponent(enemyComp);
@@ -335,6 +351,10 @@ void Prefabs::registerTentaclesBossEnemyPrefab(KapEngine::KEngine& engine) {
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
         enemy->addComponent(networkIdentityComp);
+
+        auto networkTransformComp = std::make_shared<KapMirror::NetworkTransform>(enemy);
+        enemy->addComponent(networkTransformComp);
+        networkTransformComp->setSendRate(30);
 
         auto enemyComp = std::make_shared<TentaclesBossEnemy>(enemy);
         enemy->addComponent(enemyComp);

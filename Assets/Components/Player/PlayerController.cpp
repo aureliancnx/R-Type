@@ -145,12 +145,12 @@ void PlayerController::shoot() {
     bool isMissile = false;
 
     if (isLocal()) {
-
         if (clockMissile.getElapseTime().asSecond() >= 4.5f) {
             isMissile = true;
         }
-        if (menuManager.use_count() > 0)
-                menuManager->getMissileAnimator()->setTrigger("Unload");
+        if (menuManager.use_count() > 0) {
+            menuManager->getMissileAnimator()->setTrigger("Unload");
+        }
 
         auto& scene = getGameObject().getScene();
         std::shared_ptr<KapEngine::GameObject> bullet;
@@ -289,15 +289,17 @@ void PlayerController::onStart() {
 }
 
 void PlayerController::serialize(KapMirror::NetworkWriter& writer) {
-    if (!isServer()) {
-        return;
-    }
+    // TODO: Fix this (setup server and client access before serialize/deserialize)
 
-    writer.write(life);
-    writer.write(isDead);
+    // if (!isServer()) {
+    //     return;
+    // }
+
+    // writer.write(life);
+    // writer.write(isDead);
 }
 
 void PlayerController::deserialize(KapMirror::NetworkReader& reader) {
-    life = reader.read<int>();
-    isDead = reader.read<bool>();
+    // life = reader.read<int>();
+    // isDead = reader.read<bool>();
 }

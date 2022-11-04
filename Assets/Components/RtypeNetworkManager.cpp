@@ -21,7 +21,7 @@ void RtypeNetworkManager::onStart() {
 #pragma region Client
 
 void RtypeNetworkManager::sendKeepAlive(KapMirror::NetworkIdentity *identity) {
-    PlayerKeepAlive keepAlive;
+    PlayerKeepAliveMessage keepAlive;
     keepAlive.timestamp = KapMirror::NetworkTime::localTime();
 
     std::vector<long long> playerKeepAlives;
@@ -36,8 +36,11 @@ void RtypeNetworkManager::registerClientHandlers() {
     getClient()->registerHandler<PlayerAuthorityMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerAuthorityMessage& message) {
         onPlayerAuthorityMessage(connection, message);
     });
-    getClient()->registerHandler<PlayerKeepAlive>([this](std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerKeepAlive& message) {
+    getClient()->registerHandler<PlayerKeepAliveMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerKeepAliveMessage& message) {
         onServerSendKeepAlive(connection, message);
+    });
+    getClient()->registerHandler<ErrorOnStartGameMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, ErrorOnStartGameMessage& message) {
+        onErrorOnStartGameMessage(connection, message);
     });
 }
 
@@ -49,10 +52,15 @@ void RtypeNetworkManager::onPlayerAuthorityMessage(std::shared_ptr<KapMirror::Ne
     }
 }
 
-void RtypeNetworkManager::onServerSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerKeepAlive& message) {
-    PlayerKeepAlive reply;
+void RtypeNetworkManager::onServerSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerKeepAliveMessage& message) {
+    PlayerKeepAliveMessage reply;
     reply.timestamp = message.timestamp;
     getClient()->send(message);
+}
+
+void RtypeNetworkManager::onErrorOnStartGameMessage(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, ErrorOnStartGameMessage& message) {
+    KAP_DEBUG_ERROR("Error on start game: " + message.errorMessage);
+    //TODO: Handle error
 }
 
 #pragma endregion
@@ -66,19 +74,24 @@ void RtypeNetworkManager::registerServerHandlers() {
     getServer()->registerHandler<PlayerShootMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerShootMessage& message) {
         onPlayerShootMessage(connection, message);
     });
-    getServer()->registerHandler<PlayerKeepAlive>([this](std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerKeepAlive& message) {
+    getServer()->registerHandler<PlayerKeepAliveMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerKeepAliveMessage& message) {
         onClientSendKeepAlive(connection, message);
+    });
+    getServer()->registerHandler<StartGameMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, StartGameMessage& message) {
+        onStartGameMessage(connection, message);
     });
 }
 
 void RtypeNetworkManager::onServerClientConnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {
-    KAP_DEBUG_LOG("Player[" + std::to_string(connection->getConnectionId()) + "] -> connected");
+    KapEngine::Debug::log("Player[" + std::to_string(connection->getConnectionId()) + "] -> connected");
 
     std::shared_ptr<KapEngine::GameObject> player;
     getServer()->spawnObject("Player", {0, 0, 0}, [this](std::shared_ptr<KapEngine::GameObject> go) {
         auto& networkIdentity = go->getComponent<KapMirror::NetworkIdentity>();
         auto& playerSkin = go->getComponent<PlayerSkin>();
-        playerSkin.setSkinId(networkIdentity.getNetworkId() % 5 + 1);
+
+        // Set Default Skin (Send later the player skin)
+        playerSkin.setSkinId(1);
     }, player);
 
     players[connection->getConnectionId()] = player;
@@ -89,11 +102,6 @@ void RtypeNetworkManager::onServerClientConnected(std::shared_ptr<KapMirror::Net
     PlayerAuthorityMessage message;
     message.networkId = networkIdentity.getNetworkId();
     connection->send(message);
-
-    //TODO: Temporary
-    if (players.size() >= 1) {
-        startGame();
-    }
 }
 
 void RtypeNetworkManager::onServerClientDisconnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {
@@ -105,7 +113,7 @@ void RtypeNetworkManager::onServerClientDisconnected(std::shared_ptr<KapMirror::
     }
 }
 
-void RtypeNetworkManager::onClientSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerKeepAlive& message) {
+void RtypeNetworkManager::onClientSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerKeepAliveMessage& message) {
     std::vector<long long> playerKeepAlives;
     if (keepAlives.tryGetValue(connection->getConnectionId(), playerKeepAlives)) {
         if (std::find(playerKeepAlives.begin(), playerKeepAlives.end(), message.timestamp) != playerKeepAlives.end()) {
@@ -137,16 +145,37 @@ void RtypeNetworkManager::onPlayerShootMessage(std::shared_ptr<KapMirror::Networ
     }
 }
 
-void RtypeNetworkManager::startGame() {
-    KAP_DEBUG_LOG("Start game");
+void RtypeNetworkManager::onStartGameMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, StartGameMessage& message) {
+    if (isGameStarted) {
+        KAP_DEBUG_LOG("Game already started");
+        sendErrorOnStartGame(connection, "Game already started");
+        return;
+    }
+    if (players.size() < 2) {
+        KAP_DEBUG_LOG("Not enough players to start the game");
+        sendErrorOnStartGame(connection, "Not enough players to start the game");
+        return;
+    }
 
+    isGameStarted = true;
+    startGame();
+}
+
+void RtypeNetworkManager::sendErrorOnStartGame(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, const std::string &errorMessage) {
+    ErrorOnStartGameMessage message;
+    message.errorMessage = errorMessage;
+
+    connection->send(message);
+}
+
+void RtypeNetworkManager::startGame() {
+    KapEngine::Debug::log("Start game");
+
+    // TODO: Implement Map Manager
     std::shared_ptr<KapEngine::GameObject> enemy;
     for (int i = 1; i <= 10; i++) {
         getServer()->spawnObject("Enemy:BoubouleEnemy", {1280 + 100 + ((float)i * 100), 100 + ((float)i * 50), 0}, enemy);
     }
-    // for (int i = 1; i <= 10; i++) {
-    //     getServer()->spawnObject("Enemy:BoubouleEnemy", {1280 + 500 + ((float)i * 100), 100 + ((float)i * 50), 0}, enemy);
-    // }
     getServer()->spawnObject("Enemy:TentaclesBossEnemy", {1280 - 200, 100, 0}, enemy);
 }
 

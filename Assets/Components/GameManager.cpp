@@ -8,6 +8,7 @@
 #include "Menu/VolumeMenu.hpp"
 #include "Menu/HowToPlayMenu.hpp"
 #include "Menu/SettingPlayerMenu.hpp"
+#include "Menu/EndMenu.hpp"
 #include "CampaignGenerator/CampaignGenerator.hpp"
 #include "Player/PlayerSkin.hpp"
 
@@ -27,6 +28,7 @@ void GameManager::launchGame() {
     KapEngine::Debug::log("Launch game");
 
     registerPrefabs();
+    initEndScene();
     registerMenus();
     initSinglePlayer();
     initMultiPlayer(false);
@@ -38,6 +40,7 @@ void GameManager::launchGame() {
 
     // Show main menu
     menuManager.showMenu("MainMenu");
+    menuManager.showMenu("EndMenu");
 
     engine->getGraphicalLibManager()->getCurrentLib()->playMusic("Assets/Sound/Music/space-asteroids.mp3");
     engine->getGraphicalLibManager()->getCurrentLib()->setMusicVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
@@ -81,6 +84,7 @@ void GameManager::registerMenus() {
     KapEngine::Debug::log("Register menus");
 
     auto& scene = engine->getSceneManager()->getScene(1);
+    auto& endScene = engine->getSceneManager()->getScene("EndScene");
 
     // Register menus
     auto mainMenu = std::make_shared<MainMenu>(scene);
@@ -92,8 +96,8 @@ void GameManager::registerMenus() {
     auto multiMenu = std::make_shared<MultiMenu>(scene, *this);
     menuManager.registerMenu("MultiMenu", multiMenu);
 
-    auto keymenu = std::make_shared<KeyboardMenu>(scene);
-    menuManager.registerMenu("KeysMenu", keymenu);
+    auto keyMenu = std::make_shared<KeyboardMenu>(scene);
+    menuManager.registerMenu("KeysMenu", keyMenu);
 
     auto settingsMenu = std::make_shared<SettingsMenu>(scene);
     menuManager.registerMenu("SettingsMenu", settingsMenu);
@@ -106,6 +110,13 @@ void GameManager::registerMenus() {
 
     auto settingPlayerMenu = std::make_shared<SettingPlayerMenu>(scene);
     menuManager.registerMenu("SettingPlayerMenu", settingPlayerMenu);
+
+    auto endMenu = std::make_shared<EndMenu>(endScene, *this);
+    menuManager.registerMenu("EndMenu", endMenu);
+}
+
+void GameManager::initEndScene() {
+    auto scene = engine->getSceneManager()->createScene("EndScene");
 }
 
 // TODO: Move this to a dedicated class

@@ -85,7 +85,7 @@ void PlayerController::onFixedUpdate() {
 }
 
 void PlayerController::sendKeepAlive() {
-    PlayerKeepAlive keepAlive;
+    PlayerKeepAliveMessage keepAlive;
     keepAlive.timestamp = KapMirror::NetworkTime::localTime();
 
     if (isLocal()) {
@@ -186,6 +186,22 @@ void PlayerController::shoot() {
     }
 }
 
+void PlayerController::takeDamage(int damage) {
+    if (isClient()) {
+        return;
+    }
+
+    life -= damage;
+    if (life <= 0) {
+        life = 0;
+        isDead = true;
+    }
+
+    if (isServer()) {
+        getServer()->updateObject(getNetworkId());
+    }
+}
+
 void PlayerController::sendInput(KapEngine::Tools::Vector2 input) {
     if (!isClient() || !isLocalAuthority) {
         return;
@@ -270,4 +286,18 @@ void PlayerController::onStart() {
             KAP_DEBUG_LOG("MenuManager not found");
         }
     }
+}
+
+void PlayerController::serialize(KapMirror::NetworkWriter& writer) {
+    if (!isServer()) {
+        return;
+    }
+
+    writer.write(life);
+    writer.write(isDead);
+}
+
+void PlayerController::deserialize(KapMirror::NetworkReader& reader) {
+    life = reader.read<int>();
+    isDead = reader.read<bool>();
 }

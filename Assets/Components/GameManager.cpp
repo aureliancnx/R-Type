@@ -80,7 +80,7 @@ void GameManager::registerPrefabs() {
 void GameManager::registerMenus() {
     KapEngine::Debug::log("Register menus");
 
-    auto& scene    = engine->getSceneManager()->getScene(1);
+    auto& scene = engine->getSceneManager()->getScene(1);
     auto& endScene = engine->getSceneManager()->getScene("EndScene");
 
     // Register menus
@@ -183,7 +183,7 @@ void GameManager::initMultiPlayer(bool isServer) {
     transformPS.setPosition({0, 0, 0});
 
     auto networkManagerObject = scene->createGameObject("NetworkManager");
-    networkManager            = std::make_shared<RtypeNetworkManager>(networkManagerObject, isServer);
+    networkManager = std::make_shared<RtypeNetworkManager>(networkManagerObject, isServer);
     networkManager->setTransport(std::make_shared<KapMirror::SylphTransport>());
     networkManagerObject->addComponent(networkManager);
 
@@ -200,7 +200,7 @@ void GameManager::initMultiPlayer(bool isServer) {
 void GameManager::startCampaign() {
     auto& scene = engine->getSceneManager()->getScene("SinglePlayer");
 
-    auto enemies     = scene.createGameObject("Enemies Generator");
+    auto enemies = scene.createGameObject("Enemies Generator");
     auto compEnemies = std::make_shared<CampaignGenerator>(enemies);
     enemies->addComponent(compEnemies);
 }
@@ -219,7 +219,7 @@ void GameManager::initSplashScreens() {
 
     nsplash->rect = {0.f, 0.f, 272.f, 160.f};
     nsplash->size = KapEngine::Tools::Vector2({650.f, 382.35f});
-    nsplash->pos  = KapEngine::Tools::Vector2({35.f, 48.825f});
+    nsplash->pos = KapEngine::Tools::Vector2({35.f, 48.825f});
 
     engine->getSplashScreen()->addSplashScreen(nsplash);
 }
@@ -234,7 +234,7 @@ void GameManager::initAxis() {
 
     vertical.positiveButton = KapEngine::Events::Key::UP;
     vertical.negativeButton = KapEngine::Events::Key::DOWN;
-    vertical.invert         = true;
+    vertical.invert = true;
 
     shoot.positiveButton = KapEngine::Events::Key::SPACE;
 

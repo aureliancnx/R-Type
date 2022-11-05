@@ -44,7 +44,7 @@ void RType::GameMenuManager::initMainMenu(bool local) {
     mainMenu = getGameObject().getScene().createGameObject("MainMenu");
     mainMenu->getComponent<Transform>().setParent(getGameObject().getId());
 
-    Tools::Vector3 btnSize    = {80.f / getGameObject().getEngine().getScreenSize().getX(), 80.f / 90.f, 0};
+    Tools::Vector3 btnSize = {80.f / getGameObject().getEngine().getScreenSize().getX(), 80.f / 90.f, 0};
     Tools::Vector3 btnBasePos = {10, 5, 0};
 
     KAP_DEBUG_LOG("Button size: " + btnSize.to_string());
@@ -77,7 +77,7 @@ void RType::GameMenuManager::initMainMenu(bool local) {
 
     // create hearts
     for (std::size_t i = 0; i < 3; i++) {
-        std::string goName           = "Heart" + std::to_string(i);
+        std::string goName = "Heart" + std::to_string(i);
         Tools::Vector3 calculatedPos = btnBasePos;
         calculatedPos.setX(calculatedPos.getX() + 80.0f * i * 1.05f);
         calculatedPos.setX(calculatedPos.getX() + 80.0f * 1.5f);
@@ -94,7 +94,7 @@ void RType::GameMenuManager::initMainMenu(bool local) {
     // create weapon intel
     {
         auto weaponIntel = UI::UiFactory::createImage(scene, "WeaponIntel", "Assets/Textures/Weapons/Empty.png", {0, 0, 32, 32});
-        auto& tr         = weaponIntel->getComponent<Transform>();
+        auto& tr = weaponIntel->getComponent<Transform>();
         tr.setParent(mainMenu->getId());
         Tools::Vector3 calculatedPos;
         calculatedPos.setX(getGameObject().getEngine().getScreenSize().getX() - 80.0f - 10);
@@ -106,7 +106,7 @@ void RType::GameMenuManager::initMainMenu(bool local) {
     // create load missile
     {
         auto weaponIntel = UI::UiFactory::createImage(scene, "WeaponIntel", "Assets/Textures/Weapons/LoadingMissile.png", {0, 0, 31, 31});
-        auto& tr         = weaponIntel->getComponent<Transform>();
+        auto& tr = weaponIntel->getComponent<Transform>();
         tr.setParent(mainMenu->getId());
         Tools::Vector3 calculatedPos;
         calculatedPos.setX(getGameObject().getEngine().getScreenSize().getX() - 160.0f - 20);
@@ -172,7 +172,7 @@ void RType::GameMenuManager::initBackground(std::shared_ptr<GameObject> parent) 
     background->getComponent<Transform>().setPosition({0, 0, 0});
 
     auto backgroundImage = std::make_shared<UI::Image>(background);
-    Tools::Color color   = Tools::Color::grey();
+    Tools::Color color = Tools::Color::grey();
     color.setA(126);
     backgroundImage->setColor(color);
     background->addComponent(backgroundImage);

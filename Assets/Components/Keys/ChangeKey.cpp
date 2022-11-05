@@ -23,7 +23,7 @@ void RType::ChangeKey::onAwake() {
 void RType::ChangeKey::onUpdate() {
     if (!_startSelect)
         return;
-    auto &keySel = getGameObject().getComponent<KeySelector>();
+    auto& keySel = getGameObject().getComponent<KeySelector>();
     Events::Key key;
     if (keySel.keySelected(key)) {
         _startSelect = false;
@@ -40,7 +40,7 @@ void RType::ChangeKey::startSelect(std::string const& prefName) {
     }
     _startSelect = true;
     _prefName = prefName;
-    auto &keySel = getGameObject().getComponent<KeySelector>();
+    auto& keySel = getGameObject().getComponent<KeySelector>();
     keySel.selectKey();
     displayInputs();
 }
@@ -50,14 +50,14 @@ void RType::ChangeKey::displayInputs() {
     std::shared_ptr<GameObject> goS;
     try {
         go = getGameObject().getScene().getGameObject(_idInput);
-    } catch(...) {
+    } catch (...) {
         DEBUG_ERROR("Failed to get GameObject for selected inputs");
         return;
     }
 
     try {
         goS = getGameObject().getScene().getGameObject(_idSettings);
-    } catch(...) {
+    } catch (...) {
         DEBUG_ERROR("Failed to get GameObject for selected settings");
         return;
     }
@@ -71,14 +71,14 @@ void RType::ChangeKey::displaySettings() {
     std::shared_ptr<GameObject> goS;
     try {
         go = getGameObject().getScene().getGameObject(_idInput);
-    } catch(...) {
+    } catch (...) {
         DEBUG_ERROR("Failed to get GameObject for selected inputs");
         return;
     }
 
     try {
         goS = getGameObject().getScene().getGameObject(_idSettings);
-    } catch(...) {
+    } catch (...) {
         DEBUG_ERROR("Failed to get GameObject for selected settings");
         return;
     }

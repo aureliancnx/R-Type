@@ -109,7 +109,7 @@ void PlayerController::movePlayer(const KapEngine::Tools::Vector2& input) {
         return;
     }
 
-    isMoving    = true;
+    isMoving = true;
     inputToMove = input;
 }
 
@@ -189,7 +189,7 @@ void PlayerController::takeDamage(int damage) {
 
     life -= damage;
     if (life <= 0) {
-        life   = 0;
+        life = 0;
         isDead = true;
     }
 
@@ -205,8 +205,8 @@ void PlayerController::sendInput(KapEngine::Tools::Vector2 input) {
 
     PlayerInputMessage message;
     message.networkId = getNetworkId();
-    message.x         = input.getX();
-    message.y         = input.getY();
+    message.x = input.getX();
+    message.y = input.getY();
     getClient()->send(message);
 }
 

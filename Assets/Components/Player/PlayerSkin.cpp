@@ -23,15 +23,15 @@ void PlayerSkin::setSkinId(int _skinId) {
 int PlayerSkin::getSkinId() const { return skinId; }
 
 void PlayerSkin::onStart() {
-//    if (isLocal() && KapEngine::PlayerPrefs::hasKey("shipID")) {
-//        setSkinId(KapEngine::PlayerPrefs::getInt("shipID"));
-//    }
+    //    if (isLocal() && KapEngine::PlayerPrefs::hasKey("shipID")) {
+    //        setSkinId(KapEngine::PlayerPrefs::getInt("shipID"));
+    //    }
 }
 
 void PlayerSkin::onStartClient() {
-//    if (KapEngine::PlayerPrefs::hasKey("shipID")) {
-//        setSkinId(KapEngine::PlayerPrefs::getInt("shipID"));
-//    }
+    //    if (KapEngine::PlayerPrefs::hasKey("shipID")) {
+    //        setSkinId(KapEngine::PlayerPrefs::getInt("shipID"));
+    //    }
 }
 
 void PlayerSkin::serialize(KapMirror::NetworkWriter& writer) { writer.write(skinId); }

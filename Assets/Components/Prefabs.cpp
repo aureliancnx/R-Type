@@ -163,7 +163,7 @@ void Prefabs::registerMissilePrefab(KapEngine::KEngine& engine) {
 void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("MissileExplode", [](KapEngine::SceneManagement::Scene& scene) {
         auto menu = KapEngine::UI::UiFactory::createCanvas(scene, "MissileExplode");
-        auto img  = KapEngine::UI::UiFactory::createImage(
+        auto img = KapEngine::UI::UiFactory::createImage(
             scene, "MissileExplodeImg",
             "Assets/Textures/Explosion/wills_pixel_explosions_sample/round_explosion/spritesheet/spritesheet.png", {0, 0, 100, 100});
 
@@ -176,7 +176,7 @@ void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine& engine) {
         menu->addComponent(animator);
 
         {
-            int nbAnimations    = 16;
+            int nbAnimations = 16;
             float totalTimeAnim = 5.5f;
             KapEngine::Time::ETime timeAnim;
             timeAnim.setSeconds(totalTimeAnim / (float)nbAnimations);
@@ -204,7 +204,7 @@ void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine& engine) {
 void Prefabs::registerBulletExplodePrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("BulletExplode", [](KapEngine::SceneManagement::Scene& scene) {
         auto menu = KapEngine::UI::UiFactory::createCanvas(scene, "MissileExplode");
-        auto img  = KapEngine::UI::UiFactory::createImage(
+        auto img = KapEngine::UI::UiFactory::createImage(
             scene, "MissileExplodeImg",
             "Assets/Textures/Explosion/wills_pixel_explosions_sample/vertical_explosion/spritesheet/spritesheet.png", {0, 0, 100, 100});
 
@@ -217,7 +217,7 @@ void Prefabs::registerBulletExplodePrefab(KapEngine::KEngine& engine) {
         menu->addComponent(animator);
 
         {
-            int nbAnimations    = 16;
+            int nbAnimations = 16;
             float totalTimeAnim = 6.5f;
             KapEngine::Time::ETime timeAnim;
             timeAnim.setSeconds(totalTimeAnim / (float)nbAnimations);
@@ -419,7 +419,7 @@ void Prefabs::registerTentaclesBossEnemyPrefab(KapEngine::KEngine& engine) {
 
 void Prefabs::registerGalaxyParalaxPrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("ParalaxGalaxy", [](KapEngine::SceneManagement::Scene& scene) {
-        auto paralax       = scene.createGameObject("Paralax");
+        auto paralax = scene.createGameObject("Paralax");
         auto paralaxCanvas = KapEngine::UI::UiFactory::createCanvas(scene, "ParalaxCanvas");
 
         try {
@@ -470,7 +470,7 @@ void Prefabs::registerGalaxyParalaxPrefab(KapEngine::KEngine& engine) {
 
 void Prefabs::registerStarsParalaxPrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("ParalaxStars", [](KapEngine::SceneManagement::Scene& scene) {
-        auto paralax       = scene.createGameObject("Paralax");
+        auto paralax = scene.createGameObject("Paralax");
         auto paralaxCanvas = KapEngine::UI::UiFactory::createCanvas(scene, "ParalaxCanvas");
 
         try {

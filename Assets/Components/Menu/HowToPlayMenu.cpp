@@ -7,7 +7,7 @@
 #include "KapEngineUi.hpp"
 #include "KapUI/KapUI.hpp"
 #include "Animations/SpriteAnimation.hpp"
-// #include "Animations/HowToPlayAnimation.hpp"
+#include "Animations/HowToPlayAnimation.hpp"
 
 // using namespace KapEngine;
 
@@ -118,13 +118,6 @@ void RType::HowToPlayMenu::init() {
             transform.setParent(fight);
         } catch (...) { KAP_DEBUG_ERROR("Failed to set bubulle img"); }
 
-        // try {
-        //     ship->getComponent<KapEngine::UI::Image>();
-        //     KAP_DEBUG_WARNING("SUCCESS");
-        // } catch (...) {
-        //     KAP_DEBUG_ERROR("Failed to set bubulle img");
-        // }
-
         // fight animation
         //  auto shipAnimation = std::make_shared<SpriteAnimation>(ship, 5, (KapEngine::Tools::Rectangle){0, 0, 263, 116}, 1);
         //  auto bulletAnimation = std::make_shared<HowToPlayAnimation>(bullet);
@@ -166,6 +159,9 @@ void RType::HowToPlayMenu::init() {
             bubulle->addComponent(animator);
             animator->addAnim(bubulleAnimation, "idle");
             animator->addLink("idle", "idle");
+
+            auto bubulleAnim = std::make_shared<HowToPlayAnimation>(bubulle);
+            bubulle->addComponent(bubulleAnim);
         }
 
         {
@@ -229,10 +225,10 @@ void RType::HowToPlayMenu::init() {
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        KAP_DEBUG_WARNING(std::to_string((655 - inputUp.size()) / 2));
-        KAP_DEBUG_WARNING(std::to_string((655 - inputUp.size()) / 2 - 256));
-        KAP_DEBUG_WARNING(std::to_string(35 + ((110 - inputUp.size()) / 2)));
-        KAP_DEBUG_WARNING(std::to_string(inputUp.size()));
+        // KAP_DEBUG_WARNING(std::to_string((655 - inputUp.size()) / 2));
+        // KAP_DEBUG_WARNING(std::to_string((655 - inputUp.size()) / 2 - 256));
+        // KAP_DEBUG_WARNING(std::to_string(35 + ((110 - inputUp.size()) / 2)));
+        // KAP_DEBUG_WARNING(std::to_string(inputUp.size()));
         // transform.setPosition(KapEngine::Tools::Vector3((655 - inputUp.size()) / 2 - 256, 100, 0));
         transform.setPosition(KapEngine::Tools::Vector3(25 + ((110 - inputUp.size()) / 2), 100, 0));
         // transform.setPosition(KapEngine::Tools::Vector3(25, 100, 0));

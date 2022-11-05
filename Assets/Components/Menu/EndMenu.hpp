@@ -8,19 +8,17 @@
 #include "Menu.hpp"
 #include "GameManager.hpp"
 
-namespace RType
-{
-    class EndMenu : public Menu
-    {
+namespace RType {
+    class EndMenu : public Menu {
       public:
-        EndMenu(KapEngine::SceneManagement::Scene &_scene, GameManager &_gameManager);
+        EndMenu(KapEngine::SceneManagement::Scene& _scene, GameManager& _gameManager);
         ~EndMenu() = default;
 
         void init() override;
 
       protected:
       private:
-        GameManager &gameManager;
+        GameManager& gameManager;
     };
 } // namespace RType
 

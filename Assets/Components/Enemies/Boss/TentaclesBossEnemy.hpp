@@ -10,7 +10,7 @@ namespace RType {
       private:
         int life = 20;
 
-        bool invert             = false;
+        bool invert = false;
         long long lastShootTime = 0;
 
         std::vector<std::shared_ptr<KapEngine::GameObject>> collidedObjects;

@@ -14,11 +14,9 @@
 
 using namespace KapEngine;
 
-namespace RType
-{
+namespace RType {
 
-    class ChangeKey : public Component
-    {
+    class ChangeKey : public Component {
       public:
         ChangeKey(std::shared_ptr<GameObject> go);
         ~ChangeKey();
@@ -29,7 +27,7 @@ namespace RType
         void setCanvasSettings(std::size_t id) { _idSettings = id; }
         void setCanvasInputSentence(std::size_t id) { _idInput = id; }
 
-        void startSelect(std::string const &prefName);
+        void startSelect(std::string const& prefName);
 
       protected:
       private:

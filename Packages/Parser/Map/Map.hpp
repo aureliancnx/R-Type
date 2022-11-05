@@ -11,15 +11,12 @@
 #include <sstream>
 #include "../Summon/Summon.hpp"
 
-namespace RType
-{
-    namespace Parser
-    {
+namespace RType {
+    namespace Parser {
 
-        class Map
-        {
+        class Map {
           public:
-            Map(const std::string &path);
+            Map(const std::string& path);
             ~Map();
 
             void display();
@@ -38,12 +35,12 @@ namespace RType
 
             // Methods
             void parse();
-            void parseHeader(const std::string &line);
-            void parseSummons(const std::string &line);
-            void openMap(const std::string &path);
+            void parseHeader(const std::string& line);
+            void parseSummons(const std::string& line);
+            void openMap(const std::string& path);
             void closeMap();
 
-            std::vector<std::string> split(const std::string &str, const std::string &delim);
+            std::vector<std::string> split(const std::string& str, const std::string& delim);
         };
 
     } // namespace Parser

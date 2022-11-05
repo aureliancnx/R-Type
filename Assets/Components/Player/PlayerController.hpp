@@ -17,20 +17,20 @@ namespace RType {
         KapEngine::Tools::Vector2 inputToMove;
         bool isMoving = false;
 
-        long long lastRefreshTime   = 0;
+        long long lastRefreshTime = 0;
         long long lastKeepAliveTime = 0;
 
         std::shared_ptr<GameMenuManager> menuManager;
         KapEngine::Time::EClock clockMissile;
         bool shootMissile = false;
 
-        KapEngine::Events::Key::EKey upKey    = KapEngine::Events::Key::UP;
-        KapEngine::Events::Key::EKey downKey  = KapEngine::Events::Key::DOWN;
-        KapEngine::Events::Key::EKey leftKey  = KapEngine::Events::Key::LEFT;
+        KapEngine::Events::Key::EKey upKey = KapEngine::Events::Key::UP;
+        KapEngine::Events::Key::EKey downKey = KapEngine::Events::Key::DOWN;
+        KapEngine::Events::Key::EKey leftKey = KapEngine::Events::Key::LEFT;
         KapEngine::Events::Key::EKey rightKey = KapEngine::Events::Key::RIGHT;
         KapEngine::Events::Key::EKey shootKey = KapEngine::Events::Key::SPACE;
 
-        int life    = 100;
+        int life = 100;
         bool isDead = false;
 
       public:

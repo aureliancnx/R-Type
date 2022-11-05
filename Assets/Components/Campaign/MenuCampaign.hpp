@@ -10,10 +10,8 @@
 #include "KapEngineUi.hpp"
 #include "KapUI/KapUI.hpp"
 
-namespace RType
-{
-    class MenuCampaign : public KapEngine::Component
-    {
+namespace RType {
+    class MenuCampaign : public KapEngine::Component {
       public:
         MenuCampaign(std::shared_ptr<KapEngine::GameObject> go);
         ~MenuCampaign();

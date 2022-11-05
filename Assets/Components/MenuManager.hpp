@@ -9,7 +9,7 @@ namespace RType {
         KapEngine::Dictionary<std::string, std::shared_ptr<Menu>> menus;
 
       public:
-        MenuManager()  = default;
+        MenuManager() = default;
         ~MenuManager() = default;
 
         void registerMenu(const std::string& name, const std::shared_ptr<Menu>& menu) {

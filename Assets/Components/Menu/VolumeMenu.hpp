@@ -7,12 +7,10 @@
 
 #include "Menu.hpp"
 
-namespace RType
-{
-    class VolumeMenu : public Menu
-    {
+namespace RType {
+    class VolumeMenu : public Menu {
       public:
-        explicit VolumeMenu(KapEngine::SceneManagement::Scene &_scene);
+        explicit VolumeMenu(KapEngine::SceneManagement::Scene& _scene);
         ~VolumeMenu() = default;
 
         void init() override;

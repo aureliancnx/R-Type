@@ -16,8 +16,8 @@ namespace RType {
 
         void deserialize(KapMirror::NetworkReader& reader) override {
             networkId = reader.read<unsigned int>();
-            x         = reader.read<float>();
-            y         = reader.read<float>();
+            x = reader.read<float>();
+            y = reader.read<float>();
         }
     };
 

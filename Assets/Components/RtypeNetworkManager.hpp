@@ -5,10 +5,8 @@
 #include "Dictionary.hpp"
 #include "Messages.hpp"
 
-namespace RType
-{
-    class RtypeNetworkManager : public KapMirror::NetworkManager
-    {
+namespace RType {
+    class RtypeNetworkManager : public KapMirror::NetworkManager {
       private:
         bool isServer = false;
 
@@ -27,28 +25,32 @@ namespace RType
 
         void onServerClientDisconnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) override;
 
-        void sendKeepAlive(KapMirror::NetworkIdentity *identity);
+        void sendKeepAlive(KapMirror::NetworkIdentity* identity);
 
       private:
         void registerClientHandlers();
 
-        void onPlayerAuthorityMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, PlayerAuthorityMessage &message);
+        void onPlayerAuthorityMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
+                                      PlayerAuthorityMessage& message);
 
-        void onServerSendKeepAlive(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, PlayerKeepAliveMessage &message);
+        void onServerSendKeepAlive(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
+                                   PlayerKeepAliveMessage& message);
 
-        void onErrorOnStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, ErrorOnStartGameMessage &message);
+        void onErrorOnStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
+                                       ErrorOnStartGameMessage& message);
 
         void registerServerHandlers();
 
-        void onClientSendKeepAlive(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, PlayerKeepAliveMessage &message);
+        void onClientSendKeepAlive(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
+                                   PlayerKeepAliveMessage& message);
 
-        void onPlayerInputMessage(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, PlayerInputMessage &message);
+        void onPlayerInputMessage(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, PlayerInputMessage& message);
 
-        void onPlayerShootMessage(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, PlayerShootMessage &message);
+        void onPlayerShootMessage(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, PlayerShootMessage& message);
 
-        void onStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, StartGameMessage &message);
+        void onStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, StartGameMessage& message);
 
-        void sendErrorOnStartGame(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, const std::string &errorMessage);
+        void sendErrorOnStartGame(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, const std::string& errorMessage);
 
         void startGame();
     };

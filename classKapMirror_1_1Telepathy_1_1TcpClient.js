@@ -1,7 +1,7 @@
 var classKapMirror_1_1Telepathy_1_1TcpClient =
 [
-    [ "TcpClient", "classKapMirror_1_1Telepathy_1_1TcpClient.html#a849ccd252dacdbaa8773deb308abb15a", null ],
-    [ "TcpClient", "classKapMirror_1_1Telepathy_1_1TcpClient.html#a77b24957d666464316a36099a59bf10e", null ],
+    [ "TcpClient", "classKapMirror_1_1Telepathy_1_1TcpClient.html#a385693385f5f35eca9c60056ebfb0acd", null ],
+    [ "TcpClient", "classKapMirror_1_1Telepathy_1_1TcpClient.html#a12d1a9d91bd26b3838b9573e7f946974", null ],
     [ "~TcpClient", "classKapMirror_1_1Telepathy_1_1TcpClient.html#a125d2277f401cbdebadb9689a5933e18", null ],
     [ "close", "classKapMirror_1_1Telepathy_1_1TcpClient.html#a1ee082bbca3927811bbe2c0aa75386c4", null ],
     [ "connect", "classKapMirror_1_1Telepathy_1_1TcpClient.html#ae6181c682c1c87d9edc30e3055798744", null ],

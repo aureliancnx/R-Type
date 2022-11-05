@@ -10,8 +10,8 @@ var classKapMirror_1_1Telepathy_1_1Socket =
     [ "isInvalid", "classKapMirror_1_1Telepathy_1_1Socket.html#ad308d6c61cbe5cedaac1393a23748b04", null ],
     [ "isReadable", "classKapMirror_1_1Telepathy_1_1Socket.html#aa1ec8fd8a5d227da798ae9573e2a4934", null ],
     [ "isWritable", "classKapMirror_1_1Telepathy_1_1Socket.html#a0bcbf95c0f1d60af5261be252ba9cc7a", null ],
-    [ "listen", "classKapMirror_1_1Telepathy_1_1Socket.html#af876dbd03caba60d16306a9b2a784500", null ],
-    [ "receive", "classKapMirror_1_1Telepathy_1_1Socket.html#acae3dc4d373277b7c05fe08790518102", null ],
-    [ "send", "classKapMirror_1_1Telepathy_1_1Socket.html#aa9b0465662bf7974ba0b16fd9feb6f34", null ],
-    [ "setBlocking", "classKapMirror_1_1Telepathy_1_1Socket.html#aa1db51d421f259aacece7e567fa7d39e", null ]
+    [ "listen", "classKapMirror_1_1Telepathy_1_1Socket.html#a35ea4cae7c4b903038ec9e44a06c0ba2", null ],
+    [ "receive", "classKapMirror_1_1Telepathy_1_1Socket.html#a78a4cf72e4631b7096f2c878348b8267", null ],
+    [ "send", "classKapMirror_1_1Telepathy_1_1Socket.html#a1bfa9a6f6bb02500b1bb3cdb6f5e601c", null ],
+    [ "setBlocking", "classKapMirror_1_1Telepathy_1_1Socket.html#aead18631f81ca3dcf35a694ad8df7841", null ]
 ];

@@ -93,14 +93,12 @@ $(document).ready(function(){initNavTree('GZipCompression_8hpp_source.html','');
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>KapMirror::Experimental {</div>
 <div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classKapMirror_1_1Experimental_1_1GZipCompression.html">    6</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classKapMirror_1_1Experimental_1_1GZipCompression.html">GZipCompression</a> : <span class="keyword">public</span> <a class="code" href="classKapMirror_1_1Compression.html">Compression</a> {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        ~<a class="code" href="classKapMirror_1_1Experimental_1_1GZipCompression.html">GZipCompression</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;      <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        std::shared_ptr&lt;ArraySegment&lt;byte&gt;&gt; compress(std::shared_ptr&lt;<a class="code" href="classKapMirror_1_1ArraySegment.html">ArraySegment&lt;byte&gt;</a>&gt; data) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        std::shared_ptr&lt;ArraySegment&lt;byte&gt;&gt; compress(std::shared_ptr&lt;<a class="code" href="classKapMirror_1_1ArraySegment.html">ArraySegment&lt;byte&gt;</a>&gt; data) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        std::shared_ptr&lt;ArraySegment&lt;byte&gt;&gt; decompress(std::shared_ptr&lt;<a class="code" href="classKapMirror_1_1ArraySegment.html">ArraySegment&lt;byte&gt;</a>&gt; data) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    };</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        std::shared_ptr&lt;ArraySegment&lt;byte&gt;&gt; decompress(std::shared_ptr&lt;<a class="code" href="classKapMirror_1_1ArraySegment.html">ArraySegment&lt;byte&gt;</a>&gt; data) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    };</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;} <span class="comment">// namespace KapMirror::Experimental</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapMirror_1_1Compression_html"><div class="ttname"><a href="classKapMirror_1_1Compression.html">KapMirror::Compression</a></div><div class="ttdef"><b>Definition:</b> Compression.hpp:7</div></div>

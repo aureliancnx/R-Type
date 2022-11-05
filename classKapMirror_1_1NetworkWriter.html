@@ -116,12 +116,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a246f086202e1113abcbfe4a8011b1b74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1NetworkWriter.html#a246f086202e1113abcbfe4a8011b1b74">writeBytes</a> (byte *array, int offset, int count)</td></tr>
 <tr class="memdesc:a246f086202e1113abcbfe4a8011b1b74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a byte array to the buffer.  <a href="classKapMirror_1_1NetworkWriter.html#a246f086202e1113abcbfe4a8011b1b74">More...</a><br /></td></tr>
 <tr class="separator:a246f086202e1113abcbfe4a8011b1b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a704007d9eba6898caed61b16feeb4569"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1NetworkWriter.html#a704007d9eba6898caed61b16feeb4569">writeString</a> (std::string value)</td></tr>
-<tr class="memdesc:a704007d9eba6898caed61b16feeb4569"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a string to the buffer.  <a href="classKapMirror_1_1NetworkWriter.html#a704007d9eba6898caed61b16feeb4569">More...</a><br /></td></tr>
-<tr class="separator:a704007d9eba6898caed61b16feeb4569"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0fa64df618247c6160d894f3cc308da"><td class="memItemLeft" align="right" valign="top"><a id="ab0fa64df618247c6160d894f3cc308da"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>writeArraySegment</b> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; value)</td></tr>
-<tr class="separator:ab0fa64df618247c6160d894f3cc308da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb383f3d3a90d60e486368e4fa1ac472"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1NetworkWriter.html#acb383f3d3a90d60e486368e4fa1ac472">writeString</a> (const std::string &amp;value)</td></tr>
+<tr class="memdesc:acb383f3d3a90d60e486368e4fa1ac472"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a string to the buffer.  <a href="classKapMirror_1_1NetworkWriter.html#acb383f3d3a90d60e486368e4fa1ac472">More...</a><br /></td></tr>
+<tr class="separator:acb383f3d3a90d60e486368e4fa1ac472"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dfbaed2570639739c56b42901a23165"><td class="memItemLeft" align="right" valign="top"><a id="a2dfbaed2570639739c56b42901a23165"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>writeArraySegment</b> (const std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; &amp;value)</td></tr>
+<tr class="separator:a2dfbaed2570639739c56b42901a23165"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a0658ab746b40588cf797cfcb43b44d44"></a>
@@ -302,8 +302,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a704007d9eba6898caed61b16feeb4569"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a704007d9eba6898caed61b16feeb4569">&#9670;&nbsp;</a></span>writeString()</h2>
+<a id="acb383f3d3a90d60e486368e4fa1ac472"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb383f3d3a90d60e486368e4fa1ac472">&#9670;&nbsp;</a></span>writeString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -314,7 +314,7 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">void KapMirror::NetworkWriter::writeString </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>

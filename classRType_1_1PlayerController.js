@@ -5,7 +5,7 @@ var classRType_1_1PlayerController =
     [ "dead", "classRType_1_1PlayerController.html#a67a9d3a5985d4496368ba29ee9b64154", null ],
     [ "deserialize", "classRType_1_1PlayerController.html#ac2bfb3179a8740483e7d5a5da361db2e", null ],
     [ "getLife", "classRType_1_1PlayerController.html#a69d8b2f4c9c9438c8250d917c769ed99", null ],
-    [ "movePlayer", "classRType_1_1PlayerController.html#ad47d8e228c7d1981792f856a44912f17", null ],
+    [ "movePlayer", "classRType_1_1PlayerController.html#acb414a504b9284bd218dc616f483b115", null ],
     [ "onFixedUpdate", "classRType_1_1PlayerController.html#a3d625e4c36a3ecd21d0cc3bafe9f19ba", null ],
     [ "onStart", "classRType_1_1PlayerController.html#a594b47ff7a1d7dff46d7c4b26564aeb0", null ],
     [ "onStartClient", "classRType_1_1PlayerController.html#af09361440c87669874ce353493a207cd", null ],

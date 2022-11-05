@@ -94,13 +94,13 @@ $(document).ready(function(){initNavTree('MessagePacking_8hpp_source.html',''); 
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>KapMirror {</div>
 <div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classKapMirror_1_1MessagePacking.html">    7</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classKapMirror_1_1MessagePacking.html">MessagePacking</a> {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;      <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">inline</span> <span class="keyword">static</span> ushort getId() {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;            <span class="keywordflow">return</span> (ushort) std::hash&lt;std::string&gt;()(<span class="keyword">typeid</span>(T).name());</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;            <span class="keywordflow">return</span> (ushort)std::hash&lt;std::string&gt;()(<span class="keyword">typeid</span>(T).name());</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        }</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">inline</span> <span class="keyword">static</span> <span class="keywordtype">void</span> pack(T&amp; message, <a class="code" href="classKapMirror_1_1NetworkWriter.html">NetworkWriter</a>&amp; writer) {</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(getId&lt;T&gt;());</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
@@ -108,18 +108,16 @@ $(document).ready(function(){initNavTree('MessagePacking_8hpp_source.html',''); 
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            message.serialize(writer);</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        }</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">inline</span> <span class="keyword">static</span> <span class="keywordtype">void</span> unpack(<a class="code" href="classKapMirror_1_1NetworkReader.html">NetworkReader</a>&amp; reader, ushort&amp; messageType) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            messageType = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;ushort&gt;();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    };</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">inline</span> <span class="keyword">static</span> <span class="keywordtype">void</span> unpack(<a class="code" href="classKapMirror_1_1NetworkReader.html">NetworkReader</a>&amp; reader, ushort&amp; messageType) { messageType = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;ushort&gt;(); }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    };</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;} <span class="comment">// namespace KapMirror</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapMirror_1_1MessagePacking_html"><div class="ttname"><a href="classKapMirror_1_1MessagePacking.html">KapMirror::MessagePacking</a></div><div class="ttdef"><b>Definition:</b> MessagePacking.hpp:7</div></div>
 <div class="ttc" id="aclassKapMirror_1_1NetworkReader_html"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a></div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:10</div></div>
-<div class="ttc" id="aclassKapMirror_1_1NetworkWriter_html_ae70d7477abd36330e66df41082f7f178"><div class="ttname"><a href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">KapMirror::NetworkWriter::write</a></div><div class="ttdeci">void write(T value)</div><div class="ttdoc">Write a value to the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkWriter.hpp:43</div></div>
+<div class="ttc" id="aclassKapMirror_1_1NetworkWriter_html_ae70d7477abd36330e66df41082f7f178"><div class="ttname"><a href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">KapMirror::NetworkWriter::write</a></div><div class="ttdeci">void write(T value)</div><div class="ttdoc">Write a value to the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkWriter.hpp:39</div></div>
 <div class="ttc" id="aclassKapMirror_1_1NetworkWriter_html"><div class="ttname"><a href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a></div><div class="ttdef"><b>Definition:</b> NetworkWriter.hpp:12</div></div>
-<div class="ttc" id="aclassKapMirror_1_1NetworkReader_html_a0259666ccf40cb62ae3494b05edcc667"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">KapMirror::NetworkReader::read</a></div><div class="ttdeci">T read()</div><div class="ttdoc">Read a value from the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:46</div></div>
+<div class="ttc" id="aclassKapMirror_1_1NetworkReader_html_a0259666ccf40cb62ae3494b05edcc667"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">KapMirror::NetworkReader::read</a></div><div class="ttdeci">T read()</div><div class="ttdoc">Read a value from the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:42</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

@@ -1,7 +1,7 @@
 var classKapMirror_1_1TelepathyTransport =
 [
-    [ "TelepathyTransport", "classKapMirror_1_1TelepathyTransport.html#a4906dacd08a836d2f9cf25b4cee8c9c9", null ],
-    [ "~TelepathyTransport", "classKapMirror_1_1TelepathyTransport.html#aff44c1a386288c65f4d953cc896efee9", null ],
+    [ "TelepathyTransport", "classKapMirror_1_1TelepathyTransport.html#af99213b0fa45616edde4cac635b8babf", null ],
+    [ "~TelepathyTransport", "classKapMirror_1_1TelepathyTransport.html#a9482e7413f8998a1bf26233643942302", null ],
     [ "clientConnect", "classKapMirror_1_1TelepathyTransport.html#ade259e806c88ce4e8131c020c95c9e92", null ],
     [ "clientConnected", "classKapMirror_1_1TelepathyTransport.html#aab82b07edfd1b9077869a6667cac7ff0", null ],
     [ "clientDisconnect", "classKapMirror_1_1TelepathyTransport.html#a99d772555fb7947bca0954ece0964446", null ],

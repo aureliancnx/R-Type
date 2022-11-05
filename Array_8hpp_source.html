@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('Array_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>KapMirror {</div>
 <div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classKapMirror_1_1Array.html">    6</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classKapMirror_1_1Array.html">Array</a> {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;      <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classKapMirror_1_1Array.html#a45e6ab0a3872d773c001e30b5da75e32">   16</a></span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Array.html#a45e6ab0a3872d773c001e30b5da75e32">resizeArray</a>(T*&amp; array, <span class="keywordtype">int</span> size, <span class="keywordtype">int</span> newSize) {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            T* newArray = <span class="keyword">new</span> T[newSize];</div>
@@ -107,13 +107,13 @@ $(document).ready(function(){initNavTree('Array_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        }</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classKapMirror_1_1Array.html#af96ade23db25e4bdf8eaf1d0a60bfb03">   36</a></span>&#160;        <span class="keyword">static</span> T *<a class="code" href="classKapMirror_1_1Array.html#af96ade23db25e4bdf8eaf1d0a60bfb03">copyArray</a>(T* array, <span class="keywordtype">int</span> size) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classKapMirror_1_1Array.html#af96ade23db25e4bdf8eaf1d0a60bfb03">   36</a></span>&#160;        <span class="keyword">static</span> T* <a class="code" href="classKapMirror_1_1Array.html#af96ade23db25e4bdf8eaf1d0a60bfb03">copyArray</a>(T* array, <span class="keywordtype">int</span> size) {</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            T* newArray = <span class="keyword">new</span> T[size];</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            std::copy(array, array + size, newArray);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordflow">return</span> newArray;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        }</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    };</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;} <span class="comment">// namespace KapMirror</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapMirror_1_1Array_html"><div class="ttname"><a href="classKapMirror_1_1Array.html">KapMirror::Array</a></div><div class="ttdef"><b>Definition:</b> Array.hpp:6</div></div>

@@ -97,12 +97,12 @@ $(document).ready(function(){initNavTree('MagnificentSendPipe_8hpp_source.html',
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>KapMirror::Telepathy {</div>
 <div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classKapMirror_1_1Telepathy_1_1MagnificentSendPipe.html">   10</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classKapMirror_1_1Telepathy_1_1MagnificentSendPipe.html">MagnificentSendPipe</a> {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;      <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        std::queue&lt;std::shared_ptr&lt;ArraySegment&lt;byte&gt;&gt;&gt; queue;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        std::mutex queueMutex;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">void</span> push(std::shared_ptr&lt;<a class="code" href="classKapMirror_1_1ArraySegment.html">ArraySegment&lt;byte&gt;</a>&gt; data) {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;      <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">void</span> push(<span class="keyword">const</span> std::shared_ptr&lt;<a class="code" href="classKapMirror_1_1ArraySegment.html">ArraySegment&lt;byte&gt;</a>&gt;&amp; data) {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            std::lock_guard&lt;std::mutex&gt; lock(queueMutex);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            queue.push(data);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        }</div>
@@ -138,7 +138,7 @@ $(document).ready(function(){initNavTree('MagnificentSendPipe_8hpp_source.html',
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    };</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;} <span class="comment">// namespace KapMirror::Telepathy</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapMirror_1_1Telepathy_1_1MagnificentSendPipe_html"><div class="ttname"><a href="classKapMirror_1_1Telepathy_1_1MagnificentSendPipe.html">KapMirror::Telepathy::MagnificentSendPipe</a></div><div class="ttdef"><b>Definition:</b> MagnificentSendPipe.hpp:10</div></div>

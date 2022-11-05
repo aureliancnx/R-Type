@@ -1,7 +1,7 @@
 var structKapMirror_1_1ObjectSpawnMessage =
 [
-    [ "deserialize", "structKapMirror_1_1ObjectSpawnMessage.html#aed1593f655b2c058aeba8deb8316c23a", null ],
-    [ "serialize", "structKapMirror_1_1ObjectSpawnMessage.html#aaf3b6d5fdb65642cd90f2e72ae760d28", null ],
+    [ "deserialize", "structKapMirror_1_1ObjectSpawnMessage.html#a650c5353afb6e8d561a78d12dabe3842", null ],
+    [ "serialize", "structKapMirror_1_1ObjectSpawnMessage.html#a9fb341084c97eab1f3fc0db789042661", null ],
     [ "isOwner", "structKapMirror_1_1ObjectSpawnMessage.html#a335d9ea462a3387b06cdbefd2f107d97", null ],
     [ "networkId", "structKapMirror_1_1ObjectSpawnMessage.html#a2580bbf682d75c2ec5138e6a762acb14", null ],
     [ "payload", "structKapMirror_1_1ObjectSpawnMessage.html#a5e3927304d0214f1e7336c937525a513", null ],

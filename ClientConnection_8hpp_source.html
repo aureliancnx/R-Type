@@ -94,18 +94,18 @@ $(document).ready(function(){initNavTree('ClientConnection_8hpp_source.html','')
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>KapMirror::Sylph {</div>
 <div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classKapMirror_1_1Sylph_1_1ClientConnection.html">    7</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classKapMirror_1_1Sylph_1_1ClientConnection.html">ClientConnection</a> : <span class="keyword">public</span> <a class="code" href="classKapMirror_1_1Sylph_1_1Connection.html">Connection</a> {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;      <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        std::shared_ptr&lt;UdpClient&gt; client;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;      <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <a class="code" href="classKapMirror_1_1Sylph_1_1ClientConnection.html">ClientConnection</a>(std::shared_ptr&lt;Address&gt; _address, std::shared_ptr&lt;UdpClient&gt; _client);</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">void</span> connect();</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;      <span class="keyword">protected</span>:</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">void</span> rawSend(MessageType type, <span class="keywordtype">byte</span>* buffer, <span class="keywordtype">int</span> msgLength) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    };</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;} <span class="comment">// namespace KapMirror::Sylph</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapMirror_1_1Sylph_1_1Connection_html"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1Connection.html">KapMirror::Sylph::Connection</a></div><div class="ttdef"><b>Definition:</b> Connection.hpp:12</div></div>

@@ -6,7 +6,7 @@ var classKapMirror_1_1Telepathy_1_1Client =
     [ "connected", "classKapMirror_1_1Telepathy_1_1Client.html#a7ba87157a46786d41e17bf79f83f2fe1", null ],
     [ "connecting", "classKapMirror_1_1Telepathy_1_1Client.html#a99b7bae41fce42b9f8c056dc6cc34df5", null ],
     [ "disconnect", "classKapMirror_1_1Telepathy_1_1Client.html#a97e144b48409c0a9873eee09f04ce724", null ],
-    [ "send", "classKapMirror_1_1Telepathy_1_1Client.html#a93714c0ab8c5bc5db7a2541704de78d8", null ],
+    [ "send", "classKapMirror_1_1Telepathy_1_1Client.html#aae73046813e1d0dd79ba7ec60852d82f", null ],
     [ "tick", "classKapMirror_1_1Telepathy_1_1Client.html#af0d8e710d14f6ad81f3a9660c0f505ab", null ],
     [ "onConnected", "classKapMirror_1_1Telepathy_1_1Client.html#acdd3949df8bb9c65f0dafecd3b1a55b0", null ],
     [ "onData", "classKapMirror_1_1Telepathy_1_1Client.html#a6307702f9ed9a04b623201464bc3e780", null ],

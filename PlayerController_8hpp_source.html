@@ -96,86 +96,84 @@ $(document).ready(function(){initNavTree('PlayerController_8hpp_source.html','')
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;GameMenuManager.hpp&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>RType</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classRType_1_1PlayerController.html">   12</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classRType_1_1PlayerController.html">PlayerController</a> : <span class="keyword">public</span> <a class="code" href="classKapMirror_1_1NetworkComponent.html">KapMirror::NetworkComponent</a></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;      <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">bool</span> isLocalAuthority = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> lastPos;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> posToMove;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector2.html">KapEngine::Tools::Vector2</a> inputToMove;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">bool</span> isMoving = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">long</span> <span class="keywordtype">long</span> lastRefreshTime = 0;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">long</span> <span class="keywordtype">long</span> lastKeepAliveTime = 0;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        std::shared_ptr&lt;GameMenuManager&gt; menuManager;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="classKapEngine_1_1Time_1_1EClock.html">KapEngine::Time::EClock</a> clockMissile;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">bool</span> shootMissile = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65">KapEngine::Events::Key::EKey</a> upKey = KapEngine::Events::Key::UP;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65">KapEngine::Events::Key::EKey</a> downKey = KapEngine::Events::Key::DOWN;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65">KapEngine::Events::Key::EKey</a> leftKey = KapEngine::Events::Key::LEFT;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65">KapEngine::Events::Key::EKey</a> rightKey = KapEngine::Events::Key::RIGHT;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65">KapEngine::Events::Key::EKey</a> shootKey = KapEngine::Events::Key::SPACE;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">int</span> life = 100;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">bool</span> isDead = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="classRType_1_1PlayerController.html">PlayerController</a>(std::shared_ptr&lt;KapEngine::GameObject&gt; _gameObject);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        ~<a class="code" href="classRType_1_1PlayerController.html">PlayerController</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>RType {</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classRType_1_1PlayerController.html">   11</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classRType_1_1PlayerController.html">PlayerController</a> : <span class="keyword">public</span> <a class="code" href="classKapMirror_1_1NetworkComponent.html">KapMirror::NetworkComponent</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;      <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">bool</span> isLocalAuthority = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> lastPos;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> posToMove;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector2.html">KapEngine::Tools::Vector2</a> inputToMove;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">bool</span> isMoving = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">long</span> <span class="keywordtype">long</span> lastRefreshTime   = 0;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">long</span> <span class="keywordtype">long</span> lastKeepAliveTime = 0;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        std::shared_ptr&lt;GameMenuManager&gt; menuManager;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="classKapEngine_1_1Time_1_1EClock.html">KapEngine::Time::EClock</a> clockMissile;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">bool</span> shootMissile = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65">KapEngine::Events::Key::EKey</a> upKey    = KapEngine::Events::Key::UP;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65">KapEngine::Events::Key::EKey</a> downKey  = KapEngine::Events::Key::DOWN;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65">KapEngine::Events::Key::EKey</a> leftKey  = KapEngine::Events::Key::LEFT;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65">KapEngine::Events::Key::EKey</a> rightKey = KapEngine::Events::Key::RIGHT;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65">KapEngine::Events::Key::EKey</a> shootKey = KapEngine::Events::Key::SPACE;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">int</span> life    = 100;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">bool</span> isDead = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classRType_1_1PlayerController.html">PlayerController</a>(std::shared_ptr&lt;KapEngine::GameObject&gt; _gameObject);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        ~<a class="code" href="classRType_1_1PlayerController.html">PlayerController</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">void</span> setLocalAuthority(<span class="keywordtype">bool</span> _isLocalAuthority);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">void</span> setLocalAuthority(<span class="keywordtype">bool</span> _isLocalAuthority);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1PlayerController.html#a9b721024bacb50fdbe6a24d154db12d7">onUpdate</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1PlayerController.html#a9b721024bacb50fdbe6a24d154db12d7">onUpdate</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1PlayerController.html#a594b47ff7a1d7dff46d7c4b26564aeb0">onStart</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1PlayerController.html#a594b47ff7a1d7dff46d7c4b26564aeb0">onStart</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1PlayerController.html#a3d625e4c36a3ecd21d0cc3bafe9f19ba">onFixedUpdate</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1PlayerController.html#a3d625e4c36a3ecd21d0cc3bafe9f19ba">onFixedUpdate</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1PlayerController.html#af09361440c87669874ce353493a207cd">onStartClient</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1PlayerController.html#af09361440c87669874ce353493a207cd">onStartClient</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">void</span> movePlayer(<span class="keyword">const</span> <a class="code" href="classKapEngine_1_1Tools_1_1Vector2.html">KapEngine::Tools::Vector2</a>&amp; input);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">void</span> movePlayer(<a class="code" href="classKapEngine_1_1Tools_1_1Vector2.html">KapEngine::Tools::Vector2</a> input);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">void</span> shoot();</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">void</span> shoot();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">void</span> prepareShoot();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">void</span> prepareShoot();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">int</span> getLife() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">int</span> getLife() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">bool</span> dead() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">bool</span> dead() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">void</span> takeDamage(<span class="keywordtype">int</span> damage);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">void</span> takeDamage(<span class="keywordtype">int</span> damage);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1PlayerController.html#aa2afdf82c8e606fc7857e84b600fce17">serialize</a>(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a>&amp; writer) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1PlayerController.html#aa2afdf82c8e606fc7857e84b600fce17">serialize</a>(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a> &amp;writer) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1PlayerController.html#ac2bfb3179a8740483e7d5a5da361db2e">deserialize</a>(<a class="code" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a>&amp; reader) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1PlayerController.html#ac2bfb3179a8740483e7d5a5da361db2e">deserialize</a>(<a class="code" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a> &amp;reader) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">void</span> sendInput(<a class="code" href="classKapEngine_1_1Tools_1_1Vector2.html">KapEngine::Tools::Vector2</a> input);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">void</span> sendInput(<a class="code" href="classKapEngine_1_1Tools_1_1Vector2.html">KapEngine::Tools::Vector2</a> input);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">void</span> sendKeepAlive();</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordtype">void</span> sendKeepAlive();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordtype">void</span> playShootSound();</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordtype">void</span> playShootSound();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordtype">void</span> initSettings();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    };</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;} <span class="comment">// namespace RType</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordtype">void</span> initSettings();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    };</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;} <span class="comment">// namespace RType</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassRType_1_1PlayerController_html_ac2bfb3179a8740483e7d5a5da361db2e"><div class="ttname"><a href="classRType_1_1PlayerController.html#ac2bfb3179a8740483e7d5a5da361db2e">RType::PlayerController::deserialize</a></div><div class="ttdeci">void deserialize(KapMirror::NetworkReader &amp;reader) override</div><div class="ttdoc">Deserialize all the data from payload into this component.</div><div class="ttdef"><b>Definition:</b> PlayerController.cpp:302</div></div>
-<div class="ttc" id="aclassRType_1_1PlayerController_html_a594b47ff7a1d7dff46d7c4b26564aeb0"><div class="ttname"><a href="classRType_1_1PlayerController.html#a594b47ff7a1d7dff46d7c4b26564aeb0">RType::PlayerController::onStart</a></div><div class="ttdeci">void onStart() override</div><div class="ttdoc">call component start</div><div class="ttdef"><b>Definition:</b> PlayerController.cpp:274</div></div>
-<div class="ttc" id="aclassRType_1_1PlayerController_html_a9b721024bacb50fdbe6a24d154db12d7"><div class="ttname"><a href="classRType_1_1PlayerController.html#a9b721024bacb50fdbe6a24d154db12d7">RType::PlayerController::onUpdate</a></div><div class="ttdeci">void onUpdate() override</div><div class="ttdoc">call each frame</div><div class="ttdef"><b>Definition:</b> PlayerController.cpp:17</div></div>
+<div class="ttc" id="aclassRType_1_1PlayerController_html_ac2bfb3179a8740483e7d5a5da361db2e"><div class="ttname"><a href="classRType_1_1PlayerController.html#ac2bfb3179a8740483e7d5a5da361db2e">RType::PlayerController::deserialize</a></div><div class="ttdeci">void deserialize(KapMirror::NetworkReader &amp;reader) override</div><div class="ttdoc">Deserialize all the data from payload into this component.</div><div class="ttdef"><b>Definition:</b> PlayerController.cpp:294</div></div>
+<div class="ttc" id="aclassRType_1_1PlayerController_html_a594b47ff7a1d7dff46d7c4b26564aeb0"><div class="ttname"><a href="classRType_1_1PlayerController.html#a594b47ff7a1d7dff46d7c4b26564aeb0">RType::PlayerController::onStart</a></div><div class="ttdeci">void onStart() override</div><div class="ttdoc">call component start</div><div class="ttdef"><b>Definition:</b> PlayerController.cpp:268</div></div>
+<div class="ttc" id="aclassRType_1_1PlayerController_html_a9b721024bacb50fdbe6a24d154db12d7"><div class="ttname"><a href="classRType_1_1PlayerController.html#a9b721024bacb50fdbe6a24d154db12d7">RType::PlayerController::onUpdate</a></div><div class="ttdeci">void onUpdate() override</div><div class="ttdoc">call each frame</div><div class="ttdef"><b>Definition:</b> PlayerController.cpp:15</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Events_1_1Key_html_a0a19ffa51eb1c92b8e84621c9522dd65"><div class="ttname"><a href="classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65">KapEngine::Events::Key::EKey</a></div><div class="ttdeci">EKey</div><div class="ttdoc">all keys</div><div class="ttdef"><b>Definition:</b> Key.hpp:26</div></div>
-<div class="ttc" id="aclassRType_1_1PlayerController_html"><div class="ttname"><a href="classRType_1_1PlayerController.html">RType::PlayerController</a></div><div class="ttdef"><b>Definition:</b> PlayerController.hpp:12</div></div>
+<div class="ttc" id="aclassRType_1_1PlayerController_html"><div class="ttname"><a href="classRType_1_1PlayerController.html">RType::PlayerController</a></div><div class="ttdef"><b>Definition:</b> PlayerController.hpp:11</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Time_1_1EClock_html"><div class="ttname"><a href="classKapEngine_1_1Time_1_1EClock.html">KapEngine::Time::EClock</a></div><div class="ttdef"><b>Definition:</b> EClock.hpp:22</div></div>
 <div class="ttc" id="aclassKapMirror_1_1NetworkReader_html"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a></div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:10</div></div>
-<div class="ttc" id="aclassRType_1_1PlayerController_html_a3d625e4c36a3ecd21d0cc3bafe9f19ba"><div class="ttname"><a href="classRType_1_1PlayerController.html#a3d625e4c36a3ecd21d0cc3bafe9f19ba">RType::PlayerController::onFixedUpdate</a></div><div class="ttdeci">void onFixedUpdate() override</div><div class="ttdoc">call eachv x ms</div><div class="ttdef"><b>Definition:</b> PlayerController.cpp:63</div></div>
-<div class="ttc" id="aclassRType_1_1PlayerController_html_aa2afdf82c8e606fc7857e84b600fce17"><div class="ttname"><a href="classRType_1_1PlayerController.html#aa2afdf82c8e606fc7857e84b600fce17">RType::PlayerController::serialize</a></div><div class="ttdeci">void serialize(KapMirror::NetworkWriter &amp;writer) override</div><div class="ttdoc">Serialize all the data from this component into payload.</div><div class="ttdef"><b>Definition:</b> PlayerController.cpp:291</div></div>
-<div class="ttc" id="aclassRType_1_1PlayerController_html_af09361440c87669874ce353493a207cd"><div class="ttname"><a href="classRType_1_1PlayerController.html#af09361440c87669874ce353493a207cd">RType::PlayerController::onStartClient</a></div><div class="ttdeci">void onStartClient() override</div><div class="ttdoc">Like start(), but only called on client.</div><div class="ttdef"><b>Definition:</b> PlayerController.cpp:259</div></div>
+<div class="ttc" id="aclassRType_1_1PlayerController_html_a3d625e4c36a3ecd21d0cc3bafe9f19ba"><div class="ttname"><a href="classRType_1_1PlayerController.html#a3d625e4c36a3ecd21d0cc3bafe9f19ba">RType::PlayerController::onFixedUpdate</a></div><div class="ttdeci">void onFixedUpdate() override</div><div class="ttdoc">call eachv x ms</div><div class="ttdef"><b>Definition:</b> PlayerController.cpp:61</div></div>
+<div class="ttc" id="aclassRType_1_1PlayerController_html_aa2afdf82c8e606fc7857e84b600fce17"><div class="ttname"><a href="classRType_1_1PlayerController.html#aa2afdf82c8e606fc7857e84b600fce17">RType::PlayerController::serialize</a></div><div class="ttdeci">void serialize(KapMirror::NetworkWriter &amp;writer) override</div><div class="ttdoc">Serialize all the data from this component into payload.</div><div class="ttdef"><b>Definition:</b> PlayerController.cpp:283</div></div>
+<div class="ttc" id="aclassRType_1_1PlayerController_html_af09361440c87669874ce353493a207cd"><div class="ttname"><a href="classRType_1_1PlayerController.html#af09361440c87669874ce353493a207cd">RType::PlayerController::onStartClient</a></div><div class="ttdeci">void onStartClient() override</div><div class="ttdoc">Like start(), but only called on client.</div><div class="ttdef"><b>Definition:</b> PlayerController.cpp:255</div></div>
 <div class="ttc" id="aclassKapMirror_1_1NetworkWriter_html"><div class="ttname"><a href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a></div><div class="ttdef"><b>Definition:</b> NetworkWriter.hpp:12</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Tools_1_1Vector2_html"><div class="ttname"><a href="classKapEngine_1_1Tools_1_1Vector2.html">KapEngine::Tools::Vector2</a></div><div class="ttdef"><b>Definition:</b> Vectors.hpp:24</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Tools_1_1Vector3_html"><div class="ttname"><a href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a></div><div class="ttdef"><b>Definition:</b> Vectors.hpp:197</div></div>

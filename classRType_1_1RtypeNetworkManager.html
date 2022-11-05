@@ -110,12 +110,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ade2c7794c42070ea374d06e2c07a14fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType_1_1RtypeNetworkManager.html#ade2c7794c42070ea374d06e2c07a14fd">onStart</a> () override</td></tr>
 <tr class="memdesc:ade2c7794c42070ea374d06e2c07a14fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">call component start  <a href="classRType_1_1RtypeNetworkManager.html#ade2c7794c42070ea374d06e2c07a14fd">More...</a><br /></td></tr>
 <tr class="separator:ade2c7794c42070ea374d06e2c07a14fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b7a91afcb8e9a974df9fcd04d37e4a4"><td class="memItemLeft" align="right" valign="top"><a id="a4b7a91afcb8e9a974df9fcd04d37e4a4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>onServerClientConnected</b> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1NetworkConnection.html">KapMirror::NetworkConnection</a> &gt; connection) override</td></tr>
-<tr class="separator:a4b7a91afcb8e9a974df9fcd04d37e4a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65d60e68ab133017c02e3a689b0e40ca"><td class="memItemLeft" align="right" valign="top"><a id="a65d60e68ab133017c02e3a689b0e40ca"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>onServerClientDisconnected</b> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1NetworkConnection.html">KapMirror::NetworkConnection</a> &gt; connection) override</td></tr>
-<tr class="separator:a65d60e68ab133017c02e3a689b0e40ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1da5be30bac828d00fe5a7b213e25d9"><td class="memItemLeft" align="right" valign="top"><a id="af1da5be30bac828d00fe5a7b213e25d9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>onServerClientConnected</b> (const std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1NetworkConnection.html">KapMirror::NetworkConnection</a> &gt; &amp;connection) override</td></tr>
+<tr class="separator:af1da5be30bac828d00fe5a7b213e25d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa716b1d140d9bbeb01f4fe393a447e0"><td class="memItemLeft" align="right" valign="top"><a id="afa716b1d140d9bbeb01f4fe393a447e0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>onServerClientDisconnected</b> (const std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1NetworkConnection.html">KapMirror::NetworkConnection</a> &gt; &amp;connection) override</td></tr>
+<tr class="separator:afa716b1d140d9bbeb01f4fe393a447e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33f763d53885e21e44e11fb7abd81699"><td class="memItemLeft" align="right" valign="top"><a id="a33f763d53885e21e44e11fb7abd81699"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>sendKeepAlive</b> (<a class="el" href="classKapMirror_1_1NetworkIdentity.html">KapMirror::NetworkIdentity</a> *identity)</td></tr>
 <tr class="separator:a33f763d53885e21e44e11fb7abd81699"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,13 +135,13 @@ std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1NetworkClient.html">Ne
 <tr class="memitem:a2ed4d855890ef118e9de912e43ef41b0 inherit pub_methods_classKapMirror_1_1NetworkManager"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1NetworkManager.html#a2ed4d855890ef118e9de912e43ef41b0">onFixedUpdate</a> () override</td></tr>
 <tr class="memdesc:a2ed4d855890ef118e9de912e43ef41b0 inherit pub_methods_classKapMirror_1_1NetworkManager"><td class="mdescLeft">&#160;</td><td class="mdescRight">call eachv x ms  <a href="classKapMirror_1_1NetworkManager.html#a2ed4d855890ef118e9de912e43ef41b0">More...</a><br /></td></tr>
 <tr class="separator:a2ed4d855890ef118e9de912e43ef41b0 inherit pub_methods_classKapMirror_1_1NetworkManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad796b246fd1b9b11bdfb2585c3f3ce8 inherit pub_methods_classKapMirror_1_1NetworkManager"><td class="memItemLeft" align="right" valign="top"><a id="aad796b246fd1b9b11bdfb2585c3f3ce8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1NetworkManager.html#aad796b246fd1b9b11bdfb2585c3f3ce8">setTransport</a> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Transport.html">Transport</a> &gt; transport)</td></tr>
-<tr class="memdesc:aad796b246fd1b9b11bdfb2585c3f3ce8 inherit pub_methods_classKapMirror_1_1NetworkManager"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set transport layer. <br /></td></tr>
-<tr class="separator:aad796b246fd1b9b11bdfb2585c3f3ce8 inherit pub_methods_classKapMirror_1_1NetworkManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d0f60679c8218ac815f28e6328eb331 inherit pub_methods_classKapMirror_1_1NetworkManager"><td class="memItemLeft" align="right" valign="top"><a id="a3d0f60679c8218ac815f28e6328eb331"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCompression</b> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Compression.html">Compression</a> &gt; compression)</td></tr>
-<tr class="separator:a3d0f60679c8218ac815f28e6328eb331 inherit pub_methods_classKapMirror_1_1NetworkManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a68ec6301809ac43e58261ee8c70434 inherit pub_methods_classKapMirror_1_1NetworkManager"><td class="memItemLeft" align="right" valign="top"><a id="a2a68ec6301809ac43e58261ee8c70434"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1NetworkManager.html#a2a68ec6301809ac43e58261ee8c70434">setTransport</a> (const std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Transport.html">Transport</a> &gt; &amp;_transport)</td></tr>
+<tr class="memdesc:a2a68ec6301809ac43e58261ee8c70434 inherit pub_methods_classKapMirror_1_1NetworkManager"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set transport layer. <br /></td></tr>
+<tr class="separator:a2a68ec6301809ac43e58261ee8c70434 inherit pub_methods_classKapMirror_1_1NetworkManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ecc58ff2fdb8abc93f73f2bf6a17933 inherit pub_methods_classKapMirror_1_1NetworkManager"><td class="memItemLeft" align="right" valign="top"><a id="a9ecc58ff2fdb8abc93f73f2bf6a17933"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setCompression</b> (const std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Compression.html">Compression</a> &gt; &amp;_compression)</td></tr>
+<tr class="separator:a9ecc58ff2fdb8abc93f73f2bf6a17933 inherit pub_methods_classKapMirror_1_1NetworkManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af361185494835277d2b528cee7539dc8 inherit pub_methods_classKapMirror_1_1NetworkManager"><td class="memItemLeft" align="right" valign="top"><a id="af361185494835277d2b528cee7539dc8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1NetworkManager.html#af361185494835277d2b528cee7539dc8">startServer</a> ()</td></tr>
 <tr class="memdesc:af361185494835277d2b528cee7539dc8 inherit pub_methods_classKapMirror_1_1NetworkManager"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the server, listening for incoming connections. <br /></td></tr>
@@ -310,12 +310,12 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1NetworkManager.html#adff130942ee8e3f3f4c0105c29896127">onStopClient</a> ()</td></tr>
 <tr class="memdesc:adff130942ee8e3f3f4c0105c29896127 inherit pro_methods_classKapMirror_1_1NetworkManager"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is called when a client is stopped. <br /></td></tr>
 <tr class="separator:adff130942ee8e3f3f4c0105c29896127 inherit pro_methods_classKapMirror_1_1NetworkManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9470386e32f4c5c9fd2048e00969fd9c inherit pro_methods_classKapMirror_1_1NetworkManager"><td class="memItemLeft" align="right" valign="top"><a id="a9470386e32f4c5c9fd2048e00969fd9c"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onClientConnected</b> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1NetworkConnection.html">NetworkConnection</a> &gt; connection)</td></tr>
-<tr class="separator:a9470386e32f4c5c9fd2048e00969fd9c inherit pro_methods_classKapMirror_1_1NetworkManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16fab296c29f8e8d929606be1c85637a inherit pro_methods_classKapMirror_1_1NetworkManager"><td class="memItemLeft" align="right" valign="top"><a id="a16fab296c29f8e8d929606be1c85637a"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onClientDisconnected</b> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1NetworkConnection.html">NetworkConnection</a> &gt; connection)</td></tr>
-<tr class="separator:a16fab296c29f8e8d929606be1c85637a inherit pro_methods_classKapMirror_1_1NetworkManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bf2903f0eb5b571572a314e15d8b651 inherit pro_methods_classKapMirror_1_1NetworkManager"><td class="memItemLeft" align="right" valign="top"><a id="a1bf2903f0eb5b571572a314e15d8b651"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onClientConnected</b> (const std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1NetworkConnection.html">NetworkConnection</a> &gt; &amp;connection)</td></tr>
+<tr class="separator:a1bf2903f0eb5b571572a314e15d8b651 inherit pro_methods_classKapMirror_1_1NetworkManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fb5fd3729136abb0ce5068f784fb7b2 inherit pro_methods_classKapMirror_1_1NetworkManager"><td class="memItemLeft" align="right" valign="top"><a id="a8fb5fd3729136abb0ce5068f784fb7b2"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onClientDisconnected</b> (const std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1NetworkConnection.html">NetworkConnection</a> &gt; &amp;connection)</td></tr>
+<tr class="separator:a8fb5fd3729136abb0ce5068f784fb7b2 inherit pro_methods_classKapMirror_1_1NetworkManager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classKapEngine_1_1Component"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classKapEngine_1_1Component')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classKapEngine_1_1Component.html">KapEngine::Component</a></td></tr>
 <tr class="memitem:adcf99f72eea159651e3678e9671c1822 inherit pro_attribs_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="adcf99f72eea159651e3678e9671c1822"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#adcf99f72eea159651e3678e9671c1822">_name</a></td></tr>

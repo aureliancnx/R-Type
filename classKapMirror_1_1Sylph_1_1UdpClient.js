@@ -1,7 +1,7 @@
 var classKapMirror_1_1Sylph_1_1UdpClient =
 [
-    [ "UdpClient", "classKapMirror_1_1Sylph_1_1UdpClient.html#afe717888c149cb891f006b3d44a344d0", null ],
-    [ "UdpClient", "classKapMirror_1_1Sylph_1_1UdpClient.html#ae399044f2e86ecba3154151830529616", null ],
+    [ "UdpClient", "classKapMirror_1_1Sylph_1_1UdpClient.html#ac7b4b0713969176e3f96e73c2391bced", null ],
+    [ "UdpClient", "classKapMirror_1_1Sylph_1_1UdpClient.html#a878377987fa3f790f04668cb1865a8b5", null ],
     [ "~UdpClient", "classKapMirror_1_1Sylph_1_1UdpClient.html#a9e69046802da8ea9e0bf3da874c49e47", null ],
     [ "close", "classKapMirror_1_1Sylph_1_1UdpClient.html#a48cc5f9ce547f5b0505fb8395ac93d32", null ],
     [ "isReadable", "classKapMirror_1_1Sylph_1_1UdpClient.html#ab06db2848bd77bed02047fac3fd6d903", null ],

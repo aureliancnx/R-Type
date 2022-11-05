@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('Transport_8hpp_source.html',''); initR
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>KapMirror {</div>
 <div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classKapMirror_1_1Transport.html">    9</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classKapMirror_1_1Transport.html">Transport</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;      <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classKapMirror_1_1Transport.html">Transport</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> clientConnected() = 0;</div>
@@ -119,7 +119,7 @@ $(document).ready(function(){initNavTree('Transport_8hpp_source.html',''); initR
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> serverEarlyUpdate() = 0;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;      <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">static</span> std::shared_ptr&lt;Transport&gt; activeTransport;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        std::function&lt;void(<a class="code" href="classKapMirror_1_1Transport.html">Transport</a>&amp;)&gt; onClientConnected;</div>
@@ -130,7 +130,7 @@ $(document).ready(function(){initNavTree('Transport_8hpp_source.html',''); initR
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        std::function&lt;void(<a class="code" href="classKapMirror_1_1Transport.html">Transport</a>&amp;, <span class="keywordtype">int</span>)&gt; onServerDisconnected;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        std::function&lt;void(<a class="code" href="classKapMirror_1_1Transport.html">Transport</a>&amp;, <span class="keywordtype">int</span>, std::shared_ptr&lt;<a class="code" href="classKapMirror_1_1ArraySegment.html">ArraySegment&lt;byte&gt;</a>&gt;)&gt; onServerDataReceived;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    };</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;} <span class="comment">// namespace KapMirror</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapMirror_1_1Transport_html"><div class="ttname"><a href="classKapMirror_1_1Transport.html">KapMirror::Transport</a></div><div class="ttdef"><b>Definition:</b> Transport.hpp:9</div></div>

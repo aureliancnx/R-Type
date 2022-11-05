@@ -119,17 +119,7 @@ void RType::HowToPlayMenu::init() {
         } catch (...) { KAP_DEBUG_ERROR("Failed to set bubulle img"); }
 
         // fight animation
-        //  auto shipAnimation = std::make_shared<SpriteAnimation>(ship, 5, (KapEngine::Tools::Rectangle){0, 0, 263, 116}, 1);
-        //  auto bulletAnimation = std::make_shared<HowToPlayAnimation>(bullet);
-        //  auto bubulleAnimation = std::make_shared<HowToPlayAnimation>(bubulle);
-        //  auto explosionAnimation = std::make_shared<HowToPlayAnimation>(explosion);
-        //  fight->addComponent(shipAnimation);
-        //  fight->addComponent(bulletAnimation);
-        //  fight->addComponent(bubulleAnimation);
-        //  fight->addComponent(explosionAnimation);
-
-        // fight animation
-        {
+        try {
             auto shipAnimation = std::make_shared<SpriteAnimation>(ship);
             KapEngine::Time::ETime timer;
             timer.setSeconds(.8);
@@ -143,9 +133,9 @@ void RType::HowToPlayMenu::init() {
             ship->addComponent(animator);
             animator->addAnim(shipAnimation, "idle");
             animator->addLink("idle", "idle");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to set shipAnimation img"); }
 
-        {
+        try {
             auto bubulleAnimation = std::make_shared<SpriteAnimation>(bubulle);
             KapEngine::Time::ETime timer;
             timer.setSeconds(.8);
@@ -160,11 +150,11 @@ void RType::HowToPlayMenu::init() {
             animator->addAnim(bubulleAnimation, "idle");
             animator->addLink("idle", "idle");
 
-            auto bubulleAnim = std::make_shared<HowToPlayAnimation>(bubulle);
-            bubulle->addComponent(bubulleAnim);
-        }
+            // auto bubulleAnim = std::make_shared<HowToPlayAnimation>("bubulle", bubulle);
+            // bubulle->addComponent(bubulleAnim);
+        } catch (...) { KAP_DEBUG_ERROR("Failed to set bubulleAnimation img"); }
 
-        {
+        try {
             auto bulletAnimation = std::make_shared<SpriteAnimation>(bullet);
             KapEngine::Time::ETime timer;
             timer.setSeconds(.8);
@@ -178,7 +168,14 @@ void RType::HowToPlayMenu::init() {
             bullet->addComponent(animator);
             animator->addAnim(bulletAnimation, "idle");
             animator->addLink("idle", "idle");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to set bulletAnimation img"); }
+
+        auto fightAnim = std::make_shared<HowToPlayAnimation>("bubulle", bubulle);
+        fightAnim->addSpriteAnimation("ship", ship);
+        fightAnim->setRect("ship", {0, 0, 263, 116});
+        // fightAnim->addSpriteAnimation("bullet", bullet);
+        // fightAnim->addSpriteAnimation("explosion", explosion);
+        fight->addComponent(fightAnim);
     }
 
     // create text for Move Up

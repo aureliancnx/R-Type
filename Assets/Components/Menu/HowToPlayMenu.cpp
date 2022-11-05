@@ -118,9 +118,6 @@ void RType::HowToPlayMenu::init() {
             transform.setParent(fight);
         } catch (...) { KAP_DEBUG_ERROR("Failed to set bubulle img"); }
 
-<<<<<<< HEAD
-        //fight animation
-=======
         // try {
         //     ship->getComponent<KapEngine::UI::Image>();
         //     KAP_DEBUG_WARNING("SUCCESS");
@@ -139,7 +136,6 @@ void RType::HowToPlayMenu::init() {
         //  fight->addComponent(explosionAnimation);
 
         // fight animation
->>>>>>> b30763de77a694bf1d827e3eceabcb9b3d58d722
         {
             auto shipAnimation = std::make_shared<SpriteAnimation>(ship);
             KapEngine::Time::ETime timer;
@@ -440,25 +436,4 @@ void RType::HowToPlayMenu::init() {
         // transform.setPosition(KapEngine::Tools::Vector3(25, 300, 0));
         transform.setParent(canvas);
     }
-<<<<<<< HEAD
-=======
-
-    // //create Move Down keyboard img
-    // {
-    //     auto img = KapEngine::UI::UiFactory::createImage(scene, "Move Down");
-    //     auto imageComp = std::make_shared<KapEngine::UI::Image>(img);
-    //     imageComp->setPathSprite("Assets/Textures/Keyboard/keyboard.png");
-    //     //x = longueur, y = largeur
-    //     // imageComp->setRectangle({82, 209, 60, 60});
-    //     imageComp->setRectangle({858, 470, 60, 60});
-    //     img->addComponent(imageComp);
-
-    //     auto& transform = img->getComponent<KapEngine::Transform>();
-    //     // x = longueur, y = largeur
-    //     transform.setPosition(KapEngine::Tools::Vector3(90, 130, 0));
-    //     // x = longueur, y = largeur
-    //     transform.setScale({50, 50, 0});
-    //     transform.setParent(canvas);
-    // }
->>>>>>> b30763de77a694bf1d827e3eceabcb9b3d58d722
 }

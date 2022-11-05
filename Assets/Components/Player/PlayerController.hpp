@@ -51,10 +51,6 @@ namespace RType {
 
         void prepareShoot();
 
-        void spawnBullet(const KapEngine::Tools::Vector3& pos);
-
-        void spawnMissile(const KapEngine::Tools::Vector3& pos);
-
         int getLife() const;
 
         bool dead() const;
@@ -68,9 +64,11 @@ namespace RType {
       private:
         void sendInput(const KapEngine::Tools::Vector2& input);
 
-        void sendKeepAlive();
-
         void playShootSound();
+
+        void spawnBullet(const KapEngine::Tools::Vector3& pos);
+
+        void spawnMissile(const KapEngine::Tools::Vector3& pos);
 
         void initSettings();
     };

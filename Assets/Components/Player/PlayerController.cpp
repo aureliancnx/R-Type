@@ -116,19 +116,15 @@ void PlayerController::prepareShoot() {
     if (isLocal()) {
         if (menuManager.use_count() > 0) {
             menuManager->getMissileAnimator()->setTrigger("Load");
-            KAP_DEBUG_LOG("Load missile");
         }
     } else if (isClient() && isLocalAuthority) {
         if (menuManager.use_count() > 0) {
             menuManager->getMissileAnimator()->setTrigger("Load");
-            KAP_DEBUG_LOG("Load missile");
         }
 
         PlayerPrepareShootMessage message;
         message.networkId = getNetworkId();
         getClient()->send(message);
-    } else if (isServer()) {
-        KAP_DEBUG_LOG("Load missile");
     }
 }
 
@@ -137,7 +133,6 @@ void PlayerController::shoot() {
     bool isMissile = false;
 
     if (clockMissile.getElapseTime().asSecond() >= 4.5f) {
-        KAP_DEBUG_LOG("isMissile");
         isMissile = true;
     }
 
@@ -256,6 +251,8 @@ void PlayerController::initSettings() {
 }
 
 void PlayerController::onStartClient() {
+    NetworkComponent::onStartClient();
+
     initSettings();
     try {
         auto go = getGameObject().getScene().findFirstGameObject("MenuManager");
@@ -284,15 +281,20 @@ void PlayerController::onStart() {
 }
 
 void PlayerController::serialize(KapMirror::NetworkWriter& writer) {
-    // if (!isServer()) {
-    //     return;
-    // }
-
-    // writer.write(life);
-    // writer.write(isDead);
+     writer.write(life);
+     writer.write(isDead);
 }
 
 void PlayerController::deserialize(KapMirror::NetworkReader& reader) {
-    // life = reader.read<int>();
-    // isDead = reader.read<bool>();
+     int _life = reader.read<int>();
+     bool _isDead = reader.read<bool>();
+
+     if (isClient()) {
+         life = _life;
+         isDead = _isDead;
+     }
 }
+
+int PlayerController::getLife() const { return life; }
+
+bool PlayerController::dead() const { return isDead; }

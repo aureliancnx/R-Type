@@ -29,6 +29,8 @@ void PlayerSkin::onStart() {
 }
 
 void PlayerSkin::onStartClient() {
+    NetworkComponent::onStartClient();
+
     if (KapEngine::PlayerPrefs::hasKey("shipID")) {
         setSkinId(KapEngine::PlayerPrefs::getInt("shipID"));
     }

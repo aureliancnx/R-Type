@@ -4,6 +4,5 @@ var classRType_1_1RtypeNetworkManager =
     [ "~RtypeNetworkManager", "classRType_1_1RtypeNetworkManager.html#a6fa81a6421b9f672d6b5c124bd230739", null ],
     [ "onServerClientConnected", "classRType_1_1RtypeNetworkManager.html#af1da5be30bac828d00fe5a7b213e25d9", null ],
     [ "onServerClientDisconnected", "classRType_1_1RtypeNetworkManager.html#afa716b1d140d9bbeb01f4fe393a447e0", null ],
-    [ "onStart", "classRType_1_1RtypeNetworkManager.html#ade2c7794c42070ea374d06e2c07a14fd", null ],
-    [ "sendKeepAlive", "classRType_1_1RtypeNetworkManager.html#a33f763d53885e21e44e11fb7abd81699", null ]
+    [ "onStart", "classRType_1_1RtypeNetworkManager.html#ade2c7794c42070ea374d06e2c07a14fd", null ]
 ];

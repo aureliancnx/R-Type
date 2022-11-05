@@ -1,5 +1,6 @@
 var NAVTREEINDEX9 =
 {
+"structKapEngine_1_1Animator_1_1NodeAnim.html":[33,0,3,1],
 "structKapEngine_1_1Animator_1_1NodeAnim.html#a0dba3b4e5e9efc3154de1f4a992881dd":[33,0,3,1,3],
 "structKapEngine_1_1Animator_1_1NodeAnim.html#a26f8a37478e4d52d3a3c8c6f91766dee":[33,0,3,1,2],
 "structKapEngine_1_1Animator_1_1NodeAnim.html#a4ef6a553c29523927cba1fe25405bf8b":[33,0,3,1,0],
@@ -86,10 +87,10 @@ var NAVTREEINDEX9 =
 "structRType_1_1PlayerInputMessage.html#a9225b56f77bdafd3af84a8145ba6f2a7":[35,0,3,26,2],
 "structRType_1_1PlayerInputMessage.html#aab47971dbd93b95bf2ccd64d192b41bc":[35,0,3,26,4],
 "structRType_1_1PlayerInputMessage.html#af3d6d0d4a044c6ac5a0582fe1aab734d":[35,0,3,26,3],
-"structRType_1_1PlayerKeepAliveMessage.html":[35,0,3,27],
-"structRType_1_1PlayerKeepAliveMessage.html#a1b3fc319177c9289957d673add6defed":[35,0,3,27,2],
-"structRType_1_1PlayerKeepAliveMessage.html#a2d8b2355f4a16d30bcacfce1f4166cbe":[35,0,3,27,0],
-"structRType_1_1PlayerKeepAliveMessage.html#aac000a2088010de25c7f9b49c702665f":[35,0,3,27,1],
+"structRType_1_1PlayerPrepareShootMessage.html":[35,0,3,27],
+"structRType_1_1PlayerPrepareShootMessage.html#acdbab90d06c7a53c063484a6a238b608":[35,0,3,27,2],
+"structRType_1_1PlayerPrepareShootMessage.html#acf2a6e75075cc610421e0d0e2631e63b":[35,0,3,27,0],
+"structRType_1_1PlayerPrepareShootMessage.html#af0a92bc90c3b41b97c16b878b7f3ccb3":[35,0,3,27,1],
 "structRType_1_1PlayerShootMessage.html":[35,0,3,28],
 "structRType_1_1PlayerShootMessage.html#a4a9d95b86b6b471f300e879360e586b2":[35,0,3,28,1],
 "structRType_1_1PlayerShootMessage.html#a90d8c40e0e1349934ab7753ea391d381":[35,0,3,28,2],

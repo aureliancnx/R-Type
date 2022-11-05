@@ -95,7 +95,7 @@ var annotated_dup =
       [ "PlayerAuthorityMessage", "structRType_1_1PlayerAuthorityMessage.html", "structRType_1_1PlayerAuthorityMessage" ],
       [ "PlayerController", "classRType_1_1PlayerController.html", "classRType_1_1PlayerController" ],
       [ "PlayerInputMessage", "structRType_1_1PlayerInputMessage.html", "structRType_1_1PlayerInputMessage" ],
-      [ "PlayerKeepAliveMessage", "structRType_1_1PlayerKeepAliveMessage.html", "structRType_1_1PlayerKeepAliveMessage" ],
+      [ "PlayerPrepareShootMessage", "structRType_1_1PlayerPrepareShootMessage.html", "structRType_1_1PlayerPrepareShootMessage" ],
       [ "PlayerShootMessage", "structRType_1_1PlayerShootMessage.html", "structRType_1_1PlayerShootMessage" ],
       [ "PlayerSkin", "classRType_1_1PlayerSkin.html", "classRType_1_1PlayerSkin" ],
       [ "Prefabs", "classRType_1_1Prefabs.html", null ],

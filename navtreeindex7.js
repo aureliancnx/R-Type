@@ -1,5 +1,7 @@
 var NAVTREEINDEX7 =
 {
+"classRType_1_1PlayerController.html#aa2afdf82c8e606fc7857e84b600fce17":[35,0,3,25,11],
+"classRType_1_1PlayerController.html#aafbd2cf6c27bf1783d7effcfefb46224":[35,0,3,25,12],
 "classRType_1_1PlayerController.html#ac2bfb3179a8740483e7d5a5da361db2e":[35,0,3,25,3],
 "classRType_1_1PlayerController.html#acb414a504b9284bd218dc616f483b115":[35,0,3,25,5],
 "classRType_1_1PlayerController.html#aedd3172408aa8225dcff51ee217e3ece":[35,0,3,25,13],
@@ -15,7 +17,6 @@ var NAVTREEINDEX7 =
 "classRType_1_1PlayerSkin.html#af6f9834db6bfcaba1774724acc2d0d59":[35,0,3,29,6],
 "classRType_1_1Prefabs.html":[35,0,3,30],
 "classRType_1_1RtypeNetworkManager.html":[35,0,3,31],
-"classRType_1_1RtypeNetworkManager.html#a33f763d53885e21e44e11fb7abd81699":[35,0,3,31,5],
 "classRType_1_1RtypeNetworkManager.html#a4a4a462c1f063898d839f21fb8b5c593":[35,0,3,31,0],
 "classRType_1_1RtypeNetworkManager.html#a6fa81a6421b9f672d6b5c124bd230739":[35,0,3,31,1],
 "classRType_1_1RtypeNetworkManager.html#ade2c7794c42070ea374d06e2c07a14fd":[35,0,3,31,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "md_CODE_OF_CONDUCT.html#autotoc_md1":[0,6],
 "md_CODE_OF_CONDUCT.html#autotoc_md10":[0,11,3],
 "md_CODE_OF_CONDUCT.html#autotoc_md11":[0,12],
-"md_CODE_OF_CONDUCT.html#autotoc_md2":[0,7],
-"md_CODE_OF_CONDUCT.html#autotoc_md3":[0,8]
+"md_CODE_OF_CONDUCT.html#autotoc_md2":[0,7]
 };

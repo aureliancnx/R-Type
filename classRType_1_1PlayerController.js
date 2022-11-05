@@ -14,5 +14,7 @@ var classRType_1_1PlayerController =
     [ "serialize", "classRType_1_1PlayerController.html#aa2afdf82c8e606fc7857e84b600fce17", null ],
     [ "setLocalAuthority", "classRType_1_1PlayerController.html#aafbd2cf6c27bf1783d7effcfefb46224", null ],
     [ "shoot", "classRType_1_1PlayerController.html#aedd3172408aa8225dcff51ee217e3ece", null ],
+    [ "spawnBullet", "classRType_1_1PlayerController.html#a612a8b3fa66c6881bad9e8665f6b92df", null ],
+    [ "spawnMissile", "classRType_1_1PlayerController.html#a6ae25bf6dcfb4ef11b6ef2ed24b47693", null ],
     [ "takeDamage", "classRType_1_1PlayerController.html#a4ab4d0ac4d413a9807cbaa4976819f09", null ]
 ];

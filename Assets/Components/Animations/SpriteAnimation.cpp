@@ -11,25 +11,19 @@ using namespace KapEngine;
 
 namespace RType {
 
-    SpriteAnimation::SpriteAnimation(std::shared_ptr<GameObject> gameObject) : Animation(gameObject) {
-        init(gameObject);
-    }
+    SpriteAnimation::SpriteAnimation(std::shared_ptr<GameObject> gameObject) : Animation(gameObject) { init(gameObject); }
 
-    SpriteAnimation::SpriteAnimation(std::shared_ptr<GameObject> gameObject, int nbAnimation,
-                                     Tools::Rectangle rect, int64_t const &time) : Animation(gameObject) {
+    SpriteAnimation::SpriteAnimation(std::shared_ptr<GameObject> gameObject, int nbAnimation, Tools::Rectangle rect, int64_t const& time)
+        : Animation(gameObject) {
         _nbAnimation = nbAnimation;
         _rect = rect;
         setTiming(time);
         init(gameObject);
     }
 
-    void SpriteAnimation::init(std::shared_ptr<GameObject> gameObject) {
-        addRequireComponent("Image");
-    }
+    void SpriteAnimation::init(std::shared_ptr<GameObject> gameObject) { addRequireComponent("Image"); }
 
-    void SpriteAnimation::onPlay() {
-        getImage().setRectangle(_rect);
-    }
+    void SpriteAnimation::onPlay() { getImage().setRectangle(_rect); }
 
     void SpriteAnimation::onUpdateAnim() {
         bool goBouncing = false;
@@ -38,9 +32,7 @@ namespace RType {
         getImage().setRectangle({calculateNewPos(crossProduct), _rect.getSize()});
     }
 
-    void SpriteAnimation::onResetAnim() {
-        getImage().setRectangle(_rect);
-    }
+    void SpriteAnimation::onResetAnim() { getImage().setRectangle(_rect); }
 
     void SpriteAnimation::setNbAnimations(int nbAnimations, std::size_t xAnims, std::size_t yAnims) {
         _nbAnimation = nbAnimations;
@@ -52,16 +44,12 @@ namespace RType {
         }
     }
 
-    void SpriteAnimation::setRect(Tools::Rectangle rect) {
-        _rect = rect;
-    }
+    void SpriteAnimation::setRect(Tools::Rectangle rect) { _rect = rect; }
 
-    UI::Image &SpriteAnimation::getImage() {
+    UI::Image& SpriteAnimation::getImage() {
         try {
             return getGameObject().getComponent<UI::Image>();
-        } catch (...) {
-            DEBUG_ERROR("Failed to get image of button " + getGameObject().getName());
-        }
+        } catch (...) { DEBUG_ERROR("Failed to get image of button " + getGameObject().getName()); }
         throw Errors::ComponentError("Failed to get image of button");
     }
 
@@ -93,4 +81,4 @@ namespace RType {
         return nPos;
     }
 
-} // RType
+} // namespace RType

@@ -1,11 +1,9 @@
 #include "GameManager.hpp"
-#include "KapEngine.hpp"
 #include "Factory.hpp"
 #include "Debug.hpp"
 #include "KapRaylib/KapRaylib.hpp"
 
-static void initWindow(KapEngine::KEngine *engine, bool draw)
-{
+static void initWindow(KapEngine::KEngine* engine, bool draw) {
     KapEngine::Tools::Vector2 screenSize(1280, 720);
     engine->setScreenSize(screenSize);
 
@@ -28,15 +26,12 @@ static void initWindow(KapEngine::KEngine *engine, bool draw)
 //     }
 // }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char** argv) {
     // test_main();
     bool isServer = false;
 
-    if (argc > 1)
-    {
-        if (std::string(argv[1]) == "--server")
-        {
+    if (argc > 1) {
+        if (std::string(argv[1]) == "--server") {
             isServer = true;
         }
     }
@@ -46,12 +41,9 @@ int main(int argc, char **argv)
     initWindow(&engine, !isServer);
 
     RType::GameManager gameManager(&engine, false);
-    if (isServer)
-    {
+    if (isServer) {
         gameManager.launchServer();
-    }
-    else
-    {
+    } else {
         gameManager.launchGame();
     }
 

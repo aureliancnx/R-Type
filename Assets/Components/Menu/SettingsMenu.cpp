@@ -4,28 +4,25 @@
 
 #include "SettingsMenu.hpp"
 
-
 #include "KapEngineUi.hpp"
 #include "KapUI/KapUI.hpp"
 
 #include "Animations/SpriteAnimation.hpp"
 
-RType::SettingsMenu::SettingsMenu(KapEngine::SceneManagement::Scene &_scene) : Menu(_scene) {}
+RType::SettingsMenu::SettingsMenu(KapEngine::SceneManagement::Scene& _scene) : Menu(_scene) {}
 
 void RType::SettingsMenu::init() {
 
-    //Change type of display for canvas
+    // Change type of display for canvas
     {
         try {
-            auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
+            auto& can = canvas->getComponent<KapEngine::UI::Canvas>();
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
             can.setScreenCompare(KapEngine::Tools::Vector2(720, 480));
-        } catch (...){
-            KAP_DEBUG_ERROR("Failed to resise canvas");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to resise canvas"); }
     }
 
-    //Create background
+    // Create background
     {
         auto background = KapEngine::UI::UiFactory::createImage(scene, "Background");
         auto imageComp = std::make_shared<KapEngine::UI::Image>(background);
@@ -39,11 +36,11 @@ void RType::SettingsMenu::init() {
         transform.setParent(canvas);
     }
 
-    //Create button back menu
+    // Create button back menu
     {
         auto btn = scene.createGameObject("ButtonBack");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Back");
@@ -60,12 +57,12 @@ void RType::SettingsMenu::init() {
             switchMenu("MainMenu");
         });
     }
-    //Create button volume
+    // Create button volume
 
     {
         auto btn = scene.createGameObject("ButtonVolume");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Volume");
@@ -82,12 +79,12 @@ void RType::SettingsMenu::init() {
             switchMenu("VolumeMenu");
         });
     }
-    //Create button keyboard
+    // Create button keyboard
 
     {
         auto btn = scene.createGameObject("ButtonKeyBoard");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("KeyBoard");
@@ -109,7 +106,7 @@ void RType::SettingsMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonHowToPlay");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("How to play");
@@ -131,7 +128,7 @@ void RType::SettingsMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonSettingPlayer");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Setting Player");

@@ -14,10 +14,8 @@
 #include "Keys/ChangeKey.hpp"
 #include <unordered_map>
 
-namespace RType
-{
-    class HowToPlayAnimation : public KapEngine::Animation
-    {
+namespace RType {
+    class HowToPlayAnimation : public KapEngine::Animation {
       public:
         HowToPlayAnimation(std::shared_ptr<KapEngine::GameObject> gameObject);
         ~HowToPlayAnimation() = default;
@@ -39,7 +37,7 @@ namespace RType
         float _speed = 0.1f;
         // Functions
         void init(std::shared_ptr<KapEngine::GameObject> gameObject);
-        KapEngine::UI::Image &getImage(std::string name);
+        KapEngine::UI::Image& getImage(std::string name);
     };
 } // namespace RType
 

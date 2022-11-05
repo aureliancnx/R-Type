@@ -5,15 +5,13 @@
 #include "KapEngineUi.hpp"
 #include "KapMirror/KapMirror.hpp"
 
-namespace RType
-{
-    class PlayerSkin : public KapMirror::NetworkComponent
-    {
+namespace RType {
+    class PlayerSkin : public KapMirror::NetworkComponent {
       private:
         int skinId = 1;
 
       public:
-        PlayerSkin(std::shared_ptr<KapEngine::GameObject> _gameObject);
+        explicit PlayerSkin(std::shared_ptr<KapEngine::GameObject> _gameObject);
         ~PlayerSkin() = default;
 
         void setSkinId(int _skinId);
@@ -24,8 +22,8 @@ namespace RType
 
         void onStartClient() override;
 
-        void serialize(KapMirror::NetworkWriter &writer) override;
+        void serialize(KapMirror::NetworkWriter& writer) override;
 
-        void deserialize(KapMirror::NetworkReader &reader) override;
+        void deserialize(KapMirror::NetworkReader& reader) override;
     };
 } // namespace RType

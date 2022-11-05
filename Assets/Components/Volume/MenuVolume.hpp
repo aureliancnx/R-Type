@@ -4,10 +4,8 @@
 #include "KapEngineDebug.hpp"
 #include "KapEngineUi.hpp"
 
-namespace RType
-{
-    class MenuVolume : public KapEngine::Component
-    {
+namespace RType {
+    class MenuVolume : public KapEngine::Component {
       private:
         std::vector<std::string> _type;
         std::shared_ptr<KapEngine::GameObject> _txt;

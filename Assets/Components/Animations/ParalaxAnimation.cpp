@@ -30,16 +30,10 @@ namespace RType {
         getTransform().setPosition(pos);
     }
 
-    void ParalaxAnimation::onResetAnim() {
-        getTransform().setPosition({0, 0, 0});
-    }
+    void ParalaxAnimation::onResetAnim() { getTransform().setPosition({0, 0, 0}); }
 
-    void ParalaxAnimation::setSpeed(float speed) {
-        _speed = speed;
-    }
+    void ParalaxAnimation::setSpeed(float speed) { _speed = speed; }
 
-    void ParalaxAnimation::setWidth(int width) {
-        _width = width;
-    }
+    void ParalaxAnimation::setWidth(int width) { _width = width; }
 
-} // RType
+} // namespace RType

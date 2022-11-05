@@ -11,14 +11,12 @@
 #include "KapEngine.hpp"
 #include "KapMirror/KapMirror.hpp"
 
-namespace RType
-{
+namespace RType {
 
-    class GameMenuManager : public KapMirror::NetworkComponent
-    {
+    class GameMenuManager : public KapMirror::NetworkComponent {
       public:
-        GameMenuManager(std::shared_ptr<KapEngine::GameObject> go);
-        ~GameMenuManager();
+        explicit GameMenuManager(std::shared_ptr<KapEngine::GameObject> go);
+        ~GameMenuManager() = default;
 
         void onStart() override;
 
@@ -34,12 +32,12 @@ namespace RType
         void initBackground(std::shared_ptr<KapEngine::GameObject> parent);
         std::shared_ptr<KapEngine::GameObject> initButton(std::shared_ptr<KapEngine::GameObject> parent, std::string name, std::string text,
                                                           std::function<void()> callback,
-                                                          KapEngine::Tools::Color color = KapEngine::Tools::Color::white(),
+                                                          KapEngine::Tools::Color color     = KapEngine::Tools::Color::white(),
                                                           KapEngine::Tools::Color textColor = KapEngine::Tools::Color::black());
         std::shared_ptr<KapEngine::GameObject> initButton(std::shared_ptr<KapEngine::GameObject> parent, std::string name, std::string text,
                                                           std::function<void()> callback, std::string pathSprite,
                                                           KapEngine::Tools::Rectangle rect,
-                                                          KapEngine::Tools::Color color = KapEngine::Tools::Color::white(),
+                                                          KapEngine::Tools::Color color     = KapEngine::Tools::Color::white(),
                                                           KapEngine::Tools::Color textColor = KapEngine::Tools::Color::black());
 
         void initHeart();

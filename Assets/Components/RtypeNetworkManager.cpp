@@ -1,7 +1,6 @@
 #include "RtypeNetworkManager.hpp"
 #include "Player/PlayerController.hpp"
 #include "Player/PlayerSkin.hpp"
-#include "Enemies/ShipEnemy.hpp"
 
 using namespace RType;
 
@@ -44,7 +43,7 @@ void RtypeNetworkManager::registerClientHandlers() {
     });
 }
 
-void RtypeNetworkManager::onPlayerAuthorityMessage(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerAuthorityMessage& message) {
+void RtypeNetworkManager::onPlayerAuthorityMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, PlayerAuthorityMessage& message) {
     std::shared_ptr<KapEngine::GameObject> player;
     if (getClient()->getExistingObject(message.networkId, player)) {
         auto& playerController = player->getComponent<PlayerController>();
@@ -52,13 +51,13 @@ void RtypeNetworkManager::onPlayerAuthorityMessage(std::shared_ptr<KapMirror::Ne
     }
 }
 
-void RtypeNetworkManager::onServerSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerKeepAliveMessage& message) {
+void RtypeNetworkManager::onServerSendKeepAlive(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, PlayerKeepAliveMessage& message) {
     PlayerKeepAliveMessage reply;
     reply.timestamp = message.timestamp;
     getClient()->send(message);
 }
 
-void RtypeNetworkManager::onErrorOnStartGameMessage(std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, ErrorOnStartGameMessage& message) {
+void RtypeNetworkManager::onErrorOnStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, ErrorOnStartGameMessage& message) {
     KAP_DEBUG_ERROR("Error on start game: " + message.errorMessage);
     //TODO: Handle error
 }
@@ -82,7 +81,7 @@ void RtypeNetworkManager::registerServerHandlers() {
     });
 }
 
-void RtypeNetworkManager::onServerClientConnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {
+void RtypeNetworkManager::onServerClientConnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
     KapEngine::Debug::log("Player[" + std::to_string(connection->getConnectionId()) + "] -> connected");
 
     std::shared_ptr<KapEngine::GameObject> player;
@@ -104,7 +103,7 @@ void RtypeNetworkManager::onServerClientConnected(std::shared_ptr<KapMirror::Net
     connection->send(message);
 }
 
-void RtypeNetworkManager::onServerClientDisconnected(std::shared_ptr<KapMirror::NetworkConnection> connection) {
+void RtypeNetworkManager::onServerClientDisconnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
     KAP_DEBUG_LOG("Player[" + std::to_string(connection->getConnectionId()) + "] -> disconnected");
 
     std::shared_ptr<KapEngine::GameObject> player;
@@ -113,7 +112,7 @@ void RtypeNetworkManager::onServerClientDisconnected(std::shared_ptr<KapMirror::
     }
 }
 
-void RtypeNetworkManager::onClientSendKeepAlive(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerKeepAliveMessage& message) {
+void RtypeNetworkManager::onClientSendKeepAlive(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, PlayerKeepAliveMessage& message) {
     std::vector<long long> playerKeepAlives;
     if (keepAlives.tryGetValue(connection->getConnectionId(), playerKeepAlives)) {
         if (std::find(playerKeepAlives.begin(), playerKeepAlives.end(), message.timestamp) != playerKeepAlives.end()) {
@@ -129,7 +128,7 @@ void RtypeNetworkManager::onClientSendKeepAlive(std::shared_ptr<KapMirror::Netwo
     }
 }
 
-void RtypeNetworkManager::onPlayerInputMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerInputMessage& message) {
+void RtypeNetworkManager::onPlayerInputMessage(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, PlayerInputMessage& message) {
     std::shared_ptr<KapEngine::GameObject> player;
     if (players.tryGetValue(connection->getConnectionId(), player)) {
         auto& controllerComponent = player->getComponent<RType::PlayerController>();
@@ -137,7 +136,7 @@ void RtypeNetworkManager::onPlayerInputMessage(std::shared_ptr<KapMirror::Networ
     }
 }
 
-void RtypeNetworkManager::onPlayerShootMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerShootMessage& message) {
+void RtypeNetworkManager::onPlayerShootMessage(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, PlayerShootMessage& message) {
     std::shared_ptr<KapEngine::GameObject> player;
     if (players.tryGetValue(connection->getConnectionId(), player)) {
         auto& controllerComponent = player->getComponent<RType::PlayerController>();
@@ -145,7 +144,7 @@ void RtypeNetworkManager::onPlayerShootMessage(std::shared_ptr<KapMirror::Networ
     }
 }
 
-void RtypeNetworkManager::onStartGameMessage(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, StartGameMessage& message) {
+void RtypeNetworkManager::onStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, StartGameMessage& message) {
     if (isGameStarted) {
         KAP_DEBUG_LOG("Game already started");
         sendErrorOnStartGame(connection, "Game already started");
@@ -161,7 +160,7 @@ void RtypeNetworkManager::onStartGameMessage(std::shared_ptr<KapMirror::NetworkC
     startGame();
 }
 
-void RtypeNetworkManager::sendErrorOnStartGame(std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, const std::string &errorMessage) {
+void RtypeNetworkManager::sendErrorOnStartGame(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, const std::string &errorMessage) {
     ErrorOnStartGameMessage message;
     message.errorMessage = errorMessage;
 

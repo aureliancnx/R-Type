@@ -7,10 +7,8 @@
 
 #include "GameMenuManager.hpp"
 
-namespace RType
-{
-    class PlayerController : public KapMirror::NetworkComponent
-    {
+namespace RType {
+    class PlayerController : public KapMirror::NetworkComponent {
       private:
         bool isLocalAuthority = false;
 
@@ -19,24 +17,24 @@ namespace RType
         KapEngine::Tools::Vector2 inputToMove;
         bool isMoving = false;
 
-        long long lastRefreshTime = 0;
+        long long lastRefreshTime   = 0;
         long long lastKeepAliveTime = 0;
 
         std::shared_ptr<GameMenuManager> menuManager;
         KapEngine::Time::EClock clockMissile;
         bool shootMissile = false;
 
-        KapEngine::Events::Key::EKey upKey = KapEngine::Events::Key::UP;
-        KapEngine::Events::Key::EKey downKey = KapEngine::Events::Key::DOWN;
-        KapEngine::Events::Key::EKey leftKey = KapEngine::Events::Key::LEFT;
+        KapEngine::Events::Key::EKey upKey    = KapEngine::Events::Key::UP;
+        KapEngine::Events::Key::EKey downKey  = KapEngine::Events::Key::DOWN;
+        KapEngine::Events::Key::EKey leftKey  = KapEngine::Events::Key::LEFT;
         KapEngine::Events::Key::EKey rightKey = KapEngine::Events::Key::RIGHT;
         KapEngine::Events::Key::EKey shootKey = KapEngine::Events::Key::SPACE;
 
-        int life = 100;
+        int life    = 100;
         bool isDead = false;
 
       public:
-        PlayerController(std::shared_ptr<KapEngine::GameObject> _gameObject);
+        explicit PlayerController(std::shared_ptr<KapEngine::GameObject> _gameObject);
         ~PlayerController() = default;
 
         void setLocalAuthority(bool _isLocalAuthority);
@@ -49,7 +47,7 @@ namespace RType
 
         void onStartClient() override;
 
-        void movePlayer(KapEngine::Tools::Vector2 input);
+        void movePlayer(const KapEngine::Tools::Vector2& input);
 
         void shoot();
 
@@ -61,9 +59,9 @@ namespace RType
 
         void takeDamage(int damage);
 
-        void serialize(KapMirror::NetworkWriter &writer) override;
+        void serialize(KapMirror::NetworkWriter& writer) override;
 
-        void deserialize(KapMirror::NetworkReader &reader) override;
+        void deserialize(KapMirror::NetworkReader& reader) override;
 
       private:
         void sendInput(KapEngine::Tools::Vector2 input);

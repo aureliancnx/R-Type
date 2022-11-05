@@ -124,8 +124,8 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
     });
 }
 
-void Prefabs::registerMissilePrefab(KapEngine::KEngine &engine) {
-    engine.getPrefabManager()->createPrefab("Missile", [](KapEngine::SceneManagement::Scene &scene) {
+void Prefabs::registerMissilePrefab(KapEngine::KEngine& engine) {
+    engine.getPrefabManager()->createPrefab("Missile", [](KapEngine::SceneManagement::Scene& scene) {
         auto missile = KapEngine::UI::UiFactory::createCanvas(scene, "Missile");
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(missile);
@@ -160,22 +160,23 @@ void Prefabs::registerMissilePrefab(KapEngine::KEngine &engine) {
     });
 }
 
-void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine &engine) {
-    engine.getPrefabManager()->createPrefab("MissileExplode", [](KapEngine::SceneManagement::Scene &scene) {
+void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine& engine) {
+    engine.getPrefabManager()->createPrefab("MissileExplode", [](KapEngine::SceneManagement::Scene& scene) {
         auto menu = KapEngine::UI::UiFactory::createCanvas(scene, "MissileExplode");
-        auto img = KapEngine::UI::UiFactory::createImage(scene, "MissileExplodeImg",
+        auto img  = KapEngine::UI::UiFactory::createImage(
+            scene, "MissileExplodeImg",
             "Assets/Textures/Explosion/wills_pixel_explosions_sample/round_explosion/spritesheet/spritesheet.png", {0, 0, 100, 100});
 
         try {
-            auto &tr = img->getComponent<KapEngine::Transform>();
+            auto& tr = img->getComponent<KapEngine::Transform>();
             tr.setParent(menu->getId());
-        } catch(...) {}
+        } catch (...) {}
 
         auto animator = std::make_shared<KapEngine::Animator>(menu);
         menu->addComponent(animator);
 
         {
-            int nbAnimations = 16;
+            int nbAnimations    = 16;
             float totalTimeAnim = 5.5f;
             KapEngine::Time::ETime timeAnim;
             timeAnim.setSeconds(totalTimeAnim / (float)nbAnimations);
@@ -187,37 +188,36 @@ void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine &engine) {
             anim->setTiming(timeAnim);
             animator->addAnim(anim, "Explosion");
 
-            anim->getOnEnd().registerAction([menu](){
-                menu->destroy();
-            });
+            anim->getOnEnd().registerAction([menu]() { menu->destroy(); });
         }
 
-        auto &tr = menu->getComponent<KapEngine::Transform>();
+        auto& tr = menu->getComponent<KapEngine::Transform>();
         tr.setScale({120.f, 120.f, 0.f});
 
-        auto &canvas = menu->getComponent<KapEngine::UI::Canvas>();
+        auto& canvas = menu->getComponent<KapEngine::UI::Canvas>();
         canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
 
         return menu;
     });
 }
 
-void Prefabs::registerBulletExplodePrefab(KapEngine::KEngine &engine) {
-    engine.getPrefabManager()->createPrefab("BulletExplode", [](KapEngine::SceneManagement::Scene &scene) {
+void Prefabs::registerBulletExplodePrefab(KapEngine::KEngine& engine) {
+    engine.getPrefabManager()->createPrefab("BulletExplode", [](KapEngine::SceneManagement::Scene& scene) {
         auto menu = KapEngine::UI::UiFactory::createCanvas(scene, "MissileExplode");
-        auto img = KapEngine::UI::UiFactory::createImage(scene, "MissileExplodeImg",
+        auto img  = KapEngine::UI::UiFactory::createImage(
+            scene, "MissileExplodeImg",
             "Assets/Textures/Explosion/wills_pixel_explosions_sample/vertical_explosion/spritesheet/spritesheet.png", {0, 0, 100, 100});
 
         try {
-            auto &tr = img->getComponent<KapEngine::Transform>();
+            auto& tr = img->getComponent<KapEngine::Transform>();
             tr.setParent(menu->getId());
-        } catch(...) {}
+        } catch (...) {}
 
         auto animator = std::make_shared<KapEngine::Animator>(menu);
         menu->addComponent(animator);
 
         {
-            int nbAnimations = 16;
+            int nbAnimations    = 16;
             float totalTimeAnim = 6.5f;
             KapEngine::Time::ETime timeAnim;
             timeAnim.setSeconds(totalTimeAnim / (float)nbAnimations);
@@ -229,15 +229,13 @@ void Prefabs::registerBulletExplodePrefab(KapEngine::KEngine &engine) {
             anim->setTiming(timeAnim);
             animator->addAnim(anim, "Explosion");
 
-            anim->getOnEnd().registerAction([menu](){
-                menu->destroy();
-            });
+            anim->getOnEnd().registerAction([menu]() { menu->destroy(); });
         }
 
-        auto &tr = menu->getComponent<KapEngine::Transform>();
+        auto& tr = menu->getComponent<KapEngine::Transform>();
         tr.setScale({70.f, 70.f, 0.f});
 
-        auto &canvas = menu->getComponent<KapEngine::UI::Canvas>();
+        auto& canvas = menu->getComponent<KapEngine::UI::Canvas>();
         canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
 
         return menu;
@@ -248,8 +246,8 @@ void Prefabs::registerBulletExplodePrefab(KapEngine::KEngine &engine) {
 
 #pragma region IngameMenu
 
-void Prefabs::registerInGameMenuPrefab(KapEngine::KEngine &engine) {
-    engine.getPrefabManager()->createPrefab("InGameMenu", [](KapEngine::SceneManagement::Scene &scene) {
+void Prefabs::registerInGameMenuPrefab(KapEngine::KEngine& engine) {
+    engine.getPrefabManager()->createPrefab("InGameMenu", [](KapEngine::SceneManagement::Scene& scene) {
         auto menu = KapEngine::UI::UiFactory::createCanvas(scene, "InGameMenu");
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(menu);
@@ -421,39 +419,37 @@ void Prefabs::registerTentaclesBossEnemyPrefab(KapEngine::KEngine& engine) {
 
 void Prefabs::registerGalaxyParalaxPrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("ParalaxGalaxy", [](KapEngine::SceneManagement::Scene& scene) {
-        auto paralax = scene.createGameObject("Paralax");
+        auto paralax       = scene.createGameObject("Paralax");
         auto paralaxCanvas = KapEngine::UI::UiFactory::createCanvas(scene, "ParalaxCanvas");
 
         try {
-            auto &tr = paralax->getComponent<KapEngine::Transform>();
+            auto& tr = paralax->getComponent<KapEngine::Transform>();
             tr.setParent(paralaxCanvas);
-        } catch(...) {
-            KAP_DEBUG_ERROR("Failed to get Transform of parent");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to get Transform of parent"); }
 
         auto galaxy1 = KapEngine::UI::UiFactory::createImage(scene, "galaxy1");
         auto galaxy2 = KapEngine::UI::UiFactory::createImage(scene, "galaxy2");
 
-        auto &canvas = paralaxCanvas->getComponent<KapEngine::UI::Canvas>();
+        auto& canvas = paralaxCanvas->getComponent<KapEngine::UI::Canvas>();
         canvas.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
         canvas.setScreenCompare({272, 160});
 
         try {
-            auto &img = galaxy1->getComponent<KapEngine::UI::Image>();
+            auto& img = galaxy1->getComponent<KapEngine::UI::Image>();
             img.setRectangle({0, 0, 272, 160});
             img.setPathSprite("Assets/Textures/Background/bg-back.png");
 
-            auto &transform = galaxy1->getComponent<KapEngine::Transform>();
+            auto& transform = galaxy1->getComponent<KapEngine::Transform>();
             transform.setParent(paralax);
             transform.setScale({271, 160, 0});
         } catch (...) {}
 
         try {
-            auto &img = galaxy2->getComponent<KapEngine::UI::Image>();
+            auto& img = galaxy2->getComponent<KapEngine::UI::Image>();
             img.setRectangle({0, 0, 272, 160});
             img.setPathSprite("Assets/Textures/Background/bg-back.png");
 
-            auto &transform = galaxy2->getComponent<KapEngine::Transform>();
+            auto& transform = galaxy2->getComponent<KapEngine::Transform>();
             transform.setParent(paralax);
             transform.setScale({271, 160, 0});
             transform.setPosition({271 * 1, 0, 0});
@@ -472,41 +468,39 @@ void Prefabs::registerGalaxyParalaxPrefab(KapEngine::KEngine& engine) {
     });
 }
 
-void Prefabs::registerStarsParalaxPrefab(KapEngine::KEngine &engine) {
+void Prefabs::registerStarsParalaxPrefab(KapEngine::KEngine& engine) {
     engine.getPrefabManager()->createPrefab("ParalaxStars", [](KapEngine::SceneManagement::Scene& scene) {
-        auto paralax = scene.createGameObject("Paralax");
+        auto paralax       = scene.createGameObject("Paralax");
         auto paralaxCanvas = KapEngine::UI::UiFactory::createCanvas(scene, "ParalaxCanvas");
 
         try {
-            auto &tr = paralax->getComponent<KapEngine::Transform>();
+            auto& tr = paralax->getComponent<KapEngine::Transform>();
             tr.setParent(paralaxCanvas);
-        } catch(...) {
-            KAP_DEBUG_ERROR("Failed to get Transform of parent");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to get Transform of parent"); }
 
-        auto  stars1 = KapEngine::UI::UiFactory::createImage(scene, "stars1");
+        auto stars1 = KapEngine::UI::UiFactory::createImage(scene, "stars1");
         auto stars2 = KapEngine::UI::UiFactory::createImage(scene, "stars2");
 
-        auto &canvas = paralaxCanvas->getComponent<KapEngine::UI::Canvas>();
+        auto& canvas = paralaxCanvas->getComponent<KapEngine::UI::Canvas>();
         canvas.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
         canvas.setScreenCompare({272, 160});
 
         try {
-            auto &img = stars1->getComponent<KapEngine::UI::Image>();
+            auto& img = stars1->getComponent<KapEngine::UI::Image>();
             img.setRectangle({0, 0, 272, 160});
             img.setPathSprite("Assets/Textures/Background/bg-stars.png");
 
-            auto &transform = stars1->getComponent<KapEngine::Transform>();
+            auto& transform = stars1->getComponent<KapEngine::Transform>();
             transform.setParent(paralax);
             transform.setScale({271, 160, 0});
         } catch (...) {}
 
         try {
-            auto &img = stars2->getComponent<KapEngine::UI::Image>();
+            auto& img = stars2->getComponent<KapEngine::UI::Image>();
             img.setRectangle({0, 0, 272, 160});
             img.setPathSprite("Assets/Textures/Background/bg-stars.png");
 
-            auto &transform = stars2->getComponent<KapEngine::Transform>();
+            auto& transform = stars2->getComponent<KapEngine::Transform>();
             transform.setParent(paralax);
             transform.setScale({271, 160, 0});
             transform.setPosition({271 * 1, 0, 0});

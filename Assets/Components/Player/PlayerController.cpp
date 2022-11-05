@@ -1,18 +1,16 @@
 #include "PlayerController.hpp"
-#include "Bullet/Bullet.hpp"
 #include "Messages.hpp"
 #include "GameManager.hpp"
 
 using namespace RType;
 
-PlayerController::PlayerController(std::shared_ptr<KapEngine::GameObject> _gameObject) : KapMirror::NetworkComponent(_gameObject, "Player") {
+PlayerController::PlayerController(std::shared_ptr<KapEngine::GameObject> _gameObject)
+    : KapMirror::NetworkComponent(_gameObject, "Player") {
     addRequireComponent("Image");
     addRequireComponent("NetworkTransform");
 }
 
-void PlayerController::setLocalAuthority(bool _isLocalAuthority) {
-    isLocalAuthority = _isLocalAuthority;
-}
+void PlayerController::setLocalAuthority(bool _isLocalAuthority) { isLocalAuthority = _isLocalAuthority; }
 
 void PlayerController::onUpdate() {
     if (isMoving) {
@@ -96,7 +94,7 @@ void PlayerController::sendKeepAlive() {
     GameManager::getInstance()->getNetworkManager()->sendKeepAlive(networkIdentity);
 }
 
-void PlayerController::movePlayer(KapEngine::Tools::Vector2 input) {
+void PlayerController::movePlayer(const KapEngine::Tools::Vector2& input) {
     if (isClient()) {
         sendInput(input);
         return;
@@ -111,7 +109,7 @@ void PlayerController::movePlayer(KapEngine::Tools::Vector2 input) {
         return;
     }
 
-    isMoving = true;
+    isMoving    = true;
     inputToMove = input;
 }
 
@@ -172,13 +170,11 @@ void PlayerController::shoot() {
         }
         std::shared_ptr<KapEngine::GameObject> bullet;
         if (isMissile) {
-            getServer()->spawnObject("Missile", pos, [this](std::shared_ptr<KapEngine::GameObject> bullet) {
-                bullet->setName("Missile Player");
-            }, bullet);
+            getServer()->spawnObject(
+                "Missile", pos, [](const std::shared_ptr<KapEngine::GameObject>& bullet) { bullet->setName("Missile Player"); }, bullet);
         } else {
-            getServer()->spawnObject("Bullet", pos, [this](std::shared_ptr<KapEngine::GameObject> bullet) {
-                bullet->setName("Bullet Player");
-            }, bullet);
+            getServer()->spawnObject(
+                "Bullet", pos, [](const std::shared_ptr<KapEngine::GameObject>& bullet) { bullet->setName("Bullet Player"); }, bullet);
         }
     } else if (isClient() && !isLocalAuthority) {
         if (menuManager.use_count() > 0)
@@ -193,7 +189,7 @@ void PlayerController::takeDamage(int damage) {
 
     life -= damage;
     if (life <= 0) {
-        life = 0;
+        life   = 0;
         isDead = true;
     }
 
@@ -209,8 +205,8 @@ void PlayerController::sendInput(KapEngine::Tools::Vector2 input) {
 
     PlayerInputMessage message;
     message.networkId = getNetworkId();
-    message.x = input.getX();
-    message.y = input.getY();
+    message.x         = input.getX();
+    message.y         = input.getY();
     getClient()->send(message);
 }
 
@@ -266,9 +262,7 @@ void PlayerController::onStartClient() {
                 menuManager = menuManagers[0];
             }
         }
-    } catch(...) {
-        KAP_DEBUG_LOG("MenuManager not found");
-    }
+    } catch (...) { KAP_DEBUG_LOG("MenuManager not found"); }
 }
 
 void PlayerController::onStart() {
@@ -282,9 +276,7 @@ void PlayerController::onStart() {
                     menuManager = menuManagers[0];
                 }
             }
-        } catch(...) {
-            KAP_DEBUG_LOG("MenuManager not found");
-        }
+        } catch (...) { KAP_DEBUG_LOG("MenuManager not found"); }
     }
 }
 

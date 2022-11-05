@@ -3,24 +3,21 @@
 #include "KapEngine.hpp"
 #include "UiFactory.hpp"
 
-namespace RType
-{
-    class Menu
-    {
+namespace RType {
+    class Menu {
       protected:
-        KapEngine::KEngine &engine;
-        KapEngine::SceneManagement::Scene &scene;
+        KapEngine::KEngine& engine;
+        KapEngine::SceneManagement::Scene& scene;
         std::shared_ptr<KapEngine::GameObject> canvas;
 
         std::string tmpCanvasToDisplay = "";
 
       public:
-        Menu(KapEngine::SceneManagement::Scene &_scene) : engine(_scene.getEngine()), scene(_scene) {}
+        Menu(KapEngine::SceneManagement::Scene& _scene) : engine(_scene.getEngine()), scene(_scene) {}
 
         ~Menu() = default;
 
-        void __initCanvas(std::string name)
-        {
+        void __initCanvas(std::string name) {
             canvas = KapEngine::UI::UiFactory::createCanvas(scene, "Canvas" + name);
             canvas->setActive(false);
         }
@@ -29,25 +26,20 @@ namespace RType
 
         void show() { canvas->setActive(true); }
 
-        void hide()
-        {
+        void hide() {
             canvas->setActive(false);
             canvas->getScene().dump(false);
         }
 
       protected:
-        void switchMenu(std::string const &menuName)
-        {
+        void switchMenu(std::string const& menuName) {
             tmpCanvasToDisplay = "Canvas" + menuName;
             hide();
-            scene.registerTmpActionAfterUpdate([this](KapEngine::SceneManagement::Scene &scene) {
-                try
-                {
+            scene.registerTmpActionAfterUpdate([this](KapEngine::SceneManagement::Scene& scene) {
+                try {
                     auto menuCanvas = scene.findFirstGameObject(tmpCanvasToDisplay);
                     menuCanvas->setActive(true);
-                }
-                catch (...)
-                {
+                } catch (...) {
                     show();
                     KAP_DEBUG_ERROR("Failed to switch menu: " + tmpCanvasToDisplay);
                 }

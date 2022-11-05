@@ -3,13 +3,12 @@
 
 using namespace RType;
 
-TentaclesBossEnemy::TentaclesBossEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject) : KapMirror::NetworkComponent(_gameObject, "TentaclesBossEnemy") {
+TentaclesBossEnemy::TentaclesBossEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject)
+    : KapMirror::NetworkComponent(_gameObject, "TentaclesBossEnemy") {
     addRequireComponent("Image");
 }
 
-void TentaclesBossEnemy::setLife(int _life) {
-    life = _life;
-}
+void TentaclesBossEnemy::setLife(int _life) { life = _life; }
 
 void TentaclesBossEnemy::onFixedUpdate() {
     auto& transform = getTransform();
@@ -48,9 +47,10 @@ void TentaclesBossEnemy::shoot() {
         bullet->getComponent<Bullet>().setDirection(Bullet::Direction::LEFT);
     } else if (isServer()) {
         std::shared_ptr<KapEngine::GameObject> bullet;
-        getServer()->spawnObject("Bullet", pos, [this](std::shared_ptr<KapEngine::GameObject> go) {
-            go->getComponent<Bullet>().setDirection(Bullet::Direction::LEFT);
-        }, bullet);
+        getServer()->spawnObject(
+            "Bullet", pos,
+            [this](std::shared_ptr<KapEngine::GameObject> go) { go->getComponent<Bullet>().setDirection(Bullet::Direction::LEFT); },
+            bullet);
     }
 }
 
@@ -62,20 +62,15 @@ void TentaclesBossEnemy::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> o
     collidedObjects.push_back(other);
 }
 
-void TentaclesBossEnemy::serialize(KapMirror::NetworkWriter& writer) {
-    writer.write(life);
-}
+void TentaclesBossEnemy::serialize(KapMirror::NetworkWriter& writer) { writer.write(life); }
 
-void TentaclesBossEnemy::deserialize(KapMirror::NetworkReader& reader) {
-    life = reader.read<int>();
-}
+void TentaclesBossEnemy::deserialize(KapMirror::NetworkReader& reader) { life = reader.read<int>(); }
 
 void TentaclesBossEnemy::onSceneUpdated() {
     if (isClient()) {
         return;
     }
-    for (std::size_t i = 0; i < collidedObjects.size(); i++) {
-        auto& other = collidedObjects[i];
+    for (auto& other : collidedObjects) {
         if (other.use_count() > 1 && other->getName() == "Bullet Player") {
             life -= 1;
             if (life <= 0) {
@@ -87,11 +82,13 @@ void TentaclesBossEnemy::onSceneUpdated() {
             }
             if (isLocal()) {
                 std::shared_ptr<KapEngine::GameObject> explosion;
-                    if (getGameObject().getEngine().getPrefabManager()->instantiatePrefab("BulletExplode", getGameObject().getScene(), explosion)) {
-                        explosion->getComponent<KapEngine::Transform>().setPosition(other->getComponent<KapEngine::Transform>().getWorldPosition());
-                    } else {
-                        KAP_DEBUG_ERROR("Cannot instantiate prefab BulletExplode");
-                    }
+                if (getGameObject().getEngine().getPrefabManager()->instantiatePrefab("BulletExplode", getGameObject().getScene(),
+                                                                                      explosion)) {
+                    explosion->getComponent<KapEngine::Transform>().setPosition(
+                        other->getComponent<KapEngine::Transform>().getWorldPosition());
+                } else {
+                    KAP_DEBUG_ERROR("Cannot instantiate prefab BulletExplode");
+                }
                 other->destroy();
             } else if (isServer()) {
                 getServer()->destroyObject(other);
@@ -107,11 +104,13 @@ void TentaclesBossEnemy::onSceneUpdated() {
             }
             if (isLocal()) {
                 std::shared_ptr<KapEngine::GameObject> explosion;
-                    if (getGameObject().getEngine().getPrefabManager()->instantiatePrefab("MissileExplode", getGameObject().getScene(), explosion)) {
-                        explosion->getComponent<KapEngine::Transform>().setPosition(other->getComponent<KapEngine::Transform>().getWorldPosition());
-                    } else {
-                        KAP_DEBUG_ERROR("Cannot instantiate prefab MissiletExplode");
-                    }
+                if (getGameObject().getEngine().getPrefabManager()->instantiatePrefab("MissileExplode", getGameObject().getScene(),
+                                                                                      explosion)) {
+                    explosion->getComponent<KapEngine::Transform>().setPosition(
+                        other->getComponent<KapEngine::Transform>().getWorldPosition());
+                } else {
+                    KAP_DEBUG_ERROR("Cannot instantiate prefab MissiletExplode");
+                }
                 other->destroy();
             } else if (isServer()) {
                 getServer()->destroyObject(other);

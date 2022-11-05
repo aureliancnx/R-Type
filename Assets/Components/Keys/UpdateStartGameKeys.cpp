@@ -2,8 +2,8 @@
 
 using namespace RType;
 
-UpdateStartGameKeys::UpdateStartGameKeys(std::shared_ptr<KapEngine::GameObject> go) : Component(go, "UpdateStartGameKeys"),
-    _baseAxisHor("basicHorizontal"), _baseAxisVert("basicVertical"), _baseAxisShoot("basicShoot") {
+UpdateStartGameKeys::UpdateStartGameKeys(std::shared_ptr<KapEngine::GameObject> go)
+    : Component(go, "UpdateStartGameKeys"), _baseAxisHor("basicHorizontal"), _baseAxisVert("basicVertical"), _baseAxisShoot("basicShoot") {
 
     _baseAxisHor.positiveButton = KapEngine::Events::Key::RIGHT;
     _baseAxisHor.negativeButton = KapEngine::Events::Key::LEFT;
@@ -33,27 +33,21 @@ void UpdateStartGameKeys::checkInputs() {
         auto& axis = getInput().getAxisSettings("Vertical");
         axis.positiveButton = down;
         axis.negativeButton = up;
-    } catch(...) {
-        KAP_DEBUG_ERROR("Failed to update Vertical axis");
-    }
+    } catch (...) { KAP_DEBUG_ERROR("Failed to update Vertical axis"); }
 
     try {
         auto& axis = getInput().getAxisSettings("Horizontal");
         axis.positiveButton = right;
         axis.negativeButton = left;
-    } catch(...) {
-        KAP_DEBUG_ERROR("Failed to update Horizontal axis");
-    }
+    } catch (...) { KAP_DEBUG_ERROR("Failed to update Horizontal axis"); }
 
     try {
         auto& axis = getInput().getAxisSettings("Shoot");
         axis.positiveButton = shoot;
-    } catch(...) {
-        KAP_DEBUG_ERROR("Failed to update Shoot axis");
-    }
+    } catch (...) { KAP_DEBUG_ERROR("Failed to update Shoot axis"); }
 }
 
-bool UpdateStartGameKeys::setValueSaved(std::string const& name, KapEngine::Events::Key &key) {
+bool UpdateStartGameKeys::setValueSaved(std::string const& name, KapEngine::Events::Key& key) {
     if (KapEngine::PlayerPrefs::getString(name) == "")
         return false;
     int val = KapEngine::PlayerPrefs::getInt(name);

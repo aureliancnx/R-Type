@@ -1,18 +1,16 @@
 #include "PlayerController.hpp"
-#include "Bullet/Bullet.hpp"
 #include "Messages.hpp"
 #include "GameManager.hpp"
 
 using namespace RType;
 
-PlayerController::PlayerController(std::shared_ptr<KapEngine::GameObject> _gameObject) : KapMirror::NetworkComponent(_gameObject, "Player") {
+PlayerController::PlayerController(std::shared_ptr<KapEngine::GameObject> _gameObject)
+    : KapMirror::NetworkComponent(_gameObject, "Player") {
     addRequireComponent("Image");
     addRequireComponent("NetworkTransform");
 }
 
-void PlayerController::setLocalAuthority(bool _isLocalAuthority) {
-    isLocalAuthority = _isLocalAuthority;
-}
+void PlayerController::setLocalAuthority(bool _isLocalAuthority) { isLocalAuthority = _isLocalAuthority; }
 
 void PlayerController::onUpdate() {
     if (isMoving) {
@@ -85,7 +83,7 @@ void PlayerController::onFixedUpdate() {
 }
 
 void PlayerController::sendKeepAlive() {
-    PlayerKeepAlive keepAlive;
+    PlayerKeepAliveMessage keepAlive;
     keepAlive.timestamp = KapMirror::NetworkTime::localTime();
 
     if (isLocal()) {
@@ -96,7 +94,7 @@ void PlayerController::sendKeepAlive() {
     GameManager::getInstance()->getNetworkManager()->sendKeepAlive(networkIdentity);
 }
 
-void PlayerController::movePlayer(KapEngine::Tools::Vector2 input) {
+void PlayerController::movePlayer(const KapEngine::Tools::Vector2& input) {
     if (isClient()) {
         sendInput(input);
         return;
@@ -145,12 +143,12 @@ void PlayerController::shoot() {
     bool isMissile = false;
 
     if (isLocal()) {
-
         if (clockMissile.getElapseTime().asSecond() >= 4.5f) {
             isMissile = true;
         }
-        if (menuManager.use_count() > 0)
-                menuManager->getMissileAnimator()->setTrigger("Unload");
+        if (menuManager.use_count() > 0) {
+            menuManager->getMissileAnimator()->setTrigger("Unload");
+        }
 
         auto& scene = getGameObject().getScene();
         std::shared_ptr<KapEngine::GameObject> bullet;
@@ -172,17 +170,31 @@ void PlayerController::shoot() {
         }
         std::shared_ptr<KapEngine::GameObject> bullet;
         if (isMissile) {
-            getServer()->spawnObject("Missile", pos, [this](std::shared_ptr<KapEngine::GameObject> bullet) {
-                bullet->setName("Missile Player");
-            }, bullet);
+            getServer()->spawnObject(
+                "Missile", pos, [](const std::shared_ptr<KapEngine::GameObject>& bullet) { bullet->setName("Missile Player"); }, bullet);
         } else {
-            getServer()->spawnObject("Bullet", pos, [this](std::shared_ptr<KapEngine::GameObject> bullet) {
-                bullet->setName("Bullet Player");
-            }, bullet);
+            getServer()->spawnObject(
+                "Bullet", pos, [](const std::shared_ptr<KapEngine::GameObject>& bullet) { bullet->setName("Bullet Player"); }, bullet);
         }
     } else if (isClient() && !isLocalAuthority) {
         if (menuManager.use_count() > 0)
             menuManager->getMissileAnimator()->setTrigger("Unload");
+    }
+}
+
+void PlayerController::takeDamage(int damage) {
+    if (isClient()) {
+        return;
+    }
+
+    life -= damage;
+    if (life <= 0) {
+        life = 0;
+        isDead = true;
+    }
+
+    if (isServer()) {
+        getServer()->updateObject(getNetworkId());
     }
 }
 
@@ -250,9 +262,7 @@ void PlayerController::onStartClient() {
                 menuManager = menuManagers[0];
             }
         }
-    } catch(...) {
-        KAP_DEBUG_LOG("MenuManager not found");
-    }
+    } catch (...) { KAP_DEBUG_LOG("MenuManager not found"); }
 }
 
 void PlayerController::onStart() {
@@ -266,8 +276,22 @@ void PlayerController::onStart() {
                     menuManager = menuManagers[0];
                 }
             }
-        } catch(...) {
-            KAP_DEBUG_LOG("MenuManager not found");
-        }
+        } catch (...) { KAP_DEBUG_LOG("MenuManager not found"); }
     }
+}
+
+void PlayerController::serialize(KapMirror::NetworkWriter& writer) {
+    // TODO: Fix this (setup server and client access before serialize/deserialize)
+
+    // if (!isServer()) {
+    //     return;
+    // }
+
+    // writer.write(life);
+    // writer.write(isDead);
+}
+
+void PlayerController::deserialize(KapMirror::NetworkReader& reader) {
+    // life = reader.read<int>();
+    // isDead = reader.read<bool>();
 }

@@ -11,14 +11,12 @@
 #include "KapEngine.hpp"
 #include "KapMirror/KapMirror.hpp"
 
-namespace RType
-{
+namespace RType {
 
-    class GameMenuManager : public KapMirror::NetworkComponent
-    {
+    class GameMenuManager : public KapMirror::NetworkComponent {
       public:
-        GameMenuManager(std::shared_ptr<KapEngine::GameObject> go);
-        ~GameMenuManager();
+        explicit GameMenuManager(std::shared_ptr<KapEngine::GameObject> go);
+        ~GameMenuManager() = default;
 
         void onStart() override;
 

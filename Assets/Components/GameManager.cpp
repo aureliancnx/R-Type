@@ -184,7 +184,7 @@ void GameManager::initMultiPlayer(bool isServer) {
 
     auto networkManagerObject = scene->createGameObject("NetworkManager");
     networkManager = std::make_shared<RtypeNetworkManager>(networkManagerObject, isServer);
-    //    networkManager->setTransport(std::make_shared<KapMirror::SylphTransport>());
+    networkManager->setTransport(std::make_shared<KapMirror::SylphTransport>());
     networkManagerObject->addComponent(networkManager);
 
     if (!isServer) {

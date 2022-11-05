@@ -93,30 +93,27 @@ $(document).ready(function(){initNavTree('MapEnemy_8hpp_source.html',''); initRe
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>RType</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classRType_1_1MapEnemy.html">    9</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classRType_1_1MapEnemy.html">MapEnemy</a></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;      <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        std::string name = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        std::string sprite = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">int</span> spawnTime = 0;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">int</span> startPositionY = 0;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classRType_1_1MapEnemy.html">MapEnemy</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classRType_1_1MapEnemy.html">MapEnemy</a>(std::string _name, std::string _sprite) : name(_name), sprite(_sprite) {}</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        ~<a class="code" href="classRType_1_1MapEnemy.html">MapEnemy</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">void</span> Dump()</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <a class="code" href="classKapEngine_1_1Debug.html#a6e72266b09c8bad4d67d21857d80d989">KapEngine::Debug::log</a>(<span class="stringliteral">&quot;Enemy: name = &#39;&quot;</span> + name + <span class="stringliteral">&quot;&#39;, sprite = &#39;&quot;</span> + sprite + <span class="stringliteral">&quot;&#39;, spawnTime = &quot;</span> + std::to_string(spawnTime) +</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                                  <span class="stringliteral">&quot;, startPositionY = &quot;</span> + std::to_string(startPositionY));</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        }</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    };</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;} <span class="comment">// namespace RType</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>RType {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classRType_1_1MapEnemy.html">    8</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classRType_1_1MapEnemy.html">MapEnemy</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;      <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        std::string name = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        std::string sprite = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordtype">int</span> spawnTime = 0;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">int</span> startPositionY = 0;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="classRType_1_1MapEnemy.html">MapEnemy</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classRType_1_1MapEnemy.html">MapEnemy</a>(std::string _name, std::string _sprite) : name(_name), sprite(_sprite) {}</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        ~<a class="code" href="classRType_1_1MapEnemy.html">MapEnemy</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">void</span> Dump() {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <a class="code" href="classKapEngine_1_1Debug.html#a6e72266b09c8bad4d67d21857d80d989">KapEngine::Debug::log</a>(<span class="stringliteral">&quot;Enemy: name = &#39;&quot;</span> + name + <span class="stringliteral">&quot;&#39;, sprite = &#39;&quot;</span> + sprite + <span class="stringliteral">&quot;&#39;, spawnTime = &quot;</span> + std::to_string(spawnTime) +</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                                  <span class="stringliteral">&quot;, startPositionY = &quot;</span> + std::to_string(startPositionY));</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    };</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;} <span class="comment">// namespace RType</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassRType_1_1MapEnemy_html"><div class="ttname"><a href="classRType_1_1MapEnemy.html">RType::MapEnemy</a></div><div class="ttdef"><b>Definition:</b> MapEnemy.hpp:9</div></div>
+<div class="ttc" id="aclassRType_1_1MapEnemy_html"><div class="ttname"><a href="classRType_1_1MapEnemy.html">RType::MapEnemy</a></div><div class="ttdef"><b>Definition:</b> MapEnemy.hpp:8</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Debug_html_a6e72266b09c8bad4d67d21857d80d989"><div class="ttname"><a href="classKapEngine_1_1Debug.html#a6e72266b09c8bad4d67d21857d80d989">KapEngine::Debug::log</a></div><div class="ttdeci">static void log(std::string _msg, std::string prefix=&quot;&quot;)</div><div class="ttdoc">display a simple message</div><div class="ttdef"><b>Definition:</b> Debug.hpp:30</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

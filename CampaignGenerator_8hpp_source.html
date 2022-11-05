@@ -99,54 +99,50 @@ $(document).ready(function(){initNavTree('CampaignGenerator_8hpp_source.html',''
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;KapEngine.hpp&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;KapEngineDebug.hpp&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;KapEngineUi.hpp&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span>RType</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classRType_1_1CampaignGenerator.html">   15</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classRType_1_1CampaignGenerator.html">CampaignGenerator</a> : <span class="keyword">public</span> <a class="code" href="classKapEngine_1_1Component.html">KapEngine::Component</a></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;      <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structRType_1_1CampaignGenerator_1_1Enemy.html">   18</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structRType_1_1CampaignGenerator_1_1Enemy.html">Enemy</a></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keywordtype">int</span> _positionY;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordtype">int</span> _positionX;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keywordtype">int</span> _time;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            std::string _mobName;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keyword">explicit</span> <a class="code" href="structRType_1_1CampaignGenerator_1_1Enemy.html">Enemy</a>(std::string mobName, <span class="keywordtype">int</span> positionY = 0, <span class="keywordtype">int</span> time = 10, <span class="keywordtype">int</span> positionX = 1280)</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                _mobName = std::move(mobName);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                _time = time;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                _positionY = positionY;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                _positionX = positionX;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        };</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classRType_1_1CampaignGenerator.html">CampaignGenerator</a>(std::shared_ptr&lt;KapEngine::GameObject&gt; go);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span>RType {</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classRType_1_1CampaignGenerator.html">   14</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classRType_1_1CampaignGenerator.html">CampaignGenerator</a> : <span class="keyword">public</span> <a class="code" href="classKapEngine_1_1Component.html">KapEngine::Component</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;      <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structRType_1_1CampaignGenerator_1_1Enemy.html">   16</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structRType_1_1CampaignGenerator_1_1Enemy.html">Enemy</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keywordtype">int</span> _positionY;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="keywordtype">int</span> _positionX;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="keywordtype">int</span> _time;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            std::string _mobName;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keyword">explicit</span> <a class="code" href="structRType_1_1CampaignGenerator_1_1Enemy.html">Enemy</a>(std::string mobName, <span class="keywordtype">int</span> positionY = 0, <span class="keywordtype">int</span> time = 10, <span class="keywordtype">int</span> positionX = 1280) {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                _mobName = std::move(mobName);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                _time = time;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                _positionY = positionY;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                _positionX = positionX;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        };</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classRType_1_1CampaignGenerator.html">CampaignGenerator</a>(std::shared_ptr&lt;KapEngine::GameObject&gt; go);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        ~<a class="code" href="classRType_1_1CampaignGenerator.html">CampaignGenerator</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1CampaignGenerator.html#ae72b460c568984ded28cd53546bfd5d8">onFixedUpdate</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        ~<a class="code" href="classRType_1_1CampaignGenerator.html">CampaignGenerator</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1CampaignGenerator.html#aec4c0bed20729ea6b12e5b9965c25d67">onAwake</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1CampaignGenerator.html#ae72b460c568984ded28cd53546bfd5d8">onFixedUpdate</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; spawnMob(std::string <span class="keyword">const</span>&amp; mobName, <a class="code" href="classKapEngine_1_1SceneManagement_1_1Scene.html">KapEngine::SceneManagement::Scene</a>&amp; scene);</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1CampaignGenerator.html#aec4c0bed20729ea6b12e5b9965c25d67">onAwake</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">void</span> addEnemy(<a class="code" href="structRType_1_1CampaignGenerator_1_1Enemy.html">Enemy</a> <span class="keyword">const</span>&amp; enemy);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; spawnMob(std::string <span class="keyword">const</span> &amp;mobName, <a class="code" href="classKapEngine_1_1SceneManagement_1_1Scene.html">KapEngine::SceneManagement::Scene</a> &amp;scene);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">void</span> addEnemy(<a class="code" href="structRType_1_1CampaignGenerator_1_1Enemy.html">Enemy</a> <span class="keyword">const</span> &amp;enemy);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        std::vector&lt;Enemy&gt; _enemies;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="classKapEngine_1_1Time_1_1EClock.html">KapEngine::Time::EClock</a> _clock;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classKapEngine_1_1Time_1_1ETime.html">KapEngine::Time::ETime</a> _time;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    };</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;} <span class="comment">// namespace RType</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif // RTYPE_CAMPAIGNGENERATOR_HPP</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        std::vector&lt;Enemy&gt; _enemies;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classKapEngine_1_1Time_1_1EClock.html">KapEngine::Time::EClock</a> _clock;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classKapEngine_1_1Time_1_1ETime.html">KapEngine::Time::ETime</a> _time;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    };</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;} <span class="comment">// namespace RType</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#endif // RTYPE_CAMPAIGNGENERATOR_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapEngine_1_1Time_1_1ETime_html"><div class="ttname"><a href="classKapEngine_1_1Time_1_1ETime.html">KapEngine::Time::ETime</a></div><div class="ttdoc">Engine Time is internal time system of engine.</div><div class="ttdef"><b>Definition:</b> ETime.hpp:25</div></div>
-<div class="ttc" id="astructRType_1_1CampaignGenerator_1_1Enemy_html"><div class="ttname"><a href="structRType_1_1CampaignGenerator_1_1Enemy.html">RType::CampaignGenerator::Enemy</a></div><div class="ttdef"><b>Definition:</b> CampaignGenerator.hpp:18</div></div>
-<div class="ttc" id="aclassRType_1_1CampaignGenerator_html_aec4c0bed20729ea6b12e5b9965c25d67"><div class="ttname"><a href="classRType_1_1CampaignGenerator.html#aec4c0bed20729ea6b12e5b9965c25d67">RType::CampaignGenerator::onAwake</a></div><div class="ttdeci">void onAwake() override</div><div class="ttdoc">call component awake</div><div class="ttdef"><b>Definition:</b> CampaignGenerator.cpp:18</div></div>
+<div class="ttc" id="astructRType_1_1CampaignGenerator_1_1Enemy_html"><div class="ttname"><a href="structRType_1_1CampaignGenerator_1_1Enemy.html">RType::CampaignGenerator::Enemy</a></div><div class="ttdef"><b>Definition:</b> CampaignGenerator.hpp:16</div></div>
+<div class="ttc" id="aclassRType_1_1CampaignGenerator_html_aec4c0bed20729ea6b12e5b9965c25d67"><div class="ttname"><a href="classRType_1_1CampaignGenerator.html#aec4c0bed20729ea6b12e5b9965c25d67">RType::CampaignGenerator::onAwake</a></div><div class="ttdeci">void onAwake() override</div><div class="ttdoc">call component awake</div><div class="ttdef"><b>Definition:</b> CampaignGenerator.cpp:15</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Time_1_1EClock_html"><div class="ttname"><a href="classKapEngine_1_1Time_1_1EClock.html">KapEngine::Time::EClock</a></div><div class="ttdef"><b>Definition:</b> EClock.hpp:22</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Component_html"><div class="ttname"><a href="classKapEngine_1_1Component.html">KapEngine::Component</a></div><div class="ttdef"><b>Definition:</b> Component.hpp:32</div></div>
-<div class="ttc" id="aclassRType_1_1CampaignGenerator_html"><div class="ttname"><a href="classRType_1_1CampaignGenerator.html">RType::CampaignGenerator</a></div><div class="ttdef"><b>Definition:</b> CampaignGenerator.hpp:15</div></div>
+<div class="ttc" id="aclassRType_1_1CampaignGenerator_html"><div class="ttname"><a href="classRType_1_1CampaignGenerator.html">RType::CampaignGenerator</a></div><div class="ttdef"><b>Definition:</b> CampaignGenerator.hpp:14</div></div>
 <div class="ttc" id="aclassKapEngine_1_1SceneManagement_1_1Scene_html"><div class="ttname"><a href="classKapEngine_1_1SceneManagement_1_1Scene.html">KapEngine::SceneManagement::Scene</a></div><div class="ttdef"><b>Definition:</b> Scene.hpp:37</div></div>
-<div class="ttc" id="aclassRType_1_1CampaignGenerator_html_ae72b460c568984ded28cd53546bfd5d8"><div class="ttname"><a href="classRType_1_1CampaignGenerator.html#ae72b460c568984ded28cd53546bfd5d8">RType::CampaignGenerator::onFixedUpdate</a></div><div class="ttdeci">void onFixedUpdate() override</div><div class="ttdoc">call eachv x ms</div><div class="ttdef"><b>Definition:</b> CampaignGenerator.cpp:29</div></div>
+<div class="ttc" id="aclassRType_1_1CampaignGenerator_html_ae72b460c568984ded28cd53546bfd5d8"><div class="ttname"><a href="classRType_1_1CampaignGenerator.html#ae72b460c568984ded28cd53546bfd5d8">RType::CampaignGenerator::onFixedUpdate</a></div><div class="ttdeci">void onFixedUpdate() override</div><div class="ttdoc">call eachv x ms</div><div class="ttdef"><b>Definition:</b> CampaignGenerator.cpp:26</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

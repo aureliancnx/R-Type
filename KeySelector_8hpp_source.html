@@ -93,30 +93,28 @@ $(document).ready(function(){initNavTree('KeySelector_8hpp_source.html',''); ini
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;KapEngineDebug.hpp&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;KapEngineEvents.hpp&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>RType</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classRType_1_1KeySelector.html">    9</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classRType_1_1KeySelector.html">KeySelector</a> : <span class="keyword">public</span> <a class="code" href="classKapEngine_1_1Component.html">KapEngine::Component</a></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;      <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <a class="code" href="classKapEngine_1_1Events_1_1Key.html">KapEngine::Events::Key</a> _selected;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">bool</span> _check = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;      <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classRType_1_1KeySelector.html">KeySelector</a>(std::shared_ptr&lt;KapEngine::GameObject&gt; go);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        ~<a class="code" href="classRType_1_1KeySelector.html">KeySelector</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>RType {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classRType_1_1KeySelector.html">    8</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classRType_1_1KeySelector.html">KeySelector</a> : <span class="keyword">public</span> <a class="code" href="classKapEngine_1_1Component.html">KapEngine::Component</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;      <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <a class="code" href="classKapEngine_1_1Events_1_1Key.html">KapEngine::Events::Key</a> _selected;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordtype">bool</span> _check = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;      <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <a class="code" href="classRType_1_1KeySelector.html">KeySelector</a>(std::shared_ptr&lt;KapEngine::GameObject&gt; go);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        ~<a class="code" href="classRType_1_1KeySelector.html">KeySelector</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1KeySelector.html#a5ae89466a41beb74f9244125a37b58aa">onUpdate</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1KeySelector.html#a5ae89466a41beb74f9244125a37b58aa">onUpdate</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">bool</span> keySelected(<a class="code" href="classKapEngine_1_1Events_1_1Key.html">KapEngine::Events::Key</a>&amp; key);</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">bool</span> keySelected(<a class="code" href="classKapEngine_1_1Events_1_1Key.html">KapEngine::Events::Key</a> &amp;key);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">void</span> selectKey();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    };</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;} <span class="comment">// namespace RType</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">void</span> selectKey();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    };</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;} <span class="comment">// namespace RType</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapEngine_1_1Events_1_1Key_html"><div class="ttname"><a href="classKapEngine_1_1Events_1_1Key.html">KapEngine::Events::Key</a></div><div class="ttdef"><b>Definition:</b> Key.hpp:16</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Component_html"><div class="ttname"><a href="classKapEngine_1_1Component.html">KapEngine::Component</a></div><div class="ttdef"><b>Definition:</b> Component.hpp:32</div></div>
-<div class="ttc" id="aclassRType_1_1KeySelector_html"><div class="ttname"><a href="classRType_1_1KeySelector.html">RType::KeySelector</a></div><div class="ttdef"><b>Definition:</b> KeySelector.hpp:9</div></div>
+<div class="ttc" id="aclassRType_1_1KeySelector_html"><div class="ttname"><a href="classRType_1_1KeySelector.html">RType::KeySelector</a></div><div class="ttdef"><b>Definition:</b> KeySelector.hpp:8</div></div>
 <div class="ttc" id="aclassRType_1_1KeySelector_html_a5ae89466a41beb74f9244125a37b58aa"><div class="ttname"><a href="classRType_1_1KeySelector.html#a5ae89466a41beb74f9244125a37b58aa">RType::KeySelector::onUpdate</a></div><div class="ttdeci">void onUpdate() override</div><div class="ttdoc">call each frame</div><div class="ttdef"><b>Definition:</b> KeySelector.cpp:7</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

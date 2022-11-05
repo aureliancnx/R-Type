@@ -91,30 +91,28 @@ $(document).ready(function(){initNavTree('Vector2Script_8hpp_source.html',''); i
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;MapScript/Lua.hpp&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>RType::Script</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classRType_1_1Script_1_1Vector2.html">    7</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classRType_1_1Script_1_1Vector2.html">Vector2</a></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;      <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keywordtype">float</span> x = 0;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordtype">float</span> y = 0;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="classRType_1_1Script_1_1Vector2.html">Vector2</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        ~<a class="code" href="classRType_1_1Script_1_1Vector2.html">Vector2</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>RType::Script {</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classRType_1_1Script_1_1Vector2.html">    6</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classRType_1_1Script_1_1Vector2.html">Vector2</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;      <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keywordtype">float</span> x = 0;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keywordtype">float</span> y = 0;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="classRType_1_1Script_1_1Vector2.html">Vector2</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        ~<a class="code" href="classRType_1_1Script_1_1Vector2.html">Vector2</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">void</span> dump() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">void</span> dump() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> initScript(lua_State *L);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">int</span> __create(lua_State *L);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">int</span> __destroy(lua_State *L);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">int</span> __index(lua_State *L);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">int</span> __newIndex(lua_State *L);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">int</span> __dump(lua_State *L);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    };</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;} <span class="comment">// namespace RType::Script</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> initScript(lua_State* L);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">int</span> __create(lua_State* L);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">int</span> __destroy(lua_State* L);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">int</span> __index(lua_State* L);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">int</span> __newIndex(lua_State* L);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">int</span> __dump(lua_State* L);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    };</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;} <span class="comment">// namespace RType::Script</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassRType_1_1Script_1_1Vector2_html"><div class="ttname"><a href="classRType_1_1Script_1_1Vector2.html">RType::Script::Vector2</a></div><div class="ttdef"><b>Definition:</b> Vector2Script.hpp:7</div></div>
+<div class="ttc" id="aclassRType_1_1Script_1_1Vector2_html"><div class="ttname"><a href="classRType_1_1Script_1_1Vector2.html">RType::Script::Vector2</a></div><div class="ttdef"><b>Definition:</b> Vector2Script.hpp:6</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

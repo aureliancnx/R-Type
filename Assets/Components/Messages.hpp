@@ -21,6 +21,14 @@ namespace RType {
         }
     };
 
+    struct PlayerPrepareShootMessage : KapMirror::NetworkMessage {
+        unsigned int networkId;
+
+        void serialize(KapMirror::NetworkWriter& writer) override { writer.write(networkId); }
+
+        void deserialize(KapMirror::NetworkReader& reader) override { networkId = reader.read<unsigned int>(); }
+    };
+
     struct PlayerShootMessage : KapMirror::NetworkMessage {
         unsigned int networkId;
 
@@ -35,14 +43,6 @@ namespace RType {
         void serialize(KapMirror::NetworkWriter& writer) override { writer.write(networkId); }
 
         void deserialize(KapMirror::NetworkReader& reader) override { networkId = reader.read<unsigned int>(); }
-    };
-
-    struct PlayerKeepAliveMessage : KapMirror::NetworkMessage {
-        long long timestamp;
-
-        void serialize(KapMirror::NetworkWriter& writer) override { writer.write(timestamp); }
-
-        void deserialize(KapMirror::NetworkReader& reader) override { timestamp = reader.read<long long>(); }
     };
 
     struct StartGameMessage : KapMirror::NetworkMessage {

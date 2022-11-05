@@ -33,8 +33,6 @@ namespace RType {
 
         void registerMenus();
 
-        void registerPrefabsPlayer();
-
         void initSplashScreens();
 
         void initSinglePlayer();

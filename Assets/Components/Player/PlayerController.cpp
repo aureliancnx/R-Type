@@ -1,6 +1,5 @@
 #include "PlayerController.hpp"
 #include "Messages.hpp"
-#include "GameManager.hpp"
 
 using namespace RType;
 
@@ -23,6 +22,7 @@ void PlayerController::onUpdate() {
         return;
     }
 
+    // Movement
     if (!isMoving) {
         if (getInput().getKeyDown(rightKey)) {
             movePlayer(KapEngine::Tools::Vector2(1, 0));
@@ -35,28 +35,27 @@ void PlayerController::onUpdate() {
         }
     }
 
+    // Movement Animation
     if (getInput().getKeyDown(upKey)) {
         getGameObject().getComponent<KapEngine::Animator>().setTrigger("IdleToUp");
-    }
-    if (getInput().getKeyUp(upKey)) {
+    } else if (getInput().getKeyUp(upKey)) {
         getGameObject().getComponent<KapEngine::Animator>().setTrigger("UpToIdle");
-    }
-    if (getInput().getKeyDown(downKey)) {
+    } else if (getInput().getKeyDown(downKey)) {
         getGameObject().getComponent<KapEngine::Animator>().setTrigger("IdleToDown");
-    }
-    if (getInput().getKeyUp(downKey)) {
+    } else if (getInput().getKeyUp(downKey)) {
         getGameObject().getComponent<KapEngine::Animator>().setTrigger("DownToIdle");
     }
 
+    // Shoot
     if (getInput().getKeyDown(shootKey)) {
         prepareShoot();
-    }
-    if (getInput().getKeyUp(shootKey)) {
+    } else if (getInput().getKeyUp(shootKey)) {
         playShootSound();
         shoot();
-        shootMissile = false;
     }
 }
+
+#pragma region Movement
 
 void PlayerController::onFixedUpdate() {
     if (!isMoving) {
@@ -74,24 +73,6 @@ void PlayerController::onFixedUpdate() {
             isMoving = false;
         }
     }
-
-    // Send keep alive packet to the client
-    if (KapMirror::NetworkTime::localTime() - lastKeepAliveTime > 1000) {
-        lastKeepAliveTime = KapMirror::NetworkTime::localTime();
-        sendKeepAlive();
-    }
-}
-
-void PlayerController::sendKeepAlive() {
-    PlayerKeepAliveMessage keepAlive;
-    keepAlive.timestamp = KapMirror::NetworkTime::localTime();
-
-    if (isLocal()) {
-        return;
-    }
-    KAP_DEBUG_LOG("SEND KEEPALIVE TO " + std::to_string(getNetworkId()));
-
-    GameManager::getInstance()->getNetworkManager()->sendKeepAlive(networkIdentity);
 }
 
 void PlayerController::movePlayer(const KapEngine::Tools::Vector2& input) {
@@ -113,74 +94,117 @@ void PlayerController::movePlayer(const KapEngine::Tools::Vector2& input) {
     inputToMove = input;
 }
 
+void PlayerController::sendInput(const KapEngine::Tools::Vector2& input) {
+    if (!isClient() || !isLocalAuthority) {
+        return;
+    }
+
+    PlayerInputMessage message;
+    message.networkId = getNetworkId();
+    message.x = input.getX();
+    message.y = input.getY();
+    getClient()->send(message);
+}
+
+#pragma endregion
+
+#pragma region Shoot
+
 void PlayerController::prepareShoot() {
+    clockMissile.restart();
+
     if (isLocal()) {
-        clockMissile.restart();
         if (menuManager.use_count() > 0) {
             menuManager->getMissileAnimator()->setTrigger("Load");
             KAP_DEBUG_LOG("Load missile");
         }
     } else if (isClient() && isLocalAuthority) {
-        clockMissile.restart();
         if (menuManager.use_count() > 0) {
             menuManager->getMissileAnimator()->setTrigger("Load");
             KAP_DEBUG_LOG("Load missile");
         }
+
+        PlayerPrepareShootMessage message;
+        message.networkId = getNetworkId();
+        getClient()->send(message);
     } else if (isServer()) {
-        KAP_DEBUG_LOG("Server prepare shoot");
-        clockMissile.restart();
-    } else if (isClient() && !isLocalAuthority) {
-        if (menuManager.use_count() > 0) {
-            menuManager->getMissileAnimator()->setTrigger("Load");
-            KAP_DEBUG_LOG("Load missile");
-        }
+        KAP_DEBUG_LOG("Load missile");
     }
 }
 
 void PlayerController::shoot() {
     KapEngine::Tools::Vector3 pos = getTransform().getLocalPosition() + KapEngine::Tools::Vector3(70, 15, 0);
-
     bool isMissile = false;
 
-    if (isLocal()) {
-        if (clockMissile.getElapseTime().asSecond() >= 4.5f) {
-            isMissile = true;
-        }
+    if (clockMissile.getElapseTime().asSecond() >= 4.5f) {
+        KAP_DEBUG_LOG("isMissile");
+        isMissile = true;
+    }
+
+    if (isClient() && isLocalAuthority) {
         if (menuManager.use_count() > 0) {
             menuManager->getMissileAnimator()->setTrigger("Unload");
         }
 
-        auto& scene = getGameObject().getScene();
-        std::shared_ptr<KapEngine::GameObject> bullet;
-        if (isMissile) {
-            getGameObject().getEngine().getPrefabManager()->instantiatePrefab("Missile", scene, bullet);
-            bullet->setName("Missile Player");
-        } else {
-            getGameObject().getEngine().getPrefabManager()->instantiatePrefab("Bullet", scene, bullet);
-            bullet->setName("Bullet Player");
-        }
-        bullet->getComponent<KapEngine::Transform>().setPosition(pos);
-    } else if (isClient() && isLocalAuthority) {
         PlayerShootMessage message;
         message.networkId = getNetworkId();
         getClient()->send(message);
-    } else if (isServer()) {
-        if (clockMissile.getElapseTime().asSecond() >= 4.5f) {
-            isMissile = true;
-        }
-        std::shared_ptr<KapEngine::GameObject> bullet;
-        if (isMissile) {
-            getServer()->spawnObject(
-                "Missile", pos, [](const std::shared_ptr<KapEngine::GameObject>& bullet) { bullet->setName("Missile Player"); }, bullet);
-        } else {
-            getServer()->spawnObject(
-                "Bullet", pos, [](const std::shared_ptr<KapEngine::GameObject>& bullet) { bullet->setName("Bullet Player"); }, bullet);
-        }
-    } else if (isClient() && !isLocalAuthority) {
-        if (menuManager.use_count() > 0)
+        return;
+    } else if (isLocal()) {
+        if (menuManager.use_count() > 0) {
             menuManager->getMissileAnimator()->setTrigger("Unload");
+        }
+    }
+
+    if (!isMissile) {
+        spawnBullet(pos);
+    } else {
+        spawnMissile(pos);
     }
 }
+
+void PlayerController::spawnBullet(const KapEngine::Tools::Vector3& pos) {
+    if (isLocal()) {
+        auto& scene = getGameObject().getScene();
+        std::shared_ptr<KapEngine::GameObject> bullet;
+        getGameObject().getEngine().getPrefabManager()->instantiatePrefab("Bullet", scene, bullet);
+        bullet->setName("Bullet Player");
+        bullet->getComponent<KapEngine::Transform>().setPosition(pos);
+    } else if (isServer()) {
+        std::shared_ptr<KapEngine::GameObject> bullet;
+        getServer()->spawnObject(
+            "Bullet", pos, [](const std::shared_ptr<KapEngine::GameObject>& bullet) { bullet->setName("Bullet Player"); }, bullet);
+    }
+}
+
+void PlayerController::spawnMissile(const KapEngine::Tools::Vector3& pos) {
+    if (isLocal()) {
+        auto& scene = getGameObject().getScene();
+        std::shared_ptr<KapEngine::GameObject> missile;
+        getGameObject().getEngine().getPrefabManager()->instantiatePrefab("Missile", scene, missile);
+        missile->setName("Missile Player");
+        missile->getComponent<KapEngine::Transform>().setPosition(pos);
+    } else if (isServer()) {
+        std::shared_ptr<KapEngine::GameObject> missile;
+        getServer()->spawnObject(
+            "Missile", pos, [](const std::shared_ptr<KapEngine::GameObject>& missile) { missile->setName("Missile Player"); }, missile);
+    }
+}
+
+void PlayerController::playShootSound() {
+    if (isServer()) {
+        return;
+    }
+
+    long long currentTime = KapMirror::NetworkTime::localTime();
+    if (currentTime % 2 == 0) {
+        getGameObject().getEngine().getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/shot1.wav");
+    } else {
+        getGameObject().getEngine().getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/shot2.wav");
+    }
+}
+
+#pragma endregion
 
 void PlayerController::takeDamage(int damage) {
     if (isClient()) {
@@ -195,27 +219,6 @@ void PlayerController::takeDamage(int damage) {
 
     if (isServer()) {
         getServer()->updateObject(getNetworkId());
-    }
-}
-
-void PlayerController::sendInput(KapEngine::Tools::Vector2 input) {
-    if (!isClient() || !isLocalAuthority) {
-        return;
-    }
-
-    PlayerInputMessage message;
-    message.networkId = getNetworkId();
-    message.x = input.getX();
-    message.y = input.getY();
-    getClient()->send(message);
-}
-
-void PlayerController::playShootSound() {
-    long long currentTime = KapMirror::NetworkTime::localTime();
-    if (currentTime % 2 == 0) {
-        getGameObject().getEngine().getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/shot1.wav");
-    } else {
-        getGameObject().getEngine().getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/shot2.wav");
     }
 }
 
@@ -281,8 +284,6 @@ void PlayerController::onStart() {
 }
 
 void PlayerController::serialize(KapMirror::NetworkWriter& writer) {
-    // TODO: Fix this (setup server and client access before serialize/deserialize)
-
     // if (!isServer()) {
     //     return;
     // }

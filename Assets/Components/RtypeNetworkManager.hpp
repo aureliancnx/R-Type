@@ -25,26 +25,21 @@ namespace RType {
 
         void onServerClientDisconnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) override;
 
-        void sendKeepAlive(KapMirror::NetworkIdentity* identity);
-
       private:
         void registerClientHandlers();
 
         void onPlayerAuthorityMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                       PlayerAuthorityMessage& message);
 
-        void onServerSendKeepAlive(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
-                                   PlayerKeepAliveMessage& message);
-
         void onErrorOnStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                        ErrorOnStartGameMessage& message);
 
         void registerServerHandlers();
 
-        void onClientSendKeepAlive(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
-                                   PlayerKeepAliveMessage& message);
-
         void onPlayerInputMessage(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, PlayerInputMessage& message);
+
+        void onPlayerPrepareShootMessage(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
+                                         PlayerPrepareShootMessage& message);
 
         void onPlayerShootMessage(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, PlayerShootMessage& message);
 

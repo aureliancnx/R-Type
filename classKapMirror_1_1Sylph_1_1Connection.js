@@ -17,7 +17,7 @@ var classKapMirror_1_1Sylph_1_1Connection =
     [ "getConnectionId", "classKapMirror_1_1Sylph_1_1Connection.html#adbc33731cb9e042e811d24b4bc311162", null ],
     [ "rawInput", "classKapMirror_1_1Sylph_1_1Connection.html#a969921e54fba3f3537f1f4d552e699ae", null ],
     [ "rawSend", "classKapMirror_1_1Sylph_1_1Connection.html#a93581396fdf120dabb52b216ee1fc169", null ],
-    [ "send", "classKapMirror_1_1Sylph_1_1Connection.html#a713c0971dcfbff22f00671bec3bf7a46", null ],
+    [ "send", "classKapMirror_1_1Sylph_1_1Connection.html#a7968eba3bc9ed254893cfb46fac5382b", null ],
     [ "sendHandshake", "classKapMirror_1_1Sylph_1_1Connection.html#af5120ebb88e3baa038de9c69cd798e6a", null ],
     [ "tick", "classKapMirror_1_1Sylph_1_1Connection.html#a50ae6994e631b7b0711d919ca46f317b", null ],
     [ "address", "classKapMirror_1_1Sylph_1_1Connection.html#a728a2fdab72dfce9ca06ebad83a7c537", null ],
@@ -25,7 +25,7 @@ var classKapMirror_1_1Sylph_1_1Connection =
     [ "lastPingTime", "classKapMirror_1_1Sylph_1_1Connection.html#a112513c76dd4c0c83eb4fe9626e61572", null ],
     [ "lastReceiveTime", "classKapMirror_1_1Sylph_1_1Connection.html#af1da3b0fc543e7c0c83bb19514756089", null ],
     [ "onAuthenticated", "classKapMirror_1_1Sylph_1_1Connection.html#a12a4a34eaf225d7cfc0afa887a271f82", null ],
-    [ "onData", "classKapMirror_1_1Sylph_1_1Connection.html#a006eb86d69fde15cbcf119881f360515", null ],
+    [ "onData", "classKapMirror_1_1Sylph_1_1Connection.html#ae2ab356270318afd646aaf3412ef67b6", null ],
     [ "onDisconnected", "classKapMirror_1_1Sylph_1_1Connection.html#abf34ac340241a8289b959e9e45b9b59b", null ],
     [ "state", "classKapMirror_1_1Sylph_1_1Connection.html#a49d3e5c96e23266b74d2abcdddd0c8ce", null ],
     [ "timeout", "classKapMirror_1_1Sylph_1_1Connection.html#a20f0aa0519e7a6a65055ab12cd98ab78", null ]

@@ -119,9 +119,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>getConnectionId</b> ()
 <tr class="memitem:ae7ab346dba186ca12bba17eb6f0fbaab inherit pub_methods_classKapMirror_1_1Sylph_1_1Connection"><td class="memItemLeft" align="right" valign="top"><a id="ae7ab346dba186ca12bba17eb6f0fbaab"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnect</b> ()</td></tr>
 <tr class="separator:ae7ab346dba186ca12bba17eb6f0fbaab inherit pub_methods_classKapMirror_1_1Sylph_1_1Connection"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a713c0971dcfbff22f00671bec3bf7a46 inherit pub_methods_classKapMirror_1_1Sylph_1_1Connection"><td class="memItemLeft" align="right" valign="top"><a id="a713c0971dcfbff22f00671bec3bf7a46"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>send</b> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; message)</td></tr>
-<tr class="separator:a713c0971dcfbff22f00671bec3bf7a46 inherit pub_methods_classKapMirror_1_1Sylph_1_1Connection"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7968eba3bc9ed254893cfb46fac5382b inherit pub_methods_classKapMirror_1_1Sylph_1_1Connection"><td class="memItemLeft" align="right" valign="top"><a id="a7968eba3bc9ed254893cfb46fac5382b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>send</b> (const std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; &amp;message)</td></tr>
+<tr class="separator:a7968eba3bc9ed254893cfb46fac5382b inherit pub_methods_classKapMirror_1_1Sylph_1_1Connection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5120ebb88e3baa038de9c69cd798e6a inherit pub_methods_classKapMirror_1_1Sylph_1_1Connection"><td class="memItemLeft" align="right" valign="top"><a id="af5120ebb88e3baa038de9c69cd798e6a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>sendHandshake</b> ()</td></tr>
 <tr class="separator:af5120ebb88e3baa038de9c69cd798e6a inherit pub_methods_classKapMirror_1_1Sylph_1_1Connection"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,9 +144,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a12a4a34eaf225d7cfc0afa887a271f82 inherit pub_attribs_classKapMirror_1_1Sylph_1_1Connection"><td class="memItemLeft" align="right" valign="top"><a id="a12a4a34eaf225d7cfc0afa887a271f82"></a>
 std::function&lt; void(<a class="el" href="classKapMirror_1_1Sylph_1_1Connection.html">Connection</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>onAuthenticated</b> = nullptr</td></tr>
 <tr class="separator:a12a4a34eaf225d7cfc0afa887a271f82 inherit pub_attribs_classKapMirror_1_1Sylph_1_1Connection"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a006eb86d69fde15cbcf119881f360515 inherit pub_attribs_classKapMirror_1_1Sylph_1_1Connection"><td class="memItemLeft" align="right" valign="top"><a id="a006eb86d69fde15cbcf119881f360515"></a>
-std::function&lt; void(<a class="el" href="classKapMirror_1_1Sylph_1_1Connection.html">Connection</a> &amp;, std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>onData</b> = nullptr</td></tr>
-<tr class="separator:a006eb86d69fde15cbcf119881f360515 inherit pub_attribs_classKapMirror_1_1Sylph_1_1Connection"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2ab356270318afd646aaf3412ef67b6 inherit pub_attribs_classKapMirror_1_1Sylph_1_1Connection"><td class="memItemLeft" align="right" valign="top"><a id="ae2ab356270318afd646aaf3412ef67b6"></a>
+std::function&lt; void(<a class="el" href="classKapMirror_1_1Sylph_1_1Connection.html">Connection</a> &amp;, const std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>onData</b> = nullptr</td></tr>
+<tr class="separator:ae2ab356270318afd646aaf3412ef67b6 inherit pub_attribs_classKapMirror_1_1Sylph_1_1Connection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf34ac340241a8289b959e9e45b9b59b inherit pub_attribs_classKapMirror_1_1Sylph_1_1Connection"><td class="memItemLeft" align="right" valign="top"><a id="abf34ac340241a8289b959e9e45b9b59b"></a>
 std::function&lt; void(<a class="el" href="classKapMirror_1_1Sylph_1_1Connection.html">Connection</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>onDisconnected</b> = nullptr</td></tr>
 <tr class="separator:abf34ac340241a8289b959e9e45b9b59b inherit pub_attribs_classKapMirror_1_1Sylph_1_1Connection"><td class="memSeparator" colspan="2">&#160;</td></tr>

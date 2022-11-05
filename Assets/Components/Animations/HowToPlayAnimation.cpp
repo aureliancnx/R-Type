@@ -17,7 +17,7 @@ namespace RType {
         init(gameObject);
         // _allGameObject.insert(std::make_pair<std::string, std::shared_ptr<KapEngine::GameObject>>("Ship", ));
         // _allGameObject.insert(std::make_pair<std::string, std::shared_ptr<KapEngine::GameObject>>("Bullet", ));
-        // _allGameObject.insert(std::make_pair<std::string, std::shared_ptr<KapEngine::GameObject>>("bubulle", gameObject));
+        _allGameObject.insert(std::make_pair("bubulle", gameObject));
         // _allGameObject.insert(std::make_pair<std::string, std::shared_ptr<KapEngine::GameObject>>("Explosion",));
         // _nbAnimation.insert(std::make_pair<std::string, int>("Ship", 5));
         // _nbAnimation.insert(std::make_pair<std::string, int>("Bullet", 2));
@@ -33,10 +33,7 @@ namespace RType {
     void HowToPlayAnimation::init(std::shared_ptr<GameObject> gameObject) { addRequireComponent("Image"); }
 
     void HowToPlayAnimation::onFixedUpdate() {
-        // // KAP_DEBUG_WARNING("WHUT");
-        // auto& transform = _allGameObject.at("bubulle")->getTransform();
-        // auto& transform = _gameObject->getTransform().getTransform();
-        auto& transform = _gameObject->getComponent<UI::Image>().getTransform();
+        auto& transform = getImage("bubulle").getTransform();
 
         if (_invert) {
             transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0, -5.0f, 0));
@@ -64,10 +61,7 @@ namespace RType {
 
     UI::Image& HowToPlayAnimation::getImage(std::string name) {
         try {
-            // return getGameObject().getComponent<UI::Image>();
-            // return _gameObject->getComponent<UI::Image>();
             return _allGameObject.at(name)->getComponent<UI::Image>();
-            // return _gameObject->getComponent<UI::Image>(name);
         } catch (...) { Debug::error("Failed to get image of button " + getGameObject().getName()); }
         throw Errors::ComponentError("Failed to get image of button");
     }

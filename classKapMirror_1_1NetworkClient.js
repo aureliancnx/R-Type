@@ -9,7 +9,7 @@ var classKapMirror_1_1NetworkClient =
     [ "isConnected", "classKapMirror_1_1NetworkClient.html#a7aa27772804ed395912518f35c376625", null ],
     [ "isConnecting", "classKapMirror_1_1NetworkClient.html#a1f06a56d4eb8ee35491d0193bdc18989", null ],
     [ "networkEarlyUpdate", "classKapMirror_1_1NetworkClient.html#abb4e2921caa4f3ffbe8b09f20142f244", null ],
-    [ "registerHandler", "classKapMirror_1_1NetworkClient.html#a96b979578e9d13f98d8818e174c26140", null ],
+    [ "registerHandler", "classKapMirror_1_1NetworkClient.html#a8b13c61fa930a61f1e70948c273e1727", null ],
     [ "send", "classKapMirror_1_1NetworkClient.html#abc697588652ad787ff7aab06793073c6", null ],
     [ "unregisterHandler", "classKapMirror_1_1NetworkClient.html#a8f11a3df5ad53e8a2129bf3c4223b49b", null ],
     [ "updateObject", "classKapMirror_1_1NetworkClient.html#a0c00f5669ad9602b32916be53bf228a0", null ],

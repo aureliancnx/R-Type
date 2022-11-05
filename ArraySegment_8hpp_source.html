@@ -103,21 +103,21 @@ $(document).ready(function(){initNavTree('ArraySegment_8hpp_source.html',''); in
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;      <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>() {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            array  = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            array = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            offset = 0;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            size   = 0;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            size = 0;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        }</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>(T* _array, <span class="keywordtype">int</span> _size) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            array  = <a class="code" href="classKapMirror_1_1Array.html#af96ade23db25e4bdf8eaf1d0a60bfb03">Array::copyArray</a>(_array, _size);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            array = <a class="code" href="classKapMirror_1_1Array.html#af96ade23db25e4bdf8eaf1d0a60bfb03">Array::copyArray</a>(_array, _size);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            offset = 0;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            size   = _size;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            size = _size;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        }</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>(T* _array, <span class="keywordtype">int</span> _offset, <span class="keywordtype">int</span> _size) {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            array  = <a class="code" href="classKapMirror_1_1Array.html#af96ade23db25e4bdf8eaf1d0a60bfb03">Array::copyArray</a>(_array, _size);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            array = <a class="code" href="classKapMirror_1_1Array.html#af96ade23db25e4bdf8eaf1d0a60bfb03">Array::copyArray</a>(_array, _size);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            offset = _offset;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            size   = _size;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            size = _size;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        ~<a class="code" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>() { <span class="keyword">delete</span>[] array; }</div>
@@ -149,9 +149,9 @@ $(document).ready(function(){initNavTree('ArraySegment_8hpp_source.html',''); in
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordtype">bool</span> operator!=(ArraySegment&lt;T&gt; <span class="keyword">const</span>&amp; other) { <span class="keywordflow">return</span> *<span class="keyword">this</span> != other; }</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        ArraySegment&lt;T&gt;&amp; operator=(ArraySegment&lt;T&gt; <span class="keyword">const</span>&amp; other) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            array  = <a class="code" href="classKapMirror_1_1Array.html#af96ade23db25e4bdf8eaf1d0a60bfb03">Array::copyArray</a>(other.array, other.size);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            array = <a class="code" href="classKapMirror_1_1Array.html#af96ade23db25e4bdf8eaf1d0a60bfb03">Array::copyArray</a>(other.array, other.size);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            offset = other.offset;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            size   = other.size;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            size = other.size;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        }</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>

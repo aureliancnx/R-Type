@@ -20,29 +20,13 @@ void RtypeNetworkManager::onStart() {
 
 #pragma region Client
 
-void RtypeNetworkManager::sendKeepAlive(KapMirror::NetworkIdentity* identity) {
-    PlayerKeepAliveMessage keepAlive;
-    keepAlive.timestamp = KapMirror::NetworkTime::localTime();
-
-    std::vector<long long> playerKeepAlives;
-
-    keepAlives.tryGetValue(identity->getNetworkId(), playerKeepAlives);
-    playerKeepAlives.push_back(keepAlive.timestamp);
-    keepAlives[identity->getNetworkId()] = playerKeepAlives;
-    getServer()->sendToClient(keepAlive, identity->getNetworkId());
-}
-
 void RtypeNetworkManager::registerClientHandlers() {
     getClient()->registerHandler<PlayerAuthorityMessage>(
-        [this](std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerAuthorityMessage& message) {
+        [this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, PlayerAuthorityMessage& message) {
             onPlayerAuthorityMessage(connection, message);
         });
-    getClient()->registerHandler<PlayerKeepAliveMessage>(
-        [this](std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, PlayerKeepAliveMessage& message) {
-            onServerSendKeepAlive(connection, message);
-        });
     getClient()->registerHandler<ErrorOnStartGameMessage>(
-        [this](std::shared_ptr<KapMirror::NetworkConnectionToServer> connection, ErrorOnStartGameMessage& message) {
+        [this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, ErrorOnStartGameMessage& message) {
             onErrorOnStartGameMessage(connection, message);
         });
 }
@@ -56,13 +40,6 @@ void RtypeNetworkManager::onPlayerAuthorityMessage(const std::shared_ptr<KapMirr
     }
 }
 
-void RtypeNetworkManager::onServerSendKeepAlive(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
-                                                PlayerKeepAliveMessage& message) {
-    PlayerKeepAliveMessage reply;
-    reply.timestamp = message.timestamp;
-    getClient()->send(message);
-}
-
 void RtypeNetworkManager::onErrorOnStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                                     ErrorOnStartGameMessage& message) {
     KAP_DEBUG_ERROR("Error on start game: " + message.errorMessage);
@@ -74,15 +51,15 @@ void RtypeNetworkManager::onErrorOnStartGameMessage(const std::shared_ptr<KapMir
 #pragma region Server
 
 void RtypeNetworkManager::registerServerHandlers() {
-    getServer()->registerHandler<PlayerInputMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToClient> connection,
+    getServer()->registerHandler<PlayerInputMessage>([this](const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
                                                             PlayerInputMessage& message) { onPlayerInputMessage(connection, message); });
-    getServer()->registerHandler<PlayerShootMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToClient> connection,
-                                                            PlayerShootMessage& message) { onPlayerShootMessage(connection, message); });
-    getServer()->registerHandler<PlayerKeepAliveMessage>(
-        [this](std::shared_ptr<KapMirror::NetworkConnectionToClient> connection, PlayerKeepAliveMessage& message) {
-            onClientSendKeepAlive(connection, message);
+    getServer()->registerHandler<PlayerPrepareShootMessage>(
+        [this](const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, PlayerPrepareShootMessage& message) {
+            onPlayerPrepareShootMessage(connection, message);
         });
-    getServer()->registerHandler<StartGameMessage>([this](std::shared_ptr<KapMirror::NetworkConnectionToClient> connection,
+    getServer()->registerHandler<PlayerShootMessage>([this](const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
+                                                            PlayerShootMessage& message) { onPlayerShootMessage(connection, message); });
+    getServer()->registerHandler<StartGameMessage>([this](const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
                                                           StartGameMessage& message) { onStartGameMessage(connection, message); });
 }
 
@@ -92,12 +69,12 @@ void RtypeNetworkManager::onServerClientConnected(const std::shared_ptr<KapMirro
     std::shared_ptr<KapEngine::GameObject> player;
     getServer()->spawnObject(
         "Player", {0, 0, 0},
-        [this](std::shared_ptr<KapEngine::GameObject> go) {
+        [](const std::shared_ptr<KapEngine::GameObject>& go) {
             auto& networkIdentity = go->getComponent<KapMirror::NetworkIdentity>();
             auto& playerSkin = go->getComponent<PlayerSkin>();
 
             // Set Default Skin (Send later the player skin)
-            playerSkin.setSkinId(1);
+            playerSkin.setSkinId(2);
         },
         player);
 
@@ -120,32 +97,21 @@ void RtypeNetworkManager::onServerClientDisconnected(const std::shared_ptr<KapMi
     }
 }
 
-void RtypeNetworkManager::onClientSendKeepAlive(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
-                                                PlayerKeepAliveMessage& message) {
-    std::vector<long long> playerKeepAlives;
-    if (keepAlives.tryGetValue(connection->getConnectionId(), playerKeepAlives)) {
-        if (std::find(playerKeepAlives.begin(), playerKeepAlives.end(), message.timestamp) != playerKeepAlives.end()) {
-            long long ping = KapMirror::NetworkTime::localTime() - message.timestamp;
-
-            KAP_DEBUG_LOG("Player[" + std::to_string(connection->getConnectionId()) + "] -> ping: " + std::to_string(ping));
-            playerKeepAlives.erase(std::remove(playerKeepAlives.begin(), playerKeepAlives.end(), message.timestamp),
-                                   playerKeepAlives.end());
-        } else {
-            KAP_DEBUG_LOG("Player[" + std::to_string(connection->getConnectionId()) + "] -> bad keepAlive packet: unknown timestamp '" +
-                          std::to_string(message.timestamp) + "'");
-        }
-    } else {
-        KAP_DEBUG_LOG("Player[" + std::to_string(connection->getConnectionId()) + "] -> received keepAlive timestamp " +
-                      std::to_string(message.timestamp) + " without a list");
-    }
-}
-
 void RtypeNetworkManager::onPlayerInputMessage(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
                                                PlayerInputMessage& message) {
     std::shared_ptr<KapEngine::GameObject> player;
     if (players.tryGetValue(connection->getConnectionId(), player)) {
         auto& controllerComponent = player->getComponent<RType::PlayerController>();
         controllerComponent.movePlayer(KapEngine::Tools::Vector2(message.x, message.y));
+    }
+}
+
+void RtypeNetworkManager::onPlayerPrepareShootMessage(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
+                                                      PlayerPrepareShootMessage& message) {
+    std::shared_ptr<KapEngine::GameObject> player;
+    if (players.tryGetValue(connection->getConnectionId(), player)) {
+        auto& controllerComponent = player->getComponent<RType::PlayerController>();
+        controllerComponent.prepareShoot();
     }
 }
 

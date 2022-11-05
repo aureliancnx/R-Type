@@ -18,11 +18,9 @@ namespace RType {
         bool isMoving = false;
 
         long long lastRefreshTime = 0;
-        long long lastKeepAliveTime = 0;
 
         std::shared_ptr<GameMenuManager> menuManager;
         KapEngine::Time::EClock clockMissile;
-        bool shootMissile = false;
 
         KapEngine::Events::Key::EKey upKey = KapEngine::Events::Key::UP;
         KapEngine::Events::Key::EKey downKey = KapEngine::Events::Key::DOWN;
@@ -64,11 +62,13 @@ namespace RType {
         void deserialize(KapMirror::NetworkReader& reader) override;
 
       private:
-        void sendInput(KapEngine::Tools::Vector2 input);
-
-        void sendKeepAlive();
+        void sendInput(const KapEngine::Tools::Vector2& input);
 
         void playShootSound();
+
+        void spawnBullet(const KapEngine::Tools::Vector3& pos);
+
+        void spawnMissile(const KapEngine::Tools::Vector3& pos);
 
         void initSettings();
     };

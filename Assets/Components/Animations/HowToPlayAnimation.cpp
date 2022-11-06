@@ -13,8 +13,6 @@ namespace RType {
 
     HowToPlayAnimation::HowToPlayAnimation(std::string name, std::shared_ptr<KapEngine::GameObject> gameObject) : Animation(gameObject) {
         init(gameObject);
-        addSpriteAnimation(name, gameObject);
-        setRect(name, gameObject->getComponent<UI::Image>().getRectangle());
         // _nbAnimation.insert(std::make_pair<std::string, int>("Ship", 5));
         // _nbAnimation.insert(std::make_pair<std::string, int>("Bullet", 2));
         // _nbAnimation.insert(std::make_pair<std::string, int>("bouboule", 12));
@@ -96,18 +94,47 @@ namespace RType {
         }
     }
 
+    void HowToPlayAnimation::moveBullet() {
+        auto& transform = getImage("Bullet").getTransform();
+
+        transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(5.0f, 0, 0));
+
+        if (transform.getWorldPosition().getX() < 500) {
+            _allGameObject.at("Bullet")->getComponent<KapEngine::Animator>().setTrigger("BigBulletToLittleBullet");
+            _allGameObject.at("Bullet")->getComponent<KapEngine::Animator>().setTrigger("LittleBulletToLittleBullet");
+        } else {
+            _allGameObject.at("Bullet")->getComponent<KapEngine::Animator>().setTrigger("LittleBulletToBigBullet");
+            _allGameObject.at("Bullet")->getComponent<KapEngine::Animator>().setTrigger("BigBulletToBigBullet");
+        }
+
+        if (transform.getWorldPosition().getX() > 600) {
+            _bulletReset = true;
+        }
+    }
+
     void HowToPlayAnimation::onFixedUpdate() {
+        // KAP_DEBUG_WARNING("X : " + std::to_string(getImage("Bullet").getTransform().getWorldPosition().getX()) + " Y : " + std::to_string(getImage("Bullet").getTransform().getWorldPosition().getY()));
         moveBouboule();
         moveBouboule2();
         moveShip();
+        //ajouter un temps avant d'afficher le bullet
+        if (!_bulletReset) {
+            moveBullet();
+        } else {
+            onResetAnim();
+        }
     }
 
     void HowToPlayAnimation::onResetAnim() {
-        getImage("Ship").setRectangle(getRect("Ship"));
-        // getImage("bullet").setRectangle({0, 0, 0, 0});
-        getImage("Bouboule").setRectangle(getRect("Bouboule"));
-        getImage("Bouboule2").setRectangle(getRect("Bouboule2"));
+        // getImage("Ship").setRectangle(getRect("Ship"));
+        // getImage("Bullet").setRectangle(getRect("Bullet"));
+        // getImage("Bouboule").setRectangle(getRect("Bouboule"));
+        // getImage("Bouboule2").setRectangle(getRect("Bouboule2"));
         // getImage("explosion").setRectangle({0, 0, 0, 0});
+
+        auto& transform = getImage("Bullet").getTransform();
+        transform.setPosition(getResetPosition("Bullet"));
+        _bulletReset = false;
     }
 
     void HowToPlayAnimation::setNbAnimations(std::string name, int nb) { _allGameObject.at(name)->getComponent<SpriteAnimation>().setNbAnimations(nb); }
@@ -119,6 +146,20 @@ namespace RType {
             _rect.insert(std::make_pair(name, rect));
         else
             _rect.at(name) = rect; 
+    }
+
+    void HowToPlayAnimation::setResetPosition(std::string name, KapEngine::Tools::Vector3 position) {
+        if (_allGoResetPosition.find(name) == _allGoResetPosition.end())
+            _allGoResetPosition.insert(std::make_pair(name, position));
+        else
+            _allGoResetPosition.at(name) = position; 
+    }
+    
+    KapEngine::Tools::Vector3 HowToPlayAnimation::getResetPosition(std::string name) {
+        try {
+            return (_allGoResetPosition.at(name)); 
+        } catch (...) { Debug::error("Failed to get position of  " + _allGameObject.at(name)->getName()); }
+        throw Errors::ComponentError("Failed to get position of ");
     }
 
     KapEngine::Tools::Rectangle HowToPlayAnimation::getRect(std::string name) {

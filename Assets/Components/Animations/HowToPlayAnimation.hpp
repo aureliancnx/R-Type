@@ -27,7 +27,6 @@ namespace RType {
         void setRect(std::string name, KapEngine::Tools::Rectangle rect);
         KapEngine::Tools::Rectangle getRect(std::string name);
         void addSpriteAnimation(std::string name, std::shared_ptr<KapEngine::GameObject> gameObject);
-        
 
       private:
         // Variables

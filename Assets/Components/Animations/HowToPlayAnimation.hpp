@@ -34,14 +34,16 @@ namespace RType {
         std::unordered_map<std::string, KapEngine::Tools::Rectangle> _rect;
         std::unordered_map<std::string, std::shared_ptr<KapEngine::GameObject>> _allGameObject;
         float _speed = 0.1f;
-        bool _bubulleInvert = false;
+        bool _boubouleInvert = false;
+        bool _bouboule2Invert = false;
         bool _shipInvert = false;
         // Functions
         void init(std::shared_ptr<KapEngine::GameObject> gameObject);
         KapEngine::UI::Image& getImage(std::string name);
         SpriteAnimation& getSpriteAnimation(std::string name);
 
-        void moveEnemy(std::string name);
+        void moveBouboule();
+        void moveBouboule2();
         void moveShip();
     };
 } // namespace RType

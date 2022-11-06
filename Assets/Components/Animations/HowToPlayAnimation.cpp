@@ -30,7 +30,6 @@ namespace RType {
         auto pos_X  = transform.getWorldPosition().getX();
 
         if (_bouboule2Invert) {
-            // KAP_DEBUG_WARNING("X : " + std::to_string(pos_X) + " Y : " + std::to_string(pos_Y));
             if (pos_X >= 490 && pos_Y > 200) {
                 transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(5.0f, -5.0f, 0));
             } else {
@@ -88,8 +87,12 @@ namespace RType {
 
         if (transform.getWorldPosition().getY() > 300) {
             _shipInvert = true;
+            _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("DownToIdle");
+            _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("IdleToUp");
         } else if (transform.getWorldPosition().getY() < 70) {
             _shipInvert = false;
+            _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("UpToIdle");
+            _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("IdleToDown");
         }
     }
 

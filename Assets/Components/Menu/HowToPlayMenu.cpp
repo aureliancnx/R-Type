@@ -131,19 +131,43 @@ void RType::HowToPlayMenu::init() {
         } catch (...) { KAP_DEBUG_ERROR("Failed to set bouboule2 img"); }
 
         try {
-            auto shipAnimation = std::make_shared<SpriteAnimation>(ship);
-            KapEngine::Time::ETime timer;
-            timer.setSeconds(.8);
-            ship->addComponent(shipAnimation);
-            shipAnimation->setTiming(timer);
-            shipAnimation->loop(true);
-            shipAnimation->setRect({0, 0, 263, 116});
-            shipAnimation->setNbAnimations(6);
-
             auto animator = std::make_shared<KapEngine::Animator>(ship);
             ship->addComponent(animator);
-            animator->addAnim(shipAnimation, "idle");
-            animator->addLink("idle", "idle");
+
+            auto shipIdle = std::make_shared<SpriteAnimation>(ship);
+            ship->addComponent(shipIdle);
+
+            KapEngine::Time::ETime duration;
+            duration.setSeconds(.1f);
+            shipIdle->setTiming(duration);
+            shipIdle->setRect({263 * 2, 0, 263, 116});
+            shipIdle->setNbAnimations(1);
+
+            auto shipUp = std::make_shared<SpriteAnimation>(ship);
+            ship->addComponent(shipUp);
+
+            shipUp->setTiming(duration);
+            shipUp->setRect({263 * 4, 0, 263, 116});
+            shipUp->setNbAnimations(1);
+
+            auto shipDown = std::make_shared<SpriteAnimation>(ship);
+            ship->addComponent(shipDown);
+
+            shipDown->setTiming(duration);
+            shipDown->setRect({263 * 0, 0, 263, 116});
+            shipDown->setNbAnimations(1);
+
+            animator->addAnim(shipIdle, "Idle");
+            animator->addAnim(shipUp, "Up");
+            animator->addAnim(shipDown, "Down");
+
+            animator->addLink("Idle", "Idle", "IdleToIdle");
+
+            animator->addLink("Idle", "Up", "IdleToUp");
+            animator->addLink("Up", "Idle", "UpToIdle");
+
+            animator->addLink("Idle", "Down", "IdleToDown");
+            animator->addLink("Down", "Idle", "DownToIdle");
         } catch (...) { KAP_DEBUG_ERROR("Failed to set shipAnimation img"); }
 
         try {
@@ -197,8 +221,8 @@ void RType::HowToPlayMenu::init() {
         auto fightAnim = std::make_shared<HowToPlayAnimation>("Bouboule", bouboule);
         fightAnim->addSpriteAnimation("Bouboule2", bouboule2);
         fightAnim->setRect("Bouboule2", {0, 0, 17, 18});
-        fightAnim->addSpriteAnimation("ship", ship);
-        fightAnim->setRect("ship", {0, 0, 263, 116});
+        fightAnim->addSpriteAnimation("Ship", ship);
+        fightAnim->setRect("Ship", {0, 0, 263, 116});
         // fightAnim->addSpriteAnimation("bullet", bullet);
         // fightAnim->addSpriteAnimation("explosion", explosion);
         fight->addComponent(fightAnim);

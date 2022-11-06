@@ -24,19 +24,27 @@ namespace RType {
 
     void HowToPlayAnimation::init(std::shared_ptr<GameObject> gameObject) { addRequireComponent("Image"); }
 
-    void HowToPlayAnimation::moveEnemy()
+    void HowToPlayAnimation::moveEnemy(std::string name)
     {
-        auto& transform = getImage("bubulle").getTransform();
+        auto& transform = getImage(name).getTransform();
+        auto pos_Y = transform.getWorldPosition().getY();
+        auto pos_X  = transform.getWorldPosition().getX();
 
         if (_bubulleInvert) {
-            transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0, -5.0f, 0));
+            if (pos_X > 500 && pos_Y > 200)
+                transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(-5.0f, -5.0f, 0));
+            else
+                transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(5.0f, -5.0f, 0));
         } else {
-            transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0, 5.0f, 0));
+            if (pos_X > 500 && pos_Y < 200)
+                transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(-5.0f, 5.0f, 0));
+            else
+                transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(5.0f, 5.0f, 0));                
         }
 
-        if (transform.getWorldPosition().getY() > 350) {
+        if (pos_Y > 350) {
             _bubulleInvert = true;
-        } else if (transform.getWorldPosition().getY() < 50) {
+        } else if (pos_Y < 50) {
             _bubulleInvert = false;
         }
     }
@@ -59,7 +67,8 @@ namespace RType {
     }
 
     void HowToPlayAnimation::onFixedUpdate() {
-        moveEnemy();
+        moveEnemy("bubulle");
+        // moveEnemy("bubulle_2");
         moveShip();
     }
 

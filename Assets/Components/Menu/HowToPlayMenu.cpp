@@ -113,12 +113,12 @@ void RType::HowToPlayMenu::init() {
             imageComp.setRectangle({0, 0, 17, 18});
 
             auto& transform = bubulle->getComponent<KapEngine::Transform>();
-            transform.setPosition(KapEngine::Tools::Vector3(600, 200, 0));
+            // transform.setPosition(KapEngine::Tools::Vector3(600, 200, 0));
+            transform.setPosition(KapEngine::Tools::Vector3(600, 50, 0));
             transform.setScale({40, 40});
             transform.setParent(fight);
         } catch (...) { KAP_DEBUG_ERROR("Failed to set bubulle img"); }
 
-        // fight animation
         try {
             auto shipAnimation = std::make_shared<SpriteAnimation>(ship);
             KapEngine::Time::ETime timer;
@@ -149,9 +149,6 @@ void RType::HowToPlayMenu::init() {
             bubulle->addComponent(animator);
             animator->addAnim(bubulleAnimation, "idle");
             animator->addLink("idle", "idle");
-
-            // auto bubulleAnim = std::make_shared<HowToPlayAnimation>("bubulle", bubulle);
-            // bubulle->addComponent(bubulleAnim);
         } catch (...) { KAP_DEBUG_ERROR("Failed to set bubulleAnimation img"); }
 
         try {

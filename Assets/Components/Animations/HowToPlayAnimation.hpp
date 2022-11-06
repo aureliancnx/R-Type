@@ -42,7 +42,7 @@ namespace RType {
         KapEngine::UI::Image& getImage(std::string name);
         SpriteAnimation& getSpriteAnimation(std::string name);
 
-        void moveEnemy();
+        void moveEnemy(std::string name);
         void moveShip();
     };
 } // namespace RType

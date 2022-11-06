@@ -24,6 +24,7 @@ namespace RType {
         void onFixedUpdate() override;
         void onResetAnim() override;
         void setNbAnimations(std::string name, int nb);
+        void setResetPosition(std::string name, KapEngine::Tools::Vector3 position);
         void setRect(std::string name, KapEngine::Tools::Rectangle rect);
         KapEngine::Tools::Rectangle getRect(std::string name);
         void addSpriteAnimation(std::string name, std::shared_ptr<KapEngine::GameObject> gameObject);
@@ -32,19 +33,23 @@ namespace RType {
         // Variables
         std::unordered_map<std::string, int> _nbAnimation;
         std::unordered_map<std::string, KapEngine::Tools::Rectangle> _rect;
+        std::unordered_map<std::string, KapEngine::Tools::Vector3> _allGoResetPosition;
         std::unordered_map<std::string, std::shared_ptr<KapEngine::GameObject>> _allGameObject;
         float _speed = 0.1f;
         bool _boubouleInvert = false;
         bool _bouboule2Invert = false;
         bool _shipInvert = false;
+        bool _bulletReset = false;
         // Functions
         void init(std::shared_ptr<KapEngine::GameObject> gameObject);
         KapEngine::UI::Image& getImage(std::string name);
         SpriteAnimation& getSpriteAnimation(std::string name);
+        KapEngine::Tools::Vector3 getResetPosition(std::string name);
 
         void moveBouboule();
         void moveBouboule2();
         void moveShip();
+        void moveBullet();
     };
 } // namespace RType
 

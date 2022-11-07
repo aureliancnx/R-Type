@@ -131,7 +131,6 @@ jobs:
         run: |
           zip -r release build/.
       - name: Upload Release Asset (.rpm)
-        id: upload-release-asset
         if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') }}
         uses: actions/upload-release-asset@v1
         env:
@@ -142,7 +141,6 @@ jobs:
           asset_name: ${{ matrix.config.zipname }}
           asset_content_type: application/zip
       - name: Upload Release Asset (.deb)
-        id: upload-release-asset
         if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') }}
         uses: actions/upload-release-asset@v1
         env:

@@ -80,6 +80,9 @@ jobs:
           choco install ninja cmake
           ninja --version
           cmake --version
+      - name: Install packager
+        if: startsWith(matrix.config.os, 'windows')
+        run: nuget install WiX
       - name: Install dependencies on ubuntu
         if: startsWith(matrix.config.name, 'Ubuntu Latest GCC')
         run: |
@@ -111,41 +114,25 @@ jobs:
       - name: Build
         shell: bash
         run: cmake --build build --config ${{ matrix.config.build_type }}
-      - name: Pack
-        shell: bash
+      - name: Create installer (Linux)
+        if: startsWith(matrix.config.name, 'Ubuntu Latest GCC')
         run: |
           cd build/
-          cpack -G
-          ls -lah
-          cd ..
-      - name: Prepare release files (Linux)
-        if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') || startsWith(matrix.config.name, 'macos') }}
-        run: |
-          mkdir build-release/
-          cp ./build/${{ matrix.config.build_executable }} build-release/
-          mkdir build-release/Assets
-          cp -R ./Assets/Textures build-release/Assets/Textures
-          cp -R ./Assets/Sound build-release/Assets/Sound
-      - name: Prepare release files (Windows)
+          cpack
+        shell: bash
+      - name: Create installer (Windows)
         if: startsWith(matrix.config.os, 'windows')
         run: |
-          mkdir build-release/
-          xcopy .\build\${{ matrix.config.build_executable }} .\build-release\ /s/h/e/k/f/c
-          mkdir build-release/Assets
-          xcopy .\Assets\Textures .\build-release\Assets\Textures /s/h/e/k/f/c
-          xcopy .\Assets\Sound .\build-release\Assets\Sound /s/h/e/k/f/c
+          cd build/
+          cpack -G WIX
       - name: Zip release (Linux or Mac)
         if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') || startsWith(matrix.config.name, 'macos') }}
         shell: bash
         run: |
-          zip -r release build-release/.
-      - name: Zip release (Windows)
-        if: startsWith(matrix.config.os, 'windows')
-        shell: bash
-        run: |
-          powershell Compress-Archive build-release release.zip
+          zip -r release build/.
       - name: Upload Release Asset
         id: upload-release-asset
+        if: startsWith(matrix.config.os, 'windows')
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

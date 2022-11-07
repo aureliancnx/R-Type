@@ -130,13 +130,25 @@ jobs:
         shell: bash
         run: |
           zip -r release build/.
-      - name: Upload Release Asset
+      - name: Upload Release Asset (.rpm)
         id: upload-release-asset
+        if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') }}
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: ./release.zip
+          asset_path: ./build/RType-1.0.1-Linux.rpm
+          asset_name: ${{ matrix.config.zipname }}
+          asset_content_type: application/zip
+      - name: Upload Release Asset (.deb)
+        id: upload-release-asset
+        if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') }}
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create_release.outputs.upload_url }}
+          asset_path: ./build/RType-1.0.1-Linux.deb
           asset_name: ${{ matrix.config.zipname }}
           asset_content_type: application/zip

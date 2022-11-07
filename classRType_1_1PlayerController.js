@@ -9,6 +9,7 @@ var classRType_1_1PlayerController =
     [ "onFixedUpdate", "classRType_1_1PlayerController.html#a3d625e4c36a3ecd21d0cc3bafe9f19ba", null ],
     [ "onStart", "classRType_1_1PlayerController.html#a594b47ff7a1d7dff46d7c4b26564aeb0", null ],
     [ "onStartClient", "classRType_1_1PlayerController.html#af09361440c87669874ce353493a207cd", null ],
+    [ "onTriggerEnter", "classRType_1_1PlayerController.html#a038b6d8b7c36e30bbd5f678b8f5d6610", null ],
     [ "onUpdate", "classRType_1_1PlayerController.html#a9b721024bacb50fdbe6a24d154db12d7", null ],
     [ "prepareShoot", "classRType_1_1PlayerController.html#a9855aa27d985b9cb1b535d865cfebe45", null ],
     [ "serialize", "classRType_1_1PlayerController.html#aa2afdf82c8e606fc7857e84b600fce17", null ],

@@ -142,6 +142,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>dead</b> () const</td
 <tr class="memitem:a4ab4d0ac4d413a9807cbaa4976819f09"><td class="memItemLeft" align="right" valign="top"><a id="a4ab4d0ac4d413a9807cbaa4976819f09"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>takeDamage</b> (int damage)</td></tr>
 <tr class="separator:a4ab4d0ac4d413a9807cbaa4976819f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a038b6d8b7c36e30bbd5f678b8f5d6610"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType_1_1PlayerController.html#a038b6d8b7c36e30bbd5f678b8f5d6610">onTriggerEnter</a> (std::shared_ptr&lt; <a class="el" href="classKapEngine_1_1GameObject.html">KapEngine::GameObject</a> &gt; other) override</td></tr>
+<tr class="memdesc:a038b6d8b7c36e30bbd5f678b8f5d6610"><td class="mdescLeft">&#160;</td><td class="mdescRight">something enter in object  <a href="classRType_1_1PlayerController.html#a038b6d8b7c36e30bbd5f678b8f5d6610">More...</a><br /></td></tr>
+<tr class="separator:a038b6d8b7c36e30bbd5f678b8f5d6610"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2afdf82c8e606fc7857e84b600fce17"><td class="memItemLeft" align="right" valign="top"><a id="aa2afdf82c8e606fc7857e84b600fce17"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType_1_1PlayerController.html#aa2afdf82c8e606fc7857e84b600fce17">serialize</a> (<a class="el" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a> &amp;writer) override</td></tr>
 <tr class="memdesc:aa2afdf82c8e606fc7857e84b600fce17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize all the data from this component into payload. <br /></td></tr>
@@ -216,9 +219,6 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#ace3517e90f834811b3db4f3e372eb734">onDisplay</a> () override</td></tr>
 <tr class="memdesc:ace3517e90f834811b3db4f3e372eb734 inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">use to display some things this function is call after all updates fucntion <br /></td></tr>
 <tr class="separator:ace3517e90f834811b3db4f3e372eb734 inherit pub_methods_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c2f3b1e54171db306e88d605c44e3ee inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#a3c2f3b1e54171db306e88d605c44e3ee">onTriggerEnter</a> (std::shared_ptr&lt; <a class="el" href="classKapEngine_1_1GameObject.html">GameObject</a> &gt; go) override</td></tr>
-<tr class="memdesc:a3c2f3b1e54171db306e88d605c44e3ee inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">something enter in object  <a href="classKapEngine_1_1Component.html#a3c2f3b1e54171db306e88d605c44e3ee">More...</a><br /></td></tr>
-<tr class="separator:a3c2f3b1e54171db306e88d605c44e3ee inherit pub_methods_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2281d91b4d138a69a57ba87651c50df7 inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#a2281d91b4d138a69a57ba87651c50df7">onTriggerStay</a> (std::shared_ptr&lt; <a class="el" href="classKapEngine_1_1GameObject.html">GameObject</a> &gt; go) override</td></tr>
 <tr class="memdesc:a2281d91b4d138a69a57ba87651c50df7 inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">something stay in object  <a href="classKapEngine_1_1Component.html#a2281d91b4d138a69a57ba87651c50df7">More...</a><br /></td></tr>
 <tr class="separator:a2281d91b4d138a69a57ba87651c50df7 inherit pub_methods_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -374,6 +374,36 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <p>will be called when the scene is loaded or when its <a class="el" href="classKapEngine_1_1GameObject.html">KapEngine::GameObject</a> is active after it is disabled </p>
 
 <p>Reimplemented from <a class="el" href="classKapEngine_1_1Component.html#ae7324857a80396521eae33fef7877d5f">KapEngine::Component</a>.</p>
+
+</div>
+</div>
+<a id="a038b6d8b7c36e30bbd5f678b8f5d6610"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a038b6d8b7c36e30bbd5f678b8f5d6610">&#9670;&nbsp;</a></span>onTriggerEnter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlayerController::onTriggerEnter </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classKapEngine_1_1GameObject.html">KapEngine::GameObject</a> &gt;&#160;</td>
+          <td class="paramname"><em>go</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>something enter in object </p>
+
+<p>Reimplemented from <a class="el" href="classKapEngine_1_1Component.html#a3c2f3b1e54171db306e88d605c44e3ee">KapEngine::Component</a>.</p>
 
 </div>
 </div>

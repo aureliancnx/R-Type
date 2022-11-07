@@ -14,12 +14,21 @@ namespace RType::Script {
 }
 
 namespace RType {
+    struct SpawnEnemy {
+        std::string name;
+        int spawnTime;
+        int startPositionY;
+        int startPositionX;
+        int enemyHp;
+    };
+
     class MapScript {
       private:
-        std::string name = "";
-        std::string author = "";
-        std::string description = "";
+        std::string name;
+        std::string author;
+        std::string description;
         std::vector<Script::Enemy*> newEnemies;
+        std::vector<SpawnEnemy> spawnEnemies;
 
       public:
         MapScript() = default;
@@ -33,13 +42,20 @@ namespace RType {
 
         std::string getDescription() const { return description; }
 
-        void __setMapName(const std::string& name);
-        void __setMapAuthor(const std::string& author);
-        void __setMapDescription(const std::string& description);
-        void __registerNewEnemy(Script::Enemy* enemy);
+        std::vector<SpawnEnemy> getSpawnedEnemies() const { return spawnEnemies; }
+
+        void _setMapName(const std::string& name);
+        void _setMapAuthor(const std::string& author);
+        void _setMapDescription(const std::string& description);
+        void _registerNewEnemy(Script::Enemy* enemy);
+        void _registerSpawnEnemy(const std::string& name, int spawnTime, int startPositionY, int startPositionX, int enemyHp);
 
       private:
         void executeScript(const std::string& script);
+
+        void verifScript();
+
+        void checkNewEnemy(Script::Enemy* enemy);
 
         void initScript(lua_State* L);
 

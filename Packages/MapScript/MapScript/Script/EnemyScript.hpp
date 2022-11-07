@@ -15,10 +15,10 @@ namespace RType {
 namespace RType::Script {
     class Enemy {
       public:
-        std::string name = "";
-        std::string pathSprite = "";
-        Rectangle* rectangle;
-        Vector2* scale;
+        std::string name;
+        std::string pathSprite;
+        Rectangle* rectangle{};
+        Vector2* scale{};
 
         Enemy() = default;
         ~Enemy() = default;

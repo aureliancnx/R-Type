@@ -36,7 +36,7 @@ jobs:
             build_type: "Debug",
             cc: "clang",
             cxx: "clang++",
-            generators: "Xcode"
+            generators: "Ninja"
           }
 
     steps:

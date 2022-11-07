@@ -4,12 +4,13 @@
 
 namespace RType::Script {
     class Math {
-        public:
-            Math() = default;
-            ~Math() = default;
+      public:
+        Math() = default;
+        ~Math() = default;
 
-            static void initScript(lua_State* L);
-          private:
-            static int __rand(lua_State* L);
+        static void initScript(lua_State* L);
+
+      private:
+        static int __rand(lua_State* L);
     };
-}
+} // namespace RType::Script

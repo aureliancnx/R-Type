@@ -12,11 +12,9 @@
 #include "KapEngineDebug.hpp"
 #include "KapEngineUi.hpp"
 
-namespace RType
-{
+namespace RType {
 
-    class ParalaxAnimation : public KapEngine::Animation
-    {
+    class ParalaxAnimation : public KapEngine::Animation {
       public:
         ParalaxAnimation(std::shared_ptr<KapEngine::GameObject> canvas);
         ParalaxAnimation(std::shared_ptr<KapEngine::GameObject> canvas, float speed, int width);

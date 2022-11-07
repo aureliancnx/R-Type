@@ -9,21 +9,19 @@
 #include "Animations/SpriteAnimation.hpp"
 // #include "Animations/HowToPlayAnimation.hpp"
 
-//using namespace KapEngine;
+// using namespace KapEngine;
 
-RType::HowToPlayMenu::HowToPlayMenu(KapEngine::SceneManagement::Scene &_scene) : Menu(_scene) {}
+RType::HowToPlayMenu::HowToPlayMenu(KapEngine::SceneManagement::Scene& _scene) : Menu(_scene) {}
 
 void RType::HowToPlayMenu::init() {
 
     // Change type of display for canvas
     {
         try {
-            auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
+            auto& can = canvas->getComponent<KapEngine::UI::Canvas>();
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
             can.setScreenCompare(KapEngine::Tools::Vector2(720, 480));
-        } catch (...) {
-            KAP_DEBUG_ERROR("Failed to resize canvas");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to resize canvas"); }
     }
 
     // Create background
@@ -44,7 +42,7 @@ void RType::HowToPlayMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonBack");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Back");
@@ -66,7 +64,7 @@ void RType::HowToPlayMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "How to play title");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "HOW TO PLAY");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -79,18 +77,16 @@ void RType::HowToPlayMenu::init() {
         auto fight = scene.createGameObject("Fight");
 
         try {
-            auto &tr = fight->getComponent<KapEngine::Transform>();
+            auto& tr = fight->getComponent<KapEngine::Transform>();
             tr.setParent(canvas);
-        } catch (...) {
-            KAP_DEBUG_ERROR("Failed to get Transform of parent");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to get Transform of parent"); }
 
         auto ship = KapEngine::UI::UiFactory::createImage(scene, "Ship");
         auto bullet = KapEngine::UI::UiFactory::createImage(scene, "Bullet");
         auto bubulle = KapEngine::UI::UiFactory::createImage(scene, "Bubulle");
 
         try {
-            auto &imageComp = ship->getComponent<KapEngine::UI::Image>();
+            auto& imageComp = ship->getComponent<KapEngine::UI::Image>();
             imageComp.setPathSprite("Assets/Textures/Ship/ship_1.png");
             imageComp.setRectangle({0, 0, 263, 116});
 
@@ -98,12 +94,10 @@ void RType::HowToPlayMenu::init() {
             transform.setPosition(KapEngine::Tools::Vector3(300, 200, 0));
             transform.setScale({79, 35, 0});
             transform.setParent(fight);
-        } catch (...) {
-            KAP_DEBUG_ERROR("Failed to set ship img");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to set ship img"); }
 
         try {
-            auto &imageComp = bullet->getComponent<KapEngine::UI::Image>();
+            auto& imageComp = bullet->getComponent<KapEngine::UI::Image>();
             imageComp.setPathSprite("Assets/Textures/Bullet/bullet_1.png");
             imageComp.setRectangle({0, 0, 19, 6});
 
@@ -111,12 +105,10 @@ void RType::HowToPlayMenu::init() {
             transform.setPosition(KapEngine::Tools::Vector3(400, 215, 0));
             transform.setScale({19, 6});
             transform.setParent(fight);
-        } catch (...) {
-            KAP_DEBUG_ERROR("Failed to set bullet img");
-        }
-        
+        } catch (...) { KAP_DEBUG_ERROR("Failed to set bullet img"); }
+
         try {
-            auto &imageComp = bubulle->getComponent<KapEngine::UI::Image>();
+            auto& imageComp = bubulle->getComponent<KapEngine::UI::Image>();
             imageComp.setPathSprite("Assets/Textures/bubulle.png");
             imageComp.setRectangle({0, 0, 17, 18});
 
@@ -124,9 +116,7 @@ void RType::HowToPlayMenu::init() {
             transform.setPosition(KapEngine::Tools::Vector3(600, 200, 0));
             transform.setScale({40, 40});
             transform.setParent(fight);
-        } catch (...) {
-            KAP_DEBUG_ERROR("Failed to set bubulle img");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to set bubulle img"); }
 
         // try {
         //     ship->getComponent<KapEngine::UI::Image>();
@@ -135,17 +125,17 @@ void RType::HowToPlayMenu::init() {
         //     KAP_DEBUG_ERROR("Failed to set bubulle img");
         // }
 
-        //fight animation
-        // auto shipAnimation = std::make_shared<SpriteAnimation>(ship, 5, (KapEngine::Tools::Rectangle){0, 0, 263, 116}, 1);
-        // auto bulletAnimation = std::make_shared<HowToPlayAnimation>(bullet);
-        // auto bubulleAnimation = std::make_shared<HowToPlayAnimation>(bubulle);
-        // auto explosionAnimation = std::make_shared<HowToPlayAnimation>(explosion);
-        // fight->addComponent(shipAnimation);
-        // fight->addComponent(bulletAnimation);
-        // fight->addComponent(bubulleAnimation);
-        // fight->addComponent(explosionAnimation);
+        // fight animation
+        //  auto shipAnimation = std::make_shared<SpriteAnimation>(ship, 5, (KapEngine::Tools::Rectangle){0, 0, 263, 116}, 1);
+        //  auto bulletAnimation = std::make_shared<HowToPlayAnimation>(bullet);
+        //  auto bubulleAnimation = std::make_shared<HowToPlayAnimation>(bubulle);
+        //  auto explosionAnimation = std::make_shared<HowToPlayAnimation>(explosion);
+        //  fight->addComponent(shipAnimation);
+        //  fight->addComponent(bulletAnimation);
+        //  fight->addComponent(bubulleAnimation);
+        //  fight->addComponent(explosionAnimation);
 
-        //fight animation
+        // fight animation
         {
             auto shipAnimation = std::make_shared<SpriteAnimation>(ship);
             KapEngine::Time::ETime timer;
@@ -199,7 +189,7 @@ void RType::HowToPlayMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Move Down");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Move Down");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -216,7 +206,7 @@ void RType::HowToPlayMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Move Left");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Move Left");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -233,7 +223,7 @@ void RType::HowToPlayMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Move Right");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Move Right");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -250,7 +240,7 @@ void RType::HowToPlayMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Shoot");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Shoot");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -263,7 +253,7 @@ void RType::HowToPlayMenu::init() {
     //     KapEngine::Events::Key::EKey upKey = static_cast<KapEngine::Events::Key::EKey>(value);
     // }
 
-        // //create Move Down keyboard img
+    // //create Move Down keyboard img
     // {
     //     auto img = KapEngine::UI::UiFactory::createImage(scene, "Move Down");
     //     auto imageComp = std::make_shared<KapEngine::UI::Image>(img);
@@ -276,7 +266,7 @@ void RType::HowToPlayMenu::init() {
     //     auto& transform = img->getComponent<KapEngine::Transform>();
     //     // x = longueur, y = largeur
     //     transform.setPosition(KapEngine::Tools::Vector3(90, 130, 0));
-    //     // x = longueur, y = largeur 
+    //     // x = longueur, y = largeur
     //     transform.setScale({50, 50, 0});
     //     transform.setParent(canvas);
     // }

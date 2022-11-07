@@ -7,14 +7,12 @@
 #include "Animations/SpriteAnimation.hpp"
 #include "RtypeNetworkManager.hpp"
 
-namespace RType
-{
-    class GameManager
-    {
-        static GameManager *instance;
+namespace RType {
+    class GameManager {
+        static GameManager* instance;
 
       private:
-        KapEngine::KEngine *engine;
+        KapEngine::KEngine* engine;
 
         MenuManager menuManager;
 
@@ -23,7 +21,7 @@ namespace RType
         bool displaySplashScreens = true;
 
       public:
-        GameManager(KapEngine::KEngine *_engine, bool splashScreens = true);
+        explicit GameManager(KapEngine::KEngine* _engine, bool splashScreens = true);
         ~GameManager() = default;
 
         void launchGame();
@@ -35,13 +33,13 @@ namespace RType
 
         void registerMenus();
 
-        void registerPrefabsPlayer();
-
         void initSplashScreens();
 
         void initSinglePlayer();
 
         void initMultiPlayer(bool isServer);
+
+        void initEndScene();
 
         void initAxis();
 
@@ -49,8 +47,8 @@ namespace RType
         void startLocalMultiPlayer();
         void startCampaign();
 
-        std::shared_ptr<RtypeNetworkManager> &getNetworkManager();
+        std::shared_ptr<RtypeNetworkManager>& getNetworkManager();
 
-        static GameManager *getInstance() { return instance; }
+        static GameManager* getInstance() { return instance; }
     };
 } // namespace RType

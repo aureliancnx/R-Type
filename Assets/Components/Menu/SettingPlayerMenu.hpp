@@ -7,12 +7,10 @@
 
 #include "Menu.hpp"
 
-namespace RType
-{
-    class SettingPlayerMenu : public Menu
-    {
+namespace RType {
+    class SettingPlayerMenu : public Menu {
       public:
-        explicit SettingPlayerMenu(KapEngine::SceneManagement::Scene &_scene);
+        explicit SettingPlayerMenu(KapEngine::SceneManagement::Scene& _scene);
         ~SettingPlayerMenu() = default;
 
         void init() override;

@@ -11,19 +11,16 @@
 
 #include "Volume/MenuVolume.hpp"
 
-
-RType::VolumeMenu::VolumeMenu(KapEngine::SceneManagement::Scene &_scene) : Menu(_scene) {}
+RType::VolumeMenu::VolumeMenu(KapEngine::SceneManagement::Scene& _scene) : Menu(_scene) {}
 
 void RType::VolumeMenu::init() {
     // Change type of display for canvas
     {
         try {
-            auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
+            auto& can = canvas->getComponent<KapEngine::UI::Canvas>();
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
             can.setScreenCompare(KapEngine::Tools::Vector2(720, 480));
-        } catch (...) {
-            KAP_DEBUG_ERROR("Failed to resize canvas");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to resize canvas"); }
     }
 
     // Create background
@@ -40,11 +37,11 @@ void RType::VolumeMenu::init() {
         transform.setParent(canvas);
     }
 
-    //Create text instruction Volume
+    // Create text instruction Volume
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change volume");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Change your volume value");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         compText->setPoliceSize(20);
 
@@ -54,11 +51,11 @@ void RType::VolumeMenu::init() {
         transform.setParent(canvas);
     }
 
-    //Create button back settings menu
+    // Create button back settings menu
     {
         auto btn = scene.createGameObject("ButtonBack");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Back");
@@ -76,12 +73,11 @@ void RType::VolumeMenu::init() {
         });
     }
 
-
     // Create text "volume :"
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Volume Text");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Volume : ");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale({150, 35, 0});
@@ -93,7 +89,7 @@ void RType::VolumeMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Volume Value Text");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale({150, 35, 0});
@@ -105,7 +101,7 @@ void RType::VolumeMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonVolumeUp");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
         auto compTypeVolume = std::make_shared<MenuVolume>(btn);
 
         btn->addComponent(compTypeVolume);
@@ -129,8 +125,10 @@ void RType::VolumeMenu::init() {
                 if (currentID > 100)
                     currentID = 100;
                 KapEngine::PlayerPrefs::setInt("volumeValue", currentID);
-                engine.getGraphicalLibManager()->getCurrentLib()->setMusicVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
-                engine.getGraphicalLibManager()->getCurrentLib()->setSoundVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
+                engine.getGraphicalLibManager()->getCurrentLib()->setMusicVolume(
+                    (float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
+                engine.getGraphicalLibManager()->getCurrentLib()->setSoundVolume(
+                    (float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
             } catch (...) {}
         });
     }
@@ -139,7 +137,7 @@ void RType::VolumeMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonVolumeDown");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
         auto compTypeVolume = std::make_shared<MenuVolume>(btn);
 
         btn->addComponent(compTypeVolume);
@@ -163,10 +161,11 @@ void RType::VolumeMenu::init() {
                 if (currentID < 0)
                     currentID = 0;
                 KapEngine::PlayerPrefs::setInt("volumeValue", currentID);
-                engine.getGraphicalLibManager()->getCurrentLib()->setMusicVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
-                engine.getGraphicalLibManager()->getCurrentLib()->setSoundVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
+                engine.getGraphicalLibManager()->getCurrentLib()->setMusicVolume(
+                    (float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
+                engine.getGraphicalLibManager()->getCurrentLib()->setSoundVolume(
+                    (float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
             } catch (...) {}
         });
-
     }
 }

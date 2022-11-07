@@ -15,20 +15,17 @@
 #include <fstream>
 #include <map>
 
-namespace RType
-{
-    namespace Parser
-    {
+namespace RType {
+    namespace Parser {
 
-        class Parser
-        {
+        class Parser {
           public:
-            Parser(const std::string &path = "Maps/");
+            Parser(const std::string& path = "Maps/");
             ~Parser();
 
             void run();
 
-            void setPath(const std::string &path);
+            void setPath(const std::string& path);
 
             bool hasError() const;
             std::vector<std::string> getFilesError() const;

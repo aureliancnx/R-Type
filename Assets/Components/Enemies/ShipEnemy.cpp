@@ -7,9 +7,7 @@ ShipEnemy::ShipEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject) : KapMi
     addRequireComponent("Image");
 }
 
-void ShipEnemy::setLife(int _life) {
-    life = _life;
-}
+void ShipEnemy::setLife(int _life) { life = _life; }
 
 void ShipEnemy::onFixedUpdate() {
     auto& transform = getTransform();
@@ -42,9 +40,10 @@ void ShipEnemy::shoot() {
         bullet->getComponent<Bullet>().setDirection(Bullet::Direction::LEFT);
     } else if (isServer()) {
         std::shared_ptr<KapEngine::GameObject> bullet;
-        getServer()->spawnObject("Bullet", pos, [this](std::shared_ptr<KapEngine::GameObject> go) {
-            go->getComponent<Bullet>().setDirection(Bullet::Direction::LEFT);
-        }, bullet);
+        getServer()->spawnObject(
+            "Bullet", pos,
+            [this](std::shared_ptr<KapEngine::GameObject> go) { go->getComponent<Bullet>().setDirection(Bullet::Direction::LEFT); },
+            bullet);
     }
 }
 
@@ -56,29 +55,60 @@ void ShipEnemy::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other) {
     collidedObjects.push_back(other);
 }
 
-void ShipEnemy::serialize(KapMirror::NetworkWriter& writer) {
-    writer.write(life);
-}
+void ShipEnemy::serialize(KapMirror::NetworkWriter& writer) { writer.write(life); }
 
-void ShipEnemy::deserialize(KapMirror::NetworkReader& reader) {
-    life = reader.read<int>();
-}
+void ShipEnemy::deserialize(KapMirror::NetworkReader& reader) { life = reader.read<int>(); }
 
 void ShipEnemy::onSceneUpdated() {
     if (isClient()) {
         return;
     }
-    for (std::size_t i = 0; i < collidedObjects.size(); i++) {
-        auto& other = collidedObjects[i];
-        if (other->getName() == "Bullet Player") {
+    for (auto& other : collidedObjects) {
+        if (other.use_count() > 1 && other->getName() == "Bullet Player") {
             life -= 1;
             if (life <= 0) {
-                getServer()->destroyObject(getGameObject().getScene().getGameObject(getGameObject().getId()));
+                if (isLocal()) {
+                    getGameObject().destroy();
+                } else {
+                    getServer()->destroyObject(getGameObject().getScene().getGameObject(getGameObject().getId()));
+                }
             }
-            getServer()->destroyObject(other);
+            if (isLocal()) {
+                std::shared_ptr<KapEngine::GameObject> explosion;
+                if (getGameObject().getEngine().getPrefabManager()->instantiatePrefab("BulletExplode", getGameObject().getScene(),
+                                                                                      explosion)) {
+                    explosion->getComponent<KapEngine::Transform>().setPosition(
+                        other->getComponent<KapEngine::Transform>().getWorldPosition());
+                } else {
+                    KAP_DEBUG_ERROR("Cannot instantiate prefab BulletExplode");
+                }
+                other->destroy();
+            } else if (isServer()) {
+                getServer()->destroyObject(other);
+            }
+        } else if (other.use_count() > 1 && other->getName() == "Missile Player") {
+            life -= 10;
+            if (life <= 0) {
+                if (isLocal()) {
+                    getGameObject().destroy();
+                } else {
+                    getServer()->destroyObject(getGameObject().getScene().getGameObject(getGameObject().getId()));
+                }
+            }
+            if (isLocal()) {
+                std::shared_ptr<KapEngine::GameObject> explosion;
+                if (getGameObject().getEngine().getPrefabManager()->instantiatePrefab("MissileExplode", getGameObject().getScene(),
+                                                                                      explosion)) {
+                    explosion->getComponent<KapEngine::Transform>().setPosition(
+                        other->getComponent<KapEngine::Transform>().getWorldPosition());
+                } else {
+                    KAP_DEBUG_ERROR("Cannot instantiate prefab MissiletExplode");
+                }
+                other->destroy();
+            } else if (isServer()) {
+                getServer()->destroyObject(other);
+            }
         }
     }
     collidedObjects.clear();
 }
-
-

@@ -58,7 +58,7 @@ if (VALGRIND)
     target_compile_options(RType PRIVATE -g)
 endif()
 IF (NOT WIN32)
-    target_compile_options(RType PRIVATE -O2)
+    target_compile_options(RType PRIVATE -O3)
 ENDIF()
 target_compile_options(RType PRIVATE -pthread)
 

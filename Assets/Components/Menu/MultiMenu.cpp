@@ -11,12 +11,10 @@ void MultiMenu::init() {
     // change type of display for canvas
     {
         try {
-            auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
+            auto& can = canvas->getComponent<KapEngine::UI::Canvas>();
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
             can.setScreenCompare(KapEngine::Tools::Vector2(720, 480));
-        } catch(...) {
-            KAP_DEBUG_ERROR("Failed to resize canvas");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to resize canvas"); }
     }
 
     // create background
@@ -42,7 +40,7 @@ void MultiMenu::init() {
 
         inptComp->setInputType(KapEngine::UI::Inputfield::InputType::IPV4);
 
-        auto &transform = inpt->getComponent<KapEngine::Transform>();
+        auto& transform = inpt->getComponent<KapEngine::Transform>();
         transform.setScale({150, 35, 0});
         transform.setPosition({200, 150, 0});
         transform.setParent(canvas);
@@ -52,7 +50,7 @@ void MultiMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Multi Text Ip");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Enter your IP : ");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -64,7 +62,7 @@ void MultiMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonPlay");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Join");
@@ -87,7 +85,7 @@ void MultiMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonBackMulti");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Back");

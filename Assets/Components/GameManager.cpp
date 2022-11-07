@@ -8,24 +8,24 @@
 #include "Menu/VolumeMenu.hpp"
 #include "Menu/HowToPlayMenu.hpp"
 #include "Menu/SettingPlayerMenu.hpp"
+#include "Menu/EndMenu.hpp"
 #include "CampaignGenerator/CampaignGenerator.hpp"
+#include "Player/PlayerSkin.hpp"
 
-#include "KapMirror/KapMirror.hpp"
 #include "Sylph/SylphTransport.hpp"
 #include "Prefabs.hpp"
 
 using namespace RType;
 
-GameManager *GameManager::instance = nullptr;
+GameManager* GameManager::instance = nullptr;
 
-GameManager::GameManager(KapEngine::KEngine* _engine, bool b) : engine(_engine), displaySplashScreens(b) {
-    instance = this;
-}
+GameManager::GameManager(KapEngine::KEngine* _engine, bool b) : engine(_engine), displaySplashScreens(b) { instance = this; }
 
 void GameManager::launchGame() {
     KapEngine::Debug::log("Launch game");
 
     registerPrefabs();
+    initEndScene();
     registerMenus();
     initSinglePlayer();
     initMultiPlayer(false);
@@ -37,6 +37,7 @@ void GameManager::launchGame() {
 
     // Show main menu
     menuManager.showMenu("MainMenu");
+    menuManager.showMenu("EndMenu");
 
     engine->getGraphicalLibManager()->getCurrentLib()->playMusic("Assets/Sound/Music/space-asteroids.mp3");
     engine->getGraphicalLibManager()->getCurrentLib()->setMusicVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
@@ -61,6 +62,9 @@ void GameManager::registerPrefabs() {
     Prefabs::registerBulletPrefab(*engine);
     Prefabs::registerMissilePrefab(*engine);
 
+    Prefabs::registerBulletExplodePrefab(*engine);
+    Prefabs::registerMissileExplodePrefab(*engine);
+
     Prefabs::registerInGameMenuPrefab(*engine);
 
     // Enemies
@@ -77,6 +81,7 @@ void GameManager::registerMenus() {
     KapEngine::Debug::log("Register menus");
 
     auto& scene = engine->getSceneManager()->getScene(1);
+    auto& endScene = engine->getSceneManager()->getScene("EndScene");
 
     // Register menus
     auto mainMenu = std::make_shared<MainMenu>(scene);
@@ -88,8 +93,8 @@ void GameManager::registerMenus() {
     auto multiMenu = std::make_shared<MultiMenu>(scene, *this);
     menuManager.registerMenu("MultiMenu", multiMenu);
 
-    auto keymenu = std::make_shared<KeyboardMenu>(scene);
-    menuManager.registerMenu("KeysMenu", keymenu);
+    auto keyMenu = std::make_shared<KeyboardMenu>(scene);
+    menuManager.registerMenu("KeysMenu", keyMenu);
 
     auto settingsMenu = std::make_shared<SettingsMenu>(scene);
     menuManager.registerMenu("SettingsMenu", settingsMenu);
@@ -102,7 +107,12 @@ void GameManager::registerMenus() {
 
     auto settingPlayerMenu = std::make_shared<SettingPlayerMenu>(scene);
     menuManager.registerMenu("SettingPlayerMenu", settingPlayerMenu);
+
+    auto endMenu = std::make_shared<EndMenu>(endScene, *this);
+    menuManager.registerMenu("EndMenu", endMenu);
 }
+
+void GameManager::initEndScene() { auto scene = engine->getSceneManager()->createScene("EndScene"); }
 
 // TODO: Move this to a dedicated class
 void GameManager::initSinglePlayer() {
@@ -114,7 +124,7 @@ void GameManager::initSinglePlayer() {
         return;
     }
 
-    auto &transformPG = paralaxGalaxy->getComponent<KapEngine::Transform>();
+    auto& transformPG = paralaxGalaxy->getComponent<KapEngine::Transform>();
     transformPG.setPosition({0, 0, 0});
 
     std::shared_ptr<KapEngine::GameObject> paralaxStars;
@@ -123,7 +133,7 @@ void GameManager::initSinglePlayer() {
         return;
     }
 
-    auto &transformPS = paralaxStars->getComponent<KapEngine::Transform>();
+    auto& transformPS = paralaxStars->getComponent<KapEngine::Transform>();
     transformPS.setPosition({0, 0, 0});
 
     std::shared_ptr<KapEngine::GameObject> player;
@@ -131,6 +141,8 @@ void GameManager::initSinglePlayer() {
         KAP_DEBUG_ERROR("Failed to instantiate player prefab");
         return;
     }
+
+    player->getComponent<PlayerSkin>().setSkinId(player->getComponent<PlayerSkin>().getSkinId());
 
     auto& transform = player->getComponent<KapEngine::Transform>();
     transform.setPosition({0, 0, 0});
@@ -158,7 +170,7 @@ void GameManager::initMultiPlayer(bool isServer) {
         return;
     }
 
-    auto &transformPG = paralaxGalaxy->getComponent<KapEngine::Transform>();
+    auto& transformPG = paralaxGalaxy->getComponent<KapEngine::Transform>();
     transformPG.setPosition({0, 0, 0});
 
     std::shared_ptr<KapEngine::GameObject> paralaxStars;
@@ -167,18 +179,26 @@ void GameManager::initMultiPlayer(bool isServer) {
         return;
     }
 
-    auto &transformPS = paralaxStars->getComponent<KapEngine::Transform>();
+    auto& transformPS = paralaxStars->getComponent<KapEngine::Transform>();
     transformPS.setPosition({0, 0, 0});
 
     auto networkManagerObject = scene->createGameObject("NetworkManager");
     networkManager = std::make_shared<RtypeNetworkManager>(networkManagerObject, isServer);
     networkManager->setTransport(std::make_shared<KapMirror::SylphTransport>());
     networkManagerObject->addComponent(networkManager);
+
+    if (!isServer) {
+        std::shared_ptr<GameObject> gameMenu;
+        if (!engine->getPrefabManager()->instantiatePrefab("InGameMenu", *scene, gameMenu)) {
+            KAP_DEBUG_ERROR("Failed to instantiate in game menu prefab");
+            return;
+        }
+    }
 }
 
 // TODO: Move this to a dedicated class
 void GameManager::startCampaign() {
-    auto &scene = engine->getSceneManager()->getScene("SinglePlayer");
+    auto& scene = engine->getSceneManager()->getScene("SinglePlayer");
 
     auto enemies = scene.createGameObject("Enemies Generator");
     auto compEnemies = std::make_shared<CampaignGenerator>(enemies);
@@ -194,7 +214,8 @@ void GameManager::startLocalMultiPlayer() {
 
 void GameManager::initSplashScreens() {
     engine->getSplashScreen()->setDisplayKapEngineLogo(true);
-    auto nsplash = std::make_shared<KapEngine::SceneManagement::SplashScreen::SplashScreenNode>("Assets/Textures/Background/bg-back.png", 4);
+    auto nsplash =
+        std::make_shared<KapEngine::SceneManagement::SplashScreen::SplashScreenNode>("Assets/Textures/Background/bg-back.png", 4);
 
     nsplash->rect = {0.f, 0.f, 272.f, 160.f};
     nsplash->size = KapEngine::Tools::Vector2({650.f, 382.35f});
@@ -221,7 +242,4 @@ void GameManager::initAxis() {
     engine->getEventManager().getInput().addAxis(vertical);
 }
 
-std::shared_ptr<RtypeNetworkManager> &GameManager::getNetworkManager() {
-    return networkManager;
-}
-
+std::shared_ptr<RtypeNetworkManager>& GameManager::getNetworkManager() { return networkManager; }

@@ -12,20 +12,18 @@
 #include "KapEngineDebug.hpp"
 #include "KapEngineUi.hpp"
 
-namespace RType
-{
-    class SpriteAnimation : public KapEngine::Animation
-    {
+namespace RType {
+    class SpriteAnimation : public KapEngine::Animation {
       public:
         SpriteAnimation(std::shared_ptr<KapEngine::GameObject> gameObject);
         SpriteAnimation(std::shared_ptr<KapEngine::GameObject> gameObject, int nbAnimation, KapEngine::Tools::Rectangle rect,
-                        int64_t const &time);
+                        int64_t const& time);
         ~SpriteAnimation() = default;
 
         void onPlay() override;
         void onUpdateAnim() override;
         void onResetAnim() override;
-        void setNbAnimations(int nbAnimations);
+        void setNbAnimations(int nbAnimations, std::size_t xAnims = 0, std::size_t yAnims = 0);
         void setRect(KapEngine::Tools::Rectangle rect);
 
         /**
@@ -33,8 +31,7 @@ namespace RType
          * it gonne calcul all anims to do
          * @param b
          */
-        void bouncingVersion(bool bounce)
-        {
+        void bouncingVersion(bool bounce) {
             if (bounce && !_bounce)
                 _nbAnimation *= 2;
             if (!bounce && _bounce)
@@ -54,9 +51,12 @@ namespace RType
         bool _reverse = false;
         bool _changeWithY = false;
         KapEngine::Tools::Rectangle _rect;
+        std::size_t _nbXTextures;
+        std::size_t _nbYTextures = 0;
         // Functions
         void init(std::shared_ptr<KapEngine::GameObject> gameObject);
-        KapEngine::UI::Image &getImage();
+        KapEngine::UI::Image& getImage();
+        KapEngine::Tools::Vector2 calculateNewPos(int crossProduct);
     };
 } // namespace RType
 

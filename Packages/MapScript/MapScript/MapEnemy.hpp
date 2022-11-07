@@ -4,10 +4,8 @@
 #include <string>
 #include <iostream>
 
-namespace RType
-{
-    class MapEnemy
-    {
+namespace RType {
+    class MapEnemy {
       public:
         std::string name = "";
         std::string sprite = "";
@@ -18,8 +16,7 @@ namespace RType
         MapEnemy(std::string _name, std::string _sprite) : name(_name), sprite(_sprite) {}
         ~MapEnemy() = default;
 
-        void Dump()
-        {
+        void Dump() {
             KapEngine::Debug::log("Enemy: name = '" + name + "', sprite = '" + sprite + "', spawnTime = " + std::to_string(spawnTime) +
                                   ", startPositionY = " + std::to_string(startPositionY));
         }

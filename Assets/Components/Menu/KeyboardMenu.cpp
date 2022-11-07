@@ -7,19 +7,16 @@
 
 using namespace KapEngine;
 
-RType::KeyboardMenu::KeyboardMenu(SceneManagement::Scene &scene) : Menu(scene) {
-}
+RType::KeyboardMenu::KeyboardMenu(SceneManagement::Scene& scene) : Menu(scene) {}
 
 void RType::KeyboardMenu::init() {
     // change type of display for canvas
     {
         try {
-            auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
+            auto& can = canvas->getComponent<KapEngine::UI::Canvas>();
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
             can.setScreenCompare(KapEngine::Tools::Vector2(720, 480));
-        } catch(...) {
-            KAP_DEBUG_ERROR("Failed to resize canvas");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to resize canvas"); }
     }
 
     // create background
@@ -43,7 +40,7 @@ void RType::KeyboardMenu::init() {
 
         try {
             _goInputs->getComponent<Transform>().setParent(canvas);
-        } catch(...) {}
+        } catch (...) {}
     }
 
     // create parent settings
@@ -52,7 +49,7 @@ void RType::KeyboardMenu::init() {
 
         try {
             _goSettings->getComponent<Transform>().setParent(canvas);
-        } catch(...) {}
+        } catch (...) {}
     }
 
     // init chnage Key Component
@@ -69,7 +66,7 @@ void RType::KeyboardMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonInput1");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Move Up");
@@ -81,16 +78,14 @@ void RType::KeyboardMenu::init() {
         transform.setScale({222, 40, 0});
         transform.setParent(_goSettings);
 
-        btnComp->getOnClick().registerAction([this]() {
-            _chgKey->startSelect("upInput");
-        });
+        btnComp->getOnClick().registerAction([this]() { _chgKey->startSelect("upInput"); });
     }
 
     // create button change down input
     {
         auto btn = scene.createGameObject("ButtonInput2");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Move Down");
@@ -102,16 +97,14 @@ void RType::KeyboardMenu::init() {
         transform.setScale({222, 40, 0});
         transform.setParent(_goSettings);
 
-        btnComp->getOnClick().registerAction([this]() {
-            _chgKey->startSelect("downInput");
-        });
+        btnComp->getOnClick().registerAction([this]() { _chgKey->startSelect("downInput"); });
     }
 
     // create button change left input
     {
         auto btn = scene.createGameObject("ButtonInput3");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Move Left");
@@ -123,16 +116,14 @@ void RType::KeyboardMenu::init() {
         transform.setScale({222, 40, 0});
         transform.setParent(_goSettings);
 
-        btnComp->getOnClick().registerAction([this]() {
-            _chgKey->startSelect("leftInput");
-        });
+        btnComp->getOnClick().registerAction([this]() { _chgKey->startSelect("leftInput"); });
     }
 
     // create button change right input
     {
         auto btn = scene.createGameObject("ButtonInput4");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Move Right");
@@ -144,16 +135,14 @@ void RType::KeyboardMenu::init() {
         transform.setScale({222, 40, 0});
         transform.setParent(_goSettings);
 
-        btnComp->getOnClick().registerAction([this]() {
-            _chgKey->startSelect("rightInput");
-        });
+        btnComp->getOnClick().registerAction([this]() { _chgKey->startSelect("rightInput"); });
     }
 
     // create button change shoot input
     {
         auto btn = scene.createGameObject("ButtonInput5");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Shoot");
@@ -165,16 +154,14 @@ void RType::KeyboardMenu::init() {
         transform.setScale({222, 40, 0});
         transform.setParent(_goSettings);
 
-        btnComp->getOnClick().registerAction([this]() {
-            _chgKey->startSelect("shootInput");
-        });
+        btnComp->getOnClick().registerAction([this]() { _chgKey->startSelect("shootInput"); });
     }
 
     // create button back
     {
         auto btn = scene.createGameObject("ButtonBack");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Back");
@@ -196,7 +183,7 @@ void RType::KeyboardMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change input");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Pressed a key to change it's value");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         compText->setPoliceSize(20);
 
@@ -210,7 +197,7 @@ void RType::KeyboardMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change input");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Change your keys");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         compText->setPoliceSize(20);
 

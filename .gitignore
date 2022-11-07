@@ -16,3 +16,9 @@ Build/
 **.keDat
 
 /cmake-build-debug
+
+# KapProfiler
+**.kprof
+
+# ImGui
+imgui.ini

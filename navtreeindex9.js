@@ -1,5 +1,11 @@
 var NAVTREEINDEX9 =
 {
+"pages.html":[],
+"structKapEngine_1_1Animator_1_1LinkAnim.html":[33,0,3,0],
+"structKapEngine_1_1Animator_1_1LinkAnim.html#a04086fc8812e6a95e3804fffaf0db7ba":[33,0,3,0,0],
+"structKapEngine_1_1Animator_1_1LinkAnim.html#aa5eca7e1ba2d5cda992e7b0e678bb294":[33,0,3,0,2],
+"structKapEngine_1_1Animator_1_1LinkAnim.html#aed9378c037a74a011417335ffd9931c7":[33,0,3,0,1],
+"structKapEngine_1_1Animator_1_1NodeAnim.html":[33,0,3,1],
 "structKapEngine_1_1Animator_1_1NodeAnim.html#a0dba3b4e5e9efc3154de1f4a992881dd":[33,0,3,1,3],
 "structKapEngine_1_1Animator_1_1NodeAnim.html#a26f8a37478e4d52d3a3c8c6f91766dee":[33,0,3,1,2],
 "structKapEngine_1_1Animator_1_1NodeAnim.html#a4ef6a553c29523927cba1fe25405bf8b":[33,0,3,1,0],
@@ -94,9 +100,15 @@ var NAVTREEINDEX9 =
 "structRType_1_1PlayerShootMessage.html#a4a9d95b86b6b471f300e879360e586b2":[35,0,3,28,1],
 "structRType_1_1PlayerShootMessage.html#a90d8c40e0e1349934ab7753ea391d381":[35,0,3,28,2],
 "structRType_1_1PlayerShootMessage.html#add125581e935080a43bedf0d69b6ec45":[35,0,3,28,0],
-"structRType_1_1StartGameMessage.html":[35,0,3,37],
-"structRType_1_1StartGameMessage.html#aa73ac94b4835153c70d736b46a4ea034":[35,0,3,37,0],
-"structRType_1_1StartGameMessage.html#aedf29e540c47738c4baaf8d4cca3b460":[35,0,3,37,1],
+"structRType_1_1SpawnEnemy.html":[35,0,3,36],
+"structRType_1_1SpawnEnemy.html#a117afbaa1184411021e89a7f67cf775f":[35,0,3,36,3],
+"structRType_1_1SpawnEnemy.html#a402ec648dfa3c23eff03bdd70bd6aa86":[35,0,3,36,0],
+"structRType_1_1SpawnEnemy.html#a8581b5e6d95694380c425af7c85b8937":[35,0,3,36,4],
+"structRType_1_1SpawnEnemy.html#a8bd650fa4463fd3f92acdcaceb9448ba":[35,0,3,36,2],
+"structRType_1_1SpawnEnemy.html#aeab6fcfd68362fb5a7b47f70a1aaa3e2":[35,0,3,36,1],
+"structRType_1_1StartGameMessage.html":[35,0,3,38],
+"structRType_1_1StartGameMessage.html#aa73ac94b4835153c70d736b46a4ea034":[35,0,3,38,0],
+"structRType_1_1StartGameMessage.html#aedf29e540c47738c4baaf8d4cca3b460":[35,0,3,38,1],
 "subclass-example_8hpp_source.html":[36,0,1,0,0,1],
 "todo.html":[30]
 };

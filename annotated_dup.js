@@ -67,6 +67,7 @@ var annotated_dup =
       [ "Script", null, [
         [ "Debug", "classRType_1_1Script_1_1Debug.html", "classRType_1_1Script_1_1Debug" ],
         [ "Enemy", "classRType_1_1Script_1_1Enemy.html", "classRType_1_1Script_1_1Enemy" ],
+        [ "Math", "classRType_1_1Script_1_1Math.html", "classRType_1_1Script_1_1Math" ],
         [ "Rectangle", "classRType_1_1Script_1_1Rectangle.html", "classRType_1_1Script_1_1Rectangle" ],
         [ "Vector2", "classRType_1_1Script_1_1Vector2.html", "classRType_1_1Script_1_1Vector2" ]
       ] ],
@@ -104,6 +105,7 @@ var annotated_dup =
       [ "SettingsMenu", "classRType_1_1SettingsMenu.html", "classRType_1_1SettingsMenu" ],
       [ "ShipEnemy", "classRType_1_1ShipEnemy.html", "classRType_1_1ShipEnemy" ],
       [ "SoloMenu", "classRType_1_1SoloMenu.html", "classRType_1_1SoloMenu" ],
+      [ "SpawnEnemy", "structRType_1_1SpawnEnemy.html", "structRType_1_1SpawnEnemy" ],
       [ "SpriteAnimation", "classRType_1_1SpriteAnimation.html", "classRType_1_1SpriteAnimation" ],
       [ "StartGameMessage", "structRType_1_1StartGameMessage.html", "structRType_1_1StartGameMessage" ],
       [ "TentaclesBossEnemy", "classRType_1_1TentaclesBossEnemy.html", "classRType_1_1TentaclesBossEnemy" ],

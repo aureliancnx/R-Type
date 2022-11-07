@@ -89,6 +89,7 @@ var NAVTREEINDEX0 =
 "MapEnemy_8hpp_source.html":[36,0,3,3,0,3],
 "MapScript_8hpp_source.html":[36,0,3,3,0,4],
 "Map_8hpp_source.html":[36,0,3,4,0,0],
+"MathScript_8hpp_source.html":[36,0,3,3,0,0,2],
 "MenuCampaign_8hpp_source.html":[36,0,0,0,2,0],
 "MenuManager_8hpp_source.html":[36,0,0,0,11],
 "MenuVolume_8hpp_source.html":[36,0,0,0,8,0],
@@ -123,7 +124,7 @@ var NAVTREEINDEX0 =
 "RaylibCache_8hpp_source.html":[36,0,3,1,0,0,0],
 "RaylibEncapsulation_8hpp_source.html":[36,0,3,1,0,2,0],
 "RaylibGraphical_8hpp_source.html":[36,0,3,1,0,3,0],
-"RectangleScript_8hpp_source.html":[36,0,3,3,0,0,2],
+"RectangleScript_8hpp_source.html":[36,0,3,3,0,0,3],
 "Rectangle_8hpp_source.html":[36,0,2,0,0,14,1],
 "RtypeNetworkManager_8hpp_source.html":[36,0,0,0,14],
 "SceneManager_8hpp_source.html":[36,0,2,0,0,12,1,0],
@@ -159,7 +160,7 @@ var NAVTREEINDEX0 =
 "UiImage_8hpp_source.html":[36,0,2,0,0,9,1,2,0],
 "UiText_8hpp_source.html":[36,0,2,0,0,9,1,3,0],
 "UpdateStartGameKeys_8hpp_source.html":[36,0,0,0,5,2],
-"Vector2Script_8hpp_source.html":[36,0,3,3,0,0,3],
+"Vector2Script_8hpp_source.html":[36,0,3,3,0,0,4],
 "Vectors_8hpp_source.html":[36,0,2,0,0,14,2],
 "VolumeMenu_8hpp_source.html":[36,0,0,0,6,9],
 "annotated.html":[35,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "classKapEngine_1_1Component.html#a34f2819a21b2da47f94a1a2041a86829":[35,0,0,15,8],
 "classKapEngine_1_1Component.html#a38ff04c83b24dd3075fc06e990ae6a71":[35,0,0,15,11],
 "classKapEngine_1_1Component.html#a3aa4aee06d39a2520c3e43366a4cfd9c":[35,0,0,15,38],
-"classKapEngine_1_1Component.html#a3c2f3b1e54171db306e88d605c44e3ee":[35,0,0,15,37],
-"classKapEngine_1_1Component.html#a41fc4b01887039cb1b9b38ea68685d8b":[35,0,0,15,34]
+"classKapEngine_1_1Component.html#a3c2f3b1e54171db306e88d605c44e3ee":[35,0,0,15,37]
 };

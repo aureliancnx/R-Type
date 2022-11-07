@@ -150,250 +150,300 @@ $(document).ready(function(){initNavTree('Engine_8hpp_source.html',''); initResi
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            ~<a class="code" href="classKapEngine_1_1KEngine.html">KEngine</a>();</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#ab6075e576abf8daeb1ec09976d6439e5">   86</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#ab6075e576abf8daeb1ec09976d6439e5">setMaxFps</a>(<span class="keywordtype">int</span> fps) {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                _fpsLock = fps;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#a08e0312baa30b910d00b59104e78074d">run</a>();</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#ae001972589725bd4d3ca33acf243138c">stop</a>();</div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a5f93441dbd9ba82dfc6cc4745cca7074">  103</a></span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classKapEngine_1_1KEngine.html#a5f93441dbd9ba82dfc6cc4745cca7074">isRunning</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                <span class="keywordflow">return</span> _run;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">            #if !KAPENGINE_BETA_ACTIVE</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a7c8744d612dc970c12e070d274c5148f">  113</a></span>&#160;                <span class="keywordtype">bool</span> <a class="code" href="classKapEngine_1_1KEngine.html#a7c8744d612dc970c12e070d274c5148f">debugMode</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                    <span class="keywordflow">return</span> _debug;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                }</div>
-<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a0e8912dc0703618f86842ebb55404dc1">  120</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#a0e8912dc0703618f86842ebb55404dc1">setDebugMod</a>(<span class="keywordtype">bool</span> b) {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                    _debug = b;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                }</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">            #endif</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            std::shared_ptr&lt;Graphical::GraphicalLib&gt; <a class="code" href="classKapEngine_1_1KEngine.html#a26f1ea3e4880519b8fa483108f41d297">getCurrentGraphicalLib</a>();</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classKapEngine_1_1KEngine.html#ae69eb009c532e2445f656260e7d5b9c4">isGraphicalLibExists</a>(std::size_t <span class="keyword">const</span>&amp; index) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classKapEngine_1_1KEngine.html#ae69eb009c532e2445f656260e7d5b9c4">isGraphicalLibExists</a>(std::string <span class="keyword">const</span>&amp; name) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            std::size_t <a class="code" href="classKapEngine_1_1KEngine.html#ab0317819c782d32fe5316f2396ba993d">getCurrentGraphicalLibIndex</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
-<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a0b64562fd197323a22568c7336d4ed63">  161</a></span>&#160;            std::string <a class="code" href="classKapEngine_1_1KEngine.html#a0b64562fd197323a22568c7336d4ed63">getGameName</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                <span class="keywordflow">return</span> _gameName;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                _fpsLock = fps;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#a08e0312baa30b910d00b59104e78074d">run</a>();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#ae001972589725bd4d3ca33acf243138c">stop</a>();</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a5f93441dbd9ba82dfc6cc4745cca7074">  105</a></span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classKapEngine_1_1KEngine.html#a5f93441dbd9ba82dfc6cc4745cca7074">isRunning</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keywordflow">return</span> _run;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">            #if !KAPENGINE_BETA_ACTIVE</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a7c8744d612dc970c12e070d274c5148f">  117</a></span>&#160;                <span class="keywordtype">bool</span> <a class="code" href="classKapEngine_1_1KEngine.html#a7c8744d612dc970c12e070d274c5148f">debugMode</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                    <span class="keywordflow">return</span> _debug;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                }</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a0e8912dc0703618f86842ebb55404dc1">  126</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#a0e8912dc0703618f86842ebb55404dc1">setDebugMod</a>(<span class="keywordtype">bool</span> b) {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                    _debug = b;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">            #endif</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            std::shared_ptr&lt;Graphical::GraphicalLib&gt; <a class="code" href="classKapEngine_1_1KEngine.html#a26f1ea3e4880519b8fa483108f41d297">getCurrentGraphicalLib</a>();</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classKapEngine_1_1KEngine.html#ae69eb009c532e2445f656260e7d5b9c4">isGraphicalLibExists</a>(std::size_t <span class="keyword">const</span>&amp; index) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classKapEngine_1_1KEngine.html#ae69eb009c532e2445f656260e7d5b9c4">isGraphicalLibExists</a>(std::string <span class="keyword">const</span>&amp; name) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            std::size_t <a class="code" href="classKapEngine_1_1KEngine.html#ab0317819c782d32fe5316f2396ba993d">getCurrentGraphicalLibIndex</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#ad7c9e797a62a602406992c90785af6dc">  169</a></span>&#160;            std::string <a class="code" href="classKapEngine_1_1KEngine.html#ad7c9e797a62a602406992c90785af6dc">getGameVersion</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                <span class="keywordflow">return</span> _gameVersion;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            }</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a9a0fd31c034c832c63eb8e0c8825d5fe">  177</a></span>&#160;            std::string <a class="code" href="classKapEngine_1_1KEngine.html#a9a0fd31c034c832c63eb8e0c8825d5fe">getGameCompany</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                <span class="keywordflow">return</span> _gameCompany;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            }</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
-<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a493e4b25fdcf227b89edd0b3b851fea9">  186</a></span>&#160;            std::shared_ptr&lt;SceneManagement::SceneManager&gt; <a class="code" href="classKapEngine_1_1KEngine.html#a493e4b25fdcf227b89edd0b3b851fea9">getSceneManager</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                <span class="keywordflow">return</span> _sceneManager;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            }</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#ae9da4b2e72cdc2b8860cd9153f0149ac">  195</a></span>&#160;            std::shared_ptr&lt;Prefabs::PrefabManager&gt; <a class="code" href="classKapEngine_1_1KEngine.html#ae9da4b2e72cdc2b8860cd9153f0149ac">getPrefabManager</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <span class="keywordflow">return</span> _prefabManager;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            }</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
-<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a00112bfbd2e0ccd8f5feab0408912048">  203</a></span>&#160;            <a class="code" href="classKapEngine_1_1Time_1_1ETime.html">Time::ETime</a> <a class="code" href="classKapEngine_1_1KEngine.html#a00112bfbd2e0ccd8f5feab0408912048">getElapsedTime</a>() {</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                <span class="keywordtype">float</span> f = _elapsed.<a class="code" href="classKapEngine_1_1Time_1_1ETime.html#a9d62c4356780d31a47be3f376bcd46be">asMilliSecond</a>() * deltaTime;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                <a class="code" href="classKapEngine_1_1Time_1_1ETime.html">Time::ETime</a> res;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                res.<a class="code" href="classKapEngine_1_1Time_1_1ETime.html#a35bdb9c03082bd1c1eb71d35a0b4fdc9">setMilliseconds</a>(f);</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                <span class="keywordflow">return</span> res;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            }</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            <a class="code" href="classKapEngine_1_1Events_1_1EventManager.html">Events::EventManager</a> &amp;<a class="code" href="classKapEngine_1_1KEngine.html#a20364d4c9c5a50dd5ea8bb91c8ebe54e">getEventManager</a>();</div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a0b64562fd197323a22568c7336d4ed63">  169</a></span>&#160;            std::string <a class="code" href="classKapEngine_1_1KEngine.html#a0b64562fd197323a22568c7336d4ed63">getGameName</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                <span class="keywordflow">return</span> _gameName;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#ad7c9e797a62a602406992c90785af6dc">  179</a></span>&#160;            std::string <a class="code" href="classKapEngine_1_1KEngine.html#ad7c9e797a62a602406992c90785af6dc">getGameVersion</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                <span class="keywordflow">return</span> _gameVersion;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a9a0fd31c034c832c63eb8e0c8825d5fe">  189</a></span>&#160;            std::string <a class="code" href="classKapEngine_1_1KEngine.html#a9a0fd31c034c832c63eb8e0c8825d5fe">getGameCompany</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                <span class="keywordflow">return</span> _gameCompany;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a493e4b25fdcf227b89edd0b3b851fea9">  200</a></span>&#160;            std::shared_ptr&lt;SceneManagement::SceneManager&gt; <a class="code" href="classKapEngine_1_1KEngine.html#a493e4b25fdcf227b89edd0b3b851fea9">getSceneManager</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                <span class="keywordflow">return</span> _sceneManager;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00211"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#ae9da4b2e72cdc2b8860cd9153f0149ac">  211</a></span>&#160;            std::shared_ptr&lt;Prefabs::PrefabManager&gt; <a class="code" href="classKapEngine_1_1KEngine.html#ae9da4b2e72cdc2b8860cd9153f0149ac">getPrefabManager</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                <span class="keywordflow">return</span> _prefabManager;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            }</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
-<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#ad753fccc58c3afc03ab5f518cad9f34b">  222</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#ad753fccc58c3afc03ab5f518cad9f34b">setDeltaTime</a>(<span class="keywordtype">float</span> dTime) {</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                deltaTime = dTime;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            }</div>
+<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a00112bfbd2e0ccd8f5feab0408912048">  221</a></span>&#160;            <a class="code" href="classKapEngine_1_1Time_1_1ETime.html">Time::ETime</a> <a class="code" href="classKapEngine_1_1KEngine.html#a00112bfbd2e0ccd8f5feab0408912048">getElapsedTime</a>() {</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                <span class="keywordtype">float</span> f = _elapsed.<a class="code" href="classKapEngine_1_1Time_1_1ETime.html#a9d62c4356780d31a47be3f376bcd46be">asMilliSecond</a>() * deltaTime;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                <a class="code" href="classKapEngine_1_1Time_1_1ETime.html">Time::ETime</a> res;</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
-<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a4f542050730a28de4b41e623550d461d">  231</a></span>&#160;            std::shared_ptr&lt;Graphical::GraphicalLibManager&gt; <a class="code" href="classKapEngine_1_1KEngine.html#a4f542050730a28de4b41e623550d461d">getGraphicalLibManager</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                <span class="keywordflow">return</span> _libManager;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            }</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#a72ff2e16627aa6527415b28f7bcba412">setScreenSize</a>(<span class="keywordtype">float</span> width, <span class="keywordtype">float</span> heigth);</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#a72ff2e16627aa6527415b28f7bcba412">setScreenSize</a>(<a class="code" href="classKapEngine_1_1Tools_1_1Vector2.html">Tools::Vector2</a> size);</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
-<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a4d9f4073afdfd514569751b88fa2f367">  255</a></span>&#160;            <a class="code" href="classKapEngine_1_1Tools_1_1Vector2.html">Tools::Vector2</a> <a class="code" href="classKapEngine_1_1KEngine.html#a4d9f4073afdfd514569751b88fa2f367">getScreenSize</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                <span class="keywordflow">return</span> screenSize;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            }</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
-<div class="line"><a name="l00264"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a9e348dc071a1a280038074c28eb41eb3">  264</a></span>&#160;            <span class="keywordtype">float</span> <a class="code" href="classKapEngine_1_1KEngine.html#a9e348dc071a1a280038074c28eb41eb3">getMaxFps</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                <span class="keywordflow">return</span> _fpsLock;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            }</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
-<div class="line"><a name="l00274"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#afe2719b2a33944ae450268bf6bfa6b08">  274</a></span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classKapEngine_1_1KEngine.html#afe2719b2a33944ae450268bf6bfa6b08">__canRunFixed</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                <span class="keywordflow">return</span> _runFixed;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            }</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
-<div class="line"><a name="l00283"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#abb403cfa866c3bc26907ccb9e47050f1">  283</a></span>&#160;            std::shared_ptr&lt;SceneManagement::SplashScreen&gt; <a class="code" href="classKapEngine_1_1KEngine.html#abb403cfa866c3bc26907ccb9e47050f1">getSplashScreen</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                <span class="keywordflow">return</span> _splashsScreen;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            }</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
-<div class="line"><a name="l00293"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#ace563c1c14997a21ebf8991a1a4559f6">  293</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#ace563c1c14997a21ebf8991a1a4559f6">setFixedTime</a>(<a class="code" href="classKapEngine_1_1Time_1_1ETime.html">Time::ETime</a> time) {</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                _fixedTime = time;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            }</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <a class="code" href="classKapEngine_1_1Time_1_1ETime.html">Time::ETime</a> getFixedTime()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                <span class="keywordflow">return</span> _fixedTime;</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            }</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
-<div class="line"><a name="l00306"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a76b9388904e19d5f36704bdfaa5da780">  306</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#a76b9388904e19d5f36704bdfaa5da780">setIconGame</a>(std::string <span class="keyword">const</span>&amp; iconPath) {</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                _icon = iconPath;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            }</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
-<div class="line"><a name="l00315"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a0a8e6b9910cbb13e55094c9499e98a7f">  315</a></span>&#160;            std::string <a class="code" href="classKapEngine_1_1KEngine.html#a0a8e6b9910cbb13e55094c9499e98a7f">getIconPath</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                <span class="keywordflow">return</span> _icon;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            }</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="preprocessor">            #if !KAPENGINE_BETA_ACTIVE</span></div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
-<div class="line"><a name="l00326"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#addddd0275a1f122b844a2f372ea8d5cb">  326</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#addddd0275a1f122b844a2f372ea8d5cb">setEngineThread</a>(<span class="keywordtype">bool</span> b) {</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                    _threaded = b;</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                }</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
-<div class="line"><a name="l00336"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#aeb2bbe226326a107af433d5b30fec0a4">  336</a></span>&#160;                <span class="keywordtype">bool</span> <a class="code" href="classKapEngine_1_1KEngine.html#aeb2bbe226326a107af433d5b30fec0a4">isEngineThreaded</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                    <span class="keywordflow">return</span> _threaded;</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                }</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="preprocessor">            #else</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="preprocessor">                #if KAPENGINE_THREAD_ACTIVE</span></div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                    std::mutex &amp;getMutex() {</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                        <span class="keywordflow">return</span> _mutex;</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                    }</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="preprocessor">                #endif</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="preprocessor">            #endif</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
-<div class="line"><a name="l00353"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#af4bb7f577cbf7c751afe86b1a01ed16b">  353</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#af4bb7f577cbf7c751afe86b1a01ed16b">setTitle</a>(std::string <span class="keyword">const</span>&amp; title) {</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="preprocessor">                #if KAPENGINE_BETA_ACTIVE</span></div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="preprocessor">                    #if KAPENGINE_THREAD_ACTIVE</span></div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                        _mutex.lock();</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="preprocessor">                    #endif</span></div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="preprocessor">                #endif</span></div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                _gameName = title;</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="preprocessor">                #if KAPENGINE_BETA_ACTIVE</span></div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="preprocessor">                    #if KAPENGINE_THREAD_ACTIVE</span></div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                        _mutex.unlock();</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="preprocessor">                    #endif</span></div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="preprocessor">                #endif</span></div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            }</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            <span class="keywordtype">void</span> displayFPS(<span class="keywordtype">bool</span> b) {</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="preprocessor">                #if KAPENGINE_BETA_ACTIVE</span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="preprocessor">                    #if KAPENGINE_THREAD_ACTIVE</span></div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                        _mutex.lock();</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="preprocessor">                    #endif</span></div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="preprocessor">                #endif</span></div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                _displayFps = b;</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="preprocessor">                #if KAPENGINE_BETA_ACTIVE</span></div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="preprocessor">                    #if KAPENGINE_THREAD_ACTIVE</span></div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                        _mutex.unlock();</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="preprocessor">                    #endif</span></div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="preprocessor">                #endif</span></div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            }</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            <span class="keywordtype">bool</span> isDisplayFPS()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                <span class="keywordflow">return</span> _displayFps;</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            }</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;            <span class="keywordtype">bool</span> _run = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="preprocessor">            #if !KAPENGINE_BETA_ACTIVE</span></div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                <span class="keywordtype">bool</span> _debug = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                <span class="keywordtype">bool</span> _threaded = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="preprocessor">            #else</span></div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                std::mutex engineMutex;</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="preprocessor">            #endif</span></div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            <span class="keywordtype">bool</span> _runFixed = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            <span class="keywordtype">bool</span> _displayFps = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            <span class="keywordtype">int</span> _fpsLock = 60;</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            <span class="keywordtype">float</span> deltaTime = 1.0f;</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160; </div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;            Tools::Vector2 screenSize;</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160; </div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            Time::EClock _internalClock;</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            Time::ETime _elapsed;</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;            Time::ETime _fixedTime;</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160; </div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;            <span class="comment">//all game intels</span></div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            std::string _gameName;</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            std::string _gameVersion;</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            std::string _gameCompany;</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            std::string _icon = <span class="stringliteral">&quot;Library/KapEngine/Documentation/images/KapEngineLogo100x100.png&quot;</span>;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;            <span class="comment">//scene manager</span></div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            std::shared_ptr&lt;SceneManagement::SceneManager&gt; _sceneManager;</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            <span class="comment">//prefab manager</span></div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            std::shared_ptr&lt;Prefabs::PrefabManager&gt; _prefabManager;</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            <span class="comment">//graphical libs</span></div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            std::shared_ptr&lt;Graphical::GraphicalLibManager&gt; _libManager;</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            <span class="comment">//input events</span></div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            std::shared_ptr&lt;Events::EventManager&gt; _eventManager;</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160; </div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            <span class="comment">//splash screens</span></div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            std::shared_ptr&lt;SceneManagement::SplashScreen&gt; _splashsScreen;</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160; </div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            <span class="comment">//functions</span></div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            <span class="keywordtype">void</span> __init();</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160; </div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            <span class="keywordtype">bool</span> __canRunUpdate();</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    };</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160; </div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;}</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160; </div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !ENGINE_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                res.<a class="code" href="classKapEngine_1_1Time_1_1ETime.html#a35bdb9c03082bd1c1eb71d35a0b4fdc9">setMilliseconds</a>(f);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <a class="code" href="classKapEngine_1_1Events_1_1EventManager.html">Events::EventManager</a> &amp;<a class="code" href="classKapEngine_1_1KEngine.html#a20364d4c9c5a50dd5ea8bb91c8ebe54e">getEventManager</a>();</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#ad753fccc58c3afc03ab5f518cad9f34b">  242</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#ad753fccc58c3afc03ab5f518cad9f34b">setDeltaTime</a>(<span class="keywordtype">float</span> dTime) {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                deltaTime = dTime;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a4f542050730a28de4b41e623550d461d">  253</a></span>&#160;            std::shared_ptr&lt;Graphical::GraphicalLibManager&gt; <a class="code" href="classKapEngine_1_1KEngine.html#a4f542050730a28de4b41e623550d461d">getGraphicalLibManager</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                <span class="keywordflow">return</span> _libManager;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            }</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#a72ff2e16627aa6527415b28f7bcba412">setScreenSize</a>(<span class="keywordtype">float</span> width, <span class="keywordtype">float</span> heigth);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#a72ff2e16627aa6527415b28f7bcba412">setScreenSize</a>(<a class="code" href="classKapEngine_1_1Tools_1_1Vector2.html">Tools::Vector2</a> size);</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00277"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a4d9f4073afdfd514569751b88fa2f367">  277</a></span>&#160;            <a class="code" href="classKapEngine_1_1Tools_1_1Vector2.html">Tools::Vector2</a> <a class="code" href="classKapEngine_1_1KEngine.html#a4d9f4073afdfd514569751b88fa2f367">getScreenSize</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                <span class="keywordflow">return</span> screenSize;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a9e348dc071a1a280038074c28eb41eb3">  288</a></span>&#160;            <span class="keywordtype">float</span> <a class="code" href="classKapEngine_1_1KEngine.html#a9e348dc071a1a280038074c28eb41eb3">getMaxFps</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                <span class="keywordflow">return</span> _fpsLock;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            }</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160; </div>
+<div class="line"><a name="l00300"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#afe2719b2a33944ae450268bf6bfa6b08">  300</a></span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classKapEngine_1_1KEngine.html#afe2719b2a33944ae450268bf6bfa6b08">__canRunFixed</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                <span class="keywordflow">return</span> _runFixed;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
+<div class="line"><a name="l00311"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#abb403cfa866c3bc26907ccb9e47050f1">  311</a></span>&#160;            std::shared_ptr&lt;SceneManagement::SplashScreen&gt; <a class="code" href="classKapEngine_1_1KEngine.html#abb403cfa866c3bc26907ccb9e47050f1">getSplashScreen</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                <span class="keywordflow">return</span> _splashsScreen;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#ace563c1c14997a21ebf8991a1a4559f6">  323</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#ace563c1c14997a21ebf8991a1a4559f6">setFixedTime</a>(<a class="code" href="classKapEngine_1_1Time_1_1ETime.html">Time::ETime</a> time) {</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                _fixedTime = time;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            }</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            <a class="code" href="classKapEngine_1_1Time_1_1ETime.html">Time::ETime</a> getFixedTime()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                <span class="keywordflow">return</span> _fixedTime;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            }</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00340"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a76b9388904e19d5f36704bdfaa5da780">  340</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#a76b9388904e19d5f36704bdfaa5da780">setIconGame</a>(std::string <span class="keyword">const</span> &amp;iconPath) {</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                _icon = iconPath;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            }</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
+<div class="line"><a name="l00351"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#a0a8e6b9910cbb13e55094c9499e98a7f">  351</a></span>&#160;            std::string <a class="code" href="classKapEngine_1_1KEngine.html#a0a8e6b9910cbb13e55094c9499e98a7f">getIconPath</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                <span class="keywordflow">return</span> _icon;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            }</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="preprocessor">            #if !KAPENGINE_BETA_ACTIVE</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
+<div class="line"><a name="l00364"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#addddd0275a1f122b844a2f372ea8d5cb">  364</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#addddd0275a1f122b844a2f372ea8d5cb">setEngineThread</a>(<span class="keywordtype">bool</span> b) {</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                    _threaded = b;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                }</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
+<div class="line"><a name="l00376"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#aeb2bbe226326a107af433d5b30fec0a4">  376</a></span>&#160;                <span class="keywordtype">bool</span> <a class="code" href="classKapEngine_1_1KEngine.html#aeb2bbe226326a107af433d5b30fec0a4">isEngineThreaded</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                    <span class="keywordflow">return</span> _threaded;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                }</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="preprocessor">            #else</span></div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="preprocessor">                #if KAPENGINE_THREAD_ACTIVE</span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                    std::mutex &amp;getMutex() {</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                        <span class="keywordflow">return</span> _mutex;</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                    }</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<span class="preprocessor">                #endif</span></div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="preprocessor">            #endif</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
+<div class="line"><a name="l00395"></a><span class="lineno"><a class="line" href="classKapEngine_1_1KEngine.html#af4bb7f577cbf7c751afe86b1a01ed16b">  395</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1KEngine.html#af4bb7f577cbf7c751afe86b1a01ed16b">setTitle</a>(std::string <span class="keyword">const</span>&amp; title) {</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="preprocessor">                #if KAPENGINE_BETA_ACTIVE</span></div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;<span class="preprocessor">                    #if KAPENGINE_THREAD_ACTIVE</span></div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                        _mutex.lock();</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="preprocessor">                    #endif</span></div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="preprocessor">                #endif</span></div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                _gameName = title;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="preprocessor">                #if KAPENGINE_BETA_ACTIVE</span></div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="preprocessor">                    #if KAPENGINE_THREAD_ACTIVE</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                        _mutex.unlock();</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="preprocessor">                    #endif</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;<span class="preprocessor">                #endif</span></div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            }</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            <span class="keywordtype">void</span> displayFPS(<span class="keywordtype">bool</span> b) {</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="preprocessor">                #if KAPENGINE_BETA_ACTIVE</span></div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="preprocessor">                    #if KAPENGINE_THREAD_ACTIVE</span></div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                        _mutex.lock();</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;<span class="preprocessor">                    #endif</span></div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="preprocessor">                #endif</span></div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                _displayFps = b;</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<span class="preprocessor">                #if KAPENGINE_BETA_ACTIVE</span></div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;<span class="preprocessor">                    #if KAPENGINE_THREAD_ACTIVE</span></div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                        _mutex.unlock();</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="preprocessor">                    #endif</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;<span class="preprocessor">                #endif</span></div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            }</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160; </div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;            <span class="keywordtype">bool</span> isDisplayFPS()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                <span class="keywordflow">return</span> _displayFps;</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            }</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160; </div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            <span class="keywordtype">bool</span> _run = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;<span class="preprocessor">            #if !KAPENGINE_BETA_ACTIVE</span></div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                <span class="keywordtype">bool</span> _debug = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                <span class="keywordtype">bool</span> _threaded = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;<span class="preprocessor">            #else</span></div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;<span class="preprocessor">                #if KAPENGINE_THREAD_ACTIVE</span></div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                    std::mutex _mutex;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="preprocessor">                #endif</span></div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;<span class="preprocessor">            #endif</span></div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            <span class="keywordtype">bool</span> _runFixed = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;            <span class="keywordtype">bool</span> _displayFps = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160; </div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;            <span class="keywordtype">int</span> _fpsLock = 60;</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160; </div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;            <span class="keywordtype">float</span> deltaTime = 1.0f;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160; </div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            Tools::Vector2 screenSize;</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;            Time::EClock _internalClock;</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;            Time::ETime _elapsed;</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;            Time::ETime _fixedTime;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160; </div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;            <span class="comment">//all game intels</span></div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;            std::string _gameName;</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;            std::string _gameVersion;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            std::string _gameCompany;</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;            std::string _icon = <span class="stringliteral">&quot;Library/KapEngine/Documentation/images/KapEngineLogo100x100.png&quot;</span>;</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160; </div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;            <span class="comment">//scene manager</span></div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;            std::shared_ptr&lt;SceneManagement::SceneManager&gt; _sceneManager;</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160; </div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            <span class="comment">//prefab manager</span></div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;            std::shared_ptr&lt;Prefabs::PrefabManager&gt; _prefabManager;</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160; </div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;            <span class="comment">//graphical libs</span></div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;            std::shared_ptr&lt;Graphical::GraphicalLibManager&gt; _libManager;</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160; </div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;            <span class="comment">//input events</span></div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            std::shared_ptr&lt;Events::EventManager&gt; _eventManager;</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160; </div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;            <span class="comment">//splash screens</span></div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;            std::shared_ptr&lt;SceneManagement::SplashScreen&gt; _splashsScreen;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160; </div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            <span class="comment">//functions</span></div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;            <span class="keywordtype">void</span> __init();</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160; </div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;            <span class="keywordtype">bool</span> __canRunUpdate();</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;    };</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160; </div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;}</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160; </div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !ENGINE_HPP_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_ab0317819c782d32fe5316f2396ba993d"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#ab0317819c782d32fe5316f2396ba993d">KapEngine::KEngine::getCurrentGraphicalLibIndex</a></div><div class="ttdeci">std::size_t getCurrentGraphicalLibIndex() const</div><div class="ttdoc">Get the Current Graphical Lib Index.</div><div class="ttdef"><b>Definition:</b> Engine.cpp:118</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a72ff2e16627aa6527415b28f7bcba412"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a72ff2e16627aa6527415b28f7bcba412">KapEngine::KEngine::setScreenSize</a></div><div class="ttdeci">void setScreenSize(float width, float heigth)</div><div class="ttdoc">Set the Screen Size at the game beginning.</div><div class="ttdef"><b>Definition:</b> Engine.cpp:140</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_ab0317819c782d32fe5316f2396ba993d"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#ab0317819c782d32fe5316f2396ba993d">KapEngine::KEngine::getCurrentGraphicalLibIndex</a></div><div class="ttdeci">std::size_t getCurrentGraphicalLibIndex() const</div><div class="ttdoc">Get the Current Graphical Lib Index.</div><div class="ttdef"><b>Definition:</b> Engine.cpp:134</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a72ff2e16627aa6527415b28f7bcba412"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a72ff2e16627aa6527415b28f7bcba412">KapEngine::KEngine::setScreenSize</a></div><div class="ttdeci">void setScreenSize(float width, float heigth)</div><div class="ttdoc">Set the Screen Size at the game beginning.</div><div class="ttdef"><b>Definition:</b> Engine.cpp:160</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Time_1_1ETime_html"><div class="ttname"><a href="classKapEngine_1_1Time_1_1ETime.html">KapEngine::Time::ETime</a></div><div class="ttdoc">Engine Time is internal time system of engine.</div><div class="ttdef"><b>Definition:</b> ETime.hpp:25</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a9a0fd31c034c832c63eb8e0c8825d5fe"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a9a0fd31c034c832c63eb8e0c8825d5fe">KapEngine::KEngine::getGameCompany</a></div><div class="ttdeci">std::string getGameCompany() const</div><div class="ttdoc">Get the Game Company name.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:177</div></div>
-<div class="ttc" id="aclassKapEngine_1_1SceneManagement_1_1SceneManager_html"><div class="ttname"><a href="classKapEngine_1_1SceneManagement_1_1SceneManager.html">KapEngine::SceneManagement::SceneManager</a></div><div class="ttdef"><b>Definition:</b> SceneManager.hpp:31</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_ad7c9e797a62a602406992c90785af6dc"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#ad7c9e797a62a602406992c90785af6dc">KapEngine::KEngine::getGameVersion</a></div><div class="ttdeci">std::string getGameVersion() const</div><div class="ttdoc">Get the Game Version.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:169</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a20364d4c9c5a50dd5ea8bb91c8ebe54e"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a20364d4c9c5a50dd5ea8bb91c8ebe54e">KapEngine::KEngine::getEventManager</a></div><div class="ttdeci">Events::EventManager &amp; getEventManager()</div><div class="ttdoc">Get the Event Manager of game.</div><div class="ttdef"><b>Definition:</b> Engine.cpp:136</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a9a0fd31c034c832c63eb8e0c8825d5fe"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a9a0fd31c034c832c63eb8e0c8825d5fe">KapEngine::KEngine::getGameCompany</a></div><div class="ttdeci">std::string getGameCompany() const</div><div class="ttdoc">Get the Game Company name.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:189</div></div>
+<div class="ttc" id="aclassKapEngine_1_1SceneManagement_1_1SceneManager_html"><div class="ttname"><a href="classKapEngine_1_1SceneManagement_1_1SceneManager.html">KapEngine::SceneManagement::SceneManager</a></div><div class="ttdef"><b>Definition:</b> SceneManager.hpp:32</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_ad7c9e797a62a602406992c90785af6dc"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#ad7c9e797a62a602406992c90785af6dc">KapEngine::KEngine::getGameVersion</a></div><div class="ttdeci">std::string getGameVersion() const</div><div class="ttdoc">Get the Game Version.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:179</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a20364d4c9c5a50dd5ea8bb91c8ebe54e"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a20364d4c9c5a50dd5ea8bb91c8ebe54e">KapEngine::KEngine::getEventManager</a></div><div class="ttdeci">Events::EventManager &amp; getEventManager()</div><div class="ttdoc">Get the Event Manager of game.</div><div class="ttdef"><b>Definition:</b> Engine.cpp:156</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Events_1_1EventManager_html"><div class="ttname"><a href="classKapEngine_1_1Events_1_1EventManager.html">KapEngine::Events::EventManager</a></div><div class="ttdoc">Event manager.</div><div class="ttdef"><b>Definition:</b> EventManager.hpp:36</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Time_1_1EClock_html"><div class="ttname"><a href="classKapEngine_1_1Time_1_1EClock.html">KapEngine::Time::EClock</a></div><div class="ttdef"><b>Definition:</b> EClock.hpp:22</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a5f93441dbd9ba82dfc6cc4745cca7074"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a5f93441dbd9ba82dfc6cc4745cca7074">KapEngine::KEngine::isRunning</a></div><div class="ttdeci">bool isRunning() const</div><div class="ttdoc">Check if game is running.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:103</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_ae9da4b2e72cdc2b8860cd9153f0149ac"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#ae9da4b2e72cdc2b8860cd9153f0149ac">KapEngine::KEngine::getPrefabManager</a></div><div class="ttdeci">std::shared_ptr&lt; Prefabs::PrefabManager &gt; getPrefabManager() const</div><div class="ttdoc">Get the Prefab Manager of game.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:195</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a00112bfbd2e0ccd8f5feab0408912048"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a00112bfbd2e0ccd8f5feab0408912048">KapEngine::KEngine::getElapsedTime</a></div><div class="ttdeci">Time::ETime getElapsedTime()</div><div class="ttdoc">Get the Elapsed Time since last internal clock restart.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:203</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_ace563c1c14997a21ebf8991a1a4559f6"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#ace563c1c14997a21ebf8991a1a4559f6">KapEngine::KEngine::setFixedTime</a></div><div class="ttdeci">void setFixedTime(Time::ETime time)</div><div class="ttdoc">Set the Fixed Time of engine fixed time is used to call onFixedUpdate() function of component -&gt; this...</div><div class="ttdef"><b>Definition:</b> Engine.hpp:293</div></div>
-<div class="ttc" id="aclassKapEngine_1_1Time_1_1ETime_html_a35bdb9c03082bd1c1eb71d35a0b4fdc9"><div class="ttname"><a href="classKapEngine_1_1Time_1_1ETime.html#a35bdb9c03082bd1c1eb71d35a0b4fdc9">KapEngine::Time::ETime::setMilliseconds</a></div><div class="ttdeci">void setMilliseconds(int64_t ms)</div><div class="ttdoc">Set the Milliseconds of time.</div><div class="ttdef"><b>Definition:</b> ETime.hpp:121</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_addddd0275a1f122b844a2f372ea8d5cb"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#addddd0275a1f122b844a2f372ea8d5cb">KapEngine::KEngine::setEngineThread</a></div><div class="ttdeci">void setEngineThread(bool b)</div><div class="ttdoc">Set if engine have to use threads.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:326</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a0b64562fd197323a22568c7336d4ed63"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a0b64562fd197323a22568c7336d4ed63">KapEngine::KEngine::getGameName</a></div><div class="ttdeci">std::string getGameName() const</div><div class="ttdoc">Get the Game Name.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:161</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_ad753fccc58c3afc03ab5f518cad9f34b"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#ad753fccc58c3afc03ab5f518cad9f34b">KapEngine::KEngine::setDeltaTime</a></div><div class="ttdeci">void setDeltaTime(float dTime)</div><div class="ttdoc">Set the Delta Time of game more delta time increase more the game gonna be fast. more delta decrease,...</div><div class="ttdef"><b>Definition:</b> Engine.hpp:222</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a9e348dc071a1a280038074c28eb41eb3"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a9e348dc071a1a280038074c28eb41eb3">KapEngine::KEngine::getMaxFps</a></div><div class="ttdeci">float getMaxFps() const</div><div class="ttdoc">Get the Max Fps of game.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:264</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_af4bb7f577cbf7c751afe86b1a01ed16b"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#af4bb7f577cbf7c751afe86b1a01ed16b">KapEngine::KEngine::setTitle</a></div><div class="ttdeci">void setTitle(std::string const &amp;title)</div><div class="ttdoc">Set the Title of game windows.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:353</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a08e0312baa30b910d00b59104e78074d"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a08e0312baa30b910d00b59104e78074d">KapEngine::KEngine::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">run your game</div><div class="ttdef"><b>Definition:</b> Engine.cpp:41</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a0a8e6b9910cbb13e55094c9499e98a7f"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a0a8e6b9910cbb13e55094c9499e98a7f">KapEngine::KEngine::getIconPath</a></div><div class="ttdeci">std::string getIconPath() const</div><div class="ttdoc">Get the Icon Path of your game.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:315</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a5f93441dbd9ba82dfc6cc4745cca7074"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a5f93441dbd9ba82dfc6cc4745cca7074">KapEngine::KEngine::isRunning</a></div><div class="ttdeci">bool isRunning() const</div><div class="ttdoc">Check if game is running.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:105</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_ae9da4b2e72cdc2b8860cd9153f0149ac"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#ae9da4b2e72cdc2b8860cd9153f0149ac">KapEngine::KEngine::getPrefabManager</a></div><div class="ttdeci">std::shared_ptr&lt; Prefabs::PrefabManager &gt; getPrefabManager() const</div><div class="ttdoc">Get the Prefab Manager of game.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:211</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a00112bfbd2e0ccd8f5feab0408912048"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a00112bfbd2e0ccd8f5feab0408912048">KapEngine::KEngine::getElapsedTime</a></div><div class="ttdeci">Time::ETime getElapsedTime()</div><div class="ttdoc">Get the Elapsed Time since last internal clock restart.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:221</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_ace563c1c14997a21ebf8991a1a4559f6"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#ace563c1c14997a21ebf8991a1a4559f6">KapEngine::KEngine::setFixedTime</a></div><div class="ttdeci">void setFixedTime(Time::ETime time)</div><div class="ttdoc">Set the Fixed Time of engine fixed time is used to call onFixedUpdate() function of component -&gt; this...</div><div class="ttdef"><b>Definition:</b> Engine.hpp:323</div></div>
+<div class="ttc" id="aclassKapEngine_1_1Time_1_1ETime_html_a35bdb9c03082bd1c1eb71d35a0b4fdc9"><div class="ttname"><a href="classKapEngine_1_1Time_1_1ETime.html#a35bdb9c03082bd1c1eb71d35a0b4fdc9">KapEngine::Time::ETime::setMilliseconds</a></div><div class="ttdeci">void setMilliseconds(int64_t ms)</div><div class="ttdoc">Set the Milliseconds of time.</div><div class="ttdef"><b>Definition:</b> ETime.hpp:162</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_addddd0275a1f122b844a2f372ea8d5cb"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#addddd0275a1f122b844a2f372ea8d5cb">KapEngine::KEngine::setEngineThread</a></div><div class="ttdeci">void setEngineThread(bool b)</div><div class="ttdoc">Set if engine have to use threads.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:364</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a0b64562fd197323a22568c7336d4ed63"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a0b64562fd197323a22568c7336d4ed63">KapEngine::KEngine::getGameName</a></div><div class="ttdeci">std::string getGameName() const</div><div class="ttdoc">Get the Game Name.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:169</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_ad753fccc58c3afc03ab5f518cad9f34b"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#ad753fccc58c3afc03ab5f518cad9f34b">KapEngine::KEngine::setDeltaTime</a></div><div class="ttdeci">void setDeltaTime(float dTime)</div><div class="ttdoc">Set the Delta Time of game more delta time increase more the game gonna be fast. more delta decrease,...</div><div class="ttdef"><b>Definition:</b> Engine.hpp:242</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a9e348dc071a1a280038074c28eb41eb3"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a9e348dc071a1a280038074c28eb41eb3">KapEngine::KEngine::getMaxFps</a></div><div class="ttdeci">float getMaxFps() const</div><div class="ttdoc">Get the Max Fps of game.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:288</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_af4bb7f577cbf7c751afe86b1a01ed16b"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#af4bb7f577cbf7c751afe86b1a01ed16b">KapEngine::KEngine::setTitle</a></div><div class="ttdeci">void setTitle(std::string const &amp;title)</div><div class="ttdoc">Set the Title of game windows.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:395</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a08e0312baa30b910d00b59104e78074d"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a08e0312baa30b910d00b59104e78074d">KapEngine::KEngine::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">run your game</div><div class="ttdef"><b>Definition:</b> Engine.cpp:47</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a0a8e6b9910cbb13e55094c9499e98a7f"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a0a8e6b9910cbb13e55094c9499e98a7f">KapEngine::KEngine::getIconPath</a></div><div class="ttdeci">std::string getIconPath() const</div><div class="ttdoc">Get the Icon Path of your game.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:351</div></div>
 <div class="ttc" id="aclassKapEngine_1_1SceneManagement_1_1SplashScreen_html"><div class="ttname"><a href="classKapEngine_1_1SceneManagement_1_1SplashScreen.html">KapEngine::SceneManagement::SplashScreen</a></div><div class="ttdef"><b>Definition:</b> SplashScreen.hpp:23</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a493e4b25fdcf227b89edd0b3b851fea9"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a493e4b25fdcf227b89edd0b3b851fea9">KapEngine::KEngine::getSceneManager</a></div><div class="ttdeci">std::shared_ptr&lt; SceneManagement::SceneManager &gt; getSceneManager() const</div><div class="ttdoc">Get the Scene Manager of game.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:186</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a4f542050730a28de4b41e623550d461d"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a4f542050730a28de4b41e623550d461d">KapEngine::KEngine::getGraphicalLibManager</a></div><div class="ttdeci">std::shared_ptr&lt; Graphical::GraphicalLibManager &gt; getGraphicalLibManager() const</div><div class="ttdoc">Get the Graphical Lib Manager.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:231</div></div>
-<div class="ttc" id="aclassKapEngine_1_1Time_1_1ETime_html_a9d62c4356780d31a47be3f376bcd46be"><div class="ttname"><a href="classKapEngine_1_1Time_1_1ETime.html#a9d62c4356780d31a47be3f376bcd46be">KapEngine::Time::ETime::asMilliSecond</a></div><div class="ttdeci">virtual int32_t asMilliSecond() const</div><div class="ttdoc">avoir le temps en millisecondes</div><div class="ttdef"><b>Definition:</b> ETime.hpp:51</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_aeb2bbe226326a107af433d5b30fec0a4"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#aeb2bbe226326a107af433d5b30fec0a4">KapEngine::KEngine::isEngineThreaded</a></div><div class="ttdeci">bool isEngineThreaded() const</div><div class="ttdoc">return if engine is threaded</div><div class="ttdef"><b>Definition:</b> Engine.hpp:336</div></div>
-<div class="ttc" id="aclassKapEngine_1_1Tools_1_1Vector2_html"><div class="ttname"><a href="classKapEngine_1_1Tools_1_1Vector2.html">KapEngine::Tools::Vector2</a></div><div class="ttdef"><b>Definition:</b> Vectors.hpp:24</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_ae69eb009c532e2445f656260e7d5b9c4"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#ae69eb009c532e2445f656260e7d5b9c4">KapEngine::KEngine::isGraphicalLibExists</a></div><div class="ttdeci">bool isGraphicalLibExists(std::size_t const &amp;index) const</div><div class="ttdoc">Check if lib exists from it's id in engine.</div><div class="ttdef"><b>Definition:</b> Engine.cpp:110</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_ae001972589725bd4d3ca33acf243138c"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#ae001972589725bd4d3ca33acf243138c">KapEngine::KEngine::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdoc">stop your game (can be call by component)</div><div class="ttdef"><b>Definition:</b> Engine.cpp:90</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a493e4b25fdcf227b89edd0b3b851fea9"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a493e4b25fdcf227b89edd0b3b851fea9">KapEngine::KEngine::getSceneManager</a></div><div class="ttdeci">std::shared_ptr&lt; SceneManagement::SceneManager &gt; getSceneManager() const</div><div class="ttdoc">Get the Scene Manager of game.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:200</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a4f542050730a28de4b41e623550d461d"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a4f542050730a28de4b41e623550d461d">KapEngine::KEngine::getGraphicalLibManager</a></div><div class="ttdeci">std::shared_ptr&lt; Graphical::GraphicalLibManager &gt; getGraphicalLibManager() const</div><div class="ttdoc">Get the Graphical Lib Manager.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:253</div></div>
+<div class="ttc" id="aclassKapEngine_1_1Time_1_1ETime_html_a9d62c4356780d31a47be3f376bcd46be"><div class="ttname"><a href="classKapEngine_1_1Time_1_1ETime.html#a9d62c4356780d31a47be3f376bcd46be">KapEngine::Time::ETime::asMilliSecond</a></div><div class="ttdeci">virtual int32_t asMilliSecond() const</div><div class="ttdoc">avoir le temps en millisecondes</div><div class="ttdef"><b>Definition:</b> ETime.hpp:62</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_aeb2bbe226326a107af433d5b30fec0a4"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#aeb2bbe226326a107af433d5b30fec0a4">KapEngine::KEngine::isEngineThreaded</a></div><div class="ttdeci">bool isEngineThreaded() const</div><div class="ttdoc">return if engine is threaded</div><div class="ttdef"><b>Definition:</b> Engine.hpp:376</div></div>
+<div class="ttc" id="aclassKapEngine_1_1Tools_1_1Vector2_html"><div class="ttname"><a href="classKapEngine_1_1Tools_1_1Vector2.html">KapEngine::Tools::Vector2</a></div><div class="ttdef"><b>Definition:</b> Vectors.hpp:25</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_ae69eb009c532e2445f656260e7d5b9c4"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#ae69eb009c532e2445f656260e7d5b9c4">KapEngine::KEngine::isGraphicalLibExists</a></div><div class="ttdeci">bool isGraphicalLibExists(std::size_t const &amp;index) const</div><div class="ttdoc">Check if lib exists from it's id in engine.</div><div class="ttdef"><b>Definition:</b> Engine.cpp:122</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_ae001972589725bd4d3ca33acf243138c"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#ae001972589725bd4d3ca33acf243138c">KapEngine::KEngine::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdoc">stop your game (can be call by component)</div><div class="ttdef"><b>Definition:</b> Engine.cpp:98</div></div>
 <div class="ttc" id="aclassKapEngine_1_1KEngine_html_af36072b3c38c260e0a3a9dea424e9491"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#af36072b3c38c260e0a3a9dea424e9491">KapEngine::KEngine::KEngine</a></div><div class="ttdeci">KEngine(bool debug=false, std::string const &amp;gameName=&quot;Game&quot;, std::string const &amp;version=&quot;1.0.0&quot;, std::string const &amp;company=&quot;Default Company&quot;)</div><div class="ttdoc">Construct a new KapEngine Engine.</div><div class="ttdef"><b>Definition:</b> Engine.cpp:11</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a76b9388904e19d5f36704bdfaa5da780"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a76b9388904e19d5f36704bdfaa5da780">KapEngine::KEngine::setIconGame</a></div><div class="ttdeci">void setIconGame(std::string const &amp;iconPath)</div><div class="ttdoc">Set the Icon path of your Game.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:306</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a76b9388904e19d5f36704bdfaa5da780"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a76b9388904e19d5f36704bdfaa5da780">KapEngine::KEngine::setIconGame</a></div><div class="ttdeci">void setIconGame(std::string const &amp;iconPath)</div><div class="ttdoc">Set the Icon path of your Game.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:340</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Graphical_1_1GraphicalLibManager_html"><div class="ttname"><a href="classKapEngine_1_1Graphical_1_1GraphicalLibManager.html">KapEngine::Graphical::GraphicalLibManager</a></div><div class="ttdef"><b>Definition:</b> GraphicalLibManager.hpp:31</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_afe2719b2a33944ae450268bf6bfa6b08"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#afe2719b2a33944ae450268bf6bfa6b08">KapEngine::KEngine::__canRunFixed</a></div><div class="ttdeci">bool __canRunFixed() const</div><div class="ttdoc">return if onFixedUpdate can be call</div><div class="ttdef"><b>Definition:</b> Engine.hpp:274</div></div>
-<div class="ttc" id="anamespaceKapEngine_html"><div class="ttname"><a href="namespaceKapEngine.html">KapEngine</a></div><div class="ttdoc">main namespace</div><div class="ttdef"><b>Definition:</b> Component.hpp:16</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a26f1ea3e4880519b8fa483108f41d297"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a26f1ea3e4880519b8fa483108f41d297">KapEngine::KEngine::getCurrentGraphicalLib</a></div><div class="ttdeci">std::shared_ptr&lt; Graphical::GraphicalLib &gt; getCurrentGraphicalLib()</div><div class="ttdoc">Get the Current Graphical Lib.</div><div class="ttdef"><b>Definition:</b> Engine.cpp:106</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a7c8744d612dc970c12e070d274c5148f"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a7c8744d612dc970c12e070d274c5148f">KapEngine::KEngine::debugMode</a></div><div class="ttdeci">bool debugMode() const</div><div class="ttdoc">check debug mode</div><div class="ttdef"><b>Definition:</b> Engine.hpp:113</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a0e8912dc0703618f86842ebb55404dc1"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a0e8912dc0703618f86842ebb55404dc1">KapEngine::KEngine::setDebugMod</a></div><div class="ttdeci">void setDebugMod(bool b)</div><div class="ttdoc">Set the debug mode.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:120</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_afe2719b2a33944ae450268bf6bfa6b08"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#afe2719b2a33944ae450268bf6bfa6b08">KapEngine::KEngine::__canRunFixed</a></div><div class="ttdeci">bool __canRunFixed() const</div><div class="ttdoc">return if onFixedUpdate can be call</div><div class="ttdef"><b>Definition:</b> Engine.hpp:300</div></div>
+<div class="ttc" id="anamespaceKapEngine_html"><div class="ttname"><a href="namespaceKapEngine.html">KapEngine</a></div><div class="ttdoc">main namespace</div><div class="ttdef"><b>Definition:</b> Component.hpp:17</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a26f1ea3e4880519b8fa483108f41d297"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a26f1ea3e4880519b8fa483108f41d297">KapEngine::KEngine::getCurrentGraphicalLib</a></div><div class="ttdeci">std::shared_ptr&lt; Graphical::GraphicalLib &gt; getCurrentGraphicalLib()</div><div class="ttdoc">Get the Current Graphical Lib.</div><div class="ttdef"><b>Definition:</b> Engine.cpp:118</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a7c8744d612dc970c12e070d274c5148f"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a7c8744d612dc970c12e070d274c5148f">KapEngine::KEngine::debugMode</a></div><div class="ttdeci">bool debugMode() const</div><div class="ttdoc">check debug mode</div><div class="ttdef"><b>Definition:</b> Engine.hpp:117</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a0e8912dc0703618f86842ebb55404dc1"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a0e8912dc0703618f86842ebb55404dc1">KapEngine::KEngine::setDebugMod</a></div><div class="ttdeci">void setDebugMod(bool b)</div><div class="ttdoc">Set the debug mode.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:126</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Graphical_1_1GraphicalLib_html"><div class="ttname"><a href="classKapEngine_1_1Graphical_1_1GraphicalLib.html">KapEngine::Graphical::GraphicalLib</a></div><div class="ttdef"><b>Definition:</b> GraphicalLib.hpp:50</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a4d9f4073afdfd514569751b88fa2f367"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a4d9f4073afdfd514569751b88fa2f367">KapEngine::KEngine::getScreenSize</a></div><div class="ttdeci">Tools::Vector2 getScreenSize() const</div><div class="ttdoc">Get the Screen Size at the game beginning.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:255</div></div>
-<div class="ttc" id="aclassKapEngine_1_1KEngine_html_abb403cfa866c3bc26907ccb9e47050f1"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#abb403cfa866c3bc26907ccb9e47050f1">KapEngine::KEngine::getSplashScreen</a></div><div class="ttdeci">std::shared_ptr&lt; SceneManagement::SplashScreen &gt; getSplashScreen() const</div><div class="ttdoc">Get the Splash Screen manager.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:283</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_a4d9f4073afdfd514569751b88fa2f367"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#a4d9f4073afdfd514569751b88fa2f367">KapEngine::KEngine::getScreenSize</a></div><div class="ttdeci">Tools::Vector2 getScreenSize() const</div><div class="ttdoc">Get the Screen Size at the game beginning.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:277</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html_abb403cfa866c3bc26907ccb9e47050f1"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#abb403cfa866c3bc26907ccb9e47050f1">KapEngine::KEngine::getSplashScreen</a></div><div class="ttdeci">std::shared_ptr&lt; SceneManagement::SplashScreen &gt; getSplashScreen() const</div><div class="ttdoc">Get the Splash Screen manager.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:311</div></div>
 <div class="ttc" id="aclassKapEngine_1_1KEngine_html_ab6075e576abf8daeb1ec09976d6439e5"><div class="ttname"><a href="classKapEngine_1_1KEngine.html#ab6075e576abf8daeb1ec09976d6439e5">KapEngine::KEngine::setMaxFps</a></div><div class="ttdeci">void setMaxFps(int fps)</div><div class="ttdoc">Fix max fps of game.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:86</div></div>
 <div class="ttc" id="aclassKapEngine_1_1KEngine_html"><div class="ttname"><a href="classKapEngine_1_1KEngine.html">KapEngine::KEngine</a></div><div class="ttdoc">Class of engine.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:60</div></div>
 <!-- start footer part -->

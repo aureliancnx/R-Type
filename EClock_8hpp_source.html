@@ -111,57 +111,71 @@ $(document).ready(function(){initNavTree('EClock_8hpp_source.html',''); initResi
 <div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classKapEngine_1_1Time_1_1EClock.html">   22</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classKapEngine_1_1Time_1_1EClock.html">EClock</a> {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                <a class="code" href="classKapEngine_1_1Time_1_1EClock.html">EClock</a>() {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                    __setNow();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                <a class="code" href="classKapEngine_1_1Time_1_1EClock.html">EClock</a>(<a class="code" href="classKapEngine_1_1Time_1_1EClock.html">EClock</a> <span class="keyword">const</span>&amp; _clk) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    *<span class="keyword">this</span> = _clk;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                ~<a class="code" href="classKapEngine_1_1Time_1_1EClock.html">EClock</a>() {}</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classKapEngine_1_1Time_1_1EClock.html#aa84323220453c51ee4a3f9d77f17b0e0">   38</a></span>&#160;                <span class="keyword">virtual</span> <a class="code" href="classKapEngine_1_1Time_1_1ETime.html">ETime</a> <a class="code" href="classKapEngine_1_1Time_1_1EClock.html#aa84323220453c51ee4a3f9d77f17b0e0">restart</a>() {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    <a class="code" href="classKapEngine_1_1Time_1_1ETime.html">ETime</a> _got = __getElapse();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                    __setNow();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                    <span class="keywordflow">return</span> _got;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classKapEngine_1_1Time_1_1EClock.html#a288fd94eee69835d9ff1c20f39b557a7">   50</a></span>&#160;                <span class="keyword">virtual</span> <a class="code" href="classKapEngine_1_1Time_1_1ETime.html">ETime</a> <a class="code" href="classKapEngine_1_1Time_1_1EClock.html#a288fd94eee69835d9ff1c20f39b557a7">getElapseTime</a>() {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    <span class="keywordflow">return</span> <a class="code" href="classKapEngine_1_1Time_1_1ETime.html">ETime</a>(__getElapse());</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <a class="code" href="classKapEngine_1_1Time_1_1EClock.html">EClock</a> &amp;operator=(<a class="code" href="classKapEngine_1_1Time_1_1EClock.html">EClock</a> <span class="keyword">const</span>&amp; _clk) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    this-&gt;_start = _clk._start;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                int64_t _start = 0;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                int64_t __getElapse() {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    std::chrono::microseconds ms = std::chrono::duration_cast&lt;std::chrono::microseconds &gt;(</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                        std::chrono::high_resolution_clock::now().time_since_epoch()</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                    );</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                    int64_t _nVal = ms.count();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                    <span class="keywordflow">return</span> (_nVal - _start);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <span class="keywordtype">void</span> __setNow() {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    std::chrono::microseconds ms = std::chrono::duration_cast&lt;std::chrono::microseconds &gt;(</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        std::chrono::high_resolution_clock::now().time_since_epoch()</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                    );</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    _start = ms.count();</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        };</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !ECLOCK_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                    __setNow();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                <a class="code" href="classKapEngine_1_1Time_1_1EClock.html">EClock</a>(<a class="code" href="classKapEngine_1_1Time_1_1EClock.html">EClock</a> <span class="keyword">const</span>&amp; _clk) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                    *<span class="keyword">this</span> = _clk;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                ~<a class="code" href="classKapEngine_1_1Time_1_1EClock.html">EClock</a>() {}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classKapEngine_1_1Time_1_1EClock.html#aa84323220453c51ee4a3f9d77f17b0e0">   42</a></span>&#160;                <span class="keyword">virtual</span> <a class="code" href="classKapEngine_1_1Time_1_1ETime.html">ETime</a> <a class="code" href="classKapEngine_1_1Time_1_1EClock.html#aa84323220453c51ee4a3f9d77f17b0e0">restart</a>() {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    <a class="code" href="classKapEngine_1_1Time_1_1ETime.html">ETime</a> _got = __getElapse();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    __setNow();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    <span class="keywordflow">return</span> _got;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classKapEngine_1_1Time_1_1EClock.html#a288fd94eee69835d9ff1c20f39b557a7">   56</a></span>&#160;                <span class="keyword">virtual</span> <a class="code" href="classKapEngine_1_1Time_1_1ETime.html">ETime</a> <a class="code" href="classKapEngine_1_1Time_1_1EClock.html#a288fd94eee69835d9ff1c20f39b557a7">getElapseTime</a>() {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                    <span class="keywordflow">return</span> <a class="code" href="classKapEngine_1_1Time_1_1ETime.html">ETime</a>(__getElapse());</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <a class="code" href="classKapEngine_1_1Time_1_1EClock.html">EClock</a> &amp;operator=(<a class="code" href="classKapEngine_1_1Time_1_1EClock.html">EClock</a> <span class="keyword">const</span>&amp; _clk) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                    this-&gt;_start = _clk._start;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                int64_t _start = 0;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                int64_t __getElapse() {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    std::chrono::microseconds ms = std::chrono::duration_cast&lt;std::chrono::microseconds &gt;(</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        std::chrono::high_resolution_clock::now().time_since_epoch()</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    );</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    int64_t _nVal = ms.count();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    <span class="keywordflow">return</span> (_nVal - _start);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordtype">void</span> __setNow() {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    std::chrono::microseconds ms = std::chrono::duration_cast&lt;std::chrono::microseconds &gt;(</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        std::chrono::high_resolution_clock::now().time_since_epoch()</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    );</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    _start = ms.count();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        };</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !ECLOCK_HPP_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassKapEngine_1_1Time_1_1EClock_html_a288fd94eee69835d9ff1c20f39b557a7"><div class="ttname"><a href="classKapEngine_1_1Time_1_1EClock.html#a288fd94eee69835d9ff1c20f39b557a7">KapEngine::Time::EClock::getElapseTime</a></div><div class="ttdeci">virtual ETime getElapseTime()</div><div class="ttdoc">avoir le temps</div><div class="ttdef"><b>Definition:</b> EClock.hpp:50</div></div>
+<div class="ttc" id="aclassKapEngine_1_1Time_1_1EClock_html_a288fd94eee69835d9ff1c20f39b557a7"><div class="ttname"><a href="classKapEngine_1_1Time_1_1EClock.html#a288fd94eee69835d9ff1c20f39b557a7">KapEngine::Time::EClock::getElapseTime</a></div><div class="ttdeci">virtual ETime getElapseTime()</div><div class="ttdoc">avoir le temps</div><div class="ttdef"><b>Definition:</b> EClock.hpp:56</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Time_1_1ETime_html"><div class="ttname"><a href="classKapEngine_1_1Time_1_1ETime.html">KapEngine::Time::ETime</a></div><div class="ttdoc">Engine Time is internal time system of engine.</div><div class="ttdef"><b>Definition:</b> ETime.hpp:25</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Time_1_1EClock_html"><div class="ttname"><a href="classKapEngine_1_1Time_1_1EClock.html">KapEngine::Time::EClock</a></div><div class="ttdef"><b>Definition:</b> EClock.hpp:22</div></div>
-<div class="ttc" id="anamespaceKapEngine_html"><div class="ttname"><a href="namespaceKapEngine.html">KapEngine</a></div><div class="ttdoc">main namespace</div><div class="ttdef"><b>Definition:</b> Component.hpp:16</div></div>
-<div class="ttc" id="aclassKapEngine_1_1Time_1_1EClock_html_aa84323220453c51ee4a3f9d77f17b0e0"><div class="ttname"><a href="classKapEngine_1_1Time_1_1EClock.html#aa84323220453c51ee4a3f9d77f17b0e0">KapEngine::Time::EClock::restart</a></div><div class="ttdeci">virtual ETime restart()</div><div class="ttdoc">Redémarer la clock.</div><div class="ttdef"><b>Definition:</b> EClock.hpp:38</div></div>
+<div class="ttc" id="anamespaceKapEngine_html"><div class="ttname"><a href="namespaceKapEngine.html">KapEngine</a></div><div class="ttdoc">main namespace</div><div class="ttdef"><b>Definition:</b> Component.hpp:17</div></div>
+<div class="ttc" id="aclassKapEngine_1_1Time_1_1EClock_html_aa84323220453c51ee4a3f9d77f17b0e0"><div class="ttname"><a href="classKapEngine_1_1Time_1_1EClock.html#aa84323220453c51ee4a3f9d77f17b0e0">KapEngine::Time::EClock::restart</a></div><div class="ttdeci">virtual ETime restart()</div><div class="ttdoc">Redémarer la clock.</div><div class="ttdef"><b>Definition:</b> EClock.hpp:42</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

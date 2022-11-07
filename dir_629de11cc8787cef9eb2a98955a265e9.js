@@ -12,6 +12,7 @@ var dir_629de11cc8787cef9eb2a98955a265e9 =
     [ "Legacy", "dir_6a3e199c761d833b07b6fb2d34fecaac.html", "dir_6a3e199c761d833b07b6fb2d34fecaac" ],
     [ "PlayerPrefs", "dir_5d2be61f3cb9054af976eff9585b114f.html", "dir_5d2be61f3cb9054af976eff9585b114f" ],
     [ "Prefabs", "dir_97586bd3acd37486d8a3fba366d99f68.html", "dir_97586bd3acd37486d8a3fba366d99f68" ],
+    [ "Profiler", "dir_93dcb69e57a0ecf0d16d3c9b4befd6d3.html", "dir_93dcb69e57a0ecf0d16d3c9b4befd6d3" ],
     [ "SceneManagement", "dir_c40c08ab005428061dc7d68609d4a1ea.html", "dir_c40c08ab005428061dc7d68609d4a1ea" ],
     [ "Time", "dir_fef29fda9d893b7850f121e644421544.html", "dir_fef29fda9d893b7850f121e644421544" ],
     [ "Tools", "dir_b686b145261ce70dc9aca209a5f3c242.html", "dir_b686b145261ce70dc9aca209a5f3c242" ],

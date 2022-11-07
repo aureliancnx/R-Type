@@ -132,35 +132,37 @@ $(document).ready(function(){initNavTree('GraphicalLibManager_8hpp_source.html',
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="keywordtype">void</span> __update();</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                std::size_t getCurrLib()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    <span class="keywordflow">return</span> currLib;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                std::shared_ptr&lt;GraphicalLib&gt; getCurrentLib() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    <span class="keywordflow">return</span> currLib;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                }</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <a class="code" href="classKapEngine_1_1KEngine.html">KEngine</a> &amp;getEngine()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                    <span class="keywordflow">return</span> _engine;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keywordtype">void</span> changeLib(std::size_t <span class="keyword">const</span>&amp; libId);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <span class="keywordtype">void</span> changeLib(std::string <span class="keyword">const</span>&amp; libName);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                std::size_t currLib = 0;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                std::size_t _maxLib = 0;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                std::vector&lt;std::shared_ptr&lt;GraphicalLib&gt;&gt; _libs;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <a class="code" href="classKapEngine_1_1KEngine.html">KEngine</a> &amp;_engine;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        };</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !GRAPHICALLIBMANAGER_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                std::shared_ptr&lt;GraphicalLib&gt; getCurrentLib() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <a class="code" href="classKapEngine_1_1KEngine.html">KEngine</a> &amp;getEngine()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                    <span class="keywordflow">return</span> _engine;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <span class="keywordtype">void</span> changeLib(std::size_t <span class="keyword">const</span>&amp; libId);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="keywordtype">void</span> changeLib(std::string <span class="keyword">const</span>&amp; libName);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                std::size_t currLib = 0;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                std::size_t _maxLib = 0;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                std::vector&lt;std::shared_ptr&lt;GraphicalLib&gt;&gt; _libs;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <a class="code" href="classKapEngine_1_1KEngine.html">KEngine</a> &amp;_engine;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        };</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !GRAPHICALLIBMANAGER_HPP_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapEngine_1_1Graphical_1_1GraphicalLibManager_html"><div class="ttname"><a href="classKapEngine_1_1Graphical_1_1GraphicalLibManager.html">KapEngine::Graphical::GraphicalLibManager</a></div><div class="ttdef"><b>Definition:</b> GraphicalLibManager.hpp:31</div></div>
-<div class="ttc" id="anamespaceKapEngine_html"><div class="ttname"><a href="namespaceKapEngine.html">KapEngine</a></div><div class="ttdoc">main namespace</div><div class="ttdef"><b>Definition:</b> Component.hpp:16</div></div>
+<div class="ttc" id="anamespaceKapEngine_html"><div class="ttname"><a href="namespaceKapEngine.html">KapEngine</a></div><div class="ttdoc">main namespace</div><div class="ttdef"><b>Definition:</b> Component.hpp:17</div></div>
 <div class="ttc" id="aclassKapEngine_1_1KEngine_html"><div class="ttname"><a href="classKapEngine_1_1KEngine.html">KapEngine::KEngine</a></div><div class="ttdoc">Class of engine.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:60</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

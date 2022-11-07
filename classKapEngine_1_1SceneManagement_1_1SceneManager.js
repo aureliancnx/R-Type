@@ -15,10 +15,10 @@ var classKapEngine_1_1SceneManagement_1_1SceneManager =
     [ "getSceneIndex", "classKapEngine_1_1SceneManagement_1_1SceneManager.html#a9d970d168afb16eec338661b6b6e0856", null ],
     [ "getSceneIndexInList", "classKapEngine_1_1SceneManagement_1_1SceneManager.html#aeb058ddeac3ca916c355fb57e2492927", null ],
     [ "getSceneIndexInList", "classKapEngine_1_1SceneManagement_1_1SceneManager.html#a83ffdf6d6e89b87ad593353f2cb30522", null ],
-    [ "loadScene", "classKapEngine_1_1SceneManagement_1_1SceneManager.html#aa216b9d8a29289e8f5aec1f5afb1cec5", null ],
+    [ "loadScene", "classKapEngine_1_1SceneManagement_1_1SceneManager.html#a3d302835b8b640586766fbb4e357b5e8", null ],
     [ "loadScene", "classKapEngine_1_1SceneManagement_1_1SceneManager.html#a0563f0eeeda1e36fc7a6c0bdcb78eb0e", null ],
-    [ "removeScene", "classKapEngine_1_1SceneManagement_1_1SceneManager.html#a43985af11ac57b641ed70835256c9f26", null ],
+    [ "removeScene", "classKapEngine_1_1SceneManagement_1_1SceneManager.html#a7113e48d1e2b5a9e7c72b334ca0a029f", null ],
     [ "removeScene", "classKapEngine_1_1SceneManagement_1_1SceneManager.html#a3f204a0612205063b717560df23ca450", null ],
-    [ "sceneExists", "classKapEngine_1_1SceneManagement_1_1SceneManager.html#a42ef480a4700f87fd340972f1b798dda", null ],
+    [ "sceneExists", "classKapEngine_1_1SceneManagement_1_1SceneManager.html#a0a88327bccd8e4be1d0f1ac24a391dcc", null ],
     [ "sceneExists", "classKapEngine_1_1SceneManagement_1_1SceneManager.html#a69a1e9601e78b410dc08c8741de24293", null ]
 ];

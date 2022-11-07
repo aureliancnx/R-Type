@@ -125,27 +125,29 @@ $(document).ready(function(){initNavTree('LegacyGraphicalLib_8hpp_source.html','
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <span class="keywordtype">void</span> display() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <span class="keywordtype">void</span> startDisplay()<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    DEBUG_LOG(<span class="stringliteral">&quot;Use &quot;</span> + getName());</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                std::map&lt;std::string, std::function&lt;void()&gt;&gt; _commands;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                <span class="keywordtype">void</span> registerCommand(std::string <span class="keyword">const</span>&amp; cmd, std::function&lt;<span class="keywordtype">void</span>()&gt;);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="keywordtype">void</span> executeCommand(std::string <span class="keyword">const</span>&amp; cmd);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keywordtype">bool</span> commandExists(std::string <span class="keyword">const</span>&amp; cmd);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        };</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                    DEBUG_LOG(<span class="stringliteral">&quot;Use &quot;</span> + getName());</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                std::map&lt;std::string, std::function&lt;void()&gt;&gt; _commands;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keywordtype">void</span> registerCommand(std::string <span class="keyword">const</span>&amp; cmd, std::function&lt;<span class="keywordtype">void</span>()&gt;);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="keywordtype">void</span> executeCommand(std::string <span class="keyword">const</span>&amp; cmd);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="keywordtype">bool</span> commandExists(std::string <span class="keyword">const</span>&amp; cmd);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !LEGACYGRAPHICAL_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        };</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !LEGACYGRAPHICAL_HPP_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapEngine_1_1Graphical_1_1LegacyGraphicalLib_html"><div class="ttname"><a href="classKapEngine_1_1Graphical_1_1LegacyGraphicalLib.html">KapEngine::Graphical::LegacyGraphicalLib</a></div><div class="ttdef"><b>Definition:</b> LegacyGraphicalLib.hpp:30</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Graphical_1_1GraphicalLibManager_html"><div class="ttname"><a href="classKapEngine_1_1Graphical_1_1GraphicalLibManager.html">KapEngine::Graphical::GraphicalLibManager</a></div><div class="ttdef"><b>Definition:</b> GraphicalLibManager.hpp:31</div></div>
-<div class="ttc" id="anamespaceKapEngine_html"><div class="ttname"><a href="namespaceKapEngine.html">KapEngine</a></div><div class="ttdoc">main namespace</div><div class="ttdef"><b>Definition:</b> Component.hpp:16</div></div>
+<div class="ttc" id="anamespaceKapEngine_html"><div class="ttname"><a href="namespaceKapEngine.html">KapEngine</a></div><div class="ttdoc">main namespace</div><div class="ttdef"><b>Definition:</b> Component.hpp:17</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Graphical_1_1GraphicalLib_html"><div class="ttname"><a href="classKapEngine_1_1Graphical_1_1GraphicalLib.html">KapEngine::Graphical::GraphicalLib</a></div><div class="ttdef"><b>Definition:</b> GraphicalLib.hpp:50</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

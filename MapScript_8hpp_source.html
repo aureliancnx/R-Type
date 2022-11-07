@@ -89,73 +89,96 @@ $(document).ready(function(){initNavTree('MapScript_8hpp_source.html',''); initR
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Debug.hpp&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Lua.hpp&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;Script/EnemyScript.hpp&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;LuaException.hpp&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>RType::Script {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">class </span>Enemy;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span>RType {</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structRType_1_1SpawnEnemy.html">   17</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structRType_1_1SpawnEnemy.html">SpawnEnemy</a> {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        std::string name;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">int</span> spawnTime;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">int</span> startPositionY;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">int</span> startPositionX;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">int</span> enemyHp;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    };</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classRType_1_1MapScript.html">   25</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classRType_1_1MapScript.html">MapScript</a> {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;      <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        std::string name;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        std::string author;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        std::string description;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        std::vector&lt;Script::Enemy*&gt; newEnemies;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        std::vector&lt;SpawnEnemy&gt; spawnEnemies;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;      <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="classRType_1_1MapScript.html">MapScript</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        ~<a class="code" href="classRType_1_1MapScript.html">MapScript</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">void</span> loadScript(<span class="keyword">const</span> std::string&amp; scriptPath);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        std::string getName()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> name; }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        std::string getAuthor()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> author; }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        std::string getDescription()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> description; }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        std::vector&lt;SpawnEnemy&gt; getSpawnedEnemies()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> spawnEnemies; }</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;KapEngine.hpp&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Debug.hpp&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;Lua.hpp&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;Script/EnemyScript.hpp&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;LuaException.hpp&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>RType::Script {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">class </span>Enemy;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>RType {</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structRType_1_1SpawnEnemy.html">   15</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structRType_1_1SpawnEnemy.html">SpawnEnemy</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        std::string name;     <span class="comment">// Name of the enemy</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">int</span> spawnTime;        <span class="comment">// Time when the enemy will spawn (in seconds)</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">float</span> startPositionY; <span class="comment">// Start position Y of the enemy</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">float</span> startPositionX; <span class="comment">// Start position X of the enemy</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">int</span> enemyHp;          <span class="comment">// Enemy HP</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    };</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classRType_1_1MapScript.html">   23</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classRType_1_1MapScript.html">MapScript</a> {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;      <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="classKapEngine_1_1KEngine.html">KapEngine::KEngine</a>&amp; engine;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">bool</span> isLoadedByServer;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        lua_State* L = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        std::string name;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        std::string author;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        std::string description;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        std::vector&lt;Script::Enemy*&gt; newEnemies;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        std::vector&lt;SpawnEnemy&gt; spawnEnemies;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classRType_1_1MapScript.html">MapScript</a>(<a class="code" href="classKapEngine_1_1KEngine.html">KapEngine::KEngine</a>* _engine, <span class="keywordtype">bool</span> _isLoadedByServer = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        ~<a class="code" href="classRType_1_1MapScript.html">MapScript</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1MapScript.html#aa1430120f49b5dae1cfb736f79ddad97">loadScript</a>(<span class="keyword">const</span> std::string&amp; scriptPath);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">void</span> _setMapName(<span class="keyword">const</span> std::string&amp; name);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">void</span> _setMapAuthor(<span class="keyword">const</span> std::string&amp; author);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordtype">void</span> _setMapDescription(<span class="keyword">const</span> std::string&amp; description);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">void</span> _registerNewEnemy(<a class="code" href="classRType_1_1Script_1_1Enemy.html">Script::Enemy</a>* enemy);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">void</span> _registerSpawnEnemy(<span class="keyword">const</span> std::string&amp; name, <span class="keywordtype">int</span> spawnTime, <span class="keywordtype">int</span> startPositionY, <span class="keywordtype">int</span> startPositionX, <span class="keywordtype">int</span> enemyHp);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">void</span> executeScript(<span class="keyword">const</span> std::string&amp; script);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">void</span> verifScript();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1MapScript.html#a4e3f5f01e168569da40ba429586f6461">closeScript</a>();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classRType_1_1MapScript.html#a24444aa072fa5674e7f8b0a7898e3d32">   56</a></span>&#160;        std::string <a class="code" href="classRType_1_1MapScript.html#a24444aa072fa5674e7f8b0a7898e3d32">getName</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> name; }</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">void</span> checkNewEnemy(<a class="code" href="classRType_1_1Script_1_1Enemy.html">Script::Enemy</a>* enemy);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">void</span> initScript(lua_State* L);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">void</span> destroyEnemies();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    };</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <span class="comment">// namespace RType</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classRType_1_1MapScript.html#a798837f674d63f69884bff7a07a8591c">   62</a></span>&#160;        std::string <a class="code" href="classRType_1_1MapScript.html#a798837f674d63f69884bff7a07a8591c">getAuthor</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> author; }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classRType_1_1MapScript.html#a14ed860aa6fbfb54d42788cf20ac753a">   68</a></span>&#160;        std::string <a class="code" href="classRType_1_1MapScript.html#a14ed860aa6fbfb54d42788cf20ac753a">getDescription</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> description; }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classRType_1_1MapScript.html#aae1872a223002c3654708a590f6cc6eb">   74</a></span>&#160;        std::vector&lt;SpawnEnemy&gt; <a class="code" href="classRType_1_1MapScript.html#aae1872a223002c3654708a590f6cc6eb">getSpawnedEnemies</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> spawnEnemies; }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordtype">void</span> spawnEnemy(<a class="code" href="classKapEngine_1_1SceneManagement_1_1Scene.html">KapEngine::SceneManagement::Scene</a>&amp; scene, <span class="keyword">const</span> std::string&amp; enemyName, <span class="keywordtype">int</span> spawnTime, <span class="keywordtype">float</span> startPositionY,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                         <span class="keywordtype">float</span> startPositionX, <span class="keywordtype">int</span> enemyHp);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="comment">// Internal functions for Lua</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordtype">void</span> _setMapName(<span class="keyword">const</span> std::string&amp; name);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">void</span> _setMapAuthor(<span class="keyword">const</span> std::string&amp; author);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">void</span> _setMapDescription(<span class="keyword">const</span> std::string&amp; description);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordtype">void</span> _registerNewEnemy(<a class="code" href="classRType_1_1Script_1_1Enemy.html">Script::Enemy</a>* enemy);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordtype">void</span> _registerSpawnEnemy(<span class="keyword">const</span> std::string&amp; name, <span class="keywordtype">int</span> spawnTime, <span class="keywordtype">float</span> startPositionY, <span class="keywordtype">float</span> startPositionX, <span class="keywordtype">int</span> enemyHp);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">void</span> executeScript(<span class="keyword">const</span> std::string&amp; script);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordtype">void</span> verifScript();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <a class="code" href="classRType_1_1Script_1_1Enemy.html">Script::Enemy</a>* getNewEnemy(<span class="keyword">const</span> std::string&amp; enemyName);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">void</span> checkNewEnemy(<a class="code" href="classRType_1_1Script_1_1Enemy.html">Script::Enemy</a>* enemy);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordtype">void</span> createNewEnemy(<a class="code" href="classRType_1_1Script_1_1Enemy.html">Script::Enemy</a>* enemy);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordtype">void</span> initScript();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordtype">void</span> destroyNewEnemies();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordtype">void</span> destroyPrefabEnemies();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    };</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;} <span class="comment">// namespace RType</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassRType_1_1Script_1_1Enemy_html"><div class="ttname"><a href="classRType_1_1Script_1_1Enemy.html">RType::Script::Enemy</a></div><div class="ttdef"><b>Definition:</b> EnemyScript.hpp:16</div></div>
-<div class="ttc" id="aclassRType_1_1MapScript_html"><div class="ttname"><a href="classRType_1_1MapScript.html">RType::MapScript</a></div><div class="ttdef"><b>Definition:</b> MapScript.hpp:25</div></div>
-<div class="ttc" id="astructRType_1_1SpawnEnemy_html"><div class="ttname"><a href="structRType_1_1SpawnEnemy.html">RType::SpawnEnemy</a></div><div class="ttdef"><b>Definition:</b> MapScript.hpp:17</div></div>
+<div class="ttc" id="aclassRType_1_1MapScript_html_a798837f674d63f69884bff7a07a8591c"><div class="ttname"><a href="classRType_1_1MapScript.html#a798837f674d63f69884bff7a07a8591c">RType::MapScript::getAuthor</a></div><div class="ttdeci">std::string getAuthor() const</div><div class="ttdoc">Get map author.</div><div class="ttdef"><b>Definition:</b> MapScript.hpp:62</div></div>
+<div class="ttc" id="aclassRType_1_1MapScript_html_a14ed860aa6fbfb54d42788cf20ac753a"><div class="ttname"><a href="classRType_1_1MapScript.html#a14ed860aa6fbfb54d42788cf20ac753a">RType::MapScript::getDescription</a></div><div class="ttdeci">std::string getDescription() const</div><div class="ttdoc">Get map description.</div><div class="ttdef"><b>Definition:</b> MapScript.hpp:68</div></div>
+<div class="ttc" id="aclassRType_1_1MapScript_html_a24444aa072fa5674e7f8b0a7898e3d32"><div class="ttname"><a href="classRType_1_1MapScript.html#a24444aa072fa5674e7f8b0a7898e3d32">RType::MapScript::getName</a></div><div class="ttdeci">std::string getName() const</div><div class="ttdoc">Get map name.</div><div class="ttdef"><b>Definition:</b> MapScript.hpp:56</div></div>
+<div class="ttc" id="aclassRType_1_1MapScript_html_a4e3f5f01e168569da40ba429586f6461"><div class="ttname"><a href="classRType_1_1MapScript.html#a4e3f5f01e168569da40ba429586f6461">RType::MapScript::closeScript</a></div><div class="ttdeci">void closeScript()</div><div class="ttdoc">Close map script.</div><div class="ttdef"><b>Definition:</b> MapScript.cpp:247</div></div>
+<div class="ttc" id="aclassRType_1_1MapScript_html"><div class="ttname"><a href="classRType_1_1MapScript.html">RType::MapScript</a></div><div class="ttdef"><b>Definition:</b> MapScript.hpp:23</div></div>
+<div class="ttc" id="aclassKapEngine_1_1SceneManagement_1_1Scene_html"><div class="ttname"><a href="classKapEngine_1_1SceneManagement_1_1Scene.html">KapEngine::SceneManagement::Scene</a></div><div class="ttdef"><b>Definition:</b> Scene.hpp:37</div></div>
+<div class="ttc" id="aclassRType_1_1MapScript_html_aa1430120f49b5dae1cfb736f79ddad97"><div class="ttname"><a href="classRType_1_1MapScript.html#aa1430120f49b5dae1cfb736f79ddad97">RType::MapScript::loadScript</a></div><div class="ttdeci">void loadScript(const std::string &amp;scriptPath)</div><div class="ttdoc">Load map script.</div><div class="ttdef"><b>Definition:</b> MapScript.cpp:17</div></div>
+<div class="ttc" id="aclassRType_1_1MapScript_html_aae1872a223002c3654708a590f6cc6eb"><div class="ttname"><a href="classRType_1_1MapScript.html#aae1872a223002c3654708a590f6cc6eb">RType::MapScript::getSpawnedEnemies</a></div><div class="ttdeci">std::vector&lt; SpawnEnemy &gt; getSpawnedEnemies() const</div><div class="ttdoc">Get spawn enemies.</div><div class="ttdef"><b>Definition:</b> MapScript.hpp:74</div></div>
+<div class="ttc" id="aclassKapEngine_1_1KEngine_html"><div class="ttname"><a href="classKapEngine_1_1KEngine.html">KapEngine::KEngine</a></div><div class="ttdoc">Class of engine.</div><div class="ttdef"><b>Definition:</b> Engine.hpp:60</div></div>
+<div class="ttc" id="astructRType_1_1SpawnEnemy_html"><div class="ttname"><a href="structRType_1_1SpawnEnemy.html">RType::SpawnEnemy</a></div><div class="ttdef"><b>Definition:</b> MapScript.hpp:15</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

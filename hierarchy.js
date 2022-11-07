@@ -85,6 +85,7 @@ var hierarchy =
           [ "KapMirror::NetworkTransform", "classKapMirror_1_1NetworkTransform.html", null ],
           [ "RType::BoubouleEnemy", "classRType_1_1BoubouleEnemy.html", null ],
           [ "RType::Bullet", "classRType_1_1Bullet.html", null ],
+          [ "RType::EnemyController", "classRType_1_1EnemyController.html", null ],
           [ "RType::GameMenuManager", "classRType_1_1GameMenuManager.html", null ],
           [ "RType::PlayerController", "classRType_1_1PlayerController.html", null ],
           [ "RType::PlayerSkin", "classRType_1_1PlayerSkin.html", null ],
@@ -109,6 +110,7 @@ var hierarchy =
       [ "KapEngine::Graphical::Raylib::Cache::RaylibCache", "classKapEngine_1_1Graphical_1_1Raylib_1_1Cache_1_1RaylibCache.html", null ]
     ] ],
     [ "KapEngine::Dictionary< TKey, TValue >::Iterator", "classKapEngine_1_1Dictionary_1_1Iterator.html", null ],
+    [ "KapEngine::Profiler::KapProfiler", "classKapEngine_1_1Profiler_1_1KapProfiler.html", null ],
     [ "KapEngine::UI::KapUiFactory", "classKapEngine_1_1UI_1_1KapUiFactory.html", null ],
     [ "KapEngine::KEngine", "classKapEngine_1_1KEngine.html", null ],
     [ "KapEngine::Events::Key", "classKapEngine_1_1Events_1_1Key.html", null ],
@@ -161,22 +163,29 @@ var hierarchy =
     [ "KapEngine::PlayerPrefs", "classKapEngine_1_1PlayerPrefs.html", null ],
     [ "KapEngine::Prefabs::PrefabManager", "classKapEngine_1_1Prefabs_1_1PrefabManager.html", null ],
     [ "RType::Prefabs", "classRType_1_1Prefabs.html", null ],
+    [ "queue", null, [
+      [ "FixedQueue< A, MaxSize, B >", "classFixedQueue.html", null ],
+      [ "FixedQueue< KapEngine::Profiler::StackElement, 10 >", "classFixedQueue.html", null ]
+    ] ],
     [ "KapEngine::Graphical::Raylib::RaylibEncapsulation", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html", null ],
     [ "KapEngine::Tools::Rectangle", "classKapEngine_1_1Tools_1_1Rectangle.html", null ],
     [ "RType::Script::Rectangle", "classRType_1_1Script_1_1Rectangle.html", null ],
     [ "KapEngine::SceneManagement::Scene", "classKapEngine_1_1SceneManagement_1_1Scene.html", null ],
     [ "KapEngine::SceneManagement::SceneManager", "classKapEngine_1_1SceneManagement_1_1SceneManager.html", null ],
-    [ "KapMirror::Sylph::Server", "classKapMirror_1_1Sylph_1_1Server.html", null ],
     [ "KapMirror::Telepathy::Server", "classKapMirror_1_1Telepathy_1_1Server.html", null ],
-    [ "KapMirror::Sylph::Socket", "classKapMirror_1_1Sylph_1_1Socket.html", null ],
+    [ "KapMirror::Sylph::Server", "classKapMirror_1_1Sylph_1_1Server.html", null ],
     [ "KapMirror::Telepathy::Socket", "classKapMirror_1_1Telepathy_1_1Socket.html", null ],
+    [ "KapMirror::Sylph::Socket", "classKapMirror_1_1Sylph_1_1Socket.html", null ],
     [ "RType::SpawnEnemy", "structRType_1_1SpawnEnemy.html", null ],
     [ "KapEngine::SceneManagement::SplashScreen", "classKapEngine_1_1SceneManagement_1_1SplashScreen.html", null ],
     [ "KapEngine::SceneManagement::SplashScreen::SplashScreenNode", "structKapEngine_1_1SceneManagement_1_1SplashScreen_1_1SplashScreenNode.html", null ],
+    [ "KapEngine::Profiler::StackElement", "classKapEngine_1_1Profiler_1_1StackElement.html", null ],
+    [ "KapEngine::Profiler::StackSummary", "classKapEngine_1_1Profiler_1_1StackSummary.html", null ],
     [ "RType::Parser::Summon", "classRType_1_1Parser_1_1Summon.html", null ],
     [ "KapMirror::Telepathy::TcpClient", "classKapMirror_1_1Telepathy_1_1TcpClient.html", null ],
     [ "KapMirror::Telepathy::TcpListener", "classKapMirror_1_1Telepathy_1_1TcpListener.html", null ],
     [ "KapEngine::ThreadScene", "classKapEngine_1_1ThreadScene.html", null ],
+    [ "KapEngine::Profiler::ThreadStack", "classKapEngine_1_1Profiler_1_1ThreadStack.html", null ],
     [ "KapMirror::Transport", "classKapMirror_1_1Transport.html", [
       [ "KapMirror::SylphTransport", "classKapMirror_1_1SylphTransport.html", null ],
       [ "KapMirror::TelepathyTransport", "classKapMirror_1_1TelepathyTransport.html", null ]
@@ -185,7 +194,7 @@ var hierarchy =
     [ "KapMirror::Sylph::UdpClient", "classKapMirror_1_1Sylph_1_1UdpClient.html", null ],
     [ "KapMirror::Sylph::UdpListener", "classKapMirror_1_1Sylph_1_1UdpListener.html", null ],
     [ "KapEngine::UI::UiFactory", "classKapEngine_1_1UI_1_1UiFactory.html", null ],
-    [ "RType::Script::Vector2", "classRType_1_1Script_1_1Vector2.html", null ],
     [ "KapEngine::Tools::Vector2", "classKapEngine_1_1Tools_1_1Vector2.html", null ],
+    [ "RType::Script::Vector2", "classRType_1_1Script_1_1Vector2.html", null ],
     [ "KapEngine::Tools::Vector3", "classKapEngine_1_1Tools_1_1Vector3.html", null ]
 ];

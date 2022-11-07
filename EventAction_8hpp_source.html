@@ -106,40 +106,52 @@ $(document).ready(function(){initNavTree('EventAction_8hpp_source.html',''); ini
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classKapEngine_1_1Events_1_1EventAction.html">   18</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classKapEngine_1_1Events_1_1EventAction.html">EventAction</a> {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                <a class="code" href="classKapEngine_1_1Events_1_1EventAction.html">EventAction</a>() {}</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                ~<a class="code" href="classKapEngine_1_1Events_1_1EventAction.html">EventAction</a>() {}</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classKapEngine_1_1Events_1_1EventAction.html#a1d79d936e3134b318bca6964959e462f">   28</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1Events_1_1EventAction.html#a1d79d936e3134b318bca6964959e462f">registerAction</a>(std::function&lt;<span class="keywordtype">void</span>()&gt; func) {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                    _funcs.push_back(func);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classKapEngine_1_1Events_1_1EventAction.html#ac33a6ac94c3604b4c8a27d8ec79c1ed4">   36</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1Events_1_1EventAction.html#ac33a6ac94c3604b4c8a27d8ec79c1ed4">invoke</a>() {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; _funcs.size(); i++) {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                        _funcs[i]();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classKapEngine_1_1Events_1_1EventAction.html#a103462d6fbe82769fc8885a8f80a9348">   46</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1Events_1_1EventAction.html#a103462d6fbe82769fc8885a8f80a9348">clear</a>() {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    _funcs.clear();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                std::vector&lt;std::function&lt;void()&gt;&gt; _funcs;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        };</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !EVENTACTION_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                <a class="code" href="classKapEngine_1_1Events_1_1EventAction.html">EventAction</a>() {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                ~<a class="code" href="classKapEngine_1_1Events_1_1EventAction.html">EventAction</a>() {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classKapEngine_1_1Events_1_1EventAction.html#a1d79d936e3134b318bca6964959e462f">   34</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1Events_1_1EventAction.html#a1d79d936e3134b318bca6964959e462f">registerAction</a>(std::function&lt;<span class="keywordtype">void</span>()&gt; func) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    _funcs.push_back(func);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classKapEngine_1_1Events_1_1EventAction.html#ac33a6ac94c3604b4c8a27d8ec79c1ed4">   44</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1Events_1_1EventAction.html#ac33a6ac94c3604b4c8a27d8ec79c1ed4">invoke</a>() {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; _funcs.size(); i++) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                        _funcs[i]();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                    }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classKapEngine_1_1Events_1_1EventAction.html#a103462d6fbe82769fc8885a8f80a9348">   56</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="classKapEngine_1_1Events_1_1EventAction.html#a103462d6fbe82769fc8885a8f80a9348">clear</a>() {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                    PROFILER_FUNC_START();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                    _funcs.clear();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                    PROFILER_FUNC_END();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                std::vector&lt;std::function&lt;void()&gt;&gt; _funcs;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        };</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !EVENTACTION_HPP_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassKapEngine_1_1Events_1_1EventAction_html_a103462d6fbe82769fc8885a8f80a9348"><div class="ttname"><a href="classKapEngine_1_1Events_1_1EventAction.html#a103462d6fbe82769fc8885a8f80a9348">KapEngine::Events::EventAction::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">clear all actions</div><div class="ttdef"><b>Definition:</b> EventAction.hpp:46</div></div>
+<div class="ttc" id="aclassKapEngine_1_1Events_1_1EventAction_html_a103462d6fbe82769fc8885a8f80a9348"><div class="ttname"><a href="classKapEngine_1_1Events_1_1EventAction.html#a103462d6fbe82769fc8885a8f80a9348">KapEngine::Events::EventAction::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">clear all actions</div><div class="ttdef"><b>Definition:</b> EventAction.hpp:56</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Events_1_1EventAction_html"><div class="ttname"><a href="classKapEngine_1_1Events_1_1EventAction.html">KapEngine::Events::EventAction</a></div><div class="ttdef"><b>Definition:</b> EventAction.hpp:18</div></div>
-<div class="ttc" id="aclassKapEngine_1_1Events_1_1EventAction_html_a1d79d936e3134b318bca6964959e462f"><div class="ttname"><a href="classKapEngine_1_1Events_1_1EventAction.html#a1d79d936e3134b318bca6964959e462f">KapEngine::Events::EventAction::registerAction</a></div><div class="ttdeci">void registerAction(std::function&lt; void()&gt; func)</div><div class="ttdoc">register an action to do (lambda)</div><div class="ttdef"><b>Definition:</b> EventAction.hpp:28</div></div>
-<div class="ttc" id="aclassKapEngine_1_1Events_1_1EventAction_html_ac33a6ac94c3604b4c8a27d8ec79c1ed4"><div class="ttname"><a href="classKapEngine_1_1Events_1_1EventAction.html#ac33a6ac94c3604b4c8a27d8ec79c1ed4">KapEngine::Events::EventAction::invoke</a></div><div class="ttdeci">void invoke()</div><div class="ttdoc">call all actions</div><div class="ttdef"><b>Definition:</b> EventAction.hpp:36</div></div>
-<div class="ttc" id="anamespaceKapEngine_html"><div class="ttname"><a href="namespaceKapEngine.html">KapEngine</a></div><div class="ttdoc">main namespace</div><div class="ttdef"><b>Definition:</b> Component.hpp:16</div></div>
+<div class="ttc" id="aclassKapEngine_1_1Events_1_1EventAction_html_a1d79d936e3134b318bca6964959e462f"><div class="ttname"><a href="classKapEngine_1_1Events_1_1EventAction.html#a1d79d936e3134b318bca6964959e462f">KapEngine::Events::EventAction::registerAction</a></div><div class="ttdeci">void registerAction(std::function&lt; void()&gt; func)</div><div class="ttdoc">register an action to do (lambda)</div><div class="ttdef"><b>Definition:</b> EventAction.hpp:34</div></div>
+<div class="ttc" id="aclassKapEngine_1_1Events_1_1EventAction_html_ac33a6ac94c3604b4c8a27d8ec79c1ed4"><div class="ttname"><a href="classKapEngine_1_1Events_1_1EventAction.html#ac33a6ac94c3604b4c8a27d8ec79c1ed4">KapEngine::Events::EventAction::invoke</a></div><div class="ttdeci">void invoke()</div><div class="ttdoc">call all actions</div><div class="ttdef"><b>Definition:</b> EventAction.hpp:44</div></div>
+<div class="ttc" id="anamespaceKapEngine_html"><div class="ttname"><a href="namespaceKapEngine.html">KapEngine</a></div><div class="ttdoc">main namespace</div><div class="ttdef"><b>Definition:</b> Component.hpp:17</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

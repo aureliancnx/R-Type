@@ -76,6 +76,7 @@ var annotated_dup =
       [ "CampaignGenerator", "classRType_1_1CampaignGenerator.html", "classRType_1_1CampaignGenerator" ],
       [ "ChangeKey", "classRType_1_1ChangeKey.html", "classRType_1_1ChangeKey" ],
       [ "EndMenu", "classRType_1_1EndMenu.html", "classRType_1_1EndMenu" ],
+      [ "EnemyController", "classRType_1_1EnemyController.html", "classRType_1_1EnemyController" ],
       [ "ErrorOnStartGameMessage", "structRType_1_1ErrorOnStartGameMessage.html", "structRType_1_1ErrorOnStartGameMessage" ],
       [ "GameManager", "classRType_1_1GameManager.html", "classRType_1_1GameManager" ],
       [ "GameMenuManager", "classRType_1_1GameMenuManager.html", "classRType_1_1GameMenuManager" ],
@@ -112,5 +113,6 @@ var annotated_dup =
       [ "UpdateStartGameKeys", "classRType_1_1UpdateStartGameKeys.html", "classRType_1_1UpdateStartGameKeys" ],
       [ "VolumeMenu", "classRType_1_1VolumeMenu.html", "classRType_1_1VolumeMenu" ]
     ] ],
+    [ "FixedQueue", "classFixedQueue.html", "classFixedQueue" ],
     [ "PlayerPref", "classPlayerPref.html", null ]
 ];

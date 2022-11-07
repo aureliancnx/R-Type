@@ -7,17 +7,11 @@ Bullet::Bullet(std::shared_ptr<KapEngine::GameObject> gameObject) : KapMirror::N
     direction = Direction::RIGHT;
 }
 
-void Bullet::setDirection(Direction _direction) {
-    direction = _direction;
-}
+void Bullet::setDirection(Direction _direction) { direction = _direction; }
 
-Bullet::Direction Bullet::getDirection() const {
-    return direction;
-}
+Bullet::Direction Bullet::getDirection() const { return direction; }
 
-void Bullet::onStart() {
-    initialX = getTransform().getWorldPosition().getX();
-}
+void Bullet::onStart() { initialX = getTransform().getWorldPosition().getX(); }
 
 void Bullet::onUpdate() {
     auto& transform = getTransform();
@@ -36,10 +30,6 @@ void Bullet::onUpdate() {
     }
 }
 
-void Bullet::serialize(KapMirror::NetworkWriter& writer) {
-    writer.write(direction);
-}
+void Bullet::serialize(KapMirror::NetworkWriter& writer) { writer.write(direction); }
 
-void Bullet::deserialize(KapMirror::NetworkReader& reader) {
-    direction = reader.read<Direction>();
-}
+void Bullet::deserialize(KapMirror::NetworkReader& reader) { direction = reader.read<Direction>(); }

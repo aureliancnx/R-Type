@@ -55,25 +55,24 @@ void RType::MenuCampaign::onUpdate() {
     lastValue = nId;
 
     try {
-        auto &txtD = _txtDate->getComponent<UI::Text>();
+        auto& txtD = _txtDate->getComponent<UI::Text>();
         txtD.setText(_date[nId]);
-        auto &txtC = _txtCreator->getComponent<UI::Text>();
+        auto& txtC = _txtCreator->getComponent<UI::Text>();
         txtC.setText(_creator[nId]);
-        auto &txtN = _txtName->getComponent<UI::Text>();
+        auto& txtN = _txtName->getComponent<UI::Text>();
         txtN.setText(_name[nId]);
         auto button = _button1->getComponent<UI::Button>();
         button.setBackground(_img[nId], {0, 0, 430, 433});
-        auto &txtDBis = _txtDateBis->getComponent<UI::Text>();
-        auto &txtCBis = _txtCreatorBis->getComponent<UI::Text>();
-        auto &txtNBis = _txtNameBis->getComponent<UI::Text>();
+        auto& txtDBis = _txtDateBis->getComponent<UI::Text>();
+        auto& txtCBis = _txtCreatorBis->getComponent<UI::Text>();
+        auto& txtNBis = _txtNameBis->getComponent<UI::Text>();
         auto button2 = _button2->getComponent<UI::Button>();
         if (nId + 1 > 3) {
             txtDBis.setText(_date[0]);
             txtCBis.setText(_creator[0]);
             txtNBis.setText(_name[0]);
             button2.setBackground(_img[0], {0, 0, 430, 433});
-        }
-        else {
+        } else {
             txtDBis.setText(_date[nId + 1]);
             txtCBis.setText(_creator[nId + 1]);
             txtNBis.setText(_name[nId + 1]);
@@ -114,9 +113,9 @@ void RType::MenuCampaign::foundDate() {
     _txtDate = _found1;
     _txtDateBis = _found2;
     try {
-        auto &txt = _txtDate->getComponent<UI::Text>();
+        auto& txt = _txtDate->getComponent<UI::Text>();
         txt.setText(_date[PlayerPrefs::getInt("campaignID")]);
-        auto &txtBis = _txtDateBis->getComponent<UI::Text>();
+        auto& txtBis = _txtDateBis->getComponent<UI::Text>();
         if ((PlayerPrefs::getInt("campaignID") + 1) > 3)
             txtBis.setText(_date[0]);
         else
@@ -155,9 +154,9 @@ void RType::MenuCampaign::foundCreator() {
     _txtCreator = _found1;
     _txtCreatorBis = _found2;
     try {
-        auto &txt = _txtCreator->getComponent<UI::Text>();
+        auto& txt = _txtCreator->getComponent<UI::Text>();
         txt.setText(_creator[PlayerPrefs::getInt("campaignID")]);
-        auto &txtBis = _txtCreatorBis->getComponent<UI::Text>();
+        auto& txtBis = _txtCreatorBis->getComponent<UI::Text>();
         if ((PlayerPrefs::getInt("campaignID") + 1) > 3)
             txtBis.setText(_creator[0]);
         else
@@ -196,9 +195,9 @@ void RType::MenuCampaign::foundName() {
     _txtName = _found1;
     _txtNameBis = _found2;
     try {
-        auto &txt = _txtName->getComponent<UI::Text>();
+        auto& txt = _txtName->getComponent<UI::Text>();
         txt.setText(_creator[PlayerPrefs::getInt("campaignID")]);
-        auto &txtBis = _txtNameBis->getComponent<UI::Text>();
+        auto& txtBis = _txtNameBis->getComponent<UI::Text>();
         if ((PlayerPrefs::getInt("campaignID") + 1) > 3)
             txtBis.setText(_creator[0]);
         else
@@ -211,13 +210,13 @@ void RType::MenuCampaign::foundButton() {
     auto objs2 = getGameObjectConst().getScene().findFirstGameObject("ButtonLevel2");
 
     try {
-        auto &button = objs1->getComponent<UI::Button>();
+        auto& button = objs1->getComponent<UI::Button>();
         _button1 = objs1;
         button.setBackground(_img[PlayerPrefs::getInt("campaignID")], {0, 0, 430, 433});
     } catch (...) {}
 
     try {
-        auto &button = objs2->getComponent<UI::Button>();
+        auto& button = objs2->getComponent<UI::Button>();
         _button2 = objs2;
         if ((PlayerPrefs::getInt("campaignID") + 1) > 3)
             button.setBackground(_img[0], {0, 0, 430, 433});
@@ -225,5 +224,3 @@ void RType::MenuCampaign::foundButton() {
             button.setBackground(_img[PlayerPrefs::getInt("campaignID") + 1], {0, 0, 430, 433});
     } catch (...) {}
 }
-
-

@@ -12,17 +12,14 @@
 #include "CampaignGenerator/CampaignGenerator.hpp"
 #include "Player/PlayerSkin.hpp"
 
-#include "KapMirror/KapMirror.hpp"
 #include "Sylph/SylphTransport.hpp"
 #include "Prefabs.hpp"
 
 using namespace RType;
 
-GameManager *GameManager::instance = nullptr;
+GameManager* GameManager::instance = nullptr;
 
-GameManager::GameManager(KapEngine::KEngine* _engine, bool b) : engine(_engine), displaySplashScreens(b) {
-    instance = this;
-}
+GameManager::GameManager(KapEngine::KEngine* _engine, bool b) : engine(_engine), displaySplashScreens(b) { instance = this; }
 
 void GameManager::launchGame() {
     KapEngine::Debug::log("Launch game");
@@ -115,9 +112,7 @@ void GameManager::registerMenus() {
     menuManager.registerMenu("EndMenu", endMenu);
 }
 
-void GameManager::initEndScene() {
-    auto scene = engine->getSceneManager()->createScene("EndScene");
-}
+void GameManager::initEndScene() { auto scene = engine->getSceneManager()->createScene("EndScene"); }
 
 // TODO: Move this to a dedicated class
 void GameManager::initSinglePlayer() {
@@ -129,7 +124,7 @@ void GameManager::initSinglePlayer() {
         return;
     }
 
-    auto &transformPG = paralaxGalaxy->getComponent<KapEngine::Transform>();
+    auto& transformPG = paralaxGalaxy->getComponent<KapEngine::Transform>();
     transformPG.setPosition({0, 0, 0});
 
     std::shared_ptr<KapEngine::GameObject> paralaxStars;
@@ -138,7 +133,7 @@ void GameManager::initSinglePlayer() {
         return;
     }
 
-    auto &transformPS = paralaxStars->getComponent<KapEngine::Transform>();
+    auto& transformPS = paralaxStars->getComponent<KapEngine::Transform>();
     transformPS.setPosition({0, 0, 0});
 
     std::shared_ptr<KapEngine::GameObject> player;
@@ -175,7 +170,7 @@ void GameManager::initMultiPlayer(bool isServer) {
         return;
     }
 
-    auto &transformPG = paralaxGalaxy->getComponent<KapEngine::Transform>();
+    auto& transformPG = paralaxGalaxy->getComponent<KapEngine::Transform>();
     transformPG.setPosition({0, 0, 0});
 
     std::shared_ptr<KapEngine::GameObject> paralaxStars;
@@ -184,7 +179,7 @@ void GameManager::initMultiPlayer(bool isServer) {
         return;
     }
 
-    auto &transformPS = paralaxStars->getComponent<KapEngine::Transform>();
+    auto& transformPS = paralaxStars->getComponent<KapEngine::Transform>();
     transformPS.setPosition({0, 0, 0});
 
     auto networkManagerObject = scene->createGameObject("NetworkManager");
@@ -203,7 +198,7 @@ void GameManager::initMultiPlayer(bool isServer) {
 
 // TODO: Move this to a dedicated class
 void GameManager::startCampaign() {
-    auto &scene = engine->getSceneManager()->getScene("SinglePlayer");
+    auto& scene = engine->getSceneManager()->getScene("SinglePlayer");
 
     auto enemies = scene.createGameObject("Enemies Generator");
     auto compEnemies = std::make_shared<CampaignGenerator>(enemies);
@@ -219,7 +214,8 @@ void GameManager::startLocalMultiPlayer() {
 
 void GameManager::initSplashScreens() {
     engine->getSplashScreen()->setDisplayKapEngineLogo(true);
-    auto nsplash = std::make_shared<KapEngine::SceneManagement::SplashScreen::SplashScreenNode>("Assets/Textures/Background/bg-back.png", 4);
+    auto nsplash =
+        std::make_shared<KapEngine::SceneManagement::SplashScreen::SplashScreenNode>("Assets/Textures/Background/bg-back.png", 4);
 
     nsplash->rect = {0.f, 0.f, 272.f, 160.f};
     nsplash->size = KapEngine::Tools::Vector2({650.f, 382.35f});
@@ -246,7 +242,4 @@ void GameManager::initAxis() {
     engine->getEventManager().getInput().addAxis(vertical);
 }
 
-std::shared_ptr<RtypeNetworkManager> &GameManager::getNetworkManager() {
-    return networkManager;
-}
-
+std::shared_ptr<RtypeNetworkManager>& GameManager::getNetworkManager() { return networkManager; }

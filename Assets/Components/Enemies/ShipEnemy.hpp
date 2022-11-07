@@ -5,10 +5,8 @@
 #include "KapEngineUi.hpp"
 #include "KapMirror/KapMirror.hpp"
 
-namespace RType
-{
-    class ShipEnemy : public KapMirror::NetworkComponent
-    {
+namespace RType {
+    class ShipEnemy : public KapMirror::NetworkComponent {
       private:
         int life = 20;
 
@@ -16,7 +14,7 @@ namespace RType
         std::vector<std::shared_ptr<KapEngine::GameObject>> collidedObjects;
 
       public:
-        ShipEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject);
+        explicit ShipEnemy(std::shared_ptr<KapEngine::GameObject> _gameObject);
         ~ShipEnemy() = default;
 
         void setLife(int _life);
@@ -27,9 +25,9 @@ namespace RType
 
         void onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other) override;
 
-        void serialize(KapMirror::NetworkWriter &writer) override;
+        void serialize(KapMirror::NetworkWriter& writer) override;
 
-        void deserialize(KapMirror::NetworkReader &reader) override;
+        void deserialize(KapMirror::NetworkReader& reader) override;
 
       private:
         void shoot();

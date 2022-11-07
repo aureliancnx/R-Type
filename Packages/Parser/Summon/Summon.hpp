@@ -16,13 +16,10 @@
 #include <fstream>
 #include <map>
 
-namespace RType
-{
-    namespace Parser
-    {
+namespace RType {
+    namespace Parser {
 
-        class Summon
-        {
+        class Summon {
           public:
             Summon(float time, int pos, std::string enemy, int health);
             Summon(float time, int pos, std::string enemy, int health, std::string bonus, int bonusPourcent);
@@ -37,7 +34,7 @@ namespace RType
 
             bool hasBonus() const;
 
-            friend std::ostream &operator<<(std::ostream &os, const Summon &summon);
+            friend std::ostream& operator<<(std::ostream& os, const Summon& summon);
 
           private:
             float _time;

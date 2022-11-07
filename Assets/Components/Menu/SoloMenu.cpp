@@ -11,12 +11,10 @@ void SoloMenu::init() {
     // change type of display for canvas
     {
         try {
-            auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
+            auto& can = canvas->getComponent<KapEngine::UI::Canvas>();
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
             can.setScreenCompare(KapEngine::Tools::Vector2(720, 480));
-        } catch(...) {
-            KAP_DEBUG_ERROR("Failed to resize canvas");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to resize canvas"); }
     }
 
     // create background
@@ -37,7 +35,7 @@ void SoloMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonPlay");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
         auto updateKeys = std::make_shared<UpdateStartGameKeys>(canvas);
 
         canvas->addComponent(updateKeys);
@@ -56,9 +54,7 @@ void SoloMenu::init() {
             engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
             try {
                 canvas->getComponent<UpdateStartGameKeys>().checkInputs();
-            } catch(...) {
-                KAP_DEBUG_ERROR("Failed to update inputs");
-            }
+            } catch (...) { KAP_DEBUG_ERROR("Failed to update inputs"); }
 
             scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
             gameManager.startCampaign();
@@ -69,7 +65,7 @@ void SoloMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonBack");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Back");
@@ -87,11 +83,11 @@ void SoloMenu::init() {
         });
     }
 
-    //Create text instruction Choose map
+    // Create text instruction Choose map
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change level");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Select your level");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         compText->setPoliceSize(20);
 
@@ -105,7 +101,7 @@ void SoloMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonLeft");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("");
@@ -135,7 +131,7 @@ void SoloMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonRight");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("");
@@ -165,7 +161,7 @@ void SoloMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonLevel1");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("");
@@ -176,16 +172,15 @@ void SoloMenu::init() {
         transform.setScale({245, 230, 0});
         transform.setParent(canvas);
 
-        btnComp->getOnClick().registerAction([this]() {
-            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
-        });
+        btnComp->getOnClick().registerAction(
+            [this]() { engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav"); });
     }
 
     // Creation Name lvl 1
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Name");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
         auto compDateCampaign = std::make_shared<MenuCampaign>(txt);
 
         compText->setPoliceSize(15);
@@ -201,7 +196,7 @@ void SoloMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Author");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
         auto compAuthorCampaign = std::make_shared<MenuCampaign>(txt);
 
         compText->setPoliceSize(15);
@@ -217,7 +212,7 @@ void SoloMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Date");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
         auto compDateCampaign = std::make_shared<MenuCampaign>(txt);
 
         compText->setPoliceSize(15);
@@ -233,7 +228,7 @@ void SoloMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonLevel2");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto &transform = btn->getComponent<KapEngine::Transform>();
+        auto& transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("");
@@ -244,16 +239,15 @@ void SoloMenu::init() {
         transform.setScale({245, 230, 0});
         transform.setParent(canvas);
 
-        btnComp->getOnClick().registerAction([this]() {
-            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
-        });
+        btnComp->getOnClick().registerAction(
+            [this]() { engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav"); });
     }
 
     // Creation Name lvl 2
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text NameBis");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
         auto compDateCampaign = std::make_shared<MenuCampaign>(txt);
 
         compText->setPoliceSize(15);
@@ -269,7 +263,7 @@ void SoloMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text AuthorBis");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
         auto compDateCampaign = std::make_shared<MenuCampaign>(txt);
 
         compText->setPoliceSize(15);
@@ -284,7 +278,7 @@ void SoloMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text DateBis");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
         auto compDateCampaign = std::make_shared<MenuCampaign>(txt);
 
         compText->setPoliceSize(15);

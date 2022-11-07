@@ -74,7 +74,7 @@ namespace RType {
         std::vector<SpawnEnemy> getSpawnedEnemies() const { return spawnEnemies; }
 
         void spawnEnemy(KapEngine::SceneManagement::Scene& scene, const std::string& enemyName, int spawnTime, float startPositionY,
-                         float startPositionX, int enemyHp);
+                        float startPositionX, int enemyHp);
 
         // Internal functions for Lua
         void _setMapName(const std::string& name);

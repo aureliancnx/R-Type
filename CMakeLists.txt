@@ -18,34 +18,22 @@ set(CMAKE_CXX_STANDARD 20)
 # use valgrind programm
 option(VALGRIND "Use -g on project compile" OFF)
 
-# RayLib version
-set(raylib_VERSION 4.0.0)
-find_package(raylib REQUIRED)
-message(STATUS "RayLib version: ${raylib_VERSION}")
-
-set(ZLIB_USE_STATIC_LIBS ON)
-find_package(ZLIB REQUIRED)
-
-set(Boost_USE_STATIC_LIBS ON)
-find_package(Boost REQUIRED COMPONENTS iostreams)
+include(Dependencies)
 
 file(GLOB_RECURSE SOURCES GameMain.cpp Assets/Components/*.cpp Packages/*.cpp)
 
 add_executable(RType ${SOURCES} ${HEADERS})
 
-# Library
-include(Library/library.cmake)
+# Target link libraries
 
 include_directories(${Boost_INCLUDE_DIRS})
 target_link_libraries(RType raylib)
 target_link_libraries(RType Boost::iostreams)
 
 target_link_libraries(RType ZLIB::ZLIB)
-#if (WIN32)
-#    target_link_libraries(RType zlib)
-#else()
-#    target_link_libraries(RType z) # This is not a joke
-#endif()
+
+# Library
+include(Library/library.cmake)
 
 # Includes
 include_directories(.)

@@ -125,11 +125,11 @@ jobs:
         run: |
           cd build/
           cpack -G WIX
-      - name: Zip release (Linux or Mac)
-        if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') || startsWith(matrix.config.name, 'macos') }}
-        shell: bash
+      - name: Create installer (MacOS)
+        if: startsWith(matrix.config.os, 'macos')
         run: |
-          zip -r release build/.
+          cd build/
+          cpack -G DragNDrop
       - name: Upload Release Asset (.rpm)
         if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') }}
         uses: actions/upload-release-asset@v1
@@ -148,5 +148,15 @@ jobs:
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
           asset_path: ./build/RType-1.0.1-Linux.deb
+          asset_name: ${{ matrix.config.zipname }}
+          asset_content_type: application/zip
+      - name: Upload Release Asset (.dmg)
+        if: ${{ startsWith(matrix.config.os, 'macos') }}
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create_release.outputs.upload_url }}
+          asset_path: ./build/RType-1.0.1-Darwing.dmg
           asset_name: ${{ matrix.config.zipname }}
           asset_content_type: application/zip

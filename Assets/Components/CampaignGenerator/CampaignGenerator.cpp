@@ -3,6 +3,8 @@
 //
 
 #include "CampaignGenerator.hpp"
+#include <ctime>
+#include <cstdlib>
 
 using namespace KapEngine;
 
@@ -13,11 +15,18 @@ RType::CampaignGenerator::~CampaignGenerator() {}
 void RType::CampaignGenerator::addEnemy(const RType::CampaignGenerator::Enemy& enemy) { _enemies.push_back(enemy); }
 
 void RType::CampaignGenerator::onAwake() {
-    addEnemy(Enemy("Enemy:BoubouleEnemy"));
+/*    addEnemy(Enemy("Enemy:BoubouleEnemy"));
     addEnemy(Enemy("Enemy:BoubouleEnemy", 200, 20));
     addEnemy(Enemy("Enemy:BoubouleEnemy", 300, 30));
-    addEnemy(Enemy("Enemy:BoubouleEnemy", 400, 40));
-    addEnemy(Enemy("Enemy:TentaclesBossEnemy", 0, 40, 1000));
+    addEnemy(Enemy("Enemy:BoubouleEnemy", 400, 40));*/
+    //addEnemy(Enemy("Enemy:TentaclesBossEnemy", 0, 40, 1000));
+
+    int time = 10;
+    for (std::size_t i = 0; i < 100; i++) {
+        addEnemy(Enemy("Enemy:BoubouleEnemy", (std::rand() % 400), time));
+        DEBUG_LOG("time = " + std::to_string(time));
+        time = time + 100;
+    }
 
     _clock.restart();
     _time.setSeconds(0);

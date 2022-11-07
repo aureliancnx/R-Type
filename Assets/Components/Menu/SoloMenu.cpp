@@ -73,7 +73,7 @@ void SoloMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({50, 430, 0});
+        transform.setPosition({250, 430, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 

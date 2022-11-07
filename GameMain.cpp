@@ -50,7 +50,7 @@ int main(int argc, char** argv) {
 
     initWindow(&engine, !isServer);
 
-//    test_main(&engine);
+    //    test_main(&engine);
 
     RType::GameManager gameManager(&engine, false);
     if (isServer) {

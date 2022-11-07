@@ -1,13 +1,11 @@
 #pragma once
 
+#include "KapEngine.hpp"
 #include "Debug.hpp"
 #include "Lua.hpp"
 #include "Script/EnemyScript.hpp"
 #include "LuaException.hpp"
 #include <vector>
-#include <iostream>
-#include <cstring>
-#include <assert.h>
 
 namespace RType::Script {
     class Enemy;
@@ -15,15 +13,20 @@ namespace RType::Script {
 
 namespace RType {
     struct SpawnEnemy {
-        std::string name;
-        int spawnTime;
-        int startPositionY;
-        int startPositionX;
-        int enemyHp;
+        std::string name;     // Name of the enemy
+        int spawnTime;        // Time when the enemy will spawn (in seconds)
+        float startPositionY; // Start position Y of the enemy
+        float startPositionX; // Start position X of the enemy
+        int enemyHp;          // Enemy HP
     };
 
     class MapScript {
       private:
+        KapEngine::KEngine& engine;
+        bool isLoadedByServer;
+
+        lua_State* L = nullptr;
+
         std::string name;
         std::string author;
         std::string description;
@@ -31,34 +34,70 @@ namespace RType {
         std::vector<SpawnEnemy> spawnEnemies;
 
       public:
-        MapScript() = default;
+        explicit MapScript(KapEngine::KEngine* _engine, bool _isLoadedByServer = false);
         ~MapScript() = default;
 
+        /**
+         * @brief Load map script.
+         * @param scriptPath Path to script
+         * @throw LuaException If script can't be loaded or if script is invalid.
+         */
         void loadScript(const std::string& scriptPath);
 
+        /**
+         * @brief Close map script.
+         */
+        void closeScript();
+
+        /**
+         * @brief Get map name.
+         * @return Map name
+         */
         std::string getName() const { return name; }
 
+        /**
+         * @brief Get map author.
+         * @return Map author
+         */
         std::string getAuthor() const { return author; }
 
+        /**
+         * @brief Get map description.
+         * @return Map description
+         */
         std::string getDescription() const { return description; }
 
+        /**
+         * @brief Get spawn enemies.
+         * @return Spawn enemies
+         */
         std::vector<SpawnEnemy> getSpawnedEnemies() const { return spawnEnemies; }
 
+        void spawnEnemy(KapEngine::SceneManagement::Scene& scene, const std::string& enemyName, int spawnTime, float startPositionY,
+                         float startPositionX, int enemyHp);
+
+        // Internal functions for Lua
         void _setMapName(const std::string& name);
         void _setMapAuthor(const std::string& author);
         void _setMapDescription(const std::string& description);
         void _registerNewEnemy(Script::Enemy* enemy);
-        void _registerSpawnEnemy(const std::string& name, int spawnTime, int startPositionY, int startPositionX, int enemyHp);
+        void _registerSpawnEnemy(const std::string& name, int spawnTime, float startPositionY, float startPositionX, int enemyHp);
 
       private:
         void executeScript(const std::string& script);
 
         void verifScript();
 
+        Script::Enemy* getNewEnemy(const std::string& enemyName);
+
         void checkNewEnemy(Script::Enemy* enemy);
 
-        void initScript(lua_State* L);
+        void createNewEnemy(Script::Enemy* enemy);
 
-        void destroyEnemies();
+        void initScript();
+
+        void destroyNewEnemies();
+
+        void destroyPrefabEnemies();
     };
 } // namespace RType

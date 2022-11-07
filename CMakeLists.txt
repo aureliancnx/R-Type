@@ -64,17 +64,22 @@ target_compile_options(RType PRIVATE -pthread)
 
 include(InstallRequiredSystemLibraries)
 
-install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION "bin" COMPONENT applications)
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/Assets/" DESTINATION "Assets")
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION "." COMPONENT applications)
 
-set(CPACK_INSTALL_PREFIX /)
+set(CPACK_INSTALL_PREFIX /R-Type)
 set(CPACK_SET_DESTDIR true)
 set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt)
 set(CPACK_PACKAGE_EXECUTABLES "RType")
+set(CPACK_PACKAGING_INSTALL_PREFIX "/R-Type")
 
 set(CPACK_DEBIAN_PACKAGE_NAME "RType")
 set(CPACK_DEBIAN_PACKAGE_CONTACT "idk@gmail.com")
 set(CPACK_DEBIAN_PACKAGE_VERSION "1.0")
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "RType")
+
+set(CPACK_DMG_BACKGROUND_IMAGE ${CMAKE_CURRENT_SOURCE_DIR}/Assets/Installer/installer_dragndrop.png)
+set(CPACK_DMG_DS_STORE ${CMAKE_CURRENT_SOURCE_DIR}/Assets/Installer/DragNDrop_DS_Store)
 
 cpack_add_component(applications
         REQUIRED

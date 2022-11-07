@@ -28,6 +28,8 @@ namespace RType {
         KapEngine::Events::Key::EKey rightKey = KapEngine::Events::Key::RIGHT;
         KapEngine::Events::Key::EKey shootKey = KapEngine::Events::Key::SPACE;
 
+        std::vector<std::shared_ptr<KapEngine::GameObject>> collisions;
+
         int life = 100;
         bool isDead = false;
 
@@ -57,6 +59,8 @@ namespace RType {
 
         void takeDamage(int damage);
 
+        void onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other) override;
+
         void serialize(KapMirror::NetworkWriter& writer) override;
 
         void deserialize(KapMirror::NetworkReader& reader) override;
@@ -71,5 +75,7 @@ namespace RType {
         void spawnMissile(const KapEngine::Tools::Vector3& pos);
 
         void initSettings();
+
+        void checkCollisions();
     };
 } // namespace RType

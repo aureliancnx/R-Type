@@ -201,6 +201,40 @@ void PlayerController::playShootSound() {
 
 #pragma endregion
 
+#pragma region collisions
+
+void PlayerController::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> collider) {
+    collisions.push_back(collider);
+}
+
+void PlayerController::checkCollisions() {
+    if (collisions.size() == 0) {
+        return;
+    }
+
+    for (auto& collision : collisions) {
+        int damage = 0;
+        if (collision->getName() == "Bullet") {
+            damage = 10;
+        } else if (collision->getName() == "Missile") {
+            damage = 50;
+        }
+        if (collision->getName() == "Bullet" || collision->getName() == "Missile") {
+            if (isLocal()) {
+                collision->destroy();
+            } else if (isServer()) {
+                collision->destroy();
+            }
+            takeDamage(damage);
+            getGameObject().destroy();
+        }
+    }
+
+    collisions.clear();
+}
+
+#pragma endregion
+
 void PlayerController::takeDamage(int damage) {
     if (isClient()) {
         return;

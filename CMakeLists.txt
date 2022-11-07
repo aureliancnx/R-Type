@@ -29,9 +29,6 @@ find_package(ZLIB REQUIRED)
 set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost REQUIRED COMPONENTS iostreams)
 
-set(IMGUI_USE_STATIC_LIBS ON)
-find_package(imgui REQUIRED)
-
 file(GLOB_RECURSE SOURCES GameMain.cpp Assets/Components/*.cpp Packages/*.cpp)
 
 add_executable(RType ${SOURCES} ${HEADERS})
@@ -44,7 +41,6 @@ target_link_libraries(RType raylib)
 target_link_libraries(RType Boost::iostreams)
 
 target_link_libraries(RType ZLIB::ZLIB)
-target_link_libraries(RType imgui::imgui)
 #if (WIN32)
 #    target_link_libraries(RType zlib)
 #else()
@@ -65,3 +61,10 @@ IF (NOT WIN32)
     target_compile_options(RType PRIVATE -O2)
 ENDIF()
 target_compile_options(RType PRIVATE -pthread)
+
+set(CPACK_DEBIAN_PACKAGE_NAME "RType")
+set(CPACK_DEBIAN_PACKAGE_CONTACT "idk@gmail.com")
+set(CPACK_DEBIAN_PACKAGE_VERSION "1.0")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "RType")
+
+set(CPACK_GENERATOR "TGZ;DEB;RPM")

@@ -61,7 +61,7 @@ jobs:
             build_type: "Release",
             cc: "clang",
             cxx: "clang++",
-            generators: "Xcode",
+            generators: "Ninja",
             build_executable: "Release/RType"
           }
 

@@ -3,9 +3,16 @@
 #include "Script/Vector2Script.hpp"
 #include "Script/RectangleScript.hpp"
 #include "Script/MathScript.hpp"
+#include "EnemyController.hpp"
+#include "Prefabs.hpp"
+#include "Collider.hpp"
+#include "KapMirror/KapMirror.hpp"
 #include <fstream>
+#include <cstring>
 
 using namespace RType;
+
+MapScript::MapScript(KapEngine::KEngine* _engine, bool _isLoadedByServer) : engine(*_engine), isLoadedByServer(_isLoadedByServer) {}
 
 void MapScript::loadScript(const std::string& scriptPath) {
     std::ifstream ifs(scriptPath);
@@ -18,7 +25,14 @@ void MapScript::loadScript(const std::string& scriptPath) {
 }
 
 void MapScript::executeScript(const std::string& script) {
-    lua_State* L = luaL_newstate();
+    if (L != nullptr) {
+        throw LuaException("Script is already loaded");
+    }
+
+    spawnEnemies.clear();
+    destroyNewEnemies();
+
+    L = luaL_newstate();
 
     // Load Lua scripts
     Script::Debug::initScript(L);
@@ -26,7 +40,7 @@ void MapScript::executeScript(const std::string& script) {
     Script::Rectangle::initScript(L);
     Script::Math::initScript(L);
     Script::Enemy::initScript(L, this);
-    initScript(L);
+    initScript();
 
     int doResult = luaL_dostring(L, script.c_str());
     if (doResult != LUA_OK) {
@@ -36,16 +50,16 @@ void MapScript::executeScript(const std::string& script) {
         throw LuaException("Something went wrong during execution: " + error);
     }
 
-    lua_close(L);
+    // Check if the script is valid
+    verifScript();
 
-    if (name.empty()) {
-        throw LuaException("Map name is empty");
+    // Create enemies
+    for (auto& enemy : newEnemies) {
+        createNewEnemy(enemy);
     }
-
-    destroyEnemies();
 }
 
-void MapScript::initScript(lua_State* L) {
+void MapScript::initScript() {
     auto setMapName = [](lua_State* L) -> int {
         auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
 
@@ -74,10 +88,10 @@ void MapScript::initScript(lua_State* L) {
         auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
 
         std::string enemyName = lua_tostring(L, 1);
-        int spawnTime = (int)lua_tonumber(L, 2);
-        int startPositionY = (int)lua_tonumber(L, 3);
-        int startPositionX = (int)lua_tonumber(L, 4);
-        int enemyHp = (int)lua_tonumber(L, 5);
+        auto spawnTime = (int)lua_tonumber(L, 2);
+        auto startPositionY = (float)lua_tonumber(L, 3);
+        auto startPositionX = (float)lua_tonumber(L, 4);
+        auto enemyHp = (int)lua_tonumber(L, 5);
 
         manager->_registerSpawnEnemy(enemyName, spawnTime, startPositionY, startPositionX, enemyHp);
         return 0;
@@ -107,8 +121,6 @@ void MapScript::initScript(lua_State* L) {
     lua_pushstring(L, "__index");
     lua_pushvalue(L, mapTableIdx);
     lua_settable(L, -3);
-
-    verifScript();
 }
 
 void MapScript::verifScript() {
@@ -120,6 +132,11 @@ void MapScript::verifScript() {
     }
     if (description.empty()) {
         throw LuaException("Map description is not set or empty");
+    }
+
+    // TODO: Transform this into avalaible
+    if (isLoadedByServer && !newEnemies.empty()) {
+        throw LuaException("Modded map is not supported by server");
     }
 
     for (auto& enemy : newEnemies) {
@@ -142,26 +159,59 @@ void MapScript::checkNewEnemy(Script::Enemy* enemy) {
     }
 }
 
-void MapScript::_setMapName(const std::string& _name) {
-    KapEngine::Debug::log("Map name: " + _name);
-    name = _name;
+void MapScript::createNewEnemy(Script::Enemy* enemy) {
+    KapEngine::Debug::log("Create new enemy: " + enemy->name);
+
+    engine.getPrefabManager()->createPrefab(
+        "Enemy:" + enemy->name, [this](KapEngine::SceneManagement::Scene& scene, const std::string& _name) {
+            auto enemy = getNewEnemy(_name);
+            if (enemy == nullptr) {
+                throw std::runtime_error("Can't find enemy with name: " + _name);
+            }
+
+            auto enemyObject = KapEngine::UI::UiFactory::createCanvas(scene, "Enemy");
+            enemyObject->setTag("Collider");
+
+            auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemyObject);
+            enemyObject->addComponent(networkIdentityComp);
+
+            auto networkTransformComponent = std::make_shared<KapMirror::NetworkTransform>(enemyObject);
+            networkTransformComponent->setClientAuthority(false);
+            networkTransformComponent->setActiveUpdate(false);
+            networkTransformComponent->setActiveLateUpdate(true);
+            enemyObject->addComponent(networkTransformComponent);
+
+            auto controller = std::make_shared<EnemyController>(enemyObject);
+            enemyObject->addComponent(controller);
+
+            auto collider = std::make_shared<KapEngine::Collider>(enemyObject, true);
+            enemyObject->addComponent(collider);
+
+            auto imageComp = std::make_shared<KapEngine::UI::Image>(enemyObject);
+            imageComp->setRectangle({enemy->rectangle->x, enemy->rectangle->y, enemy->rectangle->w, enemy->rectangle->h});
+            imageComp->setPathSprite(enemy->pathSprite);
+            enemyObject->addComponent(imageComp);
+
+            auto& canvas = enemyObject->getComponent<KapEngine::UI::Canvas>();
+            canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
+
+            auto& transform = enemyObject->getComponent<KapEngine::Transform>();
+            transform.setPosition({0, 0, 0});
+            transform.setScale({enemy->scale->x, enemy->scale->y, 0});
+
+            return enemyObject;
+        });
 }
 
-void MapScript::_setMapAuthor(const std::string& _author) {
-    KapEngine::Debug::log("Map author: " + _author);
-    author = _author;
-}
+void MapScript::_setMapName(const std::string& _name) { name = _name; }
 
-void MapScript::_setMapDescription(const std::string& _description) {
-    KapEngine::Debug::log("Map description: " + _description);
-    description = _description;
-}
+void MapScript::_setMapAuthor(const std::string& _author) { author = _author; }
 
-void MapScript::_registerNewEnemy(Script::Enemy* enemy) {
-    newEnemies.push_back(enemy);
-}
+void MapScript::_setMapDescription(const std::string& _description) { description = _description; }
 
-void MapScript::_registerSpawnEnemy(const std::string& _name, int spawnTime, int startPositionY, int startPositionX, int enemyHp) {
+void MapScript::_registerNewEnemy(Script::Enemy* enemy) { newEnemies.push_back(enemy); }
+
+void MapScript::_registerSpawnEnemy(const std::string& _name, int spawnTime, float startPositionY, float startPositionX, int enemyHp) {
     // Check values
     if (_name.empty()) {
         throw LuaException("Enemy name is empty");
@@ -184,11 +234,55 @@ void MapScript::_registerSpawnEnemy(const std::string& _name, int spawnTime, int
     if (startPositionX == 0) {
         startPositionX = 1280 + 100; // Constant
     }
+
     spawnEnemies.push_back({_name, spawnTime, startPositionY, startPositionX, enemyHp});
 }
 
-void MapScript::destroyEnemies() {
+void MapScript::destroyNewEnemies() {
     for (auto enemy : newEnemies) {
         enemy->~Enemy();
     }
+    newEnemies.clear();
+}
+void MapScript::closeScript() {
+    if (L == nullptr) {
+        return;
+    }
+
+    lua_close(L);
+    destroyPrefabEnemies();
+    destroyNewEnemies();
+
+    spawnEnemies.clear();
+
+    L = nullptr;
+}
+void MapScript::destroyPrefabEnemies() {
+    for (auto& enemy : spawnEnemies) {
+        engine.getPrefabManager()->removePrefab("Enemy:" + enemy.name);
+    }
+}
+void MapScript::spawnEnemy(KapEngine::SceneManagement::Scene& scene, const std::string& enemyName, int spawnTime, float startPositionY,
+                            float startPositionX, int enemyHp) {
+    KapEngine::Debug::log("Spawn enemy: " + enemyName + " at " + std::to_string(spawnTime) + "s");
+
+    std::shared_ptr<KapEngine::GameObject> enemy;
+    if (!engine.getPrefabManager()->instantiatePrefab("Enemy:" + enemyName, scene, enemy)) {
+        KapEngine::Debug::error("Can't spawn enemy: " + enemyName + " (Prefab: 'Enemy:" + enemyName + "' not found)");
+        return;
+    }
+
+    auto& controller = enemy->getComponent<EnemyController>();
+    controller.setHp(enemyHp);
+
+    auto& transform = enemy->getComponent<KapEngine::Transform>();
+    transform.setPosition({startPositionX, startPositionY, 0});
+}
+Script::Enemy* MapScript::getNewEnemy(const std::string& enemyName) {
+    for (auto& enemy : newEnemies) {
+        if ("Enemy:" + enemy->name == enemyName) {
+            return enemy;
+        }
+    }
+    return nullptr;
 }

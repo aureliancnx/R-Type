@@ -11,6 +11,6 @@ namespace RType::Script {
         static void initScript(lua_State* L);
 
       private:
-        static int __rand(lua_State* L);
+        static int __random(lua_State* L);
     };
 } // namespace RType::Script

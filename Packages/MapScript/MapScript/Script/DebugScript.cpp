@@ -25,18 +25,18 @@ void Debug::initScript(lua_State* L) {
 
 int Debug::__log(lua_State* L) {
     std::string message = lua_tostring(L, 1);
-    KapEngine::Debug::log(message);
+    KapEngine::Debug::log("[MapScript] " + message);
     return 0;
 }
 
 int Debug::__logWarning(lua_State* L) {
     std::string message = lua_tostring(L, 1);
-    KapEngine::Debug::warning(message);
+    KapEngine::Debug::warning("[MapScript] " + message);
     return 0;
 }
 
 int Debug::__logError(lua_State* L) {
     std::string message = lua_tostring(L, 1);
-    KapEngine::Debug::error(message);
+    KapEngine::Debug::error("[MapScript] " + message);
     return 0;
 }

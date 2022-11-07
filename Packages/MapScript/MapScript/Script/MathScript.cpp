@@ -12,17 +12,17 @@ void Math::initScript(lua_State* L) {
     lua_pushvalue(L, debugTableIdx);
     lua_setglobal(L, "Math");
 
-    lua_pushcfunction(L, __rand);
-    lua_setfield(L, -2, "Rand");
+    lua_pushcfunction(L, __random);
+    lua_setfield(L, -2, "Random");
 
     lua_pushstring(L, "__index");
     lua_pushvalue(L, debugTableIdx);
     lua_settable(L, -3);
 }
 
-int Math::__rand(lua_State* L) {
-    int min = lua_tointeger(L, 1);
-    int max = lua_tointeger(L, 2);
-    lua_pushinteger(L, std::rand() % (max - min) + min);
+int Math::__random(lua_State* L) {
+    int min = (int)lua_tonumber(L, 1);
+    int max = (int)lua_tonumber(L, 2);
+    lua_pushnumber(L, std::rand() % (max - min) + min);
     return 1;
 }

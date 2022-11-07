@@ -2,9 +2,7 @@
 
 using namespace RType::Script;
 
-void Enemy::dump() const {
-    KapEngine::Debug::log("Enemy: name = '" + name + "', pathSprite = '" + pathSprite + "'");
-}
+void Enemy::dump() const { KapEngine::Debug::log("Enemy: name = '" + name + "', pathSprite = '" + pathSprite + "'"); }
 
 void Enemy::initScript(lua_State* L, MapScript* mapScript) {
     lua_newtable(L);
@@ -52,12 +50,12 @@ int Enemy::__create(lua_State* L) {
 int Enemy::__destroy(lua_State* L) {
     auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
     auto* enemy = (Enemy*)lua_touserdata(L, -1);
-    //enemy->~Enemy();
+    // enemy->~Enemy();
     return 0;
 }
 
 int Enemy::__index(lua_State* L) {
-    Enemy* enemy = (Enemy*)lua_touserdata(L, -2);
+    auto* enemy = (Enemy*)lua_touserdata(L, -2);
     std::string index = lua_tostring(L, -1);
     if (index == "name") {
         lua_pushstring(L, enemy->name.c_str());
@@ -121,7 +119,7 @@ int Enemy::__newIndex(lua_State* L) {
 }
 
 int Enemy::__dump(lua_State* L) {
-    Enemy* enemy = (Enemy*)lua_touserdata(L, -1);
+    auto* enemy = (Enemy*)lua_touserdata(L, -1);
     enemy->dump();
     return 0;
 }

@@ -2,6 +2,7 @@
 #include "Script/DebugScript.hpp"
 #include "Script/Vector2Script.hpp"
 #include "Script/RectangleScript.hpp"
+#include "Script/MathScript.hpp"
 #include <fstream>
 
 using namespace RType;
@@ -23,6 +24,7 @@ void MapScript::executeScript(const std::string& script) {
     Script::Debug::initScript(L);
     Script::Vector2::initScript(L);
     Script::Rectangle::initScript(L);
+    Script::Math::initScript(L);
     Script::Enemy::initScript(L, this);
     initScript(L);
 
@@ -45,36 +47,39 @@ void MapScript::executeScript(const std::string& script) {
 
 void MapScript::initScript(lua_State* L) {
     auto setMapName = [](lua_State* L) -> int {
-        MapScript* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
+        auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
 
         std::string mapName = lua_tostring(L, 1);
-        manager->__setMapName(mapName);
+        manager->_setMapName(mapName);
         return 0;
     };
 
     auto setMapAuthor = [](lua_State* L) -> int {
-        MapScript* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
+        auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
 
         std::string mapAuthor = lua_tostring(L, 1);
-        manager->__setMapAuthor(mapAuthor);
+        manager->_setMapAuthor(mapAuthor);
         return 0;
     };
 
     auto setMapDescription = [](lua_State* L) -> int {
-        MapScript* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
+        auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
 
         std::string mapDescription = lua_tostring(L, 1);
-        manager->__setMapDescription(mapDescription);
+        manager->_setMapDescription(mapDescription);
         return 0;
     };
 
     auto spawnMapEnemy = [](lua_State* L) -> int {
-        MapScript* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
+        auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
 
         std::string enemyName = lua_tostring(L, 1);
         int spawnTime = (int)lua_tonumber(L, 2);
         int startPositionY = (int)lua_tonumber(L, 3);
-        int enemyHp = (int)lua_tonumber(L, 4);
+        int startPositionX = (int)lua_tonumber(L, 4);
+        int enemyHp = (int)lua_tonumber(L, 5);
+
+        manager->_registerSpawnEnemy(enemyName, spawnTime, startPositionY, startPositionX, enemyHp);
         return 0;
     };
 
@@ -102,25 +107,84 @@ void MapScript::initScript(lua_State* L) {
     lua_pushstring(L, "__index");
     lua_pushvalue(L, mapTableIdx);
     lua_settable(L, -3);
+
+    verifScript();
 }
 
-void MapScript::__setMapName(const std::string& name) {
-    KapEngine::Debug::log("Map name: " + name);
-    this->name = name;
+void MapScript::verifScript() {
+    if (name.empty()) {
+        throw LuaException("Map name is not set or empty");
+    }
+    if (author.empty()) {
+        throw LuaException("Map author is not set or empty");
+    }
+    if (description.empty()) {
+        throw LuaException("Map description is not set or empty");
+    }
+
+    for (auto& enemy : newEnemies) {
+        checkNewEnemy(enemy);
+    }
 }
 
-void MapScript::__setMapAuthor(const std::string& author) {
-    KapEngine::Debug::log("Map author: " + author);
-    this->author = author;
+void MapScript::checkNewEnemy(Script::Enemy* enemy) {
+    if (enemy->name.empty()) {
+        throw LuaException("Enemy name is not set or empty");
+    }
+    if (enemy->pathSprite.empty()) {
+        throw LuaException("Enemy sprite path is not set or empty");
+    }
+    if (enemy->rectangle->w <= 0) {
+        throw LuaException("Enemy width is not set or empty");
+    }
+    if (enemy->rectangle->h <= 0) {
+        throw LuaException("Enemy height is not set or empty");
+    }
 }
 
-void MapScript::__setMapDescription(const std::string& description) {
-    KapEngine::Debug::log("Map description: " + description);
-    this->description = description;
+void MapScript::_setMapName(const std::string& _name) {
+    KapEngine::Debug::log("Map name: " + _name);
+    name = _name;
 }
 
-void MapScript::__registerNewEnemy(Script::Enemy* enemy) {
+void MapScript::_setMapAuthor(const std::string& _author) {
+    KapEngine::Debug::log("Map author: " + _author);
+    author = _author;
+}
+
+void MapScript::_setMapDescription(const std::string& _description) {
+    KapEngine::Debug::log("Map description: " + _description);
+    description = _description;
+}
+
+void MapScript::_registerNewEnemy(Script::Enemy* enemy) {
     newEnemies.push_back(enemy);
+}
+
+void MapScript::_registerSpawnEnemy(const std::string& _name, int spawnTime, int startPositionY, int startPositionX, int enemyHp) {
+    // Check values
+    if (_name.empty()) {
+        throw LuaException("Enemy name is empty");
+    }
+    if (spawnTime < 0) {
+        throw LuaException("Spawn time can't be negative");
+    }
+    if (startPositionY < 0) {
+        throw LuaException("Start position Y can't be negative");
+    }
+    if (startPositionX < 0) {
+        throw LuaException("Start position X can't be negative");
+    }
+    if (enemyHp < 0) {
+        throw LuaException("Enemy HP can't be negative");
+    }
+    if (enemyHp == 0) {
+        throw LuaException("Enemy HP can't be 0");
+    }
+    if (startPositionX == 0) {
+        startPositionX = 1280 + 100; // Constant
+    }
+    spawnEnemies.push_back({_name, spawnTime, startPositionY, startPositionX, enemyHp});
 }
 
 void MapScript::destroyEnemies() {

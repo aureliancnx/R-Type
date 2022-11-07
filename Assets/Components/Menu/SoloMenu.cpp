@@ -31,7 +31,7 @@ void SoloMenu::init() {
         transform.setParent(canvas);
     }
 
-    // create button play
+/*    // create button play
     {
         auto btn = scene.createGameObject("ButtonPlay");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
@@ -59,7 +59,7 @@ void SoloMenu::init() {
             scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
             gameManager.startCampaign();
         });
-    }
+    }*/
 
     // create button back
     {
@@ -73,7 +73,7 @@ void SoloMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({50, 430, 0});
+        transform.setPosition({250, 430, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
@@ -121,7 +121,7 @@ void SoloMenu::init() {
                     currentID = KapEngine::PlayerPrefs::getInt("campaignID");
                 currentID = currentID - 1;
                 if (currentID < 0)
-                    currentID = 3;
+                    currentID = 4;
                 KapEngine::PlayerPrefs::setInt("campaignID", currentID);
             } catch (...) {}
         });
@@ -150,7 +150,7 @@ void SoloMenu::init() {
                 if (!KapEngine::PlayerPrefs::getString("campaignID").empty())
                     currentID = KapEngine::PlayerPrefs::getInt("campaignID");
                 currentID = currentID + 1;
-                if (currentID > 3)
+                if (currentID > 4)
                     currentID = 0;
                 KapEngine::PlayerPrefs::setInt("campaignID", currentID);
             } catch (...) {}
@@ -172,8 +172,19 @@ void SoloMenu::init() {
         transform.setScale({245, 230, 0});
         transform.setParent(canvas);
 
-        btnComp->getOnClick().registerAction(
-            [this]() { engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav"); });
+        btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
+            try {
+                canvas->getComponent<UpdateStartGameKeys>().checkInputs();
+            } catch (...) { KAP_DEBUG_ERROR("Failed to update inputs"); }
+            if (KapEngine::PlayerPrefs::hasKey("campaignID")) {
+                if (KapEngine::PlayerPrefs::getInt("campaignID") == 4) {
+                    KAP_DEBUG_LOG("Je entre la");
+                    scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
+                    gameManager.startCampaign();
+                }
+            }
+        });
     }
 
     // Creation Name lvl 1
@@ -239,8 +250,18 @@ void SoloMenu::init() {
         transform.setScale({245, 230, 0});
         transform.setParent(canvas);
 
-        btnComp->getOnClick().registerAction(
-            [this]() { engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav"); });
+        btnComp->getOnClick().registerAction([this]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
+            try {
+                canvas->getComponent<UpdateStartGameKeys>().checkInputs();
+            } catch (...) { KAP_DEBUG_ERROR("Failed to update inputs"); }
+            if (KapEngine::PlayerPrefs::hasKey("campaignID")) {
+                if (KapEngine::PlayerPrefs::getInt("campaignID") + 1 == 4) {
+                    scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
+                    gameManager.startCampaign();
+                }
+            }
+        });
     }
 
     // Creation Name lvl 2

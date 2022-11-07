@@ -35,7 +35,7 @@ void Enemy::initScript(lua_State* L, MapScript* mapScript) {
 }
 
 int Enemy::__create(lua_State* L) {
-    MapScript* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
+    auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
 
     void* ptr = lua_newuserdata(L, sizeof(Enemy));
     new (ptr) Script::Enemy();
@@ -45,13 +45,13 @@ int Enemy::__create(lua_State* L) {
     lua_newtable(L);
     lua_setuservalue(L, 1);
 
-    manager->__registerNewEnemy((Enemy*)ptr);
+    manager->_registerNewEnemy((Enemy*)ptr);
     return 1;
 }
 
 int Enemy::__destroy(lua_State* L) {
-    MapScript* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
-    Enemy* enemy = (Enemy*)lua_touserdata(L, -1);
+    auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
+    auto* enemy = (Enemy*)lua_touserdata(L, -1);
     //enemy->~Enemy();
     return 0;
 }
@@ -90,7 +90,7 @@ int Enemy::__index(lua_State* L) {
 }
 
 int Enemy::__newIndex(lua_State* L) {
-    Enemy* enemy = (Enemy*)lua_touserdata(L, -3);
+    auto* enemy = (Enemy*)lua_touserdata(L, -3);
     std::string index = lua_tostring(L, -2);
     if (index == "name") {
         std::string name = lua_tostring(L, -1);
@@ -113,10 +113,10 @@ int Enemy::__newIndex(lua_State* L) {
         return 0;
     }
 
-    lua_getuservalue(L, 1); //1
-    lua_pushvalue(L, 2);    //2
-    lua_pushvalue(L, 3);    //3
-    lua_settable(L, -3);    //1[2] = 3
+    lua_getuservalue(L, 1); // 1
+    lua_pushvalue(L, 2);    // 2
+    lua_pushvalue(L, 3);    // 3
+    lua_settable(L, -3);    // 1[2] = 3
     return 0;
 }
 

@@ -41,7 +41,8 @@ namespace RType {
         bool _shipInvert = false;
         bool _bulletReset = false;
 
-        bool _canShoot = false;
+        int _nbShoot = 0;
+        bool _canShoot = true;
         bool _canShoot2 = false;
         int _nbInvert = 0;
         bool _gameOver = false;

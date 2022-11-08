@@ -27,13 +27,13 @@ namespace RType {
 
         lua_State* L = nullptr;
 
-        std::string name; // Name of the map
-        std::string author; // Author of the map
+        std::string name;        // Name of the map
+        std::string author;      // Author of the map
         std::string description; // Description of the map
-        std::string bannerPath; // Path of the banner of the map
+        std::string bannerPath;  // Path of the banner of the map
 
         std::vector<Script::Enemy*> newEnemies; // List of new enemies
-        std::vector<SpawnEnemy> spawnEnemies; // List of enemies to spawn
+        std::vector<SpawnEnemy> spawnEnemies;   // List of enemies to spawn
 
       public:
         explicit MapScript(KapEngine::KEngine* _engine, bool _isLoadedByServer = false);

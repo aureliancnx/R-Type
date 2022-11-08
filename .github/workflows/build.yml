@@ -21,7 +21,7 @@ jobs:
             cxx: "cl",
             environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
             generators: "Visual Studio 17 2022",
-            executable_file: "RType.exe"
+            executable_file: "Release/RType.exe"
           }
           - {
             name: "Linux",

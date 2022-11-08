@@ -2,7 +2,7 @@ var classKapMirror_1_1Telepathy_1_1Client =
 [
     [ "Client", "classKapMirror_1_1Telepathy_1_1Client.html#a31b07d45fe66fce0660fe18361d15ef7", null ],
     [ "~Client", "classKapMirror_1_1Telepathy_1_1Client.html#a840e519ca781888cbd54181572ebe3a7", null ],
-    [ "connect", "classKapMirror_1_1Telepathy_1_1Client.html#ab8667764548180103c801a691f828d52", null ],
+    [ "connect", "classKapMirror_1_1Telepathy_1_1Client.html#a389b8de7f4b2582f44ca2e40e9bbc8f0", null ],
     [ "connected", "classKapMirror_1_1Telepathy_1_1Client.html#a7ba87157a46786d41e17bf79f83f2fe1", null ],
     [ "connecting", "classKapMirror_1_1Telepathy_1_1Client.html#a99b7bae41fce42b9f8c056dc6cc34df5", null ],
     [ "disconnect", "classKapMirror_1_1Telepathy_1_1Client.html#a97e144b48409c0a9873eee09f04ce724", null ],

@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"functions_a.html":[35,3,0,1],
+"functions_b.html":[35,3,0,2],
 "functions_c.html":[35,3,0,3],
 "functions_d.html":[35,3,0,4],
 "functions_e.html":[35,3,0,5],
@@ -247,7 +249,5 @@ var NAVTREEINDEX8 =
 "md_Packages_KapUI_pull_request_template.html#autotoc_md215":[26,0],
 "md_Packages_KapUI_pull_request_template.html#autotoc_md216":[26,1],
 "md_Packages_KapUI_pull_request_template.html#autotoc_md217":[26,2],
-"md_Packages_SylphTransport_README.html":[28],
-"md_Packages_SylphTransport_README.html#autotoc_md220":[0],
-"md_Packages_SylphTransport_README.html#autotoc_md221":[1]
+"md_Packages_SylphTransport_README.html":[28]
 };

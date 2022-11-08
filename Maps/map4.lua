@@ -7,6 +7,7 @@
 Map.SetName("The Den of Dark Shadows")
 Map.SetAuthor("Chaika9")
 Map.SetDescription("26/10/2022")
+Map.SetBannerPath("Assets/Textures/Level Campaign/lvl4_img.png")
 
 Debug.Log("The Den of Dark Shadows")
 

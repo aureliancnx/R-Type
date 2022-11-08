@@ -22,7 +22,8 @@ void RType::MenuCampaign::getLuaInformation() {
             _creator.emplace_back("Author: " + author);
             auto date = script.getDescription();
             _date.emplace_back("Date: " + date);
-            _img.emplace_back("Assets/Textures/Level Campaign/lvl2_img.png");
+            auto pathImg = script.getBannerPath();
+            _img.emplace_back(pathImg);
             script.closeScript();
         } catch (LuaException& e) {
             KapEngine::Debug::error(e.what());

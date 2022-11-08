@@ -7,6 +7,7 @@
 Map.SetName("The Villain's Lair")
 Map.SetAuthor("Benjamin Delvertr")
 Map.SetDescription("24/10/2022")
+Map.SetBannerPath("Assets/Textures/Level Campaign/lvl3_img.png")
 
 Debug.Log("The Lair Of The Aliens")
 

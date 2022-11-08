@@ -3,6 +3,7 @@
 Map.SetName("TestMap")
 Map.SetAuthor("Chaika9")
 Map.SetDescription("This is a test map for RType")
+Map.SetBannerPath("Maps/testMap.png")
 
 Debug.Log("Loading TestMap")
 

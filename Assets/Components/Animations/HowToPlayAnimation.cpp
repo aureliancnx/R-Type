@@ -48,10 +48,18 @@ namespace RType {
     }
 
     void HowToPlayAnimation::moveBouboule2() {
+        // if (getGameObject("Bouboule2")->isActive() == false)
+        //     return;
+
         auto& transform = getImage("Bouboule2").getTransform();
         // KAP_DEBUG_WARNING(" BOUBOULE 2 X : " + std::to_string(transform.getWorldPosition().getX()) + " Y : " + std::to_string(transform.getWorldPosition().getY()));
         auto pos_Y = transform.getWorldPosition().getY();
         auto pos_X  = transform.getWorldPosition().getX();
+
+        // if (pos_Y == 266.0f) {
+        //     getGameObject("Bouboule2")->setActive(false);
+        //     return;
+        // }
 
         if (_bouboule2Invert) {
             if (pos_X >= 490 && pos_Y > 200) {
@@ -66,7 +74,6 @@ namespace RType {
                 transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(-4.0f, 4.0f, 0)); 
             }              
         }
-
         if (pos_Y > 300) {
             _bouboule2Invert = true;
             _canShoot2 = true;
@@ -76,10 +83,18 @@ namespace RType {
     }
 
     void HowToPlayAnimation::moveBouboule() {
+        // if (getGameObject("Bouboule")->isActive() == false)
+        //     return;
+
         auto& transform = getImage("Bouboule").getTransform();
         // KAP_DEBUG_WARNING(" BOUBOULE X : " + std::to_string(transform.getWorldPosition().getX()) + " Y : " + std::to_string(transform.getWorldPosition().getY()));
         auto pos_Y = transform.getWorldPosition().getY();
         auto pos_X  = transform.getWorldPosition().getX();
+
+        // if (pos_Y == 266.0f) {
+        //     getGameObject("Bouboule")->setActive(false);
+        //     return;
+        // }
 
         if (_boubouleInvert) {
             if (pos_X > 500 && pos_Y > 200) {
@@ -95,10 +110,6 @@ namespace RType {
             }              
         }
 
-        if (pos_Y == 266.0f) {
-            // KAP_DEBUG_WARNING("GOT YOU");
-        }
-
         if (pos_Y > 300) {
             _boubouleInvert = true;
             _canShoot = true;
@@ -108,8 +119,15 @@ namespace RType {
     }
 
     void HowToPlayAnimation::moveShip() {    
+        // if (getGameObject("Ship")->isActive() == false)
+        //     return;
         auto& transform = getImage("Ship").getTransform();
         // KAP_DEBUG_WARNING(" SHIP X : " + std::to_string(transform.getWorldPosition().getX()) + " Y : " + std::to_string(transform.getWorldPosition().getY()));
+
+        // if (transform.getWorldPosition().getY() == 266.0f) {
+        //     getGameObject("Ship")->setActive(false);
+        //     return;
+        // }
 
         if (_shipInvert) {
             transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0, -4.0f, 0));
@@ -117,10 +135,6 @@ namespace RType {
             transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0, 4.0f, 0));
         }
 
-        // if (transform.getWorldPosition().getY() == 280 || transform.getWorldPosition().getY() == 100) {
-            // KAP_DEBUG_WARNING("hello");
-        //     _nbInvert++;
-        // }
         if (transform.getWorldPosition().getY() > 300) {
             // KAP_DEBUG_WARNING("X : " + std::to_string(transform.getWorldPosition().getX()) + " Y : " + std::to_string(transform.getWorldPosition().getY()));
             _shipInvert = true;
@@ -135,14 +149,27 @@ namespace RType {
 
     void HowToPlayAnimation::moveBullet() {
         auto& transform = getImage("Bullet").getTransform();
-        if (getGameObject("Bullet")->isActive() == false && getImage("Ship").getTransform().getLocalPosition().getY() == 266) {
-            getGameObject("Bullet")->setActive(true);
-            transform.setPosition(getResetPosition("Bullet"));
+
+        if (getGameObject("Bullet")->isActive() == false && getImage("Ship").getTransform().getWorldPosition().getY() == 266) {
+            if (_nbShoot % 2 == 0 && _canShoot) {
+                getGameObject("Bullet")->setActive(true);
+                transform.setPosition(getResetPosition("Bullet"));
+                _nbShoot++;
+                _canShoot = false;
+            }
+            
+        } else if (getGameObject("Bullet")->isActive() == false && getImage("Ship").getTransform().getWorldPosition().getY() == 166) {
+            if (_nbShoot % 2 != 0 && _canShoot) {
+                getGameObject("Bullet")->setActive(true);
+                transform.setPosition(KapEngine::Tools::Vector3(400, 166, 0));
+                _nbShoot++;
+                _canShoot = false;
+            }
         }
         if (getGameObject("Bullet")->isActive() == false)
             return;
 
-        transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(4.0f, 0, 0));
+        transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(5.0f, 0, 0));
 
         if (transform.getWorldPosition().getX() < 500) {
             _allGameObject.at("Bullet")->getComponent<KapEngine::Animator>().setTrigger("BigBulletToLittleBullet");
@@ -154,6 +181,7 @@ namespace RType {
 
         if (transform.getWorldPosition().getX() > 600) {
             getGameObject("Bullet")->setActive(false);
+            _canShoot = true;
         }
     }
 

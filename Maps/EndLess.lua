@@ -4,10 +4,10 @@
 --- DateTime: 08/11/22 16:27
 ---
 ---
-Map.SetName("EndLess Fight")
+Map.SetName("Endless fight")
 Map.SetAuthor("Ewen Le Quéré")
 Map.SetDescription("28/10/2022")
-Map.SetBannerPath("Assets/Textures/Level Campaign/lv1_img.png")
+Map.SetBannerPath("Assets/Textures/Level Campaign/lvl1_img.png")
 
 Debug.Log("EndLess Campaign")
 
@@ -29,6 +29,6 @@ bouboule.rectangle = Rectangle.new(0, 0, 17, 18)
 bouboule.scale = Vector2.new(51, 54)
 
 -- Spawn enemies
-for i = 1, 11 do
+for i = 1, 100 do
     Map.SpawnEnemy("Bouboule2", 1, 100 + (50 * i), 0, 10)
 end

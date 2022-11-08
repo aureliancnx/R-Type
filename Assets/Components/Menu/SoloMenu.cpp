@@ -157,21 +157,9 @@ void SoloMenu::init() {
                 auto compName = objName->getComponent<KapEngine::UI::Text>();
                 auto name = compName.getText();
 
-/*                if (name == "Endless fight") {
+                if (name == "Endless fight") {
                     scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
                     gameManager.startCampaign();
-                }*/
-                if (name == "The Lair Of The Aliens") {
-                    script.loadScript("Maps/map1.lua");
-                    script.closeScript();
-                }
-                if (name == "The Den of Dark Shadows") {
-                    script.loadScript("Maps/testMap.lua");
-                    script.closeScript();
-                }
-                if (name == "The House of Aliens") {
-                    script.loadScript("Maps/map2.lua");
-                    script.closeScript();
                 }
             } catch (LuaException& e) {
                 KapEngine::Debug::error(e.what());
@@ -257,21 +245,9 @@ void SoloMenu::init() {
                 auto compName = objName->getComponent<KapEngine::UI::Text>();
                 auto name = compName.getText();
 
-/*                if (name == "Endless fight") {
+                if (name == "Endless fight") {
                     scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
                     gameManager.startCampaign();
-                }*/
-                if (name == "The Lair Of The Aliens") {
-                    script.loadScript("Maps/map1.lua");
-                    script.closeScript();
-                }
-                if (name == "The Den of Dark Shadows") {
-                    script.loadScript("Maps/testMap.lua");
-                    script.closeScript();
-                }
-                if (name == "The House of Aliens") {
-                    script.loadScript("Maps/map2.lua");
-                    script.closeScript();
                 }
             } catch (LuaException& e) {
                 KapEngine::Debug::error(e.what());

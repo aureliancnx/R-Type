@@ -84,6 +84,14 @@ void MapScript::initScript() {
         return 0;
     };
 
+    auto setMapBannerPath = [](lua_State* L) -> int {
+        auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
+
+        std::string path = lua_tostring(L, 1);
+        manager->_setMapBannerPath(path);
+        return 0;
+    };
+
     auto spawnMapEnemy = [](lua_State* L) -> int {
         auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
 
@@ -113,6 +121,10 @@ void MapScript::initScript() {
     lua_pushlightuserdata(L, this);
     lua_pushcclosure(L, setMapDescription, 1);
     lua_setfield(L, -2, "SetDescription");
+
+    lua_pushlightuserdata(L, this);
+    lua_pushcclosure(L, setMapBannerPath, 1);
+    lua_setfield(L, -2, "SetBannerPath");
 
     lua_pushlightuserdata(L, this);
     lua_pushcclosure(L, spawnMapEnemy, 1);
@@ -208,6 +220,8 @@ void MapScript::_setMapName(const std::string& _name) { name = _name; }
 void MapScript::_setMapAuthor(const std::string& _author) { author = _author; }
 
 void MapScript::_setMapDescription(const std::string& _description) { description = _description; }
+
+void MapScript::_setMapBannerPath(const std::string& _path) { bannerPath = _path; }
 
 void MapScript::_registerNewEnemy(Script::Enemy* enemy) { newEnemies.push_back(enemy); }
 

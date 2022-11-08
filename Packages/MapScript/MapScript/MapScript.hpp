@@ -27,11 +27,13 @@ namespace RType {
 
         lua_State* L = nullptr;
 
-        std::string name;
-        std::string author;
-        std::string description;
-        std::vector<Script::Enemy*> newEnemies;
-        std::vector<SpawnEnemy> spawnEnemies;
+        std::string name;        // Name of the map
+        std::string author;      // Author of the map
+        std::string description; // Description of the map
+        std::string bannerPath;  // Path of the banner of the map
+
+        std::vector<Script::Enemy*> newEnemies; // List of new enemies
+        std::vector<SpawnEnemy> spawnEnemies;   // List of enemies to spawn
 
       public:
         explicit MapScript(KapEngine::KEngine* _engine, bool _isLoadedByServer = false);
@@ -68,6 +70,12 @@ namespace RType {
         std::string getDescription() const { return description; }
 
         /**
+         * @brief Get map banner path.
+         * @return Map banner path
+         */
+        std::string getBannerPath() const { return bannerPath; }
+
+        /**
          * @brief Get spawn enemies.
          * @return Spawn enemies
          */
@@ -80,6 +88,7 @@ namespace RType {
         void _setMapName(const std::string& name);
         void _setMapAuthor(const std::string& author);
         void _setMapDescription(const std::string& description);
+        void _setMapBannerPath(const std::string& bannerPath);
         void _registerNewEnemy(Script::Enemy* enemy);
         void _registerSpawnEnemy(const std::string& name, int spawnTime, float startPositionY, float startPositionX, int enemyHp);
 

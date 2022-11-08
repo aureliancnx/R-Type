@@ -110,9 +110,10 @@ jobs:
       - name: Build
         shell: bash
         run: cmake --build build --config ${{ matrix.config.build_type }}
-      - name: Create installer (Linux)
+      - name: Create installer
         run: |
           cd build/
+          rm -rf _deps/raylib*
           cpack
         shell: bash
       - name: Upload Release Asset (.rpm)

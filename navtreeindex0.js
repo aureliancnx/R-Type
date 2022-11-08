@@ -67,6 +67,8 @@ var NAVTREEINDEX0 =
 "KapEngineSettings_8hpp_source.html":[36,0,2,0,0,21],
 "KapEngineUi_8hpp_source.html":[36,0,2,0,0,22],
 "KapEngineVersion_8hpp_source.html":[36,0,2,0,0,23],
+"KapEngine_2KapEngine_2Profiler_2StackElement_8hpp_source.html":[36,0,2,0,0,12,2],
+"KapEngine_2KapEngine_2Profiler_2StackSummary_8hpp_source.html":[36,0,2,0,0,12,3],
 "KapEngine_8hpp_source.html":[36,0,2,0,0,17],
 "KapMirror_2KapMirror_2Transports_2Telepathy_2Address_8hpp_source.html":[36,0,3,0,0,3,0,0],
 "KapMirror_2KapMirror_2Transports_2Telepathy_2Client_8hpp_source.html":[36,0,3,0,0,3,0,1],
@@ -75,6 +77,8 @@ var NAVTREEINDEX0 =
 "KapMirror_2KapMirror_2Transports_2Telepathy_2SocketException_8hpp_source.html":[36,0,3,0,0,3,0,7],
 "KapMirror_2KapMirror_2Transports_2Telepathy_2Socket_8hpp_source.html":[36,0,3,0,0,3,0,6],
 "KapMirror_8hpp_source.html":[36,0,3,0,0,4],
+"KapProfiler_2src_2StackElement_8hpp_source.html":[36,0,2,1,0,2],
+"KapProfiler_2src_2StackSummary_8hpp_source.html":[36,0,2,1,0,3],
 "KapProfiler_8hpp_source.html":[36,0,2,0,0,12,1],
 "KapRaylibVersion_8hpp_source.html":[36,0,3,1,0,5],
 "KapRaylib_8hpp_source.html":[36,0,3,1,0,4],
@@ -140,8 +144,6 @@ var NAVTREEINDEX0 =
 "SoloMenu_8hpp_source.html":[36,0,0,0,6,8],
 "SplashScreen_8hpp_source.html":[36,0,2,0,0,13,2,0],
 "SpriteAnimation_8hpp_source.html":[36,0,0,0,0,2],
-"StackElement_8hpp_source.html":[36,0,2,0,0,12,2],
-"StackSummary_8hpp_source.html":[36,0,2,0,0,12,3],
 "Summon_8hpp_source.html":[36,0,3,4,1,0],
 "SylphTransport_2Sylph_2Address_8hpp_source.html":[36,0,3,5,0,0],
 "SylphTransport_2Sylph_2Client_8hpp_source.html":[36,0,3,5,0,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "classKapEngine_1_1Component.html#a15c4ebae3ca398b69c96ff4c33306970":[35,0,0,16,30],
 "classKapEngine_1_1Component.html#a1848a8d2a99683ddab5522ad58ac63f8":[35,0,0,16,14],
 "classKapEngine_1_1Component.html#a1a4e8b0f239a538fdc8a64a8e9850197":[35,0,0,16,29],
-"classKapEngine_1_1Component.html#a2164610991c285f395da90565c0be9bf":[35,0,0,16,10],
-"classKapEngine_1_1Component.html#a2281d91b4d138a69a57ba87651c50df7":[35,0,0,16,39],
-"classKapEngine_1_1Component.html#a298bf57d9d823a13668b2550005da2d4":[35,0,0,16,18]
+"classKapEngine_1_1Component.html#a2164610991c285f395da90565c0be9bf":[35,0,0,16,10]
 };

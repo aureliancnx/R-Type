@@ -113,5 +113,7 @@ var annotated_dup =
       [ "VolumeMenu", "classRType_1_1VolumeMenu.html", "classRType_1_1VolumeMenu" ]
     ] ],
     [ "FixedQueue", "classFixedQueue.html", "classFixedQueue" ],
+    [ "ImGui_ImplGlfw_Data", "structImGui__ImplGlfw__Data.html", "structImGui__ImplGlfw__Data" ],
+    [ "ImGui_ImplOpenGL2_Data", "structImGui__ImplOpenGL2__Data.html", "structImGui__ImplOpenGL2__Data" ],
     [ "PlayerPref", "classPlayerPref.html", null ]
 ];

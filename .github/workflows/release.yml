@@ -127,6 +127,16 @@ jobs:
         run: |
           cd build/
           cpack -G DragNDrop
+      - name: Upload Release Asset (Linux tgz)
+        if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') }}
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create_release.outputs.upload_url }}
+          asset_path: ./build/RType-1.0.1-Linux.tar.gz
+          asset_name: RType-Linux.tar.gz
+          asset_content_type: application/zip
       - name: Upload Release Asset (.rpm)
         if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') }}
         uses: actions/upload-release-asset@v1
@@ -156,4 +166,14 @@ jobs:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
           asset_path: ./build/RType-1.0.1-Darwin.dmg
           asset_name: RType-MacOS.dmg
+          asset_content_type: application/zip
+      - name: Upload Release Asset (Mac tgz)
+        if: ${{ startsWith(matrix.config.os, 'macos') }}
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create_release.outputs.upload_url }}
+          asset_path: ./build/RType-1.0.1-Darwin.tar.gz
+          asset_name: RType-Darwin.tar.gz
           asset_content_type: application/zip

@@ -53,7 +53,7 @@ endif()
 
 if (WIN32)
     # Generated WiX and tarball with Windows
-    set(CPACK_GENERATOR "TGZ;WiX")
+    set(CPACK_GENERATOR "TGZ;WIX")
 endif()
 
 # Include CPack

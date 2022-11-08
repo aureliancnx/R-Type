@@ -31,6 +31,14 @@ void RtypeNetworkManager::registerClientHandlers() {
         });
 }
 
+void RtypeNetworkManager::onClientConnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
+    KapEngine::Debug::log("RtypeNetworkManager: Client connected");
+}
+
+void RtypeNetworkManager::onClientDisconnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
+    KapEngine::Debug::log("RtypeNetworkManager: Disconnected from server");
+}
+
 void RtypeNetworkManager::onPlayerAuthorityMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                                    PlayerAuthorityMessage& message) {
     std::shared_ptr<KapEngine::GameObject> player;

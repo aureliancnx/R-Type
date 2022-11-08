@@ -38,7 +38,6 @@ namespace RType {
         std::vector<std::string> _creator;
         std::vector<std::string> _pathScript;
 
-
         std::shared_ptr<KapEngine::GameObject> _txtDate;
         std::shared_ptr<KapEngine::GameObject> _txtCreator;
         std::shared_ptr<KapEngine::GameObject> _txtName;

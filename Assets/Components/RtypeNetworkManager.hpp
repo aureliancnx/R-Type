@@ -21,6 +21,10 @@ namespace RType {
 
         void onStart() override;
 
+        void onClientConnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) override;
+
+        void onClientDisconnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) override;
+
         void onServerClientConnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) override;
 
         void onServerClientDisconnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) override;

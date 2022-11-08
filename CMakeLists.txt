@@ -12,11 +12,7 @@ endif(${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_BINARY_DIR} AND NOT W
 project(RType LANGUAGES CXX VERSION 1.0.1)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake" ${CMAKE_MODULE_PATH})
-
 set(CMAKE_CXX_STANDARD 20)
-
-# use valgrind programm
-option(VALGRIND "Use -g on project compile" OFF)
 
 include(Dependencies)
 
@@ -24,13 +20,7 @@ file(GLOB_RECURSE SOURCES GameMain.cpp Assets/Components/*.cpp Packages/*.cpp)
 
 add_executable(RType ${SOURCES} ${HEADERS})
 
-# Target link libraries
-
-include_directories(${Boost_INCLUDE_DIRS})
-target_link_libraries(RType raylib)
-target_link_libraries(RType Boost::iostreams)
-
-target_link_libraries(RType ZLIB::ZLIB)
+include(DependenciesLink)
 
 # Library
 include(Library/library.cmake)
@@ -42,18 +32,8 @@ include_directories(Assets/Components)
 # Packages
 include(Packages/packages.cmake)
 
-if (VALGRIND)
-    target_compile_options(RType PRIVATE -g)
-endif()
-IF (NOT WIN32)
-    target_compile_options(RType PRIVATE -O3)
-ENDIF()
-target_compile_options(RType PRIVATE -pthread)
-
-include(InstallRequiredSystemLibraries)
-
-install(DIRECTORY "${PROJECT_SOURCE_DIR}/Assets/" DESTINATION "Assets")
-install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION "." COMPONENT applications)
+# Build Flags
+include(BuildFlags)
 
 # Package app
 include(Package)

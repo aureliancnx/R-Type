@@ -4,6 +4,7 @@ include(InstallRequiredSystemLibraries)
 # Put assets in installation process
 # and RType executable in the root folder of destination
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/Assets/" DESTINATION "Assets")
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/Maps/" DESTINATION "Maps")
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION "." COMPONENT applications)
 
 # Set installation prefix

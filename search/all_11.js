@@ -53,7 +53,7 @@ var searchData=
   ['shipenemy_423',['ShipEnemy',['../classRType_1_1ShipEnemy.html',1,'RType']]],
   ['shutdown_424',['shutdown',['../classKapMirror_1_1NetworkServer.html#a9ccac6f1950c9e6e15052fce78d4dd94',1,'KapMirror::NetworkServer']]],
   ['size_425',['size',['../classKapMirror_1_1NetworkWriter.html#a0658ab746b40588cf797cfcb43b44d44',1,'KapMirror::NetworkWriter']]],
-  ['socket_426',['Socket',['../classKapMirror_1_1Telepathy_1_1Socket.html',1,'KapMirror::Telepathy::Socket'],['../classKapMirror_1_1Sylph_1_1Socket.html',1,'KapMirror::Sylph::Socket']]],
+  ['socket_426',['Socket',['../classKapMirror_1_1Sylph_1_1Socket.html',1,'KapMirror::Sylph::Socket'],['../classKapMirror_1_1Telepathy_1_1Socket.html',1,'KapMirror::Telepathy::Socket']]],
   ['socketexception_427',['SocketException',['../classKapMirror_1_1Telepathy_1_1SocketException.html',1,'KapMirror::Telepathy::SocketException'],['../classKapMirror_1_1Sylph_1_1SocketException.html',1,'KapMirror::Sylph::SocketException']]],
   ['solomenu_428',['SoloMenu',['../classRType_1_1SoloMenu.html',1,'RType']]],
   ['spawnenemy_429',['SpawnEnemy',['../structRType_1_1SpawnEnemy.html',1,'RType']]],

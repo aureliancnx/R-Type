@@ -1,13 +1,5 @@
 var NAVTREEINDEX6 =
 {
-"classKapMirror_1_1Telepathy_1_1Client.html#ab8cd136138726f7d64ea21a58c0a8a59":[35,0,1,2,1,10],
-"classKapMirror_1_1Telepathy_1_1Client.html#acdd3949df8bb9c65f0dafecd3b1a55b0":[35,0,1,2,1,8],
-"classKapMirror_1_1Telepathy_1_1Client.html#af0d8e710d14f6ad81f3a9660c0f505ab":[35,0,1,2,1,7],
-"classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html":[35,0,1,2,3],
-"classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html#a27ea6deb92a0d9cd231bbfa5f3df9144":[35,0,1,2,3,7],
-"classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html#a55b2239eedd864c8e6e356813285a65b":[35,0,1,2,3,6],
-"classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html#a6a29e7e145a576bc34f984858cbf5f63":[35,0,1,2,3,4],
-"classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html#a802487cfc4566022ba08e25b8389fbfb":[35,0,1,2,3,2],
 "classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html#a8ae0f895372ee6a415ce726299984766":[35,0,1,2,3,3],
 "classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html#a96d74daaff0baaa0476d50b825940039":[35,0,1,2,3,1],
 "classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html#a96d74daaff0baaa0476d50b825940039a0531ce31cd18e3e92160155970f8deec":[35,0,1,2,3,1,0],
@@ -249,5 +241,13 @@ var NAVTREEINDEX6 =
 "classRType_1_1ParalaxAnimation.html":[35,0,3,24],
 "classRType_1_1ParalaxAnimation.html#a0848ee0a031d9c4b1a60ba25e09cbb0a":[35,0,3,24,6],
 "classRType_1_1ParalaxAnimation.html#a32fef36932ad3e1d8f2fd9a637e561fd":[35,0,3,24,7],
-"classRType_1_1ParalaxAnimation.html#a4689e2437322aa2072697b796e419ad1":[35,0,3,24,3]
+"classRType_1_1ParalaxAnimation.html#a4689e2437322aa2072697b796e419ad1":[35,0,3,24,3],
+"classRType_1_1ParalaxAnimation.html#a5fcebfb31660b9ba1812c433908c76d6":[35,0,3,24,0],
+"classRType_1_1ParalaxAnimation.html#a8da713bb75909f85f7f04c673f4b2af8":[35,0,3,24,2],
+"classRType_1_1ParalaxAnimation.html#abf9d089c079842ba903fa56f2e10b7fe":[35,0,3,24,1],
+"classRType_1_1ParalaxAnimation.html#ac77254480de7537b9792f11ae9e09600":[35,0,3,24,4],
+"classRType_1_1ParalaxAnimation.html#af5b1651e936a63f2da47015497e97895":[35,0,3,24,5],
+"classRType_1_1Parser_1_1Map.html":[35,0,3,0,0],
+"classRType_1_1Parser_1_1Map.html#a578cf769eeef364210daeaafa2b87e2b":[35,0,3,0,0,2],
+"classRType_1_1Parser_1_1Map.html#aab9a9628c1ced9441f0186e78fbd7b2a":[35,0,3,0,0,0]
 };

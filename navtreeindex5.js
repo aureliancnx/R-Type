@@ -1,13 +1,5 @@
 var NAVTREEINDEX5 =
 {
-"classKapMirror_1_1NetworkIdentity.html#a0e523a0b9c34d63aa3bc2f03e7800452":[35,0,1,12,2],
-"classKapMirror_1_1NetworkIdentity.html#a40b0ff224932163f73790d71c298d195":[35,0,1,12,6],
-"classKapMirror_1_1NetworkIdentity.html#a44b9542ab1fb01f8a4aaddcdb354fc71":[35,0,1,12,0],
-"classKapMirror_1_1NetworkIdentity.html#a6c20061b2daa7ff5986cba2da347dc1b":[35,0,1,12,9],
-"classKapMirror_1_1NetworkIdentity.html#a758c9bba5eb53bb6242124bc397ac635":[35,0,1,12,12],
-"classKapMirror_1_1NetworkIdentity.html#a802e4f9cafed0fa3322a39e099d1fa99":[35,0,1,12,11],
-"classKapMirror_1_1NetworkIdentity.html#aa591436d65b26b8edfe32961d6eac240":[35,0,1,12,7],
-"classKapMirror_1_1NetworkIdentity.html#aad2be40803c3c30141dd029ca2351210":[35,0,1,12,5],
 "classKapMirror_1_1NetworkIdentity.html#ab8bd1e5d26dab373e9e01365d6b81315":[35,0,1,12,3],
 "classKapMirror_1_1NetworkIdentity.html#ad27b15d3b0b08fda8986b29e17c9be26":[35,0,1,12,10],
 "classKapMirror_1_1NetworkIdentity.html#ad77dfc6c46a7beeb550c5ec1d13c7431":[35,0,1,12,8],
@@ -249,5 +241,13 @@ var NAVTREEINDEX5 =
 "classKapMirror_1_1Telepathy_1_1Client.html#a99b7bae41fce42b9f8c056dc6cc34df5":[35,0,1,2,1,4],
 "classKapMirror_1_1Telepathy_1_1Client.html#a9a08ec553452aa76a365b65ada2b8eb7":[35,0,1,2,1,12],
 "classKapMirror_1_1Telepathy_1_1Client.html#aae73046813e1d0dd79ba7ec60852d82f":[35,0,1,2,1,6],
-"classKapMirror_1_1Telepathy_1_1Client.html#ab8667764548180103c801a691f828d52":[35,0,1,2,1,2]
+"classKapMirror_1_1Telepathy_1_1Client.html#ab8667764548180103c801a691f828d52":[35,0,1,2,1,2],
+"classKapMirror_1_1Telepathy_1_1Client.html#ab8cd136138726f7d64ea21a58c0a8a59":[35,0,1,2,1,10],
+"classKapMirror_1_1Telepathy_1_1Client.html#acdd3949df8bb9c65f0dafecd3b1a55b0":[35,0,1,2,1,8],
+"classKapMirror_1_1Telepathy_1_1Client.html#af0d8e710d14f6ad81f3a9660c0f505ab":[35,0,1,2,1,7],
+"classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html":[35,0,1,2,3],
+"classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html#a27ea6deb92a0d9cd231bbfa5f3df9144":[35,0,1,2,3,7],
+"classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html#a55b2239eedd864c8e6e356813285a65b":[35,0,1,2,3,6],
+"classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html#a6a29e7e145a576bc34f984858cbf5f63":[35,0,1,2,3,4],
+"classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html#a802487cfc4566022ba08e25b8389fbfb":[35,0,1,2,3,2]
 };

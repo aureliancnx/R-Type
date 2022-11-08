@@ -1,13 +1,5 @@
 var NAVTREEINDEX8 =
 {
-"functions_func_h.html":[35,3,1,8],
-"functions_func_i.html":[35,3,1,9],
-"functions_func_k.html":[35,3,1,10],
-"functions_func_l.html":[35,3,1,11],
-"functions_func_m.html":[35,3,1,12],
-"functions_func_n.html":[35,3,1,13],
-"functions_func_o.html":[35,3,1,14],
-"functions_func_p.html":[35,3,1,15],
 "functions_func_r.html":[35,3,1,16],
 "functions_func_s.html":[35,3,1,17],
 "functions_func_t.html":[35,3,1,18],
@@ -249,5 +241,13 @@ var NAVTREEINDEX8 =
 "md_doxygen-awesome-css_docs_customization.html#autotoc_md29":[2,0],
 "md_doxygen-awesome-css_docs_customization.html#autotoc_md30":[2,0,0],
 "md_doxygen-awesome-css_docs_customization.html#autotoc_md31":[2,0,1],
-"md_doxygen-awesome-css_docs_customization.html#autotoc_md32":[2,1]
+"md_doxygen-awesome-css_docs_customization.html#autotoc_md32":[2,1],
+"md_doxygen-awesome-css_docs_customization.html#autotoc_md33":[2,2],
+"md_doxygen-awesome-css_docs_extensions.html":[3],
+"md_doxygen-awesome-css_docs_extensions.html#autotoc_md35":[3,0],
+"md_doxygen-awesome-css_docs_extensions.html#autotoc_md36":[3,0,0],
+"md_doxygen-awesome-css_docs_extensions.html#autotoc_md37":[3,0,1],
+"md_doxygen-awesome-css_docs_extensions.html#autotoc_md38":[3,1],
+"md_doxygen-awesome-css_docs_extensions.html#autotoc_md39":[3,1,0],
+"md_doxygen-awesome-css_docs_extensions.html#autotoc_md40":[3,1,1]
 };

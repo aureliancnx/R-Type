@@ -33,7 +33,6 @@ var namespaceKapEngine =
     [ "KEngine", "classKapEngine_1_1KEngine.html", "classKapEngine_1_1KEngine" ],
     [ "MouseDetector", "classKapEngine_1_1MouseDetector.html", "classKapEngine_1_1MouseDetector" ],
     [ "PlayerPrefs", "classKapEngine_1_1PlayerPrefs.html", "classKapEngine_1_1PlayerPrefs" ],
-    [ "ThreadScene", "classKapEngine_1_1ThreadScene.html", "classKapEngine_1_1ThreadScene" ],
     [ "Transform", "classKapEngine_1_1Transform.html", "classKapEngine_1_1Transform" ],
     [ "Type", "classKapEngine_1_1Type.html", null ]
 ];

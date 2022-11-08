@@ -173,8 +173,8 @@ var hierarchy =
     [ "KapEngine::SceneManagement::SceneManager", "classKapEngine_1_1SceneManagement_1_1SceneManager.html", null ],
     [ "KapMirror::Telepathy::Server", "classKapMirror_1_1Telepathy_1_1Server.html", null ],
     [ "KapMirror::Sylph::Server", "classKapMirror_1_1Sylph_1_1Server.html", null ],
-    [ "KapMirror::Telepathy::Socket", "classKapMirror_1_1Telepathy_1_1Socket.html", null ],
     [ "KapMirror::Sylph::Socket", "classKapMirror_1_1Sylph_1_1Socket.html", null ],
+    [ "KapMirror::Telepathy::Socket", "classKapMirror_1_1Telepathy_1_1Socket.html", null ],
     [ "RType::SpawnEnemy", "structRType_1_1SpawnEnemy.html", null ],
     [ "KapEngine::SceneManagement::SplashScreen", "classKapEngine_1_1SceneManagement_1_1SplashScreen.html", null ],
     [ "KapEngine::SceneManagement::SplashScreen::SplashScreenNode", "structKapEngine_1_1SceneManagement_1_1SplashScreen_1_1SplashScreenNode.html", null ],
@@ -183,7 +183,6 @@ var hierarchy =
     [ "RType::Parser::Summon", "classRType_1_1Parser_1_1Summon.html", null ],
     [ "KapMirror::Telepathy::TcpClient", "classKapMirror_1_1Telepathy_1_1TcpClient.html", null ],
     [ "KapMirror::Telepathy::TcpListener", "classKapMirror_1_1Telepathy_1_1TcpListener.html", null ],
-    [ "KapEngine::ThreadScene", "classKapEngine_1_1ThreadScene.html", null ],
     [ "KapEngine::Profiler::ThreadStack", "classKapEngine_1_1Profiler_1_1ThreadStack.html", null ],
     [ "KapMirror::Transport", "classKapMirror_1_1Transport.html", [
       [ "KapMirror::SylphTransport", "classKapMirror_1_1SylphTransport.html", null ],
@@ -193,7 +192,7 @@ var hierarchy =
     [ "KapMirror::Sylph::UdpClient", "classKapMirror_1_1Sylph_1_1UdpClient.html", null ],
     [ "KapMirror::Sylph::UdpListener", "classKapMirror_1_1Sylph_1_1UdpListener.html", null ],
     [ "KapEngine::UI::UiFactory", "classKapEngine_1_1UI_1_1UiFactory.html", null ],
-    [ "RType::Script::Vector2", "classRType_1_1Script_1_1Vector2.html", null ],
     [ "KapEngine::Tools::Vector2", "classKapEngine_1_1Tools_1_1Vector2.html", null ],
+    [ "RType::Script::Vector2", "classRType_1_1Script_1_1Vector2.html", null ],
     [ "KapEngine::Tools::Vector3", "classKapEngine_1_1Tools_1_1Vector3.html", null ]
 ];

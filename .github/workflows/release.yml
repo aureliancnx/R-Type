@@ -112,21 +112,10 @@ jobs:
         shell: bash
         run: cmake --build build --config ${{ matrix.config.build_type }}
       - name: Create installer (Linux)
-        if: startsWith(matrix.config.name, 'Ubuntu Latest GCC')
         run: |
           cd build/
           cpack
         shell: bash
-      - name: Create installer (Windows)
-        if: startsWith(matrix.config.os, 'windows')
-        run: |
-          cd build/
-          cpack -G WIX
-      - name: Create installer (MacOS)
-        if: startsWith(matrix.config.os, 'macos')
-        run: |
-          cd build/
-          cpack -G DragNDrop
       - name: Upload Release Asset (Linux tgz)
         if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') }}
         uses: actions/upload-release-asset@v1

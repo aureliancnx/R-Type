@@ -16,7 +16,7 @@ jobs:
           - {
             name: "Windows",
             os: windows-latest,
-            build_type: "Debug",
+            build_type: "Release",
             cc: "cl",
             cxx: "cl",
             environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
@@ -26,7 +26,7 @@ jobs:
           - {
             name: "Linux",
             os: ubuntu-latest,
-            build_type: "Debug",
+            build_type: "Release",
             cc: "gcc",
             cxx: "g++",
             generators: "Ninja",
@@ -35,7 +35,7 @@ jobs:
           - {
             name: "MacOS",
             os: macos-latest,
-            build_type: "Debug",
+            build_type: "Release",
             cc: "clang",
             cxx: "clang++",
             generators: "Ninja",

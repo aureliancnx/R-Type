@@ -50,5 +50,10 @@ if (APPLE)
     set(CPACK_GENERATOR "TGZ;DragNDrop")
 endif()
 
+if (WIN32)
+    # Generated WiX and tarball with Windows
+    set(CPACK_GENERATOR "TGZ;WiX")
+endif()
+
 # Include CPack
 include(CPack)

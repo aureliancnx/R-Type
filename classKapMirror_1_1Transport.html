@@ -105,35 +105,39 @@ Inheritance diagram for KapMirror::Transport:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae09ef74cb3722032b2f9f0c10e485ba9"><td class="memItemLeft" align="right" valign="top"><a id="ae09ef74cb3722032b2f9f0c10e485ba9"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>clientConnected</b> ()=0</td></tr>
+<tr class="memitem:ae09ef74cb3722032b2f9f0c10e485ba9"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#ae09ef74cb3722032b2f9f0c10e485ba9">clientConnected</a> ()=0</td></tr>
+<tr class="memdesc:ae09ef74cb3722032b2f9f0c10e485ba9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Client is connected to the server.  <a href="classKapMirror_1_1Transport.html#ae09ef74cb3722032b2f9f0c10e485ba9">More...</a><br /></td></tr>
 <tr class="separator:ae09ef74cb3722032b2f9f0c10e485ba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad75cbbf4dd44bc7e05ed29b87008807a"><td class="memItemLeft" align="right" valign="top"><a id="ad75cbbf4dd44bc7e05ed29b87008807a"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>clientConnect</b> (std::string ip, int port)=0</td></tr>
-<tr class="separator:ad75cbbf4dd44bc7e05ed29b87008807a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0dc815d86c3e5cb0c7ebb447a37110e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#af0dc815d86c3e5cb0c7ebb447a37110e">clientConnect</a> (const std::string &amp;ip, int port)=0</td></tr>
+<tr class="memdesc:af0dc815d86c3e5cb0c7ebb447a37110e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect the client to the server.  <a href="classKapMirror_1_1Transport.html#af0dc815d86c3e5cb0c7ebb447a37110e">More...</a><br /></td></tr>
+<tr class="separator:af0dc815d86c3e5cb0c7ebb447a37110e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5152b04748b5c1978823fb5a31bb5aca"><td class="memItemLeft" align="right" valign="top"><a id="a5152b04748b5c1978823fb5a31bb5aca"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>clientDisconnect</b> ()=0</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#a5152b04748b5c1978823fb5a31bb5aca">clientDisconnect</a> ()=0</td></tr>
+<tr class="memdesc:a5152b04748b5c1978823fb5a31bb5aca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect the client from the server. <br /></td></tr>
 <tr class="separator:a5152b04748b5c1978823fb5a31bb5aca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47a9b577b0430b3990d9a36fbaa44d01"><td class="memItemLeft" align="right" valign="top"><a id="a47a9b577b0430b3990d9a36fbaa44d01"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>clientSend</b> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; data)=0</td></tr>
+<tr class="memitem:a47a9b577b0430b3990d9a36fbaa44d01"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#a47a9b577b0430b3990d9a36fbaa44d01">clientSend</a> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; data)=0</td></tr>
+<tr class="memdesc:a47a9b577b0430b3990d9a36fbaa44d01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to the server.  <a href="classKapMirror_1_1Transport.html#a47a9b577b0430b3990d9a36fbaa44d01">More...</a><br /></td></tr>
 <tr class="separator:a47a9b577b0430b3990d9a36fbaa44d01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84df3fd2d08e3fcc85663afd5cdf4550"><td class="memItemLeft" align="right" valign="top"><a id="a84df3fd2d08e3fcc85663afd5cdf4550"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>clientEarlyUpdate</b> ()=0</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#a84df3fd2d08e3fcc85663afd5cdf4550">clientEarlyUpdate</a> ()=0</td></tr>
+<tr class="memdesc:a84df3fd2d08e3fcc85663afd5cdf4550"><td class="mdescLeft">&#160;</td><td class="mdescRight">Client Update (call this function every frame) <br /></td></tr>
 <tr class="separator:a84df3fd2d08e3fcc85663afd5cdf4550"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32fe383851293d71caa0aee6ed2fdde6"><td class="memItemLeft" align="right" valign="top"><a id="a32fe383851293d71caa0aee6ed2fdde6"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>serverStart</b> (int port)=0</td></tr>
+<tr class="memitem:a32fe383851293d71caa0aee6ed2fdde6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#a32fe383851293d71caa0aee6ed2fdde6">serverStart</a> (int port)=0</td></tr>
+<tr class="memdesc:a32fe383851293d71caa0aee6ed2fdde6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the server and listen the port.  <a href="classKapMirror_1_1Transport.html#a32fe383851293d71caa0aee6ed2fdde6">More...</a><br /></td></tr>
 <tr class="separator:a32fe383851293d71caa0aee6ed2fdde6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab845a65288c96f00a4576c934be6b7d9"><td class="memItemLeft" align="right" valign="top"><a id="ab845a65288c96f00a4576c934be6b7d9"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>serverStop</b> ()=0</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#ab845a65288c96f00a4576c934be6b7d9">serverStop</a> ()=0</td></tr>
+<tr class="memdesc:ab845a65288c96f00a4576c934be6b7d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the server. <br /></td></tr>
 <tr class="separator:ab845a65288c96f00a4576c934be6b7d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a699d1074eae7d490b914fb7a6015fc88"><td class="memItemLeft" align="right" valign="top"><a id="a699d1074eae7d490b914fb7a6015fc88"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>serverSend</b> (int connectionId, std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; data)=0</td></tr>
+<tr class="memitem:a699d1074eae7d490b914fb7a6015fc88"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#a699d1074eae7d490b914fb7a6015fc88">serverSend</a> (int connectionId, std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; data)=0</td></tr>
+<tr class="memdesc:a699d1074eae7d490b914fb7a6015fc88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to the client.  <a href="classKapMirror_1_1Transport.html#a699d1074eae7d490b914fb7a6015fc88">More...</a><br /></td></tr>
 <tr class="separator:a699d1074eae7d490b914fb7a6015fc88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1550301cc3beffb35a1f497453430e11"><td class="memItemLeft" align="right" valign="top"><a id="a1550301cc3beffb35a1f497453430e11"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>serverDisconnect</b> (int connectionId)=0</td></tr>
+<tr class="memitem:a1550301cc3beffb35a1f497453430e11"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#a1550301cc3beffb35a1f497453430e11">serverDisconnect</a> (int connectionId)=0</td></tr>
+<tr class="memdesc:a1550301cc3beffb35a1f497453430e11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect the connection.  <a href="classKapMirror_1_1Transport.html#a1550301cc3beffb35a1f497453430e11">More...</a><br /></td></tr>
 <tr class="separator:a1550301cc3beffb35a1f497453430e11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ef71f3f9479e96a837dd280ee367d96"><td class="memItemLeft" align="right" valign="top"><a id="a6ef71f3f9479e96a837dd280ee367d96"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>serverEarlyUpdate</b> ()=0</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#a6ef71f3f9479e96a837dd280ee367d96">serverEarlyUpdate</a> ()=0</td></tr>
+<tr class="memdesc:a6ef71f3f9479e96a837dd280ee367d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Server Update (call this function every frame) <br /></td></tr>
 <tr class="separator:a6ef71f3f9479e96a837dd280ee367d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -163,8 +167,241 @@ Static Public Attributes</h2></td></tr>
 static std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Transport.html">Transport</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>activeTransport</b> = nullptr</td></tr>
 <tr class="separator:ad47169fc73a674cde3dc9176b9c3c476"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="af0dc815d86c3e5cb0c7ebb447a37110e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0dc815d86c3e5cb0c7ebb447a37110e">&#9670;&nbsp;</a></span>clientConnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void KapMirror::Transport::clientConnect </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>ip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Connect the client to the server. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ip</td><td>The ip of the server </td></tr>
+    <tr><td class="paramname">port</td><td>The port of the server </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classKapMirror_1_1TelepathyTransport.html#a0b5d3f62948d7684b53552cc42dc0478">KapMirror::TelepathyTransport</a>, and <a class="el" href="classKapMirror_1_1SylphTransport.html#aaad77791d051423fab4094c9e5773b01">KapMirror::SylphTransport</a>.</p>
+
+</div>
+</div>
+<a id="ae09ef74cb3722032b2f9f0c10e485ba9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae09ef74cb3722032b2f9f0c10e485ba9">&#9670;&nbsp;</a></span>clientConnected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool KapMirror::Transport::clientConnected </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Client is connected to the server. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the client is connected to the server </dd></dl>
+
+<p>Implemented in <a class="el" href="classKapMirror_1_1TelepathyTransport.html#aab82b07edfd1b9077869a6667cac7ff0">KapMirror::TelepathyTransport</a>, and <a class="el" href="classKapMirror_1_1SylphTransport.html#a25f3022ca6a4da8953cc82a638736d01">KapMirror::SylphTransport</a>.</p>
+
+</div>
+</div>
+<a id="a47a9b577b0430b3990d9a36fbaa44d01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47a9b577b0430b3990d9a36fbaa44d01">&#9670;&nbsp;</a></span>clientSend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void KapMirror::Transport::clientSend </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Send data to the server. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The data to send </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classKapMirror_1_1TelepathyTransport.html#ad46f02b5b3c9e576cd7fbb0657a073f4">KapMirror::TelepathyTransport</a>, and <a class="el" href="classKapMirror_1_1SylphTransport.html#ad2225a426d57b86dd480c723afee35eb">KapMirror::SylphTransport</a>.</p>
+
+</div>
+</div>
+<a id="a1550301cc3beffb35a1f497453430e11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1550301cc3beffb35a1f497453430e11">&#9670;&nbsp;</a></span>serverDisconnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void KapMirror::Transport::serverDisconnect </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>connectionId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Disconnect the connection. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connectionId</td><td>The id of the connection </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classKapMirror_1_1TelepathyTransport.html#a199df6782a5997864de4034de4caf731">KapMirror::TelepathyTransport</a>, and <a class="el" href="classKapMirror_1_1SylphTransport.html#a6e3805e274ee785baa24943ac882afd4">KapMirror::SylphTransport</a>.</p>
+
+</div>
+</div>
+<a id="a699d1074eae7d490b914fb7a6015fc88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a699d1074eae7d490b914fb7a6015fc88">&#9670;&nbsp;</a></span>serverSend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void KapMirror::Transport::serverSend </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>connectionId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Send data to the client. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connectionId</td><td>The id of the connection </td></tr>
+    <tr><td class="paramname">data</td><td>The data to send </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classKapMirror_1_1TelepathyTransport.html#a5a29f89bb79f57bce09b484b03516933">KapMirror::TelepathyTransport</a>, and <a class="el" href="classKapMirror_1_1SylphTransport.html#a3125d28e15e2a0b563721c37bcff3fe3">KapMirror::SylphTransport</a>.</p>
+
+</div>
+</div>
+<a id="a32fe383851293d71caa0aee6ed2fdde6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32fe383851293d71caa0aee6ed2fdde6">&#9670;&nbsp;</a></span>serverStart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void KapMirror::Transport::serverStart </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Start the server and listen the port. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>The port to listen </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classKapMirror_1_1TelepathyTransport.html#a656b3653eb752254753e219d9b7cccad">KapMirror::TelepathyTransport</a>, and <a class="el" href="classKapMirror_1_1SylphTransport.html#a41d981a5a39a9013a09dc5f145d0e7e1">KapMirror::SylphTransport</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>Packages/KapMirror/KapMirror/Runtime/<a class="el" href="Transport_8hpp_source.html">Transport.hpp</a></li>
+<li>Packages/KapMirror/KapMirror/Core/<a class="el" href="Transport_8hpp_source.html">Transport.hpp</a></li>
 <li>Packages/KapMirror/KapMirror/NetworkManager.cpp</li>
 </ul>
 </div><!-- contents -->

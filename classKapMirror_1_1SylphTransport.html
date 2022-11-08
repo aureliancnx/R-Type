@@ -102,35 +102,39 @@ Inheritance diagram for KapMirror::SylphTransport:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a25f3022ca6a4da8953cc82a638736d01"><td class="memItemLeft" align="right" valign="top"><a id="a25f3022ca6a4da8953cc82a638736d01"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>clientConnected</b> () override</td></tr>
+<tr class="memitem:a25f3022ca6a4da8953cc82a638736d01"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1SylphTransport.html#a25f3022ca6a4da8953cc82a638736d01">clientConnected</a> () override</td></tr>
+<tr class="memdesc:a25f3022ca6a4da8953cc82a638736d01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Client is connected to the server.  <a href="classKapMirror_1_1SylphTransport.html#a25f3022ca6a4da8953cc82a638736d01">More...</a><br /></td></tr>
 <tr class="separator:a25f3022ca6a4da8953cc82a638736d01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb9166f0d9aad69e4a1eff4ebd71ee2c"><td class="memItemLeft" align="right" valign="top"><a id="adb9166f0d9aad69e4a1eff4ebd71ee2c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clientConnect</b> (std::string ip, int port) override</td></tr>
-<tr class="separator:adb9166f0d9aad69e4a1eff4ebd71ee2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaad77791d051423fab4094c9e5773b01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1SylphTransport.html#aaad77791d051423fab4094c9e5773b01">clientConnect</a> (const std::string &amp;ip, int port) override</td></tr>
+<tr class="memdesc:aaad77791d051423fab4094c9e5773b01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect the client to the server.  <a href="classKapMirror_1_1SylphTransport.html#aaad77791d051423fab4094c9e5773b01">More...</a><br /></td></tr>
+<tr class="separator:aaad77791d051423fab4094c9e5773b01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b966764cabe07a101fb0055987a9739"><td class="memItemLeft" align="right" valign="top"><a id="a8b966764cabe07a101fb0055987a9739"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clientDisconnect</b> () override</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1SylphTransport.html#a8b966764cabe07a101fb0055987a9739">clientDisconnect</a> () override</td></tr>
+<tr class="memdesc:a8b966764cabe07a101fb0055987a9739"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect the client from the server. <br /></td></tr>
 <tr class="separator:a8b966764cabe07a101fb0055987a9739"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2225a426d57b86dd480c723afee35eb"><td class="memItemLeft" align="right" valign="top"><a id="ad2225a426d57b86dd480c723afee35eb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clientSend</b> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; data) override</td></tr>
+<tr class="memitem:ad2225a426d57b86dd480c723afee35eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1SylphTransport.html#ad2225a426d57b86dd480c723afee35eb">clientSend</a> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; data) override</td></tr>
+<tr class="memdesc:ad2225a426d57b86dd480c723afee35eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to the server.  <a href="classKapMirror_1_1SylphTransport.html#ad2225a426d57b86dd480c723afee35eb">More...</a><br /></td></tr>
 <tr class="separator:ad2225a426d57b86dd480c723afee35eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b5cd0eae53b6323722d21b60050c598"><td class="memItemLeft" align="right" valign="top"><a id="a1b5cd0eae53b6323722d21b60050c598"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clientEarlyUpdate</b> () override</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1SylphTransport.html#a1b5cd0eae53b6323722d21b60050c598">clientEarlyUpdate</a> () override</td></tr>
+<tr class="memdesc:a1b5cd0eae53b6323722d21b60050c598"><td class="mdescLeft">&#160;</td><td class="mdescRight">Client Update (call this function every frame) <br /></td></tr>
 <tr class="separator:a1b5cd0eae53b6323722d21b60050c598"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41d981a5a39a9013a09dc5f145d0e7e1"><td class="memItemLeft" align="right" valign="top"><a id="a41d981a5a39a9013a09dc5f145d0e7e1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>serverStart</b> (int port) override</td></tr>
+<tr class="memitem:a41d981a5a39a9013a09dc5f145d0e7e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1SylphTransport.html#a41d981a5a39a9013a09dc5f145d0e7e1">serverStart</a> (int port) override</td></tr>
+<tr class="memdesc:a41d981a5a39a9013a09dc5f145d0e7e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the server and listen the port.  <a href="classKapMirror_1_1SylphTransport.html#a41d981a5a39a9013a09dc5f145d0e7e1">More...</a><br /></td></tr>
 <tr class="separator:a41d981a5a39a9013a09dc5f145d0e7e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebf432be284689c7f5d46cdac9cce375"><td class="memItemLeft" align="right" valign="top"><a id="aebf432be284689c7f5d46cdac9cce375"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>serverStop</b> () override</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1SylphTransport.html#aebf432be284689c7f5d46cdac9cce375">serverStop</a> () override</td></tr>
+<tr class="memdesc:aebf432be284689c7f5d46cdac9cce375"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the server. <br /></td></tr>
 <tr class="separator:aebf432be284689c7f5d46cdac9cce375"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3125d28e15e2a0b563721c37bcff3fe3"><td class="memItemLeft" align="right" valign="top"><a id="a3125d28e15e2a0b563721c37bcff3fe3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>serverSend</b> (int connectionId, std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; data) override</td></tr>
+<tr class="memitem:a3125d28e15e2a0b563721c37bcff3fe3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1SylphTransport.html#a3125d28e15e2a0b563721c37bcff3fe3">serverSend</a> (int connectionId, std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; data) override</td></tr>
+<tr class="memdesc:a3125d28e15e2a0b563721c37bcff3fe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to the client.  <a href="classKapMirror_1_1SylphTransport.html#a3125d28e15e2a0b563721c37bcff3fe3">More...</a><br /></td></tr>
 <tr class="separator:a3125d28e15e2a0b563721c37bcff3fe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e3805e274ee785baa24943ac882afd4"><td class="memItemLeft" align="right" valign="top"><a id="a6e3805e274ee785baa24943ac882afd4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>serverDisconnect</b> (int connectionId) override</td></tr>
+<tr class="memitem:a6e3805e274ee785baa24943ac882afd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1SylphTransport.html#a6e3805e274ee785baa24943ac882afd4">serverDisconnect</a> (int connectionId) override</td></tr>
+<tr class="memdesc:a6e3805e274ee785baa24943ac882afd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect the connection.  <a href="classKapMirror_1_1SylphTransport.html#a6e3805e274ee785baa24943ac882afd4">More...</a><br /></td></tr>
 <tr class="separator:a6e3805e274ee785baa24943ac882afd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab221ab282dafd1c0362176e929d7f859"><td class="memItemLeft" align="right" valign="top"><a id="ab221ab282dafd1c0362176e929d7f859"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>serverEarlyUpdate</b> () override</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1SylphTransport.html#ab221ab282dafd1c0362176e929d7f859">serverEarlyUpdate</a> () override</td></tr>
+<tr class="memdesc:ab221ab282dafd1c0362176e929d7f859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Server Update (call this function every frame) <br /></td></tr>
 <tr class="separator:ab221ab282dafd1c0362176e929d7f859"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -159,6 +163,239 @@ std::function&lt; void(<a class="el" href="classKapMirror_1_1Transport.html">Tra
 static std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Transport.html">Transport</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>activeTransport</b> = nullptr</td></tr>
 <tr class="separator:ad47169fc73a674cde3dc9176b9c3c476 inherit pub_static_attribs_classKapMirror_1_1Transport"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aaad77791d051423fab4094c9e5773b01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaad77791d051423fab4094c9e5773b01">&#9670;&nbsp;</a></span>clientConnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SylphTransport::clientConnect </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>ip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Connect the client to the server. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ip</td><td>The ip of the server </td></tr>
+    <tr><td class="paramname">port</td><td>The port of the server </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="classKapMirror_1_1Transport.html#af0dc815d86c3e5cb0c7ebb447a37110e">KapMirror::Transport</a>.</p>
+
+</div>
+</div>
+<a id="a25f3022ca6a4da8953cc82a638736d01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25f3022ca6a4da8953cc82a638736d01">&#9670;&nbsp;</a></span>clientConnected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SylphTransport::clientConnected </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Client is connected to the server. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the client is connected to the server </dd></dl>
+
+<p>Implements <a class="el" href="classKapMirror_1_1Transport.html#ae09ef74cb3722032b2f9f0c10e485ba9">KapMirror::Transport</a>.</p>
+
+</div>
+</div>
+<a id="ad2225a426d57b86dd480c723afee35eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2225a426d57b86dd480c723afee35eb">&#9670;&nbsp;</a></span>clientSend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SylphTransport::clientSend </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Send data to the server. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The data to send </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="classKapMirror_1_1Transport.html#a47a9b577b0430b3990d9a36fbaa44d01">KapMirror::Transport</a>.</p>
+
+</div>
+</div>
+<a id="a6e3805e274ee785baa24943ac882afd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e3805e274ee785baa24943ac882afd4">&#9670;&nbsp;</a></span>serverDisconnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SylphTransport::serverDisconnect </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>connectionId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Disconnect the connection. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connectionId</td><td>The id of the connection </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="classKapMirror_1_1Transport.html#a1550301cc3beffb35a1f497453430e11">KapMirror::Transport</a>.</p>
+
+</div>
+</div>
+<a id="a3125d28e15e2a0b563721c37bcff3fe3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3125d28e15e2a0b563721c37bcff3fe3">&#9670;&nbsp;</a></span>serverSend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SylphTransport::serverSend </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>connectionId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Send data to the client. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connectionId</td><td>The id of the connection </td></tr>
+    <tr><td class="paramname">data</td><td>The data to send </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="classKapMirror_1_1Transport.html#a699d1074eae7d490b914fb7a6015fc88">KapMirror::Transport</a>.</p>
+
+</div>
+</div>
+<a id="a41d981a5a39a9013a09dc5f145d0e7e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41d981a5a39a9013a09dc5f145d0e7e1">&#9670;&nbsp;</a></span>serverStart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SylphTransport::serverStart </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Start the server and listen the port. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>The port to listen </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="classKapMirror_1_1Transport.html#a32fe383851293d71caa0aee6ed2fdde6">KapMirror::Transport</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Packages/SylphTransport/Sylph/<a class="el" href="SylphTransport_8hpp_source.html">SylphTransport.hpp</a></li>
 <li>Packages/SylphTransport/Sylph/SylphTransport.cpp</li>

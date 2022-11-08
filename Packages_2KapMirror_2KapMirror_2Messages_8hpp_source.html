@@ -89,113 +89,100 @@ $(document).ready(function(){initNavTree('Packages_2KapMirror_2KapMirror_2Messag
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Runtime/NetworkMessage.hpp&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>KapMirror {</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structKapMirror_1_1ObjectSpawnMessage.html">    7</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structKapMirror_1_1ObjectSpawnMessage.html">ObjectSpawnMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">NetworkMessage</a> {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="comment">// networkId of new or existing object</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="comment">// Sets hasAuthority on the spawned object</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordtype">bool</span> isOwner;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        std::string sceneName;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="comment">// Prefab name</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        std::string prefabName;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">float</span> x;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">float</span> y;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">float</span> z;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="comment">// Custom payload</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        std::shared_ptr&lt;ArraySegment&lt;byte&gt;&gt; payload;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">void</span> serialize(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a>&amp; writer)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(networkId);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(isOwner);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#acb383f3d3a90d60e486368e4fa1ac472">writeString</a>(sceneName);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#acb383f3d3a90d60e486368e4fa1ac472">writeString</a>(prefabName);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(x);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(y);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(z);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(payload-&gt;getSize());</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#a246f086202e1113abcbfe4a8011b1b74">writeBytes</a>(payload-&gt;toArray(), payload-&gt;getOffset(), payload-&gt;getSize());</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span> deserialize(<a class="code" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a>&amp; reader)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            networkId = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&gt;();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            isOwner = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">bool</span>&gt;();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            sceneName = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#ae99516a742ebd56ec02561c15fe59ed2">readString</a>();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            prefabName = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#ae99516a742ebd56ec02561c15fe59ed2">readString</a>();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            x = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            y = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            z = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordtype">int</span> payloadSize = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">int</span>&gt;();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">if</span> (payloadSize &gt; 0) {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keywordtype">byte</span>* segmentValue = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a20bf35413308bee011cee47fdc5338d3">readBytes</a>(payloadSize);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                payload = std::make_shared&lt;ArraySegment&lt;byte&gt;&gt;(segmentValue, 0, payloadSize);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="keyword">delete</span>[] segmentValue;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                payload = std::make_shared&lt;ArraySegment&lt;byte&gt;&gt;();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    };</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structKapMirror_1_1ObjectDestroyMessage.html">   53</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structKapMirror_1_1ObjectDestroyMessage.html">ObjectDestroyMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">NetworkMessage</a> {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="comment">// networkId of existing object</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">void</span> serialize(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a>&amp; writer)<span class="keyword"> override </span>{ writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(networkId); }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">void</span> deserialize(<a class="code" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a>&amp; reader)<span class="keyword"> override </span>{ networkId = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&gt;(); }</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    };</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structKapMirror_1_1ObjectUpdateMessage.html">   62</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structKapMirror_1_1ObjectUpdateMessage.html">ObjectUpdateMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">NetworkMessage</a> {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="comment">// networkId of existing object</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">// Custom payload</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        std::shared_ptr&lt;ArraySegment&lt;byte&gt;&gt; payload;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">void</span> serialize(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a>&amp; writer)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(networkId);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(payload-&gt;getSize());</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#a246f086202e1113abcbfe4a8011b1b74">writeBytes</a>(payload-&gt;toArray(), payload-&gt;getOffset(), payload-&gt;getSize());</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">void</span> deserialize(<a class="code" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a>&amp; reader)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            networkId = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&gt;();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordtype">int</span> payloadSize = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">int</span>&gt;();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">if</span> (payloadSize &gt; 0) {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordtype">byte</span>* segmentValue = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a20bf35413308bee011cee47fdc5338d3">readBytes</a>(payloadSize);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                payload = std::make_shared&lt;ArraySegment&lt;byte&gt;&gt;(segmentValue, 0, payloadSize);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <span class="keyword">delete</span>[] segmentValue;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                payload = std::make_shared&lt;ArraySegment&lt;byte&gt;&gt;();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    };</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="structKapMirror_1_1ObjectTransformMessage.html">   88</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structKapMirror_1_1ObjectTransformMessage.html">ObjectTransformMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">NetworkMessage</a> {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="comment">// networkId of existing object</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordtype">float</span> x;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordtype">float</span> y;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">float</span> z;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordtype">void</span> serialize(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a>&amp; writer)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(networkId);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(x);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(y);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(z);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordtype">void</span> deserialize(<a class="code" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a>&amp; reader)<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            networkId = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&gt;();</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            x = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;();</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            y = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;();</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            z = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;();</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    };</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;} <span class="comment">// namespace KapMirror</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Core/NetworkMessage.hpp&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Vectors.hpp&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>KapMirror {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structKapMirror_1_1ObjectSpawnMessage.html">    8</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structKapMirror_1_1ObjectSpawnMessage.html">ObjectSpawnMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">NetworkMessage</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="comment">// networkId of new or existing object</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="comment">// Sets hasAuthority on the spawned object</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordtype">bool</span> isOwner;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        std::string sceneName;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="comment">// Prefab name</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        std::string prefabName;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> position;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> rotation;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> scale;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="comment">// Custom payload</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        std::shared_ptr&lt;ArraySegment&lt;byte&gt;&gt; payload;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span> serialize(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a>&amp; writer)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(networkId);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(isOwner);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#acb383f3d3a90d60e486368e4fa1ac472">writeString</a>(sceneName);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#acb383f3d3a90d60e486368e4fa1ac472">writeString</a>(prefabName);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(position.getX());</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(position.getY());</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(position.getZ());</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(payload-&gt;getSize());</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#a246f086202e1113abcbfe4a8011b1b74">writeBytes</a>(payload-&gt;toArray(), payload-&gt;getOffset(), payload-&gt;getSize());</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> deserialize(<a class="code" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a>&amp; reader)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            networkId = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&gt;();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            isOwner = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">bool</span>&gt;();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            sceneName = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#ae99516a742ebd56ec02561c15fe59ed2">readString</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            prefabName = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#ae99516a742ebd56ec02561c15fe59ed2">readString</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            position.setX(reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;());</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            position.setY(reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;());</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            position.setZ(reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;());</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordtype">int</span> payloadSize = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">int</span>&gt;();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">if</span> (payloadSize &gt; 0) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                <span class="keywordtype">byte</span>* segmentValue = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a20bf35413308bee011cee47fdc5338d3">readBytes</a>(payloadSize);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                payload = std::make_shared&lt;ArraySegment&lt;byte&gt;&gt;(segmentValue, 0, payloadSize);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keyword">delete</span>[] segmentValue;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                payload = std::make_shared&lt;ArraySegment&lt;byte&gt;&gt;();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    };</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structKapMirror_1_1ObjectDestroyMessage.html">   54</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structKapMirror_1_1ObjectDestroyMessage.html">ObjectDestroyMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">NetworkMessage</a> {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="comment">// networkId of existing object</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">void</span> serialize(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a>&amp; writer)<span class="keyword"> override </span>{ writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(networkId); }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">void</span> deserialize(<a class="code" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a>&amp; reader)<span class="keyword"> override </span>{ networkId = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&gt;(); }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    };</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="structKapMirror_1_1ObjectTransformMessage.html">   63</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structKapMirror_1_1ObjectTransformMessage.html">ObjectTransformMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">NetworkMessage</a> {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="comment">// networkId of existing object</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> position;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> rotation;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> scale;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">void</span> serialize(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a>&amp; writer)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(networkId);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(position.getX());</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(position.getY());</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(position.getZ());</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(rotation.getX());</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(rotation.getY());</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(rotation.getZ());</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(scale.getX());</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(scale.getY());</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(scale.getZ());</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordtype">void</span> deserialize(<a class="code" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a>&amp; reader)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            networkId = reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&gt;();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            position.setX(reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;());</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            position.setY(reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;());</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            position.setZ(reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;());</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            rotation.setX(reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;());</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            rotation.setY(reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;());</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            rotation.setZ(reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;());</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            scale.setX(reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;());</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            scale.setY(reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;());</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            scale.setZ(reader.<a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>&lt;<span class="keywordtype">float</span>&gt;());</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    };</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;} <span class="comment">// namespace KapMirror</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassKapMirror_1_1NetworkReader_html_ae99516a742ebd56ec02561c15fe59ed2"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html#ae99516a742ebd56ec02561c15fe59ed2">KapMirror::NetworkReader::readString</a></div><div class="ttdeci">std::string readString()</div><div class="ttdoc">Read a string from the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:65</div></div>
@@ -204,13 +191,13 @@ $(document).ready(function(){initNavTree('Packages_2KapMirror_2KapMirror_2Messag
 <div class="ttc" id="aclassKapMirror_1_1NetworkWriter_html_acb383f3d3a90d60e486368e4fa1ac472"><div class="ttname"><a href="classKapMirror_1_1NetworkWriter.html#acb383f3d3a90d60e486368e4fa1ac472">KapMirror::NetworkWriter::writeString</a></div><div class="ttdeci">void writeString(const std::string &amp;value)</div><div class="ttdoc">Write a string to the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkWriter.hpp:101</div></div>
 <div class="ttc" id="aclassKapMirror_1_1NetworkWriter_html_ae70d7477abd36330e66df41082f7f178"><div class="ttname"><a href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">KapMirror::NetworkWriter::write</a></div><div class="ttdeci">void write(T value)</div><div class="ttdoc">Write a value to the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkWriter.hpp:39</div></div>
 <div class="ttc" id="aclassKapMirror_1_1NetworkReader_html_a20bf35413308bee011cee47fdc5338d3"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html#a20bf35413308bee011cee47fdc5338d3">KapMirror::NetworkReader::readBytes</a></div><div class="ttdeci">byte * readBytes(int count)</div><div class="ttdoc">Read a byte array from the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:53</div></div>
-<div class="ttc" id="astructKapMirror_1_1ObjectDestroyMessage_html"><div class="ttname"><a href="structKapMirror_1_1ObjectDestroyMessage.html">KapMirror::ObjectDestroyMessage</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:53</div></div>
+<div class="ttc" id="astructKapMirror_1_1ObjectDestroyMessage_html"><div class="ttname"><a href="structKapMirror_1_1ObjectDestroyMessage.html">KapMirror::ObjectDestroyMessage</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:54</div></div>
 <div class="ttc" id="aclassKapMirror_1_1NetworkWriter_html"><div class="ttname"><a href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a></div><div class="ttdef"><b>Definition:</b> NetworkWriter.hpp:12</div></div>
-<div class="ttc" id="astructKapMirror_1_1ObjectSpawnMessage_html"><div class="ttname"><a href="structKapMirror_1_1ObjectSpawnMessage.html">KapMirror::ObjectSpawnMessage</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:7</div></div>
+<div class="ttc" id="astructKapMirror_1_1ObjectSpawnMessage_html"><div class="ttname"><a href="structKapMirror_1_1ObjectSpawnMessage.html">KapMirror::ObjectSpawnMessage</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:8</div></div>
 <div class="ttc" id="aclassKapMirror_1_1NetworkReader_html_a0259666ccf40cb62ae3494b05edcc667"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">KapMirror::NetworkReader::read</a></div><div class="ttdeci">T read()</div><div class="ttdoc">Read a value from the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:42</div></div>
 <div class="ttc" id="astructKapMirror_1_1NetworkMessage_html"><div class="ttname"><a href="structKapMirror_1_1NetworkMessage.html">KapMirror::NetworkMessage</a></div><div class="ttdef"><b>Definition:</b> NetworkMessage.hpp:7</div></div>
-<div class="ttc" id="astructKapMirror_1_1ObjectTransformMessage_html"><div class="ttname"><a href="structKapMirror_1_1ObjectTransformMessage.html">KapMirror::ObjectTransformMessage</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:88</div></div>
-<div class="ttc" id="astructKapMirror_1_1ObjectUpdateMessage_html"><div class="ttname"><a href="structKapMirror_1_1ObjectUpdateMessage.html">KapMirror::ObjectUpdateMessage</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:62</div></div>
+<div class="ttc" id="aclassKapEngine_1_1Tools_1_1Vector3_html"><div class="ttname"><a href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a></div><div class="ttdef"><b>Definition:</b> Vectors.hpp:251</div></div>
+<div class="ttc" id="astructKapMirror_1_1ObjectTransformMessage_html"><div class="ttname"><a href="structKapMirror_1_1ObjectTransformMessage.html">KapMirror::ObjectTransformMessage</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:63</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

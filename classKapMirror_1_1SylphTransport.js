@@ -2,7 +2,7 @@ var classKapMirror_1_1SylphTransport =
 [
     [ "SylphTransport", "classKapMirror_1_1SylphTransport.html#a03d2ae0be97da253691a3610ba3f8ace", null ],
     [ "~SylphTransport", "classKapMirror_1_1SylphTransport.html#aead9304b575dda58bb2827c6edab379e", null ],
-    [ "clientConnect", "classKapMirror_1_1SylphTransport.html#adb9166f0d9aad69e4a1eff4ebd71ee2c", null ],
+    [ "clientConnect", "classKapMirror_1_1SylphTransport.html#aaad77791d051423fab4094c9e5773b01", null ],
     [ "clientConnected", "classKapMirror_1_1SylphTransport.html#a25f3022ca6a4da8953cc82a638736d01", null ],
     [ "clientDisconnect", "classKapMirror_1_1SylphTransport.html#a8b966764cabe07a101fb0055987a9739", null ],
     [ "clientEarlyUpdate", "classKapMirror_1_1SylphTransport.html#a1b5cd0eae53b6323722d21b60050c598", null ],

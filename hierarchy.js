@@ -144,7 +144,6 @@ var hierarchy =
       [ "KapMirror::ObjectDestroyMessage", "structKapMirror_1_1ObjectDestroyMessage.html", null ],
       [ "KapMirror::ObjectSpawnMessage", "structKapMirror_1_1ObjectSpawnMessage.html", null ],
       [ "KapMirror::ObjectTransformMessage", "structKapMirror_1_1ObjectTransformMessage.html", null ],
-      [ "KapMirror::ObjectUpdateMessage", "structKapMirror_1_1ObjectUpdateMessage.html", null ],
       [ "RType::ErrorOnStartGameMessage", "structRType_1_1ErrorOnStartGameMessage.html", null ],
       [ "RType::PlayerAuthorityMessage", "structRType_1_1PlayerAuthorityMessage.html", null ],
       [ "RType::PlayerInputMessage", "structRType_1_1PlayerInputMessage.html", null ],
@@ -168,8 +167,8 @@ var hierarchy =
       [ "FixedQueue< KapEngine::Profiler::StackElement, 10 >", "classFixedQueue.html", null ]
     ] ],
     [ "KapEngine::Graphical::Raylib::RaylibEncapsulation", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html", null ],
-    [ "KapEngine::Tools::Rectangle", "classKapEngine_1_1Tools_1_1Rectangle.html", null ],
     [ "RType::Script::Rectangle", "classRType_1_1Script_1_1Rectangle.html", null ],
+    [ "KapEngine::Tools::Rectangle", "classKapEngine_1_1Tools_1_1Rectangle.html", null ],
     [ "KapEngine::SceneManagement::Scene", "classKapEngine_1_1SceneManagement_1_1Scene.html", null ],
     [ "KapEngine::SceneManagement::SceneManager", "classKapEngine_1_1SceneManagement_1_1SceneManager.html", null ],
     [ "KapMirror::Telepathy::Server", "classKapMirror_1_1Telepathy_1_1Server.html", null ],
@@ -194,7 +193,7 @@ var hierarchy =
     [ "KapMirror::Sylph::UdpClient", "classKapMirror_1_1Sylph_1_1UdpClient.html", null ],
     [ "KapMirror::Sylph::UdpListener", "classKapMirror_1_1Sylph_1_1UdpListener.html", null ],
     [ "KapEngine::UI::UiFactory", "classKapEngine_1_1UI_1_1UiFactory.html", null ],
-    [ "KapEngine::Tools::Vector2", "classKapEngine_1_1Tools_1_1Vector2.html", null ],
     [ "RType::Script::Vector2", "classRType_1_1Script_1_1Vector2.html", null ],
+    [ "KapEngine::Tools::Vector2", "classKapEngine_1_1Tools_1_1Vector2.html", null ],
     [ "KapEngine::Tools::Vector3", "classKapEngine_1_1Tools_1_1Vector3.html", null ]
 ];

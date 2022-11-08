@@ -1,7 +1,7 @@
 var classKapMirror_1_1Transport =
 [
     [ "~Transport", "classKapMirror_1_1Transport.html#a33c1362f93b0378ab96c2ffa72fca94c", null ],
-    [ "clientConnect", "classKapMirror_1_1Transport.html#ad75cbbf4dd44bc7e05ed29b87008807a", null ],
+    [ "clientConnect", "classKapMirror_1_1Transport.html#af0dc815d86c3e5cb0c7ebb447a37110e", null ],
     [ "clientConnected", "classKapMirror_1_1Transport.html#ae09ef74cb3722032b2f9f0c10e485ba9", null ],
     [ "clientDisconnect", "classKapMirror_1_1Transport.html#a5152b04748b5c1978823fb5a31bb5aca", null ],
     [ "clientEarlyUpdate", "classKapMirror_1_1Transport.html#a84df3fd2d08e3fcc85663afd5cdf4550", null ],

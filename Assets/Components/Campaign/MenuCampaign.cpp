@@ -36,9 +36,14 @@ void RType::MenuCampaign::getLuaInformation() {
 void RType::MenuCampaign::openFolderLua() {
     std::string findLua = ".lua";
 
-    for (const auto &entry : std::filesystem::directory_iterator("Maps"))
-        if (entry.path().string().find(findLua) != std::string::npos)
-            _pathScript.emplace_back(entry.path().string());
+    try {
+        for (const auto &entry: std::filesystem::directory_iterator("Maps"))
+            if (entry.path().string().find(findLua) != std::string::npos)
+                _pathScript.emplace_back(entry.path().string());
+    }catch(...) {
+        KAP_DEBUG_ERROR("Unable to find open folder ./Maps/.");
+        KAP_DEBUG_ERROR("Maps won't be initialized.");
+    }
     KapEngine::PlayerPrefs::setInt("Nb Map", (int)_pathScript.size() - 1);
 }
 

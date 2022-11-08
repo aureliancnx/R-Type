@@ -41,7 +41,7 @@ jobs:
             cxx: "cl",
             environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
             generators: "Visual Studio 17 2022",
-            build_result: "Windows"
+            build_result: "win64"
           }
           - {
             name: "Linux",
@@ -113,7 +113,6 @@ jobs:
       - name: Create installer
         run: |
           cd build/
-          ls -lahR
           cpack
         shell: bash
       - name: Upload Release Asset (.rpm)

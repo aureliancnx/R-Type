@@ -85,6 +85,7 @@ void RType::HowToPlayMenu::init() {
         auto bullet = KapEngine::UI::UiFactory::createImage(scene, "Bullet");
         auto bouboule = KapEngine::UI::UiFactory::createImage(scene, "Bouboule");
         auto bouboule2 = KapEngine::UI::UiFactory::createImage(scene, "Bouboule2");
+        // auto explosion = KapEngine::UI::UiFactory::createImage(scene, "Explosion");
 
         try {
             auto& imageComp = ship->getComponent<KapEngine::UI::Image>();
@@ -92,7 +93,7 @@ void RType::HowToPlayMenu::init() {
             imageComp.setRectangle({0, 0, 263, 116});
 
             auto& transform = ship->getComponent<KapEngine::Transform>();
-            transform.setPosition(KapEngine::Tools::Vector3(300, 200, 0));
+            transform.setPosition(KapEngine::Tools::Vector3(300, 50, 0));
             transform.setScale({79, 35, 0});
             transform.setParent(fight);
         } catch (...) { KAP_DEBUG_ERROR("Failed to set ship img"); }
@@ -103,7 +104,7 @@ void RType::HowToPlayMenu::init() {
             imageComp.setRectangle({0, 0, 19, 6});
 
             auto& transform = bullet->getComponent<KapEngine::Transform>();
-            transform.setPosition(KapEngine::Tools::Vector3(400, 215, 0));
+            transform.setPosition(KapEngine::Tools::Vector3(400, 266, 0));
             transform.setScale({19, 6});
             transform.setParent(fight);
         } catch (...) { KAP_DEBUG_ERROR("Failed to set bullet img"); }
@@ -130,10 +131,18 @@ void RType::HowToPlayMenu::init() {
             transform.setParent(fight);
         } catch (...) { KAP_DEBUG_ERROR("Failed to set bouboule2 img"); }
 
-        try {
-            auto animator = std::make_shared<KapEngine::Animator>(ship);
-            ship->addComponent(animator);
+        // try {
+        //     auto& imageComp = explosion->getComponent<KapEngine::UI::Image>();
+        //     imageComp.setPathSprite("Assets/Textures/Explosion.png");
+        //     imageComp.setRectangle({0, 0, 17, 18});
 
+        //     auto& transform = explosion->getComponent<KapEngine::Transform>();
+        //     transform.setPosition(KapEngine::Tools::Vector3(500, 50, 0));
+        //     transform.setScale({40, 40});
+        //     transform.setParent(fight);
+        // } catch (...) { KAP_DEBUG_ERROR("Failed to set explosion img"); }
+
+        try {
             auto shipIdle = std::make_shared<SpriteAnimation>(ship);
             ship->addComponent(shipIdle);
 
@@ -156,6 +165,9 @@ void RType::HowToPlayMenu::init() {
             shipDown->setTiming(timer);
             shipDown->setRect({263 * 0, 0, 263, 116});
             shipDown->setNbAnimations(1);
+
+            auto animator = std::make_shared<KapEngine::Animator>(ship);
+            ship->addComponent(animator);
 
             animator->addAnim(shipIdle, "Idle");
             animator->addAnim(shipUp, "Up");
@@ -203,9 +215,6 @@ void RType::HowToPlayMenu::init() {
         } catch (...) { KAP_DEBUG_ERROR("Failed to set boubouleAnimation 2 img"); }
 
         try {
-            auto animator = std::make_shared<KapEngine::Animator>(bullet);
-            bullet->addComponent(animator);
-            
             auto littleBullet = std::make_shared<SpriteAnimation>(bullet);
             bullet->addComponent(littleBullet);
 
@@ -222,6 +231,9 @@ void RType::HowToPlayMenu::init() {
             bigBullet->setRect({19, 0, 19, 6});
             bigBullet->setNbAnimations(1);
 
+            auto animator = std::make_shared<KapEngine::Animator>(bullet);
+            bullet->addComponent(animator);
+
             animator->addAnim(littleBullet, "LittleBullet");
             animator->addAnim(bigBullet, "BigBullet");
 
@@ -230,7 +242,24 @@ void RType::HowToPlayMenu::init() {
 
             animator->addLink("LittleBullet", "BigBullet", "LittleBulletToBigBullet");
             animator->addLink("BigBullet", "LittleBullet", "BigBulletToLittleBullet");
+            bullet->setActive(false);
         } catch (...) { KAP_DEBUG_ERROR("Failed to set bulletAnimation img"); }
+
+        // try {
+        //     auto explosionAnimation = std::make_shared<SpriteAnimation>(explosion);
+        //     KapEngine::Time::ETime timer;
+        //     timer.setSeconds(.8);
+        //     explosion->addComponent(explosionAnimation);
+        //     explosionAnimation->setTiming(timer);
+        //     explosionAnimation->loop(true);
+        //     explosionAnimation->setRect({0, 0, 17, 18});
+        //     explosionAnimation->setNbAnimations(6);
+
+        //     auto animator = std::make_shared<KapEngine::Animator>(explosion);
+        //     explosion->addComponent(animator);
+        //     animator->addAnim(explosionAnimation, "Idle");
+        //     animator->addLink("Idle", "Idle");
+        // } catch (...) { KAP_DEBUG_ERROR("Failed to set explosionAnimation img"); }
 
         auto fightAnim = std::make_shared<HowToPlayAnimation>("Bouboule", bouboule);
         fightAnim->addSpriteAnimation("Bouboule", bouboule);
@@ -244,8 +273,14 @@ void RType::HowToPlayMenu::init() {
         fightAnim->setResetPosition("Ship", KapEngine::Tools::Vector3(300, 200, 0));
         fightAnim->addSpriteAnimation("Bullet", bullet);
         fightAnim->setRect("Bullet", {0, 0, 19, 6});
-        fightAnim->setResetPosition("Bullet", KapEngine::Tools::Vector3(400, 215, 0));
-        // fightAnim->addSpriteAnimation("explosion", explosion);
+        fightAnim->setResetPosition("Bullet", KapEngine::Tools::Vector3(400, 266, 0));
+        // fightAnim->setResetPosition("Bullet", KapEngine::Tools::Vector3(400, 215, 0));
+        // fightAnim->addSpriteAnimation("Explosion", explosion);
+        // fightAnim->setRect("Explosion", {0, 0, 19, 6});
+        // fightAnim->setResetPosition("Explosion", KapEngine::Tools::Vector3(400, 215, 0));
+        Time::ETime timeAnim;
+        timeAnim.setSeconds(3.0f);
+        fightAnim->setTiming(timeAnim);
         fight->addComponent(fightAnim);
     }
 

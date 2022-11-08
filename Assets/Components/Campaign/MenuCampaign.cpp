@@ -6,31 +6,45 @@
 
 using namespace KapEngine;
 
-RType::MenuCampaign::MenuCampaign(std::shared_ptr<KapEngine::GameObject> go) : Component(go, "SoloMenu") {}
+RType::MenuCampaign::MenuCampaign(std::shared_ptr<KapEngine::GameObject> go, KapEngine::KEngine* engine) : Component(go, "SoloMenu") , _engine(engine) {}
 
 RType::MenuCampaign::~MenuCampaign() {}
 
+void RType::MenuCampaign::getLuaInformation() {
+    MapScript script(_engine);
+
+    for (const auto &i: _pathScript) {
+        try {
+            script.loadScript(i);
+            auto name = script.getName();
+            _name.emplace_back(name);
+            auto author = script.getAuthor();
+            _creator.emplace_back("Author: " + author);
+            auto date = script.getDescription();
+            _date.emplace_back("Date: " + date);
+            _img.emplace_back("Assets/Textures/Level Campaign/lvl2_img.png");
+            script.closeScript();
+        } catch (LuaException& e) {
+            KapEngine::Debug::error(e.what());
+        } catch (std::exception& e) {
+            KapEngine::Debug::error(e.what());
+        }
+    }
+}
+
+void RType::MenuCampaign::openFolderLua() {
+    std::string findLua = ".lua";
+
+    for (const auto &entry : std::filesystem::directory_iterator("Maps"))
+        if (entry.path().string().find(findLua) != std::string::npos)
+            _pathScript.emplace_back(entry.path().string());
+    KapEngine::PlayerPrefs::setInt("Nb Map", (int)_pathScript.size() - 1);
+}
+
 void RType::MenuCampaign::onAwake() {
-    _img.push_back("Assets/Textures/Level Campaign/lvl1_img.png");
-    _img.push_back("Assets/Textures/Level Campaign/lvl2_img.png");
-    _img.push_back("Assets/Textures/Level Campaign/lvl3_img.png");
-    _img.push_back("Assets/Textures/Level Campaign/lvl4_img.png");
-    _img.push_back("Assets/Textures/Level Campaign/lvl2_img.png");
-    _name.push_back("The Lair Of The Aliens");
-    _name.push_back("The Den of Dark Shadows");
-    _name.push_back("The House of Aliens");
-    _name.push_back("The Villain's Lair");
-    _name.push_back("Endless fight");
-    _date.push_back("Date : 20/10/2022");
-    _date.push_back("Date : 22/10/2022");
-    _date.push_back("Date : 24/10/2022");
-    _date.push_back("Date : 26/10/2022");
-    _date.push_back("");
-    _creator.push_back("Author : Paul Dosser");
-    _creator.push_back("Author : Meredith Labejof");
-    _creator.push_back("Author : Aurelien Marcel");
-    _creator.push_back("Author : Benjamin Delvert");
-    _creator.push_back("");
+    openFolderLua();
+    getLuaInformation();
+
     foundDate();
     foundCreator();
     foundName();
@@ -71,7 +85,7 @@ void RType::MenuCampaign::onUpdate() {
         auto& txtCBis = _txtCreatorBis->getComponent<UI::Text>();
         auto& txtNBis = _txtNameBis->getComponent<UI::Text>();
         auto button2 = _button2->getComponent<UI::Button>();
-        if (nId + 1 > 4) {
+        if (nId + 1 > (_pathScript.size() - 1)) {
             txtDBis.setText(_date[0]);
             txtCBis.setText(_creator[0]);
             txtNBis.setText(_name[0]);
@@ -120,7 +134,7 @@ void RType::MenuCampaign::foundDate() {
         auto& txt = _txtDate->getComponent<UI::Text>();
         txt.setText(_date[PlayerPrefs::getInt("campaignID")]);
         auto& txtBis = _txtDateBis->getComponent<UI::Text>();
-        if ((PlayerPrefs::getInt("campaignID") + 1) > 4)
+        if ((PlayerPrefs::getInt("campaignID") + 1) > (_pathScript.size() - 1))
             txtBis.setText(_date[0]);
         else
             txt.setText(_date[PlayerPrefs::getInt("campaignID") + 1]);
@@ -161,7 +175,7 @@ void RType::MenuCampaign::foundCreator() {
         auto& txt = _txtCreator->getComponent<UI::Text>();
         txt.setText(_creator[PlayerPrefs::getInt("campaignID")]);
         auto& txtBis = _txtCreatorBis->getComponent<UI::Text>();
-        if ((PlayerPrefs::getInt("campaignID") + 1) > 4)
+        if ((PlayerPrefs::getInt("campaignID") + 1) > (_pathScript.size() - 1))
             txtBis.setText(_creator[0]);
         else
             txt.setText(_creator[PlayerPrefs::getInt("campaignID") + 1]);
@@ -202,7 +216,7 @@ void RType::MenuCampaign::foundName() {
         auto& txt = _txtName->getComponent<UI::Text>();
         txt.setText(_creator[PlayerPrefs::getInt("campaignID")]);
         auto& txtBis = _txtNameBis->getComponent<UI::Text>();
-        if ((PlayerPrefs::getInt("campaignID") + 1) > 4)
+        if ((PlayerPrefs::getInt("campaignID") + 1) > (_pathScript.size() - 1))
             txtBis.setText(_creator[0]);
         else
             txt.setText(_creator[PlayerPrefs::getInt("campaignID") + 1]);
@@ -222,7 +236,7 @@ void RType::MenuCampaign::foundButton() {
     try {
         auto& button = objs2->getComponent<UI::Button>();
         _button2 = objs2;
-        if ((PlayerPrefs::getInt("campaignID") + 1) > 4)
+        if ((PlayerPrefs::getInt("campaignID") + 1) > (_pathScript.size() - 1))
             button.setBackground(_img[0], {0, 0, 430, 433});
         else
             button.setBackground(_img[PlayerPrefs::getInt("campaignID") + 1], {0, 0, 430, 433});

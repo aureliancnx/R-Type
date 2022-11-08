@@ -9,11 +9,12 @@
 #include "KapEngineDebug.hpp"
 #include "KapEngineUi.hpp"
 #include "KapUI/KapUI.hpp"
+#include "MapScript/MapScript.hpp"
 
 namespace RType {
     class MenuCampaign : public KapEngine::Component {
       public:
-        MenuCampaign(std::shared_ptr<KapEngine::GameObject> go);
+        MenuCampaign(std::shared_ptr<KapEngine::GameObject> go, KapEngine::KEngine* engine);
         ~MenuCampaign();
 
         void onUpdate() override;
@@ -21,6 +22,11 @@ namespace RType {
         void onAwake() override;
 
       private:
+        KapEngine::KEngine* _engine;
+
+        void getLuaInformation();
+        void openFolderLua();
+
         void foundDate();
         void foundCreator();
         void foundName();
@@ -28,7 +34,11 @@ namespace RType {
         std::vector<std::string> _img;
         std::vector<std::string> _name;
         std::vector<std::string> _date;
+        std::vector<std::string> _description;
         std::vector<std::string> _creator;
+        std::vector<std::string> _pathScript;
+
+
         std::shared_ptr<KapEngine::GameObject> _txtDate;
         std::shared_ptr<KapEngine::GameObject> _txtCreator;
         std::shared_ptr<KapEngine::GameObject> _txtName;

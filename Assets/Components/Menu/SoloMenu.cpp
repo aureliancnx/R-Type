@@ -2,12 +2,14 @@
 #include "KapUI/KapUI.hpp"
 #include "Keys/UpdateStartGameKeys.hpp"
 #include "Campaign/MenuCampaign.hpp"
+#include "MapScript/MapScript.hpp"
 
 using namespace RType;
 
 SoloMenu::SoloMenu(KapEngine::SceneManagement::Scene& _scene, GameManager& _gameManager) : Menu(_scene), gameManager(_gameManager) {}
 
 void SoloMenu::init() {
+
     // change type of display for canvas
     {
         try {
@@ -30,36 +32,6 @@ void SoloMenu::init() {
         transform.setScale({720, 480, 0});
         transform.setParent(canvas);
     }
-
-/*    // create button play
-    {
-        auto btn = scene.createGameObject("ButtonPlay");
-        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
-        auto updateKeys = std::make_shared<UpdateStartGameKeys>(canvas);
-
-        canvas->addComponent(updateKeys);
-
-        btn->addComponent(btnComp);
-        btnComp->setText("Play");
-        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
-        btnComp->setTextPosition({80, 12});
-        btnComp->setTextColor(KapEngine::Tools::Color::white());
-
-        transform.setPosition({449, 430, 0});
-        transform.setScale({222, 39, 0});
-        transform.setParent(canvas);
-
-        btnComp->getOnClick().registerAction([this]() {
-            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
-            try {
-                canvas->getComponent<UpdateStartGameKeys>().checkInputs();
-            } catch (...) { KAP_DEBUG_ERROR("Failed to update inputs"); }
-
-            scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
-            gameManager.startCampaign();
-        });
-    }*/
 
     // create button back
     {
@@ -121,7 +93,7 @@ void SoloMenu::init() {
                     currentID = KapEngine::PlayerPrefs::getInt("campaignID");
                 currentID = currentID - 1;
                 if (currentID < 0)
-                    currentID = 4;
+                    currentID = KapEngine::PlayerPrefs::getInt("Nb Map");
                 KapEngine::PlayerPrefs::setInt("campaignID", currentID);
             } catch (...) {}
         });
@@ -150,7 +122,7 @@ void SoloMenu::init() {
                 if (!KapEngine::PlayerPrefs::getString("campaignID").empty())
                     currentID = KapEngine::PlayerPrefs::getInt("campaignID");
                 currentID = currentID + 1;
-                if (currentID > 4)
+                if (currentID > KapEngine::PlayerPrefs::getInt("Nb Map"))
                     currentID = 0;
                 KapEngine::PlayerPrefs::setInt("campaignID", currentID);
             } catch (...) {}
@@ -173,16 +145,38 @@ void SoloMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
+            MapScript script(&engine);
+
             engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
             try {
                 canvas->getComponent<UpdateStartGameKeys>().checkInputs();
             } catch (...) { KAP_DEBUG_ERROR("Failed to update inputs"); }
-            if (KapEngine::PlayerPrefs::hasKey("campaignID")) {
-                if (KapEngine::PlayerPrefs::getInt("campaignID") == 4) {
-                    KAP_DEBUG_LOG("Je entre la");
+
+            try {
+                auto objName = canvas->getScene().findFirstGameObject("Text Name");
+                auto compName = objName->getComponent<KapEngine::UI::Text>();
+                auto name = compName.getText();
+
+/*                if (name == "Endless fight") {
                     scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
                     gameManager.startCampaign();
+                }*/
+                if (name == "The Lair Of The Aliens") {
+                    script.loadScript("Maps/map1.lua");
+                    script.closeScript();
                 }
+                if (name == "The Den of Dark Shadows") {
+                    script.loadScript("Maps/testMap.lua");
+                    script.closeScript();
+                }
+                if (name == "The House of Aliens") {
+                    script.loadScript("Maps/map2.lua");
+                    script.closeScript();
+                }
+            } catch (LuaException& e) {
+                KapEngine::Debug::error(e.what());
+            } catch (std::exception& e) {
+                KapEngine::Debug::error(e.what());
             }
         });
     }
@@ -192,7 +186,7 @@ void SoloMenu::init() {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Name");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
-        auto compDateCampaign = std::make_shared<MenuCampaign>(txt);
+        auto compDateCampaign = std::make_shared<MenuCampaign>(txt, &engine);
 
         compText->setPoliceSize(15);
 
@@ -208,7 +202,7 @@ void SoloMenu::init() {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Author");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
-        auto compAuthorCampaign = std::make_shared<MenuCampaign>(txt);
+        auto compAuthorCampaign = std::make_shared<MenuCampaign>(txt, &engine);
 
         compText->setPoliceSize(15);
 
@@ -224,7 +218,7 @@ void SoloMenu::init() {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Date");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
-        auto compDateCampaign = std::make_shared<MenuCampaign>(txt);
+        auto compDateCampaign = std::make_shared<MenuCampaign>(txt, &engine);
 
         compText->setPoliceSize(15);
 
@@ -251,15 +245,38 @@ void SoloMenu::init() {
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
+            MapScript script(&engine);
+
             engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
             try {
                 canvas->getComponent<UpdateStartGameKeys>().checkInputs();
             } catch (...) { KAP_DEBUG_ERROR("Failed to update inputs"); }
-            if (KapEngine::PlayerPrefs::hasKey("campaignID")) {
-                if (KapEngine::PlayerPrefs::getInt("campaignID") + 1 == 4) {
+
+            try {
+                auto objName = canvas->getScene().findFirstGameObject("Text NameBis");
+                auto compName = objName->getComponent<KapEngine::UI::Text>();
+                auto name = compName.getText();
+
+/*                if (name == "Endless fight") {
                     scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
                     gameManager.startCampaign();
+                }*/
+                if (name == "The Lair Of The Aliens") {
+                    script.loadScript("Maps/map1.lua");
+                    script.closeScript();
                 }
+                if (name == "The Den of Dark Shadows") {
+                    script.loadScript("Maps/testMap.lua");
+                    script.closeScript();
+                }
+                if (name == "The House of Aliens") {
+                    script.loadScript("Maps/map2.lua");
+                    script.closeScript();
+                }
+            } catch (LuaException& e) {
+                KapEngine::Debug::error(e.what());
+            } catch (std::exception& e) {
+                KapEngine::Debug::error(e.what());
             }
         });
     }
@@ -269,7 +286,7 @@ void SoloMenu::init() {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text NameBis");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
-        auto compDateCampaign = std::make_shared<MenuCampaign>(txt);
+        auto compDateCampaign = std::make_shared<MenuCampaign>(txt, &engine);
 
         compText->setPoliceSize(15);
 
@@ -285,7 +302,7 @@ void SoloMenu::init() {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text AuthorBis");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
-        auto compDateCampaign = std::make_shared<MenuCampaign>(txt);
+        auto compDateCampaign = std::make_shared<MenuCampaign>(txt, &engine);
 
         compText->setPoliceSize(15);
 
@@ -300,7 +317,7 @@ void SoloMenu::init() {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text DateBis");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
-        auto compDateCampaign = std::make_shared<MenuCampaign>(txt);
+        auto compDateCampaign = std::make_shared<MenuCampaign>(txt, &engine);
 
         compText->setPoliceSize(15);
 

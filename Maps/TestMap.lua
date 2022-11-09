@@ -3,7 +3,7 @@
 Map.SetName("TestMap")
 Map.SetAuthor("Chaika9")
 Map.SetDescription("This is a test map for RType")
-Map.SetBannerPath("Maps/testMap.png")
+Map.SetBannerPath("Campaign test")
 
 -- Register new enemies
 

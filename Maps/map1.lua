@@ -6,7 +6,7 @@
 
 Map.SetName("The Lair Of The Aliens")
 Map.SetAuthor("Paul Dosser")
-Map.SetDescription("20/10/2022")
+Map.SetDescription("Campaign level 1")
 Map.SetBannerPath("Assets/Textures/Level Campaign/lvl1_img.png")
 
 Debug.Log("The Lair Of The Aliens")

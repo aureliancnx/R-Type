@@ -6,7 +6,7 @@
 ---
 Map.SetName("Endless fight")
 Map.SetAuthor("Ewen Le Quéré")
-Map.SetDescription("28/10/2022")
+Map.SetDescription("Endless level")
 Map.SetBannerPath("Assets/Textures/Level Campaign/lvl1_img.png")
 
 Debug.Log("EndLess Campaign")

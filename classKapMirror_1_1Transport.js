@@ -11,10 +11,12 @@ var classKapMirror_1_1Transport =
     [ "serverSend", "classKapMirror_1_1Transport.html#a699d1074eae7d490b914fb7a6015fc88", null ],
     [ "serverStart", "classKapMirror_1_1Transport.html#a32fe383851293d71caa0aee6ed2fdde6", null ],
     [ "serverStop", "classKapMirror_1_1Transport.html#ab845a65288c96f00a4576c934be6b7d9", null ],
-    [ "onClientConnected", "classKapMirror_1_1Transport.html#adbe0efda40c2ea4df2fe297fb6cd2d81", null ],
-    [ "onClientDataReceived", "classKapMirror_1_1Transport.html#a9588597abce5a6f3baee8d37c120b7b7", null ],
-    [ "onClientDisconnected", "classKapMirror_1_1Transport.html#a82f55a974a2000f74fa975c7b26ab0ef", null ],
-    [ "onServerConnected", "classKapMirror_1_1Transport.html#ae7511b6fc9efd5f3dc20ce5c7c1cb81b", null ],
-    [ "onServerDataReceived", "classKapMirror_1_1Transport.html#ae4afc37f2ffccba3a59322f787312cfc", null ],
-    [ "onServerDisconnected", "classKapMirror_1_1Transport.html#afe55e9b00744de16f20e2edec4759d2b", null ]
+    [ "onClientConnected", "classKapMirror_1_1Transport.html#a97971d5d2756e4563f0f069b0961bc37", null ],
+    [ "onClientDataReceived", "classKapMirror_1_1Transport.html#a43192d6d0dcef3b4faf2db0037c0c528", null ],
+    [ "onClientDataSent", "classKapMirror_1_1Transport.html#a8270884ef54ef429d9399401f32e73be", null ],
+    [ "onClientDisconnected", "classKapMirror_1_1Transport.html#a3c6908d52f0d3fc1c2ceebcbc8f1ac52", null ],
+    [ "onServerConnected", "classKapMirror_1_1Transport.html#a5026feef5418aadb5dd98f8bb76e0bbf", null ],
+    [ "onServerDataReceived", "classKapMirror_1_1Transport.html#a857478993264d80ac582e0b8c1c53a05", null ],
+    [ "onServerDataSent", "classKapMirror_1_1Transport.html#a145fe7e98eba9bf0e05f0abb40187b2b", null ],
+    [ "onServerDisconnected", "classKapMirror_1_1Transport.html#a080b1e9c50ddaaca8ee8c0a1fb683d29", null ]
 ];

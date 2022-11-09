@@ -103,11 +103,11 @@ Inheritance diagram for RType::PlayerInputMessage:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a655a8a6692871928628daaf1bade3b77"><td class="memItemLeft" align="right" valign="top"><a id="a655a8a6692871928628daaf1bade3b77"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>serialize</b> (<a class="el" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a> &amp;writer) override</td></tr>
+<tr class="memitem:a655a8a6692871928628daaf1bade3b77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structRType_1_1PlayerInputMessage.html#a655a8a6692871928628daaf1bade3b77">serialize</a> (<a class="el" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a> &amp;writer) override</td></tr>
+<tr class="memdesc:a655a8a6692871928628daaf1bade3b77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize the message into a NetworkWriter.  <a href="structRType_1_1PlayerInputMessage.html#a655a8a6692871928628daaf1bade3b77">More...</a><br /></td></tr>
 <tr class="separator:a655a8a6692871928628daaf1bade3b77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5608137b48e82daa7d62aa28eecde719"><td class="memItemLeft" align="right" valign="top"><a id="a5608137b48e82daa7d62aa28eecde719"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deserialize</b> (<a class="el" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a> &amp;reader) override</td></tr>
+<tr class="memitem:a5608137b48e82daa7d62aa28eecde719"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structRType_1_1PlayerInputMessage.html#a5608137b48e82daa7d62aa28eecde719">deserialize</a> (<a class="el" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a> &amp;reader) override</td></tr>
+<tr class="memdesc:a5608137b48e82daa7d62aa28eecde719"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialize the message from a NetworkReader.  <a href="structRType_1_1PlayerInputMessage.html#a5608137b48e82daa7d62aa28eecde719">More...</a><br /></td></tr>
 <tr class="separator:a5608137b48e82daa7d62aa28eecde719"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -122,6 +122,79 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>x</b></td></tr>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>y</b></td></tr>
 <tr class="separator:aab47971dbd93b95bf2ccd64d192b41bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5608137b48e82daa7d62aa28eecde719"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5608137b48e82daa7d62aa28eecde719">&#9670;&nbsp;</a></span>deserialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RType::PlayerInputMessage::deserialize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a> &amp;&#160;</td>
+          <td class="paramname"><em>reader</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Deserialize the message from a NetworkReader. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reader</td><td>The NetworkReader </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="structKapMirror_1_1NetworkMessage.html#a08ba705cf48fca9555a105161a587f28">KapMirror::NetworkMessage</a>.</p>
+
+</div>
+</div>
+<a id="a655a8a6692871928628daaf1bade3b77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a655a8a6692871928628daaf1bade3b77">&#9670;&nbsp;</a></span>serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RType::PlayerInputMessage::serialize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a> &amp;&#160;</td>
+          <td class="paramname"><em>writer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Serialize the message into a NetworkWriter. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">writer</td><td>The NetworkWriter </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="structKapMirror_1_1NetworkMessage.html#ab5ca53634aacb6d3269ab129416c6849">KapMirror::NetworkMessage</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Assets/Components/<a class="el" href="Assets_2Components_2Messages_8hpp_source.html">Messages.hpp</a></li>
 </ul>

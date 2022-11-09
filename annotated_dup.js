@@ -3,7 +3,9 @@ var annotated_dup =
     [ "KapEngine", "namespaceKapEngine.html", "namespaceKapEngine" ],
     [ "KapMirror", null, [
       [ "Experimental", null, [
-        [ "GZipCompression", "classKapMirror_1_1Experimental_1_1GZipCompression.html", "classKapMirror_1_1Experimental_1_1GZipCompression" ]
+        [ "Action", "structKapMirror_1_1Experimental_1_1Action.html", "structKapMirror_1_1Experimental_1_1Action" ],
+        [ "GZipCompression", "classKapMirror_1_1Experimental_1_1GZipCompression.html", "classKapMirror_1_1Experimental_1_1GZipCompression" ],
+        [ "NetworkStatistics", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html", "classKapMirror_1_1Experimental_1_1NetworkStatistics" ]
       ] ],
       [ "Sylph", null, [
         [ "Address", "classKapMirror_1_1Sylph_1_1Address.html", "classKapMirror_1_1Sylph_1_1Address" ],

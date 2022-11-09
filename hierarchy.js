@@ -1,12 +1,18 @@
 var hierarchy =
 [
-    [ "KapMirror::Telepathy::Address", "classKapMirror_1_1Telepathy_1_1Address.html", null ],
+    [ "KapMirror::Experimental::Action< Signature >", "structKapMirror_1_1Experimental_1_1Action.html", null ],
+    [ "KapMirror::Experimental::Action< void(KapMirror::Transport &)>", "structKapMirror_1_1Experimental_1_1Action.html", null ],
+    [ "KapMirror::Experimental::Action< void(KapMirror::Transport &, const std::shared_ptr< KapMirror::ArraySegment< byte >> &)>", "structKapMirror_1_1Experimental_1_1Action.html", null ],
+    [ "KapMirror::Experimental::Action< void(KapMirror::Transport &, int)>", "structKapMirror_1_1Experimental_1_1Action.html", null ],
+    [ "KapMirror::Experimental::Action< void(KapMirror::Transport &, int, const std::shared_ptr< KapMirror::ArraySegment< byte >> &)>", "structKapMirror_1_1Experimental_1_1Action.html", null ],
+    [ "KapMirror::Experimental::Action< void(std::shared_ptr< KapMirror::NetworkConnection >)>", "structKapMirror_1_1Experimental_1_1Action.html", null ],
     [ "KapMirror::Sylph::Address", "classKapMirror_1_1Sylph_1_1Address.html", null ],
+    [ "KapMirror::Telepathy::Address", "classKapMirror_1_1Telepathy_1_1Address.html", null ],
     [ "KapMirror::Array", "classKapMirror_1_1Array.html", null ],
     [ "KapMirror::ArraySegment< T >", "classKapMirror_1_1ArraySegment.html", null ],
     [ "KapEngine::Events::Input::Axis", "structKapEngine_1_1Events_1_1Input_1_1Axis.html", null ],
-    [ "KapMirror::Sylph::Client", "classKapMirror_1_1Sylph_1_1Client.html", null ],
     [ "KapMirror::Telepathy::Client", "classKapMirror_1_1Telepathy_1_1Client.html", null ],
+    [ "KapMirror::Sylph::Client", "classKapMirror_1_1Sylph_1_1Client.html", null ],
     [ "KapMirror::Telepathy::ClientConnection", "structKapMirror_1_1Telepathy_1_1ClientConnection.html", null ],
     [ "KapEngine::Tools::Color", "classKapEngine_1_1Tools_1_1Color.html", null ],
     [ "KapMirror::Compression", "classKapMirror_1_1Compression.html", [
@@ -82,6 +88,7 @@ var hierarchy =
         [ "KapEngine::UI::Inputfield", "classKapEngine_1_1UI_1_1Inputfield.html", null ],
         [ "KapEngine::UI::Text", "classKapEngine_1_1UI_1_1Text.html", null ],
         [ "KapMirror::NetworkComponent", "classKapMirror_1_1NetworkComponent.html", [
+          [ "KapMirror::Experimental::NetworkStatistics", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html", null ],
           [ "KapMirror::NetworkTransform", "classKapMirror_1_1NetworkTransform.html", null ],
           [ "RType::BoubouleEnemy", "classRType_1_1BoubouleEnemy.html", null ],
           [ "RType::Bullet", "classRType_1_1Bullet.html", null ],
@@ -169,12 +176,12 @@ var hierarchy =
       [ "FixedQueue< KapEngine::Profiler::StackElement, 10 >", "classFixedQueue.html", null ]
     ] ],
     [ "KapEngine::Graphical::Raylib::RaylibEncapsulation", "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibEncapsulation.html", null ],
-    [ "RType::Script::Rectangle", "classRType_1_1Script_1_1Rectangle.html", null ],
     [ "KapEngine::Tools::Rectangle", "classKapEngine_1_1Tools_1_1Rectangle.html", null ],
+    [ "RType::Script::Rectangle", "classRType_1_1Script_1_1Rectangle.html", null ],
     [ "KapEngine::SceneManagement::Scene", "classKapEngine_1_1SceneManagement_1_1Scene.html", null ],
     [ "KapEngine::SceneManagement::SceneManager", "classKapEngine_1_1SceneManagement_1_1SceneManager.html", null ],
-    [ "KapMirror::Telepathy::Server", "classKapMirror_1_1Telepathy_1_1Server.html", null ],
     [ "KapMirror::Sylph::Server", "classKapMirror_1_1Sylph_1_1Server.html", null ],
+    [ "KapMirror::Telepathy::Server", "classKapMirror_1_1Telepathy_1_1Server.html", null ],
     [ "KapMirror::Telepathy::Socket", "classKapMirror_1_1Telepathy_1_1Socket.html", null ],
     [ "KapMirror::Sylph::Socket", "classKapMirror_1_1Sylph_1_1Socket.html", null ],
     [ "RType::SpawnEnemy", "structRType_1_1SpawnEnemy.html", null ],

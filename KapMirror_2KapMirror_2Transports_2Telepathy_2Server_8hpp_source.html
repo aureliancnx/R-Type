@@ -149,7 +149,7 @@ $(document).ready(function(){initNavTree('KapMirror_2KapMirror_2Transports_2Tele
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        std::function&lt;void(<span class="keywordtype">int</span>)&gt; onConnected;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        std::function&lt;void(<span class="keywordtype">int</span>)&gt; onDisconnected;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        std::function&lt;void(<span class="keywordtype">int</span>, std::shared_ptr&lt;<a class="code" href="classKapMirror_1_1ArraySegment.html">ArraySegment&lt;byte&gt;</a>&gt;)&gt; onData;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        std::function&lt;void(<span class="keywordtype">int</span>, <span class="keyword">const</span> std::shared_ptr&lt;<a class="code" href="classKapMirror_1_1ArraySegment.html">ArraySegment&lt;byte&gt;</a>&gt;&amp;)&gt; onData;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    };</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <span class="comment">// namespace KapMirror::Telepathy</span></div>
 </div><!-- fragment --></div><!-- contents -->

@@ -118,36 +118,36 @@ $(document).ready(function(){initNavTree('NetworkReader_8hpp_source.html',''); i
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classKapMirror_1_1NetworkReader.html#a151455b1eafb2007158602da036acb02">   33</a></span>&#160;        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1NetworkReader.html#a151455b1eafb2007158602da036acb02">reset</a>() { position = 0; }</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">   42</a></span>&#160;        <span class="keyword">inline</span> T <a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>() {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            T value = *(T*)(buffer + position);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            position += <span class="keyword">sizeof</span>(T);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">return</span> value;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classKapMirror_1_1NetworkReader.html#a20bf35413308bee011cee47fdc5338d3">   53</a></span>&#160;        <span class="keywordtype">byte</span>* <a class="code" href="classKapMirror_1_1NetworkReader.html#a20bf35413308bee011cee47fdc5338d3">readBytes</a>(<span class="keywordtype">int</span> count) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordtype">byte</span>* array = <span class="keyword">new</span> <span class="keywordtype">byte</span>[count];</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            std::copy(buffer + position, buffer + position + count, array);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            position += count;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">return</span> array;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classKapMirror_1_1NetworkReader.html#ae99516a742ebd56ec02561c15fe59ed2">   65</a></span>&#160;        std::string <a class="code" href="classKapMirror_1_1NetworkReader.html#ae99516a742ebd56ec02561c15fe59ed2">readString</a>() {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keyword">auto</span> length = read&lt;short&gt;();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordtype">byte</span>* array = <a class="code" href="classKapMirror_1_1NetworkReader.html#a20bf35413308bee011cee47fdc5338d3">readBytes</a>(length);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            std::string str((<span class="keywordtype">char</span>*)array, length);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keyword">delete</span>[] array;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">return</span> str;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    };</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;} <span class="comment">// namespace KapMirror</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">   41</a></span>&#160;        <span class="keyword">inline</span> T <a class="code" href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">read</a>() {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            T value = *(T*)(buffer + position);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            position += <span class="keyword">sizeof</span>(T);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">return</span> value;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classKapMirror_1_1NetworkReader.html#a20bf35413308bee011cee47fdc5338d3">   51</a></span>&#160;        <span class="keywordtype">byte</span>* <a class="code" href="classKapMirror_1_1NetworkReader.html#a20bf35413308bee011cee47fdc5338d3">readBytes</a>(<span class="keywordtype">int</span> count) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordtype">byte</span>* array = <span class="keyword">new</span> <span class="keywordtype">byte</span>[count];</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            std::copy(buffer + position, buffer + position + count, array);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            position += count;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">return</span> array;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classKapMirror_1_1NetworkReader.html#ae99516a742ebd56ec02561c15fe59ed2">   62</a></span>&#160;        std::string <a class="code" href="classKapMirror_1_1NetworkReader.html#ae99516a742ebd56ec02561c15fe59ed2">readString</a>() {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keyword">auto</span> length = read&lt;short&gt;();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordtype">byte</span>* array = <a class="code" href="classKapMirror_1_1NetworkReader.html#a20bf35413308bee011cee47fdc5338d3">readBytes</a>(length);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            std::string str((<span class="keywordtype">char</span>*)array, length);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keyword">delete</span>[] array;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">return</span> str;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    };</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;} <span class="comment">// namespace KapMirror</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassKapMirror_1_1NetworkReader_html_ae99516a742ebd56ec02561c15fe59ed2"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html#ae99516a742ebd56ec02561c15fe59ed2">KapMirror::NetworkReader::readString</a></div><div class="ttdeci">std::string readString()</div><div class="ttdoc">Read a string from the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:65</div></div>
-<div class="ttc" id="aclassKapMirror_1_1ArraySegment_html_a8520676c27d2af1d42deda7ba617672c"><div class="ttname"><a href="classKapMirror_1_1ArraySegment.html#a8520676c27d2af1d42deda7ba617672c">KapMirror::ArraySegment::toArray</a></div><div class="ttdeci">T * toArray() const</div><div class="ttdoc">Get the array.</div><div class="ttdef"><b>Definition:</b> ArraySegment.hpp:41</div></div>
+<div class="ttc" id="aclassKapMirror_1_1NetworkReader_html_ae99516a742ebd56ec02561c15fe59ed2"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html#ae99516a742ebd56ec02561c15fe59ed2">KapMirror::NetworkReader::readString</a></div><div class="ttdeci">std::string readString()</div><div class="ttdoc">Read a string from the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:62</div></div>
+<div class="ttc" id="aclassKapMirror_1_1ArraySegment_html_a8520676c27d2af1d42deda7ba617672c"><div class="ttname"><a href="classKapMirror_1_1ArraySegment.html#a8520676c27d2af1d42deda7ba617672c">KapMirror::ArraySegment::toArray</a></div><div class="ttdeci">T * toArray() const</div><div class="ttdoc">Get the array.</div><div class="ttdef"><b>Definition:</b> ArraySegment.hpp:40</div></div>
 <div class="ttc" id="aclassKapMirror_1_1NetworkReader_html"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html">KapMirror::NetworkReader</a></div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:10</div></div>
-<div class="ttc" id="aclassKapMirror_1_1NetworkReader_html_a20bf35413308bee011cee47fdc5338d3"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html#a20bf35413308bee011cee47fdc5338d3">KapMirror::NetworkReader::readBytes</a></div><div class="ttdeci">byte * readBytes(int count)</div><div class="ttdoc">Read a byte array from the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:53</div></div>
-<div class="ttc" id="aclassKapMirror_1_1NetworkReader_html_a0259666ccf40cb62ae3494b05edcc667"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">KapMirror::NetworkReader::read</a></div><div class="ttdeci">T read()</div><div class="ttdoc">Read a value from the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:42</div></div>
+<div class="ttc" id="aclassKapMirror_1_1NetworkReader_html_a20bf35413308bee011cee47fdc5338d3"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html#a20bf35413308bee011cee47fdc5338d3">KapMirror::NetworkReader::readBytes</a></div><div class="ttdeci">byte * readBytes(int count)</div><div class="ttdoc">Read a byte array from the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:51</div></div>
+<div class="ttc" id="aclassKapMirror_1_1NetworkReader_html_a0259666ccf40cb62ae3494b05edcc667"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html#a0259666ccf40cb62ae3494b05edcc667">KapMirror::NetworkReader::read</a></div><div class="ttdeci">T read()</div><div class="ttdoc">Read a value from the buffer.</div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:41</div></div>
 <div class="ttc" id="aclassKapMirror_1_1NetworkReader_html_a151455b1eafb2007158602da036acb02"><div class="ttname"><a href="classKapMirror_1_1NetworkReader.html#a151455b1eafb2007158602da036acb02">KapMirror::NetworkReader::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdoc">Reset the position to 0.</div><div class="ttdef"><b>Definition:</b> NetworkReader.hpp:33</div></div>
 <div class="ttc" id="aclassKapMirror_1_1ArraySegment_html"><div class="ttname"><a href="classKapMirror_1_1ArraySegment.html">KapMirror::ArraySegment</a></div><div class="ttdef"><b>Definition:</b> ArraySegment.hpp:9</div></div>
 <!-- start footer part -->

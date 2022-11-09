@@ -20,7 +20,7 @@
 	url = git@github.com:lubgr/lua-cmake.git
 [submodule "Library/KapProfiler"]
 	path = Library/KapProfiler
-	branch = master
+	branch = main
 	url = git@github.com:aureliancnx/KapProfiler.git
 [submodule "Packages/KapUI"]
 	path = Packages/KapUI

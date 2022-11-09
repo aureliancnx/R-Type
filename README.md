@@ -13,6 +13,18 @@
 ## How do I build and run this?
 See the [R-Type build instructions](https://chaika9.gitbook.io/rtype/user-manuel/build-instructions). R-Type runs on Linux, MacOS (intel) and Windows.
 
+## Run server
+You're able to directly run the R-Type server without building the project. Just do it by downloading the latest [Docker](https://docs.docker.com/engine/install/) image available.
+
+```
+$ docker pull aureliancnx/rtype-server:latest
+$ docker run -it aureliancnx/rtype-server:latest
+```
+
+You can retrieve the Docker image here : [aureliancnx/rtype-server](https://hub.docker.com/repository/docker/aureliancnx/rtype-server)
+
+The **latest** Docker image is automatically updated with Github Actions when a game release is created.
+
 ## Documentation
 - [R-Type Documentation](https://chaika9.gitbook.io/rtype/)
 - [KapEngine Documentation](https://kap35.gitbook.io/kap-engine-wiki/)

@@ -70,6 +70,7 @@ var annotated_dup =
         [ "Enemy", "classRType_1_1Script_1_1Enemy.html", "classRType_1_1Script_1_1Enemy" ],
         [ "Math", "classRType_1_1Script_1_1Math.html", "classRType_1_1Script_1_1Math" ],
         [ "Rectangle", "classRType_1_1Script_1_1Rectangle.html", "classRType_1_1Script_1_1Rectangle" ],
+        [ "SpriteAnimation", "classRType_1_1Script_1_1SpriteAnimation.html", "classRType_1_1Script_1_1SpriteAnimation" ],
         [ "Vector2", "classRType_1_1Script_1_1Vector2.html", "classRType_1_1Script_1_1Vector2" ]
       ] ],
       [ "BoubouleEnemy", "classRType_1_1BoubouleEnemy.html", "classRType_1_1BoubouleEnemy" ],

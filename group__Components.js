@@ -1,7 +1,7 @@
 var group__Components =
 [
-    [ "What makes Sylph special?", "md_Packages_SylphTransport_README.html#autotoc_md220", null ],
-    [ "Credits", "md_Packages_SylphTransport_README.html#autotoc_md221", null ],
+    [ "What makes Sylph special?", "md_Packages_SylphTransport_README.html#autotoc_md223", null ],
+    [ "Credits", "md_Packages_SylphTransport_README.html#autotoc_md224", null ],
     [ "Animation", "classKapEngine_1_1Animation.html", [
       [ "Animation", "classKapEngine_1_1Animation.html#a846f1bc3cb433a52fb121776bfae15c6", null ],
       [ "~Animation", "classKapEngine_1_1Animation.html#a814a78bdaf817c4b5426a40f816381aa", null ],

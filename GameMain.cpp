@@ -8,7 +8,7 @@ static void initWindow(KapEngine::KEngine* engine, bool draw) {
     engine->setScreenSize(screenSize);
 
     auto libManager = engine->getGraphicalLibManager();
-    auto raylib = std::make_shared<KapEngine::Graphical::Raylib::RaylibGraphical>(*libManager);
+    auto raylib = std::make_shared<KapEngine::Graphical::Raylib::RaylibGraphical>(*libManager, draw);
 
     libManager->addLib(raylib);
     libManager->changeLib(raylib->getName());

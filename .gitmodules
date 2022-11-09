@@ -30,3 +30,6 @@
 	path = Packages/KapRaylib
 	branch = main
 	url = git@github.com:benji-35/KapRaylib.git
+[submodule "Library/backward"]
+	path = Library/backward
+	url = git@github.com:bombela/backward-cpp.git

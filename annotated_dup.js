@@ -1,5 +1,38 @@
 var annotated_dup =
 [
+    [ "backward", null, [
+      [ "details", null, [
+        [ "default_delete", "structbackward_1_1details_1_1default__delete.html", "structbackward_1_1details_1_1default__delete" ],
+        [ "deleter", "structbackward_1_1details_1_1deleter.html", "structbackward_1_1details_1_1deleter" ],
+        [ "demangler", "structbackward_1_1details_1_1demangler.html", null ],
+        [ "demangler_impl", "structbackward_1_1details_1_1demangler__impl.html", null ],
+        [ "handle", "classbackward_1_1details_1_1handle.html", "classbackward_1_1details_1_1handle" ],
+        [ "hashtable", "structbackward_1_1details_1_1hashtable.html", "structbackward_1_1details_1_1hashtable" ],
+        [ "rm_ptr", "structbackward_1_1details_1_1rm__ptr.html", "structbackward_1_1details_1_1rm__ptr" ],
+        [ "rm_ptr< const T * >", "structbackward_1_1details_1_1rm__ptr_3_01const_01T_01_5_01_4.html", "structbackward_1_1details_1_1rm__ptr_3_01const_01T_01_5_01_4" ],
+        [ "rm_ptr< T * >", "structbackward_1_1details_1_1rm__ptr_3_01T_01_5_01_4.html", "structbackward_1_1details_1_1rm__ptr_3_01T_01_5_01_4" ]
+      ] ],
+      [ "cfile_streambuf", "classbackward_1_1cfile__streambuf.html", "classbackward_1_1cfile__streambuf" ],
+      [ "Colorize", "classbackward_1_1Colorize.html", "classbackward_1_1Colorize" ],
+      [ "Printer", "classbackward_1_1Printer.html", "classbackward_1_1Printer" ],
+      [ "ResolvedTrace", "structbackward_1_1ResolvedTrace.html", "structbackward_1_1ResolvedTrace" ],
+      [ "SignalHandling", "classbackward_1_1SignalHandling.html", "classbackward_1_1SignalHandling" ],
+      [ "SnippetFactory", "classbackward_1_1SnippetFactory.html", "classbackward_1_1SnippetFactory" ],
+      [ "SourceFile", "classbackward_1_1SourceFile.html", "classbackward_1_1SourceFile" ],
+      [ "StackTrace", "classbackward_1_1StackTrace.html", null ],
+      [ "StackTraceImpl", "classbackward_1_1StackTraceImpl.html", "classbackward_1_1StackTraceImpl" ],
+      [ "StackTraceImplBase", "classbackward_1_1StackTraceImplBase.html", "classbackward_1_1StackTraceImplBase" ],
+      [ "StackTraceImplHolder", "classbackward_1_1StackTraceImplHolder.html", "classbackward_1_1StackTraceImplHolder" ],
+      [ "Trace", "structbackward_1_1Trace.html", "structbackward_1_1Trace" ],
+      [ "TraceResolver", "classbackward_1_1TraceResolver.html", null ],
+      [ "TraceResolverImpl", "classbackward_1_1TraceResolverImpl.html", null ],
+      [ "TraceResolverImpl< system_tag::unknown_tag >", "classbackward_1_1TraceResolverImpl_3_01system__tag_1_1unknown__tag_01_4.html", null ],
+      [ "TraceResolverImplBase", "classbackward_1_1TraceResolverImplBase.html", "classbackward_1_1TraceResolverImplBase" ]
+    ] ],
+    [ "conanfile", null, [
+      [ "BackwardCpp", "classconanfile_1_1BackwardCpp.html", "classconanfile_1_1BackwardCpp" ],
+      [ "TestBackward", "classconanfile_1_1TestBackward.html", "classconanfile_1_1TestBackward" ]
+    ] ],
     [ "KapEngine", "namespaceKapEngine.html", "namespaceKapEngine" ],
     [ "KapMirror", null, [
       [ "Experimental", null, [
@@ -115,8 +148,20 @@ var annotated_dup =
       [ "UpdateStartGameKeys", "classRType_1_1UpdateStartGameKeys.html", "classRType_1_1UpdateStartGameKeys" ],
       [ "VolumeMenu", "classRType_1_1VolumeMenu.html", "classRType_1_1VolumeMenu" ]
     ] ],
+    [ "test", null, [
+      [ "AssertFailedError", "structtest_1_1AssertFailedError.html", "structtest_1_1AssertFailedError" ],
+      [ "TestBase", "structtest_1_1TestBase.html", "structtest_1_1TestBase" ]
+    ] ],
+    [ "toto", null, [
+      [ "titi", null, [
+        [ "foo", "structtoto_1_1titi_1_1foo.html", [
+          [ "bar", "uniontoto_1_1titi_1_1foo_1_1bar.html", null ]
+        ] ]
+      ] ]
+    ] ],
     [ "FixedQueue", "classFixedQueue.html", "classFixedQueue" ],
     [ "ImGui_ImplGlfw_Data", "structImGui__ImplGlfw__Data.html", "structImGui__ImplGlfw__Data" ],
     [ "ImGui_ImplOpenGL2_Data", "structImGui__ImplOpenGL2__Data.html", "structImGui__ImplOpenGL2__Data" ],
-    [ "PlayerPref", "classPlayerPref.html", null ]
+    [ "PlayerPref", "classPlayerPref.html", null ],
+    [ "TracedException", "classTracedException.html", "classTracedException" ]
 ];

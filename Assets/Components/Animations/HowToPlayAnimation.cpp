@@ -22,6 +22,7 @@ namespace RType {
         moveBouboule2();
         moveShip();
         moveBullet();
+        moveExplosion();
     }
 
     void HowToPlayAnimation::onResetAnim() {
@@ -156,6 +157,7 @@ namespace RType {
                 transform.setPosition(getResetPosition("Bullet"));
                 _nbShoot++;
                 _canShoot = false;
+                _explosionInvert = true;
                 KAP_DEBUG_WARNING("------------------------- 266");
                 KAP_DEBUG_WARNING("X : " + std::to_string(getImage("Bouboule").getTransform().getWorldPosition().getX()) + " Y : " + std::to_string(getImage("Bouboule").getTransform().getWorldPosition().getY()));
                 KAP_DEBUG_WARNING("X : " + std::to_string(getImage("Bouboule2").getTransform().getWorldPosition().getX()) + " Y : " + std::to_string(getImage("Bouboule2").getTransform().getWorldPosition().getY()));
@@ -165,9 +167,10 @@ namespace RType {
         } else if (getGameObject("Bullet")->isActive() == false && getImage("Ship").getTransform().getWorldPosition().getY() == 170) {
             if (_nbShoot % 2 != 0 && _canShoot) {
                 getGameObject("Bullet")->setActive(true);
-                transform.setPosition(KapEngine::Tools::Vector3(400, 166, 0));
+                transform.setPosition(KapEngine::Tools::Vector3(380, 166, 0));
                 _nbShoot++;
                 _canShoot = false;
+                _explosionInvert2 = true;
                 KAP_DEBUG_WARNING("------------------------- 170");
                 KAP_DEBUG_WARNING("X : " + std::to_string(getImage("Ship").getTransform().getWorldPosition().getX()) + " Y : " + std::to_string(getImage("Ship").getTransform().getWorldPosition().getY()));
                 KAP_DEBUG_WARNING("X : " + std::to_string(getImage("Bouboule").getTransform().getWorldPosition().getX()) + " Y : " + std::to_string(getImage("Bouboule").getTransform().getWorldPosition().getY()));
@@ -191,6 +194,24 @@ namespace RType {
         if (transform.getWorldPosition().getX() > 600) {
             getGameObject("Bullet")->setActive(false);
             _canShoot = true;
+        }
+    }
+
+    void HowToPlayAnimation::moveExplosion() {
+        if (!_explosionInvert && !_explosionInvert2)
+            return;
+        auto& transform = getImage("Explosion").getTransform();
+        // KAP_DEBUG_WARNING(" EXPLOSION X : " + std::to_string(transform.getWorldPosition().getX()) + " Y : " + std::to_string(transform.getWorldPosition().getY()));
+        if (_explosionInvert) {
+            getGameObject("Explosion")->setActive(true);
+            transform.setPosition(getResetPosition("Explosion"));
+            _explosionInvert = false;
+        }
+
+        if (_explosionInvert2) {
+            getGameObject("Explosion")->setActive(true);
+            transform.setPosition(KapEngine::Tools::Vector3(600.0f, 150.0f, 0));
+            _explosionInvert2 = false;
         }
     }
 

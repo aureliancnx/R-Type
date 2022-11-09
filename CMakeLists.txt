@@ -16,7 +16,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 include(Dependencies)
 
-file(GLOB_RECURSE SOURCES GameMain.cpp Assets/Components/*.cpp Packages/*.cpp)
+file(GLOB_RECURSE SOURCES GameMain.cpp Assets/Components/*.cpp Packages/*.cpp Library/backward/backward.cpp)
 
 add_executable(RType ${SOURCES} ${HEADERS})
 
@@ -27,6 +27,7 @@ include(Library/library.cmake)
 
 # Includes
 include_directories(.)
+include_directories(Library/backward)
 include_directories(Assets/Components)
 
 # Packages

@@ -156,14 +156,23 @@ namespace RType {
                 transform.setPosition(getResetPosition("Bullet"));
                 _nbShoot++;
                 _canShoot = false;
+                KAP_DEBUG_WARNING("------------------------- 266");
+                KAP_DEBUG_WARNING("X : " + std::to_string(getImage("Bouboule").getTransform().getWorldPosition().getX()) + " Y : " + std::to_string(getImage("Bouboule").getTransform().getWorldPosition().getY()));
+                KAP_DEBUG_WARNING("X : " + std::to_string(getImage("Bouboule2").getTransform().getWorldPosition().getX()) + " Y : " + std::to_string(getImage("Bouboule2").getTransform().getWorldPosition().getY()));
+                KAP_DEBUG_WARNING("-------------------------");
             }
             
-        } else if (getGameObject("Bullet")->isActive() == false && getImage("Ship").getTransform().getWorldPosition().getY() == 166) {
+        } else if (getGameObject("Bullet")->isActive() == false && getImage("Ship").getTransform().getWorldPosition().getY() == 170) {
             if (_nbShoot % 2 != 0 && _canShoot) {
                 getGameObject("Bullet")->setActive(true);
                 transform.setPosition(KapEngine::Tools::Vector3(400, 166, 0));
                 _nbShoot++;
                 _canShoot = false;
+                KAP_DEBUG_WARNING("------------------------- 170");
+                KAP_DEBUG_WARNING("X : " + std::to_string(getImage("Ship").getTransform().getWorldPosition().getX()) + " Y : " + std::to_string(getImage("Ship").getTransform().getWorldPosition().getY()));
+                KAP_DEBUG_WARNING("X : " + std::to_string(getImage("Bouboule").getTransform().getWorldPosition().getX()) + " Y : " + std::to_string(getImage("Bouboule").getTransform().getWorldPosition().getY()));
+                KAP_DEBUG_WARNING("X : " + std::to_string(getImage("Bouboule2").getTransform().getWorldPosition().getX()) + " Y : " + std::to_string(getImage("Bouboule2").getTransform().getWorldPosition().getY()));
+                KAP_DEBUG_WARNING("-------------------------");
             }
         }
         if (getGameObject("Bullet")->isActive() == false)

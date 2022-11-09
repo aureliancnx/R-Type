@@ -20,7 +20,6 @@ RUN ninja --version
 
 # Download last version of the repository
 RUN git clone git@github.com:aureliancnx/R-Type.git .
-RUN cd R-Type
 RUN git submodule update --init --recursive
 
 ENV CXX "g++"

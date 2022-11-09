@@ -19,7 +19,7 @@ RUN sudo apt-get install -y ninja-build gcc g++ cmake libtbb-dev xorg-dev libglu
 RUN ninja --version
 
 # Download last version of the repository
-RUN git clone git@github.com:aureliancnx/R-Type.git
+RUN git clone git@github.com:aureliancnx/R-Type.git .
 RUN cd R-Type
 RUN git submodule update --init --recursive
 

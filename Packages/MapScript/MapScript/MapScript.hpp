@@ -92,6 +92,8 @@ namespace RType {
         void _registerNewEnemy(Script::Enemy* enemy);
         void _registerSpawnEnemy(const std::string& name, int spawnTime, float startPositionY, float startPositionX, int enemyHp);
 
+        KapEngine::Tools::Vector3 _updateEnemy(const std::string& enemyName, const KapEngine::Tools::Vector3& position);
+
       private:
         void executeScript(const std::string& script);
 
@@ -104,8 +106,6 @@ namespace RType {
         void createNewEnemy(Script::Enemy* enemy);
 
         void initScript();
-
-        void destroyNewEnemies();
 
         void destroyPrefabEnemies();
     };

@@ -8,9 +8,6 @@ EXPOSE 7777/udp
 # Set workdir to folder /app
 WORKDIR /app
 
-# Copy source code
-COPY . .
-
 # Update package updater
 RUN apt-get update -y
 
@@ -21,19 +18,19 @@ RUN sudo apt-get install -y ninja-build gcc g++ cmake libtbb-dev xorg-dev libglu
 # Check ninja version
 RUN ninja --version
 
-# Install vcpkg
-#RUN git clone https://github.com/Microsoft/vcpkg.git
-#RUN ./vcpkg/bootstrap-vcpkg.sh
-#RUN ./vcpkg/vcpkg integrate install
+# Download last version of the repository
+RUN git clone https://github.com/aureliancnx/R-Type.git .
+RUN git submodule update --init --recursive
 
 ENV CXX "g++"
 
 # Build
-RUN rm -rf build/
+RUN rm -rf build/; rm -rf cmake-build-debug/; rm -rf out/
+RUN rm -rf .git
+RUN rm -rf
 RUN mkdir build
-RUN cmake -S . -B build
-RUN cmake --build build --config Debug
-#-DCMAKE_TOOLCHAIN_FILE=/app/vcpkg/scripts/buildsystems/vcpkg.cmake
+RUN cmake -S . -B build -G Ninja
+RUN cmake --build build --config Debug -G Ninja
 
 # Run
 CMD ["./build/RType", "--server"]

@@ -16,7 +16,7 @@ static void initWindow(KapEngine::KEngine* engine, bool draw) {
 
 //#include "MapScript/MapScript.hpp"
 //#include "Prefabs.hpp"
-
+//
 // static void test_main(KapEngine::KEngine* engine) {
 //     RType::MapScript script(engine);
 //
@@ -25,11 +25,14 @@ static void initWindow(KapEngine::KEngine* engine, bool draw) {
 //     // RType::Prefabs::registerBoubouleEnemyPrefab(*engine);
 //
 //     try {
-//         script.loadScript("Maps/testMap.lua");
+//         script.loadScript("Maps/TestMap.lua");
 //
-//         script.spawnEnemy(scene, "Bouboule2", 100, 100, 50);
+//         auto spawnEnemies = script.getSpawnedEnemies();
+//         for (auto& spawnEnemy : spawnEnemies) {
+//             script.spawnEnemy(scene, spawnEnemy.name, spawnEnemy.startPositionY, spawnEnemy.startPositionX, spawnEnemy.enemyHp);
+//         }
 //
-//         script.closeScript();
+////         script.closeScript();
 //     } catch (RType::LuaException& e) {
 //         KapEngine::Debug::error(e.what());
 //     } catch (std::exception& e) {

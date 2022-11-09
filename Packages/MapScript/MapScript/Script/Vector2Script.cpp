@@ -52,7 +52,7 @@ int Vector2::__create(lua_State* L) {
 
 int Vector2::__destroy(lua_State* L) {
     auto* vector2 = (Vector2*)lua_touserdata(L, -1);
-    // vector2->~Vector2();
+    vector2->~Vector2();
     return 0;
 }
 

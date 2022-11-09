@@ -3,8 +3,8 @@
 #include "Script/Vector2Script.hpp"
 #include "Script/RectangleScript.hpp"
 #include "Script/MathScript.hpp"
+#include "Script/SpriteAnimationScript.hpp"
 #include "EnemyController.hpp"
-#include "Prefabs.hpp"
 #include "Collider.hpp"
 #include "KapMirror/KapMirror.hpp"
 #include "Animations/SpriteAnimation.hpp"
@@ -31,7 +31,6 @@ void MapScript::executeScript(const std::string& script) {
     }
 
     spawnEnemies.clear();
-    destroyNewEnemies();
 
     L = luaL_newstate();
 
@@ -40,6 +39,7 @@ void MapScript::executeScript(const std::string& script) {
     Script::Vector2::initScript(L);
     Script::Rectangle::initScript(L);
     Script::Math::initScript(L);
+    Script::SpriteAnimation::initScript(L);
     Script::Enemy::initScript(L, this);
     initScript();
 
@@ -194,7 +194,7 @@ void MapScript::createNewEnemy(Script::Enemy* enemy) {
             networkTransformComponent->setActiveLateUpdate(true);
             enemyObject->addComponent(networkTransformComponent);
 
-            auto controller = std::make_shared<EnemyController>(enemyObject);
+            auto controller = std::make_shared<EnemyController>(this, enemyObject);
             enemyObject->addComponent(controller);
 
             auto collider = std::make_shared<KapEngine::Collider>(enemyObject, true);
@@ -213,21 +213,24 @@ void MapScript::createNewEnemy(Script::Enemy* enemy) {
             transform.setScale({enemy->scale->x, enemy->scale->y, 0});
 
             // Animation
-            auto animationIdle = std::make_shared<SpriteAnimation>(enemyObject);
-            enemyObject->addComponent(animationIdle);
+            if (enemy->animation != nullptr) {
+                auto animationIdle = std::make_shared<SpriteAnimation>(enemyObject);
+                enemyObject->addComponent(animationIdle);
 
-            KapEngine::Time::ETime duration;
-            duration.setSeconds(.5f);
-            animationIdle->setTiming(duration);
-            animationIdle->loop(true);
-            animationIdle->setRect({enemy->rectangle->x, enemy->rectangle->y, enemy->rectangle->w, enemy->rectangle->h});
-            animationIdle->setNbAnimations(12);
+                KapEngine::Time::ETime duration;
+                duration.setSeconds(enemy->animation->duration);
+                animationIdle->setTiming(duration);
+                animationIdle->loop(enemy->animation->loop);
+                animationIdle->setRect({enemy->animation->rectangle->x, enemy->animation->rectangle->y, enemy->animation->rectangle->w,
+                                        enemy->animation->rectangle->h});
+                animationIdle->setNbAnimations(enemy->animation->nbFrames);
 
-            auto animator = std::make_shared<KapEngine::Animator>(enemyObject);
-            enemyObject->addComponent(animator);
+                auto animator = std::make_shared<KapEngine::Animator>(enemyObject);
+                enemyObject->addComponent(animator);
 
-            animator->addAnim(animationIdle, "Idle");
-            animator->addLink("Idle", "Idle");
+                animator->addAnim(animationIdle, "Idle");
+                animator->addLink("Idle", "Idle");
+            }
 
             return enemyObject;
         });
@@ -270,11 +273,32 @@ void MapScript::_registerSpawnEnemy(const std::string& _name, int spawnTime, flo
     spawnEnemies.push_back({_name, spawnTime, startPositionY, startPositionX, enemyHp});
 }
 
-void MapScript::destroyNewEnemies() {
-    for (auto enemy : newEnemies) {
-        enemy->~Enemy();
+KapEngine::Tools::Vector3 MapScript::_updateEnemy(const std::string& enemyName, const KapEngine::Tools::Vector3& position) {
+    if (L == nullptr) {
+        return position;
     }
-    newEnemies.clear();
+    if (enemyName.empty()) {
+        return position;
+    }
+
+    lua_getglobal(L, "OnEnemyUpdate");
+    if (!lua_isfunction(L, -1)) {
+        return position;
+    }
+
+    lua_pushstring(L, enemyName.c_str());
+    lua_pushnumber(L, position.getX());
+    lua_pushnumber(L, position.getY());
+
+    long long time = KapMirror::NetworkTime::localTime();
+    lua_pushnumber(L, (double)time);
+
+    lua_pcall(L, 4, 2, 0);
+
+    float posX = lua_tonumber(L, -2);
+    float posY = lua_tonumber(L, -1);
+
+    return {posX, posY, 0};
 }
 
 void MapScript::closeScript() {
@@ -284,7 +308,6 @@ void MapScript::closeScript() {
 
     lua_close(L);
     destroyPrefabEnemies();
-    destroyNewEnemies();
 
     spawnEnemies.clear();
 
@@ -300,16 +323,24 @@ void MapScript::destroyPrefabEnemies() {
 void MapScript::spawnEnemy(KapEngine::SceneManagement::Scene& scene, const std::string& enemyName, float startPositionY,
                            float startPositionX, int enemyHp) {
     std::shared_ptr<KapEngine::GameObject> enemy;
-    if (!engine.getPrefabManager()->instantiatePrefab("Enemy:" + enemyName, scene, enemy)) {
-        KapEngine::Debug::error("Can't spawn enemy: " + enemyName + " (Prefab: 'Enemy:" + enemyName + "' not found)");
-        return;
+
+    if (isLoadedByServer) {
+        // TODO: Spawn enmy with NetworkManager
+    } else {
+        if (!engine.getPrefabManager()->instantiatePrefab("Enemy:" + enemyName, scene, enemy)) {
+            KapEngine::Debug::error("Can't spawn enemy: " + enemyName + " (Prefab: 'Enemy:" + enemyName + "' not found)");
+            return;
+        }
     }
 
-    auto& controller = enemy->getComponent<EnemyController>();
-    controller.setHp(enemyHp);
+    if (enemy->hasComponent<EnemyController>()) {
+        auto& controller = enemy->getComponent<EnemyController>();
+        controller.setEnemyName(enemyName);
+        controller.setHp(enemyHp);
+    }
 
     auto& transform = enemy->getComponent<KapEngine::Transform>();
-    if (startPositionX == 0) {
+    if (startPositionX <= 0) {
         startPositionX = 1280 + 100; // Constant
     } else {
         startPositionX = 1280 - startPositionX;

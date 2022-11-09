@@ -53,6 +53,7 @@ endif()
 
 if (WIN32)
     # Generated WiX and tarball with Windows
+	set(CPACK_WIX_PRODUCT_ICON ${CMAKE_CURRENT_SOURCE_DIR}/Assets/Installer/RTypeIcon.ico)
     set(CPACK_WIX_UPGRADE_GUID "887A8BAC-1A47-41CC-B869-EBF64138F6C0")
     set(CPACK_GENERATOR "TGZ;WIX")
 endif()

@@ -19,8 +19,7 @@ void Enemy::initScript(lua_State* L, MapScript* mapScript) {
 
     luaL_newmetatable(L, "EnemyMetaTable");
     lua_pushstring(L, "__gc");
-    lua_pushlightuserdata(L, mapScript);
-    lua_pushcclosure(L, __destroy, 1);
+    lua_pushcfunction(L, __destroy);
     lua_settable(L, -3);
 
     lua_pushstring(L, "__index");
@@ -35,7 +34,7 @@ void Enemy::initScript(lua_State* L, MapScript* mapScript) {
 int Enemy::__create(lua_State* L) {
     auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
 
-    void* ptr = lua_newuserdata(L, sizeof(Enemy));
+    void* ptr = lua_newuserdata(L, sizeof(Script::Enemy));
     new (ptr) Script::Enemy();
     luaL_getmetatable(L, "EnemyMetaTable");
     lua_setmetatable(L, -2);
@@ -48,9 +47,8 @@ int Enemy::__create(lua_State* L) {
 }
 
 int Enemy::__destroy(lua_State* L) {
-    auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
     auto* enemy = (Enemy*)lua_touserdata(L, -1);
-    // enemy->~Enemy();
+    enemy->~Enemy();
     return 0;
 }
 
@@ -66,13 +64,15 @@ int Enemy::__index(lua_State* L) {
         return 1;
     }
     if (index == "rectangle") {
-        // TODO: return rectangle
-        lua_pushnil(L);
+        lua_pushlightuserdata(L, enemy->rectangle);
         return 1;
     }
     if (index == "scale") {
-        // TODO: return scale
-        lua_pushnil(L);
+        lua_pushlightuserdata(L, enemy->scale);
+        return 1;
+    }
+    if (index == "animation") {
+        lua_pushlightuserdata(L, enemy->animation);
         return 1;
     }
 
@@ -108,6 +108,11 @@ int Enemy::__newIndex(lua_State* L) {
     if (index == "scale") {
         void* ptr = lua_touserdata(L, -1);
         enemy->scale = (Vector2*)ptr;
+        return 0;
+    }
+    if (index == "animation") {
+        void* ptr = lua_touserdata(L, -1);
+        enemy->animation = (SpriteAnimation*)ptr;
         return 0;
     }
 

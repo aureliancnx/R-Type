@@ -59,7 +59,7 @@ int Rectangle::__create(lua_State* L) {
 
 int Rectangle::__destroy(lua_State* L) {
     auto* rect = (Rectangle*)lua_touserdata(L, -1);
-    // rect->~Rectangle();
+    rect->~Rectangle();
     return 0;
 }
 

@@ -16,18 +16,18 @@ static void initWindow(KapEngine::KEngine* engine, bool draw) {
 
 //#include "MapScript/MapScript.hpp"
 //#include "Prefabs.hpp"
-//
+
 // static void test_main(KapEngine::KEngine* engine) {
 //     RType::MapScript script(engine);
 //
-//     auto scene = engine->getSceneManager()->getScene("Default Scene");
+//     auto& scene = engine->getSceneManager()->getScene("Default Scene");
 //
-//     RType::Prefabs::registerBoubouleEnemyPrefab(*engine);
+//     // RType::Prefabs::registerBoubouleEnemyPrefab(*engine);
 //
 //     try {
 //         script.loadScript("Maps/testMap.lua");
 //
-//         script.spawnEnemie(scene, "Bouboule2", 0, 100, 100, 50);
+//         script.spawnEnemy(scene, "Bouboule2", 100, 100, 50);
 //
 //         script.closeScript();
 //     } catch (RType::LuaException& e) {
@@ -50,7 +50,7 @@ int main(int argc, char** argv) {
 
     initWindow(&engine, !isServer);
 
-    //    test_main(&engine);
+//    test_main(&engine);
 
     RType::GameManager gameManager(&engine, false);
     if (isServer) {

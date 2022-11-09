@@ -13,24 +13,13 @@ RUN apt-get update -y
 
 # Install needed packages
 RUN apt-get install sudo -y
-RUN sudo apt-get install -y ninja-build gcc g++ cmake libtbb-dev xorg-dev libglu1-mesa-dev libxrandr-dev curl zip unzip tar git build-essential
+RUN sudo apt-get install -y libtbb-dev xorg-dev libglu1-mesa-dev libxrandr-dev curl tar build-essential wget
 
-# Check ninja version
-RUN ninja --version
+# Add github.com to known hosts
+RUN wget https://github.com/aureliancnx/R-Type/releases/latest/download/RType-Build-Linux.tar.gz
 
-# Download last version of the repository
-RUN git clone https://github.com/aureliancnx/R-Type.git .
-RUN git submodule update --init --recursive
-
-ENV CXX "g++"
-
-# Build
-RUN rm -rf build/; rm -rf cmake-build-debug/; rm -rf out/
-RUN rm -rf .git
-RUN rm -rf
-RUN mkdir build
-RUN cmake -S . -B build -G Ninja
-RUN cmake --build build --config Debug -G Ninja
+RUN tar xvf RType-Build-Linux.tar.gz
+RUN mv RType-1.0.1-Linux/R-Type/* .
 
 # Run
-CMD ["./build/RType", "--server"]
+CMD ["./RType", "--server"]

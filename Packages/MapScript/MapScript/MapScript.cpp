@@ -7,6 +7,7 @@
 #include "Prefabs.hpp"
 #include "Collider.hpp"
 #include "KapMirror/KapMirror.hpp"
+#include "Animations/SpriteAnimation.hpp"
 #include <fstream>
 #include <cstring>
 
@@ -181,7 +182,7 @@ void MapScript::createNewEnemy(Script::Enemy* enemy) {
                 throw std::runtime_error("Can't find enemy with name: " + _name);
             }
 
-            auto enemyObject = KapEngine::UI::UiFactory::createCanvas(scene, "Enemy");
+            auto enemyObject = KapEngine::UI::UiFactory::createCanvas(scene, _name);
             enemyObject->setTag("Collider");
 
             auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemyObject);
@@ -210,6 +211,23 @@ void MapScript::createNewEnemy(Script::Enemy* enemy) {
             auto& transform = enemyObject->getComponent<KapEngine::Transform>();
             transform.setPosition({0, 0, 0});
             transform.setScale({enemy->scale->x, enemy->scale->y, 0});
+
+            // Animation
+            auto animationIdle = std::make_shared<SpriteAnimation>(enemyObject);
+            enemyObject->addComponent(animationIdle);
+
+            KapEngine::Time::ETime duration;
+            duration.setSeconds(.5f);
+            animationIdle->setTiming(duration);
+            animationIdle->loop(true);
+            animationIdle->setRect({enemy->rectangle->x, enemy->rectangle->y, enemy->rectangle->w, enemy->rectangle->h});
+            animationIdle->setNbAnimations(12);
+
+            auto animator = std::make_shared<KapEngine::Animator>(enemyObject);
+            enemyObject->addComponent(animator);
+
+            animator->addAnim(animationIdle, "Idle");
+            animator->addLink("Idle", "Idle");
 
             return enemyObject;
         });
@@ -258,6 +276,7 @@ void MapScript::destroyNewEnemies() {
     }
     newEnemies.clear();
 }
+
 void MapScript::closeScript() {
     if (L == nullptr) {
         return;
@@ -271,15 +290,15 @@ void MapScript::closeScript() {
 
     L = nullptr;
 }
+
 void MapScript::destroyPrefabEnemies() {
     for (auto& enemy : spawnEnemies) {
         engine.getPrefabManager()->removePrefab("Enemy:" + enemy.name);
     }
 }
-void MapScript::spawnEnemy(KapEngine::SceneManagement::Scene& scene, const std::string& enemyName, int spawnTime, float startPositionY,
-                            float startPositionX, int enemyHp) {
-    KapEngine::Debug::log("Spawn enemy: " + enemyName + " at " + std::to_string(spawnTime) + "s");
 
+void MapScript::spawnEnemy(KapEngine::SceneManagement::Scene& scene, const std::string& enemyName, float startPositionY,
+                           float startPositionX, int enemyHp) {
     std::shared_ptr<KapEngine::GameObject> enemy;
     if (!engine.getPrefabManager()->instantiatePrefab("Enemy:" + enemyName, scene, enemy)) {
         KapEngine::Debug::error("Can't spawn enemy: " + enemyName + " (Prefab: 'Enemy:" + enemyName + "' not found)");
@@ -290,8 +309,14 @@ void MapScript::spawnEnemy(KapEngine::SceneManagement::Scene& scene, const std::
     controller.setHp(enemyHp);
 
     auto& transform = enemy->getComponent<KapEngine::Transform>();
+    if (startPositionX == 0) {
+        startPositionX = 1280 + 100; // Constant
+    } else {
+        startPositionX = 1280 - startPositionX;
+    }
     transform.setPosition({startPositionX, startPositionY, 0});
 }
+
 Script::Enemy* MapScript::getNewEnemy(const std::string& enemyName) {
     for (auto& enemy : newEnemies) {
         if ("Enemy:" + enemy->name == enemyName) {

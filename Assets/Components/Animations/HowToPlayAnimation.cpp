@@ -23,29 +23,61 @@ namespace RType {
         moveShip();
         moveBullet();
         moveExplosion();
+        if (_gameOver)
+            onResetAnim();
     }
 
     void HowToPlayAnimation::onResetAnim() {
-        // getImage("Ship").setRectangle(getRect("Ship"));
-        // getImage("Bullet").setRectangle(getRect("Bullet"));
-        // getImage("Bouboule").setRectangle(getRect("Bouboule"));
-        // getImage("Bouboule2").setRectangle(getRect("Bouboule2"));
-        // getImage("Explosion").setRectangle(getRect("Explosion"));
+        onResetStates();
+        onResetRect();
+        onResetPosition();
+    }
 
-        // auto& transform = getImage("Ship").getTransform();
-        // transform.setPosition(getResetPosition("Ship"));
+    void HowToPlayAnimation::onResetStates() {
+        _boubouleInvert = false;
+        _bouboule2Invert = false;
+        _shipInvert = false;
+        _explosionInvert = false;
+        _explosionInvert2 = false;
+        _bulletReset = false;
+        _nbShoot = 0;
+        _canShoot = true;
+        _gameOver = false;
+    }
 
-        // auto& transform = getImage("Bullet").getTransform();
-        // transform.setPosition(getResetPosition("Bullet"));
+    void HowToPlayAnimation::onResetRect() {
+        getImage("Ship").setRectangle(getRect("Ship"));
+        getImage("Bullet").setRectangle(getRect("Bullet"));
+        getImage("Bouboule").setRectangle(getRect("Bouboule"));
+        getImage("Bouboule2").setRectangle(getRect("Bouboule2"));
+        getImage("Explosion").setRectangle(getRect("Explosion"));
+    }
 
-        // auto& transform = getImage("Bouboule").getTransform();
-        // transform.setPosition(getResetPosition("Bouboule"));
+    void HowToPlayAnimation::onResetPosition() {
+        {
+            auto& transform = getImage("Ship").getTransform();
+            transform.setPosition(getResetPosition("Ship"));
+        }
+        
+        {
+            auto& transform = getImage("Bullet").getTransform();
+            transform.setPosition(getResetPosition("Bullet"));
+        }
 
-        // auto& transform = getImage("Bouboule2").getTransform();
-        // transform.setPosition(getResetPosition("Bouboule2"));
-
-        // auto& transform = getImage("Explosion").getTransform();
-        // transform.setPosition(getResetPosition("Explosion"));
+        {
+            auto& transform = getImage("Bouboule").getTransform();
+            transform.setPosition(getResetPosition("Bouboule"));
+        }
+        
+        {
+            auto& transform = getImage("Bouboule2").getTransform();
+            transform.setPosition(getResetPosition("Bouboule2"));
+        }
+        
+        {
+            auto& transform = getImage("Explosion").getTransform();
+            transform.setPosition(getResetPosition("Explosion"));
+        }
     }
 
     void HowToPlayAnimation::moveBouboule2() {
@@ -119,16 +151,9 @@ namespace RType {
         }
     }
 
-    void HowToPlayAnimation::moveShip() {    
-        // if (getGameObject("Ship")->isActive() == false)
-        //     return;
+    void HowToPlayAnimation::moveShip() {
         auto& transform = getImage("Ship").getTransform();
         // KAP_DEBUG_WARNING(" SHIP X : " + std::to_string(transform.getWorldPosition().getX()) + " Y : " + std::to_string(transform.getWorldPosition().getY()));
-
-        // if (transform.getWorldPosition().getY() == 266.0f) {
-        //     getGameObject("Ship")->setActive(false);
-        //     return;
-        // }
 
         if (_shipInvert) {
             transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0, -4.0f, 0));

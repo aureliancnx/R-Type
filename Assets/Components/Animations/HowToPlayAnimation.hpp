@@ -44,12 +44,15 @@ namespace RType {
         bool _bulletReset = false;
         int _nbShoot = 0;
         bool _canShoot = true;
+        bool _gameOver = false;
 
         bool _canShoot2 = false;
         int _nbInvert = 0;
-        bool _gameOver = false;
         // Functions
         void init(std::shared_ptr<KapEngine::GameObject> gameObject);
+        void onResetStates();
+        void onResetRect();
+        void onResetPosition();
         KapEngine::UI::Image& getImage(std::string name);
         SpriteAnimation& getSpriteAnimation(std::string name);
         KapEngine::Tools::Vector3 getResetPosition(std::string name);

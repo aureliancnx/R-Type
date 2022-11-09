@@ -20,4 +20,4 @@ jobs:
           ssh-add ~/.github_key
           git clone git@github.com:aureliancnx/R-Type.git /tmp/rtype --bare
           git remote add epitech git@github.com:EpitechPromo2025/B-CPP-500-REN-5-1-rtype-aurelien.marcel.git
-          git push epitech --mirror -f
+          git push epitech --mirror -f || true

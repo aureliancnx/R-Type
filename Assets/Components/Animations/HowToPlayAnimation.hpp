@@ -39,10 +39,12 @@ namespace RType {
         bool _boubouleInvert = false;
         bool _bouboule2Invert = false;
         bool _shipInvert = false;
+        bool _explosionInvert = false;
+        bool _explosionInvert2 = false;
         bool _bulletReset = false;
-
         int _nbShoot = 0;
         bool _canShoot = true;
+
         bool _canShoot2 = false;
         int _nbInvert = 0;
         bool _gameOver = false;
@@ -57,6 +59,7 @@ namespace RType {
         void moveBouboule2();
         void moveShip();
         void moveBullet();
+        void moveExplosion();
     };
 } // namespace RType
 

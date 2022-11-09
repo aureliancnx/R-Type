@@ -166,7 +166,6 @@ jobs:
           asset_content_type: application/zip
   push_docker:
     name: Push Server to Docker Hub
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU

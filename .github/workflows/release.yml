@@ -34,32 +34,32 @@ jobs:
       matrix:
         config:
           - {
-            name: "Windows Latest MSVC (C++20)",
+            name: "Windows",
             os: windows-latest,
-            build_type: "Debug",
+            build_type: "Release",
             cc: "cl",
             cxx: "cl",
             environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
             generators: "Visual Studio 17 2022",
-            build_executable: "RType.exe"
+            build_result: "win64"
           }
           - {
-            name: "Ubuntu Latest GCC (C++20)",
+            name: "Linux",
             os: ubuntu-latest,
             build_type: "Debug",
             cc: "gcc",
             cxx: "g++",
             generators: "Ninja",
-            build_executable: "RType"
+            build_result: "Linux"
           }
           - {
-            name: "macOS Latest Clang (C++20)",
+            name: "MacOS",
             os: macos-latest,
             build_type: "Release",
             cc: "clang",
             cxx: "clang++",
             generators: "Ninja",
-            build_executable: "Release/RType"
+            build_result: "Darwin"
           }
 
     steps:
@@ -81,7 +81,7 @@ jobs:
         if: startsWith(matrix.config.os, 'windows')
         run: nuget install WiX
       - name: Install dependencies on ubuntu
-        if: startsWith(matrix.config.name, 'Ubuntu Latest GCC')
+        if: startsWith(matrix.config.name, 'Linux')
         run: |
           sudo apt-get update
           sudo apt-get install -y ninja-build cmake libtbb-dev
@@ -91,14 +91,13 @@ jobs:
           cmake --version
           gcc --version
       - name: Install dependencies on macos
-        if: startsWith(matrix.config.os, 'macos')
+        if: startsWith(matrix.config.os, 'MacOS')
         run: |
           brew install cmake ninja
           ninja --version
           cmake --version
-      - name: Configure C++20
+      - name: Configure project
         shell: bash
-        if: contains(matrix.config.name, 'C++20')
         run: |
           mkdir build
           cmake \
@@ -111,51 +110,30 @@ jobs:
       - name: Build
         shell: bash
         run: cmake --build build --config ${{ matrix.config.build_type }}
-      - name: Create installer (Linux)
-        if: startsWith(matrix.config.name, 'Ubuntu Latest GCC')
+      - name: Create installer
         run: |
           cd build/
           cpack
         shell: bash
-      - name: Create installer (Windows)
-        if: startsWith(matrix.config.os, 'windows')
-        run: |
-          cd build/
-          cpack -G WIX
-      - name: Create installer (MacOS)
-        if: startsWith(matrix.config.os, 'macos')
-        run: |
-          cd build/
-          cpack -G DragNDrop
-      - name: Upload Release Asset (Linux tgz)
-        if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') }}
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: ./build/RType-1.0.1-Linux.tar.gz
-          asset_name: RType-Linux.tar.gz
-          asset_content_type: application/zip
       - name: Upload Release Asset (.rpm)
-        if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') }}
+        if: ${{ startsWith(matrix.config.name, 'Linux') }}
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
           asset_path: ./build/RType-1.0.1-Linux.rpm
-          asset_name: RType-Linux.rpm
+          asset_name: RType-Installer-Linux.rpm
           asset_content_type: application/zip
       - name: Upload Release Asset (.deb)
-        if: ${{ startsWith(matrix.config.name, 'Ubuntu Latest GCC') }}
+        if: ${{ startsWith(matrix.config.name, 'Linux') }}
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
           asset_path: ./build/RType-1.0.1-Linux.deb
-          asset_name: RType-Linux.deb
+          asset_name: RType-Installer-Linux.deb
           asset_content_type: application/zip
       - name: Upload Release Asset (.dmg)
         if: ${{ startsWith(matrix.config.os, 'macos') }}
@@ -165,15 +143,24 @@ jobs:
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
           asset_path: ./build/RType-1.0.1-Darwin.dmg
-          asset_name: RType-MacOS.dmg
+          asset_name: RType-Installer-MacOS.dmg
           asset_content_type: application/zip
-      - name: Upload Release Asset (Mac tgz)
-        if: ${{ startsWith(matrix.config.os, 'macos') }}
+      - name: Upload Release Asset (.msi)
+        if: startsWith(matrix.config.os, 'windows')
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: ./build/RType-1.0.1-Darwin.tar.gz
-          asset_name: RType-Darwin.tar.gz
+          asset_path: ./build/RType-1.0.1-win64.msi
+          asset_name: RType-Installer-Windows.msi
+          asset_content_type: application/zip
+      - name: Upload Release Asset (tgz)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create_release.outputs.upload_url }}
+          asset_path: ./build/RType-1.0.1-${{ matrix.config.build_result }}.tar.gz
+          asset_name: RType-Build-${{ matrix.config.name }}.tar.gz
           asset_content_type: application/zip

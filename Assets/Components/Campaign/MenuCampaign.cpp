@@ -37,9 +37,11 @@ void RType::MenuCampaign::openFolderLua() {
     std::string findLua = ".lua";
 
     try {
+        _pathScript.clear();
         for (const auto &entry: std::filesystem::directory_iterator("Maps"))
             if (entry.path().string().find(findLua) != std::string::npos)
                 _pathScript.emplace_back(entry.path().string());
+        std::sort(_pathScript.begin(), _pathScript.end());
     }catch(...) {
         KAP_DEBUG_ERROR("Unable to find open folder ./Maps/.");
         KAP_DEBUG_ERROR("Maps won't be initialized.");
@@ -106,7 +108,7 @@ void RType::MenuCampaign::onUpdate() {
             txtNBis.setText(_name[nId + 1]);
             PlayerPrefs::setString("Current Name Button2", _name[nId + 1]);
             button2.setBackground(_img[nId + 1], {0, 0, 430, 433});
-            PlayerPrefs::setString("Path Button2", _pathScript[nId + 1]);
+            PlayerPrefs::setString("Current Path Button2", _pathScript[nId + 1]);
         }
     } catch (...) {}
 }

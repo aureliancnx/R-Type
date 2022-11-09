@@ -26,10 +26,12 @@ var NAVTREE =
     [ "Contributor Covenant Code of Conduct", "md_CODE_OF_CONDUCT.html", [
       [ "R-Type", "index.html#autotoc_md229", null ],
       [ "How do I build and run this?", "index.html#autotoc_md230", null ],
-      [ "Documentation", "index.html#autotoc_md231", null ],
-      [ "How organize project", "index.html#autotoc_md232", null ],
-      [ "Cheat warning", "index.html#autotoc_md233", null ],
-      [ "Authors", "index.html#autotoc_md234", null ],
+      [ "Install the game", "index.html#autotoc_md231", null ],
+      [ "Host your own server", "index.html#autotoc_md232", null ],
+      [ "Documentation", "index.html#autotoc_md233", null ],
+      [ "How organize project", "index.html#autotoc_md234", null ],
+      [ "Cheat warning", "index.html#autotoc_md235", null ],
+      [ "Authors", "index.html#autotoc_md236", null ],
       [ "Our Pledge", "md_CODE_OF_CONDUCT.html#autotoc_md1", null ],
       [ "Our Standards", "md_CODE_OF_CONDUCT.html#autotoc_md2", null ],
       [ "Enforcement Responsibilities", "md_CODE_OF_CONDUCT.html#autotoc_md3", null ],
@@ -358,7 +360,7 @@ var NAVTREEINDEX =
 "classKapMirror_1_1TelepathyTransport.html",
 "classRType_1_1MapScript.html#a798837f674d63f69884bff7a07a8591c",
 "dir_95365cd9a1fd7136989fd5e5cd4d0fff.html",
-"md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md180"
+"md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md178"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

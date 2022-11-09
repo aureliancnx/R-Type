@@ -1,5 +1,12 @@
 var NAVTREEINDEX8 =
 {
+"dir_95365cd9a1fd7136989fd5e5cd4d0fff.html":[37,0,2,0,0,9,1,3],
+"dir_97586bd3acd37486d8a3fba366d99f68.html":[37,0,2,0,0,11],
+"dir_9a2a3cafecd741a63543fb0b5031bb67.html":[37,0,3,2,0,0],
+"dir_9cddfb26b28b3e8bc21ba3b07b67dc91.html":[37,0,3,0,0,2,1],
+"dir_9d395922afda5b31f113d8cdad8961af.html":[37,0,2,0,0,1,8],
+"dir_9dc8c20bda3989f2968397b1ed18bdfc.html":[37,0,0,0,7],
+"dir_9f4859804d5313508b6a99486862228d.html":[37,0,3,2,0,1],
 "dir_a04224ca86d40b44d22e39b3664b87c2.html":[37,0,2,0,0,1,6],
 "dir_a3f584a7fe70e4443f2f81f348c09c3f.html":[37,0,0,0,1],
 "dir_a94b908511d75219fecf2d3459f65505.html":[37,0,3,2],
@@ -33,8 +40,8 @@ var NAVTREEINDEX8 =
 "dir_fef29fda9d893b7850f121e644421544.html":[37,0,2,0,0,14],
 "example_8hpp_source.html":[37,0,1,0,0,0],
 "files.html":[37,0],
-"functions.html":[36,3,0,0],
 "functions.html":[36,3,0],
+"functions.html":[36,3,0,0],
 "functions_a.html":[36,3,0,1],
 "functions_b.html":[36,3,0,2],
 "functions_c.html":[36,3,0,3],
@@ -242,12 +249,5 @@ var NAVTREEINDEX8 =
 "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md176":[22,0,3,1],
 "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md177":[22,0,3,1,0],
 "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md178":[22,0,3,1,1],
-"md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md179":[22,0,3,2],
-"md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md180":[22,0,3,2,0],
-"md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md181":[22,0,3,2,1],
-"md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md182":[22,0,3,3],
-"md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md183":[22,0,3,4],
-"md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md184":[22,0,4],
-"md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md185":[22,0,4,0],
-"md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md186":[22,0,4,1]
+"md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md179":[22,0,3,2]
 };

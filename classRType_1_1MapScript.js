@@ -8,6 +8,7 @@ var classRType_1_1MapScript =
     [ "_setMapBannerPath", "classRType_1_1MapScript.html#a4f72cc53645a6d516eb9d86125886b69", null ],
     [ "_setMapDescription", "classRType_1_1MapScript.html#ab9b86db09bd555640c73a1d3ed9c0b5d", null ],
     [ "_setMapName", "classRType_1_1MapScript.html#ae9e9aca3fa8175b285be6352f9832667", null ],
+    [ "_updateEnemy", "classRType_1_1MapScript.html#a75c910973664c17e4bcc79442ba081da", null ],
     [ "closeScript", "classRType_1_1MapScript.html#a4e3f5f01e168569da40ba429586f6461", null ],
     [ "getAuthor", "classRType_1_1MapScript.html#a798837f674d63f69884bff7a07a8591c", null ],
     [ "getBannerPath", "classRType_1_1MapScript.html#a61bbe690c20f1e87f5f57717f72cdc93", null ],

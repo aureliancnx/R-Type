@@ -18,7 +18,12 @@ include(Dependencies)
 
 file(GLOB_RECURSE SOURCES GameMain.cpp Assets/Components/*.cpp Packages/*.cpp)
 
-add_executable(RType ${SOURCES} ${HEADERS})
+if (WIN32)
+    set(APP_ICON_RESOURCE_WINDOWS "${CMAKE_CURRENT_SOURCE_DIR}/Assets/Installer/icon.rc")
+    add_executable(RType WIN32 ${SOURCES} ${HEADERS}  ${APP_ICON_RESOURCE_WINDOWS})
+else()
+    add_executable(RType ${SOURCES} ${HEADERS})
+endif()
 
 include(DependenciesLink)
 

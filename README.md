@@ -13,7 +13,15 @@
 ## How do I build and run this?
 See the [R-Type build instructions](https://chaika9.gitbook.io/rtype/user-manuel/build-instructions). R-Type runs on Linux, MacOS (intel) and Windows.
 
-## Run server
+## Install the game
+
+The game installer is available for Windows, Mac OS and Linux on the [release page](https://github.com/aureliancnx/R-Type/releases) of the game.
+
+You can also run the game from a build version directly without installer (portable version) by using the tarball files also available in the [game releases](https://github.com/aureliancnx/R-Type/releases).
+
+You may find the [latest game release here](https://github.com/aureliancnx/R-Type/releases/latest).
+
+## Host your own server
 You're able to directly run the R-Type server without building the project. Just do it by downloading the latest [Docker](https://docs.docker.com/engine/install/) image available.
 
 ```

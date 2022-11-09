@@ -14,22 +14,17 @@ project(RType LANGUAGES CXX VERSION 1.0.1)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake" ${CMAKE_MODULE_PATH})
 set(CMAKE_CXX_STANDARD 20)
 
+# Dependencies (find_package etc.)
 include(Dependencies)
 
-file(GLOB_RECURSE SOURCES GameMain.cpp Assets/Components/*.cpp Packages/*.cpp Library/backward/backward.cpp)
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Maps DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+include(BuildFiles)
 
-add_executable(RType ${SOURCES} ${HEADERS})
-
+# Link dependencies (header, sources..)
 include(DependenciesLink)
-
-# Library
 include(Library/library.cmake)
 
-# Includes
+# Include subfolders
 include_directories(.)
-include_directories(Library/backward)
 include_directories(Assets/Components)
 
 # Packages

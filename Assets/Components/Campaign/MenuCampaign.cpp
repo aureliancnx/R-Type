@@ -85,8 +85,10 @@ void RType::MenuCampaign::onUpdate() {
         txtC.setText(_creator[nId]);
         auto& txtN = _txtName->getComponent<UI::Text>();
         txtN.setText(_name[nId]);
+        PlayerPrefs::setString("Current Name Button1", _name[nId]);
         auto button = _button1->getComponent<UI::Button>();
         button.setBackground(_img[nId], {0, 0, 430, 433});
+        PlayerPrefs::setString("Current Path Button1", _pathScript[nId]);
         auto& txtDBis = _txtDateBis->getComponent<UI::Text>();
         auto& txtCBis = _txtCreatorBis->getComponent<UI::Text>();
         auto& txtNBis = _txtNameBis->getComponent<UI::Text>();
@@ -95,12 +97,16 @@ void RType::MenuCampaign::onUpdate() {
             txtDBis.setText(_date[0]);
             txtCBis.setText(_creator[0]);
             txtNBis.setText(_name[0]);
+            PlayerPrefs::setString("Current Name Button2", _name[0]);
             button2.setBackground(_img[0], {0, 0, 430, 433});
+            PlayerPrefs::setString("Current Path Button2", _pathScript[0]);
         } else {
             txtDBis.setText(_date[nId + 1]);
             txtCBis.setText(_creator[nId + 1]);
             txtNBis.setText(_name[nId + 1]);
+            PlayerPrefs::setString("Current Name Button2", _name[nId + 1]);
             button2.setBackground(_img[nId + 1], {0, 0, 430, 433});
+            PlayerPrefs::setString("Path Button2", _pathScript[nId + 1]);
         }
     } catch (...) {}
 }

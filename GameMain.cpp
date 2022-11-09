@@ -41,6 +41,17 @@ static void initWindow(KapEngine::KEngine* engine, bool draw) {
 // }
 
 int main(int argc, char** argv) {
+    // Fix path
+    try {
+        if (argc > 0 && argv[0]) {
+            auto path = std::filesystem::path(argv[0]);
+            auto finalPath = std::filesystem::weakly_canonical(path).parent_path();
+            std::filesystem::current_path(finalPath);
+        }
+    }catch(...) {
+        KAP_DEBUG_ERROR("Unable to set path of assets to current executable directory.");
+    }
+
     bool isServer = false;
 
     if (argc > 1) {

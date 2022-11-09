@@ -203,9 +203,9 @@ void SoloMenu::init() {
         transform.setParent(canvas);
     }
 
-    // Creation Date creation level 1
+    // Creation Description level 1
     {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Date");
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Description");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
         auto compDateCampaign = std::make_shared<MenuCampaign>(txt, &engine);
@@ -292,9 +292,9 @@ void SoloMenu::init() {
         transform.setParent(canvas);
     }
 
-    // Creation Date creation level 2
+    // Creation Description level 2
     {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text DateBis");
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text DescriptionBis");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
         auto compDateCampaign = std::make_shared<MenuCampaign>(txt, &engine);

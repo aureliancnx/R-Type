@@ -27,22 +27,21 @@ namespace RType {
         void getLuaInformation();
         void openFolderLua();
 
-        void foundDate();
+        void foundDescription();
         void foundCreator();
         void foundName();
         void foundButton();
         std::vector<std::string> _img;
         std::vector<std::string> _name;
-        std::vector<std::string> _date;
         std::vector<std::string> _description;
         std::vector<std::string> _creator;
         std::vector<std::string> _pathScript;
 
-        std::shared_ptr<KapEngine::GameObject> _txtDate;
+        std::shared_ptr<KapEngine::GameObject> _txtDescription;
+        std::shared_ptr<KapEngine::GameObject> _txtDescriptionBis;
         std::shared_ptr<KapEngine::GameObject> _txtCreator;
         std::shared_ptr<KapEngine::GameObject> _txtName;
         std::shared_ptr<KapEngine::GameObject> _imgCampaign;
-        std::shared_ptr<KapEngine::GameObject> _txtDateBis;
         std::shared_ptr<KapEngine::GameObject> _txtNameBis;
         std::shared_ptr<KapEngine::GameObject> _txtCreatorBis;
         std::shared_ptr<KapEngine::GameObject> _imgCampaignBis;

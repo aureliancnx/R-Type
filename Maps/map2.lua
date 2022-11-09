@@ -6,7 +6,7 @@
 
 Map.SetName("The House of Aliens")
 Map.SetAuthor("Meredith Labejof")
-Map.SetDescription("22/10/2022")
+Map.SetDescription("Campaign level 2")
 Map.SetBannerPath("Assets/Textures/Level Campaign/lvl2_img.png")
 
 Debug.Log("The House of Aliens")

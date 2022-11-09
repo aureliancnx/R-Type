@@ -20,8 +20,8 @@ void RType::MenuCampaign::getLuaInformation() {
             _name.emplace_back(name);
             auto author = script.getAuthor();
             _creator.emplace_back("Author: " + author);
-            auto date = script.getDescription();
-            _date.emplace_back("Date: " + date);
+            auto description = script.getDescription();
+            _description.emplace_back(description);
             auto pathImg = script.getBannerPath();
             _img.emplace_back(pathImg);
             script.closeScript();
@@ -53,19 +53,20 @@ void RType::MenuCampaign::onAwake() {
     openFolderLua();
     getLuaInformation();
 
-    foundDate();
+    KAP_DEBUG_WARNING("Campaign ID: " + std::to_string(KapEngine::PlayerPrefs::getInt("campaignID")));
+    foundDescription();
     foundCreator();
     foundName();
     foundButton();
 }
 
 void RType::MenuCampaign::onUpdate() {
-    if (_txtDate.use_count() == 0 || _txtCreator.use_count() == 0 || _txtName.use_count() == 0) {
+    if (_txtDescription.use_count() == 0 || _txtCreator.use_count() == 0 || _txtName.use_count() == 0) {
         foundCreator();
-        foundDate();
+        foundDescription();
         foundName();
         foundButton();
-        if (_txtDate.use_count() == 0 || _txtCreator.use_count() == 0 || _txtName.use_count() == 0)
+        if (_txtDescription.use_count() == 0 || _txtCreator.use_count() == 0 || _txtName.use_count() == 0)
             DEBUG_ERROR("Fail something");
     }
 
@@ -81,29 +82,34 @@ void RType::MenuCampaign::onUpdate() {
     lastValue = nId;
 
     try {
-        auto& txtD = _txtDate->getComponent<UI::Text>();
-        txtD.setText(_date[nId]);
+        auto& txtD = _txtDescription->getComponent<UI::Text>();
+        txtD.setText(_description[nId]);
+
         auto& txtC = _txtCreator->getComponent<UI::Text>();
         txtC.setText(_creator[nId]);
+
         auto& txtN = _txtName->getComponent<UI::Text>();
         txtN.setText(_name[nId]);
+
         PlayerPrefs::setString("Current Name Button1", _name[nId]);
         auto button = _button1->getComponent<UI::Button>();
         button.setBackground(_img[nId], {0, 0, 430, 433});
         PlayerPrefs::setString("Current Path Button1", _pathScript[nId]);
-        auto& txtDBis = _txtDateBis->getComponent<UI::Text>();
+
+        auto& txtDBis = _txtDescriptionBis->getComponent<UI::Text>();
         auto& txtCBis = _txtCreatorBis->getComponent<UI::Text>();
         auto& txtNBis = _txtNameBis->getComponent<UI::Text>();
         auto button2 = _button2->getComponent<UI::Button>();
+
         if (nId + 1 > (_pathScript.size() - 1)) {
-            txtDBis.setText(_date[0]);
+            txtDBis.setText(_description[0]);
             txtCBis.setText(_creator[0]);
             txtNBis.setText(_name[0]);
             PlayerPrefs::setString("Current Name Button2", _name[0]);
             button2.setBackground(_img[0], {0, 0, 430, 433});
             PlayerPrefs::setString("Current Path Button2", _pathScript[0]);
         } else {
-            txtDBis.setText(_date[nId + 1]);
+            txtDBis.setText(_description[nId + 1]);
             txtCBis.setText(_creator[nId + 1]);
             txtNBis.setText(_name[nId + 1]);
             PlayerPrefs::setString("Current Name Button2", _name[nId + 1]);
@@ -113,15 +119,16 @@ void RType::MenuCampaign::onUpdate() {
     } catch (...) {}
 }
 
-void RType::MenuCampaign::foundDate() {
-    auto objs1 = getGameObjectConst().getScene().getGameObjects("Text Date");
-    auto objs2 = getGameObjectConst().getScene().getGameObjects("Text DateBis");
+
+void RType::MenuCampaign::foundDescription() {
+    auto objs1 = getGameObjectConst().getScene().getGameObjects("Text Description");
+    auto objs2 = getGameObjectConst().getScene().getGameObjects("Text DescriptionBis");
     std::shared_ptr<GameObject> _found1;
     std::shared_ptr<GameObject> _found2;
 
-    for (std::size_t i = 0; i < objs1.size(); i++) {
-        if (objs1[i]->hasComponent("Text")) {
-            _found1 = objs1[i];
+    for (auto & i : objs1) {
+        if (i->hasComponent("Text")) {
+            _found1 = i;
             break;
         }
     }
@@ -131,9 +138,9 @@ void RType::MenuCampaign::foundDate() {
         return;
     }
 
-    for (std::size_t i = 0; i < objs2.size(); i++) {
-        if (objs2[i]->hasComponent("Text")) {
-            _found2 = objs2[i];
+    for (auto & i : objs2) {
+        if (i->hasComponent("Text")) {
+            _found2 = i;
             break;
         }
     }
@@ -142,16 +149,17 @@ void RType::MenuCampaign::foundDate() {
         DEBUG_ERROR("Failed to find date text");
         return;
     }
-    _txtDate = _found1;
-    _txtDateBis = _found2;
+
+    _txtDescription = _found1;
+    _txtDescriptionBis = _found2;
     try {
-        auto& txt = _txtDate->getComponent<UI::Text>();
-        txt.setText(_date[PlayerPrefs::getInt("campaignID")]);
-        auto& txtBis = _txtDateBis->getComponent<UI::Text>();
+        auto& txt = _txtDescription->getComponent<UI::Text>();
+        txt.setText(_description[PlayerPrefs::getInt("campaignID")]);
+        auto& txtBis = _txtDescriptionBis->getComponent<UI::Text>();
         if ((PlayerPrefs::getInt("campaignID") + 1) > (_pathScript.size() - 1))
-            txtBis.setText(_date[0]);
+            txtBis.setText(_description[0]);
         else
-            txt.setText(_date[PlayerPrefs::getInt("campaignID") + 1]);
+            txt.setText(_description[PlayerPrefs::getInt("campaignID") + 1]);
     } catch (...) {}
 }
 

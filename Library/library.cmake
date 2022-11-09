@@ -12,3 +12,4 @@ include(Library/KapEngine/CMake/engine_include.cmake)
 # LuaEngine
 add_subdirectory(Library/LuaEngine)
 target_link_libraries(RType lua::lib)
+include_directories(Library/backward)

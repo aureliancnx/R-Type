@@ -17,6 +17,8 @@ set(CMAKE_CXX_STANDARD 20)
 include(Dependencies)
 
 file(GLOB_RECURSE SOURCES GameMain.cpp Assets/Components/*.cpp Packages/*.cpp Library/backward/backward.cpp)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Maps DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 add_executable(RType ${SOURCES} ${HEADERS})
 

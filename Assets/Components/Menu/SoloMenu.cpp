@@ -157,9 +157,11 @@ void SoloMenu::init() {
                 auto compName = objName->getComponent<KapEngine::UI::Text>();
                 auto name = compName.getText();
 
-                if (name == "Endless fight") {
+                if (name == KapEngine::PlayerPrefs::getString("Current Name Button1")) {
                     scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
-                    gameManager.startCampaign();
+                    script.loadScript(KapEngine::PlayerPrefs::getString("Current Path Button1"));
+                    //script.closeScript();
+                    //gameManager.startCampaign();
                 }
             } catch (LuaException& e) {
                 KapEngine::Debug::error(e.what());
@@ -245,9 +247,11 @@ void SoloMenu::init() {
                 auto compName = objName->getComponent<KapEngine::UI::Text>();
                 auto name = compName.getText();
 
-                if (name == "Endless fight") {
+                if (name == KapEngine::PlayerPrefs::getString("Current Name Button2")) {
                     scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
-                    gameManager.startCampaign();
+                    script.loadScript(KapEngine::PlayerPrefs::getString("Current Path Button2"));
+                    //script.closeScript();
+                    //gameManager.startCampaign();
                 }
             } catch (LuaException& e) {
                 KapEngine::Debug::error(e.what());

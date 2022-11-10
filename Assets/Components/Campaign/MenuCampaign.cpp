@@ -17,13 +17,13 @@ void RType::MenuCampaign::getLuaInformation() {
         try {
             script.loadScript(i);
             auto name = script.getName();
-            _name.emplace_back(name);
+            _name.push_back(name);
             auto author = script.getAuthor();
-            _creator.emplace_back("Author: " + author);
+            _creator.push_back("Author: " + author);
             auto description = script.getDescription();
-            _description.emplace_back(description);
+            _description.push_back(description);
             auto pathImg = script.getBannerPath();
-            _img.emplace_back(pathImg);
+            _img.push_back(pathImg);
             script.closeScript();
         } catch (LuaException& e) {
             KapEngine::Debug::error(e.what());
@@ -83,6 +83,8 @@ void RType::MenuCampaign::onUpdate() {
 
     try {
         auto& txtD = _txtDescription->getComponent<UI::Text>();
+        if (_description.size() <= nId || _creator.size() <= nId || _name.size() <= nId || _img.size() <= nId || _pathScript.size() <= nId)
+            throw KapEngine::Errors::ComponentError("Out of range");
         txtD.setText(_description[nId]);
 
         auto& txtC = _txtCreator->getComponent<UI::Text>();
@@ -108,7 +110,7 @@ void RType::MenuCampaign::onUpdate() {
             PlayerPrefs::setString("Current Name Button2", _name[0]);
             button2.setBackground(_img[0], {0, 0, 430, 433});
             PlayerPrefs::setString("Current Path Button2", _pathScript[0]);
-        } else {
+        } else if (nId + 1 < _description.size() && nId + 1 < _creator.size() && nId + 1 < _name.size() && nId + 1 < _img.size() && nId + 1 < _pathScript.size()) {
             txtDBis.setText(_description[nId + 1]);
             txtCBis.setText(_creator[nId + 1]);
             txtNBis.setText(_name[nId + 1]);
@@ -118,7 +120,6 @@ void RType::MenuCampaign::onUpdate() {
         }
     } catch (...) {}
 }
-
 
 void RType::MenuCampaign::foundDescription() {
     auto objs1 = getGameObjectConst().getScene().getGameObjects("Text Description");
@@ -154,15 +155,20 @@ void RType::MenuCampaign::foundDescription() {
     _txtDescriptionBis = _found2;
     try {
         auto& txt = _txtDescription->getComponent<UI::Text>();
-        txt.setText(_description[PlayerPrefs::getInt("campaignID")]);
+        auto valCampaignId = PlayerPrefs::getInt("campaignID");
+        if (_description.size() <= valCampaignId)
+            throw KapEngine::Errors::ComponentError("Out of range");
+        txt.setText(_description[valCampaignId]);
         auto& txtBis = _txtDescriptionBis->getComponent<UI::Text>();
-        auto valCampaignId = PlayerPrefs::getInt("campaignID") + 1;
+        valCampaignId++;
         if (valCampaignId > (_pathScript.size() - 1)) {
             txtBis.setText(_description[0]);
         } else if (_description.size() > valCampaignId) {
             txt.setText(_description[valCampaignId]);
         }
-    } catch (...) {}
+    } catch (...) {
+        KAP_DEBUG_ERROR("Failed to found description");
+    }
 }
 
 void RType::MenuCampaign::foundCreator() {
@@ -197,14 +203,19 @@ void RType::MenuCampaign::foundCreator() {
     _txtCreatorBis = _found2;
     try {
         auto& txt = _txtCreator->getComponent<UI::Text>();
-        txt.setText(_creator[PlayerPrefs::getInt("campaignID")]);
+        auto valCampaignId = PlayerPrefs::getInt("campaignID");
+        if (_creator.size() <= valCampaignId)
+            throw KapEngine::Errors::ComponentError("Out of range");
+        txt.setText(_creator[valCampaignId]);
         auto& txtBis = _txtCreatorBis->getComponent<UI::Text>();
-        auto valCampaignId = PlayerPrefs::getInt("campaignID") + 1;
+        valCampaignId++;
         if ((valCampaignId) > (_pathScript.size() - 1))
             txtBis.setText(_creator[0]);
         else if (_creator.size() > valCampaignId)
             txt.setText(_creator[valCampaignId]);
-    } catch (...) {}
+    } catch (...) {
+        KAP_DEBUG_ERROR("Failed to found creator");
+    }
 }
 
 void RType::MenuCampaign::foundName() {
@@ -239,14 +250,19 @@ void RType::MenuCampaign::foundName() {
     _txtNameBis = _found2;
     try {
         auto& txt = _txtName->getComponent<UI::Text>();
-        txt.setText(_creator[PlayerPrefs::getInt("campaignID")]);
+        auto valCampaignId = PlayerPrefs::getInt("campaignID");
+        if (_creator.size() <= valCampaignId)
+            throw KapEngine::Errors::ComponentError("Out of range");
+        txt.setText(_creator[valCampaignId]);
         auto& txtBis = _txtNameBis->getComponent<UI::Text>();
-        auto valCampaignId = PlayerPrefs::getInt("campaignID") + 1;
+        valCampaignId++;
         if ((valCampaignId) > (_pathScript.size() - 1))
             txtBis.setText(_creator[0]);
         else if(_creator.size() > valCampaignId)
             txt.setText(_creator[valCampaignId]);
-    } catch (...) {}
+    } catch (...) {
+        KAP_DEBUG_ERROR("Failed to found name");
+    }
 }
 
 void RType::MenuCampaign::foundButton() {
@@ -256,8 +272,13 @@ void RType::MenuCampaign::foundButton() {
     try {
         auto& button = objs1->getComponent<UI::Button>();
         _button1 = objs1;
-        button.setBackground(_img[PlayerPrefs::getInt("campaignID")], {0, 0, 430, 433});
-    } catch (...) {}
+        auto valCampaignId = PlayerPrefs::getInt("campaignID");
+        if (_img.size() <= valCampaignId)
+            throw KapEngine::Errors::ComponentError("Out of range");
+        button.setBackground(_img[valCampaignId], {0, 0, 430, 433});
+    } catch (...) {
+        KAP_DEBUG_ERROR("Failed to find button");
+    }
 
     try {
         auto& button = objs2->getComponent<UI::Button>();
@@ -267,5 +288,7 @@ void RType::MenuCampaign::foundButton() {
             button.setBackground(_img[0], {0, 0, 430, 433});
         else if (_img.size() > valCampaignId)
             button.setBackground(_img[valCampaignId], {0, 0, 430, 433});
-    } catch (...) {}
+    } catch (...) {
+        KAP_DEBUG_ERROR("Failed to find button");
+    }
 }

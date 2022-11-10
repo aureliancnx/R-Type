@@ -4,6 +4,12 @@
 #include "Campaign/MenuCampaign.hpp"
 #include "MapScript/MapScript.hpp"
 
+#include "KapEngine.hpp"
+
+#ifndef BENJI_MODIF
+    #define BENJI_MODIF true
+#endif
+
 using namespace RType;
 
 SoloMenu::SoloMenu(KapEngine::SceneManagement::Scene& _scene, GameManager& _gameManager) : Menu(_scene), gameManager(_gameManager) {}
@@ -69,241 +75,393 @@ void SoloMenu::init() {
         transform.setParent(canvas);
     }
 
-    // Create button turn left
-    {
-        auto btn = scene.createGameObject("ButtonLeft");
-        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
 
-        btn->addComponent(btnComp);
-        btnComp->setText("");
-        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
-        btnComp->setTextPosition({75, 12});
-        btnComp->setTextColor(KapEngine::Tools::Color::white());
+    #if !BENJI_MODIF
+        // Create button turn left
+        {
+            auto btn = scene.createGameObject("ButtonLeft");
+            auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+            auto& transform = btn->getComponent<KapEngine::Transform>();
 
-        transform.setPosition({20, 150, 0});
-        transform.setScale({40, 230, 0});
-        transform.setParent(canvas);
+            btn->addComponent(btnComp);
+            btnComp->setText("");
+            btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+            btnComp->setTextPosition({75, 12});
+            btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        btnComp->getOnClick().registerAction([this]() {
-            int currentID = 0;
+            transform.setPosition({20, 150, 0});
+            transform.setScale({40, 230, 0});
+            transform.setParent(canvas);
 
-            try {
-                if (!KapEngine::PlayerPrefs::getString("campaignID").empty())
-                    currentID = KapEngine::PlayerPrefs::getInt("campaignID");
-                currentID = currentID - 1;
-                if (currentID < 0)
-                    currentID = KapEngine::PlayerPrefs::getInt("Nb Map");
-                KapEngine::PlayerPrefs::setInt("campaignID", currentID);
-            } catch (...) {}
-        });
-    }
+            btnComp->getOnClick().registerAction([this]() {
+                int currentID = 0;
 
-    // Create button turn right
-    {
-        auto btn = scene.createGameObject("ButtonRight");
-        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+                try {
+                    if (!KapEngine::PlayerPrefs::getString("campaignID").empty())
+                        currentID = KapEngine::PlayerPrefs::getInt("campaignID");
+                    currentID = currentID - 1;
+                    if (currentID < 0)
+                        currentID = KapEngine::PlayerPrefs::getInt("Nb Map");
+                    KapEngine::PlayerPrefs::setInt("campaignID", currentID);
+                } catch (...) {}
+            });
+        }
 
-        btn->addComponent(btnComp);
-        btnComp->setText("");
-        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
-        btnComp->setTextPosition({75, 12});
-        btnComp->setTextColor(KapEngine::Tools::Color::white());
+        // Create button turn right
+        {
+            auto btn = scene.createGameObject("ButtonRight");
+            auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+            auto& transform = btn->getComponent<KapEngine::Transform>();
 
-        transform.setPosition({660, 150, 0});
-        transform.setScale({40, 230, 0});
-        transform.setParent(canvas);
+            btn->addComponent(btnComp);
+            btnComp->setText("");
+            btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+            btnComp->setTextPosition({75, 12});
+            btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        btnComp->getOnClick().registerAction([this]() {
-            int currentID = 0;
+            transform.setPosition({660, 150, 0});
+            transform.setScale({40, 230, 0});
+            transform.setParent(canvas);
 
-            try {
-                if (!KapEngine::PlayerPrefs::getString("campaignID").empty())
-                    currentID = KapEngine::PlayerPrefs::getInt("campaignID");
-                currentID = currentID + 1;
-                if (currentID > KapEngine::PlayerPrefs::getInt("Nb Map"))
-                    currentID = 0;
-                KapEngine::PlayerPrefs::setInt("campaignID", currentID);
-            } catch (...) {}
-        });
-    }
+            btnComp->getOnClick().registerAction([this]() {
+                int currentID = 0;
 
-    // Create button level 1
-    {
-        auto btn = scene.createGameObject("ButtonLevel1");
-        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+                try {
+                    if (!KapEngine::PlayerPrefs::getString("campaignID").empty())
+                        currentID = KapEngine::PlayerPrefs::getInt("campaignID");
+                    currentID = currentID + 1;
+                    if (currentID > KapEngine::PlayerPrefs::getInt("Nb Map"))
+                        currentID = 0;
+                    KapEngine::PlayerPrefs::setInt("campaignID", currentID);
+                } catch (...) {}
+            });
+        }
 
-        btn->addComponent(btnComp);
-        btnComp->setText("");
-        btnComp->setBackground("", {0, 0, 430, 433});
-        btnComp->setTextColor(KapEngine::Tools::Color::white());
+        // Create button level 1
+        {
+            auto btn = scene.createGameObject("ButtonLevel1");
+            auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+            auto& transform = btn->getComponent<KapEngine::Transform>();
 
-        transform.setPosition({90, 150, 0});
-        transform.setScale({245, 230, 0});
-        transform.setParent(canvas);
+            btn->addComponent(btnComp);
+            btnComp->setText("");
+            btnComp->setBackground("", {0, 0, 430, 433});
+            btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        btnComp->getOnClick().registerAction([this]() {
-            MapScript script(&engine);
+            transform.setPosition({90, 150, 0});
+            transform.setScale({245, 230, 0});
+            transform.setParent(canvas);
 
-            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
-            try {
-                canvas->getComponent<UpdateStartGameKeys>().checkInputs();
-            } catch (...) { KAP_DEBUG_ERROR("Failed to update inputs"); }
+            btnComp->getOnClick().registerAction([this]() {
+                MapScript script(&engine);
 
-            try {
-                auto objName = canvas->getScene().findFirstGameObject("Text Name");
-                auto compName = objName->getComponent<KapEngine::UI::Text>();
-                auto name = compName.getText();
+                engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
+                try {
+                    canvas->getComponent<UpdateStartGameKeys>().checkInputs();
+                } catch (...) { KAP_DEBUG_ERROR("Failed to update inputs"); }
 
-                if (name == KapEngine::PlayerPrefs::getString("Current Name Button1")) {
-                    scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
-                    script.loadScript(KapEngine::PlayerPrefs::getString("Current Path Button1"));
-                    //script.closeScript();
-                    //gameManager.startCampaign();
+                try {
+                    auto objName = canvas->getScene().findFirstGameObject("Text Name");
+                    auto compName = objName->getComponent<KapEngine::UI::Text>();
+                    auto name = compName.getText();
+
+                    if (name == KapEngine::PlayerPrefs::getString("Current Name Button1")) {
+                        scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
+                        script.loadScript(KapEngine::PlayerPrefs::getString("Current Path Button1"));
+                        //script.closeScript();
+                        //gameManager.startCampaign();
+                    }
+                } catch (LuaException& e) {
+                    KapEngine::Debug::error(e.what());
+                } catch (std::exception& e) {
+                    KapEngine::Debug::error(e.what());
                 }
-            } catch (LuaException& e) {
-                KapEngine::Debug::error(e.what());
-            } catch (std::exception& e) {
-                KapEngine::Debug::error(e.what());
-            }
-        });
-    }
+            });
+        }
 
-    // Creation Name lvl 1
-    {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Name");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
-        auto compDateCampaign = std::make_shared<MenuCampaign>(txt, &engine);
+        // Creation Name lvl 1
+        {
+            auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Name");
+            auto &compText = txt->getComponent<KapEngine::UI::Text>();
+            auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+            auto compDateCampaign = std::make_shared<MenuCampaign>(txt, &engine);
 
-        compText->setPoliceSize(15);
+            compText.setPoliceSize(15);
 
-        txt->addComponent(compDateCampaign);
-        txt->addComponent(compText);
-        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(130, 260, 0));
-        transform.setParent(canvas);
-    }
+            txt->addComponent(compDateCampaign);
+            transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+            transform.setPosition(KapEngine::Tools::Vector3(130, 260, 0));
+            transform.setParent(canvas);
+        }
 
-    // Creation Auteur level 1
-    {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Author");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
-        auto compAuthorCampaign = std::make_shared<MenuCampaign>(txt, &engine);
+        // Creation Auteur level 1
+        {
+            auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Author");
+            auto &compText = txt->getComponent<KapEngine::UI::Text>();
+            auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+            auto compAuthorCampaign = std::make_shared<MenuCampaign>(txt, &engine);
 
-        compText->setPoliceSize(15);
+            compText.setPoliceSize(15);
 
-        txt->addComponent(compAuthorCampaign);
-        txt->addComponent(compText);
-        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(110, 300, 0));
-        transform.setParent(canvas);
-    }
+            txt->addComponent(compAuthorCampaign);
+            // txt->addComponent(compText);
+            transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+            transform.setPosition(KapEngine::Tools::Vector3(110, 300, 0));
+            transform.setParent(canvas);
+        }
 
-    // Creation Description level 1
-    {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Description");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
-        auto compDateCampaign = std::make_shared<MenuCampaign>(txt, &engine);
+        // Creation Description level 1
+        {
+            auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Description");
+            auto &compText = txt->getComponent<KapEngine::UI::Text>();
+            auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+            auto compDateCampaign = std::make_shared<MenuCampaign>(txt, &engine);
 
-        compText->setPoliceSize(15);
+            compText.setPoliceSize(15);
 
-        txt->addComponent(compDateCampaign);
-        txt->addComponent(compText);
-        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(110, 330, 0));
-        transform.setParent(canvas);
-    }
+            txt->addComponent(compDateCampaign);
+            transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+            transform.setPosition(KapEngine::Tools::Vector3(110, 330, 0));
+            transform.setParent(canvas);
+        }
 
-    // Create button level 2
-    {
-        auto btn = scene.createGameObject("ButtonLevel2");
-        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+        // Create button level 2
+        {
+            auto btn = scene.createGameObject("ButtonLevel2");
+            auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+            auto& transform = btn->getComponent<KapEngine::Transform>();
 
-        btn->addComponent(btnComp);
-        btnComp->setText("");
-        btnComp->setBackground("", {0, 0, 430, 433});
-        btnComp->setTextColor(KapEngine::Tools::Color::white());
+            btn->addComponent(btnComp);
+            btnComp->setText("");
+            btnComp->setBackground("", {0, 0, 430, 433});
+            btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({380, 150, 0});
-        transform.setScale({245, 230, 0});
-        transform.setParent(canvas);
+            transform.setPosition({380, 150, 0});
+            transform.setScale({245, 230, 0});
+            transform.setParent(canvas);
 
-        btnComp->getOnClick().registerAction([this]() {
-            MapScript script(&engine);
+            btnComp->getOnClick().registerAction([this]() {
+                MapScript script(&engine);
 
-            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
-            try {
-                canvas->getComponent<UpdateStartGameKeys>().checkInputs();
-            } catch (...) { KAP_DEBUG_ERROR("Failed to update inputs"); }
+                engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
+                try {
+                    canvas->getComponent<UpdateStartGameKeys>().checkInputs();
+                } catch (...) { KAP_DEBUG_ERROR("Failed to update inputs"); }
 
-            try {
-                auto objName = canvas->getScene().findFirstGameObject("Text NameBis");
-                auto compName = objName->getComponent<KapEngine::UI::Text>();
-                auto name = compName.getText();
+                try {
+                    auto objName = canvas->getScene().findFirstGameObject("Text NameBis");
+                    auto compName = objName->getComponent<KapEngine::UI::Text>();
+                    auto name = compName.getText();
 
-                if (name == KapEngine::PlayerPrefs::getString("Current Name Button2")) {
-                    scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
-                    script.loadScript(KapEngine::PlayerPrefs::getString("Current Path Button2"));
-                    //script.closeScript();
-                    //gameManager.startCampaign();
+                    if (name == KapEngine::PlayerPrefs::getString("Current Name Button2")) {
+                        scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
+                        script.loadScript(KapEngine::PlayerPrefs::getString("Current Path Button2"));
+                        //script.closeScript();
+                        //gameManager.startCampaign();
+                    }
+                } catch (LuaException& e) {
+                    KapEngine::Debug::error(e.what());
+                } catch (std::exception& e) {
+                    KapEngine::Debug::error(e.what());
                 }
-            } catch (LuaException& e) {
-                KapEngine::Debug::error(e.what());
+            });
+        }
+
+        // Creation Name lvl 2
+        {
+            auto txt = KapEngine::UI::UiFactory::createText(scene, "Text NameBis");
+            auto &compText = txt->getComponent<KapEngine::UI::Text>();
+            auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+            auto compDateCampaign = std::make_shared<MenuCampaign>(txt, &engine);
+
+            compText.setPoliceSize(15);
+
+            txt->addComponent(compDateCampaign);
+            transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+            transform.setPosition(KapEngine::Tools::Vector3(420, 260, 0));
+            transform.setParent(canvas);
+        }
+
+        // Creation Auteur level 2
+        {
+            auto txt = KapEngine::UI::UiFactory::createText(scene, "Text AuthorBis");
+            auto &compText = txt->getComponent<KapEngine::UI::Text>();
+            auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+            auto compDateCampaign = std::make_shared<MenuCampaign>(txt, &engine);
+
+            compText.setPoliceSize(15);
+
+            transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+            transform.setPosition(KapEngine::Tools::Vector3(400, 300, 0));
+            transform.setParent(canvas);
+        }
+
+        // Creation Description level 2
+        {
+            auto txt = KapEngine::UI::UiFactory::createText(scene, "Text DescriptionBis");
+            auto &compText = txt->getComponent<KapEngine::UI::Text>();
+            auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+            auto compDateCampaign = std::make_shared<MenuCampaign>(txt, &engine);
+
+            compText.setPoliceSize(15);
+
+            transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+            transform.setPosition(KapEngine::Tools::Vector3(400, 330, 0));
+            transform.setParent(canvas);
+        }
+    #else
+        //create MenuCampaigne
+        std::shared_ptr<KapEngine::GameObject> menuCampaign;
+        {
+            menuCampaign = scene.createGameObject("MenuCampaign");
+            auto menuCampaignComp = std::make_shared<MenuCampaign>(menuCampaign, &engine);
+            menuCampaign->addComponent(menuCampaignComp);
+        }
+
+        KapEngine::Tools::Vector3 posBtn = {90, 150, 0};
+        KapEngine::Tools::Vector3 sizeBtn = {245, 230, 0};
+        //create first button
+        {
+            auto btnObj = scene.createGameObject("ButtonLevel1");
+
+            //set transform values
+            try {
+                auto& transform = btnObj->getComponent<KapEngine::Transform>();
+                transform.setPosition(posBtn);
+                transform.setScale(sizeBtn);
+                transform.setParent(canvas);
             } catch (std::exception& e) {
-                KapEngine::Debug::error(e.what());
+                KAP_DEBUG_ERROR(e.what());
+            } catch(...) {}
+
+            auto button = KapEngine::UI::KapUiFactory::createButton(btnObj, "");
+
+            //set Title
+            {
+                auto txt = KapEngine::UI::UiFactory::createText(scene, "LevelName");
+
+                auto &compText = txt->getComponent<KapEngine::UI::Text>();
+                compText.setPoliceSize(15);
+
+                auto &transform = txt->getComponent<KapEngine::Transform>();
+                transform.setPosition(KapEngine::Tools::Vector3(40, 110, 0));
+                transform.setParent(btnObj);
             }
-        });
-    }
+            //set Author
+            {
+                auto txt = KapEngine::UI::UiFactory::createText(scene, "LevelAuthor");
 
-    // Creation Name lvl 2
-    {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text NameBis");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
-        auto compDateCampaign = std::make_shared<MenuCampaign>(txt, &engine);
+                auto &compText = txt->getComponent<KapEngine::UI::Text>();
+                compText.setPoliceSize(15);
 
-        compText->setPoliceSize(15);
+                auto &transform = txt->getComponent<KapEngine::Transform>();
+                transform.setPosition(KapEngine::Tools::Vector3(20, 150, 0));
+                transform.setParent(btnObj);
+            }
+            //set description
+            {
+                auto txt = KapEngine::UI::UiFactory::createText(scene, "LevelDescription");
 
-        txt->addComponent(compDateCampaign);
-        txt->addComponent(compText);
-        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(420, 260, 0));
-        transform.setParent(canvas);
-    }
+                auto &compText = txt->getComponent<KapEngine::UI::Text>();
+                compText.setPoliceSize(15);
 
-    // Creation Auteur level 2
-    {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text AuthorBis");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
-        auto compDateCampaign = std::make_shared<MenuCampaign>(txt, &engine);
+                auto &transform = txt->getComponent<KapEngine::Transform>();
+                transform.setPosition(KapEngine::Tools::Vector3(20, 180, 0));
+                transform.setParent(btnObj);
+            }
+            menuCampaign->getComponent<MenuCampaign>().setButtonLevel1(btnObj);
+        }
 
-        compText->setPoliceSize(15);
+        posBtn = {380, 150, 0};
+        //create second button
+        {
+            auto btnObj = scene.createGameObject("ButtonLevel2");
 
-        txt->addComponent(compText);
-        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(400, 300, 0));
-        transform.setParent(canvas);
-    }
+            //set transform values
+            try {
+                auto& transform = btnObj->getComponent<KapEngine::Transform>();
+                transform.setPosition(posBtn);
+                transform.setScale(sizeBtn);
+                transform.setParent(canvas);
+            } catch (std::exception& e) {
+                KAP_DEBUG_ERROR(e.what());
+            } catch(...) {}
 
-    // Creation Description level 2
-    {
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Text DescriptionBis");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
-        auto compDateCampaign = std::make_shared<MenuCampaign>(txt, &engine);
+            auto button = KapEngine::UI::KapUiFactory::createButton(btnObj, "");
 
-        compText->setPoliceSize(15);
+            //set Title
+            {
+                auto txt = KapEngine::UI::UiFactory::createText(scene, "LevelName");
 
-        txt->addComponent(compText);
-        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(400, 330, 0));
-        transform.setParent(canvas);
-    }
+                auto &compText = txt->getComponent<KapEngine::UI::Text>();
+                compText.setPoliceSize(15);
+
+                auto &transform = txt->getComponent<KapEngine::Transform>();
+                transform.setPosition(KapEngine::Tools::Vector3(40, 110, 0));
+                transform.setParent(btnObj);
+            }
+            //set Author
+            {
+                auto txt = KapEngine::UI::UiFactory::createText(scene, "LevelAuthor");
+
+                auto &compText = txt->getComponent<KapEngine::UI::Text>();
+                compText.setPoliceSize(15);
+
+                auto &transform = txt->getComponent<KapEngine::Transform>();
+                transform.setPosition(KapEngine::Tools::Vector3(20, 150, 0));
+                transform.setParent(btnObj);
+            }
+            //set description
+            {
+                auto txt = KapEngine::UI::UiFactory::createText(scene, "LevelDescription");
+
+                auto &compText = txt->getComponent<KapEngine::UI::Text>();
+                compText.setPoliceSize(15);
+
+                auto &transform = txt->getComponent<KapEngine::Transform>();
+                transform.setPosition(KapEngine::Tools::Vector3(20, 180, 0));
+                transform.setParent(btnObj);
+            }
+
+            menuCampaign->getComponent<MenuCampaign>().setButtonLevel2(btnObj);
+        }
+    
+        //create button left
+        {
+            auto btn = scene.createGameObject("ButtonLeft");
+            auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+            auto& transform = btn->getComponent<KapEngine::Transform>();
+
+            btn->addComponent(btnComp);
+            btnComp->setText("");
+            btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+            btnComp->setTextPosition({75, 12});
+            btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+            transform.setPosition({20, 150, 0});
+            transform.setScale({40, 230, 0});
+            transform.setParent(canvas);
+
+            menuCampaign->getComponent<MenuCampaign>().setButtonLeft(btn);
+        }
+
+        //create button right
+        {
+            auto btn = scene.createGameObject("ButtonRight");
+            auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+            auto& transform = btn->getComponent<KapEngine::Transform>();
+
+            btn->addComponent(btnComp);
+            btnComp->setText("");
+            btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+            btnComp->setTextPosition({75, 12});
+            btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+            transform.setPosition({660, 150, 0});
+            transform.setScale({40, 230, 0});
+            transform.setParent(canvas);
+
+            menuCampaign->getComponent<MenuCampaign>().setButtonRight(btn);
+        }
+    #endif
 }

@@ -54,7 +54,7 @@ int Enemy::__destroy(lua_State* L) {
 
 int Enemy::__index(lua_State* L) {
     auto* enemy = (Enemy*)lua_touserdata(L, -2);
-    std::string index = lua_tostring(L, -1);
+    std::string index(lua_tostring(L, -1));
     if (index == "name") {
         lua_pushstring(L, enemy->name.c_str());
         return 1;
@@ -88,15 +88,15 @@ int Enemy::__index(lua_State* L) {
 }
 
 int Enemy::__newIndex(lua_State* L) {
-    auto* enemy = (Enemy*)lua_touserdata(L, -3);
-    std::string index = lua_tostring(L, -2);
+    auto* enemy = (Enemy*) lua_touserdata(L, -3);
+    std::string index(lua_tostring(L, -2));
     if (index == "name") {
-        std::string name = lua_tostring(L, -1);
+        std::string name(lua_tostring(L, -1));
         enemy->name = name;
         return 0;
     }
     if (index == "pathSprite") {
-        std::string pathSprite = lua_tostring(L, -1);
+        std::string pathSprite(lua_tostring(L, -1));
         enemy->pathSprite = pathSprite;
         return 0;
     }

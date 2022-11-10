@@ -45,7 +45,7 @@ void MapScript::executeScript(const std::string& script) {
 
     int doResult = luaL_dostring(L, script.c_str());
     if (doResult != LUA_OK) {
-        std::string error = lua_tostring(L, -1);
+        std::string error(lua_tostring(L, -1));
         lua_pop(L, 1);
         lua_close(L);
         throw LuaException("Something went wrong during execution: " + error);
@@ -64,7 +64,7 @@ void MapScript::initScript() {
     auto setMapName = [](lua_State* L) -> int {
         auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
 
-        std::string mapName = lua_tostring(L, 1);
+        std::string mapName(lua_tostring(L, 1));
         manager->_setMapName(mapName);
         return 0;
     };
@@ -72,7 +72,7 @@ void MapScript::initScript() {
     auto setMapAuthor = [](lua_State* L) -> int {
         auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
 
-        std::string mapAuthor = lua_tostring(L, 1);
+        std::string mapAuthor(lua_tostring(L, 1));
         manager->_setMapAuthor(mapAuthor);
         return 0;
     };
@@ -80,7 +80,7 @@ void MapScript::initScript() {
     auto setMapDescription = [](lua_State* L) -> int {
         auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
 
-        std::string mapDescription = lua_tostring(L, 1);
+        std::string mapDescription(lua_tostring(L, 1));
         manager->_setMapDescription(mapDescription);
         return 0;
     };
@@ -88,7 +88,7 @@ void MapScript::initScript() {
     auto setMapBannerPath = [](lua_State* L) -> int {
         auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
 
-        std::string path = lua_tostring(L, 1);
+        std::string path(lua_tostring(L, 1));
         manager->_setMapBannerPath(path);
         return 0;
     };
@@ -96,7 +96,7 @@ void MapScript::initScript() {
     auto spawnMapEnemy = [](lua_State* L) -> int {
         auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
 
-        std::string enemyName = lua_tostring(L, 1);
+        std::string enemyName(lua_tostring(L, 1));
         auto spawnTime = (int)lua_tonumber(L, 2);
         auto startPositionY = (float)lua_tonumber(L, 3);
         auto startPositionX = (float)lua_tonumber(L, 4);
@@ -158,11 +158,17 @@ void MapScript::verifScript() {
 }
 
 void MapScript::checkNewEnemy(Script::Enemy* enemy) {
+    if (enemy == nullptr) {
+        throw LuaException("Enemy reference is null");
+    }
     if (enemy->name.empty()) {
         throw LuaException("Enemy name is not set or empty");
     }
     if (enemy->pathSprite.empty()) {
         throw LuaException("Enemy sprite path is not set or empty");
+    }
+    if (enemy->rectangle == nullptr) {
+        throw LuaException("Enemy rectangle is null");
     }
     if (enemy->rectangle->w <= 0) {
         throw LuaException("Enemy width is not set or empty");

@@ -65,7 +65,7 @@ int Rectangle::__destroy(lua_State* L) {
 
 int Rectangle::__index(lua_State* L) {
     auto* rect = (Rectangle*)lua_touserdata(L, -2);
-    std::string index = lua_tostring(L, -1);
+    std::string index(lua_tostring(L, -1));
     if (index == "x") {
         lua_pushnumber(L, rect->x);
         return 1;
@@ -96,7 +96,7 @@ int Rectangle::__index(lua_State* L) {
 
 int Rectangle::__newIndex(lua_State* L) {
     auto* rect = (Rectangle*)lua_touserdata(L, -3);
-    std::string index = lua_tostring(L, -2);
+    std::string index(lua_tostring(L, -2));
     if (index == "x") {
         rect->x = (float)lua_tonumber(L, -1);
         return 0;

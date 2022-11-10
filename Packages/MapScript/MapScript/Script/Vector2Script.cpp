@@ -58,7 +58,7 @@ int Vector2::__destroy(lua_State* L) {
 
 int Vector2::__index(lua_State* L) {
     auto* vector2 = (Vector2*)lua_touserdata(L, -2);
-    std::string index = lua_tostring(L, -1);
+    std::string index(lua_tostring(L, -1));
     if (index == "x") {
         lua_pushnumber(L, vector2->x);
         return 1;
@@ -81,7 +81,7 @@ int Vector2::__index(lua_State* L) {
 
 int Vector2::__newIndex(lua_State* L) {
     auto* vector2 = (Vector2*)lua_touserdata(L, -3);
-    std::string index = lua_tostring(L, -2);
+    std::string index(lua_tostring(L, -2));
     if (index == "x") {
         vector2->x = (float)lua_tonumber(L, -1);
         return 0;

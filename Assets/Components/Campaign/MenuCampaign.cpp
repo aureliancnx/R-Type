@@ -156,10 +156,12 @@ void RType::MenuCampaign::foundDescription() {
         auto& txt = _txtDescription->getComponent<UI::Text>();
         txt.setText(_description[PlayerPrefs::getInt("campaignID")]);
         auto& txtBis = _txtDescriptionBis->getComponent<UI::Text>();
-        if ((PlayerPrefs::getInt("campaignID") + 1) > (_pathScript.size() - 1))
+        auto valCampaignId = PlayerPrefs::getInt("campaignID") + 1;
+        if (valCampaignId > (_pathScript.size() - 1)) {
             txtBis.setText(_description[0]);
-        else
-            txt.setText(_description[PlayerPrefs::getInt("campaignID") + 1]);
+        } else if (_description.size() > valCampaignId) {
+            txt.setText(_description[valCampaignId]);
+        }
     } catch (...) {}
 }
 
@@ -197,10 +199,11 @@ void RType::MenuCampaign::foundCreator() {
         auto& txt = _txtCreator->getComponent<UI::Text>();
         txt.setText(_creator[PlayerPrefs::getInt("campaignID")]);
         auto& txtBis = _txtCreatorBis->getComponent<UI::Text>();
-        if ((PlayerPrefs::getInt("campaignID") + 1) > (_pathScript.size() - 1))
+        auto valCampaignId = PlayerPrefs::getInt("campaignID") + 1;
+        if ((valCampaignId) > (_pathScript.size() - 1))
             txtBis.setText(_creator[0]);
-        else
-            txt.setText(_creator[PlayerPrefs::getInt("campaignID") + 1]);
+        else if (_creator.size() > valCampaignId)
+            txt.setText(_creator[valCampaignId]);
     } catch (...) {}
 }
 
@@ -238,10 +241,11 @@ void RType::MenuCampaign::foundName() {
         auto& txt = _txtName->getComponent<UI::Text>();
         txt.setText(_creator[PlayerPrefs::getInt("campaignID")]);
         auto& txtBis = _txtNameBis->getComponent<UI::Text>();
-        if ((PlayerPrefs::getInt("campaignID") + 1) > (_pathScript.size() - 1))
+        auto valCampaignId = PlayerPrefs::getInt("campaignID") + 1;
+        if ((valCampaignId) > (_pathScript.size() - 1))
             txtBis.setText(_creator[0]);
-        else
-            txt.setText(_creator[PlayerPrefs::getInt("campaignID") + 1]);
+        else if(_creator.size() > valCampaignId)
+            txt.setText(_creator[valCampaignId]);
     } catch (...) {}
 }
 
@@ -258,9 +262,10 @@ void RType::MenuCampaign::foundButton() {
     try {
         auto& button = objs2->getComponent<UI::Button>();
         _button2 = objs2;
-        if ((PlayerPrefs::getInt("campaignID") + 1) > (_pathScript.size() - 1))
+        auto valCampaignId = PlayerPrefs::getInt("campaignID") + 1;
+        if ((valCampaignId) > (_pathScript.size() - 1))
             button.setBackground(_img[0], {0, 0, 430, 433});
-        else
-            button.setBackground(_img[PlayerPrefs::getInt("campaignID") + 1], {0, 0, 430, 433});
+        else if (_img.size() > valCampaignId)
+            button.setBackground(_img[valCampaignId], {0, 0, 430, 433});
     } catch (...) {}
 }

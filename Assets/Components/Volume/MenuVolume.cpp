@@ -9,6 +9,7 @@ RType::MenuVolume::~MenuVolume() {}
 void RType::MenuVolume::onAwake() {
     _type.push_back("On");
     _type.push_back("Off");
+
     foundText();
 }
 
@@ -23,9 +24,13 @@ void RType::MenuVolume::onUpdate() {
 
     int nId = 0;
 
-    if (PlayerPrefs::getString("volumeValue") == "") {
+    if (PlayerPrefs::getString("volumeValue").empty()) {
         PlayerPrefs::setInt("volumeValue", 50);
         nId = 50;
+        getGameObject().getEngine().getGraphicalLibManager()->getCurrentLib()->setMusicVolume(
+            (float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
+        getGameObject().getEngine().getGraphicalLibManager()->getCurrentLib()->setSoundVolume(
+            (float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
     } else {
         nId = PlayerPrefs::getInt("volumeValue");
     }

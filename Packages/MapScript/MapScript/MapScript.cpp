@@ -312,12 +312,12 @@ void MapScript::closeScript() {
         return;
     }
 
-    lua_close(L);
+    /*lua_close(L);
     destroyPrefabEnemies();
 
     spawnEnemies.clear();
 
-    L = nullptr;
+    L = nullptr;*/
 }
 
 void MapScript::destroyPrefabEnemies() {

@@ -25,6 +25,7 @@ void RType::MenuVolume::onUpdate() {
 
     if (PlayerPrefs::getString("volumeValue") == "") {
         PlayerPrefs::setInt("volumeValue", 50);
+        nId = 50;
     } else {
         nId = PlayerPrefs::getInt("volumeValue");
     }

@@ -26,9 +26,7 @@ namespace KapEngine {
 
     LobbyManager::~LobbyManager() = default;
 
-    void LobbyManager::onStart() {
-        initLobby();
-    }
+    void LobbyManager::onStart() { initLobby(); }
 
     void LobbyManager::initBackground(std::shared_ptr<KapEngine::GameObject> parent) {
         auto background = parent->getScene().createGameObject("Background");

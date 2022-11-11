@@ -56,7 +56,7 @@ namespace RType {
             auto& transform = getImage("Ship").getTransform();
             transform.setPosition(getResetPosition("Ship"));
         }
-        
+
         {
             auto& transform = getImage("Bullet").getTransform();
             transform.setPosition(getResetPosition("Bullet"));
@@ -66,12 +66,12 @@ namespace RType {
             auto& transform = getImage("Bouboule").getTransform();
             transform.setPosition(getResetPosition("Bouboule"));
         }
-        
+
         {
             auto& transform = getImage("Bouboule2").getTransform();
             transform.setPosition(getResetPosition("Bouboule2"));
         }
-        
+
         {
             auto& transform = getImage("Explosion").getTransform();
             transform.setPosition(getResetPosition("Explosion"));
@@ -92,7 +92,7 @@ namespace RType {
 
         auto& transform = getImage("Bouboule2").getTransform();
         auto pos_Y = transform.getWorldPosition().getY();
-        auto pos_X  = transform.getWorldPosition().getX();
+        auto pos_X = transform.getWorldPosition().getX();
 
         if (_explosionInvert == false && getGameObject("Explosion")->isActive() == true) {
             getGameObject("Bouboule2")->setActive(false);
@@ -108,7 +108,7 @@ namespace RType {
             if (pos_X >= 490 && pos_Y < 200)
                 transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(3.5f, 3.5f, 0));
             else
-                transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(-3.5f, 3.5f, 0)); 
+                transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(-3.5f, 3.5f, 0));
         }
 
         if (pos_Y > 300)
@@ -123,7 +123,7 @@ namespace RType {
 
         auto& transform = getImage("Bouboule").getTransform();
         auto posY = transform.getWorldPosition().getY();
-        auto posX  = transform.getWorldPosition().getX();
+        auto posX = transform.getWorldPosition().getX();
 
         if (_nbShoot == 2 && _explosionInvert2 == false && getGameObject("Explosion")->isActive() == true) {
             onResetAnim();
@@ -139,7 +139,7 @@ namespace RType {
             if (posX > 500 && posY < 200)
                 transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(-3.24f, 3.24f, 0));
             else
-                transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(3.24f, 3.24f, 0)); 
+                transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(3.24f, 3.24f, 0));
         }
 
         if (posY > 300)
@@ -214,37 +214,41 @@ namespace RType {
             getGameObject("Explosion")->setActive(true);
             transform.setPosition(KapEngine::Tools::Vector3(520.0f, 150.0f, 0));
             _explosionInvert2 = false;
-        } 
+        }
     }
 
-    void HowToPlayAnimation::setNbAnimations(std::string name, int nb) { _allGameObject.at(name)->getComponent<SpriteAnimation>().setNbAnimations(nb); }
+    void HowToPlayAnimation::setNbAnimations(std::string name, int nb) {
+        _allGameObject.at(name)->getComponent<SpriteAnimation>().setNbAnimations(nb);
+    }
 
-    void HowToPlayAnimation::addSpriteAnimation(std::string name, std::shared_ptr<KapEngine::GameObject> gameObject) { _allGameObject.insert(std::make_pair(name, gameObject)); }
+    void HowToPlayAnimation::addSpriteAnimation(std::string name, std::shared_ptr<KapEngine::GameObject> gameObject) {
+        _allGameObject.insert(std::make_pair(name, gameObject));
+    }
 
     void HowToPlayAnimation::setRect(std::string name, Tools::Rectangle rect) {
         if (_rect.find(name) == _rect.end())
             _rect.insert(std::make_pair(name, rect));
         else
-            _rect.at(name) = rect; 
+            _rect.at(name) = rect;
     }
 
     void HowToPlayAnimation::setResetPosition(std::string name, KapEngine::Tools::Vector3 position) {
         if (_allGoResetPosition.find(name) == _allGoResetPosition.end())
             _allGoResetPosition.insert(std::make_pair(name, position));
         else
-            _allGoResetPosition.at(name) = position; 
+            _allGoResetPosition.at(name) = position;
     }
 
     KapEngine::Tools::Vector3 HowToPlayAnimation::getResetPosition(std::string name) {
         try {
-            return (_allGoResetPosition.at(name)); 
+            return (_allGoResetPosition.at(name));
         } catch (...) { Debug::error("Failed to get position of  " + _allGameObject.at(name)->getName()); }
         throw Errors::ComponentError("Failed to get position of ");
     }
 
     KapEngine::Tools::Rectangle HowToPlayAnimation::getRect(std::string name) {
         try {
-            return (_rect.at(name)); 
+            return (_rect.at(name));
         } catch (...) { Debug::error("Failed to get rect of  " + _allGameObject.at(name)->getName()); }
         throw Errors::ComponentError("Failed to get rect of ");
     }
@@ -256,7 +260,7 @@ namespace RType {
         throw Errors::ComponentError("Failed to get image of ");
     }
 
-   SpriteAnimation& HowToPlayAnimation::getSpriteAnimation(std::string name) {
+    SpriteAnimation& HowToPlayAnimation::getSpriteAnimation(std::string name) {
         try {
             return _allGameObject.at(name)->getComponent<SpriteAnimation>();
         } catch (...) { Debug::error("Failed to get SpriteAnimation of  " + _allGameObject.at(name)->getName()); }

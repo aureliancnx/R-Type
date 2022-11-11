@@ -80,8 +80,7 @@ void RType::HowToPlayMenu::init() {
     initFightAnimation();
 }
 
-void RType::HowToPlayMenu::initFightAnimation()
-{
+void RType::HowToPlayMenu::initFightAnimation() {
     auto fight = scene.createGameObject("Fight");
 
     try {
@@ -95,7 +94,7 @@ void RType::HowToPlayMenu::initFightAnimation()
     auto bouboule2 = KapEngine::UI::UiFactory::createImage(scene, "Bouboule2");
     auto explosion = KapEngine::UI::UiFactory::createImage(scene, "Explosion");
 
-    //create ship image
+    // create ship image
     try {
         auto& imageComp = ship->getComponent<KapEngine::UI::Image>();
         imageComp.setPathSprite("Assets/Textures/Ship/ship_1.png");
@@ -107,7 +106,7 @@ void RType::HowToPlayMenu::initFightAnimation()
         transform.setParent(fight);
     } catch (...) { KAP_DEBUG_ERROR("Failed to set ship img"); }
 
-    //create bullet image
+    // create bullet image
     try {
         auto& imageComp = bullet->getComponent<KapEngine::UI::Image>();
         imageComp.setPathSprite("Assets/Textures/Bullet/bullet_1.png");
@@ -119,7 +118,7 @@ void RType::HowToPlayMenu::initFightAnimation()
         transform.setParent(fight);
     } catch (...) { KAP_DEBUG_ERROR("Failed to set bullet img"); }
 
-    //create bouboule enemy image
+    // create bouboule enemy image
     try {
         auto& imageComp = bouboule->getComponent<KapEngine::UI::Image>();
         imageComp.setPathSprite("Assets/Textures/bubulle.png");
@@ -131,7 +130,7 @@ void RType::HowToPlayMenu::initFightAnimation()
         transform.setParent(fight);
     } catch (...) { KAP_DEBUG_ERROR("Failed to set bouboule img"); }
 
-    //create second bouboule enemy image
+    // create second bouboule enemy image
     try {
         auto& imageComp = bouboule2->getComponent<KapEngine::UI::Image>();
         imageComp.setPathSprite("Assets/Textures/bubulle.png");
@@ -143,7 +142,7 @@ void RType::HowToPlayMenu::initFightAnimation()
         transform.setParent(fight);
     } catch (...) { KAP_DEBUG_ERROR("Failed to set bouboule2 img"); }
 
-    //create explosion image
+    // create explosion image
     try {
         auto& imageComp = explosion->getComponent<KapEngine::UI::Image>();
         imageComp.setPathSprite("Assets/Textures/Explosion/wills_pixel_explosions_sample/round_explosion/spritesheet/spritesheet.png");
@@ -155,7 +154,7 @@ void RType::HowToPlayMenu::initFightAnimation()
         transform.setParent(fight);
     } catch (...) { KAP_DEBUG_ERROR("Failed to set explosion img"); }
 
-    //create ship sprite animation
+    // create ship sprite animation
     try {
         auto shipIdle = std::make_shared<SpriteAnimation>(ship);
         ship->addComponent(shipIdle);
@@ -199,7 +198,7 @@ void RType::HowToPlayMenu::initFightAnimation()
         animator->addLink("UpToIdle", "IdleToDown", "UpToDown");
     } catch (...) { KAP_DEBUG_ERROR("Failed to set shipAnimation img"); }
 
-    //create bouboule sprite animation
+    // create bouboule sprite animation
     try {
         auto boubouleAnimation = std::make_shared<SpriteAnimation>(bouboule);
         KapEngine::Time::ETime timer;
@@ -216,7 +215,7 @@ void RType::HowToPlayMenu::initFightAnimation()
         animator->addLink("Idle", "Idle");
     } catch (...) { KAP_DEBUG_ERROR("Failed to set boubouleAnimation img"); }
 
-    //create second bouboule sprite animation
+    // create second bouboule sprite animation
     try {
         auto boubouleAnimation = std::make_shared<SpriteAnimation>(bouboule2);
         KapEngine::Time::ETime timer;
@@ -233,7 +232,7 @@ void RType::HowToPlayMenu::initFightAnimation()
         animator->addLink("Idle", "Idle");
     } catch (...) { KAP_DEBUG_ERROR("Failed to set boubouleAnimation 2 img"); }
 
-    //create bullet sprite animation
+    // create bullet sprite animation
     try {
         auto bulletAnimation = std::make_shared<SpriteAnimation>(bullet);
         bullet->addComponent(bulletAnimation);
@@ -252,7 +251,7 @@ void RType::HowToPlayMenu::initFightAnimation()
         bullet->setActive(false);
     } catch (...) { KAP_DEBUG_ERROR("Failed to set bulletAnimation img"); }
 
-    //create explosion sprite animation
+    // create explosion sprite animation
     try {
         auto explosionAnimation = std::make_shared<SpriteAnimation>(explosion);
         float totalTimeAnim = 5.5f;
@@ -271,7 +270,7 @@ void RType::HowToPlayMenu::initFightAnimation()
         explosion->setActive(false);
     } catch (...) { KAP_DEBUG_ERROR("Failed to set explosionAnimation img"); }
 
-    //init fight animation
+    // init fight animation
     auto fightAnim = std::make_shared<HowToPlayAnimation>("Bouboule", bouboule);
     fightAnim->addSpriteAnimation("Bouboule", bouboule);
     fightAnim->setRect("Bouboule", {0, 0, 17, 18});
@@ -294,20 +293,18 @@ void RType::HowToPlayMenu::initFightAnimation()
     fight->addComponent(fightAnim);
 }
 
-void RType::HowToPlayMenu::initKeyboardKeyDisplay()
-{
+void RType::HowToPlayMenu::initKeyboardKeyDisplay() {
     initKeyboardKeyBackground();
     initKeyboardActions();
     initKeyboardInput();
 }
 
-void RType::HowToPlayMenu::initKeyboardKeyBackground()
-{
+void RType::HowToPlayMenu::initKeyboardKeyBackground() {
     // create background for Move Up
     {
         auto img = KapEngine::UI::UiFactory::createImage(scene, "Key Move Up Background");
         try {
-            auto &imageComp = img->getComponent<KapEngine::UI::Image>();
+            auto& imageComp = img->getComponent<KapEngine::UI::Image>();
             imageComp.setPathSprite("Assets/Textures/button.png");
             imageComp.setRectangle({5, 9, 655, 213});
 
@@ -315,16 +312,14 @@ void RType::HowToPlayMenu::initKeyboardKeyBackground()
             transform.setPosition(KapEngine::Tools::Vector3(25, 87, 0));
             transform.setScale({110, 40, 0});
             transform.setParent(canvas);
-        } catch (...) {
-            KAP_DEBUG_ERROR("Failed to set keyboard up key img");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to set keyboard up key img"); }
     }
 
     // create background for Move Down
     {
         auto img = KapEngine::UI::UiFactory::createImage(scene, "Key Move Down Background");
         try {
-            auto &imageComp = img->getComponent<KapEngine::UI::Image>();
+            auto& imageComp = img->getComponent<KapEngine::UI::Image>();
             imageComp.setPathSprite("Assets/Textures/button.png");
             imageComp.setRectangle({5, 9, 655, 213});
 
@@ -332,16 +327,14 @@ void RType::HowToPlayMenu::initKeyboardKeyBackground()
             transform.setPosition(KapEngine::Tools::Vector3(25, 137, 0));
             transform.setScale({110, 40, 0});
             transform.setParent(canvas);
-        } catch (...) {
-            KAP_DEBUG_ERROR("Failed to set keyboard down key img");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to set keyboard down key img"); }
     }
 
     // create background for Move Left
     {
         auto img = KapEngine::UI::UiFactory::createImage(scene, "Key Move Left Background");
         try {
-            auto &imageComp = img->getComponent<KapEngine::UI::Image>();
+            auto& imageComp = img->getComponent<KapEngine::UI::Image>();
             imageComp.setPathSprite("Assets/Textures/button.png");
             imageComp.setRectangle({5, 9, 655, 213});
 
@@ -349,16 +342,14 @@ void RType::HowToPlayMenu::initKeyboardKeyBackground()
             transform.setPosition(KapEngine::Tools::Vector3(25, 187, 0));
             transform.setScale({110, 40, 0});
             transform.setParent(canvas);
-        } catch (...) {
-            KAP_DEBUG_ERROR("Failed to set keyboard left key img");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to set keyboard left key img"); }
     }
 
     // create background for Move Right
     {
         auto img = KapEngine::UI::UiFactory::createImage(scene, "Key Move Right Background");
         try {
-            auto &imageComp = img->getComponent<KapEngine::UI::Image>();
+            auto& imageComp = img->getComponent<KapEngine::UI::Image>();
             imageComp.setPathSprite("Assets/Textures/button.png");
             imageComp.setRectangle({5, 9, 655, 213});
 
@@ -366,16 +357,14 @@ void RType::HowToPlayMenu::initKeyboardKeyBackground()
             transform.setPosition(KapEngine::Tools::Vector3(25, 237, 0));
             transform.setScale({110, 40, 0});
             transform.setParent(canvas);
-        } catch (...) {
-            KAP_DEBUG_ERROR("Failed to set keyboard right key img");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to set keyboard right key img"); }
     }
 
     // create background for Move Shoot
     {
         auto img = KapEngine::UI::UiFactory::createImage(scene, "Key Move Shoot Background");
         try {
-            auto &imageComp = img->getComponent<KapEngine::UI::Image>();
+            auto& imageComp = img->getComponent<KapEngine::UI::Image>();
             imageComp.setPathSprite("Assets/Textures/button.png");
             imageComp.setRectangle({5, 9, 655, 213});
 
@@ -383,19 +372,16 @@ void RType::HowToPlayMenu::initKeyboardKeyBackground()
             transform.setPosition(KapEngine::Tools::Vector3(25, 287, 0));
             transform.setScale({110, 40, 0});
             transform.setParent(canvas);
-        } catch (...) {
-            KAP_DEBUG_ERROR("Failed to set keyboard shoot key img");
-        }
+        } catch (...) { KAP_DEBUG_ERROR("Failed to set keyboard shoot key img"); }
     }
 }
 
-void RType::HowToPlayMenu::initKeyboardActions()
-{
+void RType::HowToPlayMenu::initKeyboardActions() {
     // create text for Move Up
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Move Up");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Move Up");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -452,20 +438,19 @@ void RType::HowToPlayMenu::initKeyboardActions()
     }
 }
 
-void RType::HowToPlayMenu::initKeyboardInput()
-{
+void RType::HowToPlayMenu::initKeyboardInput() {
     // create text keyboard for Move Up
     {
         std::string inputUp = "UNDEFINED";
         int value = KapEngine::PlayerPrefs::getInt("upInput");
         if (KapEngine::Events::Key::intInEnum(value)) {
             KapEngine::Events::Key inputKey;
-            inputKey = (KapEngine::Events::Key::EKey)value;
+            inputKey = (KapEngine::Events::Key::EKey) value;
             inputUp = inputKey.toString();
         }
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move up");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, inputUp);
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -479,12 +464,12 @@ void RType::HowToPlayMenu::initKeyboardInput()
         int value = KapEngine::PlayerPrefs::getInt("downInput");
         if (KapEngine::Events::Key::intInEnum(value)) {
             KapEngine::Events::Key inputKey;
-            inputKey = (KapEngine::Events::Key::EKey)value;
+            inputKey = (KapEngine::Events::Key::EKey) value;
             inputDown = inputKey.toString();
         }
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move Down");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, inputDown);
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -498,12 +483,12 @@ void RType::HowToPlayMenu::initKeyboardInput()
         int value = KapEngine::PlayerPrefs::getInt("leftInput");
         if (KapEngine::Events::Key::intInEnum(value)) {
             KapEngine::Events::Key inputKey;
-            inputKey = (KapEngine::Events::Key::EKey)value;
+            inputKey = (KapEngine::Events::Key::EKey) value;
             inputLeft = inputKey.toString();
         }
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move Left");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, inputLeft);
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -517,12 +502,12 @@ void RType::HowToPlayMenu::initKeyboardInput()
         int value = KapEngine::PlayerPrefs::getInt("rightInput");
         if (KapEngine::Events::Key::intInEnum(value)) {
             KapEngine::Events::Key inputKey;
-            inputKey = (KapEngine::Events::Key::EKey)value;
+            inputKey = (KapEngine::Events::Key::EKey) value;
             inputRight = inputKey.toString();
         }
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move Right");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, inputRight);
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -530,18 +515,18 @@ void RType::HowToPlayMenu::initKeyboardInput()
         transform.setParent(canvas);
     }
 
-    //create text keyboard for Shoot
+    // create text keyboard for Shoot
     {
         std::string inputShoot = "UNDEFINED";
         int value = KapEngine::PlayerPrefs::getInt("shootInput");
         if (KapEngine::Events::Key::intInEnum(value)) {
             KapEngine::Events::Key inputKey;
-            inputKey = (KapEngine::Events::Key::EKey)value;
+            inputKey = (KapEngine::Events::Key::EKey) value;
             inputShoot = inputKey.toString();
         }
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move Shoot");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, inputShoot);
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));

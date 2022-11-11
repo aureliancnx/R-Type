@@ -18,6 +18,8 @@ namespace RType {
         std::shared_ptr<KapEngine::GameObject> textSentPacketsPerSec;
         std::shared_ptr<KapEngine::GameObject> textReceivedBytes;
         std::shared_ptr<KapEngine::GameObject> textSentBytes;
+        std::shared_ptr<KapEngine::GameObject> textReceivedBytesPerSecond;
+        std::shared_ptr<KapEngine::GameObject> textSentBytesPerSecond;
 
       public:
         explicit NetStatViewer(std::shared_ptr<KapEngine::GameObject> _gameObject);

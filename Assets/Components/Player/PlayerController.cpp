@@ -252,7 +252,7 @@ void PlayerController::takeDamage(int damage) {
 
     if (isClient() || isLocal()) {
         if (menuManager.use_count() > 0) {
-            menuManager->addLife();
+            menuManager->removeLife();
         }
     }
 }

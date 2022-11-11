@@ -186,7 +186,24 @@ void NetStatViewer::onFixedUpdate() {
     }
     {
         auto& text = textPing->getComponent<KapEngine::UI::Text>();
-        text.setText("Ping: " + std::to_string(getPing()) + " ms");
+        text.setText("Ping: " + std::to_string(ping) + " ms");
+
+        KapEngine::Tools::Color color;
+        // Thanks FlatUIColors
+        if (ping < 30) {
+            color = KapEngine::Tools::Color(0, 184, 148);
+        }else if (ping < 30) {
+            color = KapEngine::Tools::Color(85, 239, 196);
+        }else if (ping < 70) {
+            color = KapEngine::Tools::Color(116, 185, 255);
+        }else if (ping < 100) {
+            color = KapEngine::Tools::Color(255, 234, 167);
+        }else if (ping < 150) {
+            color = KapEngine::Tools::Color(253, 203, 110);
+        }else{
+            color = KapEngine::Tools::Color(214, 48, 49);
+        }
+        text.setTextColor(color);
     }
 }
 

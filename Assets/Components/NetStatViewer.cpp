@@ -5,11 +5,7 @@
 
 using namespace RType;
 
-NetStatViewer::NetStatViewer(std::shared_ptr<KapEngine::GameObject> _gameObject,
-                             std::shared_ptr<KapMirror::Experimental::NetworkStatistics> _statObject)
-    : KapEngine::Component(_gameObject, "NetStatViewer") {
-    statObject = _statObject;
-}
+NetStatViewer::NetStatViewer(std::shared_ptr<KapEngine::GameObject> _gameObject) : KapEngine::Component(_gameObject, "NetStatViewer") {}
 
 void NetStatViewer::onAwake() {
     auto canvas = KapEngine::UI::UiFactory::createCanvas(getGameObject().getScene(), "Canvas NetStatViewer");
@@ -95,35 +91,37 @@ void NetStatViewer::onFixedUpdate() {
     bool active = GameManager::getInstance()->hasDebugMode();
     lastRefreshTime = KapMirror::NetworkTime::localTime();
 
+    auto& networkStatistics = getGameObject().getComponent<KapMirror::Experimental::NetworkStatistics>();
+
     // Update texts
     {
         auto& text = textReceivedPackets->getComponent<KapEngine::UI::Text>();
-        text.setText("Packets received: " + std::to_string(statObject->clientIntervalReceivedPackets));
+        text.setText("Packets received: " + std::to_string(networkStatistics.clientIntervalReceivedPackets));
         textReceivedPackets->setActive(active);
     }
     {
         auto& text = textSentPackets->getComponent<KapEngine::UI::Text>();
-        text.setText("Packets sent: " + std::to_string(statObject->clientIntervalSentPackets));
+        text.setText("Packets sent: " + std::to_string(networkStatistics.clientIntervalSentPackets));
         textSentPackets->setActive(active);
     }
     {
         auto& text = textReceivedPacketsPerSec->getComponent<KapEngine::UI::Text>();
-        text.setText("Packet/s received: " + std::to_string(statObject->clientReceivedPacketsPerSecond));
+        text.setText("Packet/s received: " + std::to_string(networkStatistics.clientReceivedPacketsPerSecond));
         textReceivedPacketsPerSec->setActive(active);
     }
     {
         auto& text = textSentPacketsPerSec->getComponent<KapEngine::UI::Text>();
-        text.setText("Packet/s sent: " + std::to_string(statObject->clientSentPacketsPerSecond));
+        text.setText("Packet/s sent: " + std::to_string(networkStatistics.clientSentPacketsPerSecond));
         textSentPacketsPerSec->setActive(active);
     }
     {
         auto& text = textReceivedBytes->getComponent<KapEngine::UI::Text>();
-        text.setText("Bytes received: " + std::to_string(statObject->clientIntervalReceivedBytes));
+        text.setText("Bytes received: " + std::to_string(networkStatistics.clientIntervalReceivedBytes));
         textReceivedBytes->setActive(active);
     }
     {
         auto& text = textSentBytes->getComponent<KapEngine::UI::Text>();
-        text.setText("Bytes sent: " + std::to_string(statObject->clientIntervalSentBytes));
+        text.setText("Bytes sent: " + std::to_string(networkStatistics.clientIntervalSentBytes));
         textSentBytes->setActive(active);
     }
 }

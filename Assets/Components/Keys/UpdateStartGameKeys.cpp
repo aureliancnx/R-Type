@@ -3,9 +3,8 @@
 using namespace RType;
 
 UpdateStartGameKeys::UpdateStartGameKeys(std::shared_ptr<KapEngine::GameObject> go)
-    : Component(go, "UpdateStartGameKeys"), _baseAxisHor("basicHorizontal"),
-    _baseAxisVert("basicVertical"), _baseAxisShoot("basicShoot"),
-    _baseAxisDebug("basicDebug") {
+    : Component(go, "UpdateStartGameKeys"), _baseAxisHor("basicHorizontal"), _baseAxisVert("basicVertical"), _baseAxisShoot("basicShoot"),
+      _baseAxisDebug("basicDebug") {
 
     _baseAxisHor.positiveButton = KapEngine::Events::Key::RIGHT;
     _baseAxisHor.negativeButton = KapEngine::Events::Key::LEFT;
@@ -64,6 +63,6 @@ bool UpdateStartGameKeys::setValueSaved(std::string const& name, KapEngine::Even
     int val = KapEngine::PlayerPrefs::getInt(name);
     if (!KapEngine::Events::Key::intInEnum(val))
         return false;
-    key = (KapEngine::Events::Key::EKey) val;
+    key = (KapEngine::Events::Key::EKey)val;
     return true;
 }

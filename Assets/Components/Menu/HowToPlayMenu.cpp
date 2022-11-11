@@ -109,31 +109,14 @@ void RType::HowToPlayMenu::init() {
 
         try {
             auto& imageComp = bubulle->getComponent<KapEngine::UI::Image>();
-            imageComp.setPathSprite("Assets/Textures/bubulle.png");
+            imageComp.setPathSprite("Assets/Textures/Enemy/enemy_1.png");
             imageComp.setRectangle({0, 0, 17, 18});
 
             auto& transform = bubulle->getComponent<KapEngine::Transform>();
             transform.setPosition(KapEngine::Tools::Vector3(600, 200, 0));
             transform.setScale({40, 40});
             transform.setParent(fight);
-        } catch (...) { KAP_DEBUG_ERROR("Failed to set bubulle img"); }
-
-        // try {
-        //     ship->getComponent<KapEngine::UI::Image>();
-        //     KAP_DEBUG_WARNING("SUCCESS");
-        // } catch (...) {
-        //     KAP_DEBUG_ERROR("Failed to set bubulle img");
-        // }
-
-        // fight animation
-        //  auto shipAnimation = std::make_shared<SpriteAnimation>(ship, 5, (KapEngine::Tools::Rectangle){0, 0, 263, 116}, 1);
-        //  auto bulletAnimation = std::make_shared<HowToPlayAnimation>(bullet);
-        //  auto bubulleAnimation = std::make_shared<HowToPlayAnimation>(bubulle);
-        //  auto explosionAnimation = std::make_shared<HowToPlayAnimation>(explosion);
-        //  fight->addComponent(shipAnimation);
-        //  fight->addComponent(bulletAnimation);
-        //  fight->addComponent(bubulleAnimation);
-        //  fight->addComponent(explosionAnimation);
+        } catch (...) { KAP_DEBUG_ERROR("Failed to set enemy_1 img"); }
 
         // fight animation
         {

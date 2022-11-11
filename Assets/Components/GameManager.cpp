@@ -158,8 +158,6 @@ void RType::GameManager::initSinglePlayer() {
 
     auto campaignManager = std::make_shared<CampaignManager>(gameMenu);
     gameMenu->addComponent(campaignManager);
-    // TODO: Fix animation (move animation)
-    // https://github.com/aureliancnx/R-Type/blob/ae652adfdf49c702bd8513c27b8bef6dcfeaebc2/Assets/Components/GameManager.cpp#L84
 }
 
 // TODO: Move this to a dedicated class
@@ -196,11 +194,12 @@ void RType::GameManager::initMultiPlayer(bool isServer) {
             return;
         }
 
-        auto networkStatistics = std::make_shared<KapMirror::Experimental::NetworkStatistics>(networkManagerObject);
-
         auto netstatObject = scene->createGameObject("NetStatViewer");
-        std::shared_ptr<NetStatViewer> netstat = std::make_shared<NetStatViewer>(netstatObject, networkStatistics);
-        // netstatObject->addComponent(networkStatistics);
+
+        auto networkStatistics = std::make_shared<KapMirror::Experimental::NetworkStatistics>(networkManagerObject);
+        netstatObject->addComponent(networkStatistics);
+
+        auto netstat = std::make_shared<NetStatViewer>(netstatObject);
         netstatObject->addComponent(netstat);
     }
 }
@@ -238,14 +237,12 @@ void RType::GameManager::toggleDebugMode() {
 
     if (debugMode) {
         KAP_DEBUG_LOG("Debug mode enabled.");
-    }else{
+    } else {
         KAP_DEBUG_LOG("Debug mode disabled.");
     }
 }
 
-bool RType::GameManager::hasDebugMode() {
-    return debugMode;
-}
+bool RType::GameManager::hasDebugMode() { return debugMode; }
 
 void RType::GameManager::initAxis() {
     KapEngine::Events::Input::Axis horizontal("Horizontal");

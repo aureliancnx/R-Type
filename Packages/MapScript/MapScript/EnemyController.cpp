@@ -45,12 +45,12 @@ void EnemyController::onSceneUpdated() {
                 if (isLocal()) {
                     getGameObject().destroy();
                 } else {
-                    getServer()->destroyObject(getGameObject().getScene().getGameObject(getGameObject().getId()));
+                    getServer()->destroyObject(getScene().getGameObject(getGameObject().getId()));
                 }
             }
             if (isLocal()) {
                 std::shared_ptr<KapEngine::GameObject> explosion;
-                if (getGameObject().getEngine().getPrefabManager()->instantiatePrefab("BulletExplode", getGameObject().getScene(),
+                if (getEngine().getPrefabManager()->instantiatePrefab("BulletExplode", getScene(),
                                                                                       explosion)) {
                     explosion->getComponent<KapEngine::Transform>().setPosition(
                         other->getComponent<KapEngine::Transform>().getWorldPosition());
@@ -67,12 +67,12 @@ void EnemyController::onSceneUpdated() {
                 if (isLocal()) {
                     getGameObject().destroy();
                 } else {
-                    getServer()->destroyObject(getGameObject().getScene().getGameObject(getGameObject().getId()));
+                    getServer()->destroyObject(getScene().getGameObject(getGameObject().getId()));
                 }
             }
             if (isLocal()) {
                 std::shared_ptr<KapEngine::GameObject> explosion;
-                if (getGameObject().getEngine().getPrefabManager()->instantiatePrefab("MissileExplode", getGameObject().getScene(),
+                if (getEngine().getPrefabManager()->instantiatePrefab("MissileExplode", getScene(),
                                                                                       explosion)) {
                     explosion->getComponent<KapEngine::Transform>().setPosition(
                         other->getComponent<KapEngine::Transform>().getWorldPosition());

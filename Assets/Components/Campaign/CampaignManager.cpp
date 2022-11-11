@@ -21,10 +21,10 @@ void RType::CampaignManager::onAwake() {
     }
     if (path == "") {
         DEBUG_ERROR("No campaign path found");
-        getGameObject().getEngine().getSceneManager()->loadScene(1);
+        getEngine().getSceneManager()->loadScene(1);
         return;
     }
-    _mapScript = std::make_shared<MapScript>(&getGameObject().getEngine());
+    _mapScript = std::make_shared<MapScript>(&getEngine());
     _mapScript->loadScript(path);
     _enemies = _mapScript->getSpawnedEnemies();
     _clock.restart();
@@ -34,7 +34,7 @@ void RType::CampaignManager::onAwake() {
 void RType::CampaignManager::onFixedUpdate() {
     // if (_enemies.empty()) {
     //     KAP_DEBUG_LOG("No more enemies");
-    //     getGameObject().getEngine().getSceneManager()->loadScene(1);
+    //     getEngine().getSceneManager()->loadScene(1);
     //     return;
     // }
     auto time = _clock.getElapseTime();

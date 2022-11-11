@@ -49,14 +49,14 @@ void RType::ChangeKey::displayInputs() {
     std::shared_ptr<GameObject> go;
     std::shared_ptr<GameObject> goS;
     try {
-        go = getGameObject().getScene().getGameObject(_idInput);
+        go = getScene().getGameObject(_idInput);
     } catch (...) {
         DEBUG_ERROR("Failed to get GameObject for selected inputs");
         return;
     }
 
     try {
-        goS = getGameObject().getScene().getGameObject(_idSettings);
+        goS = getScene().getGameObject(_idSettings);
     } catch (...) {
         DEBUG_ERROR("Failed to get GameObject for selected settings");
         return;
@@ -70,14 +70,14 @@ void RType::ChangeKey::displaySettings() {
     std::shared_ptr<GameObject> go;
     std::shared_ptr<GameObject> goS;
     try {
-        go = getGameObject().getScene().getGameObject(_idInput);
+        go = getScene().getGameObject(_idInput);
     } catch (...) {
         DEBUG_ERROR("Failed to get GameObject for selected inputs");
         return;
     }
 
     try {
-        goS = getGameObject().getScene().getGameObject(_idSettings);
+        goS = getScene().getGameObject(_idSettings);
     } catch (...) {
         DEBUG_ERROR("Failed to get GameObject for selected settings");
         return;

@@ -75,6 +75,5 @@ void NetStatViewer::onFixedUpdate() {
             auto &text = textSentPacketsPerSec->getComponent<KapEngine::UI::Text>();
             text.setText("Packet/s sent: " + std::to_string(statObject->clientSentPacketsPerSecond));
         }
-        // TODO
     }
 }

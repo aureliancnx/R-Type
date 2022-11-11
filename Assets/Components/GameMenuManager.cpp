@@ -255,3 +255,9 @@ void RType::GameMenuManager::addLife() {
         return;
     _life++;
 }
+
+void RType::GameMenuManager::removeLife() {
+    if (_life <= 0)
+        return;
+    _life--;
+}

@@ -23,8 +23,6 @@ namespace RType {
         moveBouboule();
         moveBouboule2();
         moveExplosion();
-        if (_gameOver)
-            onResetAnim();
     }
 
     void HowToPlayAnimation::onResetAnim() {
@@ -43,7 +41,6 @@ namespace RType {
         _bulletReset = false;
         _nbShoot = 0;
         _canShoot = true;
-        _gameOver = false;
     }
 
     void HowToPlayAnimation::onResetRect() {
@@ -128,14 +125,13 @@ namespace RType {
             return;
 
         auto& transform = getImage("Bouboule").getTransform();
-        // KAP_DEBUG_WARNING(" BOUBOULE X : " + std::to_string(transform.getWorldPosition().getX()) + " Y : " + std::to_string(transform.getWorldPosition().getY()));
         auto pos_Y = transform.getWorldPosition().getY();
         auto pos_X  = transform.getWorldPosition().getX();
 
-        // if (_nbShoot == 2 && _explosionInvert2 == false && getGameObject("Explosion")->isActive() == true) {
-        //     getGameObject("Bouboule")->setActive(false);
-        //     return;
-        // }
+        if (_nbShoot == 2 && _explosionInvert2 == false && getGameObject("Explosion")->isActive() == true) {
+            onResetAnim();
+            return;
+        }
 
         if (_boubouleInvert) {
             if (pos_X > 500 && pos_Y > 200) {
@@ -160,7 +156,6 @@ namespace RType {
 
     void HowToPlayAnimation::moveShip() {
         auto& transform = getImage("Ship").getTransform();
-        // KAP_DEBUG_WARNING(" SHIP X : " + std::to_string(transform.getWorldPosition().getX()) + " Y : " + std::to_string(transform.getWorldPosition().getY()));
 
         if (_shipInvert) {
             transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0, -4.0f, 0));
@@ -181,7 +176,6 @@ namespace RType {
 
     void HowToPlayAnimation::moveBullet() {
         auto& transform = getImage("Bullet").getTransform();
-        // KAP_DEBUG_WARNING(" BULLET X : " + std::to_string(transform.getWorldPosition().getX()) + " Y : " + std::to_string(transform.getWorldPosition().getY()));
 
         if (getGameObject("Bullet")->isActive() == false && getImage("Ship").getTransform().getWorldPosition().getY() == 266) {
             if (_nbShoot == 0 && _canShoot && _explosionInvert2 == false) {
@@ -190,10 +184,6 @@ namespace RType {
                 transform.setPosition(getResetPosition("Bullet"));
                 _nbShoot++;
                 _canShoot = false;
-                KAP_DEBUG_WARNING("------------------------- 266");
-                // KAP_DEBUG_WARNING("X : " + std::to_string(getImage("Bouboule").getTransform().getWorldPosition().getX()) + " Y : " + std::to_string(getImage("Bouboule").getTransform().getWorldPosition().getY()));
-                KAP_DEBUG_WARNING("X : " + std::to_string(getImage("Bouboule2").getTransform().getWorldPosition().getX()) + " Y : " + std::to_string(getImage("Bouboule2").getTransform().getWorldPosition().getY()));
-                KAP_DEBUG_WARNING("-------------------------");
             }
         } else if (getGameObject("Bullet")->isActive() == false && getImage("Ship").getTransform().getWorldPosition().getY() == 170) {
             if (_nbShoot == 1 && _canShoot && _explosionInvert == false) {
@@ -204,25 +194,12 @@ namespace RType {
                 transform.setPosition(KapEngine::Tools::Vector3(380, 166, 0));
                 _nbShoot++;
                 _canShoot = false;
-                KAP_DEBUG_WARNING("------------------------- 170");
-                // KAP_DEBUG_WARNING("X : " + std::to_string(getImage("Ship").getTransform().getWorldPosition().getX()) + " Y : " + std::to_string(getImage("Ship").getTransform().getWorldPosition().getY()));
-                KAP_DEBUG_WARNING("X : " + std::to_string(getImage("Bouboule").getTransform().getWorldPosition().getX()) + " Y : " + std::to_string(getImage("Bouboule").getTransform().getWorldPosition().getY()));
-                // KAP_DEBUG_WARNING("X : " + std::to_string(getImage("Bouboule2").getTransform().getWorldPosition().getX()) + " Y : " + std::to_string(getImage("Bouboule2").getTransform().getWorldPosition().getY()));
-                KAP_DEBUG_WARNING("-------------------------");
             }
         }
         if (getGameObject("Bullet")->isActive() == false)
             return;
 
         transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(6.0f, 0, 0));
-
-        if (transform.getWorldPosition().getX() < 500) {
-            _allGameObject.at("Bullet")->getComponent<KapEngine::Animator>().setTrigger("BigBulletToLittleBullet");
-            _allGameObject.at("Bullet")->getComponent<KapEngine::Animator>().setTrigger("LittleBulletToLittleBullet");
-        } else {
-            _allGameObject.at("Bullet")->getComponent<KapEngine::Animator>().setTrigger("LittleBulletToBigBullet");
-            _allGameObject.at("Bullet")->getComponent<KapEngine::Animator>().setTrigger("BigBulletToBigBullet");
-        }
 
         if (!_explosionInvert && transform.getWorldPosition().getX() > 600) {
             getGameObject("Bullet")->setActive(false);
@@ -234,12 +211,6 @@ namespace RType {
     }
 
     void HowToPlayAnimation::moveExplosion() {
-        if (_gameOver) {
-            KAP_DEBUG_WARNING("game over");
-            return;
-        }
-            
-        // KAP_DEBUG_WARNING("test value : " + std::to_string(getSpriteAnimation("Explosion")._currTime));
         auto& transform = getImage("Explosion").getTransform();
         if (_explosionInvert && getImage("Bullet").getTransform().getWorldPosition().getX() >= 588.0f) {
             getGameObject("Explosion")->setActive(true);

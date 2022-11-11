@@ -59,4 +59,33 @@ namespace RType {
         void deserialize(KapMirror::NetworkReader& reader) override { errorMessage = reader.readString(); }
     };
 
+    struct PlayerPingRequest : KapMirror::NetworkMessage {
+
+        unsigned int id{};
+
+        void serialize(KapMirror::NetworkWriter& writer) override {
+            writer.write(id);
+        }
+
+        void deserialize(KapMirror::NetworkReader& reader) override {
+            id = reader.read<unsigned int>();
+        }
+    };
+
+    struct PlayerPingResult : KapMirror::NetworkMessage {
+
+        unsigned int networkId{};
+        unsigned int ping{};
+
+        void serialize(KapMirror::NetworkWriter& writer) override {
+            writer.write(networkId);
+            writer.write(ping);
+        }
+
+        void deserialize(KapMirror::NetworkReader& reader) override {
+            networkId = reader.read<unsigned int>();
+            ping = reader.read<unsigned int>();
+        }
+    };
+
 } // namespace RType

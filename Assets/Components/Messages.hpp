@@ -4,9 +4,9 @@
 
 namespace RType {
     struct PlayerInputMessage : KapMirror::NetworkMessage {
-        unsigned int networkId;
-        float x;
-        float y;
+        unsigned int networkId{};
+        float x{};
+        float y{};
 
         void serialize(KapMirror::NetworkWriter& writer) override {
             writer.write(networkId);
@@ -22,7 +22,7 @@ namespace RType {
     };
 
     struct PlayerPrepareShootMessage : KapMirror::NetworkMessage {
-        unsigned int networkId;
+        unsigned int networkId{};
 
         void serialize(KapMirror::NetworkWriter& writer) override { writer.write(networkId); }
 
@@ -30,7 +30,7 @@ namespace RType {
     };
 
     struct PlayerShootMessage : KapMirror::NetworkMessage {
-        unsigned int networkId;
+        unsigned int networkId{};
 
         void serialize(KapMirror::NetworkWriter& writer) override { writer.write(networkId); }
 
@@ -38,7 +38,7 @@ namespace RType {
     };
 
     struct PlayerAuthorityMessage : KapMirror::NetworkMessage {
-        unsigned int networkId;
+        unsigned int networkId{};
 
         void serialize(KapMirror::NetworkWriter& writer) override { writer.write(networkId); }
 
@@ -52,7 +52,7 @@ namespace RType {
     };
 
     struct ErrorOnStartGameMessage : KapMirror::NetworkMessage {
-        std::string errorMessage;
+        std::string errorMessage{};
 
         void serialize(KapMirror::NetworkWriter& writer) override { writer.writeString(errorMessage); }
 

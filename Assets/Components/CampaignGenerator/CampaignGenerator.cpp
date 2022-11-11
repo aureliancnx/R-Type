@@ -29,11 +29,7 @@ void RType::CampaignGenerator::onAwake() {
 void RType::CampaignGenerator::onFixedUpdate() {
     if (_enemies.size() == 0)
         return;
-#if IS_MAX_KAPENGINE_VERSION(1, 215)
-    auto& scene = getGameObjectConst().getScene();
-#else
-    auto& scene = getGameObject().getScene();
-#endif
+    auto& scene = getScene();
 
     KapEngine::Time::ETime tmp = _clock.getElapseTime();
 

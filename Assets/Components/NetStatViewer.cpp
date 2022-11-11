@@ -9,10 +9,10 @@ using namespace RType;
 NetStatViewer::NetStatViewer(std::shared_ptr<KapEngine::GameObject> _gameObject) : KapEngine::Component(_gameObject, "NetStatViewer") {}
 
 void NetStatViewer::onAwake() {
-    auto canvas = KapEngine::UI::UiFactory::createCanvas(getGameObject().getScene(), "Canvas NetStatViewer");
+    auto canvas = KapEngine::UI::UiFactory::createCanvas(getScene(), "Canvas NetStatViewer");
     // Received packets from the beginning
     {
-        textReceivedPackets = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Packets received");
+        textReceivedPackets = KapEngine::UI::UiFactory::createText(getScene(), "Packets received");
         auto& text = textReceivedPackets->getComponent<KapEngine::UI::Text>();
         auto& transform = textReceivedPackets->getComponent<KapEngine::Transform>();
 
@@ -24,7 +24,7 @@ void NetStatViewer::onAwake() {
     }
     // Sent packets from the beginning
     {
-        textSentPackets = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Packets Sent");
+        textSentPackets = KapEngine::UI::UiFactory::createText(getScene(), "Packets Sent");
         auto& text = textSentPackets->getComponent<KapEngine::UI::Text>();
         auto& transform = textSentPackets->getComponent<KapEngine::Transform>();
 
@@ -36,7 +36,7 @@ void NetStatViewer::onAwake() {
     }
     // Packet per second received
     {
-        textReceivedPacketsPerSec = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Packets received per second");
+        textReceivedPacketsPerSec = KapEngine::UI::UiFactory::createText(getScene(), "Packets received per second");
         auto& text = textReceivedPacketsPerSec->getComponent<KapEngine::UI::Text>();
         auto& transform = textReceivedPacketsPerSec->getComponent<KapEngine::Transform>();
 
@@ -48,7 +48,7 @@ void NetStatViewer::onAwake() {
     }
     // Packet per second sent
     {
-        textSentPacketsPerSec = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Packets sent per second");
+        textSentPacketsPerSec = KapEngine::UI::UiFactory::createText(getScene(), "Packets sent per second");
         auto& text = textSentPacketsPerSec->getComponent<KapEngine::UI::Text>();
         auto& transform = textSentPacketsPerSec->getComponent<KapEngine::Transform>();
 
@@ -60,7 +60,7 @@ void NetStatViewer::onAwake() {
     }
     // Bytes received
     {
-        textReceivedBytes = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Received bytes");
+        textReceivedBytes = KapEngine::UI::UiFactory::createText(getScene(), "Received bytes");
         auto& text = textReceivedBytes->getComponent<KapEngine::UI::Text>();
         auto& transform = textReceivedBytes->getComponent<KapEngine::Transform>();
 
@@ -72,7 +72,7 @@ void NetStatViewer::onAwake() {
     }
     // Bytes sent
     {
-        textSentBytes = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Sent bytes");
+        textSentBytes = KapEngine::UI::UiFactory::createText(getScene(), "Sent bytes");
         auto& text = textSentBytes->getComponent<KapEngine::UI::Text>();
         auto& transform = textSentBytes->getComponent<KapEngine::Transform>();
 
@@ -84,7 +84,7 @@ void NetStatViewer::onAwake() {
     }
     // Byte/s received
     {
-        textReceivedBytesPerSecond = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Received bytes per second");
+        textReceivedBytesPerSecond = KapEngine::UI::UiFactory::createText(getScene(), "Received bytes per second");
         auto& text = textReceivedBytesPerSecond->getComponent<KapEngine::UI::Text>();
         auto& transform = textReceivedBytesPerSecond->getComponent<KapEngine::Transform>();
 
@@ -96,7 +96,7 @@ void NetStatViewer::onAwake() {
     }
     // Bytes sent
     {
-        textSentBytesPerSecond = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Sent bytes per second");
+        textSentBytesPerSecond = KapEngine::UI::UiFactory::createText(getScene(), "Sent bytes per second");
         auto& text = textSentBytesPerSecond->getComponent<KapEngine::UI::Text>();
         auto& transform = textSentBytesPerSecond->getComponent<KapEngine::Transform>();
 

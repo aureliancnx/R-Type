@@ -29,8 +29,8 @@ namespace KapEngine {
         void initLobby(bool local = true);
 
         // Variables
-        std::shared_ptr<KapEngine::GameObject> mainMenu;
-        std::shared_ptr<KapEngine::GameObject> ready;
+        std::shared_ptr<KapEngine::GameObject> _mainMenu;
+        std::shared_ptr<KapEngine::GameObject> _ready;
     };
 
 } // namespace KapEngine

@@ -1,7 +1,8 @@
 var classRType_1_1MapScript =
 [
     [ "MapScript", "classRType_1_1MapScript.html#a1bf31188695513526da66e8b4582de99", null ],
-    [ "~MapScript", "classRType_1_1MapScript.html#a1a4215e7b23d19d123723cebe6574b2c", null ],
+    [ "~MapScript", "classRType_1_1MapScript.html#abcf7dfe5c81890c5d881224ceb206daf", null ],
+    [ "_instanciatePrefab", "classRType_1_1MapScript.html#a4ff41cc5e28ed7c4393251a6e5c8c990", null ],
     [ "_registerNewEnemy", "classRType_1_1MapScript.html#aaff7beb4bc504924acdc65e762ab2d23", null ],
     [ "_registerSpawnEnemy", "classRType_1_1MapScript.html#aceb65715976f56c91e0dd82acd3a0c5e", null ],
     [ "_setMapAuthor", "classRType_1_1MapScript.html#aa33b792c5b35fb7e5242967fd52336c5", null ],

@@ -118,8 +118,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:aae1872a223002c3654708a590f6cc6eb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structRType_1_1SpawnEnemy.html">SpawnEnemy</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType_1_1MapScript.html#aae1872a223002c3654708a590f6cc6eb">getSpawnedEnemies</a> () const</td></tr>
 <tr class="memdesc:aae1872a223002c3654708a590f6cc6eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get spawn enemies.  <a href="classRType_1_1MapScript.html#aae1872a223002c3654708a590f6cc6eb">More...</a><br /></td></tr>
 <tr class="separator:aae1872a223002c3654708a590f6cc6eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24b3577073899a5bcac5e25c32d90fc3"><td class="memItemLeft" align="right" valign="top"><a id="a24b3577073899a5bcac5e25c32d90fc3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>spawnEnemy</b> (<a class="el" href="classKapEngine_1_1SceneManagement_1_1Scene.html">KapEngine::SceneManagement::Scene</a> &amp;scene, const std::string &amp;enemyName, float startPositionY, float startPositionX, int enemyHp)</td></tr>
+<tr class="memitem:a24b3577073899a5bcac5e25c32d90fc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType_1_1MapScript.html#a24b3577073899a5bcac5e25c32d90fc3">spawnEnemy</a> (<a class="el" href="classKapEngine_1_1SceneManagement_1_1Scene.html">KapEngine::SceneManagement::Scene</a> &amp;scene, const std::string &amp;enemyName, float startPositionY, float startPositionX, int enemyHp)</td></tr>
+<tr class="memdesc:a24b3577073899a5bcac5e25c32d90fc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spawn enemy.  <a href="classRType_1_1MapScript.html#a24b3577073899a5bcac5e25c32d90fc3">More...</a><br /></td></tr>
 <tr class="separator:a24b3577073899a5bcac5e25c32d90fc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9e9aca3fa8175b285be6352f9832667"><td class="memItemLeft" align="right" valign="top"><a id="ae9e9aca3fa8175b285be6352f9832667"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>_setMapName</b> (const std::string &amp;name)</td></tr>
@@ -139,6 +139,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_registerNewEnemy</b>
 <tr class="memitem:aceb65715976f56c91e0dd82acd3a0c5e"><td class="memItemLeft" align="right" valign="top"><a id="aceb65715976f56c91e0dd82acd3a0c5e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>_registerSpawnEnemy</b> (const std::string &amp;name, int spawnTime, float startPositionY, float startPositionX, int enemyHp)</td></tr>
 <tr class="separator:aceb65715976f56c91e0dd82acd3a0c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ff41cc5e28ed7c4393251a6e5c8c990"><td class="memItemLeft" align="right" valign="top"><a id="a4ff41cc5e28ed7c4393251a6e5c8c990"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_instanciatePrefab</b> (const std::string &amp;prefabName, float positionX, float positionY)</td></tr>
+<tr class="separator:a4ff41cc5e28ed7c4393251a6e5c8c990"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75c910973664c17e4bcc79442ba081da"><td class="memItemLeft" align="right" valign="top"><a id="a75c910973664c17e4bcc79442ba081da"></a>
 <a class="el" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_updateEnemy</b> (const std::string &amp;enemyName, const <a class="el" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> &amp;position)</td></tr>
 <tr class="separator:a75c910973664c17e4bcc79442ba081da"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -310,6 +313,64 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_registerSpawnEnemy</
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname"><a class="el" href="classRType_1_1LuaException.html">LuaException</a></td><td>If script can't be loaded or if script is invalid. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a24b3577073899a5bcac5e25c32d90fc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24b3577073899a5bcac5e25c32d90fc3">&#9670;&nbsp;</a></span>spawnEnemy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MapScript::spawnEnemy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classKapEngine_1_1SceneManagement_1_1Scene.html">KapEngine::SceneManagement::Scene</a> &amp;&#160;</td>
+          <td class="paramname"><em>scene</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>enemyName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>startPositionY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>startPositionX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>enemyHp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Spawn enemy. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scene</td><td>Scene where enemy will be spawned </td></tr>
+    <tr><td class="paramname">enemyName</td><td>Name of the enemy (without "Enemy" suffix) </td></tr>
+    <tr><td class="paramname">startPositionY</td><td>Start position Y of the enemy </td></tr>
+    <tr><td class="paramname">startPositionX</td><td>Start position X of the enemy </td></tr>
+    <tr><td class="paramname">enemyHp</td><td>Enemy HP </td></tr>
   </table>
   </dd>
 </dl>

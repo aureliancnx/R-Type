@@ -180,7 +180,7 @@ void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine& engine) {
             int nbAnimations = 16;
             float totalTimeAnim = 5.5f;
             KapEngine::Time::ETime timeAnim;
-            timeAnim.setSeconds(totalTimeAnim / (float)nbAnimations);
+            timeAnim.setSeconds(totalTimeAnim / (float) nbAnimations);
             auto anim = std::make_shared<SpriteAnimation>(img);
             img->addComponent(anim);
 
@@ -221,7 +221,7 @@ void Prefabs::registerBulletExplodePrefab(KapEngine::KEngine& engine) {
             int nbAnimations = 16;
             float totalTimeAnim = 6.5f;
             KapEngine::Time::ETime timeAnim;
-            timeAnim.setSeconds(totalTimeAnim / (float)nbAnimations);
+            timeAnim.setSeconds(totalTimeAnim / (float) nbAnimations);
             auto anim = std::make_shared<SpriteAnimation>(img);
             img->addComponent(anim);
 

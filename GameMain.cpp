@@ -86,7 +86,7 @@ int main(int argc, char** argv) {
         if (std::string(argv[1]) == "--server") {
             isServer = true;
             graphical = false;
-        }else if (std::string(argv[1]) == "--graphicalserver") {
+        } else if (std::string(argv[1]) == "--graphicalserver") {
             isServer = true;
             graphical = true;
         }

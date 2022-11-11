@@ -26,7 +26,7 @@ void Bullet::onUpdate() {
      * +---+---+
      * | X |X*Y|
      */
-    xMove = (speed / 10000) * (float)engine.getElapsedTime().asMicroSecond();
+    xMove = (speed / 10000) * (float) engine.getElapsedTime().asMicroSecond();
 
     if (direction == Direction::RIGHT) {
         nPos.setX(nPos.getX() + xMove);

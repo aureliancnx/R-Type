@@ -10,7 +10,7 @@ void KeySelector::onUpdate() {
     for (int i = KapEngine::Events::Key::minValue(); i < KapEngine::Events::Key::maxValue(); i++) {
         if (KapEngine::Events::Key::intInEnum(i)) {
             KapEngine::Events::Key toCheck;
-            toCheck = (KapEngine::Events::Key::EKey)i;
+            toCheck = (KapEngine::Events::Key::EKey) i;
             if (getInput().getKeyDown(toCheck)) {
                 _selected = toCheck;
                 _check = false;

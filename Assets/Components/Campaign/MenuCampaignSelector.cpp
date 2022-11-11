@@ -73,7 +73,7 @@ void RType::MenuCampaignSelector::openFolderLua() {
         KAP_DEBUG_ERROR("Unable to find open folder ./Maps/.");
         KAP_DEBUG_ERROR("Maps won't be initialized.");
     }
-    KapEngine::PlayerPrefs::setInt("Nb Map", (int)_pathScript.size() - 1);
+    KapEngine::PlayerPrefs::setInt("Nb Map", (int) _pathScript.size() - 1);
 #endif
 }
 

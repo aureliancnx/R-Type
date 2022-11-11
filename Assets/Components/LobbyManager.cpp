@@ -26,6 +26,20 @@ namespace KapEngine {
 
     LobbyManager::~LobbyManager() = default;
 
-    void LobbyManager::onStart() { initLobby(); }
+    void LobbyManager::onStart() {
+        initLobby();
+    }
+
+    void LobbyManager::initBackground(std::shared_ptr<KapEngine::GameObject> parent) {
+        auto background = parent->getScene().createGameObject("Background");
+        background->getComponent<Transform>().setParent(parent->getId());
+        background->getComponent<Transform>().setPosition({0, 0, 0});
+
+        auto backgroundImage = std::make_shared<UI::Image>(background);
+        Tools::Color color = Tools::Color::grey();
+        color.setA(126);
+        backgroundImage->setColor(color);
+        background->addComponent(backgroundImage);
+    }
 
 } // namespace KapEngine

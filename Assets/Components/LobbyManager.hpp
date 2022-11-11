@@ -27,6 +27,7 @@ namespace KapEngine {
       private:
         // Methods
         void initLobby(bool local = true);
+        void initBackground(std::shared_ptr<KapEngine::GameObject> parent);
 
         // Variables
         std::shared_ptr<KapEngine::GameObject> _mainMenu;

@@ -166,7 +166,7 @@ void RType::PlayerController::spawnBullet(const KapEngine::Tools::Vector3& pos) 
     if (isLocal()) {
         auto& scene = getScene();
         std::shared_ptr<KapEngine::GameObject> bullet;
-        getGameObject().getEngine().getPrefabManager()->instantiatePrefab("Bullet", scene, bullet);
+        getEngine().getPrefabManager()->instantiatePrefab("Bullet", scene, bullet);
         bullet->setName("Bullet Player");
         bullet->getComponent<KapEngine::Transform>().setPosition(pos);
         bullet->getComponent<Bullet>().setDirection(Bullet::Direction::RIGHT);
@@ -186,7 +186,7 @@ void RType::PlayerController::spawnMissile(const KapEngine::Tools::Vector3& pos)
     if (isLocal()) {
         auto& scene = getScene();
         std::shared_ptr<KapEngine::GameObject> missile;
-        getGameObject().getEngine().getPrefabManager()->instantiatePrefab("Missile", scene, missile);
+        getEngine().getPrefabManager()->instantiatePrefab("Missile", scene, missile);
         missile->setName("Missile Player");
         missile->getComponent<KapEngine::Transform>().setPosition(pos);
     } else if (isServer()) {
@@ -203,9 +203,9 @@ void RType::PlayerController::playShootSound() {
 
     long long currentTime = KapMirror::NetworkTime::localTime();
     if (currentTime % 2 == 0) {
-        getGameObject().getEngine().getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/shot1.wav");
+        getEngine().getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/shot1.wav");
     } else {
-        getGameObject().getEngine().getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/shot2.wav");
+        getEngine().getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/shot2.wav");
     }
 }
 

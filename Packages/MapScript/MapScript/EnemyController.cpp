@@ -72,7 +72,7 @@ void EnemyController::onSceneUpdated() {
             }
             if (isLocal()) {
                 std::shared_ptr<KapEngine::GameObject> explosion;
-                if (getGameObject().getEngine().getPrefabManager()->instantiatePrefab("MissileExplode", getScene(),
+                if (getEngine().getPrefabManager()->instantiatePrefab("MissileExplode", getScene(),
                                                                                       explosion)) {
                     explosion->getComponent<KapEngine::Transform>().setPosition(
                         other->getComponent<KapEngine::Transform>().getWorldPosition());

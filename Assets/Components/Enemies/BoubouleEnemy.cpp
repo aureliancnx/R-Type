@@ -37,7 +37,7 @@ void BoubouleEnemy::shoot() {
     if (isLocal()) {
         auto& scene = getScene();
         std::shared_ptr<KapEngine::GameObject> bullet;
-        getGameObject().getEngine().getPrefabManager()->instantiatePrefab("Bullet", scene, bullet);
+        getEngine().getPrefabManager()->instantiatePrefab("Bullet", scene, bullet);
         bullet->getComponent<KapEngine::Transform>().setPosition(pos);
         bullet->getComponent<Bullet>().setDirection(Bullet::Direction::LEFT);
     } else if (isServer()) {
@@ -78,7 +78,7 @@ void BoubouleEnemy::onSceneUpdated() {
             }
             if (isLocal()) {
                 std::shared_ptr<KapEngine::GameObject> explosion;
-                if (getGameObject().getEngine().getPrefabManager()->instantiatePrefab("BulletExplode", getScene(),
+                if (getEngine().getPrefabManager()->instantiatePrefab("BulletExplode", getScene(),
                                                                                       explosion)) {
                     explosion->getComponent<KapEngine::Transform>().setPosition(
                         other->getComponent<KapEngine::Transform>().getWorldPosition());
@@ -100,7 +100,7 @@ void BoubouleEnemy::onSceneUpdated() {
             }
             if (isLocal()) {
                 std::shared_ptr<KapEngine::GameObject> explosion;
-                if (getGameObject().getEngine().getPrefabManager()->instantiatePrefab("MissileExplode", getScene(),
+                if (getEngine().getPrefabManager()->instantiatePrefab("MissileExplode", getScene(),
                                                                                       explosion)) {
                     explosion->getComponent<KapEngine::Transform>().setPosition(
                         other->getComponent<KapEngine::Transform>().getWorldPosition());

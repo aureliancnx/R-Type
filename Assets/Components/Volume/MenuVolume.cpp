@@ -27,9 +27,9 @@ void RType::MenuVolume::onUpdate() {
     if (PlayerPrefs::getString("volumeValue").empty()) {
         PlayerPrefs::setInt("volumeValue", 50);
         nId = 50;
-        getGameObject().getEngine().getGraphicalLibManager()->getCurrentLib()->setMusicVolume(
+        getEngine().getGraphicalLibManager()->getCurrentLib()->setMusicVolume(
             (float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
-        getGameObject().getEngine().getGraphicalLibManager()->getCurrentLib()->setSoundVolume(
+        getEngine().getGraphicalLibManager()->getCurrentLib()->setSoundVolume(
             (float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
     } else {
         nId = PlayerPrefs::getInt("volumeValue");

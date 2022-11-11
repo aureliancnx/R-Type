@@ -13,6 +13,7 @@ var dir_5f01215645ad23021dc294eedad4568f =
     [ "GameMenuManager.hpp", "GameMenuManager_8hpp_source.html", null ],
     [ "MenuManager.hpp", "MenuManager_8hpp_source.html", null ],
     [ "Messages.hpp", "Assets_2Components_2Messages_8hpp_source.html", null ],
+    [ "NetStatViewer.hpp", "NetStatViewer_8hpp_source.html", null ],
     [ "Prefabs.hpp", "Prefabs_8hpp_source.html", null ],
     [ "RtypeNetworkManager.hpp", "RtypeNetworkManager_8hpp_source.html", null ]
 ];

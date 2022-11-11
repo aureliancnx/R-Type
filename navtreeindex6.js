@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"classKapMirror_1_1Sylph_1_1UdpListener.html#a0aacf4b94e68eff7ab19a0ff58a3faa2":[37,0,3,1,9,7],
 "classKapMirror_1_1Sylph_1_1UdpListener.html#a25a6737a3a51e94d5cc620e6c36775f4":[37,0,3,1,9,6],
 "classKapMirror_1_1Sylph_1_1UdpListener.html#a28efe4d93009f6d04db6a838f3fe9704":[37,0,3,1,9,5],
 "classKapMirror_1_1Sylph_1_1UdpListener.html#a5d291f9910fa44aa732d2468b716bcc5":[37,0,3,1,9,0],
@@ -175,7 +176,7 @@ var NAVTREEINDEX6 =
 "classRType_1_1CampaignGenerator.html#aec4c0bed20729ea6b12e5b9965c25d67":[37,0,5,4,4],
 "classRType_1_1CampaignManager.html":[37,0,5,5],
 "classRType_1_1CampaignManager.html#a12427e32233a3dacac822391b2bf7fed":[37,0,5,5,3],
-"classRType_1_1CampaignManager.html#a323f879de2ffd6c3f496e89579e4a614":[37,0,5,5,4],
+"classRType_1_1CampaignManager.html#a18c9cd52af4261ee235427644e6a98d7":[37,0,5,5,4],
 "classRType_1_1CampaignManager.html#a7246606be708566a553192534fbb49cd":[37,0,5,5,2],
 "classRType_1_1CampaignManager.html#aa91a70124f543d1223729ec185c71efc":[37,0,5,5,0],
 "classRType_1_1CampaignManager.html#abd8a8f2df03b9f75f4f2369bc14ee160":[37,0,5,5,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "classRType_1_1MapEnemy.html":[37,0,5,18],
 "classRType_1_1MapEnemy.html#a474297ba1c4f58d3c390ce451c7029e6":[37,0,5,18,2],
 "classRType_1_1MapEnemy.html#a5ee50ef562ababbd9aae875299abf38b":[37,0,5,18,5],
-"classRType_1_1MapEnemy.html#a8fc2a41ae33513268285dfbfe5732988":[37,0,5,18,1],
-"classRType_1_1MapEnemy.html#a8fcff84b463af94219d012a07f68dbf1":[37,0,5,18,3]
+"classRType_1_1MapEnemy.html#a8fc2a41ae33513268285dfbfe5732988":[37,0,5,18,1]
 };

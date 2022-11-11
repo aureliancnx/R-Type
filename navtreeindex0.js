@@ -114,6 +114,7 @@ var NAVTREEINDEX0 =
 "MouseDetector_8hpp_source.html":[38,0,2,1,0,1,7,0],
 "Mouse_8hpp_source.html":[38,0,2,1,0,6,3,0],
 "MultiMenu_8hpp_source.html":[38,0,0,0,6,5],
+"NetStatViewer_8hpp_source.html":[38,0,0,0,13],
 "NetworkClient_8hpp_source.html":[38,0,3,0,0,6],
 "NetworkComponent_8hpp_source.html":[38,0,3,0,0,0,0],
 "NetworkConnectionToClient_8hpp_source.html":[38,0,3,0,0,1,5],
@@ -137,13 +138,13 @@ var NAVTREEINDEX0 =
 "PlayerPrefs_8hpp_source.html":[38,0,2,1,0,10,0],
 "PlayerSkin_8hpp_source.html":[38,0,0,0,7,1],
 "PrefabManager_8hpp_source.html":[38,0,2,1,0,11,0],
-"Prefabs_8hpp_source.html":[38,0,0,0,13],
+"Prefabs_8hpp_source.html":[38,0,0,0,14],
 "RaylibCache_8hpp_source.html":[38,0,3,1,0,0,0],
 "RaylibEncapsulation_8hpp_source.html":[38,0,3,1,0,2,0],
 "RaylibGraphical_8hpp_source.html":[38,0,3,1,0,3,0],
 "RectangleScript_8hpp_source.html":[38,0,3,3,0,0,3],
 "Rectangle_8hpp_source.html":[38,0,2,1,0,15,1],
-"RtypeNetworkManager_8hpp_source.html":[38,0,0,0,14],
+"RtypeNetworkManager_8hpp_source.html":[38,0,0,0,15],
 "SceneManager_8hpp_source.html":[38,0,2,1,0,13,1,0],
 "Scene_8hpp_source.html":[38,0,2,1,0,13,0,0],
 "ServerConnection_8hpp_source.html":[38,0,3,5,0,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "classKapEngine_1_1Collider.html#a16005bd09a5a408700efe49eed8442d8":[35,0,5,9],
 "classKapEngine_1_1Collider.html#a564acde9860f875a32a6638c573d87be":[35,0,5,1],
 "classKapEngine_1_1Collider.html#a6091f25d9b88e34c964cf98eb17f81b6":[35,0,5,10],
-"classKapEngine_1_1Collider.html#a835aad5122836d98061416fd3c34a4fa":[35,0,5,2],
-"classKapEngine_1_1Collider.html#a92a36099a933727f2f73ad6401e2e3f9":[35,0,5,0]
+"classKapEngine_1_1Collider.html#a835aad5122836d98061416fd3c34a4fa":[35,0,5,2]
 };

@@ -129,6 +129,7 @@ var annotated_dup =
       [ "MenuManager", "classRType_1_1MenuManager.html", "classRType_1_1MenuManager" ],
       [ "MenuVolume", "classRType_1_1MenuVolume.html", "classRType_1_1MenuVolume" ],
       [ "MultiMenu", "classRType_1_1MultiMenu.html", "classRType_1_1MultiMenu" ],
+      [ "NetStatViewer", "classRType_1_1NetStatViewer.html", "classRType_1_1NetStatViewer" ],
       [ "ParalaxAnimation", "classRType_1_1ParalaxAnimation.html", "classRType_1_1ParalaxAnimation" ],
       [ "PlayerAuthorityMessage", "structRType_1_1PlayerAuthorityMessage.html", "structRType_1_1PlayerAuthorityMessage" ],
       [ "PlayerController", "classRType_1_1PlayerController.html", "classRType_1_1PlayerController" ],

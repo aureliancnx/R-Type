@@ -261,12 +261,9 @@ std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<G
 
 void RType::GameMenuManager::initHeart() {
 #if IS_MIN_KAPENGINE_VERSION(1, 215)
-    heart1 =
-        KapEngine::UI::UiFactory::createImage(getScene(), "Heart1", "Assets/Textures/Icons/heart.png", {0, 0, 512, 512});
-    heart2 =
-        KapEngine::UI::UiFactory::createImage(getScene(), "Heart2", "Assets/Textures/Icons/heart.png", {0, 0, 512, 512});
-    heart3 =
-        KapEngine::UI::UiFactory::createImage(getScene(), "Heart3", "Assets/Textures/Icons/heart.png", {0, 0, 512, 512});
+    heart1 = KapEngine::UI::UiFactory::createImage(getScene(), "Heart1", "Assets/Textures/Icons/heart.png", {0, 0, 512, 512});
+    heart2 = KapEngine::UI::UiFactory::createImage(getScene(), "Heart2", "Assets/Textures/Icons/heart.png", {0, 0, 512, 512});
+    heart3 = KapEngine::UI::UiFactory::createImage(getScene(), "Heart3", "Assets/Textures/Icons/heart.png", {0, 0, 512, 512});
 #else
     heart1 = KapEngine::UI::UiFactory::createImage(getScene(), "Heart1", "Assets/Textures/Icons/heart.png");
     {

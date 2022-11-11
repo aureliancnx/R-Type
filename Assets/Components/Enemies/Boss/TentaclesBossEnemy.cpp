@@ -82,8 +82,7 @@ void TentaclesBossEnemy::onSceneUpdated() {
             }
             if (isLocal()) {
                 std::shared_ptr<KapEngine::GameObject> explosion;
-                if (getGameObject().getEngine().getPrefabManager()->instantiatePrefab("BulletExplode", getScene(),
-                                                                                      explosion)) {
+                if (getGameObject().getEngine().getPrefabManager()->instantiatePrefab("BulletExplode", getScene(), explosion)) {
                     explosion->getComponent<KapEngine::Transform>().setPosition(
                         other->getComponent<KapEngine::Transform>().getWorldPosition());
                 } else {
@@ -104,8 +103,7 @@ void TentaclesBossEnemy::onSceneUpdated() {
             }
             if (isLocal()) {
                 std::shared_ptr<KapEngine::GameObject> explosion;
-                if (getGameObject().getEngine().getPrefabManager()->instantiatePrefab("MissileExplode", getScene(),
-                                                                                      explosion)) {
+                if (getGameObject().getEngine().getPrefabManager()->instantiatePrefab("MissileExplode", getScene(), explosion)) {
                     explosion->getComponent<KapEngine::Transform>().setPosition(
                         other->getComponent<KapEngine::Transform>().getWorldPosition());
                 } else {

@@ -101,43 +101,69 @@ $(document).ready(function(){initNavTree('HowToPlayAnimation_8hpp_source.html','
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;KapEngineDebug.hpp&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;KapEngineUi.hpp&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;Keys/ChangeKey.hpp&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>RType {</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classRType_1_1HowToPlayAnimation.html">   18</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classRType_1_1HowToPlayAnimation.html">HowToPlayAnimation</a> : <span class="keyword">public</span> <a class="code" href="classKapEngine_1_1Animation.html">KapEngine::Animation</a> {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;      <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="classRType_1_1HowToPlayAnimation.html">HowToPlayAnimation</a>(std::shared_ptr&lt;KapEngine::GameObject&gt; gameObject);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="comment">// HowToPlayAnimation(std::shared_ptr&lt;KapEngine::GameObject&gt; gameObject, int nbAnimation, KapEngine::Tools::Rectangle rect, int64_t</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="comment">// const&amp; time);</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        ~<a class="code" href="classRType_1_1HowToPlayAnimation.html">HowToPlayAnimation</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">void</span> onPlay() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">void</span> onUpdateAnim() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">void</span> onResetAnim() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">void</span> setNbAnimations(std::string name, <span class="keywordtype">int</span> nbAnimations);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span> setRect(std::string name, <a class="code" href="classKapEngine_1_1Tools_1_1Rectangle.html">KapEngine::Tools::Rectangle</a> rect);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Rectangle.html">KapEngine::Tools::Rectangle</a> getRect(std::string name);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;SpriteAnimation.hpp&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span>RType {</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classRType_1_1HowToPlayAnimation.html">   19</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classRType_1_1HowToPlayAnimation.html">HowToPlayAnimation</a> : <span class="keyword">public</span> <a class="code" href="classKapEngine_1_1Animation.html">KapEngine::Animation</a> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;      <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="classRType_1_1HowToPlayAnimation.html">HowToPlayAnimation</a>(std::string name, std::shared_ptr&lt;KapEngine::GameObject&gt; gameObject);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        ~<a class="code" href="classRType_1_1HowToPlayAnimation.html">HowToPlayAnimation</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1HowToPlayAnimation.html#a83a748419334c3b78fc4e9fda93b96ab">onFixedUpdate</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">void</span> onResetAnim() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">void</span> setNbAnimations(std::string name, <span class="keywordtype">int</span> nb);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">void</span> setResetPosition(std::string name, <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> position);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">void</span> setRect(std::string name, <a class="code" href="classKapEngine_1_1Tools_1_1Rectangle.html">KapEngine::Tools::Rectangle</a> rect);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Rectangle.html">KapEngine::Tools::Rectangle</a> getRect(std::string name);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">void</span> addSpriteAnimation(std::string name, std::shared_ptr&lt;KapEngine::GameObject&gt; gameObject);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;      <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="comment">// Variables</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        std::unordered_map&lt;std::string, int&gt; _nbAnimation;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        std::unordered_map&lt;std::string, KapEngine::Tools::Rectangle&gt; _rect;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="comment">// std::unordered_map&lt;std::string, std::shared_ptr&lt;KapEngine::GameObject&gt;&gt; _allGameObject;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; _gameObject;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        std::unordered_map&lt;std::string, KapEngine::Tools::Vector3&gt; _allGoResetPosition;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        std::unordered_map&lt;std::string, std::shared_ptr&lt;KapEngine::GameObject&gt;&gt; _allGameObject;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">float</span> _speed = 0.1f;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="comment">// Functions</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">void</span> init(std::shared_ptr&lt;KapEngine::GameObject&gt; gameObject);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classKapEngine_1_1UI_1_1Image.html">KapEngine::UI::Image</a>&amp; getImage(std::string name);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    };</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;} <span class="comment">// namespace RType</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !HOWTOPLAYANIMATION_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">bool</span> _boubouleInvert = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">bool</span> _bouboule2Invert = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">bool</span> _shipInvert = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">bool</span> _explosionInvert = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">bool</span> _explosionInvert2 = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">bool</span> _bulletReset = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">int</span> _nbShoot = 0;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">bool</span> _canShoot = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="comment">// Functions</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordtype">void</span> init(std::shared_ptr&lt;KapEngine::GameObject&gt; gameObject);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">void</span> onResetStates();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">void</span> onResetRect();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">void</span> onResetPosition();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">void</span> onResetActive();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="classKapEngine_1_1UI_1_1Image.html">KapEngine::UI::Image</a>&amp; getImage(std::string name);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="classRType_1_1SpriteAnimation.html">SpriteAnimation</a>&amp; getSpriteAnimation(std::string name);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> getResetPosition(std::string name);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt;&amp; <a class="code" href="classKapEngine_1_1Component.html#a9a82e2be5d8042a9dd60f64b2650f5cf">getGameObject</a>(std::string name);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">void</span> moveBouboule();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">void</span> moveBouboule2();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">void</span> moveShip();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">void</span> moveBullet();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordtype">void</span> moveExplosion();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    };</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <span class="comment">// namespace RType</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !HOWTOPLAYANIMATION_HPP_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclassKapEngine_1_1Component_html_a9a82e2be5d8042a9dd60f64b2650f5cf"><div class="ttname"><a href="classKapEngine_1_1Component.html#a9a82e2be5d8042a9dd60f64b2650f5cf">KapEngine::Component::getGameObject</a></div><div class="ttdeci">GameObject &amp; getGameObject() const</div><div class="ttdoc">Get the Game Object object.</div><div class="ttdef"><b>Definition:</b> Component.cpp:35</div></div>
 <div class="ttc" id="aclassKapEngine_1_1UI_1_1Image_html"><div class="ttname"><a href="classKapEngine_1_1UI_1_1Image.html">KapEngine::UI::Image</a></div><div class="ttdef"><b>Definition:</b> UiImage.hpp:35</div></div>
-<div class="ttc" id="aclassRType_1_1HowToPlayAnimation_html"><div class="ttname"><a href="classRType_1_1HowToPlayAnimation.html">RType::HowToPlayAnimation</a></div><div class="ttdef"><b>Definition:</b> HowToPlayAnimation.hpp:18</div></div>
+<div class="ttc" id="aclassRType_1_1HowToPlayAnimation_html_a83a748419334c3b78fc4e9fda93b96ab"><div class="ttname"><a href="classRType_1_1HowToPlayAnimation.html#a83a748419334c3b78fc4e9fda93b96ab">RType::HowToPlayAnimation::onFixedUpdate</a></div><div class="ttdeci">void onFixedUpdate() override</div><div class="ttdoc">call eachv x ms</div><div class="ttdef"><b>Definition:</b> HowToPlayAnimation.cpp:20</div></div>
+<div class="ttc" id="aclassRType_1_1HowToPlayAnimation_html"><div class="ttname"><a href="classRType_1_1HowToPlayAnimation.html">RType::HowToPlayAnimation</a></div><div class="ttdef"><b>Definition:</b> HowToPlayAnimation.hpp:19</div></div>
+<div class="ttc" id="aclassRType_1_1SpriteAnimation_html"><div class="ttname"><a href="classRType_1_1SpriteAnimation.html">RType::SpriteAnimation</a></div><div class="ttdef"><b>Definition:</b> SpriteAnimation.hpp:16</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Animation_html"><div class="ttname"><a href="classKapEngine_1_1Animation.html">KapEngine::Animation</a></div><div class="ttdef"><b>Definition:</b> Animation.hpp:25</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Tools_1_1Rectangle_html"><div class="ttname"><a href="classKapEngine_1_1Tools_1_1Rectangle.html">KapEngine::Tools::Rectangle</a></div><div class="ttdef"><b>Definition:</b> Rectangle.hpp:23</div></div>
+<div class="ttc" id="aclassKapEngine_1_1Tools_1_1Vector3_html"><div class="ttname"><a href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a></div><div class="ttdef"><b>Definition:</b> Vectors.hpp:251</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

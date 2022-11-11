@@ -33,7 +33,16 @@ jobs:
             executable_file: "RType"
           }
           - {
-            name: "MacOS",
+            name: "MacOS Intel",
+            os: [macos-latest, self-hosted],
+            build_type: "Release",
+            cc: "clang",
+            cxx: "clang++",
+            generators: "Ninja",
+            executable_file: "RType"
+          }
+          - {
+            name: "MacOS Apple Silicon",
             os: macos-latest,
             build_type: "Release",
             cc: "clang",

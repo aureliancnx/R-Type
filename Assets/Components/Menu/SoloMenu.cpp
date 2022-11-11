@@ -1,7 +1,7 @@
 #include "SoloMenu.hpp"
 #include "KapUI/KapUI.hpp"
 #include "Keys/UpdateStartGameKeys.hpp"
-#include "Campaign/MenuCampaign.hpp"
+#include "Campaign/MenuCampaignSelector.hpp"
 #include "MapScript/MapScript.hpp"
 
 #include "KapEngine.hpp"
@@ -306,11 +306,9 @@ void SoloMenu::init() {
     }
 #else
     // create MenuCampaigne
-    std::shared_ptr<KapEngine::GameObject> menuCampaign;
     {
-        menuCampaign = scene.createGameObject("MenuCampaign");
-        auto menuCampaignComp = std::make_shared<MenuCampaign>(menuCampaign, &engine);
-        menuCampaign->addComponent(menuCampaignComp);
+        auto menuCampaignComp = std::make_shared<MenuCampaignSelector>(canvas, &engine);
+        canvas->addComponent(menuCampaignComp);
     }
 
     KapEngine::Tools::Vector3 posBtn = {90, 150, 0};
@@ -363,7 +361,7 @@ void SoloMenu::init() {
             transform.setPosition(KapEngine::Tools::Vector3(20, 180, 0));
             transform.setParent(btnObj);
         }
-        menuCampaign->getComponent<MenuCampaign>().setButtonLevel1(btnObj);
+        canvas->getComponent<MenuCampaignSelector>().setButtonLevel1(btnObj);
     }
 
     posBtn = {380, 150, 0};
@@ -416,7 +414,7 @@ void SoloMenu::init() {
             transform.setParent(btnObj);
         }
 
-        menuCampaign->getComponent<MenuCampaign>().setButtonLevel2(btnObj);
+        canvas->getComponent<MenuCampaignSelector>().setButtonLevel2(btnObj);
     }
 
     // create button left
@@ -435,7 +433,7 @@ void SoloMenu::init() {
         transform.setScale({40, 230, 0});
         transform.setParent(canvas);
 
-        menuCampaign->getComponent<MenuCampaign>().setButtonLeft(btn);
+        canvas->getComponent<MenuCampaignSelector>().setButtonLeft(btn);
     }
 
     // create button right
@@ -454,7 +452,7 @@ void SoloMenu::init() {
         transform.setScale({40, 230, 0});
         transform.setParent(canvas);
 
-        menuCampaign->getComponent<MenuCampaign>().setButtonRight(btn);
+        canvas->getComponent<MenuCampaignSelector>().setButtonRight(btn);
     }
 #endif
 }

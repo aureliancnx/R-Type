@@ -1,9 +1,4 @@
-//
-// Created by leq on 20/10/22.
-//
-
-#ifndef RTYPE_MENUCAMPAIGN_HPP
-#define RTYPE_MENUCAMPAIGN_HPP
+#pragma once
 
 #include "KapEngine.hpp"
 #include "KapEngineDebug.hpp"
@@ -16,10 +11,10 @@
 #endif
 
 namespace RType {
-    class MenuCampaign : public KapEngine::Component {
+    class MenuCampaignSelector : public KapEngine::Component {
       public:
-        MenuCampaign(std::shared_ptr<KapEngine::GameObject> go, KapEngine::KEngine* engine);
-        ~MenuCampaign();
+        MenuCampaignSelector(std::shared_ptr<KapEngine::GameObject> go, KapEngine::KEngine* engine);
+        ~MenuCampaignSelector();
 
         void onUpdate() override;
 
@@ -96,5 +91,3 @@ namespace RType {
 #endif
     };
 } // namespace RType
-
-#endif // RTYPE_MENUCAMPAIGN_HPP

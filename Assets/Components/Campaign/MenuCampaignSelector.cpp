@@ -1,17 +1,14 @@
-//
-// Created by leq on 20/10/22.
-//
-
-#include "MenuCampaign.hpp"
+#include "MenuCampaignSelector.hpp"
+#include "Keys/UpdateStartGameKeys.hpp"
 
 using namespace KapEngine;
 
-RType::MenuCampaign::MenuCampaign(std::shared_ptr<KapEngine::GameObject> go, KapEngine::KEngine* engine)
+RType::MenuCampaignSelector::MenuCampaignSelector(std::shared_ptr<KapEngine::GameObject> go, KapEngine::KEngine* engine)
     : Component(go, "SoloMenu"), _engine(engine) {}
 
-RType::MenuCampaign::~MenuCampaign() {}
+RType::MenuCampaignSelector::~MenuCampaignSelector() {}
 
-void RType::MenuCampaign::getLuaInformation() {
+void RType::MenuCampaignSelector::getLuaInformation() {
 #if BENJI_MODIF
     for (auto& campaign : _campaigns) {
         try {
@@ -46,7 +43,7 @@ void RType::MenuCampaign::getLuaInformation() {
 #endif
 }
 
-void RType::MenuCampaign::openFolderLua() {
+void RType::MenuCampaignSelector::openFolderLua() {
 #if BENJI_MODIF
     std::string luaExt = ".lua";
 
@@ -80,7 +77,7 @@ void RType::MenuCampaign::openFolderLua() {
 #endif
 }
 
-void RType::MenuCampaign::onAwake() {
+void RType::MenuCampaignSelector::onAwake() {
     openFolderLua();
     getLuaInformation();
 
@@ -98,7 +95,7 @@ void RType::MenuCampaign::onAwake() {
 #endif
 }
 
-void RType::MenuCampaign::onUpdate() {
+void RType::MenuCampaignSelector::onUpdate() {
 #if !BENJI_MODIF
     if (_txtDescription.use_count() == 0 || _txtCreator.use_count() == 0 || _txtName.use_count() == 0) {
         foundCreator();
@@ -162,7 +159,7 @@ void RType::MenuCampaign::onUpdate() {
 #endif
 }
 #if !BENJI_MODIF
-void RType::MenuCampaign::foundDescription() {
+void RType::MenuCampaignSelector::foundDescription() {
     auto objs1 = getGameObjectConst().getScene().getGameObjects("Text Description");
     auto objs2 = getGameObjectConst().getScene().getGameObjects("Text DescriptionBis");
     std::shared_ptr<GameObject> _found1;
@@ -210,7 +207,7 @@ void RType::MenuCampaign::foundDescription() {
     } catch (...) { KAP_DEBUG_ERROR("Failed to found description"); }
 }
 
-void RType::MenuCampaign::foundCreator() {
+void RType::MenuCampaignSelector::foundCreator() {
     auto objs1 = getGameObjectConst().getScene().getGameObjects("Text Author");
     auto objs2 = getGameObjectConst().getScene().getGameObjects("Text AuthorBis");
     std::shared_ptr<GameObject> _found1;
@@ -255,7 +252,7 @@ void RType::MenuCampaign::foundCreator() {
     } catch (...) { KAP_DEBUG_ERROR("Failed to found creator"); }
 }
 
-void RType::MenuCampaign::foundName() {
+void RType::MenuCampaignSelector::foundName() {
     auto objs1 = getGameObjectConst().getScene().getGameObjects("Text Name");
     auto objs2 = getGameObjectConst().getScene().getGameObjects("Text NameBis");
     std::shared_ptr<GameObject> _found1;
@@ -300,7 +297,7 @@ void RType::MenuCampaign::foundName() {
     } catch (...) { KAP_DEBUG_ERROR("Failed to found name"); }
 }
 
-void RType::MenuCampaign::foundButton() {
+void RType::MenuCampaignSelector::foundButton() {
     auto objs1 = getGameObjectConst().getScene().findFirstGameObject("ButtonLevel1");
     auto objs2 = getGameObjectConst().getScene().findFirstGameObject("ButtonLevel2");
 
@@ -326,23 +323,27 @@ void RType::MenuCampaign::foundButton() {
 
 #else
 
-void RType::MenuCampaign::setButtonLevel1(std::shared_ptr<KapEngine::GameObject> button) {
+void RType::MenuCampaignSelector::setButtonLevel1(std::shared_ptr<KapEngine::GameObject> button) {
     if (!button->hasComponent<KapEngine::UI::Button>()) {
         KAP_DEBUG_ERROR("Failed to find button");
         return;
     }
+    auto& buttonComponent = button->getComponent<KapEngine::UI::Button>();
+    buttonComponent.getOnClick().registerAction([this]() { buttonPlayFirst(); });
     _buttonLevel1 = button;
 }
 
-void RType::MenuCampaign::setButtonLevel2(std::shared_ptr<KapEngine::GameObject> button) {
+void RType::MenuCampaignSelector::setButtonLevel2(std::shared_ptr<KapEngine::GameObject> button) {
     if (!button->hasComponent<KapEngine::UI::Button>()) {
         KAP_DEBUG_ERROR("Failed to find button");
         return;
     }
+    auto& buttonComponent = button->getComponent<KapEngine::UI::Button>();
+    buttonComponent.getOnClick().registerAction([this]() { buttonPlaySecond(); });
     _buttonLevel2 = button;
 }
 
-void RType::MenuCampaign::setButtonLeft(std::shared_ptr<KapEngine::GameObject> button) {
+void RType::MenuCampaignSelector::setButtonLeft(std::shared_ptr<KapEngine::GameObject> button) {
     if (!button->hasComponent<KapEngine::UI::Button>()) {
         KAP_DEBUG_ERROR("Failed to find button");
         return;
@@ -352,7 +353,7 @@ void RType::MenuCampaign::setButtonLeft(std::shared_ptr<KapEngine::GameObject> b
     _buttonLeft = button;
 }
 
-void RType::MenuCampaign::setButtonRight(std::shared_ptr<KapEngine::GameObject> button) {
+void RType::MenuCampaignSelector::setButtonRight(std::shared_ptr<KapEngine::GameObject> button) {
     if (!button->hasComponent<KapEngine::UI::Button>()) {
         KAP_DEBUG_ERROR("Failed to find button");
         return;
@@ -362,14 +363,14 @@ void RType::MenuCampaign::setButtonRight(std::shared_ptr<KapEngine::GameObject> 
     _buttonRight = button;
 }
 
-void RType::MenuCampaign::buttonNextMaps() {
+void RType::MenuCampaignSelector::buttonNextMaps() {
     _currentMap++;
     if (_currentMap >= _campaigns.size())
         _currentMap = 0;
     updateButtons();
 }
 
-void RType::MenuCampaign::buttonPreviousMaps() {
+void RType::MenuCampaignSelector::buttonPreviousMaps() {
     if (_currentMap == 0)
         _currentMap = _campaigns.size() - 1;
     else
@@ -377,13 +378,12 @@ void RType::MenuCampaign::buttonPreviousMaps() {
     updateButtons();
 }
 
-void RType::MenuCampaign::updateButtons() {
+void RType::MenuCampaignSelector::updateButtons() {
     // update button 1
     try {
         if (_buttonLevel1.use_count() == 0)
             throw KapEngine::Errors::ComponentError("Failed to get button 1");
         auto& btn = _buttonLevel1->getComponent<KapEngine::UI::Button>();
-        KAP_DEBUG_LOG("Update button 1 current map : " + std::to_string(_currentMap) + " img : " + _campaigns[_currentMap].image);
         btn.setBackground(_campaigns[_currentMap].image, {0, 0, 449, 433});
 
         auto children = _buttonLevel1->getComponent<KapEngine::Transform>().getChildren();
@@ -412,7 +412,6 @@ void RType::MenuCampaign::updateButtons() {
         if (nextId >= _campaigns.size())
             nextId = 0;
         auto& btn = _buttonLevel2->getComponent<KapEngine::UI::Button>();
-        KAP_DEBUG_LOG("Update button 2 current map : " + std::to_string(nextId) + " img : " + _campaigns[nextId].image);
         btn.setBackground(_campaigns[nextId].image, {0, 0, 449, 433});
 
         auto children = _buttonLevel2->getComponent<KapEngine::Transform>().getChildren();
@@ -432,6 +431,43 @@ void RType::MenuCampaign::updateButtons() {
             }
         }
     } catch (const std::exception& e) { KAP_DEBUG_ERROR("Failed to update button 2 : " + std::string(e.what())); }
+}
+
+void RType::MenuCampaignSelector::buttonPlayFirst() {
+    _engine->getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
+    try {
+        getGameObject().getComponent<UpdateStartGameKeys>().checkInputs();
+    } catch (...) { KAP_DEBUG_ERROR("Failed to update inputs"); }
+    try {
+        if (_currentMap >= _campaigns.size())
+            throw KapEngine::Errors::ComponentError("Failed to get current map");
+        Campaign campaign = _campaigns[_currentMap];
+        PlayerPrefs::setString("CampaignPath", campaign.scriptPath);
+        getGameObject().getScene().getEngine().getSceneManager()->loadScene("SinglePlayer");
+    } catch (LuaException& e) { KapEngine::Debug::error(e.what()); } catch (std::exception& e) {
+        KapEngine::Debug::error(e.what());
+    }
+}
+
+void RType::MenuCampaignSelector::buttonPlaySecond() {
+    _engine->getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
+    try {
+        getGameObject().getComponent<UpdateStartGameKeys>().checkInputs();
+    } catch (...) { KAP_DEBUG_ERROR("Failed to update inputs"); }
+    try {
+        std::size_t nextId = _currentMap + 1;
+        if (nextId >= _campaigns.size())
+            nextId = 0;
+        if (nextId >= _campaigns.size())
+            throw KapEngine::Errors::ComponentError("Failed to get current map");
+        Campaign campaign = _campaigns[nextId];
+        PlayerPrefs::setString("CampaignPath", campaign.scriptPath);
+        getGameObject().getScene().getEngine().getSceneManager()->loadScene("SinglePlayer");
+        // script.closeScript();
+        // gameManager.startCampaign();
+    } catch (LuaException& e) { KapEngine::Debug::error(e.what()); } catch (std::exception& e) {
+        KapEngine::Debug::error(e.what());
+    }
 }
 
 #endif

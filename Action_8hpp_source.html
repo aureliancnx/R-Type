@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('Action_8hpp_source.html',''); initResi
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
@@ -98,14 +98,14 @@ $(document).ready(function(){initNavTree('Action_8hpp_source.html',''); initResi
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Signature&gt;</div>
 <div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structKapMirror_1_1Experimental_1_1Action.html">   10</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structKapMirror_1_1Experimental_1_1Action.html">Action</a> {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;      <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        std::list&lt;std::function&lt;Signature&gt;&gt; handlers;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        std::map&lt;std::size_t, std::function&lt;Signature&gt;&gt; handlers;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        std::mutex handlersMutex;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;      <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">class</span>... Args&gt;</div>
 <div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structKapMirror_1_1Experimental_1_1Action.html#ac76a1da32905ed5d11305b697a9e268e">   21</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structKapMirror_1_1Experimental_1_1Action.html#ac76a1da32905ed5d11305b697a9e268e">operator()</a>(Args&amp;&amp;... args) {</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            std::lock_guard&lt;std::mutex&gt; lock(handlersMutex);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; handler : handlers) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> <span class="keyword">const</span>&amp; [hash, handler] : handlers) {</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                <span class="keywordflow">if</span> (handler) {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                    handler(args...);</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                }</div>
@@ -115,19 +115,31 @@ $(document).ready(function(){initNavTree('Action_8hpp_source.html',''); initResi
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Handler&gt;</div>
 <div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structKapMirror_1_1Experimental_1_1Action.html#a51ecca84bac9f358df6d5f5020bf4da4">   35</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structKapMirror_1_1Experimental_1_1Action.html#a51ecca84bac9f358df6d5f5020bf4da4">operator+=</a>(Handler&amp;&amp; hanlder) {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            std::lock_guard&lt;std::mutex&gt; lock(handlersMutex);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            handlers.push_back(hanlder);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structKapMirror_1_1Experimental_1_1Action.html#a9369b0049a65f8a11ade1315c6cccd42">   43</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structKapMirror_1_1Experimental_1_1Action.html#a9369b0049a65f8a11ade1315c6cccd42">clear</a>() {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            std::lock_guard&lt;std::mutex&gt; lock(handlersMutex);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            handlers.clear();</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    };</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;} <span class="comment">// namespace KapMirror::Experimental</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            std::size_t hash = getHash(hanlder);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            handlers[hash] = std::forward&lt;Handler&gt;(hanlder);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Handler&gt;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structKapMirror_1_1Experimental_1_1Action.html#a7d459c2a0ef339c0651a9f0aeac7f165">   46</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structKapMirror_1_1Experimental_1_1Action.html#a7d459c2a0ef339c0651a9f0aeac7f165">operator-=</a>(Handler&amp;&amp; hanlder) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            std::lock_guard&lt;std::mutex&gt; lock(handlersMutex);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            std::size_t hash = getHash(hanlder);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            handlers.erase(hash);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structKapMirror_1_1Experimental_1_1Action.html#a9369b0049a65f8a11ade1315c6cccd42">   55</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structKapMirror_1_1Experimental_1_1Action.html#a9369b0049a65f8a11ade1315c6cccd42">clear</a>() {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            std::lock_guard&lt;std::mutex&gt; lock(handlersMutex);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            handlers.clear();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        std::size_t getHash(<span class="keyword">const</span> std::function&lt;Signature&gt;&amp; func) { <span class="keywordflow">return</span> (std::size_t)func.target_type().hash_code(); }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    };</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <span class="comment">// namespace KapMirror::Experimental</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="astructKapMirror_1_1Experimental_1_1Action_html_a7d459c2a0ef339c0651a9f0aeac7f165"><div class="ttname"><a href="structKapMirror_1_1Experimental_1_1Action.html#a7d459c2a0ef339c0651a9f0aeac7f165">KapMirror::Experimental::Action::operator-=</a></div><div class="ttdeci">void operator-=(Handler &amp;&amp;hanlder)</div><div class="ttdoc">Remove a handler from the action.</div><div class="ttdef"><b>Definition:</b> Action.hpp:46</div></div>
 <div class="ttc" id="astructKapMirror_1_1Experimental_1_1Action_html_ac76a1da32905ed5d11305b697a9e268e"><div class="ttname"><a href="structKapMirror_1_1Experimental_1_1Action.html#ac76a1da32905ed5d11305b697a9e268e">KapMirror::Experimental::Action::operator()</a></div><div class="ttdeci">void operator()(Args &amp;&amp;... args)</div><div class="ttdoc">Call all handlers.</div><div class="ttdef"><b>Definition:</b> Action.hpp:21</div></div>
-<div class="ttc" id="astructKapMirror_1_1Experimental_1_1Action_html_a9369b0049a65f8a11ade1315c6cccd42"><div class="ttname"><a href="structKapMirror_1_1Experimental_1_1Action.html#a9369b0049a65f8a11ade1315c6cccd42">KapMirror::Experimental::Action::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Clear all handlers.</div><div class="ttdef"><b>Definition:</b> Action.hpp:43</div></div>
+<div class="ttc" id="astructKapMirror_1_1Experimental_1_1Action_html_a9369b0049a65f8a11ade1315c6cccd42"><div class="ttname"><a href="structKapMirror_1_1Experimental_1_1Action.html#a9369b0049a65f8a11ade1315c6cccd42">KapMirror::Experimental::Action::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Clear all handlers.</div><div class="ttdef"><b>Definition:</b> Action.hpp:55</div></div>
 <div class="ttc" id="astructKapMirror_1_1Experimental_1_1Action_html"><div class="ttname"><a href="structKapMirror_1_1Experimental_1_1Action.html">KapMirror::Experimental::Action</a></div><div class="ttdef"><b>Definition:</b> Action.hpp:10</div></div>
 <div class="ttc" id="astructKapMirror_1_1Experimental_1_1Action_html_a51ecca84bac9f358df6d5f5020bf4da4"><div class="ttname"><a href="structKapMirror_1_1Experimental_1_1Action.html#a51ecca84bac9f358df6d5f5020bf4da4">KapMirror::Experimental::Action::operator+=</a></div><div class="ttdeci">void operator+=(Handler &amp;&amp;hanlder)</div><div class="ttdoc">Add a handler to the action.</div><div class="ttdef"><b>Definition:</b> Action.hpp:35</div></div>
 <!-- start footer part -->

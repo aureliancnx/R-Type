@@ -16,7 +16,7 @@ void NetStatViewer::onAwake() {
     {
         textReceivedPackets = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Packets received");
         auto& text = textReceivedPackets->getComponent<KapEngine::UI::Text>();
-        auto& transform = textReceivedPackets->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = textReceivedPackets->getComponent<KapEngine::Transform>();
 
         text.setText("Packets received: 0");
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -27,7 +27,7 @@ void NetStatViewer::onAwake() {
     {
         textSentPackets = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Packets Sent");
         auto& text = textSentPackets->getComponent<KapEngine::UI::Text>();
-        auto& transform = textSentPackets->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = textSentPackets->getComponent<KapEngine::Transform>();
 
         text.setText("Packets sent: 0");
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -38,7 +38,7 @@ void NetStatViewer::onAwake() {
     {
         textReceivedPacketsPerSec = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Packets received per second");
         auto& text = textReceivedPacketsPerSec->getComponent<KapEngine::UI::Text>();
-        auto& transform = textReceivedPacketsPerSec->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = textReceivedPacketsPerSec->getComponent<KapEngine::Transform>();
 
         text.setText("Packet/s received: 0");
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -49,7 +49,7 @@ void NetStatViewer::onAwake() {
     {
         textSentPacketsPerSec = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Packets sent per second");
         auto& text = textSentPacketsPerSec->getComponent<KapEngine::UI::Text>();
-        auto& transform = textSentPacketsPerSec->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = textSentPacketsPerSec->getComponent<KapEngine::Transform>();
 
         text.setText("Packet/s sent: 0");
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -60,7 +60,7 @@ void NetStatViewer::onAwake() {
     {
         textReceivedBytes = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Received bytes");
         auto& text = textReceivedBytes->getComponent<KapEngine::UI::Text>();
-        auto& transform = textReceivedBytes->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = textReceivedBytes->getComponent<KapEngine::Transform>();
 
         text.setText("Bytes received: 0");
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -71,7 +71,7 @@ void NetStatViewer::onAwake() {
     {
         textSentBytes = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Sent bytes");
         auto& text = textSentBytes->getComponent<KapEngine::UI::Text>();
-        auto& transform = textSentBytes->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = textSentBytes->getComponent<KapEngine::Transform>();
 
         text.setText("Bytes sent: 0");
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));

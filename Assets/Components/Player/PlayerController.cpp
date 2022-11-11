@@ -1,5 +1,6 @@
 #include "PlayerController.hpp"
 #include "Messages.hpp"
+#include "GameManager.hpp"
 
 using namespace RType;
 
@@ -20,6 +21,10 @@ void PlayerController::onUpdate() {
 
     if (!isLocalAuthority) {
         return;
+    }
+
+    if (getInput().getKeyDown(KapEngine::Events::Key::F3)) {
+        GameManager::getInstance()->toggleDebugMode();
     }
 
     // Movement

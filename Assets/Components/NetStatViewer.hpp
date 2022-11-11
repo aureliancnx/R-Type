@@ -10,6 +10,8 @@
 namespace RType {
     class NetStatViewer : public KapEngine::Component {
       private:
+        unsigned int ping;
+
         long long lastRefreshTime = 0;
         bool lastShown;
 
@@ -21,6 +23,7 @@ namespace RType {
         std::shared_ptr<KapEngine::GameObject> textSentBytes;
         std::shared_ptr<KapEngine::GameObject> textReceivedBytesPerSecond;
         std::shared_ptr<KapEngine::GameObject> textSentBytesPerSecond;
+        std::shared_ptr<KapEngine::GameObject> textPing;
 
         std::string convertBytes(long bytes);
 
@@ -30,5 +33,8 @@ namespace RType {
 
         void onAwake() override;
         void onFixedUpdate() override;
+
+        unsigned int getPing() const;
+        void setPing(unsigned int ping);
     };
 } // namespace RType

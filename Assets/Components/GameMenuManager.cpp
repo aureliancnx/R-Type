@@ -294,6 +294,19 @@ void RType::GameMenuManager::addLife() {
     if (_life >= 3)
         return;
     _life++;
+    switch (_life) {
+        case 1:
+            heart1->getComponent<Animator>().setTrigger("On");
+            break;
+        case 2:
+            heart2->getComponent<Animator>().setTrigger("On");
+            break;
+        case 3:
+            heart3->getComponent<Animator>().setTrigger("On");
+            break;
+        default:
+            break;
+    }
 }
 
 void RType::GameMenuManager::removeLife() {

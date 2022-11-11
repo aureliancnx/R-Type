@@ -80,16 +80,21 @@ int main(int argc, char** argv) {
     } catch (...) { KAP_DEBUG_ERROR("Unable to set path of assets to current executable directory."); }
 
     bool isServer = false;
+    bool graphical = false;
 
     if (argc > 1) {
         if (std::string(argv[1]) == "--server") {
             isServer = true;
+            graphical = false;
+        }else if (std::string(argv[1]) == "--graphicalserver") {
+            isServer = true;
+            graphical = true;
         }
     }
 
     KapEngine::KEngine engine(false, "R-Type", "1.0.0", "Epitech");
 
-    initWindow(&engine, !isServer);
+    initWindow(&engine, !isServer || graphical);
 
     RType::GameManager gameManager(&engine, false);
     if (isServer) {

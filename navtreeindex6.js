@@ -178,7 +178,7 @@ var NAVTREEINDEX6 =
 "classRType_1_1CampaignGenerator.html#aec4c0bed20729ea6b12e5b9965c25d67":[37,0,5,4,4],
 "classRType_1_1CampaignManager.html":[37,0,5,5],
 "classRType_1_1CampaignManager.html#a12427e32233a3dacac822391b2bf7fed":[37,0,5,5,3],
-"classRType_1_1CampaignManager.html#a18c9cd52af4261ee235427644e6a98d7":[37,0,5,5,4],
+"classRType_1_1CampaignManager.html#a323f879de2ffd6c3f496e89579e4a614":[37,0,5,5,4],
 "classRType_1_1CampaignManager.html#a7246606be708566a553192534fbb49cd":[37,0,5,5,2],
 "classRType_1_1CampaignManager.html#aa91a70124f543d1223729ec185c71efc":[37,0,5,5,0],
 "classRType_1_1CampaignManager.html#abd8a8f2df03b9f75f4f2369bc14ee160":[37,0,5,5,1],

@@ -96,15 +96,15 @@ $(document).ready(function(){initNavTree('Packages_2KapMirror_2KapMirror_2Messag
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>KapMirror {</div>
 <div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structKapMirror_1_1ObjectSpawnMessage.html">    8</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structKapMirror_1_1ObjectSpawnMessage.html">ObjectSpawnMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">NetworkMessage</a> {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="comment">// networkId of new or existing object</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId{};</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="comment">// Sets hasAuthority on the spawned object</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordtype">bool</span> isOwner;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        std::string sceneName;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordtype">bool</span> isOwner{};</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        std::string sceneName{};</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="comment">// Prefab name</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        std::string prefabName;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> position;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> rotation;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> scale;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        std::string prefabName{};</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> position{};</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> rotation{};</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> scale{};</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="comment">// Custom payload</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        std::shared_ptr&lt;ArraySegment&lt;byte&gt;&gt; payload;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
@@ -154,7 +154,7 @@ $(document).ready(function(){initNavTree('Packages_2KapMirror_2KapMirror_2Messag
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
 <div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="structKapMirror_1_1ObjectDestroyMessage.html">   66</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structKapMirror_1_1ObjectDestroyMessage.html">ObjectDestroyMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">NetworkMessage</a> {</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="comment">// networkId of existing object</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId{};</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structKapMirror_1_1ObjectDestroyMessage.html#a310064e098f29939c9cd2a368c74e333">   70</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structKapMirror_1_1ObjectDestroyMessage.html#a310064e098f29939c9cd2a368c74e333">serialize</a>(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a>&amp; writer)<span class="keyword"> override </span>{ writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(networkId); }</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
@@ -163,10 +163,10 @@ $(document).ready(function(){initNavTree('Packages_2KapMirror_2KapMirror_2Messag
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
 <div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="structKapMirror_1_1ObjectTransformMessage.html">   75</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structKapMirror_1_1ObjectTransformMessage.html">ObjectTransformMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">NetworkMessage</a> {</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="comment">// networkId of existing object</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> position;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> rotation;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> scale;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId{};</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> position{};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> rotation{};</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector3.html">KapEngine::Tools::Vector3</a> scale{};</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="structKapMirror_1_1ObjectTransformMessage.html#af50437343a7e0b51cbc21bb255141279">   82</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structKapMirror_1_1ObjectTransformMessage.html#af50437343a7e0b51cbc21bb255141279">serialize</a>(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a>&amp; writer)<span class="keyword"> override </span>{</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(networkId);</div>

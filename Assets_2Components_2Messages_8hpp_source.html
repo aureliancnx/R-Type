@@ -93,9 +93,9 @@ $(document).ready(function(){initNavTree('Assets_2Components_2Messages_8hpp_sour
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>RType {</div>
 <div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="structRType_1_1PlayerInputMessage.html">    6</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structRType_1_1PlayerInputMessage.html">PlayerInputMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">KapMirror::NetworkMessage</a> {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keywordtype">float</span> x;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keywordtype">float</span> y;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId{};</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keywordtype">float</span> x{};</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keywordtype">float</span> y{};</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structRType_1_1PlayerInputMessage.html#a655a8a6692871928628daaf1bade3b77">   11</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structRType_1_1PlayerInputMessage.html#a655a8a6692871928628daaf1bade3b77">serialize</a>(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a>&amp; writer)<span class="keyword"> override </span>{</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;            writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(networkId);</div>
@@ -111,7 +111,7 @@ $(document).ready(function(){initNavTree('Assets_2Components_2Messages_8hpp_sour
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    };</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structRType_1_1PlayerPrepareShootMessage.html">   24</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structRType_1_1PlayerPrepareShootMessage.html">PlayerPrepareShootMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">KapMirror::NetworkMessage</a> {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId{};</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structRType_1_1PlayerPrepareShootMessage.html#af0a92bc90c3b41b97c16b878b7f3ccb3">   27</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structRType_1_1PlayerPrepareShootMessage.html#af0a92bc90c3b41b97c16b878b7f3ccb3">serialize</a>(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a>&amp; writer)<span class="keyword"> override </span>{ writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(networkId); }</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
@@ -119,7 +119,7 @@ $(document).ready(function(){initNavTree('Assets_2Components_2Messages_8hpp_sour
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    };</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structRType_1_1PlayerShootMessage.html">   32</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structRType_1_1PlayerShootMessage.html">PlayerShootMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">KapMirror::NetworkMessage</a> {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId{};</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structRType_1_1PlayerShootMessage.html#a4a9d95b86b6b471f300e879360e586b2">   35</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structRType_1_1PlayerShootMessage.html#a4a9d95b86b6b471f300e879360e586b2">serialize</a>(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a>&amp; writer)<span class="keyword"> override </span>{ writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(networkId); }</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
@@ -127,7 +127,7 @@ $(document).ready(function(){initNavTree('Assets_2Components_2Messages_8hpp_sour
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    };</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structRType_1_1PlayerAuthorityMessage.html">   40</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structRType_1_1PlayerAuthorityMessage.html">PlayerAuthorityMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">KapMirror::NetworkMessage</a> {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> networkId{};</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
 <div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structRType_1_1PlayerAuthorityMessage.html#a14f57d658a71a1adf8140e0abe08ee0f">   43</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structRType_1_1PlayerAuthorityMessage.html#a14f57d658a71a1adf8140e0abe08ee0f">serialize</a>(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a>&amp; writer)<span class="keyword"> override </span>{ writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#ae70d7477abd36330e66df41082f7f178">write</a>(networkId); }</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
@@ -141,7 +141,7 @@ $(document).ready(function(){initNavTree('Assets_2Components_2Messages_8hpp_sour
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    };</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structRType_1_1ErrorOnStartGameMessage.html">   54</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structRType_1_1ErrorOnStartGameMessage.html">ErrorOnStartGameMessage</a> : <a class="code" href="structKapMirror_1_1NetworkMessage.html">KapMirror::NetworkMessage</a> {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        std::string errorMessage;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        std::string errorMessage{};</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structRType_1_1ErrorOnStartGameMessage.html#aec151333a0fbca7ae0d04b3fe728a9aa">   57</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structRType_1_1ErrorOnStartGameMessage.html#aec151333a0fbca7ae0d04b3fe728a9aa">serialize</a>(<a class="code" href="classKapMirror_1_1NetworkWriter.html">KapMirror::NetworkWriter</a>&amp; writer)<span class="keyword"> override </span>{ writer.<a class="code" href="classKapMirror_1_1NetworkWriter.html#acb383f3d3a90d60e486368e4fa1ac472">writeString</a>(errorMessage); }</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>

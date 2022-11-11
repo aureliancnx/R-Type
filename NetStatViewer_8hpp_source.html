@@ -114,25 +114,33 @@ $(document).ready(function(){initNavTree('NetStatViewer_8hpp_source.html',''); i
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; textSentBytesPerSecond;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; textPing;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        std::string convertBytes(<span class="keywordtype">long</span> bytes);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;      <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classRType_1_1NetStatViewer.html">NetStatViewer</a>(std::shared_ptr&lt;KapEngine::GameObject&gt; _gameObject);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        ~<a class="code" href="classRType_1_1NetStatViewer.html">NetStatViewer</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1NetStatViewer.html#a02d2308bfaddf118ed5cd96a2f311718">onAwake</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1NetStatViewer.html#a181b232219a6752ba947bd7488102d84">onFixedUpdate</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="comment">// Updaters</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span> updatePacketCounts();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">void</span> updateByteCounts();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> updatePing();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="comment">// Utils</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        std::string convertBytes(<span class="keywordtype">long</span> bytes);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Color.html">KapEngine::Tools::Color</a> getPingColor();</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getPing() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">void</span> setPing(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ping);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    };</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;} <span class="comment">// namespace RType</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classRType_1_1NetStatViewer.html">NetStatViewer</a>(std::shared_ptr&lt;KapEngine::GameObject&gt; _gameObject);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        ~<a class="code" href="classRType_1_1NetStatViewer.html">NetStatViewer</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1NetStatViewer.html#a02d2308bfaddf118ed5cd96a2f311718">onAwake</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1NetStatViewer.html#a181b232219a6752ba947bd7488102d84">onFixedUpdate</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getPing() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">void</span> setPing(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ping);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    };</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;} <span class="comment">// namespace RType</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassRType_1_1NetStatViewer_html"><div class="ttname"><a href="classRType_1_1NetStatViewer.html">RType::NetStatViewer</a></div><div class="ttdef"><b>Definition:</b> NetStatViewer.hpp:11</div></div>
 <div class="ttc" id="aclassRType_1_1NetStatViewer_html_a181b232219a6752ba947bd7488102d84"><div class="ttname"><a href="classRType_1_1NetStatViewer.html#a181b232219a6752ba947bd7488102d84">RType::NetStatViewer::onFixedUpdate</a></div><div class="ttdeci">void onFixedUpdate() override</div><div class="ttdoc">call eachv x ms</div><div class="ttdef"><b>Definition:</b> NetStatViewer.cpp:123</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Component_html"><div class="ttname"><a href="classKapEngine_1_1Component.html">KapEngine::Component</a></div><div class="ttdef"><b>Definition:</b> Component.hpp:38</div></div>
 <div class="ttc" id="aclassRType_1_1NetStatViewer_html_a02d2308bfaddf118ed5cd96a2f311718"><div class="ttname"><a href="classRType_1_1NetStatViewer.html#a02d2308bfaddf118ed5cd96a2f311718">RType::NetStatViewer::onAwake</a></div><div class="ttdeci">void onAwake() override</div><div class="ttdoc">call component awake</div><div class="ttdef"><b>Definition:</b> NetStatViewer.cpp:11</div></div>
+<div class="ttc" id="aclassKapEngine_1_1Tools_1_1Color_html"><div class="ttname"><a href="classKapEngine_1_1Tools_1_1Color.html">KapEngine::Tools::Color</a></div><div class="ttdef"><b>Definition:</b> Colors.hpp:22</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

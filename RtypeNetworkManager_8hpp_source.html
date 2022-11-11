@@ -103,7 +103,7 @@ $(document).ready(function(){initNavTree('RtypeNetworkManager_8hpp_source.html',
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="classKapEngine_1_1Dictionary.html">KapEngine::Dictionary&lt;unsigned int, std::shared_ptr&lt;KapEngine::GameObject&gt;</a>&gt; players;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;      <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classKapEngine_1_1Dictionary.html">KapEngine::Dictionary&lt;unsigned int, KapEngine::Dictionary&lt;unsigned int, long long&gt;</a>&gt; pingRequests;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classRType_1_1RtypeNetworkManager.html">RtypeNetworkManager</a>(std::shared_ptr&lt;KapEngine::GameObject&gt; go, <span class="keywordtype">bool</span> _isServer = <span class="keyword">false</span>);</div>
@@ -119,7 +119,7 @@ $(document).ready(function(){initNavTree('RtypeNetworkManager_8hpp_source.html',
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> onServerClientDisconnected(<span class="keyword">const</span> std::shared_ptr&lt;KapMirror::NetworkConnection&gt;&amp; connection) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;      <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> registerClientHandlers();</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> onPlayerAuthorityMessage(<span class="keyword">const</span> std::shared_ptr&lt;KapMirror::NetworkConnectionToServer&gt;&amp; connection,</div>
@@ -128,9 +128,9 @@ $(document).ready(function(){initNavTree('RtypeNetworkManager_8hpp_source.html',
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">void</span> onErrorOnStartGameMessage(<span class="keyword">const</span> std::shared_ptr&lt;KapMirror::NetworkConnectionToServer&gt;&amp; connection,</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                       <a class="code" href="structRType_1_1ErrorOnStartGameMessage.html">ErrorOnStartGameMessage</a>&amp; message);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">void</span> onClientPlayerPingRequest(<span class="keyword">const</span> std::shared_ptr&lt;KapMirror::NetworkConnectionToServer&gt;&amp; connection, <a class="code" href="structRType_1_1PlayerPingRequest.html">PlayerPingRequest</a> &amp;request);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">void</span> onClientPlayerPingRequest(<span class="keyword">const</span> std::shared_ptr&lt;KapMirror::NetworkConnectionToServer&gt;&amp; connection, <a class="code" href="structRType_1_1PlayerPingRequest.html">PlayerPingRequest</a>&amp; request);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">void</span> onPlayerPingResult(<span class="keyword">const</span> std::shared_ptr&lt;KapMirror::NetworkConnectionToServer&gt;&amp; connection, <a class="code" href="structRType_1_1PlayerPingResult.html">PlayerPingResult</a> &amp;request);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">void</span> onPlayerPingResult(<span class="keyword">const</span> std::shared_ptr&lt;KapMirror::NetworkConnectionToServer&gt;&amp; connection, <a class="code" href="structRType_1_1PlayerPingResult.html">PlayerPingResult</a>&amp; request);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">void</span> registerServerHandlers();</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
@@ -145,7 +145,7 @@ $(document).ready(function(){initNavTree('RtypeNetworkManager_8hpp_source.html',
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">void</span> sendErrorOnStartGame(<span class="keyword">const</span> std::shared_ptr&lt;KapMirror::NetworkConnectionToClient&gt;&amp; connection, <span class="keyword">const</span> std::string&amp; errorMessage);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">void</span> onServerPlayerPingRequest(<span class="keyword">const</span> std::shared_ptr&lt;KapMirror::NetworkConnectionToClient&gt;&amp; connection, <a class="code" href="structRType_1_1PlayerPingRequest.html">PlayerPingRequest</a> &amp;request);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">void</span> onServerPlayerPingRequest(<span class="keyword">const</span> std::shared_ptr&lt;KapMirror::NetworkConnectionToClient&gt;&amp; connection, <a class="code" href="structRType_1_1PlayerPingRequest.html">PlayerPingRequest</a>&amp; request);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">void</span> startGame();</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    };</div>
@@ -163,7 +163,7 @@ $(document).ready(function(){initNavTree('RtypeNetworkManager_8hpp_source.html',
 <div class="ttc" id="aclassKapMirror_1_1NetworkManager_html"><div class="ttname"><a href="classKapMirror_1_1NetworkManager.html">KapMirror::NetworkManager</a></div><div class="ttdef"><b>Definition:</b> NetworkManager.hpp:10</div></div>
 <div class="ttc" id="astructRType_1_1PlayerShootMessage_html"><div class="ttname"><a href="structRType_1_1PlayerShootMessage.html">RType::PlayerShootMessage</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:32</div></div>
 <div class="ttc" id="astructRType_1_1StartGameMessage_html"><div class="ttname"><a href="structRType_1_1StartGameMessage.html">RType::StartGameMessage</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:48</div></div>
-<div class="ttc" id="astructRType_1_1PlayerPingResult_html"><div class="ttname"><a href="structRType_1_1PlayerPingResult.html">RType::PlayerPingResult</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:75</div></div>
+<div class="ttc" id="astructRType_1_1PlayerPingResult_html"><div class="ttname"><a href="structRType_1_1PlayerPingResult.html">RType::PlayerPingResult</a></div><div class="ttdef"><b>Definition:</b> Messages.hpp:71</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

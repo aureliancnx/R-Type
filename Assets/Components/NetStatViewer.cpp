@@ -222,7 +222,7 @@ KapEngine::Tools::Color NetStatViewer::getPingColor() {
     }else if (ping < 100) {
         return KapEngine::Tools::Color(255, 234, 167);
     }else if (ping < 150) {
-        return KapEngine::Tools::Color (253, 203, 110);
+        return KapEngine::Tools::Color(253, 203, 110);
     }
     return KapEngine::Tools::Color(214, 48, 49);
 }

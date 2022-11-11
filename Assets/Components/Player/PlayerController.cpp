@@ -259,6 +259,12 @@ void PlayerController::takeDamage(int damage) {
     if (isServer()) {
         getServer()->updateObject(getNetworkId());
     }
+
+    if ((life > 33 && life <= 66) || (life > 0 && life <= 33)) {
+        if (isClient() || isLocal()) {
+            menuManager->removeLife();
+        }
+    }
 }
 
 void PlayerController::initSettings() {

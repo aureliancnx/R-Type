@@ -13,6 +13,7 @@ var classRType_1_1PlayerController =
     [ "onUpdate", "classRType_1_1PlayerController.html#a20d408937bfbf5a318124b104ee27c41", null ],
     [ "prepareShoot", "classRType_1_1PlayerController.html#aeb6beb3d1eaa9632502446267e3a3357", null ],
     [ "serialize", "classRType_1_1PlayerController.html#ab3eca6946a325ae8a3fb556a9ea2f930", null ],
+    [ "setConnectionId", "classRType_1_1PlayerController.html#a29cf0c63e2f20b19f180caec135df063", null ],
     [ "setLocalAuthority", "classRType_1_1PlayerController.html#a5b5eb7a0f5c96e855201b943c93cfcdb", null ],
     [ "shoot", "classRType_1_1PlayerController.html#ab1a1325a7c1879552ca63bed985cccbb", null ],
     [ "takeDamage", "classRType_1_1PlayerController.html#aed71880dceac3b194babb899c394c354", null ]

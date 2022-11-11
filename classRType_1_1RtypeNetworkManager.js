@@ -6,5 +6,6 @@ var classRType_1_1RtypeNetworkManager =
     [ "onClientDisconnected", "classRType_1_1RtypeNetworkManager.html#a692f657a420e13eec401c95bf2b52a92", null ],
     [ "onServerClientConnected", "classRType_1_1RtypeNetworkManager.html#af1da5be30bac828d00fe5a7b213e25d9", null ],
     [ "onServerClientDisconnected", "classRType_1_1RtypeNetworkManager.html#afa716b1d140d9bbeb01f4fe393a447e0", null ],
-    [ "onStart", "classRType_1_1RtypeNetworkManager.html#ade2c7794c42070ea374d06e2c07a14fd", null ]
+    [ "onStart", "classRType_1_1RtypeNetworkManager.html#ade2c7794c42070ea374d06e2c07a14fd", null ],
+    [ "pingRequests", "classRType_1_1RtypeNetworkManager.html#a6a55be932b20eb9a718e88331735163f", null ]
 ];

@@ -190,21 +190,23 @@ void NetStatViewer::onFixedUpdate() {
 
         KapEngine::Tools::Color color;
         // Thanks FlatUIColors
-        if (ping < 30) {
-            color = KapEngine::Tools::Color(0, 184, 148);
-        }else if (ping < 30) {
-            color = KapEngine::Tools::Color(85, 239, 196);
-        }else if (ping < 70) {
-            color = KapEngine::Tools::Color(116, 185, 255);
-        }else if (ping < 100) {
-            color = KapEngine::Tools::Color(255, 234, 167);
-        }else if (ping < 150) {
-            color = KapEngine::Tools::Color(253, 203, 110);
-        }else{
-            color = KapEngine::Tools::Color(214, 48, 49);
-        }
-        text.setTextColor(color);
+        text.setTextColor(getPingColor());
     }
+}
+
+KapEngine::Tools::Color NetStatViewer::getPingColor() {
+    if (ping < 30) {
+        return KapEngine::Tools::Color(0, 184, 148);
+    }else if (ping < 30) {
+        return KapEngine::Tools::Color(85, 239, 196);
+    }else if (ping < 70) {
+        return KapEngine::Tools::Color(116, 185, 255);
+    }else if (ping < 100) {
+        return KapEngine::Tools::Color(255, 234, 167);
+    }else if (ping < 150) {
+        return KapEngine::Tools::Color(253, 203, 110);
+    }
+    return KapEngine::Tools::Color(214, 48, 49);
 }
 
 std::string NetStatViewer::convertBytes(long bytes) {

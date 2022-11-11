@@ -26,6 +26,7 @@ namespace RType {
         std::shared_ptr<KapEngine::GameObject> textPing;
 
         std::string convertBytes(long bytes);
+        KapEngine::Tools::Color getPingColor();
 
       public:
         explicit NetStatViewer(std::shared_ptr<KapEngine::GameObject> _gameObject);

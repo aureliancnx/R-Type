@@ -43,8 +43,8 @@ var hierarchy =
     [ "KapEngine::Dictionary< ushort, std::shared_ptr< std::function< void(std::shared_ptr< KapMirror::NetworkConnectionToClient >, KapMirror::NetworkReader &)> > >", "classKapEngine_1_1Dictionary.html", null ],
     [ "KapEngine::Dictionary< ushort, std::shared_ptr< std::function< void(std::shared_ptr< KapMirror::NetworkConnectionToServer >, KapMirror::NetworkReader &)> > >", "classKapEngine_1_1Dictionary.html", null ],
     [ "KapEngine::Time::EClock", "classKapEngine_1_1Time_1_1EClock.html", null ],
-    [ "RType::Script::Enemy", "classRType_1_1Script_1_1Enemy.html", null ],
     [ "RType::CampaignGenerator::Enemy", "structRType_1_1CampaignGenerator_1_1Enemy.html", null ],
+    [ "RType::Script::Enemy", "classRType_1_1Script_1_1Enemy.html", null ],
     [ "KapEngine::Entity", "classKapEngine_1_1Entity.html", [
       [ "KapEngine::GameObject", "classKapEngine_1_1GameObject.html", null ],
       [ "KapEngine::Graphical::GraphicalLib", "classKapEngine_1_1Graphical_1_1GraphicalLib.html", [
@@ -118,9 +118,10 @@ var hierarchy =
           [ "RType::RtypeNetworkManager", "classRType_1_1RtypeNetworkManager.html", null ]
         ] ],
         [ "RType::CampaignGenerator", "classRType_1_1CampaignGenerator.html", null ],
+        [ "RType::CampaignManager", "classRType_1_1CampaignManager.html", null ],
         [ "RType::ChangeKey", "classRType_1_1ChangeKey.html", null ],
         [ "RType::KeySelector", "classRType_1_1KeySelector.html", null ],
-        [ "RType::MenuCampaign", "classRType_1_1MenuCampaign.html", null ],
+        [ "RType::MenuCampaignSelector", "classRType_1_1MenuCampaignSelector.html", null ],
         [ "RType::MenuVolume", "classRType_1_1MenuVolume.html", null ],
         [ "RType::UpdateStartGameKeys", "classRType_1_1UpdateStartGameKeys.html", null ]
       ] ]
@@ -208,8 +209,8 @@ var hierarchy =
     [ "KapMirror::Sylph::Server", "classKapMirror_1_1Sylph_1_1Server.html", null ],
     [ "backward::SignalHandling", "classbackward_1_1SignalHandling.html", null ],
     [ "backward::SnippetFactory", "classbackward_1_1SnippetFactory.html", null ],
-    [ "KapMirror::Sylph::Socket", "classKapMirror_1_1Sylph_1_1Socket.html", null ],
     [ "KapMirror::Telepathy::Socket", "classKapMirror_1_1Telepathy_1_1Socket.html", null ],
+    [ "KapMirror::Sylph::Socket", "classKapMirror_1_1Sylph_1_1Socket.html", null ],
     [ "backward::SourceFile", "classbackward_1_1SourceFile.html", null ],
     [ "backward::ResolvedTrace::SourceLoc", "structbackward_1_1ResolvedTrace_1_1SourceLoc.html", null ],
     [ "RType::SpawnEnemy", "structRType_1_1SpawnEnemy.html", null ],

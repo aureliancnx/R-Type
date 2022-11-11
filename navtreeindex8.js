@@ -1,5 +1,12 @@
 var NAVTREEINDEX8 =
 {
+"classbackward_1_1StackTraceImpl.html":[37,0,0,9],
+"classbackward_1_1StackTraceImpl.html#a65b1def36181512a179dbbf4d79c6276":[37,0,0,9,1],
+"classbackward_1_1StackTraceImpl.html#a722efc939b63d042260149e29628f2d6":[37,0,0,9,2],
+"classbackward_1_1StackTraceImpl.html#a773dcaff268029472a0c0451dd5e134e":[37,0,0,9,5],
+"classbackward_1_1StackTraceImpl.html#aa5743dcbbb880d0aab5e769860d19b23":[37,0,0,9,4],
+"classbackward_1_1StackTraceImpl.html#aadb134bacb477d87cc05e13acf736145":[37,0,0,9,0],
+"classbackward_1_1StackTraceImpl.html#abfa5b720721a2b7c6951dd9841a5ec77":[37,0,0,9,3],
 "classbackward_1_1StackTraceImplBase.html":[37,0,0,10],
 "classbackward_1_1StackTraceImplBase.html#a2560188cfbd0750d761cb00e82a1d069":[37,0,0,10,5],
 "classbackward_1_1StackTraceImplBase.html#a59ccf3f7633c8981813a1a7981d59b90":[37,0,0,10,2],
@@ -242,12 +249,5 @@ var NAVTREEINDEX8 =
 "md_CONTRIBUTING.html#autotoc_md25":[1,3],
 "md_CONTRIBUTING.html#autotoc_md26":[1,3,0],
 "md_CONTRIBUTING.html#autotoc_md27":[1,3,1],
-"md_Library_KapEngine_CODE_OF_CONDUCT.html":[7],
-"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md100":[7,3],
-"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md101":[7,4],
-"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md102":[7,5],
-"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md103":[7,5,0],
-"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md104":[7,5,1],
-"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md105":[7,5,2],
-"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md106":[7,5,3]
+"md_Library_KapEngine_CODE_OF_CONDUCT.html":[7]
 };

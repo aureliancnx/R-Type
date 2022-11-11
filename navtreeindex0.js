@@ -32,6 +32,7 @@ var NAVTREEINDEX0 =
 "Button_8hpp_source.html":[38,0,3,2,0,0,0],
 "Camera_8hpp_source.html":[38,0,2,1,0,1,5,0],
 "CampaignGenerator_8hpp_source.html":[38,0,0,0,3,0],
+"CampaignManager_8hpp_source.html":[38,0,0,0,2,0],
 "ChangeKey_8hpp_source.html":[38,0,0,0,5,0],
 "ClientConnection_8hpp_source.html":[38,0,3,5,0,2],
 "Collider_8hpp_source.html":[38,0,2,1,0,1,6,0],
@@ -105,7 +106,7 @@ var NAVTREEINDEX0 =
 "MapScript_8hpp_source.html":[38,0,3,3,0,5],
 "Map_8hpp_source.html":[38,0,3,4,0,0],
 "MathScript_8hpp_source.html":[38,0,3,3,0,0,2],
-"MenuCampaign_8hpp_source.html":[38,0,0,0,2,0],
+"MenuCampaignSelector_8hpp_source.html":[38,0,0,0,2,1],
 "MenuManager_8hpp_source.html":[38,0,0,0,11],
 "MenuVolume_8hpp_source.html":[38,0,0,0,8,0],
 "Menu_8hpp_source.html":[38,0,0,0,6,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "classKapEngine_1_1Collider.html#a564acde9860f875a32a6638c573d87be":[35,0,5,1],
 "classKapEngine_1_1Collider.html#a6091f25d9b88e34c964cf98eb17f81b6":[35,0,5,10],
 "classKapEngine_1_1Collider.html#a835aad5122836d98061416fd3c34a4fa":[35,0,5,2],
-"classKapEngine_1_1Collider.html#a92a36099a933727f2f73ad6401e2e3f9":[35,0,5,0],
-"classKapEngine_1_1Collider.html#a96e08f0d17e623a3515aae591fec5601":[35,0,5,7]
+"classKapEngine_1_1Collider.html#a92a36099a933727f2f73ad6401e2e3f9":[35,0,5,0]
 };

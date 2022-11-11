@@ -103,6 +103,7 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
         bullet->addComponent(networkTransformComponent);
 
         auto bulletComp = std::make_shared<Bullet>(bullet);
+        bulletComp->setDirection(Bullet::Direction::LEFT);
         bullet->addComponent(bulletComp);
 
         auto collider = std::make_shared<KapEngine::Collider>(bullet, true);
@@ -359,58 +360,59 @@ void Prefabs::registerBoubouleEnemyPrefab(KapEngine::KEngine& engine) {
 }
 
 void Prefabs::registerTentaclesBossEnemyPrefab(KapEngine::KEngine& engine) {
-    engine.getPrefabManager()->createPrefab("Enemy:TentaclesBossEnemy", [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
-        auto enemy = KapEngine::UI::UiFactory::createCanvas(scene, "TentaclesBossEnemy");
-        enemy->setTag("Collider");
+    engine.getPrefabManager()->createPrefab("Enemy:TentaclesBossEnemy",
+                                            [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
+                                                auto enemy = KapEngine::UI::UiFactory::createCanvas(scene, "TentaclesBossEnemy");
+                                                enemy->setTag("Collider");
 
-        auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
-        enemy->addComponent(networkIdentityComp);
+                                                auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
+                                                enemy->addComponent(networkIdentityComp);
 
-        auto networkTransformComponent = std::make_shared<KapMirror::NetworkTransform>(enemy);
-        networkTransformComponent->setClientAuthority(false);
-        networkTransformComponent->setActiveUpdate(false);
-        networkTransformComponent->setActiveLateUpdate(true);
-        enemy->addComponent(networkTransformComponent);
+                                                auto networkTransformComponent = std::make_shared<KapMirror::NetworkTransform>(enemy);
+                                                networkTransformComponent->setClientAuthority(false);
+                                                networkTransformComponent->setActiveUpdate(false);
+                                                networkTransformComponent->setActiveLateUpdate(true);
+                                                enemy->addComponent(networkTransformComponent);
 
-        auto enemyComp = std::make_shared<TentaclesBossEnemy>(enemy);
-        enemy->addComponent(enemyComp);
-        enemyComp->setLife(100);
+                                                auto enemyComp = std::make_shared<TentaclesBossEnemy>(enemy);
+                                                enemy->addComponent(enemyComp);
+                                                enemyComp->setLife(100);
 
-        auto collider = std::make_shared<KapEngine::Collider>(enemy, true);
-        enemy->addComponent(collider);
+                                                auto collider = std::make_shared<KapEngine::Collider>(enemy, true);
+                                                enemy->addComponent(collider);
 
-        auto imageComp = std::make_shared<KapEngine::UI::Image>(enemy);
-        imageComp->setRectangle({0, 0, 64, 66});
-        imageComp->setPathSprite("Assets/Textures/Enemy/enemy_3.png");
-        enemy->addComponent(imageComp);
+                                                auto imageComp = std::make_shared<KapEngine::UI::Image>(enemy);
+                                                imageComp->setRectangle({0, 0, 64, 66});
+                                                imageComp->setPathSprite("Assets/Textures/Enemy/enemy_3.png");
+                                                enemy->addComponent(imageComp);
 
-        auto& canvas = enemy->getComponent<KapEngine::UI::Canvas>();
-        canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
+                                                auto& canvas = enemy->getComponent<KapEngine::UI::Canvas>();
+                                                canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
 
-        auto& transform = enemy->getComponent<KapEngine::Transform>();
-        transform.setPosition({0, 0, 0});
-        transform.setScale({64 * 2, 66 * 2, 0});
+                                                auto& transform = enemy->getComponent<KapEngine::Transform>();
+                                                transform.setPosition({0, 0, 0});
+                                                transform.setScale({64 * 2, 66 * 2, 0});
 
-        auto bulletIdle = std::make_shared<SpriteAnimation>(enemy);
-        enemy->addComponent(bulletIdle);
+                                                auto bulletIdle = std::make_shared<SpriteAnimation>(enemy);
+                                                enemy->addComponent(bulletIdle);
 
-        KapEngine::Time::ETime duration;
-        duration.setSeconds(.4f);
-        bulletIdle->setTiming(duration);
-        bulletIdle->loop(true);
-        bulletIdle->setRect({0, 0, 65.5, 66});
-        bulletIdle->setNbAnimations(12);
-        bulletIdle->bouncingVersion(false);
+                                                KapEngine::Time::ETime duration;
+                                                duration.setSeconds(.4f);
+                                                bulletIdle->setTiming(duration);
+                                                bulletIdle->loop(true);
+                                                bulletIdle->setRect({0, 0, 65.5, 66});
+                                                bulletIdle->setNbAnimations(12);
+                                                bulletIdle->bouncingVersion(false);
 
-        auto animator = std::make_shared<KapEngine::Animator>(enemy);
-        enemy->addComponent(animator);
+                                                auto animator = std::make_shared<KapEngine::Animator>(enemy);
+                                                enemy->addComponent(animator);
 
-        animator->addAnim(bulletIdle, "Idle");
+                                                animator->addAnim(bulletIdle, "Idle");
 
-        animator->addLink("Idle", "Idle");
+                                                animator->addLink("Idle", "Idle");
 
-        return enemy;
-    });
+                                                return enemy;
+                                            });
 }
 
 #pragma endregion

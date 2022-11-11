@@ -37,7 +37,7 @@ namespace RType {
 
       public:
         explicit MapScript(KapEngine::KEngine* _engine, bool _isLoadedByServer = false);
-        ~MapScript() = default;
+        ~MapScript();
 
         /**
          * @brief Load map script.
@@ -81,6 +81,14 @@ namespace RType {
          */
         std::vector<SpawnEnemy> getSpawnedEnemies() const { return spawnEnemies; }
 
+        /**
+         * @brief Spawn enemy.
+         * @param scene Scene where enemy will be spawned
+         * @param enemyName Name of the enemy (without "Enemy" suffix)
+         * @param startPositionY Start position Y of the enemy
+         * @param startPositionX Start position X of the enemy
+         * @param enemyHp Enemy HP
+         */
         void spawnEnemy(KapEngine::SceneManagement::Scene& scene, const std::string& enemyName, float startPositionY, float startPositionX,
                         int enemyHp);
 
@@ -91,6 +99,7 @@ namespace RType {
         void _setMapBannerPath(const std::string& bannerPath);
         void _registerNewEnemy(Script::Enemy* enemy);
         void _registerSpawnEnemy(const std::string& name, int spawnTime, float startPositionY, float startPositionX, int enemyHp);
+        void _instanciatePrefab(const std::string& prefabName, float positionX, float positionY);
 
         KapEngine::Tools::Vector3 _updateEnemy(const std::string& enemyName, const KapEngine::Tools::Vector3& position);
 

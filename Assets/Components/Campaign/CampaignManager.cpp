@@ -42,7 +42,8 @@ void RType::CampaignManager::onFixedUpdate() {
     for (std::size_t i = 0; i < _enemies.size(); i++) {
         SpawnEnemy enemy = _enemies[i];
         if (time.asSecond() <= enemy.spawnTime) {
-            DEBUG_LOG("Enemy: " + enemy.name + " time spawn:" + std::to_string(enemy.spawnTime) + " curr time: " + std::to_string(time.asSecond()));
+            DEBUG_LOG("Enemy: " + enemy.name + " time spawn:" + std::to_string(enemy.spawnTime) +
+                      " curr time: " + std::to_string(time.asSecond()));
             _mapScript->spawnEnemy(_scene, enemy.name, enemy.startPositionY, enemy.startPositionX, enemy.enemyHp);
             _enemies.erase(_enemies.begin() + i);
             i--;

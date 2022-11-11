@@ -88,7 +88,7 @@ int Enemy::__index(lua_State* L) {
 }
 
 int Enemy::__newIndex(lua_State* L) {
-    auto* enemy = (Enemy*) lua_touserdata(L, -3);
+    auto* enemy = (Enemy*)lua_touserdata(L, -3);
     std::string index(lua_tostring(L, -2));
     if (index == "name") {
         std::string name(lua_tostring(L, -1));

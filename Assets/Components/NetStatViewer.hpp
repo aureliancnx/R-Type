@@ -21,7 +21,8 @@ namespace RType {
         std::shared_ptr<KapEngine::GameObject> textSentBytes;
 
       public:
-        explicit NetStatViewer(std::shared_ptr<KapEngine::GameObject> _gameObject, std::shared_ptr<KapMirror::Experimental::NetworkStatistics> _statObject);
+        explicit NetStatViewer(std::shared_ptr<KapEngine::GameObject> _gameObject,
+                               std::shared_ptr<KapMirror::Experimental::NetworkStatistics> _statObject);
         ~NetStatViewer() = default;
 
         void onAwake() override;

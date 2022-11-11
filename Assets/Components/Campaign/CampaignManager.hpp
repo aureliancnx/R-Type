@@ -14,24 +14,24 @@
 namespace RType {
 
     class CampaignManager : public KapEngine::Component {
-        public:
-            CampaignManager(std::shared_ptr<KapEngine::GameObject> go);
-            ~CampaignManager();
+      public:
+        CampaignManager(std::shared_ptr<KapEngine::GameObject> go);
+        ~CampaignManager();
 
-            void onAwake() override;
-            void onFixedUpdate() override;
+        void onAwake() override;
+        void onFixedUpdate() override;
 
-            void onSceneChanged();
+        void onSceneChanged();
 
-        protected:
-        private:
-            KapEngine::Time::EClock _clock;
-            std::shared_ptr<MapScript> _mapScript;
-            std::vector<SpawnEnemy> _enemies;
-            KapEngine::Time::ETime _lastElapsed;
-            KapEngine::SceneManagement::Scene &_scene;
+      protected:
+      private:
+        KapEngine::Time::EClock _clock;
+        std::shared_ptr<MapScript> _mapScript;
+        std::vector<SpawnEnemy> _enemies;
+        KapEngine::Time::ETime _lastElapsed;
+        KapEngine::SceneManagement::Scene& _scene;
     };
 
-}
+} // namespace RType
 
 #endif /* !CAMPAIGNMANAGER_HPP_ */

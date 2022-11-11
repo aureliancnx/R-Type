@@ -27,27 +27,33 @@ redShip2.pathSprite = "Assets/Textures/Enemy/enemy_4.png"
 redShip2.rectangle = Rectangle.new(0, 0, 263, 116)
 redShip2.scale = Vector2.new(79, 35)
 
--- Movement of the enemies
-function BasicMovement(posX, posY, time)
+-- Controller of the enemies
+function BasicController(posX, posY, time)
+    if (time % 1000) then
+        Debug.Log("Bullet")
+        Map.InstanciatePrefab("Bullet", posX, posY)
+    end
     return posX - 0.5, posY
 end
 
 -- Update enemies
-local movements = {
-    ["Bouboule2"] = BasicMovement,
-    ["RedShip2"] = BasicMovement
+local controllers = {
+    ["Bouboule2"] = BasicController,
+    ["RedShip2"] = BasicController
 }
 
 function OnEnemyUpdate(enemyName, posX, posY, time)
-    if movements[enemyName] ~= nil then
-        return movements[enemyName](posX, posY, time)
+    if controllers[enemyName] ~= nil then
+        return controllers[enemyName](posX, posY, time)
     end
     return posX, posY
 end
 
 -- Spawn enemies
-for i = 1, 3 do
-    Map.SpawnEnemy("Bouboule2", 1, 100 + (60 * i), 100, 10)
-end
+Map.SpawnEnemy("Bouboule2", 1, 100, 100, 10)
 
-Map.SpawnEnemy("RedShip2", 1, 400, 100, 10)
+--for i = 1, 3 do
+--    Map.SpawnEnemy("Bouboule2", 1, 100 + (60 * i), 100, 10)
+--end
+--
+--Map.SpawnEnemy("RedShip2", 1, 400, 100, 10)

@@ -19,7 +19,7 @@ void NetStatViewer::onAwake() {
 
         text.setText("Packets received: 0");
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(50, 150, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(10, 30, 0));
         transform.setParent(canvas);
     }
     // Sent packets from the beginning
@@ -30,7 +30,7 @@ void NetStatViewer::onAwake() {
 
         text.setText("Packets sent: 0");
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(50, 150, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(10, 45, 0));
         transform.setParent(canvas);
     }
     // Packet per second received
@@ -41,7 +41,7 @@ void NetStatViewer::onAwake() {
 
         text.setText("Packet/s received: 0");
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(50, 150, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(10, 60, 0));
         transform.setParent(canvas);
     }
     // Packet per second sent
@@ -52,29 +52,29 @@ void NetStatViewer::onAwake() {
 
         text.setText("Packet/s sent: 0");
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(50, 150, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(10, 75, 0));
         transform.setParent(canvas);
     }
     // Bytes received
     {
         textReceivedBytes = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Received bytes");
-        auto &text = textSentPacketsPerSec->getComponent<KapEngine::UI::Text>();
-        auto &transform = textSentPacketsPerSec->getComponent<KapEngine::Transform>().getTransform();
+        auto &text = textReceivedBytes->getComponent<KapEngine::UI::Text>();
+        auto &transform = textReceivedBytes->getComponent<KapEngine::Transform>().getTransform();
 
         text.setText("Bytes received: 0");
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(50, 150, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(10, 90, 0));
         transform.setParent(canvas);
     }
     // Bytes sent
     {
         textSentBytes = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Sent bytes");
-        auto &text = textSentPacketsPerSec->getComponent<KapEngine::UI::Text>();
-        auto &transform = textSentPacketsPerSec->getComponent<KapEngine::Transform>().getTransform();
+        auto &text = textSentBytes->getComponent<KapEngine::UI::Text>();
+        auto &transform = textSentBytes->getComponent<KapEngine::Transform>().getTransform();
 
         text.setText("Bytes sent: 0");
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(50, 150, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(10, 105, 0));
         transform.setParent(canvas);
     }
 }

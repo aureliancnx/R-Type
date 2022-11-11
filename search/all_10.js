@@ -17,7 +17,7 @@ var searchData=
   ['registertmpactionafterupdate_400',['registerTmpActionAfterUpdate',['../classKapEngine_1_1SceneManagement_1_1Scene.html#a3a0f496c5e4a0a5eb2a80c35c77b6e4a',1,'KapEngine::SceneManagement::Scene']]],
   ['removecomponent_401',['removeComponent',['../classKapEngine_1_1GameObject.html#a3ebcbc013a84a102dab99eae212aaab8',1,'KapEngine::GameObject::removeComponent(std::shared_ptr&lt; Component &gt; comp)'],['../classKapEngine_1_1GameObject.html#ab0301bae4fe188931a31216c488bec9b',1,'KapEngine::GameObject::removeComponent(std::size_t id)']]],
   ['removeprefab_402',['removePrefab',['../classKapEngine_1_1Prefabs_1_1PrefabManager.html#a281729ad26a1325cd5aa0b43b1cc2b12',1,'KapEngine::Prefabs::PrefabManager']]],
-  ['reset_403',['reset',['../classKapMirror_1_1NetworkReader.html#a151455b1eafb2007158602da036acb02',1,'KapMirror::NetworkReader::reset()'],['../classKapMirror_1_1NetworkWriter.html#a35379a9ab4b78dc8650f87ea0fdfa3ac',1,'KapMirror::NetworkWriter::reset()']]],
+  ['reset_403',['reset',['../classKapMirror_1_1NetworkReader.html#a151455b1eafb2007158602da036acb02',1,'KapMirror::NetworkReader::reset()'],['../classKapMirror_1_1NetworkWriter.html#a35379a9ab4b78dc8650f87ea0fdfa3ac',1,'KapMirror::NetworkWriter::reset()'],['../classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a262e07e60d669fbae6fe1d0adc49aadd',1,'KapMirror::Experimental::NetworkStatistics::reset()']]],
   ['resizearray_404',['resizeArray',['../classKapMirror_1_1Array.html#a45e6ab0a3872d773c001e30b5da75e32',1,'KapMirror::Array']]],
   ['resolvedtrace_405',['ResolvedTrace',['../structbackward_1_1ResolvedTrace.html',1,'backward']]],
   ['restart_406',['restart',['../classKapEngine_1_1Time_1_1EClock.html#aa84323220453c51ee4a3f9d77f17b0e0',1,'KapEngine::Time::EClock']]],

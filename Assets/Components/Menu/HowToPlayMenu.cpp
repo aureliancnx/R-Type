@@ -281,7 +281,6 @@ void RType::HowToPlayMenu::init() {
             explosionAnimation->setTiming(timer);
             explosionAnimation->loop(true);
             explosionAnimation->setRect({0, 0, 100, 100});
-            // explosionAnimation->setNbAnimations(6);
             explosionAnimation->setNbAnimations(71, 10, 8);
 
             auto animator = std::make_shared<KapEngine::Animator>(explosion);
@@ -341,7 +340,7 @@ void RType::HowToPlayMenu::init() {
             KAP_DEBUG_ERROR("Failed to set keyboard up key img");
         }
     }
-//mvprintw(LINES / 2, (COLS - my_strlen(str)) / 2, str);
+
     // create text keyboard for Move Up
     {
         std::string inputUp = "UNDEFINED";
@@ -357,14 +356,7 @@ void RType::HowToPlayMenu::init() {
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        // KAP_DEBUG_WARNING(std::to_string((655 - inputUp.size()) / 2));
-        // KAP_DEBUG_WARNING(std::to_string((655 - inputUp.size()) / 2 - 256));
-        // KAP_DEBUG_WARNING(std::to_string(35 + ((110 - inputUp.size()) / 2)));
-        // KAP_DEBUG_WARNING(std::to_string(inputUp.size()));
-        // transform.setPosition(KapEngine::Tools::Vector3((655 - inputUp.size()) / 2 - 256, 100, 0));
         transform.setPosition(KapEngine::Tools::Vector3(25 + ((110 - inputUp.size()) / 2), 100, 0));
-        // transform.setPosition(KapEngine::Tools::Vector3(25, 100, 0));
-        // transform.setPosition(KapEngine::Tools::Vector3(70, 100, 0));
         transform.setParent(canvas);
     }
 
@@ -413,8 +405,6 @@ void RType::HowToPlayMenu::init() {
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3(8 + ((110 - inputDown.size()) / 2), 150, 0));
-        // transform.setPosition(KapEngine::Tools::Vector3((655 - inputDown.size()) / 2 - 256, 150, 0));
-        // transform.setPosition(KapEngine::Tools::Vector3(25, 150, 0));
         transform.setParent(canvas);
     }
 
@@ -463,7 +453,6 @@ void RType::HowToPlayMenu::init() {
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3((655 - inputLeft.size()) / 2 - 256, 200, 0));
-        // transform.setPosition(KapEngine::Tools::Vector3(25, 200, 0));
         transform.setParent(canvas);
     }
 
@@ -512,7 +501,6 @@ void RType::HowToPlayMenu::init() {
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3((655 - inputRight.size()) / 2 - 256, 250, 0));
-        // transform.setPosition(KapEngine::Tools::Vector3(25, 250, 0));
         transform.setParent(canvas);
     }
 
@@ -561,7 +549,6 @@ void RType::HowToPlayMenu::init() {
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3((655 - inputShoot.size()) / 2 - 256, 300, 0));
-        // transform.setPosition(KapEngine::Tools::Vector3(25, 300, 0));
         transform.setParent(canvas);
     }
 }

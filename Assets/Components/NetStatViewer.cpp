@@ -97,25 +97,31 @@ void NetStatViewer::onFixedUpdate() {
     {
         auto& text = textReceivedPackets->getComponent<KapEngine::UI::Text>();
         text.setText("Packets received: " + std::to_string(networkStatistics.clientIntervalReceivedPackets));
+        textReceivedPackets->setActive(active);
     }
     {
         auto& text = textSentPackets->getComponent<KapEngine::UI::Text>();
         text.setText("Packets sent: " + std::to_string(networkStatistics.clientIntervalSentPackets));
+        textSentPackets->setActive(active);
     }
     {
         auto& text = textReceivedPacketsPerSec->getComponent<KapEngine::UI::Text>();
         text.setText("Packet/s received: " + std::to_string(networkStatistics.clientReceivedPacketsPerSecond));
+        textReceivedPacketsPerSec->setActive(active);
     }
     {
         auto& text = textSentPacketsPerSec->getComponent<KapEngine::UI::Text>();
         text.setText("Packet/s sent: " + std::to_string(networkStatistics.clientSentPacketsPerSecond));
+        textSentPacketsPerSec->setActive(active);
     }
     {
         auto& text = textReceivedBytes->getComponent<KapEngine::UI::Text>();
         text.setText("Bytes received: " + std::to_string(networkStatistics.clientIntervalReceivedBytes));
+        textReceivedBytes->setActive(active);
     }
     {
         auto& text = textSentBytes->getComponent<KapEngine::UI::Text>();
         text.setText("Bytes sent: " + std::to_string(networkStatistics.clientIntervalSentBytes));
+        textSentBytes->setActive(active);
     }
 }

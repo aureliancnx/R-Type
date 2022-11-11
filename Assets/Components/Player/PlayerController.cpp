@@ -64,7 +64,7 @@ void RType::PlayerController::setConnectionId(unsigned int _connectionId) {
 }
 
 void RType::PlayerController::sendPingUpdate() {
-    if (KapMirror::NetworkTime::localTime() - lastPingTime > 1000) {
+    if (KapMirror::NetworkTime::localTime() - lastPingTime > 2000) {
         unsigned int clientId = connectionId;
         lastPingTime = KapMirror::NetworkTime::localTime();
         auto &pingDict = GameManager::getInstance()->getNetworkManager()->pingRequests;

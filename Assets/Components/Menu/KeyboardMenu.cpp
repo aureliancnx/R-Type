@@ -157,6 +157,25 @@ void RType::KeyboardMenu::init() {
         btnComp->getOnClick().registerAction([this]() { _chgKey->startSelect("shootInput"); });
     }
 
+    // create button change shoot input
+    {
+        auto btn = scene.createGameObject("ButtonInput6");
+        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+        auto& transform = btn->getComponent<KapEngine::Transform>();
+
+        btn->addComponent(btnComp);
+        btnComp->setText("Debug");
+        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+        btnComp->setTextPosition({60, 12});
+        btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+        transform.setPosition({249, 375, 0});
+        transform.setScale({222, 40, 0});
+        transform.setParent(_goSettings);
+
+        btnComp->getOnClick().registerAction([this]() { _chgKey->startSelect("debugInput"); });
+    }
+
     // create button back
     {
         auto btn = scene.createGameObject("ButtonBack");

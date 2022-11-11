@@ -11,6 +11,7 @@ NetStatViewer::NetStatViewer(std::shared_ptr<KapEngine::GameObject> _gameObject,
 
 void NetStatViewer::onAwake() {
     auto canvas = KapEngine::UI::UiFactory::createCanvas(getGameObject().getScene(), "Canvas NetStatViewer");
+    // Received packets from the beginning
     {
         textReceivedPackets = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Packets received");
         auto &text = textReceivedPackets->getComponent<KapEngine::UI::Text>();
@@ -21,6 +22,7 @@ void NetStatViewer::onAwake() {
         transform.setPosition(KapEngine::Tools::Vector3(50, 150, 0));
         transform.setParent(canvas);
     }
+    // Sent packets from the beginning
     {
         textSentPackets = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Packets Sent");
         auto &text = textSentPackets->getComponent<KapEngine::UI::Text>();
@@ -31,6 +33,7 @@ void NetStatViewer::onAwake() {
         transform.setPosition(KapEngine::Tools::Vector3(50, 150, 0));
         transform.setParent(canvas);
     }
+    // Packet per second received
     {
         textReceivedPacketsPerSec = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Packets received per second");
         auto &text = textReceivedPacketsPerSec->getComponent<KapEngine::UI::Text>();
@@ -41,6 +44,7 @@ void NetStatViewer::onAwake() {
         transform.setPosition(KapEngine::Tools::Vector3(50, 150, 0));
         transform.setParent(canvas);
     }
+    // Packet per second sent
     {
         textSentPacketsPerSec = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Packets sent per second");
         auto &text = textSentPacketsPerSec->getComponent<KapEngine::UI::Text>();
@@ -55,25 +59,27 @@ void NetStatViewer::onAwake() {
 
 void NetStatViewer::onFixedUpdate() {
     int updateRate = 30;
-    if (KapMirror::NetworkTime::localTime() - lastRefreshTime > 1000 / updateRate) {
-        lastRefreshTime = KapMirror::NetworkTime::localTime();
-        std::cout << "NetStatViewer: fixed Update!" << std::endl;
+    if (KapMirror::NetworkTime::localTime() - lastRefreshTime < 1000 / updateRate) {
+        return;
+    }
+    lastRefreshTime = KapMirror::NetworkTime::localTime();
+    std::cout << "NetStatViewer: fixed Update!" << std::endl;
 
-        {
-            auto &text = textReceivedPackets->getComponent<KapEngine::UI::Text>();
-            text.setText("Packets received: " + std::to_string(statObject->clientIntervalReceivedPackets));
-        }
-        {
-            auto &text = textSentPackets->getComponent<KapEngine::UI::Text>();
-            text.setText("Packets sent: " + std::to_string(statObject->clientIntervalSentPackets));
-        }
-        {
-            auto &text = textReceivedPacketsPerSec->getComponent<KapEngine::UI::Text>();
-            text.setText("Packet/s received: " + std::to_string(statObject->clientReceivedPacketsPerSecond));
-        }
-        {
-            auto &text = textSentPacketsPerSec->getComponent<KapEngine::UI::Text>();
-            text.setText("Packet/s sent: " + std::to_string(statObject->clientSentPacketsPerSecond));
-        }
+    // Update texts
+    {
+        auto &text = textReceivedPackets->getComponent<KapEngine::UI::Text>();
+        text.setText("Packets received: " + std::to_string(statObject->clientIntervalReceivedPackets));
+    }
+    {
+        auto &text = textSentPackets->getComponent<KapEngine::UI::Text>();
+        text.setText("Packets sent: " + std::to_string(statObject->clientIntervalSentPackets));
+    }
+    {
+        auto &text = textReceivedPacketsPerSec->getComponent<KapEngine::UI::Text>();
+        text.setText("Packet/s received: " + std::to_string(statObject->clientReceivedPacketsPerSecond));
+    }
+    {
+        auto &text = textSentPacketsPerSec->getComponent<KapEngine::UI::Text>();
+        text.setText("Packet/s sent: " + std::to_string(statObject->clientSentPacketsPerSecond));
     }
 }

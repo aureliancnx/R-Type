@@ -249,3 +249,9 @@ void RType::GameMenuManager::initHeart() {
 }
 
 void RType::GameMenuManager::onStartClient() { initMainMenu(false); }
+
+void RType::GameMenuManager::addLife() {
+    if (_life >= 3)
+        return;
+    _life++;
+}

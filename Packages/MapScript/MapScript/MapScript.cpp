@@ -308,15 +308,26 @@ void MapScript::_instanciatePrefab(const std::string& prefabName, float position
     }
 
     auto& scene = engine.getSceneManager()->getCurrentScene();
-
     std::shared_ptr<KapEngine::GameObject> gameObject;
-    if (!engine.getPrefabManager()->instantiatePrefab(prefabName, scene, gameObject)) {
-        KapEngine::Debug::error("Can't instanciate prefab: " + prefabName);
-        return;
-    }
 
-    auto& transform = gameObject->getComponent<KapEngine::Transform>();
-    transform.setPosition({positionX, positionY, 0});
+    if (isLoadedByServer) {
+        auto networkManager = KapMirror::NetworkManager::getInstance();
+        if (networkManager == nullptr) {
+            KapEngine::Debug::error("Can't get network manager");
+            return;
+        }
+
+        networkManager->getServer()->spawnObject(prefabName, {positionX, positionY, 0},
+            [](const std::shared_ptr<KapEngine::GameObject>& go) {}, gameObject);
+    } else {
+        if (!engine.getPrefabManager()->instantiatePrefab(prefabName, scene, gameObject)) {
+            KapEngine::Debug::error("Can't instanciate prefab: " + prefabName);
+            return;
+        }
+
+        auto& transform = gameObject->getComponent<KapEngine::Transform>();
+        transform.setPosition({positionX, positionY, 0});
+    }
 }
 
 KapEngine::Tools::Vector3 MapScript::_updateEnemy(const std::string& enemyName, const KapEngine::Tools::Vector3& position) {
@@ -376,28 +387,42 @@ void MapScript::spawnEnemy(KapEngine::SceneManagement::Scene& scene, const std::
                            float startPositionX, int enemyHp) {
     std::shared_ptr<KapEngine::GameObject> enemy;
 
-    if (isLoadedByServer) {
-        // TODO: Spawn enmy with NetworkManager
-    } else {
-        if (!engine.getPrefabManager()->instantiatePrefab("Enemy:" + enemyName, scene, enemy)) {
-            KapEngine::Debug::error("Can't spawn enemy: " + enemyName + " (Prefab: 'Enemy:" + enemyName + "' not found)");
-            return;
-        }
-    }
-
-    if (enemy->hasComponent<EnemyController>()) {
-        auto& controller = enemy->getComponent<EnemyController>();
-        controller.setEnemyName(enemyName);
-        controller.setHp(enemyHp);
-    }
-
-    auto& transform = enemy->getComponent<KapEngine::Transform>();
     if (startPositionX <= 0) {
         startPositionX = 1280 + 100; // Constant
     } else {
         startPositionX = 1280 - startPositionX;
     }
-    transform.setPosition({startPositionX, startPositionY, 0});
+
+    if (isLoadedByServer) {
+        auto networkManager = KapMirror::NetworkManager::getInstance();
+        if (networkManager == nullptr) {
+            KapEngine::Debug::error("Can't get network manager");
+            return;
+        }
+
+        networkManager->getServer()->spawnObject("Enemy:" + enemyName, {startPositionX, startPositionY, 0},
+            [&enemyName, &enemyHp](const std::shared_ptr<KapEngine::GameObject>& go) {
+                if (go->hasComponent<EnemyController>()) {
+                    auto& controller = go->getComponent<EnemyController>();
+                    controller.setEnemyName(enemyName);
+                    controller.setHp(enemyHp);
+                }
+            },enemy);
+    } else {
+        if (!engine.getPrefabManager()->instantiatePrefab("Enemy:" + enemyName, scene, enemy)) {
+            KapEngine::Debug::error("Can't spawn enemy: " + enemyName + " (Prefab: 'Enemy:" + enemyName + "' not found)");
+            return;
+        }
+
+        auto& transform = enemy->getComponent<KapEngine::Transform>();
+        transform.setPosition({startPositionX, startPositionY, 0});
+
+        if (enemy->hasComponent<EnemyController>()) {
+            auto& controller = enemy->getComponent<EnemyController>();
+            controller.setEnemyName(enemyName);
+            controller.setHp(enemyHp);
+        }
+    }
 }
 
 Script::Enemy* MapScript::getNewEnemy(const std::string& enemyName) {

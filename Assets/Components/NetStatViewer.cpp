@@ -106,6 +106,18 @@ void NetStatViewer::onAwake() {
         transform.setParent(canvas);
         textSentBytesPerSecond->setActive(false);
     }
+    // Ping
+    {
+        textPing = KapEngine::UI::UiFactory::createText(getScene(), "Ping");
+        auto& text = textPing->getComponent<KapEngine::UI::Text>();
+        auto& transform = textPing->getComponent<KapEngine::Transform>();
+
+        text.setText("Ping: ?");
+        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(10, 150, 0));
+        transform.setParent(canvas);
+        textPing->setActive(false);
+    }
 }
 
 void NetStatViewer::onFixedUpdate() {
@@ -124,6 +136,7 @@ void NetStatViewer::onFixedUpdate() {
     textSentBytes->setActive(active);
     textReceivedBytesPerSecond->setActive(active);
     textSentBytesPerSecond->setActive(active);
+    textPing->setActive(active);
 
     // Don't update texts if debug mode is not active
     if (!active) {
@@ -171,6 +184,10 @@ void NetStatViewer::onFixedUpdate() {
         auto& text = textSentBytesPerSecond->getComponent<KapEngine::UI::Text>();
         text.setText("Byte/s sent: " + convertBytes(networkStatistics.clientSentBytesPerSecond));
     }
+    {
+        auto& text = textPing->getComponent<KapEngine::UI::Text>();
+        text.setText("Ping: " + std::to_string(getPing()) + " ms");
+    }
 }
 
 std::string NetStatViewer::convertBytes(long bytes) {
@@ -195,4 +212,12 @@ std::string NetStatViewer::convertBytes(long bytes) {
         ss << (float) bytes / (float) kb << " KB";
     }
     return ss.str();
+}
+
+unsigned int NetStatViewer::getPing() const {
+    return ping;
+}
+
+void NetStatViewer::setPing(unsigned int _ping) {
+    ping = _ping;
 }

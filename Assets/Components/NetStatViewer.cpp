@@ -182,10 +182,10 @@ std::string NetStatViewer::convertBytes(long bytes) {
         ss << (float) bytes / (float) gb << " GB";
     }
     if (bytes >= mb) {
-        ss << (float) bytes / (float) gb << " MB";
+        ss << (float) bytes / (float) mb << " MB";
     }
     if (bytes >= kb) {
-        ss << (float) bytes / (float) gb << " KB";
+        ss << (float) bytes / (float) kb << " KB";
     }
     return ss.str();
 }

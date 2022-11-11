@@ -1,5 +1,8 @@
 var NAVTREEINDEX6 =
 {
+"classKapMirror_1_1Sylph_1_1SocketException.html":[37,0,3,1,7],
+"classKapMirror_1_1Sylph_1_1SocketException.html#a099d4d13eabd2e1bc232b474dcad1410":[37,0,3,1,7,0],
+"classKapMirror_1_1Sylph_1_1SocketException.html#aa103236c01d21a023644b07a8101c91f":[37,0,3,1,7,1],
 "classKapMirror_1_1Sylph_1_1UdpClient.html":[37,0,3,1,8],
 "classKapMirror_1_1Sylph_1_1UdpClient.html#a453350579fa9a9dba53c233be342dc2e":[37,0,3,1,8,5],
 "classKapMirror_1_1Sylph_1_1UdpClient.html#a48cc5f9ce547f5b0505fb8395ac93d32":[37,0,3,1,8,3],
@@ -246,8 +249,5 @@ var NAVTREEINDEX6 =
 "classRType_1_1HowToPlayMenu.html#af0a39c6564e02edf69132b2bbbbd6f6f":[37,0,5,13,1],
 "classRType_1_1KeySelector.html":[37,0,5,15],
 "classRType_1_1KeySelector.html#a0831dae9574fab769effc2ada434eb1a":[37,0,5,15,1],
-"classRType_1_1KeySelector.html#a5ae89466a41beb74f9244125a37b58aa":[37,0,5,15,3],
-"classRType_1_1KeySelector.html#a7f2189986a299b443b64b081e8d0df44":[37,0,5,15,0],
-"classRType_1_1KeySelector.html#ac1d7b255fe12890d0feb2b74d96cda69":[37,0,5,15,2],
-"classRType_1_1KeySelector.html#ac64178b0834503e266ec164a09c2796b":[37,0,5,15,4]
+"classRType_1_1KeySelector.html#a5ae89466a41beb74f9244125a37b58aa":[37,0,5,15,3]
 };

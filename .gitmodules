@@ -18,6 +18,10 @@
 	path = Library/LuaEngine
 	branch = master
 	url = git@github.com:lubgr/lua-cmake.git
+[submodule "Library/KapProfiler"]
+	path = Library/KapProfiler
+	branch = main
+	url = git@github.com:aureliancnx/KapProfiler.git
 [submodule "Packages/KapUI"]
 	path = Packages/KapUI
 	branch = main
@@ -26,3 +30,6 @@
 	path = Packages/KapRaylib
 	branch = main
 	url = git@github.com:benji-35/KapRaylib.git
+[submodule "Library/backward"]
+	path = Library/backward
+	url = git@github.com:bombela/backward-cpp.git

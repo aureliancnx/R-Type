@@ -4,6 +4,7 @@
 #include "MapScript/MapScript.hpp"
 #include "Vector2Script.hpp"
 #include "RectangleScript.hpp"
+#include "SpriteAnimationScript.hpp"
 #include "Debug.hpp"
 #include <string>
 #include <iostream>
@@ -15,10 +16,11 @@ namespace RType {
 namespace RType::Script {
     class Enemy {
       public:
-        std::string name = "";
-        std::string pathSprite = "";
-        Rectangle* rectangle;
-        Vector2* scale;
+        std::string name;
+        std::string pathSprite;
+        Rectangle* rectangle = nullptr;
+        Vector2* scale = nullptr;
+        SpriteAnimation* animation = nullptr;
 
         Enemy() = default;
         ~Enemy() = default;

@@ -32,8 +32,8 @@ void RType::HowToPlayMenu::init() {
     {
         auto background = KapEngine::UI::UiFactory::createImage(scene, "Background");
         auto imageComp = std::make_shared<KapEngine::UI::Image>(background);
-        imageComp->setPathSprite("Assets/Textures/background_2.png");
-        imageComp->setRectangle({0, 0, 755, 448});
+        imageComp->setPathSprite("Assets/Textures/setting_bg_2.png");
+        imageComp->setRectangle({0, 0, 381, 200});
         background->addComponent(imageComp);
 
         auto& transform = background->getComponent<KapEngine::Transform>();

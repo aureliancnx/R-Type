@@ -26,8 +26,8 @@ void RType::SettingsMenu::init() {
     {
         auto background = KapEngine::UI::UiFactory::createImage(scene, "Background");
         auto imageComp = std::make_shared<KapEngine::UI::Image>(background);
-        imageComp->setPathSprite("Assets/Textures/background_2.png");
-        imageComp->setRectangle({0, 0, 755, 448});
+        imageComp->setPathSprite("Assets/Textures/setting_bg.png");
+        imageComp->setRectangle({0, 0, 558, 360});
         background->addComponent(imageComp);
 
         auto& transform = background->getComponent<KapEngine::Transform>();
@@ -48,7 +48,7 @@ void RType::SettingsMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 366, 0});
+        transform.setPosition({249, 356, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
@@ -70,7 +70,7 @@ void RType::SettingsMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 102, 0});
+        transform.setPosition({249, 92, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
@@ -92,7 +92,7 @@ void RType::SettingsMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 168, 0});
+        transform.setPosition({249, 158, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
@@ -114,7 +114,7 @@ void RType::SettingsMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 234, 0});
+        transform.setPosition({249, 224, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
@@ -136,7 +136,7 @@ void RType::SettingsMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 300, 0});
+        transform.setPosition({249, 290, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 

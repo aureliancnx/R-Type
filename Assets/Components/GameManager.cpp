@@ -11,17 +11,17 @@
 #include "Menu/EndMenu.hpp"
 #include "CampaignGenerator/CampaignGenerator.hpp"
 #include "Player/PlayerSkin.hpp"
+#include "Campaign/CampaignManager.hpp"
 
 #include "Sylph/SylphTransport.hpp"
 #include "Prefabs.hpp"
+#include "NetStatViewer.hpp"
 
-using namespace RType;
+RType::GameManager* RType::GameManager::instance = nullptr;
 
-GameManager* GameManager::instance = nullptr;
+RType::GameManager::GameManager(KapEngine::KEngine* _engine, bool b) : engine(_engine), displaySplashScreens(b) { instance = this; }
 
-GameManager::GameManager(KapEngine::KEngine* _engine, bool b) : engine(_engine), displaySplashScreens(b) { instance = this; }
-
-void GameManager::launchGame() {
+void RType::GameManager::launchGame() {
     KapEngine::Debug::log("Launch game");
 
     registerPrefabs();
@@ -44,7 +44,7 @@ void GameManager::launchGame() {
     engine->getGraphicalLibManager()->getCurrentLib()->setSoundVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
 }
 
-void GameManager::launchServer() {
+void RType::GameManager::launchServer() {
     KapEngine::Debug::log("Launch server");
     engine->getSplashScreen()->setDisplayKapEngineLogo(false);
 
@@ -55,7 +55,7 @@ void GameManager::launchServer() {
     networkManager->startServer();
 }
 
-void GameManager::registerPrefabs() {
+void RType::GameManager::registerPrefabs() {
     // Player
     Prefabs::registerPlayerPrefab(*engine);
 
@@ -77,7 +77,7 @@ void GameManager::registerPrefabs() {
     Prefabs::registerStarsParalaxPrefab(*engine);
 }
 
-void GameManager::registerMenus() {
+void RType::GameManager::registerMenus() {
     KapEngine::Debug::log("Register menus");
 
     auto& scene = engine->getSceneManager()->getScene(1);
@@ -112,10 +112,10 @@ void GameManager::registerMenus() {
     menuManager.registerMenu("EndMenu", endMenu);
 }
 
-void GameManager::initEndScene() { auto scene = engine->getSceneManager()->createScene("EndScene"); }
+void RType::GameManager::initEndScene() { auto scene = engine->getSceneManager()->createScene("EndScene"); }
 
 // TODO: Move this to a dedicated class
-void GameManager::initSinglePlayer() {
+void RType::GameManager::initSinglePlayer() {
     auto scene = engine->getSceneManager()->createScene("SinglePlayer");
 
     std::shared_ptr<KapEngine::GameObject> paralaxGalaxy;
@@ -156,12 +156,12 @@ void GameManager::initSinglePlayer() {
         return;
     }
 
-    // TODO: Fix animation (move animation)
-    // https://github.com/aureliancnx/R-Type/blob/ae652adfdf49c702bd8513c27b8bef6dcfeaebc2/Assets/Components/GameManager.cpp#L84
+    auto campaignManager = std::make_shared<CampaignManager>(gameMenu);
+    gameMenu->addComponent(campaignManager);
 }
 
 // TODO: Move this to a dedicated class
-void GameManager::initMultiPlayer(bool isServer) {
+void RType::GameManager::initMultiPlayer(bool isServer) {
     auto scene = engine->getSceneManager()->createScene("MultiPlayer");
 
     std::shared_ptr<KapEngine::GameObject> paralaxGalaxy;
@@ -193,11 +193,19 @@ void GameManager::initMultiPlayer(bool isServer) {
             KAP_DEBUG_ERROR("Failed to instantiate in game menu prefab");
             return;
         }
+
+        auto netstatObject = scene->createGameObject("NetStatViewer");
+
+        auto networkStatistics = std::make_shared<KapMirror::Experimental::NetworkStatistics>(networkManagerObject);
+        netstatObject->addComponent(networkStatistics);
+
+        auto netstat = std::make_shared<NetStatViewer>(netstatObject);
+        netstatObject->addComponent(netstat);
     }
 }
 
 // TODO: Move this to a dedicated class
-void GameManager::startCampaign() {
+void RType::GameManager::startCampaign() {
     auto& scene = engine->getSceneManager()->getScene("SinglePlayer");
 
     auto enemies = scene.createGameObject("Enemies Generator");
@@ -206,13 +214,13 @@ void GameManager::startCampaign() {
 }
 
 // TODO: Move this to a dedicated class
-void GameManager::startLocalMultiPlayer() {
+void RType::GameManager::startLocalMultiPlayer() {
     auto& scene = engine->getSceneManager()->getScene("MultiPlayer");
 
     networkManager->startClient();
 }
 
-void GameManager::initSplashScreens() {
+void RType::GameManager::initSplashScreens() {
     engine->getSplashScreen()->setDisplayKapEngineLogo(true);
     auto nsplash =
         std::make_shared<KapEngine::SceneManagement::SplashScreen::SplashScreenNode>("Assets/Textures/Background/bg-back.png", 4);
@@ -224,10 +232,23 @@ void GameManager::initSplashScreens() {
     engine->getSplashScreen()->addSplashScreen(nsplash);
 }
 
-void GameManager::initAxis() {
+void RType::GameManager::toggleDebugMode() {
+    debugMode = !debugMode;
+
+    if (debugMode) {
+        KAP_DEBUG_LOG("Debug mode enabled.");
+    } else {
+        KAP_DEBUG_LOG("Debug mode disabled.");
+    }
+}
+
+bool RType::GameManager::hasDebugMode() { return debugMode; }
+
+void RType::GameManager::initAxis() {
     KapEngine::Events::Input::Axis horizontal("Horizontal");
     KapEngine::Events::Input::Axis vertical("Vertical");
     KapEngine::Events::Input::Axis shoot("shoot");
+    KapEngine::Events::Input::Axis debug("Debug");
 
     horizontal.positiveButton = KapEngine::Events::Key::RIGHT;
     horizontal.negativeButton = KapEngine::Events::Key::LEFT;
@@ -237,9 +258,10 @@ void GameManager::initAxis() {
     vertical.invert = true;
 
     shoot.positiveButton = KapEngine::Events::Key::SPACE;
+    debug.positiveButton = KapEngine::Events::Key::F3;
 
     engine->getEventManager().getInput().addAxis(horizontal);
     engine->getEventManager().getInput().addAxis(vertical);
 }
 
-std::shared_ptr<RtypeNetworkManager>& GameManager::getNetworkManager() { return networkManager; }
+std::shared_ptr<RType::RtypeNetworkManager>& RType::GameManager::getNetworkManager() { return networkManager; }

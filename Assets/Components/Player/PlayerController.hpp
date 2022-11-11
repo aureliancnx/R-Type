@@ -18,6 +18,7 @@ namespace RType {
         bool isMoving = false;
 
         long long lastRefreshTime = 0;
+        long long lastPingTime = 0;
 
         std::shared_ptr<GameMenuManager> menuManager;
         KapEngine::Time::EClock clockMissile;
@@ -27,9 +28,14 @@ namespace RType {
         KapEngine::Events::Key::EKey leftKey = KapEngine::Events::Key::LEFT;
         KapEngine::Events::Key::EKey rightKey = KapEngine::Events::Key::RIGHT;
         KapEngine::Events::Key::EKey shootKey = KapEngine::Events::Key::SPACE;
+        KapEngine::Events::Key::EKey debugKey = KapEngine::Events::Key::F3;
+
+        std::vector<std::shared_ptr<KapEngine::GameObject>> collisions;
 
         int life = 100;
         bool isDead = false;
+
+        unsigned int connectionId;
 
       public:
         explicit PlayerController(std::shared_ptr<KapEngine::GameObject> _gameObject);
@@ -47,6 +53,8 @@ namespace RType {
 
         void movePlayer(const KapEngine::Tools::Vector2& input);
 
+        void setConnectionId(unsigned int _connectionId);
+
         void shoot();
 
         void prepareShoot();
@@ -56,6 +64,8 @@ namespace RType {
         bool dead() const;
 
         void takeDamage(int damage);
+
+        void onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other) override;
 
         void serialize(KapMirror::NetworkWriter& writer) override;
 
@@ -71,5 +81,9 @@ namespace RType {
         void spawnMissile(const KapEngine::Tools::Vector3& pos);
 
         void initSettings();
+
+        void checkCollisions();
+
+        void sendPingUpdate();
     };
 } // namespace RType

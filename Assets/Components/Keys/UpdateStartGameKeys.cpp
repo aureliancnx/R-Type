@@ -3,7 +3,8 @@
 using namespace RType;
 
 UpdateStartGameKeys::UpdateStartGameKeys(std::shared_ptr<KapEngine::GameObject> go)
-    : Component(go, "UpdateStartGameKeys"), _baseAxisHor("basicHorizontal"), _baseAxisVert("basicVertical"), _baseAxisShoot("basicShoot") {
+    : Component(go, "UpdateStartGameKeys"), _baseAxisHor("basicHorizontal"), _baseAxisVert("basicVertical"), _baseAxisShoot("basicShoot"),
+      _baseAxisDebug("basicDebug") {
 
     _baseAxisHor.positiveButton = KapEngine::Events::Key::RIGHT;
     _baseAxisHor.negativeButton = KapEngine::Events::Key::LEFT;
@@ -12,6 +13,8 @@ UpdateStartGameKeys::UpdateStartGameKeys(std::shared_ptr<KapEngine::GameObject> 
     _baseAxisVert.negativeButton = KapEngine::Events::Key::UP;
 
     _baseAxisShoot.positiveButton = KapEngine::Events::Key::MOUSE_LEFT;
+
+    _baseAxisDebug.positiveButton = KapEngine::Events::Key::F3;
 }
 
 UpdateStartGameKeys::~UpdateStartGameKeys() {}
@@ -22,12 +25,14 @@ void UpdateStartGameKeys::checkInputs() {
     KapEngine::Events::Key left = _baseAxisHor.negativeButton;
     KapEngine::Events::Key right = _baseAxisHor.positiveButton;
     KapEngine::Events::Key shoot = _baseAxisShoot.positiveButton;
+    KapEngine::Events::Key debug = _baseAxisDebug.positiveButton;
 
     setValueSaved("upInput", up);
     setValueSaved("downInput", down);
     setValueSaved("leftInput", left);
     setValueSaved("rightInput", right);
     setValueSaved("shootInput", shoot);
+    setValueSaved("debugInput", debug);
 
     try {
         auto& axis = getInput().getAxisSettings("Vertical");
@@ -45,6 +50,11 @@ void UpdateStartGameKeys::checkInputs() {
         auto& axis = getInput().getAxisSettings("Shoot");
         axis.positiveButton = shoot;
     } catch (...) { KAP_DEBUG_ERROR("Failed to update Shoot axis"); }
+
+    try {
+        auto& axis = getInput().getAxisSettings("Debug");
+        axis.positiveButton = debug;
+    } catch (...) { KAP_DEBUG_ERROR("Failed to update Debug axis"); }
 }
 
 bool UpdateStartGameKeys::setValueSaved(std::string const& name, KapEngine::Events::Key& key) {
@@ -53,6 +63,6 @@ bool UpdateStartGameKeys::setValueSaved(std::string const& name, KapEngine::Even
     int val = KapEngine::PlayerPrefs::getInt(name);
     if (!KapEngine::Events::Key::intInEnum(val))
         return false;
-    key = (KapEngine::Events::Key::EKey)val;
+    key = (KapEngine::Events::Key::EKey) val;
     return true;
 }

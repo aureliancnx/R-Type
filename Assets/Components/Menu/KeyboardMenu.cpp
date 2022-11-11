@@ -23,8 +23,8 @@ void RType::KeyboardMenu::init() {
     {
         auto background = KapEngine::UI::UiFactory::createImage(scene, "Background");
         auto imageComp = std::make_shared<KapEngine::UI::Image>(background);
-        imageComp->setPathSprite("Assets/Textures/background_2.png");
-        imageComp->setRectangle(KapEngine::Tools::Rectangle(0, 0, 755, 448));
+        imageComp->setPathSprite("Assets/Textures/setting_bg_2.png");
+        imageComp->setRectangle({0, 0, 381, 200});
         background->addComponent(imageComp);
 
         auto& transform = background->getComponent<KapEngine::Transform>();
@@ -74,8 +74,8 @@ void RType::KeyboardMenu::init() {
         btnComp->setTextPosition({60, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 150, 0});
-        transform.setScale({222, 40, 0});
+        transform.setPosition({135, 150, 0});
+        transform.setScale({200, 40, 0});
         transform.setParent(_goSettings);
 
         btnComp->getOnClick().registerAction([this]() { _chgKey->startSelect("upInput"); });
@@ -93,8 +93,8 @@ void RType::KeyboardMenu::init() {
         btnComp->setTextPosition({60, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 200, 0});
-        transform.setScale({222, 40, 0});
+        transform.setPosition({135, 215, 0});
+        transform.setScale({200, 40, 0});
         transform.setParent(_goSettings);
 
         btnComp->getOnClick().registerAction([this]() { _chgKey->startSelect("downInput"); });
@@ -112,8 +112,8 @@ void RType::KeyboardMenu::init() {
         btnComp->setTextPosition({60, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 250, 0});
-        transform.setScale({222, 40, 0});
+        transform.setPosition({135, 280, 0});
+        transform.setScale({200, 40, 0});
         transform.setParent(_goSettings);
 
         btnComp->getOnClick().registerAction([this]() { _chgKey->startSelect("leftInput"); });
@@ -131,8 +131,8 @@ void RType::KeyboardMenu::init() {
         btnComp->setTextPosition({60, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 300, 0});
-        transform.setScale({222, 40, 0});
+        transform.setPosition({385, 150, 0});
+        transform.setScale({200, 40, 0});
         transform.setParent(_goSettings);
 
         btnComp->getOnClick().registerAction([this]() { _chgKey->startSelect("rightInput"); });
@@ -150,11 +150,30 @@ void RType::KeyboardMenu::init() {
         btnComp->setTextPosition({60, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 350, 0});
-        transform.setScale({222, 40, 0});
+        transform.setPosition({385, 215, 0});
+        transform.setScale({200, 40, 0});
         transform.setParent(_goSettings);
 
         btnComp->getOnClick().registerAction([this]() { _chgKey->startSelect("shootInput"); });
+    }
+
+    // create button change debug input
+    {
+        auto btn = scene.createGameObject("ButtonInput6");
+        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
+        auto& transform = btn->getComponent<KapEngine::Transform>();
+
+        btn->addComponent(btnComp);
+        btnComp->setText("Debug");
+        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+        btnComp->setTextPosition({60, 12});
+        btnComp->setTextColor(KapEngine::Tools::Color::white());
+
+        transform.setPosition({385, 280, 0});
+        transform.setScale({200, 40, 0});
+        transform.setParent(_goSettings);
+
+        btnComp->getOnClick().registerAction([this]() { _chgKey->startSelect("debugInput"); });
     }
 
     // create button back
@@ -166,10 +185,10 @@ void RType::KeyboardMenu::init() {
         btn->addComponent(btnComp);
         btnComp->setText("Back");
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
-        btnComp->setTextPosition({75, 12});
+        btnComp->setTextPosition({80, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({460, 410, 0});
+        transform.setPosition({249, 430, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(_goSettings);
 
@@ -203,7 +222,7 @@ void RType::KeyboardMenu::init() {
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(270, 50, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(270, 20, 0));
         transform.setParent(_goSettings);
     }
 }

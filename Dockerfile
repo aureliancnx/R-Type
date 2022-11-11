@@ -8,32 +8,18 @@ EXPOSE 7777/udp
 # Set workdir to folder /app
 WORKDIR /app
 
-# Copy source code
-COPY . .
-
 # Update package updater
 RUN apt-get update -y
 
 # Install needed packages
 RUN apt-get install sudo -y
-RUN sudo apt-get install -y ninja-build gcc g++ cmake libtbb-dev xorg-dev libglu1-mesa-dev libxrandr-dev curl zip unzip tar git build-essential
+RUN sudo apt-get install -y libtbb-dev xorg-dev libglu1-mesa-dev libxrandr-dev curl tar build-essential wget
 
-# Check ninja version
-RUN ninja --version
+# Add github.com to known hosts
+RUN wget https://github.com/aureliancnx/R-Type/releases/latest/download/RType-Build-Linux.tar.gz
 
-# Install vcpkg
-#RUN git clone https://github.com/Microsoft/vcpkg.git
-#RUN ./vcpkg/bootstrap-vcpkg.sh
-#RUN ./vcpkg/vcpkg integrate install
-
-ENV CXX "g++"
-
-# Build
-RUN rm -rf build/
-RUN mkdir build
-RUN cmake -S . -B build
-RUN cmake --build build --config Debug
-#-DCMAKE_TOOLCHAIN_FILE=/app/vcpkg/scripts/buildsystems/vcpkg.cmake
+RUN tar xvf RType-Build-Linux.tar.gz
+RUN mv RType-1.0.1-Linux/R-Type/* .
 
 # Run
-CMD ["./build/RType", "--server"]
+CMD ["./RType", "--server"]

@@ -1,1 +1,1 @@
-find . -iname *.hpp -o -iname *.cpp | xargs clang-format -i
+find . -iname '*.hpp' -o -iname '*.cpp' ! -path "./Library/*" ! -path "./Packages/*" | xargs clang-format -i

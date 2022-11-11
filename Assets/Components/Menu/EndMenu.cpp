@@ -60,12 +60,17 @@ void EndMenu::init() {
     // Create Title Scene
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text End Menu");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "À changer");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
+        // KapEngine::PlayerPrefs::setBool("Finish", false); // SET LORS DE LA FINAL ACTION DU JEU
+        if (KapEngine::PlayerPrefs::getBool("Finish") && KapEngine::PlayerPrefs::hasKey("Finish"))
+            compText->setText("You Win !");
+        if (!KapEngine::PlayerPrefs::getBool("Finish") && KapEngine::PlayerPrefs::hasKey("Finish"))
+            compText->setText("You Loose !");
         compText->setPoliceSize(30);
-
         txt->addComponent(compText);
+
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3(280, 50, 0));
         transform.setParent(canvas);
@@ -87,11 +92,14 @@ void EndMenu::init() {
     // Create Value score
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Value Score Text");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "100"); // à changer en "" quand on aura un playerpref du score
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         compText->setPoliceSize(20);
-        // compText->setText(std::to_string(KapEngine::PlayerPrefs::getInt("ScorePlayer")));
+        if (KapEngine::PlayerPrefs::hasKey("ScorePlayer"))
+            compText->setText(std::to_string(KapEngine::PlayerPrefs::getInt("ScorePlayer")));
+        else
+            compText->setText("NaN");
         txt->addComponent(compText);
         transform.setScale({150, 35, 0});
         transform.setPosition({250, 250, 0});

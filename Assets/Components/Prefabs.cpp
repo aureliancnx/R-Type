@@ -11,7 +11,7 @@
 using namespace RType;
 
 void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
-    engine.getPrefabManager()->createPrefab("Player", [](KapEngine::SceneManagement::Scene& scene) {
+    engine.getPrefabManager()->createPrefab("Player", [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
         auto player = KapEngine::UI::UiFactory::createCanvas(scene, "Player");
         player->setTag("Collider");
 
@@ -90,7 +90,7 @@ void Prefabs::registerPlayerPrefab(KapEngine::KEngine& engine) {
 #pragma region Bullets
 
 void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
-    engine.getPrefabManager()->createPrefab("Bullet", [](KapEngine::SceneManagement::Scene& scene) {
+    engine.getPrefabManager()->createPrefab("Bullet", [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
         auto bullet = KapEngine::UI::UiFactory::createCanvas(scene, "Bullet");
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(bullet);
@@ -103,6 +103,7 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
         bullet->addComponent(networkTransformComponent);
 
         auto bulletComp = std::make_shared<Bullet>(bullet);
+        bulletComp->setDirection(Bullet::Direction::LEFT);
         bullet->addComponent(bulletComp);
 
         auto collider = std::make_shared<KapEngine::Collider>(bullet, true);
@@ -125,7 +126,7 @@ void Prefabs::registerBulletPrefab(KapEngine::KEngine& engine) {
 }
 
 void Prefabs::registerMissilePrefab(KapEngine::KEngine& engine) {
-    engine.getPrefabManager()->createPrefab("Missile", [](KapEngine::SceneManagement::Scene& scene) {
+    engine.getPrefabManager()->createPrefab("Missile", [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
         auto missile = KapEngine::UI::UiFactory::createCanvas(scene, "Missile");
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(missile);
@@ -161,7 +162,7 @@ void Prefabs::registerMissilePrefab(KapEngine::KEngine& engine) {
 }
 
 void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine& engine) {
-    engine.getPrefabManager()->createPrefab("MissileExplode", [](KapEngine::SceneManagement::Scene& scene) {
+    engine.getPrefabManager()->createPrefab("MissileExplode", [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
         auto menu = KapEngine::UI::UiFactory::createCanvas(scene, "MissileExplode");
         auto img = KapEngine::UI::UiFactory::createImage(
             scene, "MissileExplodeImg",
@@ -179,7 +180,7 @@ void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine& engine) {
             int nbAnimations = 16;
             float totalTimeAnim = 5.5f;
             KapEngine::Time::ETime timeAnim;
-            timeAnim.setSeconds(totalTimeAnim / (float)nbAnimations);
+            timeAnim.setSeconds(totalTimeAnim / (float) nbAnimations);
             auto anim = std::make_shared<SpriteAnimation>(img);
             img->addComponent(anim);
 
@@ -202,7 +203,7 @@ void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine& engine) {
 }
 
 void Prefabs::registerBulletExplodePrefab(KapEngine::KEngine& engine) {
-    engine.getPrefabManager()->createPrefab("BulletExplode", [](KapEngine::SceneManagement::Scene& scene) {
+    engine.getPrefabManager()->createPrefab("BulletExplode", [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
         auto menu = KapEngine::UI::UiFactory::createCanvas(scene, "MissileExplode");
         auto img = KapEngine::UI::UiFactory::createImage(
             scene, "MissileExplodeImg",
@@ -220,7 +221,7 @@ void Prefabs::registerBulletExplodePrefab(KapEngine::KEngine& engine) {
             int nbAnimations = 16;
             float totalTimeAnim = 6.5f;
             KapEngine::Time::ETime timeAnim;
-            timeAnim.setSeconds(totalTimeAnim / (float)nbAnimations);
+            timeAnim.setSeconds(totalTimeAnim / (float) nbAnimations);
             auto anim = std::make_shared<SpriteAnimation>(img);
             img->addComponent(anim);
 
@@ -247,7 +248,7 @@ void Prefabs::registerBulletExplodePrefab(KapEngine::KEngine& engine) {
 #pragma region IngameMenu
 
 void Prefabs::registerInGameMenuPrefab(KapEngine::KEngine& engine) {
-    engine.getPrefabManager()->createPrefab("InGameMenu", [](KapEngine::SceneManagement::Scene& scene) {
+    engine.getPrefabManager()->createPrefab("InGameMenu", [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
         auto menu = KapEngine::UI::UiFactory::createCanvas(scene, "InGameMenu");
 
         auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(menu);
@@ -268,7 +269,7 @@ void Prefabs::registerInGameMenuPrefab(KapEngine::KEngine& engine) {
 #pragma region Enemies
 
 void Prefabs::registerShipEnemyPrefab(KapEngine::KEngine& engine) {
-    engine.getPrefabManager()->createPrefab("Enemy:ShipEnemy", [](KapEngine::SceneManagement::Scene& scene) {
+    engine.getPrefabManager()->createPrefab("Enemy:ShipEnemy", [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
         auto enemy = KapEngine::UI::UiFactory::createCanvas(scene, "ShipEnemy");
         enemy->setTag("Collider");
 
@@ -305,7 +306,7 @@ void Prefabs::registerShipEnemyPrefab(KapEngine::KEngine& engine) {
 }
 
 void Prefabs::registerBoubouleEnemyPrefab(KapEngine::KEngine& engine) {
-    engine.getPrefabManager()->createPrefab("Enemy:BoubouleEnemy", [](KapEngine::SceneManagement::Scene& scene) {
+    engine.getPrefabManager()->createPrefab("Enemy:BoubouleEnemy", [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
         auto enemy = KapEngine::UI::UiFactory::createCanvas(scene, "BoubouleEnemy");
         enemy->setTag("Collider");
 
@@ -359,58 +360,59 @@ void Prefabs::registerBoubouleEnemyPrefab(KapEngine::KEngine& engine) {
 }
 
 void Prefabs::registerTentaclesBossEnemyPrefab(KapEngine::KEngine& engine) {
-    engine.getPrefabManager()->createPrefab("Enemy:TentaclesBossEnemy", [](KapEngine::SceneManagement::Scene& scene) {
-        auto enemy = KapEngine::UI::UiFactory::createCanvas(scene, "TentaclesBossEnemy");
-        enemy->setTag("Collider");
+    engine.getPrefabManager()->createPrefab("Enemy:TentaclesBossEnemy",
+                                            [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
+                                                auto enemy = KapEngine::UI::UiFactory::createCanvas(scene, "TentaclesBossEnemy");
+                                                enemy->setTag("Collider");
 
-        auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
-        enemy->addComponent(networkIdentityComp);
+                                                auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
+                                                enemy->addComponent(networkIdentityComp);
 
-        auto networkTransformComponent = std::make_shared<KapMirror::NetworkTransform>(enemy);
-        networkTransformComponent->setClientAuthority(false);
-        networkTransformComponent->setActiveUpdate(false);
-        networkTransformComponent->setActiveLateUpdate(true);
-        enemy->addComponent(networkTransformComponent);
+                                                auto networkTransformComponent = std::make_shared<KapMirror::NetworkTransform>(enemy);
+                                                networkTransformComponent->setClientAuthority(false);
+                                                networkTransformComponent->setActiveUpdate(false);
+                                                networkTransformComponent->setActiveLateUpdate(true);
+                                                enemy->addComponent(networkTransformComponent);
 
-        auto enemyComp = std::make_shared<TentaclesBossEnemy>(enemy);
-        enemy->addComponent(enemyComp);
-        enemyComp->setLife(100);
+                                                auto enemyComp = std::make_shared<TentaclesBossEnemy>(enemy);
+                                                enemy->addComponent(enemyComp);
+                                                enemyComp->setLife(100);
 
-        auto collider = std::make_shared<KapEngine::Collider>(enemy, true);
-        enemy->addComponent(collider);
+                                                auto collider = std::make_shared<KapEngine::Collider>(enemy, true);
+                                                enemy->addComponent(collider);
 
-        auto imageComp = std::make_shared<KapEngine::UI::Image>(enemy);
-        imageComp->setRectangle({0, 0, 64, 66});
-        imageComp->setPathSprite("Assets/Textures/Enemy/enemy_3.png");
-        enemy->addComponent(imageComp);
+                                                auto imageComp = std::make_shared<KapEngine::UI::Image>(enemy);
+                                                imageComp->setRectangle({0, 0, 64, 66});
+                                                imageComp->setPathSprite("Assets/Textures/Enemy/enemy_3.png");
+                                                enemy->addComponent(imageComp);
 
-        auto& canvas = enemy->getComponent<KapEngine::UI::Canvas>();
-        canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
+                                                auto& canvas = enemy->getComponent<KapEngine::UI::Canvas>();
+                                                canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
 
-        auto& transform = enemy->getComponent<KapEngine::Transform>();
-        transform.setPosition({0, 0, 0});
-        transform.setScale({64 * 2, 66 * 2, 0});
+                                                auto& transform = enemy->getComponent<KapEngine::Transform>();
+                                                transform.setPosition({0, 0, 0});
+                                                transform.setScale({64 * 2, 66 * 2, 0});
 
-        auto bulletIdle = std::make_shared<SpriteAnimation>(enemy);
-        enemy->addComponent(bulletIdle);
+                                                auto bulletIdle = std::make_shared<SpriteAnimation>(enemy);
+                                                enemy->addComponent(bulletIdle);
 
-        KapEngine::Time::ETime duration;
-        duration.setSeconds(.4f);
-        bulletIdle->setTiming(duration);
-        bulletIdle->loop(true);
-        bulletIdle->setRect({0, 0, 65.5, 66});
-        bulletIdle->setNbAnimations(12);
-        bulletIdle->bouncingVersion(false);
+                                                KapEngine::Time::ETime duration;
+                                                duration.setSeconds(.4f);
+                                                bulletIdle->setTiming(duration);
+                                                bulletIdle->loop(true);
+                                                bulletIdle->setRect({0, 0, 65.5, 66});
+                                                bulletIdle->setNbAnimations(12);
+                                                bulletIdle->bouncingVersion(false);
 
-        auto animator = std::make_shared<KapEngine::Animator>(enemy);
-        enemy->addComponent(animator);
+                                                auto animator = std::make_shared<KapEngine::Animator>(enemy);
+                                                enemy->addComponent(animator);
 
-        animator->addAnim(bulletIdle, "Idle");
+                                                animator->addAnim(bulletIdle, "Idle");
 
-        animator->addLink("Idle", "Idle");
+                                                animator->addLink("Idle", "Idle");
 
-        return enemy;
-    });
+                                                return enemy;
+                                            });
 }
 
 #pragma endregion
@@ -418,7 +420,7 @@ void Prefabs::registerTentaclesBossEnemyPrefab(KapEngine::KEngine& engine) {
 #pragma region Paralax
 
 void Prefabs::registerGalaxyParalaxPrefab(KapEngine::KEngine& engine) {
-    engine.getPrefabManager()->createPrefab("ParalaxGalaxy", [](KapEngine::SceneManagement::Scene& scene) {
+    engine.getPrefabManager()->createPrefab("ParalaxGalaxy", [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
         auto paralax = scene.createGameObject("Paralax");
         auto paralaxCanvas = KapEngine::UI::UiFactory::createCanvas(scene, "ParalaxCanvas");
 
@@ -469,7 +471,7 @@ void Prefabs::registerGalaxyParalaxPrefab(KapEngine::KEngine& engine) {
 }
 
 void Prefabs::registerStarsParalaxPrefab(KapEngine::KEngine& engine) {
-    engine.getPrefabManager()->createPrefab("ParalaxStars", [](KapEngine::SceneManagement::Scene& scene) {
+    engine.getPrefabManager()->createPrefab("ParalaxStars", [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
         auto paralax = scene.createGameObject("Paralax");
         auto paralaxCanvas = KapEngine::UI::UiFactory::createCanvas(scene, "ParalaxCanvas");
 

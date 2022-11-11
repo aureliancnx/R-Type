@@ -14,29 +14,32 @@ jobs:
       matrix:
         config:
           - {
-            name: "Windows Latest MSVC (C++20)",
+            name: "Windows",
             os: windows-latest,
-            build_type: "Debug",
+            build_type: "Release",
             cc: "cl",
             cxx: "cl",
             environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
-            generators: "Visual Studio 17 2022"
+            generators: "Visual Studio 17 2022",
+            executable_file: "Release/RType.exe"
           }
           - {
-            name: "Ubuntu Latest GCC (C++20)",
+            name: "Linux",
             os: ubuntu-latest,
-            build_type: "Debug",
+            build_type: "Release",
             cc: "gcc",
             cxx: "g++",
-            generators: "Ninja"
+            generators: "Ninja",
+            executable_file: "RType"
           }
           - {
-            name: "macOS Latest Clang (C++20)",
+            name: "MacOS",
             os: macos-latest,
-            build_type: "Debug",
+            build_type: "Release",
             cc: "clang",
             cxx: "clang++",
-            generators: "Xcode"
+            generators: "Ninja",
+            executable_file: "RType"
           }
 
     steps:
@@ -55,7 +58,7 @@ jobs:
           ninja --version
           cmake --version
       - name: Install dependencies on ubuntu
-        if: startsWith(matrix.config.name, 'Ubuntu Latest GCC')
+        if: startsWith(matrix.config.name, 'Linux')
         run: |
           sudo apt-get update
           sudo apt-get install -y ninja-build cmake libtbb-dev
@@ -71,9 +74,8 @@ jobs:
           ninja --version
           cmake --version
 
-      - name: Configure C++20
+      - name: Configure project
         shell: bash
-        if: contains(matrix.config.name, 'C++20')
         run: |
           mkdir build
           cmake \
@@ -86,3 +88,6 @@ jobs:
       - name: Build
         shell: bash
         run: cmake --build build --config ${{ matrix.config.build_type }}
+      - name: Check file exists
+        shell: bash
+        run: test -f build/${{ matrix.config.executable_file }}

@@ -1,6 +1,7 @@
 #include "RtypeNetworkManager.hpp"
 #include "Player/PlayerController.hpp"
 #include "Player/PlayerSkin.hpp"
+#include "NetStatViewer.hpp"
 
 using namespace RType;
 
@@ -29,6 +30,18 @@ void RtypeNetworkManager::registerClientHandlers() {
         [this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, ErrorOnStartGameMessage& message) {
             onErrorOnStartGameMessage(connection, message);
         });
+    getClient()->registerHandler<PlayerPingRequest>([this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
+                                                           PlayerPingRequest& message) { onClientPlayerPingRequest(connection, message); });
+    getClient()->registerHandler<PlayerPingResult>([this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
+                                                          PlayerPingResult& message) { onPlayerPingResult(connection, message); });
+}
+
+void RtypeNetworkManager::onClientConnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
+    KapEngine::Debug::log("RtypeNetworkManager: Client connected");
+}
+
+void RtypeNetworkManager::onClientDisconnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
+    KapEngine::Debug::log("RtypeNetworkManager: Disconnected from server");
 }
 
 void RtypeNetworkManager::onPlayerAuthorityMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
@@ -46,6 +59,27 @@ void RtypeNetworkManager::onErrorOnStartGameMessage(const std::shared_ptr<KapMir
     // TODO: Handle error
 }
 
+void RtypeNetworkManager::onClientPlayerPingRequest(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
+                                                    PlayerPingRequest& message) {
+    // Ping-pong :)
+    PlayerPingRequest reqCallback;
+
+    reqCallback.id = message.id;
+    connection->send(reqCallback);
+}
+
+void RtypeNetworkManager::onPlayerPingResult(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
+                                             PlayerPingResult& message) {
+    std::shared_ptr<KapEngine::GameObject> player;
+
+    try {
+        auto obj = getScene().findFirstGameObject("NetStatViewer");
+        auto& viewer = obj->getComponent<NetStatViewer>();
+
+        viewer.setPing(message.ping);
+    } catch (KapEngine::Errors::SceneError&) {}
+}
+
 #pragma endregion
 
 #pragma region Server
@@ -61,6 +95,8 @@ void RtypeNetworkManager::registerServerHandlers() {
                                                             PlayerShootMessage& message) { onPlayerShootMessage(connection, message); });
     getServer()->registerHandler<StartGameMessage>([this](const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
                                                           StartGameMessage& message) { onStartGameMessage(connection, message); });
+    getServer()->registerHandler<PlayerPingRequest>([this](const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
+                                                           PlayerPingRequest& message) { onServerPlayerPingRequest(connection, message); });
 }
 
 void RtypeNetworkManager::onServerClientConnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
@@ -78,6 +114,7 @@ void RtypeNetworkManager::onServerClientConnected(const std::shared_ptr<KapMirro
         },
         player);
 
+    player->getComponent<PlayerController>().setConnectionId(connection->getConnectionId());
     players[connection->getConnectionId()] = player;
 
     auto& networkIdentity = player->getComponent<KapMirror::NetworkIdentity>();
@@ -95,6 +132,8 @@ void RtypeNetworkManager::onServerClientDisconnected(const std::shared_ptr<KapMi
     if (players.tryGetValue(connection->getConnectionId(), player)) {
         getServer()->destroyObject(player);
     }
+    // Clear ping requests
+    pingRequests.remove(connection->getConnectionId());
 }
 
 void RtypeNetworkManager::onPlayerInputMessage(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
@@ -149,13 +188,38 @@ void RtypeNetworkManager::sendErrorOnStartGame(const std::shared_ptr<KapMirror::
     connection->send(message);
 }
 
+void RtypeNetworkManager::onServerPlayerPingRequest(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
+                                                    PlayerPingRequest& message) {
+    // Ping request dictionary doesn't contains connection id, so
+    // we stop here.
+    if (!pingRequests.containsKey(connection->getConnectionId())) {
+        return;
+    }
+    auto& requests = pingRequests[connection->getConnectionId()];
+    // Check if request ID is in request list
+    if (!requests.containsKey(message.id)) {
+        return;
+    }
+
+    long long time = requests[message.id];
+    long long diff = std::chrono::high_resolution_clock::now().time_since_epoch().count() - time;
+    // Delete request ID from the dictionary
+    requests.remove(message.id);
+
+    // Send result
+    PlayerPingResult res;
+    res.networkId = connection->getConnectionId();
+    res.ping = diff / 1000000;
+    connection->send(res);
+}
+
 void RtypeNetworkManager::startGame() {
     KapEngine::Debug::log("Start game");
 
     // TODO: Implement Map Manager
     std::shared_ptr<KapEngine::GameObject> enemy;
     for (int i = 1; i <= 10; i++) {
-        getServer()->spawnObject("Enemy:BoubouleEnemy", {1280 + 100 + ((float)i * 100), 100 + ((float)i * 50), 0}, enemy);
+        getServer()->spawnObject("Enemy:BoubouleEnemy", {1280 + 100 + ((float) i * 100), 100 + ((float) i * 50), 0}, enemy);
     }
     getServer()->spawnObject("Enemy:TentaclesBossEnemy", {1280 - 200, 100, 0}, enemy);
 }

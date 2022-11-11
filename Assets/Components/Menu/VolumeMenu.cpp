@@ -14,6 +14,12 @@
 RType::VolumeMenu::VolumeMenu(KapEngine::SceneManagement::Scene& _scene) : Menu(_scene) {}
 
 void RType::VolumeMenu::init() {
+    // Init PlayerPrefs "volumeValue"
+    if (KapEngine::PlayerPrefs::getString("volumeValue").empty()) {
+        KapEngine::PlayerPrefs::PlayerPrefs::setInt("volumeValue", 50);
+        engine.getGraphicalLibManager()->getCurrentLib()->setMusicVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
+        engine.getGraphicalLibManager()->getCurrentLib()->setSoundVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
+    }
     // Change type of display for canvas
     {
         try {
@@ -27,8 +33,8 @@ void RType::VolumeMenu::init() {
     {
         auto background = KapEngine::UI::UiFactory::createImage(scene, "Background");
         auto imageComp = std::make_shared<KapEngine::UI::Image>(background);
-        imageComp->setPathSprite("Assets/Textures/background_1.png");
-        imageComp->setRectangle({0, 0, 755, 448});
+        imageComp->setPathSprite("Assets/Textures/setting_bg_2.png");
+        imageComp->setRectangle({0, 0, 381, 200});
         background->addComponent(imageComp);
 
         auto& transform = background->getComponent<KapEngine::Transform>();
@@ -47,7 +53,7 @@ void RType::VolumeMenu::init() {
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(230, 50, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(230, 20, 0));
         transform.setParent(canvas);
     }
 
@@ -63,7 +69,7 @@ void RType::VolumeMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 366, 0});
+        transform.setPosition({249, 336, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
@@ -81,7 +87,7 @@ void RType::VolumeMenu::init() {
 
         txt->addComponent(compText);
         transform.setScale({150, 35, 0});
-        transform.setPosition({250, 170, 0});
+        transform.setPosition({250, 130, 0});
         transform.setParent(canvas);
     }
 
@@ -93,7 +99,7 @@ void RType::VolumeMenu::init() {
 
         txt->addComponent(compText);
         transform.setScale({150, 35, 0});
-        transform.setPosition({350, 170, 0});
+        transform.setPosition({350, 130, 0});
         transform.setParent(canvas);
     }
 
@@ -111,7 +117,7 @@ void RType::VolumeMenu::init() {
         btnComp->setTextPosition({100, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 220, 0});
+        transform.setPosition({249, 190, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
@@ -147,7 +153,7 @@ void RType::VolumeMenu::init() {
         btnComp->setTextPosition({90, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 270, 0});
+        transform.setPosition({249, 240, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 

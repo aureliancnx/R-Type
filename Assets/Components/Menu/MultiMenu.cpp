@@ -21,8 +21,8 @@ void MultiMenu::init() {
     {
         auto background = KapEngine::UI::UiFactory::createImage(scene, "Background");
         auto imageComp = std::make_shared<KapEngine::UI::Image>(background);
-        imageComp->setPathSprite("Assets/Textures/background_2.png");
-        imageComp->setRectangle({0, 0, 755, 448});
+        imageComp->setPathSprite("Assets/Textures/select_bg.png");
+        imageComp->setRectangle({0, 0, 720, 600});
         background->addComponent(imageComp);
 
         auto& transform = background->getComponent<KapEngine::Transform>();
@@ -70,13 +70,13 @@ void MultiMenu::init() {
         btnComp->setTextPosition({80, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({449, 350, 0});
+        transform.setPosition({250, 250, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
         btnComp->getOnClick().registerAction([this]() {
             engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
-            scene.getEngine().getSceneManager()->loadScene("MultiPlayer");
+            engine.getSceneManager()->loadScene("MultiPlayer");
             gameManager.startLocalMultiPlayer();
         });
     }
@@ -93,7 +93,7 @@ void MultiMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({449, 400, 0});
+        transform.setPosition({250, 400, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 

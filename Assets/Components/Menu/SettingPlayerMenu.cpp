@@ -27,8 +27,8 @@ void RType::SettingPlayerMenu::init() {
     {
         auto background = KapEngine::UI::UiFactory::createImage(scene, "Background");
         auto imageComp = std::make_shared<KapEngine::UI::Image>(background);
-        imageComp->setPathSprite("Assets/Textures/background_2.png");
-        imageComp->setRectangle({0, 0, 755, 448});
+        imageComp->setPathSprite("Assets/Textures/setting_bg_2.png");
+        imageComp->setRectangle({0, 0, 381, 200});
         background->addComponent(imageComp);
 
         auto& transform = background->getComponent<KapEngine::Transform>();
@@ -49,7 +49,7 @@ void RType::SettingPlayerMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({249, 366, 0});
+        transform.setPosition({249, 430, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
@@ -69,7 +69,7 @@ void RType::SettingPlayerMenu::init() {
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
-        transform.setPosition(KapEngine::Tools::Vector3(230, 50, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(230, 20, 0));
         transform.setParent(canvas);
     }
 
@@ -81,7 +81,7 @@ void RType::SettingPlayerMenu::init() {
 
         txt->addComponent(compText);
         transform.setScale({150, 35, 0});
-        transform.setPosition({20, 100, 0});
+        transform.setPosition({150, 150, 0});
         transform.setParent(canvas);
     }
 
@@ -94,7 +94,7 @@ void RType::SettingPlayerMenu::init() {
 
         auto& transform = inpt->getComponent<KapEngine::Transform>();
         transform.setScale({150, 35, 0});
-        transform.setPosition({200, 100, 0});
+        transform.setPosition({330, 150, 0});
         transform.setParent(canvas);
     }
 
@@ -106,7 +106,7 @@ void RType::SettingPlayerMenu::init() {
 
         txt->addComponent(compText);
         transform.setScale({150, 35, 0});
-        transform.setPosition({20, 210, 0});
+        transform.setPosition({150, 250, 0});
         transform.setParent(canvas);
     }
 
@@ -122,11 +122,20 @@ void RType::SettingPlayerMenu::init() {
         }
         btnComp->setTextColor(KapEngine::Tools::Color::white());
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
+        btnComp->setTextPosition({15, 4});
 
         auto& transform = btn->getComponent<KapEngine::Transform>();
-        transform.setPosition(KapEngine::Tools::Vector3(350, 200, 0));
-        transform.setScale(KapEngine::Tools::Vector3(40, 39, 0));
+        transform.setPosition({480, 240, 0});
+        transform.setScale({40, 39, 0});
         transform.setParent(canvas);
+
+        auto children = transform.getChildren();
+        for (const auto& i : children) {
+            if (i->getName() == "Text" && i->hasComponent<KapEngine::UI::Text>()) {
+                auto& txt = i->getComponent<KapEngine::UI::Text>();
+                txt.setPoliceSize(30);
+            }
+        }
 
         btnComp->getOnClick().registerAction([this]() {
             int currentID = 1;
@@ -147,7 +156,7 @@ void RType::SettingPlayerMenu::init() {
     // create spaceship animated
     {
         engine.getPrefabManager()->instantiatePrefab("Player", scene, player);
-        player->getComponent<KapEngine::Transform>().setPosition({200, 200, 0});
+        player->getComponent<KapEngine::Transform>().setPosition({350, 240, 0});
         player->getComponent<KapEngine::Transform>().setParent(canvas);
         try {
             player->getComponent<KapEngine::UI::Canvas>().setActive(false);

@@ -9,6 +9,7 @@ RType::MenuVolume::~MenuVolume() {}
 void RType::MenuVolume::onAwake() {
     _type.push_back("On");
     _type.push_back("Off");
+
     foundText();
 }
 
@@ -23,8 +24,13 @@ void RType::MenuVolume::onUpdate() {
 
     int nId = 0;
 
-    if (PlayerPrefs::getString("volumeValue") == "") {
+    if (PlayerPrefs::getString("volumeValue").empty()) {
         PlayerPrefs::setInt("volumeValue", 50);
+        nId = 50;
+        getEngine().getGraphicalLibManager()->getCurrentLib()->setMusicVolume(
+            (float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
+        getEngine().getGraphicalLibManager()->getCurrentLib()->setSoundVolume(
+            (float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
     } else {
         nId = PlayerPrefs::getInt("volumeValue");
     }
@@ -41,7 +47,8 @@ void RType::MenuVolume::onUpdate() {
 }
 
 void RType::MenuVolume::foundText() {
-    auto objs = getGameObjectConst().getScene().getGameObjects("Volume Value Text");
+    auto objs = getScene().getGameObjects("Volume Value Text");
+
     std::shared_ptr<GameObject> _found;
 
     for (std::size_t i = 0; i < objs.size(); i++) {

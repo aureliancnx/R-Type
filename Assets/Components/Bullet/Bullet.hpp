@@ -12,8 +12,9 @@ namespace RType {
 
       private:
         Direction direction;
-        float speed = 10.f;
+        float speed = 4.f;
         float initialX;
+        KapEngine::KEngine& engine;
 
       public:
         explicit Bullet(std::shared_ptr<KapEngine::GameObject> gameObject);

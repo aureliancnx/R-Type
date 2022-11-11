@@ -3,9 +3,7 @@
 
 using namespace RType::Script;
 
-void Vector2::dump() const {
-    KapEngine::Debug::log("Vector2: x = " + std::to_string(x) + ", y = " + std::to_string(y));
-}
+void Vector2::dump() const { KapEngine::Debug::log("Vector2: x = " + std::to_string(x) + ", y = " + std::to_string(y)); }
 
 void Vector2::initScript(lua_State* L) {
     lua_newtable(L);
@@ -34,8 +32,8 @@ void Vector2::initScript(lua_State* L) {
 }
 
 int Vector2::__create(lua_State* L) {
-    float x = (float)lua_tonumber(L, 1);
-    float y = (float)lua_tonumber(L, 2);
+    auto x = (float)lua_tonumber(L, 1);
+    auto y = (float)lua_tonumber(L, 2);
     lua_pop(L, 2);
 
     void* ptr = lua_newuserdata(L, sizeof(Vector2));
@@ -46,21 +44,21 @@ int Vector2::__create(lua_State* L) {
     lua_newtable(L);
     lua_setuservalue(L, 1);
 
-    Vector2* vector2 = (Vector2*)ptr;
+    auto* vector2 = (Vector2*)ptr;
     vector2->x = x;
     vector2->y = y;
     return 1;
 }
 
 int Vector2::__destroy(lua_State* L) {
-    Vector2* vector2 = (Vector2*)lua_touserdata(L, -1);
-    //vector2->~Vector2();
+    auto* vector2 = (Vector2*)lua_touserdata(L, -1);
+    vector2->~Vector2();
     return 0;
 }
 
 int Vector2::__index(lua_State* L) {
-    Vector2* vector2 = (Vector2*)lua_touserdata(L, -2);
-    std::string index = lua_tostring(L, -1);
+    auto* vector2 = (Vector2*)lua_touserdata(L, -2);
+    std::string index(lua_tostring(L, -1));
     if (index == "x") {
         lua_pushnumber(L, vector2->x);
         return 1;
@@ -82,8 +80,8 @@ int Vector2::__index(lua_State* L) {
 }
 
 int Vector2::__newIndex(lua_State* L) {
-    Vector2* vector2 = (Vector2*)lua_touserdata(L, -3);
-    std::string index = lua_tostring(L, -2);
+    auto* vector2 = (Vector2*)lua_touserdata(L, -3);
+    std::string index(lua_tostring(L, -2));
     if (index == "x") {
         vector2->x = (float)lua_tonumber(L, -1);
         return 0;
@@ -93,15 +91,15 @@ int Vector2::__newIndex(lua_State* L) {
         return 0;
     }
 
-    lua_getuservalue(L, 1); //1
-    lua_pushvalue(L, 2);    //2
-    lua_pushvalue(L, 3);    //3
-    lua_settable(L, -3);    //1[2] = 3
+    lua_getuservalue(L, 1); // 1
+    lua_pushvalue(L, 2);    // 2
+    lua_pushvalue(L, 3);    // 3
+    lua_settable(L, -3);    // 1[2] = 3
     return 0;
 }
 
 int Vector2::__dump(lua_State* L) {
-    Vector2* vector2 = (Vector2*)lua_touserdata(L, -1);
+    auto* vector2 = (Vector2*)lua_touserdata(L, -1);
     vector2->dump();
     return 0;
 }

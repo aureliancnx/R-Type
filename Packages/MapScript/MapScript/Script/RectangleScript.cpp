@@ -4,7 +4,8 @@
 using namespace RType::Script;
 
 void Rectangle::dump() const {
-    KapEngine::Debug::log("Rectangle: x = " + std::to_string(x) + ", y = " + std::to_string(y) + ", w = " + std::to_string(w) + ", h = " + std::to_string(h));
+    KapEngine::Debug::log("Rectangle: x = " + std::to_string(x) + ", y = " + std::to_string(y) + ", w = " + std::to_string(w) +
+                          ", h = " + std::to_string(h));
 }
 
 void Rectangle::initScript(lua_State* L) {
@@ -34,10 +35,10 @@ void Rectangle::initScript(lua_State* L) {
 }
 
 int Rectangle::__create(lua_State* L) {
-    float x = (float)lua_tonumber(L, 1);
-    float y = (float)lua_tonumber(L, 2);
-    float w = (float)lua_tonumber(L, 3);
-    float h = (float)lua_tonumber(L, 4);
+    auto x = (float)lua_tonumber(L, 1);
+    auto y = (float)lua_tonumber(L, 2);
+    auto w = (float)lua_tonumber(L, 3);
+    auto h = (float)lua_tonumber(L, 4);
     lua_pop(L, 4);
 
     void* ptr = lua_newuserdata(L, sizeof(Rectangle));
@@ -48,7 +49,7 @@ int Rectangle::__create(lua_State* L) {
     lua_newtable(L);
     lua_setuservalue(L, 1);
 
-    Rectangle* rect = (Rectangle*)ptr;
+    auto* rect = (Rectangle*)ptr;
     rect->x = x;
     rect->y = y;
     rect->w = w;
@@ -57,14 +58,14 @@ int Rectangle::__create(lua_State* L) {
 }
 
 int Rectangle::__destroy(lua_State* L) {
-    Rectangle* rect = (Rectangle*)lua_touserdata(L, -1);
-    //rect->~Rectangle();
+    auto* rect = (Rectangle*)lua_touserdata(L, -1);
+    rect->~Rectangle();
     return 0;
 }
 
 int Rectangle::__index(lua_State* L) {
-    Rectangle* rect = (Rectangle*)lua_touserdata(L, -2);
-    std::string index = lua_tostring(L, -1);
+    auto* rect = (Rectangle*)lua_touserdata(L, -2);
+    std::string index(lua_tostring(L, -1));
     if (index == "x") {
         lua_pushnumber(L, rect->x);
         return 1;
@@ -94,8 +95,8 @@ int Rectangle::__index(lua_State* L) {
 }
 
 int Rectangle::__newIndex(lua_State* L) {
-    Rectangle* rect = (Rectangle*)lua_touserdata(L, -3);
-    std::string index = lua_tostring(L, -2);
+    auto* rect = (Rectangle*)lua_touserdata(L, -3);
+    std::string index(lua_tostring(L, -2));
     if (index == "x") {
         rect->x = (float)lua_tonumber(L, -1);
         return 0;
@@ -113,15 +114,15 @@ int Rectangle::__newIndex(lua_State* L) {
         return 0;
     }
 
-    lua_getuservalue(L, 1); //1
-    lua_pushvalue(L, 2);    //2
-    lua_pushvalue(L, 3);    //3
-    lua_settable(L, -3);    //1[2] = 3
+    lua_getuservalue(L, 1); // 1
+    lua_pushvalue(L, 2);    // 2
+    lua_pushvalue(L, 3);    // 3
+    lua_settable(L, -3);    // 1[2] = 3
     return 0;
 }
 
 int Rectangle::__dump(lua_State* L) {
-    Rectangle* rect = (Rectangle*)lua_touserdata(L, -1);
+    auto* rect = (Rectangle*)lua_touserdata(L, -1);
     rect->dump();
     return 0;
 }

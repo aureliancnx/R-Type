@@ -17,6 +17,10 @@ namespace RType {
 
       protected:
       private:
+        void initKeyboardKeyDisplay();
+        void initKeyboardKeyBackground();
+        void initKeyboardActions();
+        void initKeyboardInput();
     };
 } // namespace RType
 

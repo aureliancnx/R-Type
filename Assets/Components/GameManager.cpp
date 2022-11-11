@@ -15,6 +15,7 @@
 
 #include "Sylph/SylphTransport.hpp"
 #include "Prefabs.hpp"
+#include "NetStatViewer.hpp"
 
 RType::GameManager* RType::GameManager::instance = nullptr;
 
@@ -194,6 +195,13 @@ void RType::GameManager::initMultiPlayer(bool isServer) {
             KAP_DEBUG_ERROR("Failed to instantiate in game menu prefab");
             return;
         }
+
+        auto networkStatistics = std::make_shared<KapMirror::Experimental::NetworkStatistics>(networkManagerObject);
+
+        auto netstatObject = scene->createGameObject("NetStatViewer");
+        std::shared_ptr<NetStatViewer> netstat = std::make_shared<NetStatViewer>(netstatObject, networkStatistics);
+        netstatObject->addComponent(networkStatistics);
+        netstatObject->addComponent(netstat);
     }
 }
 

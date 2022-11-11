@@ -1,6 +1,9 @@
-//
-// Created by leq on 12/10/22.
-//
+/*
+** EPITECH PROJECT, 2022
+** RType
+** File description:
+** HowToPlayMenu
+*/
 
 #include "HowToPlayMenu.hpp"
 
@@ -191,6 +194,9 @@ void RType::HowToPlayMenu::initFightAnimation()
 
         animator->addLink("Idle", "Down", "IdleToDown");
         animator->addLink("Down", "Idle", "DownToIdle");
+
+        animator->addLink("DownToIdle", "IdleToUp", "DownToUp");
+        animator->addLink("UpToIdle", "IdleToDown", "UpToDown");
     } catch (...) { KAP_DEBUG_ERROR("Failed to set shipAnimation img"); }
 
     //create bouboule sprite animation

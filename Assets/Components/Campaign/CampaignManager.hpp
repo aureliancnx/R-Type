@@ -21,7 +21,7 @@ namespace RType {
             void onAwake() override;
             void onFixedUpdate() override;
 
-            void onSceneChanged() override;
+            void onSceneChanged();
 
         protected:
         private:

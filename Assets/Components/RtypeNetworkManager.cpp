@@ -27,17 +27,13 @@ void RtypeNetworkManager::registerClientHandlers() {
             onPlayerAuthorityMessage(connection, message);
         });
     getClient()->registerHandler<ErrorOnStartGameMessage>(
-            [this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, ErrorOnStartGameMessage& message) {
-                onErrorOnStartGameMessage(connection, message);
-            });
-    getClient()->registerHandler<PlayerPingRequest>(
-            [this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, PlayerPingRequest& message) {
-                onClientPlayerPingRequest(connection, message);
-            });
-    getClient()->registerHandler<PlayerPingResult>(
-            [this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, PlayerPingResult& message) {
-                onPlayerPingResult(connection, message);
-            });
+        [this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, ErrorOnStartGameMessage& message) {
+            onErrorOnStartGameMessage(connection, message);
+        });
+    getClient()->registerHandler<PlayerPingRequest>([this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
+                                                           PlayerPingRequest& message) { onClientPlayerPingRequest(connection, message); });
+    getClient()->registerHandler<PlayerPingResult>([this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
+                                                          PlayerPingResult& message) { onPlayerPingResult(connection, message); });
 }
 
 void RtypeNetworkManager::onClientConnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
@@ -64,7 +60,7 @@ void RtypeNetworkManager::onErrorOnStartGameMessage(const std::shared_ptr<KapMir
 }
 
 void RtypeNetworkManager::onClientPlayerPingRequest(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
-                                                    PlayerPingRequest &message) {
+                                                    PlayerPingRequest& message) {
     // Ping-pong :)
     PlayerPingRequest reqCallback;
 
@@ -73,16 +69,15 @@ void RtypeNetworkManager::onClientPlayerPingRequest(const std::shared_ptr<KapMir
 }
 
 void RtypeNetworkManager::onPlayerPingResult(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
-                                                    PlayerPingResult &message) {
+                                             PlayerPingResult& message) {
     std::shared_ptr<KapEngine::GameObject> player;
 
     try {
         auto obj = getScene().findFirstGameObject("NetStatViewer");
-        auto &viewer = obj->getComponent<NetStatViewer>();
+        auto& viewer = obj->getComponent<NetStatViewer>();
 
         viewer.setPing(message.ping);
-    }catch(KapEngine::Errors::SceneError &) {
-    }
+    } catch (KapEngine::Errors::SceneError&) {}
 }
 
 #pragma endregion
@@ -118,7 +113,6 @@ void RtypeNetworkManager::onServerClientConnected(const std::shared_ptr<KapMirro
             playerSkin.setSkinId(2);
         },
         player);
-
 
     player->getComponent<PlayerController>().setConnectionId(connection->getConnectionId());
     players[connection->getConnectionId()] = player;
@@ -195,13 +189,13 @@ void RtypeNetworkManager::sendErrorOnStartGame(const std::shared_ptr<KapMirror::
 }
 
 void RtypeNetworkManager::onServerPlayerPingRequest(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
-                                                    PlayerPingRequest &message) {
+                                                    PlayerPingRequest& message) {
     // Ping request dictionary doesn't contains connection id, so
     // we stop here.
     if (!pingRequests.containsKey(connection->getConnectionId())) {
         return;
     }
-    auto &requests = pingRequests[connection->getConnectionId()];
+    auto& requests = pingRequests[connection->getConnectionId()];
     // Check if request ID is in request list
     if (!requests.containsKey(message.id)) {
         return;

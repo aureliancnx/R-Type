@@ -63,13 +63,9 @@ namespace RType {
 
         unsigned int id{};
 
-        void serialize(KapMirror::NetworkWriter& writer) override {
-            writer.write(id);
-        }
+        void serialize(KapMirror::NetworkWriter& writer) override { writer.write(id); }
 
-        void deserialize(KapMirror::NetworkReader& reader) override {
-            id = reader.read<unsigned int>();
-        }
+        void deserialize(KapMirror::NetworkReader& reader) override { id = reader.read<unsigned int>(); }
     };
 
     struct PlayerPingResult : KapMirror::NetworkMessage {

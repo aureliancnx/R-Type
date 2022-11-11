@@ -14,7 +14,7 @@ namespace RType {
 
         KapEngine::Dictionary<unsigned int, std::shared_ptr<KapEngine::GameObject>> players;
 
-    public:
+      public:
         KapEngine::Dictionary<unsigned int, KapEngine::Dictionary<unsigned int, long long>> pingRequests;
 
         explicit RtypeNetworkManager(std::shared_ptr<KapEngine::GameObject> go, bool _isServer = false);
@@ -30,7 +30,7 @@ namespace RType {
 
         void onServerClientDisconnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) override;
 
-    private:
+      private:
         void registerClientHandlers();
 
         void onPlayerAuthorityMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
@@ -39,9 +39,9 @@ namespace RType {
         void onErrorOnStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                        ErrorOnStartGameMessage& message);
 
-        void onClientPlayerPingRequest(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, PlayerPingRequest &request);
+        void onClientPlayerPingRequest(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, PlayerPingRequest& request);
 
-        void onPlayerPingResult(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, PlayerPingResult &request);
+        void onPlayerPingResult(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, PlayerPingResult& request);
 
         void registerServerHandlers();
 
@@ -56,7 +56,7 @@ namespace RType {
 
         void sendErrorOnStartGame(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, const std::string& errorMessage);
 
-        void onServerPlayerPingRequest(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, PlayerPingRequest &request);
+        void onServerPlayerPingRequest(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, PlayerPingRequest& request);
 
         void startGame();
     };

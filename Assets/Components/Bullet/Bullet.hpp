@@ -12,7 +12,7 @@ namespace RType {
 
       private:
         Direction direction;
-        float speed = 10.f;
+        float speed = 2.f;
         float initialX;
         KapEngine::KEngine &engine;
 

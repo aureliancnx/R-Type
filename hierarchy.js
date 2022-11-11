@@ -101,8 +101,8 @@ var hierarchy =
         [ "KapEngine::UI::Image", "classKapEngine_1_1UI_1_1Image.html", null ],
         [ "KapEngine::UI::Inputfield", "classKapEngine_1_1UI_1_1Inputfield.html", null ],
         [ "KapEngine::UI::Text", "classKapEngine_1_1UI_1_1Text.html", null ],
+        [ "KapMirror::Experimental::NetworkStatistics", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html", null ],
         [ "KapMirror::NetworkComponent", "classKapMirror_1_1NetworkComponent.html", [
-          [ "KapMirror::Experimental::NetworkStatistics", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html", null ],
           [ "KapMirror::NetworkTransform", "classKapMirror_1_1NetworkTransform.html", null ],
           [ "RType::BoubouleEnemy", "classRType_1_1BoubouleEnemy.html", null ],
           [ "RType::Bullet", "classRType_1_1Bullet.html", null ],

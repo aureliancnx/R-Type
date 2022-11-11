@@ -1,5 +1,7 @@
 var NAVTREEINDEX5 =
 {
+"classKapMirror_1_1NetworkClient.html#a19f0280565fac14e42e0af5b8eb857e0":[37,0,3,7,0],
+"classKapMirror_1_1NetworkClient.html#a1d8d8698c622f2ed64f55c1fa32cf7e3":[37,0,3,7,13],
 "classKapMirror_1_1NetworkClient.html#a1f06a56d4eb8ee35491d0193bdc18989":[37,0,3,7,7],
 "classKapMirror_1_1NetworkClient.html#a3728b395b8713f2d66b479c4a8eefc47":[37,0,3,7,5],
 "classKapMirror_1_1NetworkClient.html#a680800969e4fffd64bb9a1d86b807d7f":[37,0,3,7,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX5 =
 "classKapMirror_1_1Sylph_1_1UdpClient.html#a9e69046802da8ea9e0bf3da874c49e47":[37,0,3,1,8,2],
 "classKapMirror_1_1Sylph_1_1UdpClient.html#aac77e28850efac2d903ba59c1422e2df":[37,0,3,1,8,8],
 "classKapMirror_1_1Sylph_1_1UdpClient.html#ab06db2848bd77bed02047fac3fd6d903":[37,0,3,1,8,4],
-"classKapMirror_1_1Sylph_1_1UdpClient.html#abb8fc5173e34276e2fa6ff95ff384d20":[37,0,3,1,8,7],
-"classKapMirror_1_1Sylph_1_1UdpClient.html#ac7b4b0713969176e3f96e73c2391bced":[37,0,3,1,8,0],
-"classKapMirror_1_1Sylph_1_1UdpListener.html":[37,0,3,1,9]
+"classKapMirror_1_1Sylph_1_1UdpClient.html#abb8fc5173e34276e2fa6ff95ff384d20":[37,0,3,1,8,7]
 };

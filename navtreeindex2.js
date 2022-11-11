@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65aa09ec95b987d6e3032b9e519e3bad765":[37,0,2,1,3,0,30],
 "classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65aa125ad1bd9a8e6df9e2b6924679f4638":[37,0,2,1,3,0,42],
 "classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65aa12f85e2f653a5563e69b1ddc6a9560a":[37,0,2,1,3,0,99],
 "classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65aa15e90cc972a944e4bf993dd55e08783":[37,0,2,1,3,0,56],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#aa3478831c506a8066863c839686382a7":[37,0,2,2,0,2,8],
 "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#aa59755a84b31540601a96be710601ac0":[37,0,2,2,0,2,22],
 "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#ab04b51cb6e830006cc235c8f63a34a91":[37,0,2,2,0,2,23],
-"classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#ac0d5650722ff319568ebab8bc3d2069c":[37,0,2,2,0,2,24],
-"classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#ac8e5521eeefcbadfa823f697bf250a82":[37,0,2,2,0,2,5]
+"classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#ac0d5650722ff319568ebab8bc3d2069c":[37,0,2,2,0,2,24]
 };

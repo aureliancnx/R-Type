@@ -13,6 +13,7 @@ var classKapEngine_1_1IComponent =
     [ "onMouseEnter", "classKapEngine_1_1IComponent.html#a912e1e80c223ff56401b1ebc33ff1dea", null ],
     [ "onMouseExit", "classKapEngine_1_1IComponent.html#ad49a4898abe859c7b657779a42b38b62", null ],
     [ "onMouseStay", "classKapEngine_1_1IComponent.html#ac3ce66581b9b2bd8b48b9fd15d17811d", null ],
+    [ "onSceneChanged", "classKapEngine_1_1IComponent.html#a0dfcfda14bcbc24479952b06f18ee0e4", null ],
     [ "onSceneGonnaUpdated", "classKapEngine_1_1IComponent.html#a41c3d18c9d8106ee6c3d6317facdb13f", null ],
     [ "onSceneUpdated", "classKapEngine_1_1IComponent.html#ac12ee4b4dadbffc744bcd45c8a203ee5", null ],
     [ "onStart", "classKapEngine_1_1IComponent.html#a1f5e5ac6fa8f00115e45ec601554e64e", null ],

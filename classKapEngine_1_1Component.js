@@ -34,6 +34,7 @@ var classKapEngine_1_1Component =
     [ "onMouseEnter", "classKapEngine_1_1Component.html#ad5f400f3fb831b23cc92f8cf2acad628", null ],
     [ "onMouseExit", "classKapEngine_1_1Component.html#aaad927d96f8a50e917d3ecd29030cc8f", null ],
     [ "onMouseStay", "classKapEngine_1_1Component.html#a49cf247357e25f3b626ac3d7b4dff2e2", null ],
+    [ "onSceneChanged", "classKapEngine_1_1Component.html#ad271eec076f17b8a3b20af2c6eba102d", null ],
     [ "onSceneGonnaUpdated", "classKapEngine_1_1Component.html#a41fc4b01887039cb1b9b38ea68685d8b", null ],
     [ "onSceneUpdated", "classKapEngine_1_1Component.html#ad40a84f92d11295932a4d5722e845d3e", null ],
     [ "onStart", "classKapEngine_1_1Component.html#ae7324857a80396521eae33fef7877d5f", null ],

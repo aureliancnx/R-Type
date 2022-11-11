@@ -390,15 +390,15 @@ var NAVTREEINDEX =
 [
 ".html",
 "classKapEngine_1_1Collider.html#a92a36099a933727f2f73ad6401e2e3f9",
-"classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65aa125ad1bd9a8e6df9e2b6924679f4638",
-"classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#adcfdb88227cbec3dddd404fe4f5909e4",
-"classKapEngine_1_1Tools_1_1Rectangle.html#a7c924ed6bbc19838e9b7b0b171b0785c",
-"classKapMirror_1_1NetworkClient.html#a1f06a56d4eb8ee35491d0193bdc18989",
-"classKapMirror_1_1Sylph_1_1UdpListener.html#a0aacf4b94e68eff7ab19a0ff58a3faa2",
-"classRType_1_1MapEnemy.html#a5ee50ef562ababbd9aae875299abf38b",
-"classbackward_1_1SourceFile.html#a249ad26d824e683f42d1b93f3eafb973",
-"md_CONTRIBUTING.html#autotoc_md20",
-"namespaceKapEngine_1_1Events.html"
+"classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65aa09ec95b987d6e3032b9e519e3bad765",
+"classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#ac8e5521eeefcbadfa823f697bf250a82",
+"classKapEngine_1_1Tools_1_1Rectangle.html#a69d1bc80d7e3b773b260dfba1b1825b1",
+"classKapMirror_1_1NetworkClient.html#a19f0280565fac14e42e0af5b8eb857e0",
+"classKapMirror_1_1Sylph_1_1UdpClient.html#ac7b4b0713969176e3f96e73c2391bced",
+"classRType_1_1MapEnemy.html",
+"classbackward_1_1SourceFile.html",
+"md_CONTRIBUTING.html#autotoc_md18",
+"namespaceKapEngine_1_1Errors.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

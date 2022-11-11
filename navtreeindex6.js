@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"classKapMirror_1_1Sylph_1_1UdpClient.html#ac7b4b0713969176e3f96e73c2391bced":[37,0,3,1,8,0],
+"classKapMirror_1_1Sylph_1_1UdpListener.html":[37,0,3,1,9],
 "classKapMirror_1_1Sylph_1_1UdpListener.html#a0aacf4b94e68eff7ab19a0ff58a3faa2":[37,0,3,1,9,7],
 "classKapMirror_1_1Sylph_1_1UdpListener.html#a25a6737a3a51e94d5cc620e6c36775f4":[37,0,3,1,9,6],
 "classKapMirror_1_1Sylph_1_1UdpListener.html#a28efe4d93009f6d04db6a838f3fe9704":[37,0,3,1,9,5],
@@ -247,7 +249,5 @@ var NAVTREEINDEX6 =
 "classRType_1_1MainMenu.html":[37,0,5,17],
 "classRType_1_1MainMenu.html#a340d84023f931683f4f80c9a1d5d127f":[37,0,5,17,2],
 "classRType_1_1MainMenu.html#a46d4ccaa5094c438c873d3e465a9dfb7":[37,0,5,17,0],
-"classRType_1_1MainMenu.html#aa03b3bf00cc428fd0339b270b93fd408":[37,0,5,17,1],
-"classRType_1_1MapEnemy.html":[37,0,5,18],
-"classRType_1_1MapEnemy.html#a474297ba1c4f58d3c390ce451c7029e6":[37,0,5,18,2]
+"classRType_1_1MainMenu.html#aa03b3bf00cc428fd0339b270b93fd408":[37,0,5,17,1]
 };

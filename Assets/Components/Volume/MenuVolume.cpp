@@ -47,7 +47,11 @@ void RType::MenuVolume::onUpdate() {
 }
 
 void RType::MenuVolume::foundText() {
+#if IS_MAX_KAPENGINE_VERSION(1, 215)
     auto objs = getGameObjectConst().getScene().getGameObjects("Volume Value Text");
+#else
+    auto objs = getGameObject().getScene().getGameObjects("Volume Value Text");
+#endif
     std::shared_ptr<GameObject> _found;
 
     for (std::size_t i = 0; i < objs.size(); i++) {

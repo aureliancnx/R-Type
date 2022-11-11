@@ -63,6 +63,6 @@ bool UpdateStartGameKeys::setValueSaved(std::string const& name, KapEngine::Even
     int val = KapEngine::PlayerPrefs::getInt(name);
     if (!KapEngine::Events::Key::intInEnum(val))
         return false;
-    key = (KapEngine::Events::Key::EKey)val;
+    key = (KapEngine::Events::Key::EKey) val;
     return true;
 }

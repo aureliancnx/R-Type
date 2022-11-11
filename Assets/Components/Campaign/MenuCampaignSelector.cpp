@@ -73,7 +73,7 @@ void RType::MenuCampaignSelector::openFolderLua() {
         KAP_DEBUG_ERROR("Unable to find open folder ./Maps/.");
         KAP_DEBUG_ERROR("Maps won't be initialized.");
     }
-    KapEngine::PlayerPrefs::setInt("Nb Map", (int)_pathScript.size() - 1);
+    KapEngine::PlayerPrefs::setInt("Nb Map", (int) _pathScript.size() - 1);
 #endif
 }
 
@@ -160,8 +160,13 @@ void RType::MenuCampaignSelector::onUpdate() {
 }
 #if !BENJI_MODIF
 void RType::MenuCampaignSelector::foundDescription() {
+#if IS_MAX_KAPENGINE_VERSION(1, 215)
     auto objs1 = getGameObjectConst().getScene().getGameObjects("Text Description");
     auto objs2 = getGameObjectConst().getScene().getGameObjects("Text DescriptionBis");
+#else
+    auto objs1 = getGameObject().getScene().getGameObjects("Text Description");
+    auto objs2 = getGameObject().getScene().getGameObjects("Text DescriptionBis");
+#endif
     std::shared_ptr<GameObject> _found1;
     std::shared_ptr<GameObject> _found2;
 
@@ -208,8 +213,13 @@ void RType::MenuCampaignSelector::foundDescription() {
 }
 
 void RType::MenuCampaignSelector::foundCreator() {
+#if IS_MAX_KAPENGINE_VERSION(1, 215)
     auto objs1 = getGameObjectConst().getScene().getGameObjects("Text Author");
     auto objs2 = getGameObjectConst().getScene().getGameObjects("Text AuthorBis");
+#else
+    auto objs1 = getGameObject().getScene().getGameObjects("Text Author");
+    auto objs2 = getGameObject().getScene().getGameObjects("Text AuthorBis");
+#endif
     std::shared_ptr<GameObject> _found1;
     std::shared_ptr<GameObject> _found2;
 
@@ -253,8 +263,13 @@ void RType::MenuCampaignSelector::foundCreator() {
 }
 
 void RType::MenuCampaignSelector::foundName() {
+#if IS_MAX_KAPENGINE_VERSION(1, 215)
     auto objs1 = getGameObjectConst().getScene().getGameObjects("Text Name");
     auto objs2 = getGameObjectConst().getScene().getGameObjects("Text NameBis");
+#else
+    auto objs1 = getGameObject().getScene().getGameObjects("Text Name");
+    auto objs2 = getGameObject().getScene().getGameObjects("Text NameBis");
+#endif
     std::shared_ptr<GameObject> _found1;
     std::shared_ptr<GameObject> _found2;
 
@@ -298,8 +313,13 @@ void RType::MenuCampaignSelector::foundName() {
 }
 
 void RType::MenuCampaignSelector::foundButton() {
+#if IS_MAX_KAPENGINE_VERSION(1, 215)
     auto objs1 = getGameObjectConst().getScene().findFirstGameObject("ButtonLevel1");
     auto objs2 = getGameObjectConst().getScene().findFirstGameObject("ButtonLevel2");
+#else
+    auto objs1 = getGameObject().getScene().findFirstGameObject("ButtonLevel1");
+    auto objs2 = getGameObject().getScene().findFirstGameObject("ButtonLevel2");
+#endif
 
     try {
         auto& button = objs1->getComponent<UI::Button>();

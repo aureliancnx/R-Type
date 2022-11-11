@@ -276,11 +276,12 @@ void RType::HowToPlayMenu::init() {
             auto explosionAnimation = std::make_shared<SpriteAnimation>(explosion);
             float totalTimeAnim = 5.5f;
             KapEngine::Time::ETime timer;
-            timer.setSeconds(.8);
+            timer.setSeconds(1.0f);
             explosion->addComponent(explosionAnimation);
             explosionAnimation->setTiming(timer);
             explosionAnimation->loop(true);
             explosionAnimation->setRect({0, 0, 100, 100});
+            // explosionAnimation->setNbAnimations(6);
             explosionAnimation->setNbAnimations(71, 10, 8);
 
             auto animator = std::make_shared<KapEngine::Animator>(explosion);
@@ -305,7 +306,7 @@ void RType::HowToPlayMenu::init() {
         fightAnim->setResetPosition("Bullet", KapEngine::Tools::Vector3(380, 266, 0));
         fightAnim->addSpriteAnimation("Explosion", explosion);
         fightAnim->setRect("Explosion", {0, 0, 100, 100});
-        fightAnim->setResetPosition("Explosion", KapEngine::Tools::Vector3(600, 250, 0));
+        fightAnim->setResetPosition("Explosion", KapEngine::Tools::Vector3(600, 230, 0));
         Time::ETime timeAnim;
         timeAnim.setSeconds(3.0f);
         fightAnim->setTiming(timeAnim);

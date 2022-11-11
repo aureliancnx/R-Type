@@ -1,12 +1,14 @@
-//
-// Created by leq on 12/10/22.
-//
+/*
+** EPITECH PROJECT, 2022
+** RType
+** File description:
+** HowToPlayMenu
+*/
 
 #ifndef RTYPE_HOWTOPLAYMENU_HPP
 #define RTYPE_HOWTOPLAYMENU_HPP
 
 #include "Menu.hpp"
-#include "Animations/HowToPlayAnimation.hpp"
 
 namespace RType {
     class HowToPlayMenu : public Menu {
@@ -18,6 +20,11 @@ namespace RType {
 
       protected:
       private:
+        void initFightAnimation();
+        void initKeyboardKeyDisplay();
+        void initKeyboardKeyBackground();
+        void initKeyboardActions();
+        void initKeyboardInput();
     };
 } // namespace RType
 

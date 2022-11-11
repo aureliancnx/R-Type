@@ -233,6 +233,20 @@ void RType::GameManager::initSplashScreens() {
     engine->getSplashScreen()->addSplashScreen(nsplash);
 }
 
+void RType::GameManager::toggleDebugMode() {
+    debugMode = !debugMode;
+
+    if (debugMode) {
+        KAP_DEBUG_LOG("Debug mode enabled.");
+    }else{
+        KAP_DEBUG_LOG("Debug mode disabled.");
+    }
+}
+
+bool RType::GameManager::hasDebugMode() {
+    return debugMode;
+}
+
 void RType::GameManager::initAxis() {
     KapEngine::Events::Input::Axis horizontal("Horizontal");
     KapEngine::Events::Input::Axis vertical("Vertical");

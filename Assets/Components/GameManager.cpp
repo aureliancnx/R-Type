@@ -158,8 +158,6 @@ void RType::GameManager::initSinglePlayer() {
 
     auto campaignManager = std::make_shared<CampaignManager>(gameMenu);
     gameMenu->addComponent(campaignManager);
-    // TODO: Fix animation (move animation)
-    // https://github.com/aureliancnx/R-Type/blob/ae652adfdf49c702bd8513c27b8bef6dcfeaebc2/Assets/Components/GameManager.cpp#L84
 }
 
 // TODO: Move this to a dedicated class

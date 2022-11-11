@@ -24,7 +24,7 @@ void PlayerController::onUpdate() {
         return;
     }
 
-    if (getInput().getKeyDown(KapEngine::Events::Key::F3)) {
+    if (getInput().getKeyDown(debugKey)) {
         GameManager::getInstance()->toggleDebugMode();
     }
 
@@ -290,6 +290,12 @@ void PlayerController::initSettings() {
         int value = KapEngine::PlayerPrefs::getInt("shootInput");
         if (KapEngine::Events::Key::intInEnum(value)) {
             shootKey = static_cast<KapEngine::Events::Key::EKey>(value);
+        }
+    }
+    if (!KapEngine::PlayerPrefs::getString("debugInput").empty()) {
+        int value = KapEngine::PlayerPrefs::getInt("debugInput");
+        if (KapEngine::Events::Key::intInEnum(value)) {
+            debugKey = static_cast<KapEngine::Events::Key::EKey>(value);
         }
     }
 }

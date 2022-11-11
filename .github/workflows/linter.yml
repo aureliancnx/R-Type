@@ -22,5 +22,6 @@ jobs:
       - name: "Push changes"
         run: |
           git config --global user.name "Linter"
+          git add .
           git commit -m "CHG: Apply linter" || true
           git push || true

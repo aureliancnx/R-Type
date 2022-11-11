@@ -81,6 +81,30 @@ void NetStatViewer::onAwake() {
         transform.setParent(canvas);
         textSentBytes->setActive(false);
     }
+    // Byte/s received
+    {
+        textReceivedBytesPerSecond = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Received bytes per second");
+        auto& text = textReceivedBytesPerSecond->getComponent<KapEngine::UI::Text>();
+        auto& transform = textReceivedBytesPerSecond->getComponent<KapEngine::Transform>();
+
+        text.setText("Byte/s received: 0");
+        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(10, 120, 0));
+        transform.setParent(canvas);
+        textReceivedBytesPerSecond->setActive(false);
+    }
+    // Bytes sent
+    {
+        textSentBytesPerSecond = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Sent bytes per second");
+        auto& text = textSentBytesPerSecond->getComponent<KapEngine::UI::Text>();
+        auto& transform = textSentBytesPerSecond->getComponent<KapEngine::Transform>();
+
+        text.setText("Byte/s sent: 0");
+        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(10, 135, 0));
+        transform.setParent(canvas);
+        textSentBytesPerSecond->setActive(false);
+    }
 }
 
 void NetStatViewer::onFixedUpdate() {
@@ -123,5 +147,15 @@ void NetStatViewer::onFixedUpdate() {
         auto& text = textSentBytes->getComponent<KapEngine::UI::Text>();
         text.setText("Bytes sent: " + std::to_string(networkStatistics.clientIntervalSentBytes));
         textSentBytes->setActive(active);
+    }
+    {
+        auto& text = textReceivedBytesPerSecond->getComponent<KapEngine::UI::Text>();
+        text.setText("Byte/s received: " + std::to_string(networkStatistics.clientReceivedBytesPerSecond));
+        textReceivedBytesPerSecond->setActive(active);
+    }
+    {
+        auto& text = textSentBytesPerSecond->getComponent<KapEngine::UI::Text>();
+        text.setText("Byte/s sent: " + std::to_string(networkStatistics.clientSentBytesPerSecond));
+        textSentBytesPerSecond->setActive(active);
     }
 }

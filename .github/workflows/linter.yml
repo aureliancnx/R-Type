@@ -12,7 +12,7 @@ jobs:
       - name: "Install clang-format"
         run: sudo apt-get install -y clang-format
       - name: "Run clang-format"
-        run: find . -iname *.hpp -o -iname *.cpp ! -path "./Library/*" ! -path "./Packages/*" | xargs clang-format -i
+        run: find . -iname '*.hpp' -o -iname '*.cpp' ! -path "./Library/*" ! -path "./Packages/*" | xargs clang-format -i
       - name: "Add key"
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" >> ~/.github_key

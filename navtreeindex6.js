@@ -201,12 +201,14 @@ var NAVTREEINDEX6 =
 "classRType_1_1EnemyController.html#af81e07f43cbac164009e2f9f3af3e847":[37,0,5,8,3],
 "classRType_1_1EnemyController.html#afaa5ab08af7185d3b74511d955b1e11d":[37,0,5,8,6],
 "classRType_1_1GameManager.html":[37,0,5,10],
-"classRType_1_1GameManager.html#a0cf2fed97d76428a281b6cab08ac6ce3":[37,0,5,10,4],
-"classRType_1_1GameManager.html#a3c95fa7315b1635902642a3b574e1f08":[37,0,5,10,6],
-"classRType_1_1GameManager.html#a60491742fd343d211117dea4fef4f280":[37,0,5,10,3],
+"classRType_1_1GameManager.html#a0cf2fed97d76428a281b6cab08ac6ce3":[37,0,5,10,5],
+"classRType_1_1GameManager.html#a3c95fa7315b1635902642a3b574e1f08":[37,0,5,10,7],
+"classRType_1_1GameManager.html#a60491742fd343d211117dea4fef4f280":[37,0,5,10,4],
+"classRType_1_1GameManager.html#a8c4c152fc92056105c60466a5a37b0b4":[37,0,5,10,8],
 "classRType_1_1GameManager.html#a97084bc427fc6a9ce22aa089f8ac6ce4":[37,0,5,10,1],
+"classRType_1_1GameManager.html#ab851caa8e21ed9624d7ac49ca0c2a426":[37,0,5,10,3],
 "classRType_1_1GameManager.html#ae1cf7c831cb3b203ebabfaf5a4de5fb5":[37,0,5,10,0],
-"classRType_1_1GameManager.html#ae1f33d05c8d280996e483d96f6795d64":[37,0,5,10,5],
+"classRType_1_1GameManager.html#ae1f33d05c8d280996e483d96f6795d64":[37,0,5,10,6],
 "classRType_1_1GameManager.html#ae860dff5dbf204feee000480ae93088b":[37,0,5,10,2],
 "classRType_1_1GameMenuManager.html":[37,0,5,11],
 "classRType_1_1GameMenuManager.html#a1a438980f3d4f239d37f2b9be6e01364":[37,0,5,11,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX6 =
 "classRType_1_1MainMenu.html#a46d4ccaa5094c438c873d3e465a9dfb7":[37,0,5,17,0],
 "classRType_1_1MainMenu.html#aa03b3bf00cc428fd0339b270b93fd408":[37,0,5,17,1],
 "classRType_1_1MapEnemy.html":[37,0,5,18],
-"classRType_1_1MapEnemy.html#a474297ba1c4f58d3c390ce451c7029e6":[37,0,5,18,2],
-"classRType_1_1MapEnemy.html#a5ee50ef562ababbd9aae875299abf38b":[37,0,5,18,5],
-"classRType_1_1MapEnemy.html#a8fc2a41ae33513268285dfbfe5732988":[37,0,5,18,1]
+"classRType_1_1MapEnemy.html#a474297ba1c4f58d3c390ce451c7029e6":[37,0,5,18,2]
 };

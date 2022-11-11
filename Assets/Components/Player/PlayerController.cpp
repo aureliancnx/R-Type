@@ -249,6 +249,12 @@ void PlayerController::takeDamage(int damage) {
     if (isServer()) {
         getServer()->updateObject(getNetworkId());
     }
+
+    if (isClient() || isLocal()) {
+        if (menuManager.use_count() > 0) {
+            menuManager->addLife();
+        }
+    }
 }
 
 void PlayerController::initSettings() {

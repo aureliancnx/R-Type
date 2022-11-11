@@ -11,6 +11,7 @@ namespace RType {
     class NetStatViewer : public KapEngine::Component {
       private:
         long long lastRefreshTime = 0;
+        bool lastShown;
 
         std::shared_ptr<KapEngine::GameObject> textReceivedPackets;
         std::shared_ptr<KapEngine::GameObject> textSentPackets;

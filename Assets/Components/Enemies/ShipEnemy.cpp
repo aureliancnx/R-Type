@@ -63,6 +63,7 @@ void ShipEnemy::onSceneUpdated() {
     if (isClient()) {
         return;
     }
+
     for (auto& other : collidedObjects) {
         if (other.use_count() > 1 && other->getName() == "Bullet Player") {
             life -= 1;

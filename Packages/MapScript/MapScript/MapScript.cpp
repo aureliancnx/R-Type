@@ -15,6 +15,8 @@ using namespace RType;
 
 MapScript::MapScript(KapEngine::KEngine* _engine, bool _isLoadedByServer) : engine(*_engine), isLoadedByServer(_isLoadedByServer) {}
 
+MapScript::~MapScript() { closeScript(); }
+
 void MapScript::loadScript(const std::string& scriptPath) {
     std::ifstream ifs(scriptPath);
     if (!ifs.is_open()) {
@@ -106,6 +108,17 @@ void MapScript::initScript() {
         return 0;
     };
 
+    auto instantiatePrefab = [](lua_State* L) -> int {
+        auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
+
+        std::string prefabName(lua_tostring(L, 1));
+        auto startPositionY = (float)lua_tonumber(L, 2);
+        auto startPositionX = (float)lua_tonumber(L, 3);
+
+        manager->_instanciatePrefab(prefabName, startPositionY, startPositionX);
+        return 0;
+    };
+
     lua_newtable(L);
     int mapTableIdx = lua_gettop(L);
     lua_pushvalue(L, mapTableIdx);
@@ -130,6 +143,10 @@ void MapScript::initScript() {
     lua_pushlightuserdata(L, this);
     lua_pushcclosure(L, spawnMapEnemy, 1);
     lua_setfield(L, -2, "SpawnEnemy");
+
+    lua_pushlightuserdata(L, this);
+    lua_pushcclosure(L, instantiatePrefab, 1);
+    lua_setfield(L, -2, "InstantiatePrefab");
 
     lua_pushstring(L, "__index");
     lua_pushvalue(L, mapTableIdx);
@@ -279,6 +296,29 @@ void MapScript::_registerSpawnEnemy(const std::string& _name, int spawnTime, flo
     spawnEnemies.push_back({_name, spawnTime, startPositionY, startPositionX, enemyHp});
 }
 
+void MapScript::_instanciatePrefab(const std::string& prefabName, float positionX, float positionY) {
+    if (prefabName.empty()) {
+        throw LuaException("Prefab name is empty");
+    }
+    if (positionX < 0) {
+        throw LuaException("Position X can't be negative");
+    }
+    if (positionY < 0) {
+        throw LuaException("Position Y can't be negative");
+    }
+
+    auto& scene = engine.getSceneManager()->getCurrentScene();
+
+    std::shared_ptr<KapEngine::GameObject> gameObject;
+    if (!engine.getPrefabManager()->instantiatePrefab(prefabName, scene, gameObject)) {
+        KapEngine::Debug::error("Can't instanciate prefab: " + prefabName);
+        return;
+    }
+
+    auto& transform = gameObject->getComponent<KapEngine::Transform>();
+    transform.setPosition({positionX, positionY, 0});
+}
+
 KapEngine::Tools::Vector3 MapScript::_updateEnemy(const std::string& enemyName, const KapEngine::Tools::Vector3& position) {
     if (L == nullptr) {
         return position;
@@ -312,12 +352,18 @@ void MapScript::closeScript() {
         return;
     }
 
-    /*lua_close(L);
+    lua_close(L);
     destroyPrefabEnemies();
 
+    name = "";
+    author = "";
+    description = "";
+    bannerPath = "";
+
+    newEnemies.clear();
     spawnEnemies.clear();
 
-    L = nullptr;*/
+    L = nullptr;
 }
 
 void MapScript::destroyPrefabEnemies() {

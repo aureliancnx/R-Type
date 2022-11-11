@@ -3,6 +3,8 @@
 #include <ctime>
 #include <valarray>
 
+#include <iostream>
+
 using namespace RType::Script;
 
 void Math::initScript(lua_State* L) {
@@ -14,7 +16,13 @@ void Math::initScript(lua_State* L) {
     lua_setglobal(L, "Math");
 
     lua_pushcfunction(L, __abs);
-    lua_setfield(L, debugTableIdx, "Abs");
+    lua_setfield(L, -2, "Abs");
+
+    lua_pushcfunction(L, __floor);
+    lua_setfield(L, -2, "Floor");
+
+    lua_pushcfunction(L, __mod);
+    lua_setfield(L, -2, "Mod");
 
     lua_pushcfunction(L, __random);
     lua_setfield(L, -2, "Random");
@@ -34,8 +42,21 @@ void Math::initScript(lua_State* L) {
 }
 
 int Math::__abs(lua_State* L) {
-    auto value = (float)lua_tonumber(L, 1);
+    auto value = (double)lua_tonumber(L, 1);
     lua_pushnumber(L, std::abs(value));
+    return 1;
+}
+
+int Math::__floor(lua_State* L) {
+    auto value = (double)lua_tonumber(L, 1);
+    lua_pushnumber(L, std::floor(value));
+    return 1;
+}
+
+int Math::__mod(lua_State* L) {
+    auto value = (double)lua_tonumber(L, 1);
+    auto mod = (double)lua_tonumber(L, 2);
+    lua_pushnumber(L, std::fmod(value, mod));
     return 1;
 }
 
@@ -47,19 +68,19 @@ int Math::__random(lua_State* L) {
 }
 
 int Math::__sin(lua_State* L) {
-    auto angle = (float)lua_tonumber(L, 1);
+    auto angle = (double)lua_tonumber(L, 1);
     lua_pushnumber(L, std::sin(angle));
     return 1;
 }
 
 int Math::__cos(lua_State* L) {
-    auto angle = (float)lua_tonumber(L, 1);
+    auto angle = (double)lua_tonumber(L, 1);
     lua_pushnumber(L, std::cos(angle));
     return 1;
 }
 
 int Math::__tan(lua_State* L) {
-    auto angle = (float)lua_tonumber(L, 1);
+    auto angle = (double)lua_tonumber(L, 1);
     lua_pushnumber(L, std::tan(angle));
     return 1;
 }

@@ -12,6 +12,8 @@ namespace RType::Script {
 
       private:
         static int __abs(lua_State* L);
+        static int __floor(lua_State* L);
+        static int __mod(lua_State* L);
         static int __random(lua_State* L);
         static int __sin(lua_State* L);
         static int __cos(lua_State* L);

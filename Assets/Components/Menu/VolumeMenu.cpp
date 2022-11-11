@@ -17,10 +17,8 @@ void RType::VolumeMenu::init() {
     // Init PlayerPrefs "volumeValue"
     if (KapEngine::PlayerPrefs::getString("volumeValue").empty()) {
         KapEngine::PlayerPrefs::PlayerPrefs::setInt("volumeValue", 50);
-        engine.getGraphicalLibManager()->getCurrentLib()->setMusicVolume(
-            (float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
-        engine.getGraphicalLibManager()->getCurrentLib()->setSoundVolume(
-            (float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
+        engine.getGraphicalLibManager()->getCurrentLib()->setMusicVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
+        engine.getGraphicalLibManager()->getCurrentLib()->setSoundVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
     }
     // Change type of display for canvas
     {

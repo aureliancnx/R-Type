@@ -1,4 +1,5 @@
 #include "PlayerController.hpp"
+#include "Bullet/Bullet.hpp"
 #include "Messages.hpp"
 
 using namespace RType;
@@ -165,10 +166,16 @@ void PlayerController::spawnBullet(const KapEngine::Tools::Vector3& pos) {
         getGameObject().getEngine().getPrefabManager()->instantiatePrefab("Bullet", scene, bullet);
         bullet->setName("Bullet Player");
         bullet->getComponent<KapEngine::Transform>().setPosition(pos);
+        bullet->getComponent<Bullet>().setDirection(Bullet::Direction::RIGHT);
     } else if (isServer()) {
         std::shared_ptr<KapEngine::GameObject> bullet;
         getServer()->spawnObject(
-            "Bullet", pos, [](const std::shared_ptr<KapEngine::GameObject>& bullet) { bullet->setName("Bullet Player"); }, bullet);
+            "Bullet", pos,
+            [](const std::shared_ptr<KapEngine::GameObject>& bullet) {
+                bullet->setName("Bullet Player");
+                bullet->getComponent<Bullet>().setDirection(Bullet::Direction::RIGHT);
+            },
+            bullet);
     }
 }
 
@@ -203,9 +210,7 @@ void PlayerController::playShootSound() {
 
 #pragma region collisions
 
-void PlayerController::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> collider) {
-    collisions.push_back(collider);
-}
+void PlayerController::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> collider) { collisions.push_back(collider); }
 
 void PlayerController::checkCollisions() {
     if (collisions.size() == 0) {
@@ -315,18 +320,18 @@ void PlayerController::onStart() {
 }
 
 void PlayerController::serialize(KapMirror::NetworkWriter& writer) {
-     writer.write(life);
-     writer.write(isDead);
+    writer.write(life);
+    writer.write(isDead);
 }
 
 void PlayerController::deserialize(KapMirror::NetworkReader& reader) {
-     int _life = reader.read<int>();
-     bool _isDead = reader.read<bool>();
+    int _life = reader.read<int>();
+    bool _isDead = reader.read<bool>();
 
-     if (isClient()) {
-         life = _life;
-         isDead = _isDead;
-     }
+    if (isClient()) {
+        life = _life;
+        isDead = _isDead;
+    }
 }
 
 int PlayerController::getLife() const { return life; }

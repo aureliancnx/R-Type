@@ -132,7 +132,7 @@ void RType::SettingPlayerMenu::init() {
         auto children = transform.getChildren();
         for (const auto& i : children) {
             if (i->getName() == "Text" && i->hasComponent<KapEngine::UI::Text>()) {
-                auto &txt = i->getComponent<KapEngine::UI::Text>();
+                auto& txt = i->getComponent<KapEngine::UI::Text>();
                 txt.setPoliceSize(30);
             }
         }

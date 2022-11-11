@@ -63,7 +63,7 @@ void EndMenu::init() {
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
         auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
-        //KapEngine::PlayerPrefs::setBool("Finish", false); // SET LORS DE LA FINAL ACTION DU JEU
+        // KapEngine::PlayerPrefs::setBool("Finish", false); // SET LORS DE LA FINAL ACTION DU JEU
         if (KapEngine::PlayerPrefs::getBool("Finish") && KapEngine::PlayerPrefs::hasKey("Finish"))
             compText->setText("You Win !");
         if (!KapEngine::PlayerPrefs::getBool("Finish") && KapEngine::PlayerPrefs::hasKey("Finish"))

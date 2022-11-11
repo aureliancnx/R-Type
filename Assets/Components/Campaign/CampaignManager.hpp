@@ -21,7 +21,11 @@ namespace RType {
         void onAwake() override;
         void onFixedUpdate() override;
 
-        void onSceneChanged();
+        #if IS_MAX_KAPENGINE_VERSION(1, 215)
+          void onSceneChanged();
+        #else
+          void onSceneChanged() override;
+        #endif
 
       protected:
       private:

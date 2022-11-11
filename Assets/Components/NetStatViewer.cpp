@@ -1,6 +1,7 @@
 #include "UiText.hpp"
 #include "NetStatViewer.hpp"
 #include "Messages.hpp"
+#include "GameManager.hpp"
 
 using namespace RType;
 
@@ -21,6 +22,7 @@ void NetStatViewer::onAwake() {
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3(10, 30, 0));
         transform.setParent(canvas);
+        textReceivedPackets->setActive(false);
     }
     // Sent packets from the beginning
     {
@@ -32,6 +34,7 @@ void NetStatViewer::onAwake() {
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3(10, 45, 0));
         transform.setParent(canvas);
+        textSentPackets->setActive(false);
     }
     // Packet per second received
     {
@@ -43,6 +46,7 @@ void NetStatViewer::onAwake() {
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3(10, 60, 0));
         transform.setParent(canvas);
+        textReceivedPacketsPerSec->setActive(false);
     }
     // Packet per second sent
     {
@@ -54,6 +58,7 @@ void NetStatViewer::onAwake() {
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3(10, 75, 0));
         transform.setParent(canvas);
+        textSentPacketsPerSec->setActive(false);
     }
     // Bytes received
     {
@@ -65,6 +70,7 @@ void NetStatViewer::onAwake() {
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3(10, 90, 0));
         transform.setParent(canvas);
+        textReceivedBytes->setActive(false);
     }
     // Bytes sent
     {
@@ -76,6 +82,7 @@ void NetStatViewer::onAwake() {
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3(10, 105, 0));
         transform.setParent(canvas);
+        textSentBytes->setActive(false);
     }
 }
 
@@ -84,32 +91,38 @@ void NetStatViewer::onFixedUpdate() {
     if (KapMirror::NetworkTime::localTime() - lastRefreshTime < 1000 / updateRate) {
         return;
     }
+    bool active = GameManager::getInstance()->hasDebugMode();
     lastRefreshTime = KapMirror::NetworkTime::localTime();
-    std::cout << "NetStatViewer: fixed Update!" << std::endl;
 
     // Update texts
     {
         auto &text = textReceivedPackets->getComponent<KapEngine::UI::Text>();
         text.setText("Packets received: " + std::to_string(statObject->clientIntervalReceivedPackets));
+        textReceivedPackets->setActive(active);
     }
     {
         auto &text = textSentPackets->getComponent<KapEngine::UI::Text>();
         text.setText("Packets sent: " + std::to_string(statObject->clientIntervalSentPackets));
+        textSentPackets->setActive(active);
     }
     {
         auto &text = textReceivedPacketsPerSec->getComponent<KapEngine::UI::Text>();
         text.setText("Packet/s received: " + std::to_string(statObject->clientReceivedPacketsPerSecond));
+        textReceivedPacketsPerSec->setActive(active);
     }
     {
         auto &text = textSentPacketsPerSec->getComponent<KapEngine::UI::Text>();
         text.setText("Packet/s sent: " + std::to_string(statObject->clientSentPacketsPerSecond));
+        textSentPacketsPerSec->setActive(active);
     }
     {
         auto &text = textReceivedBytes->getComponent<KapEngine::UI::Text>();
         text.setText("Bytes received: " + std::to_string(statObject->clientIntervalReceivedBytes));
+        textReceivedBytes->setActive(active);
     }
     {
         auto &text = textSentBytes->getComponent<KapEngine::UI::Text>();
         text.setText("Bytes sent: " + std::to_string(statObject->clientIntervalSentBytes));
+        textSentBytes->setActive(active);
     }
 }

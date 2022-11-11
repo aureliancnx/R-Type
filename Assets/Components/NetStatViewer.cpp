@@ -2,6 +2,7 @@
 #include "NetStatViewer.hpp"
 #include "Messages.hpp"
 #include "GameManager.hpp"
+#include <sstream>
 
 using namespace RType;
 
@@ -108,54 +109,83 @@ void NetStatViewer::onAwake() {
 }
 
 void NetStatViewer::onFixedUpdate() {
-    int updateRate = 30;
-    if (KapMirror::NetworkTime::localTime() - lastRefreshTime < 1000 / updateRate) {
+    if (KapMirror::NetworkTime::localTime() - lastRefreshTime < 500) {
         return;
     }
     bool active = GameManager::getInstance()->hasDebugMode();
     lastRefreshTime = KapMirror::NetworkTime::localTime();
 
-    auto& networkStatistics = getGameObject().getComponent<KapMirror::Experimental::NetworkStatistics>();
+    // Activate texts only in debug mode
+    textReceivedPackets->setActive(active);
+    textSentPackets->setActive(active);
+    textReceivedPacketsPerSec->setActive(active);
+    textSentPacketsPerSec->setActive(active);
+    textReceivedBytes->setActive(active);
+    textSentBytes->setActive(active);
+    textReceivedBytesPerSecond->setActive(active);
+    textSentBytesPerSecond->setActive(active);
+
+    // Don't update texts if debug mode is not active
+    if (!active) {
+        return;
+    }
 
     // Update texts
+    auto& networkStatistics = getGameObject().getComponent<KapMirror::Experimental::NetworkStatistics>();
     {
         auto& text = textReceivedPackets->getComponent<KapEngine::UI::Text>();
         text.setText("Packets received: " + std::to_string(networkStatistics.clientIntervalReceivedPackets));
-        textReceivedPackets->setActive(active);
     }
     {
         auto& text = textSentPackets->getComponent<KapEngine::UI::Text>();
         text.setText("Packets sent: " + std::to_string(networkStatistics.clientIntervalSentPackets));
-        textSentPackets->setActive(active);
     }
     {
         auto& text = textReceivedPacketsPerSec->getComponent<KapEngine::UI::Text>();
         text.setText("Packet/s received: " + std::to_string(networkStatistics.clientReceivedPacketsPerSecond));
-        textReceivedPacketsPerSec->setActive(active);
     }
     {
         auto& text = textSentPacketsPerSec->getComponent<KapEngine::UI::Text>();
         text.setText("Packet/s sent: " + std::to_string(networkStatistics.clientSentPacketsPerSecond));
-        textSentPacketsPerSec->setActive(active);
     }
     {
         auto& text = textReceivedBytes->getComponent<KapEngine::UI::Text>();
-        text.setText("Bytes received: " + std::to_string(networkStatistics.clientIntervalReceivedBytes));
-        textReceivedBytes->setActive(active);
+        text.setText("Bytes received: " + convertBytes(networkStatistics.clientIntervalReceivedBytes));
     }
     {
         auto& text = textSentBytes->getComponent<KapEngine::UI::Text>();
-        text.setText("Bytes sent: " + std::to_string(networkStatistics.clientIntervalSentBytes));
-        textSentBytes->setActive(active);
+        text.setText("Bytes sent: " + convertBytes(networkStatistics.clientIntervalSentBytes));
     }
     {
         auto& text = textReceivedBytesPerSecond->getComponent<KapEngine::UI::Text>();
-        text.setText("Byte/s received: " + std::to_string(networkStatistics.clientReceivedBytesPerSecond));
-        textReceivedBytesPerSecond->setActive(active);
+        text.setText("Byte/s received: " + convertBytes(networkStatistics.clientReceivedBytesPerSecond));
     }
     {
         auto& text = textSentBytesPerSecond->getComponent<KapEngine::UI::Text>();
-        text.setText("Byte/s sent: " + std::to_string(networkStatistics.clientSentBytesPerSecond));
-        textSentBytesPerSecond->setActive(active);
+        text.setText("Byte/s sent: " + convertBytes(networkStatistics.clientSentBytesPerSecond));
     }
+}
+
+std::string NetStatViewer::convertBytes(long bytes) {
+    long gb = 1073741824, mb = 1048576, kb = 1024;
+
+    if (bytes < 0) {
+        return "0 B";
+    }
+    if (bytes < kb) {
+        return std::to_string(bytes) + " B";
+    }
+
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision(2);
+    if (bytes >= gb) {
+        ss << (float) bytes / (float) gb << " GB";
+    }
+    if (bytes >= mb) {
+        ss << (float) bytes / (float) gb << " MB";
+    }
+    if (bytes >= kb) {
+        ss << (float) bytes / (float) gb << " KB";
+    }
+    return ss.str();
 }

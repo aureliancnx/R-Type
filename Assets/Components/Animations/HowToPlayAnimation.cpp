@@ -91,7 +91,6 @@ namespace RType {
             return;
 
         auto& transform = getImage("Bouboule2").getTransform();
-        // KAP_DEBUG_WARNING(" BOUBOULE 2 X : " + std::to_string(transform.getWorldPosition().getX()) + " Y : " + std::to_string(transform.getWorldPosition().getY()));
         auto pos_Y = transform.getWorldPosition().getY();
         auto pos_X  = transform.getWorldPosition().getX();
 
@@ -101,23 +100,21 @@ namespace RType {
         }
 
         if (_bouboule2Invert) {
-            if (pos_X >= 490 && pos_Y > 200) {
+            if (pos_X >= 490 && pos_Y > 200)
                 transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(3.5f, -3.5f, 0));
-            } else {
+            else
                 transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(-3.5f, -3.5f, 0));
-            }
         } else {
-            if (pos_X >= 490 && pos_Y < 200) {
+            if (pos_X >= 490 && pos_Y < 200)
                 transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(3.5f, 3.5f, 0));
-            } else {
+            else
                 transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(-3.5f, 3.5f, 0)); 
-            }              
         }
-        if (pos_Y > 300) {
+
+        if (pos_Y > 300)
             _bouboule2Invert = true;
-        } else if (pos_Y < 70) {
+        else if (pos_Y < 70)
             _bouboule2Invert = false;
-        }
     }
 
     void HowToPlayAnimation::moveBouboule() {
@@ -125,8 +122,8 @@ namespace RType {
             return;
 
         auto& transform = getImage("Bouboule").getTransform();
-        auto pos_Y = transform.getWorldPosition().getY();
-        auto pos_X  = transform.getWorldPosition().getX();
+        auto posY = transform.getWorldPosition().getY();
+        auto posX  = transform.getWorldPosition().getX();
 
         if (_nbShoot == 2 && _explosionInvert2 == false && getGameObject("Explosion")->isActive() == true) {
             onResetAnim();
@@ -134,34 +131,30 @@ namespace RType {
         }
 
         if (_boubouleInvert) {
-            if (pos_X > 500 && pos_Y > 200) {
+            if (posX > 500 && posY > 200)
                 transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(-3.24f, -3.24f, 0));
-            } else {
+            else
                 transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(3.24f, -3.24f, 0));
-            }
         } else {
-            if (pos_X > 500 && pos_Y < 200) {
+            if (posX > 500 && posY < 200)
                 transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(-3.24f, 3.24f, 0));
-            } else {
+            else
                 transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(3.24f, 3.24f, 0)); 
-            }              
         }
 
-        if (pos_Y > 300) {
+        if (posY > 300)
             _boubouleInvert = true;
-        } else if (pos_Y < 70) {
+        else if (posY < 70)
             _boubouleInvert = false;
-        }
     }
 
     void HowToPlayAnimation::moveShip() {
         auto& transform = getImage("Ship").getTransform();
 
-        if (_shipInvert) {
+        if (_shipInvert)
             transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0, -4.0f, 0));
-        } else {
+        else
             transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0, 4.0f, 0));
-        }
 
         if (transform.getWorldPosition().getY() > 300) {
             _shipInvert = true;
@@ -176,8 +169,9 @@ namespace RType {
 
     void HowToPlayAnimation::moveBullet() {
         auto& transform = getImage("Bullet").getTransform();
+        auto shipPosY = getImage("Ship").getTransform().getWorldPosition().getY();
 
-        if (getGameObject("Bullet")->isActive() == false && getImage("Ship").getTransform().getWorldPosition().getY() == 266) {
+        if (getGameObject("Bullet")->isActive() == false && shipPosY == 266) {
             if (_nbShoot == 0 && _canShoot && _explosionInvert2 == false) {
                 _explosionInvert = true;
                 getGameObject("Bullet")->setActive(true);
@@ -185,7 +179,7 @@ namespace RType {
                 _nbShoot++;
                 _canShoot = false;
             }
-        } else if (getGameObject("Bullet")->isActive() == false && getImage("Ship").getTransform().getWorldPosition().getY() == 170) {
+        } else if (getGameObject("Bullet")->isActive() == false && shipPosY == 170) {
             if (_nbShoot == 1 && _canShoot && _explosionInvert == false) {
                 _explosionInvert = false;
                 _explosionInvert2 = true;

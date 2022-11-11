@@ -11,6 +11,8 @@
 #include "KapEngine.hpp"
 #include "KapMirror/KapMirror.hpp"
 
+#include "Animations/SpriteAnimation.hpp"
+
 namespace RType {
 
     class GameMenuManager : public KapMirror::NetworkComponent {

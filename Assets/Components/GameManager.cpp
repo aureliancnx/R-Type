@@ -200,7 +200,7 @@ void RType::GameManager::initMultiPlayer(bool isServer) {
 
         auto netstatObject = scene->createGameObject("NetStatViewer");
         std::shared_ptr<NetStatViewer> netstat = std::make_shared<NetStatViewer>(netstatObject, networkStatistics);
-        netstatObject->addComponent(networkStatistics);
+        //netstatObject->addComponent(networkStatistics);
         netstatObject->addComponent(netstat);
     }
 }

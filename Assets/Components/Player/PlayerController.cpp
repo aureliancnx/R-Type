@@ -250,8 +250,8 @@ void PlayerController::takeDamage(int damage) {
         getServer()->updateObject(getNetworkId());
     }
 
-    if (isClient() || isLocal()) {
-        if (menuManager.use_count() > 0) {
+    if ((life > 33 && life <= 66) || (life > 0 && life <= 33)) {
+        if (isClient() || isLocal()) {
             menuManager->removeLife();
         }
     }

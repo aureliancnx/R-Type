@@ -131,17 +131,6 @@ void RType::HowToPlayMenu::init() {
             transform.setParent(fight);
         } catch (...) { KAP_DEBUG_ERROR("Failed to set bouboule2 img"); }
 
-        // try {
-        //     auto& imageComp = explosion->getComponent<KapEngine::UI::Image>();
-        //     imageComp.setPathSprite("Assets/Textures/Explosion.png");
-        //     imageComp.setRectangle({0, 50, 30, 35});
-
-        //     auto& transform = explosion->getComponent<KapEngine::Transform>();
-        //     transform.setPosition(KapEngine::Tools::Vector3(400, 50, 0));
-        //     transform.setScale({50, 70});
-        //     transform.setParent(fight);
-        // } catch (...) { KAP_DEBUG_ERROR("Failed to set explosion img"); }
-
         try {
             auto& imageComp = explosion->getComponent<KapEngine::UI::Image>();
             imageComp.setPathSprite("Assets/Textures/Explosion/wills_pixel_explosions_sample/round_explosion/spritesheet/spritesheet.png");

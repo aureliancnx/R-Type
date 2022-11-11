@@ -63,27 +63,31 @@ void RType::PlayerController::setConnectionId(unsigned int _connectionId) {
     connectionId = _connectionId;
 }
 
+void RType::PlayerController::sendPingUpdate() {
+    if (KapMirror::NetworkTime::localTime() - lastPingTime > 1000) {
+        unsigned int clientId = connectionId;
+        lastPingTime = KapMirror::NetworkTime::localTime();
+        auto &pingDict = GameManager::getInstance()->getNetworkManager()->pingRequests;
+
+        unsigned int id = std::rand();
+        KapEngine::Dictionary<unsigned int, long long> requests;
+
+        if (!pingDict.tryGetValue(clientId, requests)) {
+            pingDict[clientId] = requests;
+        }
+        pingDict[clientId][id] = std::chrono::high_resolution_clock::now().time_since_epoch().count();
+        PlayerPingRequest req;
+
+        req.id = id;
+        getServer()->sendToClient(req, clientId);
+    }
+}
+
 #pragma region Movement
 
 void RType::PlayerController::onFixedUpdate() {
     if (isServer()) {
-        if (KapMirror::NetworkTime::localTime() - lastPingTime > 1000) {
-            unsigned int clientId = connectionId;
-            lastPingTime = KapMirror::NetworkTime::localTime();
-            auto &pingDict = GameManager::getInstance()->getNetworkManager()->pingRequests;
-
-            unsigned int id = std::rand();
-            KapEngine::Dictionary<unsigned int, long long> requests;
-
-            if (!pingDict.tryGetValue(clientId, requests)) {
-                pingDict[clientId] = requests;
-            }
-            pingDict[clientId][id] = std::chrono::high_resolution_clock::now().time_since_epoch().count();
-            PlayerPingRequest req;
-
-            req.id = id;
-            getServer()->sendToClient(req, clientId);
-        }
+        sendPingUpdate();
     }
 
     if (!isMoving) {

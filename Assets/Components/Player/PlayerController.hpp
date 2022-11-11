@@ -83,5 +83,7 @@ namespace RType {
         void initSettings();
 
         void checkCollisions();
+
+        void sendPingUpdate();
     };
 } // namespace RType

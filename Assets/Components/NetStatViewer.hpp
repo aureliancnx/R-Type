@@ -25,6 +25,12 @@ namespace RType {
         std::shared_ptr<KapEngine::GameObject> textSentBytesPerSecond;
         std::shared_ptr<KapEngine::GameObject> textPing;
 
+        // Updaters
+        void updatePacketCounts();
+        void updateByteCounts();
+        void updatePing();
+
+        // Utils
         std::string convertBytes(long bytes);
         KapEngine::Tools::Color getPingColor();
 

@@ -152,6 +152,15 @@ void NetStatViewer::onFixedUpdate() {
         networkStatistics.reset();
     }
 
+    updatePacketCounts();
+    updateByteCounts();
+    updatePing();
+}
+
+void NetStatViewer::updatePacketCounts() {
+    // Update texts
+    auto& networkStatistics = getGameObject().getComponent<KapMirror::Experimental::NetworkStatistics>();
+
     {
         auto& text = textReceivedPackets->getComponent<KapEngine::UI::Text>();
         text.setText("Packets received: " + std::to_string(networkStatistics.clientTotalReceivedPackets));
@@ -168,6 +177,12 @@ void NetStatViewer::onFixedUpdate() {
         auto& text = textSentPacketsPerSec->getComponent<KapEngine::UI::Text>();
         text.setText("Packet/s sent: " + std::to_string(networkStatistics.clientSentPacketsPerSecond));
     }
+}
+
+void NetStatViewer::updateByteCounts() {
+    // Update texts
+    auto& networkStatistics = getGameObject().getComponent<KapMirror::Experimental::NetworkStatistics>();
+
     {
         auto& text = textReceivedBytes->getComponent<KapEngine::UI::Text>();
         text.setText("Bytes received: " + convertBytes(networkStatistics.clientReceivedBytesTotal));
@@ -184,6 +199,9 @@ void NetStatViewer::onFixedUpdate() {
         auto& text = textSentBytesPerSecond->getComponent<KapEngine::UI::Text>();
         text.setText("Byte/s sent: " + convertBytes(networkStatistics.clientSentBytesPerSecond));
     }
+}
+
+void NetStatViewer::updatePing() {
     {
         auto& text = textPing->getComponent<KapEngine::UI::Text>();
         text.setText("Ping: " + std::to_string(ping) + " ms");

@@ -215,14 +215,14 @@ void NetStatViewer::updatePing() {
 KapEngine::Tools::Color NetStatViewer::getPingColor() {
     if (ping < 30) {
         return KapEngine::Tools::Color(0, 184, 148);
-    }else if (ping < 30) {
+    } else if (ping < 30) {
         return KapEngine::Tools::Color(85, 239, 196);
-    }else if (ping < 70) {
+    } else if (ping < 70) {
         return KapEngine::Tools::Color(116, 185, 255);
-    }else if (ping < 100) {
+    } else if (ping < 100) {
         return KapEngine::Tools::Color(255, 234, 167);
-    }else if (ping < 150) {
-        return KapEngine::Tools::Color (253, 203, 110);
+    } else if (ping < 150) {
+        return KapEngine::Tools::Color(253, 203, 110);
     }
     return KapEngine::Tools::Color(214, 48, 49);
 }

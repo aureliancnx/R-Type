@@ -101,20 +101,26 @@ $(document).ready(function(){initNavTree('NetStatViewer_8hpp_source.html',''); i
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;      <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">long</span> <span class="keywordtype">long</span> lastRefreshTime = 0;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        std::shared_ptr&lt;KapMirror::Experimental::NetworkStatistics&gt; statObject;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; textReceivedPackets;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;      <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classRType_1_1NetStatViewer.html">NetStatViewer</a>(std::shared_ptr&lt;KapEngine::GameObject&gt; _gameObject, std::shared_ptr&lt;KapMirror::Experimental::NetworkStatistics&gt; _statObject);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        ~<a class="code" href="classRType_1_1NetStatViewer.html">NetStatViewer</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1NetStatViewer.html#a02d2308bfaddf118ed5cd96a2f311718">onAwake</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1NetStatViewer.html#a181b232219a6752ba947bd7488102d84">onFixedUpdate</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    };</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;} <span class="comment">// namespace RType</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; textReceivedPackets;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; textSentPackets;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; textReceivedPacketsPerSec;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; textSentPacketsPerSec;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; textReceivedBytes;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        std::shared_ptr&lt;KapEngine::GameObject&gt; textSentBytes;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classRType_1_1NetStatViewer.html">NetStatViewer</a>(std::shared_ptr&lt;KapEngine::GameObject&gt; _gameObject, std::shared_ptr&lt;KapMirror::Experimental::NetworkStatistics&gt; _statObject);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        ~<a class="code" href="classRType_1_1NetStatViewer.html">NetStatViewer</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1NetStatViewer.html#a02d2308bfaddf118ed5cd96a2f311718">onAwake</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1NetStatViewer.html#a181b232219a6752ba947bd7488102d84">onFixedUpdate</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    };</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;} <span class="comment">// namespace RType</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassRType_1_1NetStatViewer_html"><div class="ttname"><a href="classRType_1_1NetStatViewer.html">RType::NetStatViewer</a></div><div class="ttdef"><b>Definition:</b> NetStatViewer.hpp:11</div></div>
-<div class="ttc" id="aclassRType_1_1NetStatViewer_html_a181b232219a6752ba947bd7488102d84"><div class="ttname"><a href="classRType_1_1NetStatViewer.html#a181b232219a6752ba947bd7488102d84">RType::NetStatViewer::onFixedUpdate</a></div><div class="ttdeci">void onFixedUpdate() override</div><div class="ttdoc">call eachv x ms</div><div class="ttdef"><b>Definition:</b> NetStatViewer.cpp:27</div></div>
+<div class="ttc" id="aclassRType_1_1NetStatViewer_html_a181b232219a6752ba947bd7488102d84"><div class="ttname"><a href="classRType_1_1NetStatViewer.html#a181b232219a6752ba947bd7488102d84">RType::NetStatViewer::onFixedUpdate</a></div><div class="ttdeci">void onFixedUpdate() override</div><div class="ttdoc">call eachv x ms</div><div class="ttdef"><b>Definition:</b> NetStatViewer.cpp:82</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Component_html"><div class="ttname"><a href="classKapEngine_1_1Component.html">KapEngine::Component</a></div><div class="ttdef"><b>Definition:</b> Component.hpp:33</div></div>
 <div class="ttc" id="aclassRType_1_1NetStatViewer_html_a02d2308bfaddf118ed5cd96a2f311718"><div class="ttname"><a href="classRType_1_1NetStatViewer.html#a02d2308bfaddf118ed5cd96a2f311718">RType::NetStatViewer::onAwake</a></div><div class="ttdeci">void onAwake() override</div><div class="ttdoc">call component awake</div><div class="ttdef"><b>Definition:</b> NetStatViewer.cpp:12</div></div>
 <!-- start footer part -->

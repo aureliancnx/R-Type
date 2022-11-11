@@ -362,6 +362,10 @@ var NAVTREE =
       [ "How Has This Been Tested?", "md_pull_request_template.html#autotoc_md255", null ],
       [ "Checklist:", "md_pull_request_template.html#autotoc_md256", null ]
     ] ],
+    [ "Security Policy", "md_SECURITY.html", [
+      [ "Supported Versions", "md_SECURITY.html#autotoc_md266", null ],
+      [ "Reporting a Vulnerability", "md_SECURITY.html#autotoc_md267", null ]
+    ] ],
     [ "Todo List", "todo.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Bug List", "bug.html", null ],
@@ -398,7 +402,7 @@ var NAVTREEINDEX =
 "classRType_1_1KeySelector.html#a7f2189986a299b443b64b081e8d0df44",
 "classbackward_1_1Printer.html#a5dd393c25901418af03b87809daeb279",
 "md_CODE_OF_CONDUCT.html#autotoc_md11",
-"md_doxygen-awesome-css_docs_extensions.html#autotoc_md43"
+"md_doxygen-awesome-css_docs_extensions.html#autotoc_md40"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['tips_20_26_20tricks_1067',['Tips &amp; Tricks',['../md_doxygen-awesome-css_docs_tricks.html',1,'']]],
-  ['todo_20list_1068',['Todo List',['../todo.html',1,'']]]
+  ['security_20policy_1068',['Security Policy',['../md_SECURITY.html',1,'']]]
 ];

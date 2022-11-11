@@ -99,20 +99,29 @@ void RType::GameMenuManager::initMainMenu(bool local) {
         heartOff->setNbAnimations(1);
         heart->addComponent(heartOff);
 
-        auto heartAnimation = std::make_shared<SpriteAnimation>(heart);
-        heartAnimation->setTiming(duration);
-        heartAnimation->setRect({0 * 512, 0, 512, 512});
-        heartAnimation->setNbAnimations(10);
-        heart->addComponent(heartAnimation);
+        auto heartAnimationOn = std::make_shared<SpriteAnimation>(heart);
+        heartAnimationOn->setTiming(duration);
+        heartAnimationOn->setRect({0 * 512, 0, 512, 512});
+        heartAnimationOn->setNbAnimations(10);
+        heart->addComponent(heartAnimationOn);
+
+        auto heartAnimationOff = std::make_shared<SpriteAnimation>(heart);
+        heartAnimationOff->setTiming(duration);
+        heartAnimationOff->setRect({0 * 512, 0, 512, 512});
+        heartAnimationOff->setNbAnimations(10);
+        heartAnimationOff->reverseAnim(true);
+        heart->addComponent(heartAnimationOff);
 
         auto animator = std::make_shared<Animator>(heart);
         animator->addAnim(heartOn, "On");
         animator->addAnim(heartOff, "Off");
-        animator->addAnim(heartAnimation, "Animation");
+        animator->addAnim(heartAnimationOn, "AnimationOn");
+        animator->addAnim(heartAnimationOn, "AnimationOff");
 
-        animator->addLink("On", "On", "On");
-        animator->addLink("On", "Off", "Off");
-        animator->addLink("On", "Animation", "Animation");
+        animator->addLink("On", "AnimationOn", "OFF");
+        animator->addLink("AnimationOn", "Off");
+        animator->addLink("Off", "AnimationOff", "ON");
+        animator->addLink("AnimationOff", "On");
 
         try {
             auto& tr = heart->getComponent<Transform>();

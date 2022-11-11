@@ -52,6 +52,7 @@ namespace RType {
         std::shared_ptr<KapEngine::GameObject> heart3;
         std::shared_ptr<KapEngine::Animator> missileAnimator;
 
+        int _life = 3;
     };
 
 } // namespace RType

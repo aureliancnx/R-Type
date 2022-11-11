@@ -26,8 +26,6 @@ namespace KapEngine {
 
     LobbyManager::~LobbyManager() = default;
 
-    void LobbyManager::onStart() {
-        initLobby();
-    }
+    void LobbyManager::onStart() { initLobby(); }
 
 } // namespace KapEngine

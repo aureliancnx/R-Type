@@ -19,6 +19,7 @@ namespace RType {
         std::shared_ptr<RtypeNetworkManager> networkManager;
 
         bool displaySplashScreens = true;
+        bool debugMode = false;
 
       public:
         explicit GameManager(KapEngine::KEngine* _engine, bool splashScreens = true);
@@ -46,6 +47,10 @@ namespace RType {
       public:
         void startLocalMultiPlayer();
         void startCampaign();
+
+        bool hasDebugMode();
+
+        void toggleDebugMode();
 
         std::shared_ptr<RtypeNetworkManager>& getNetworkManager();
 

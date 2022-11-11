@@ -27,6 +27,7 @@ namespace RType {
         KapEngine::Events::Key::EKey leftKey = KapEngine::Events::Key::LEFT;
         KapEngine::Events::Key::EKey rightKey = KapEngine::Events::Key::RIGHT;
         KapEngine::Events::Key::EKey shootKey = KapEngine::Events::Key::SPACE;
+        KapEngine::Events::Key::EKey debugKey = KapEngine::Events::Key::F3;
 
         std::vector<std::shared_ptr<KapEngine::GameObject>> collisions;
 

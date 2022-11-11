@@ -1,6 +1,7 @@
 #include "PlayerController.hpp"
 #include "Bullet/Bullet.hpp"
 #include "Messages.hpp"
+#include "GameManager.hpp"
 
 using namespace RType;
 
@@ -21,6 +22,10 @@ void PlayerController::onUpdate() {
 
     if (!isLocalAuthority) {
         return;
+    }
+
+    if (getInput().getKeyDown(debugKey)) {
+        GameManager::getInstance()->toggleDebugMode();
     }
 
     // Movement
@@ -285,6 +290,12 @@ void PlayerController::initSettings() {
         int value = KapEngine::PlayerPrefs::getInt("shootInput");
         if (KapEngine::Events::Key::intInEnum(value)) {
             shootKey = static_cast<KapEngine::Events::Key::EKey>(value);
+        }
+    }
+    if (!KapEngine::PlayerPrefs::getString("debugInput").empty()) {
+        int value = KapEngine::PlayerPrefs::getInt("debugInput");
+        if (KapEngine::Events::Key::intInEnum(value)) {
+            debugKey = static_cast<KapEngine::Events::Key::EKey>(value);
         }
     }
 }

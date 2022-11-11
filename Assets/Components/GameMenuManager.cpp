@@ -313,4 +313,17 @@ void RType::GameMenuManager::removeLife() {
     if (_life <= 0)
         return;
     _life--;
+    switch (_life) {
+        case 0:
+            heart1->getComponent<Animator>().setTrigger("Off");
+            break;
+        case 1:
+            heart2->getComponent<Animator>().setTrigger("Off");
+            break;
+        case 2:
+            heart3->getComponent<Animator>().setTrigger("Off");
+            break;
+        default:
+            break;
+    }
 }

@@ -83,6 +83,37 @@ void RType::GameMenuManager::initMainMenu(bool local) {
         calculatedPos.setX(calculatedPos.getX() + 80.0f * 1.5f);
 
         auto heart = UI::UiFactory::createImage(scene, goName, "Assets/Textures/heart.png", {0, 0, 512, 512});
+
+        Time::ETime duration;
+        duration.setSeconds(0.5f);
+
+        auto heartOn = std::make_shared<SpriteAnimation>(heart);
+        heartOn->setTiming(duration);
+        heartOn->setRect({0 * 512, 0, 512, 512});
+        heartOn->setNbAnimations(1);
+        heart->addComponent(heartOn);
+
+        auto heartOff = std::make_shared<SpriteAnimation>(heart);
+        heartOff->setTiming(duration);
+        heartOff->setRect({10 * 512, 0, 512, 512});
+        heartOff->setNbAnimations(1);
+        heart->addComponent(heartOff);
+
+        auto heartAnimation = std::make_shared<SpriteAnimation>(heart);
+        heartAnimation->setTiming(duration);
+        heartAnimation->setRect({0 * 512, 0, 512, 512});
+        heartAnimation->setNbAnimations(10);
+        heart->addComponent(heartAnimation);
+
+        auto animator = std::make_shared<Animator>(heart);
+        animator->addAnim(heartOn, "On");
+        animator->addAnim(heartOff, "Off");
+        animator->addAnim(heartAnimation, "Animation");
+
+        animator->addLink("On", "On", "On");
+        animator->addLink("On", "Off", "Off");
+        animator->addLink("On", "Animation", "Animation");
+
         try {
             auto& tr = heart->getComponent<Transform>();
             tr.setParent(mainMenu->getId());

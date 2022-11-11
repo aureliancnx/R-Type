@@ -127,18 +127,25 @@ void NetStatViewer::onFixedUpdate() {
 
     // Don't update texts if debug mode is not active
     if (!active) {
+        lastShown = false;
         return;
     }
 
     // Update texts
     auto& networkStatistics = getGameObject().getComponent<KapMirror::Experimental::NetworkStatistics>();
+
+    if (!lastShown) {
+        lastShown = true;
+        networkStatistics.reset();
+    }
+
     {
         auto& text = textReceivedPackets->getComponent<KapEngine::UI::Text>();
-        text.setText("Packets received: " + std::to_string(networkStatistics.clientIntervalReceivedPackets));
+        text.setText("Packets received: " + std::to_string(networkStatistics.clientTotalReceivedPackets));
     }
     {
         auto& text = textSentPackets->getComponent<KapEngine::UI::Text>();
-        text.setText("Packets sent: " + std::to_string(networkStatistics.clientIntervalSentPackets));
+        text.setText("Packets sent: " + std::to_string(networkStatistics.clientTotalSentPackets));
     }
     {
         auto& text = textReceivedPacketsPerSec->getComponent<KapEngine::UI::Text>();
@@ -150,11 +157,11 @@ void NetStatViewer::onFixedUpdate() {
     }
     {
         auto& text = textReceivedBytes->getComponent<KapEngine::UI::Text>();
-        text.setText("Bytes received: " + convertBytes(networkStatistics.clientIntervalReceivedBytes));
+        text.setText("Bytes received: " + convertBytes(networkStatistics.clientReceivedBytesTotal));
     }
     {
         auto& text = textSentBytes->getComponent<KapEngine::UI::Text>();
-        text.setText("Bytes sent: " + convertBytes(networkStatistics.clientIntervalSentBytes));
+        text.setText("Bytes sent: " + convertBytes(networkStatistics.clientSentBytesTotal));
     }
     {
         auto& text = textReceivedBytesPerSecond->getComponent<KapEngine::UI::Text>();

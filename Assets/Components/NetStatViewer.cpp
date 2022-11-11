@@ -222,7 +222,7 @@ KapEngine::Tools::Color NetStatViewer::getPingColor() {
     }else if (ping < 100) {
         return KapEngine::Tools::Color(255, 234, 167);
     }else if (ping < 150) {
-        return KapEngine::Tools::Color(253, 203, 110);
+        return KapEngine::Tools::Color (253, 203, 110);
     }
     return KapEngine::Tools::Color(214, 48, 49);
 }
@@ -251,10 +251,6 @@ std::string NetStatViewer::convertBytes(long bytes) {
     return ss.str();
 }
 
-unsigned int NetStatViewer::getPing() const {
-    return ping;
-}
+unsigned int NetStatViewer::getPing() const { return ping; }
 
-void NetStatViewer::setPing(unsigned int _ping) {
-    ping = _ping;
-}
+void NetStatViewer::setPing(unsigned int _ping) { ping = _ping; }

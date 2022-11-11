@@ -122,7 +122,7 @@ void RType::HowToPlayMenu::initFightAnimation()
     //create bouboule enemy image
     try {
         auto& imageComp = bouboule->getComponent<KapEngine::UI::Image>();
-        imageComp.setPathSprite("Assets/Textures/bubulle.png");
+        imageComp.setPathSprite("Assets/Textures/Enemy/enemy_1.png");
         imageComp.setRectangle({0, 0, 17, 18});
 
         auto& transform = bouboule->getComponent<KapEngine::Transform>();
@@ -134,7 +134,7 @@ void RType::HowToPlayMenu::initFightAnimation()
     //create second bouboule enemy image
     try {
         auto& imageComp = bouboule2->getComponent<KapEngine::UI::Image>();
-        imageComp.setPathSprite("Assets/Textures/bubulle.png");
+        imageComp.setPathSprite("Assets/Textures/Enemy/enemy_1.png");
         imageComp.setRectangle({0, 0, 17, 18});
 
         auto& transform = bouboule2->getComponent<KapEngine::Transform>();
@@ -194,9 +194,6 @@ void RType::HowToPlayMenu::initFightAnimation()
 
         animator->addLink("Idle", "Down", "IdleToDown");
         animator->addLink("Down", "Idle", "DownToIdle");
-
-        animator->addLink("DownToIdle", "IdleToUp", "DownToUp");
-        animator->addLink("UpToIdle", "IdleToDown", "UpToDown");
     } catch (...) { KAP_DEBUG_ERROR("Failed to set shipAnimation img"); }
 
     //create bouboule sprite animation

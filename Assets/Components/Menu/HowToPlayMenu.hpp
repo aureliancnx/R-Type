@@ -17,6 +17,7 @@ namespace RType {
 
       protected:
       private:
+        void initFightAnimation();
         void initKeyboardKeyDisplay();
         void initKeyboardKeyBackground();
         void initKeyboardActions();

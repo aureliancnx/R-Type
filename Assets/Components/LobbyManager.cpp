@@ -30,11 +30,4 @@ namespace KapEngine {
         initLobby();
     }
 
-    void LobbyManager::displayMainMenu() {
-        if (mainMenu.use_count() > 0)
-            mainMenu->setActive(true);
-        else
-            initLobby();
-    }
-
 } // namespace KapEngine

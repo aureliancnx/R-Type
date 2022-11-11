@@ -55,6 +55,28 @@ void NetStatViewer::onAwake() {
         transform.setPosition(KapEngine::Tools::Vector3(50, 150, 0));
         transform.setParent(canvas);
     }
+    // Bytes received
+    {
+        textReceivedBytes = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Received bytes");
+        auto &text = textSentPacketsPerSec->getComponent<KapEngine::UI::Text>();
+        auto &transform = textSentPacketsPerSec->getComponent<KapEngine::Transform>().getTransform();
+
+        text.setText("Bytes received: 0");
+        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(50, 150, 0));
+        transform.setParent(canvas);
+    }
+    // Bytes sent
+    {
+        textSentBytes = KapEngine::UI::UiFactory::createText(getGameObject().getScene(), "Sent bytes");
+        auto &text = textSentPacketsPerSec->getComponent<KapEngine::UI::Text>();
+        auto &transform = textSentPacketsPerSec->getComponent<KapEngine::Transform>().getTransform();
+
+        text.setText("Bytes sent: 0");
+        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(50, 150, 0));
+        transform.setParent(canvas);
+    }
 }
 
 void NetStatViewer::onFixedUpdate() {

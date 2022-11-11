@@ -2,7 +2,7 @@
 
 using namespace RType;
 
-Bullet::Bullet(std::shared_ptr<KapEngine::GameObject> gameObject) : KapMirror::NetworkComponent(gameObject, "Bullet") {
+Bullet::Bullet(std::shared_ptr<KapEngine::GameObject> gameObject) : KapMirror::NetworkComponent(gameObject, "Bullet"), engine(gameObject->getEngine()) {
     addRequireComponent("Image");
     direction = Direction::RIGHT;
 }
@@ -17,10 +17,20 @@ void Bullet::onUpdate() {
     auto& transform = getTransform();
 
     KapEngine::Tools::Vector3 nPos = transform.getWorldPosition();
+
+    float xMove = 0.0f;
+    //cross calcul for 1s bullet move x value
+    /**
+     * | 1 | Y |
+     * +---+---+
+     * | X |X*Y|
+     */
+    xMove = (speed / 10000) * (float)engine.getElapsedTime().asMicroSecond();
+
     if (direction == Direction::RIGHT) {
-        nPos.setX(nPos.getX() + speed);
+        nPos.setX(nPos.getX() + xMove);
     } else if (direction == Direction::LEFT) {
-        nPos.setX(nPos.getX() - speed);
+        nPos.setX(nPos.getX() - xMove);
     }
 
     transform.setPosition(nPos);

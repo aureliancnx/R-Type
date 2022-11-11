@@ -196,11 +196,12 @@ void RType::GameManager::initMultiPlayer(bool isServer) {
             return;
         }
 
-        auto networkStatistics = std::make_shared<KapMirror::Experimental::NetworkStatistics>(networkManagerObject);
-
         auto netstatObject = scene->createGameObject("NetStatViewer");
-        std::shared_ptr<NetStatViewer> netstat = std::make_shared<NetStatViewer>(netstatObject, networkStatistics);
-        // netstatObject->addComponent(networkStatistics);
+
+        auto networkStatistics = std::make_shared<KapMirror::Experimental::NetworkStatistics>(networkManagerObject);
+        netstatObject->addComponent(networkStatistics);
+
+        auto netstat = std::make_shared<NetStatViewer>(netstatObject);
         netstatObject->addComponent(netstat);
     }
 }

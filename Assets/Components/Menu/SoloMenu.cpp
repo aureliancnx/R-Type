@@ -165,7 +165,7 @@ void SoloMenu::init() {
                 auto name = compName.getText();
 
                 if (name == KapEngine::PlayerPrefs::getString("Current Name Button1")) {
-                    scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
+                    engine.getSceneManager()->loadScene("SinglePlayer");
                     script.loadScript(KapEngine::PlayerPrefs::getString("Current Path Button1"));
                     // script.closeScript();
                     // gameManager.startCampaign();
@@ -251,7 +251,7 @@ void SoloMenu::init() {
                 auto name = compName.getText();
 
                 if (name == KapEngine::PlayerPrefs::getString("Current Name Button2")) {
-                    scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
+                    engine.getSceneManager()->loadScene("SinglePlayer");
                     script.loadScript(KapEngine::PlayerPrefs::getString("Current Path Button2"));
                     // script.closeScript();
                     // gameManager.startCampaign();

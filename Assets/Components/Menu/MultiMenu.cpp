@@ -76,7 +76,7 @@ void MultiMenu::init() {
 
         btnComp->getOnClick().registerAction([this]() {
             engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
-            scene.getEngine().getSceneManager()->loadScene("MultiPlayer");
+            engine.getSceneManager()->loadScene("MultiPlayer");
             gameManager.startLocalMultiPlayer();
         });
     }

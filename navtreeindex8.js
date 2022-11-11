@@ -1,5 +1,9 @@
 var NAVTREEINDEX8 =
 {
+"classbackward_1_1SignalHandling.html":[37,0,0,5],
+"classbackward_1_1SignalHandling.html#a23d2580ecae5722e44b9e53a616be310":[37,0,0,5,2],
+"classbackward_1_1SignalHandling.html#a90e0daba1c40856ace7f5576a2d1393f":[37,0,0,5,1],
+"classbackward_1_1SignalHandling.html#acd8c2644c9ccfb998547bcb8773307ac":[37,0,0,5,0],
 "classbackward_1_1SnippetFactory.html":[37,0,0,6],
 "classbackward_1_1SnippetFactory.html#a2bfbaa900acb0d4fdea885cf9c2ef93c":[37,0,0,6,0],
 "classbackward_1_1SnippetFactory.html#a635aad3afd35531d61f2745473a96a62":[37,0,0,6,1],
@@ -245,9 +249,5 @@ var NAVTREEINDEX8 =
 "md_CODE_OF_CONDUCT.html#autotoc_md3":[0,10],
 "md_CODE_OF_CONDUCT.html#autotoc_md4":[0,11],
 "md_CODE_OF_CONDUCT.html#autotoc_md5":[0,12],
-"md_CODE_OF_CONDUCT.html#autotoc_md6":[0,13],
-"md_CODE_OF_CONDUCT.html#autotoc_md7":[0,13,0],
-"md_CODE_OF_CONDUCT.html#autotoc_md8":[0,13,1],
-"md_CODE_OF_CONDUCT.html#autotoc_md9":[0,13,2],
-"md_CONTRIBUTING.html":[1]
+"md_CODE_OF_CONDUCT.html#autotoc_md6":[0,13]
 };

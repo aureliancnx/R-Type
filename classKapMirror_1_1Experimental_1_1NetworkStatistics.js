@@ -16,6 +16,8 @@ var classKapMirror_1_1Experimental_1_1NetworkStatistics =
     [ "clientSentBytesPerSecond", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#aeab97d5fb05b8f0dd0fedaf89ff68cf5", null ],
     [ "clientSentBytesTotal", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a3308f6b61f71c9d1a69efd54e07debdd", null ],
     [ "clientSentPacketsPerSecond", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a0ee63493070e485c962037a915f35111", null ],
+    [ "clientTotalReceivedPackets", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a0baa1eef0de690ccb2700f1dc3c6732f", null ],
+    [ "clientTotalSentPackets", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a09f3ffb50a7a0f3f2cc469f46adf8353", null ],
     [ "serverIntervalReceivedBytes", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a87716231f234e473df26a5d6b39e91b3", null ],
     [ "serverIntervalReceivedPackets", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a52f3456bb0dcb3a4b800da173acd47fb", null ],
     [ "serverIntervalSentBytes", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#abb51131f3be9e49d063ff254e317a056", null ],
@@ -25,5 +27,7 @@ var classKapMirror_1_1Experimental_1_1NetworkStatistics =
     [ "serverReceivedPacketsPerSecond", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#ae1e32663b521c0d928ef0b3c5f8254c3", null ],
     [ "serverSentBytesPerSecond", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a3107790d38155181f91e82dad6b5d258", null ],
     [ "serverSentBytesTotal", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#ab2bc634eb731f60791a2f30356463e67", null ],
-    [ "serverSentPacketsPerSecond", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a54df1b729c896f530e50f48733355f41", null ]
+    [ "serverSentPacketsPerSecond", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a54df1b729c896f530e50f48733355f41", null ],
+    [ "serverTotalReceivedPackets", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#aeee431c2fbde48a7774c1a22ebfb9ef9", null ],
+    [ "serverTotalSentPackets", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#ab8ed1c4a3cc1302dd8fe6d17786def1e", null ]
 ];

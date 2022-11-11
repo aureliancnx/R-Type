@@ -1,5 +1,9 @@
 var NAVTREEINDEX9 =
 {
+"md_CODE_OF_CONDUCT.html#autotoc_md7":[0,13,0],
+"md_CODE_OF_CONDUCT.html#autotoc_md8":[0,13,1],
+"md_CODE_OF_CONDUCT.html#autotoc_md9":[0,13,2],
+"md_CONTRIBUTING.html":[1],
 "md_CONTRIBUTING.html#autotoc_md13":[1,0],
 "md_CONTRIBUTING.html#autotoc_md14":[1,1],
 "md_CONTRIBUTING.html#autotoc_md15":[1,2],
@@ -245,9 +249,5 @@ var NAVTREEINDEX9 =
 "md_doxygen-awesome-css_docs_extensions.html#autotoc_md45":[3,3,0],
 "md_doxygen-awesome-css_docs_extensions.html#autotoc_md46":[3,3,1],
 "md_doxygen-awesome-css_docs_tricks.html":[4],
-"md_doxygen-awesome-css_docs_tricks.html#autotoc_md48":[4,0],
-"md_doxygen-awesome-css_docs_tricks.html#autotoc_md49":[4,1],
-"md_doxygen-awesome-css_docs_tricks.html#autotoc_md50":[4,2],
-"md_pull_request_template.html":[31],
-"md_pull_request_template.html#autotoc_md254":[31,0]
+"md_doxygen-awesome-css_docs_tricks.html#autotoc_md48":[4,0]
 };

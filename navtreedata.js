@@ -393,12 +393,12 @@ var NAVTREEINDEX =
 "classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65aa09ec95b987d6e3032b9e519e3bad765",
 "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#ac8e5521eeefcbadfa823f697bf250a82",
 "classKapEngine_1_1Tools_1_1Rectangle.html#a69d1bc80d7e3b773b260dfba1b1825b1",
-"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#aeab97d5fb05b8f0dd0fedaf89ff68cf5",
-"classKapMirror_1_1Sylph_1_1UdpClient.html#a878377987fa3f790f04668cb1865a8b5",
-"classRType_1_1LuaException.html#a70ec586fa22c693d76a1e9a651b86a71",
-"classbackward_1_1SnippetFactory.html",
-"md_CONTRIBUTING.html#autotoc_md13",
-"md_pull_request_template.html#autotoc_md255"
+"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#ad9a6dc6c16dc5b468de90435511a571d",
+"classKapMirror_1_1Sylph_1_1UdpClient.html",
+"classRType_1_1KeyboardMenu.html#aacb4969d87e369b955e51bcf1809685a",
+"classbackward_1_1SignalHandling.html",
+"md_CODE_OF_CONDUCT.html#autotoc_md7",
+"md_doxygen-awesome-css_docs_tricks.html#autotoc_md49"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,5 +1,9 @@
 var NAVTREEINDEX6 =
 {
+"classKapMirror_1_1Sylph_1_1UdpClient.html":[37,0,3,1,8],
+"classKapMirror_1_1Sylph_1_1UdpClient.html#a453350579fa9a9dba53c233be342dc2e":[37,0,3,1,8,5],
+"classKapMirror_1_1Sylph_1_1UdpClient.html#a48cc5f9ce547f5b0505fb8395ac93d32":[37,0,3,1,8,3],
+"classKapMirror_1_1Sylph_1_1UdpClient.html#a8008fd43be19ba2ad37ff3689e87d52c":[37,0,3,1,8,6],
 "classKapMirror_1_1Sylph_1_1UdpClient.html#a878377987fa3f790f04668cb1865a8b5":[37,0,3,1,8,1],
 "classKapMirror_1_1Sylph_1_1UdpClient.html#a9e69046802da8ea9e0bf3da874c49e47":[37,0,3,1,8,2],
 "classKapMirror_1_1Sylph_1_1UdpClient.html#aac77e28850efac2d903ba59c1422e2df":[37,0,3,1,8,8],
@@ -245,9 +249,5 @@ var NAVTREEINDEX6 =
 "classRType_1_1KeySelector.html#ac64178b0834503e266ec164a09c2796b":[37,0,5,15,4],
 "classRType_1_1KeyboardMenu.html":[37,0,5,14],
 "classRType_1_1KeyboardMenu.html#a0120102cfbeac32a6a6a1465b07dbbc7":[37,0,5,14,0],
-"classRType_1_1KeyboardMenu.html#a7b9c22778d7e5d52f2d73878743a5ff0":[37,0,5,14,2],
-"classRType_1_1KeyboardMenu.html#aacb4969d87e369b955e51bcf1809685a":[37,0,5,14,1],
-"classRType_1_1LuaException.html":[37,0,5,16],
-"classRType_1_1LuaException.html#a03f27f6118be565bae5b14927daafd71":[37,0,5,16,1],
-"classRType_1_1LuaException.html#a066f4d7fb4425469ef1e879244101776":[37,0,5,16,2]
+"classRType_1_1KeyboardMenu.html#a7b9c22778d7e5d52f2d73878743a5ff0":[37,0,5,14,2]
 };

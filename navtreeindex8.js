@@ -1,6 +1,5 @@
 var NAVTREEINDEX8 =
 {
-"classbackward_1_1Colorize.html":[38,0,0,2],
 "classbackward_1_1Colorize.html#a292685cb3eb1d1ae5779e239b0d05ce6":[38,0,0,2,1],
 "classbackward_1_1Colorize.html#a952bae33e9e382a19cde094266858a1c":[38,0,0,2,0],
 "classbackward_1_1Colorize.html#ad1171b299febf4e9a72616642f5cc5ce":[38,0,0,2,2],
@@ -249,5 +248,6 @@ var NAVTREEINDEX8 =
 "functions_vars.html":[38,3,2],
 "functions_w.html":[38,3,0,21],
 "group__Components.html":[36,0],
-"hierarchy.html":[38,2]
+"hierarchy.html":[38,2],
+"imgui__impl__glfw_8hpp_source.html":[39,0,2,2,0,0]
 };

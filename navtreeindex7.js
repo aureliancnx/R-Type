@@ -62,13 +62,12 @@ var NAVTREEINDEX7 =
 "classRType_1_1MenuCampaignSelector.html#a50ad8588709e75894836ba0c33a6f4b5":[38,0,5,21,6],
 "classRType_1_1MenuCampaignSelector.html#a57ecfcd4721f366e75dca16e28f61e03":[38,0,5,21,2],
 "classRType_1_1MenuCampaignSelector.html#a5f45ecaf13c81708254c870715203c4f":[38,0,5,21,5],
-"classRType_1_1MenuCampaignSelector.html#a5fd5c266f4e6d9b6d7e54758f00265f4":[38,0,5,21,10],
-"classRType_1_1MenuCampaignSelector.html#a6bc331b635dd5b31988a3b2a173db883":[38,0,5,21,8],
-"classRType_1_1MenuCampaignSelector.html#a6f16730ec8acceb902e7d8cdcc92dea9":[38,0,5,21,11],
-"classRType_1_1MenuCampaignSelector.html#a7cb46041cb9a432a2f0d3171543276a7":[38,0,5,21,7],
+"classRType_1_1MenuCampaignSelector.html#a5fd5c266f4e6d9b6d7e54758f00265f4":[38,0,5,21,9],
+"classRType_1_1MenuCampaignSelector.html#a6bc331b635dd5b31988a3b2a173db883":[38,0,5,21,7],
+"classRType_1_1MenuCampaignSelector.html#a6f16730ec8acceb902e7d8cdcc92dea9":[38,0,5,21,10],
 "classRType_1_1MenuCampaignSelector.html#a98f48c513f7a1cce3d988a56aeeb6ead":[38,0,5,21,0],
 "classRType_1_1MenuCampaignSelector.html#aacb9b19add032660df3ba7dfa0bc1252":[38,0,5,21,4],
-"classRType_1_1MenuCampaignSelector.html#ae22be8344ceb4b691791994a95f32bb4":[38,0,5,21,9],
+"classRType_1_1MenuCampaignSelector.html#ae22be8344ceb4b691791994a95f32bb4":[38,0,5,21,8],
 "classRType_1_1MenuManager.html":[38,0,5,22],
 "classRType_1_1MenuManager.html#a02d62fba43a6befa6bf51c39f1a57eee":[38,0,5,22,4],
 "classRType_1_1MenuManager.html#ab4f583534a2d6a732a899d75a5634ede":[38,0,5,22,1],
@@ -249,5 +248,6 @@ var NAVTREEINDEX7 =
 "classRType_1_1VolumeMenu.html#aa7e04de98da6b51612ff692fbc4a15ab":[38,0,5,46,2],
 "classRType_1_1VolumeMenu.html#ab7d01fe1cc514e1d0a0dbfd772c7d78f":[38,0,5,46,1],
 "classTracedException.html":[38,0,12],
-"classTracedException.html#a18ee3dec8f7e720c9e39043187193e75":[38,0,12,0]
+"classTracedException.html#a18ee3dec8f7e720c9e39043187193e75":[38,0,12,0],
+"classbackward_1_1Colorize.html":[38,0,0,2]
 };

@@ -7,7 +7,6 @@ var classRType_1_1MenuCampaignSelector =
     [ "buttonPlaySecond", "classRType_1_1MenuCampaignSelector.html#aacb9b19add032660df3ba7dfa0bc1252", null ],
     [ "buttonPreviousMaps", "classRType_1_1MenuCampaignSelector.html#a5f45ecaf13c81708254c870715203c4f", null ],
     [ "onAwake", "classRType_1_1MenuCampaignSelector.html#a50ad8588709e75894836ba0c33a6f4b5", null ],
-    [ "onUpdate", "classRType_1_1MenuCampaignSelector.html#a7cb46041cb9a432a2f0d3171543276a7", null ],
     [ "setButtonLeft", "classRType_1_1MenuCampaignSelector.html#a6bc331b635dd5b31988a3b2a173db883", null ],
     [ "setButtonLevel1", "classRType_1_1MenuCampaignSelector.html#ae22be8344ceb4b691791994a95f32bb4", null ],
     [ "setButtonLevel2", "classRType_1_1MenuCampaignSelector.html#a5fd5c266f4e6d9b6d7e54758f00265f4", null ],

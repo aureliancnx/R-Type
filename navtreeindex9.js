@@ -1,6 +1,5 @@
 var NAVTREEINDEX9 =
 {
-"imgui__impl__glfw_8hpp_source.html":[39,0,2,2,0,0],
 "imgui__impl__opengl2_8hpp_source.html":[39,0,2,2,0,1],
 "index.html":[],
 "index.html#autotoc_md257":[0],
@@ -249,5 +248,6 @@ var NAVTREEINDEX9 =
 "md_doxygen-awesome-css_README.html#autotoc_md62":[5,3,0],
 "md_doxygen-awesome-css_README.html#autotoc_md63":[5,3,0,0],
 "md_doxygen-awesome-css_README.html#autotoc_md64":[5,3,0,1],
-"md_doxygen-awesome-css_README.html#autotoc_md65":[5,3,1]
+"md_doxygen-awesome-css_README.html#autotoc_md65":[5,3,1],
+"md_doxygen-awesome-css_README.html#autotoc_md66":[5,4]
 };

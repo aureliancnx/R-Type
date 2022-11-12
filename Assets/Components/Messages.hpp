@@ -46,9 +46,15 @@ namespace RType {
     };
 
     struct StartGameMessage : KapMirror::NetworkMessage {
-        void serialize(KapMirror::NetworkWriter& writer) override {}
+        std::string mapScriptPath{};
 
-        void deserialize(KapMirror::NetworkReader& reader) override {}
+        void serialize(KapMirror::NetworkWriter& writer) override {
+            writer.writeString(mapScriptPath);
+        }
+
+        void deserialize(KapMirror::NetworkReader& reader) override {
+            mapScriptPath = reader.readString();
+        }
     };
 
     struct ErrorOnStartGameMessage : KapMirror::NetworkMessage {
@@ -60,7 +66,6 @@ namespace RType {
     };
 
     struct PlayerPingRequest : KapMirror::NetworkMessage {
-
         unsigned int id{};
 
         void serialize(KapMirror::NetworkWriter& writer) override { writer.write(id); }
@@ -69,7 +74,6 @@ namespace RType {
     };
 
     struct PlayerPingResult : KapMirror::NetworkMessage {
-
         unsigned int networkId{};
         unsigned int ping{};
 

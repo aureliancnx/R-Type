@@ -3,6 +3,7 @@
 #include "Player/PlayerSkin.hpp"
 #include "NetStatViewer.hpp"
 #include "Campaign/MapManager.hpp"
+#include <fstream>
 
 using namespace RType;
 
@@ -39,6 +40,11 @@ void RtypeNetworkManager::registerClientHandlers() {
 
 void RtypeNetworkManager::onClientConnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
     KapEngine::Debug::log("RtypeNetworkManager: Client connected");
+
+    // TODO: Remove this (is for Test)
+    StartGameMessage message;
+    message.mapScriptPath = "Maps/TestMapServer.lua";
+    connection->send(message);
 }
 
 void RtypeNetworkManager::onClientDisconnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
@@ -124,8 +130,6 @@ void RtypeNetworkManager::onServerClientConnected(const std::shared_ptr<KapMirro
     PlayerAuthorityMessage message;
     message.networkId = networkIdentity.getNetworkId();
     connection->send(message);
-
-    startGame("Maps/TestMap.lua");
 }
 
 void RtypeNetworkManager::onServerClientDisconnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
@@ -169,18 +173,28 @@ void RtypeNetworkManager::onPlayerShootMessage(const std::shared_ptr<KapMirror::
 void RtypeNetworkManager::onStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
                                              StartGameMessage& message) {
     if (isGameStarted) {
-        KAP_DEBUG_LOG("Game already started");
+        KapEngine::Debug::error("Game already started");
         sendErrorOnStartGame(connection, "Game already started");
         return;
     }
-    if (players.size() < 2) {
-        KAP_DEBUG_LOG("Not enough players to start the game");
+    if (players.size() < 1) { // TODO: Change to 2
+        KapEngine::Debug::error("Not enough players to start the game");
         sendErrorOnStartGame(connection, "Not enough players to start the game");
         return;
     }
 
+    // Check if Map Script exists
+    std::ifstream file(message.mapScriptPath);
+    if (!file.good()) {
+        KapEngine::Debug::error("Map script not found");
+        sendErrorOnStartGame(connection, "Map script not found");
+        return;
+    }
+
     isGameStarted = true;
-    startGame("Maps/TestMap.lua");
+
+    KapEngine::Debug::log("Start game with " + std::to_string(players.size()) + " players");
+    startGame(message.mapScriptPath, true);
 }
 
 void RtypeNetworkManager::sendErrorOnStartGame(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
@@ -216,8 +230,7 @@ void RtypeNetworkManager::onServerPlayerPingRequest(const std::shared_ptr<KapMir
     connection->send(res);
 }
 
-void RtypeNetworkManager::startGame(const std::string& mapScriptPath) {
-    KapEngine::Debug::log("Start game with " + std::to_string(players.size()) + " players");
+void RtypeNetworkManager::startGame(const std::string& mapScriptPath, bool isSpawn) {
     KapEngine::Debug::log("Map script path: " + mapScriptPath);
 
     auto scene = getEngine().getSceneManager()->getCurrentScene();
@@ -228,7 +241,7 @@ void RtypeNetworkManager::startGame(const std::string& mapScriptPath) {
     }
 
     auto& mapManagerComponent = mapManager->getComponent<MapManager>();
-    mapManagerComponent.loadMapScript(mapScriptPath, true);
+    mapManagerComponent.loadMapScript(mapScriptPath, true, isSpawn);
 }
 
 #pragma endregion

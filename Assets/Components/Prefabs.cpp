@@ -3,9 +3,8 @@
 #include "Player/PlayerController.hpp"
 #include "Player/PlayerSkin.hpp"
 #include "Bullet/Bullet.hpp"
-#include "Enemies/ShipEnemy.hpp"
-#include "Enemies/BoubouleEnemy.hpp"
-#include "Enemies/Boss/TentaclesBossEnemy.hpp"
+#include "MapScript/DefaultEnemies/BoubouleEnemy.hpp"
+#include "MapScript/DefaultEnemies/TentaclesBossEnemy.hpp"
 #include "GameMenuManager.hpp"
 
 using namespace RType;
@@ -268,45 +267,8 @@ void Prefabs::registerInGameMenuPrefab(KapEngine::KEngine& engine) {
 
 #pragma region Enemies
 
-void Prefabs::registerShipEnemyPrefab(KapEngine::KEngine& engine) {
-    engine.getPrefabManager()->createPrefab("Enemy:ShipEnemy", [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
-        auto enemy = KapEngine::UI::UiFactory::createCanvas(scene, "ShipEnemy");
-        enemy->setTag("Collider");
-
-        auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
-        enemy->addComponent(networkIdentityComp);
-
-        auto networkTransformComponent = std::make_shared<KapMirror::NetworkTransform>(enemy);
-        networkTransformComponent->setClientAuthority(false);
-        networkTransformComponent->setActiveUpdate(false);
-        networkTransformComponent->setActiveLateUpdate(true);
-        enemy->addComponent(networkTransformComponent);
-
-        auto enemyComp = std::make_shared<ShipEnemy>(enemy);
-        enemy->addComponent(enemyComp);
-        enemyComp->setLife(1);
-
-        auto collider = std::make_shared<KapEngine::Collider>(enemy, true);
-        enemy->addComponent(collider);
-
-        auto imageComp = std::make_shared<KapEngine::UI::Image>(enemy);
-        imageComp->setRectangle({0, 0, 263, 116});
-        imageComp->setPathSprite("Assets/Textures/Enemy/enemy_4.png");
-        enemy->addComponent(imageComp);
-
-        auto& canvas = enemy->getComponent<KapEngine::UI::Canvas>();
-        canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
-
-        auto& transform = enemy->getComponent<KapEngine::Transform>();
-        transform.setPosition({0, 0, 0});
-        transform.setScale({79, 35, 0});
-
-        return enemy;
-    });
-}
-
 void Prefabs::registerBoubouleEnemyPrefab(KapEngine::KEngine& engine) {
-    engine.getPrefabManager()->createPrefab("Enemy:BoubouleEnemy", [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
+    engine.getPrefabManager()->createPrefab("Enemy:Bouboule", [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
         auto enemy = KapEngine::UI::UiFactory::createCanvas(scene, "BoubouleEnemy");
         enemy->setTag("Collider");
 
@@ -321,7 +283,6 @@ void Prefabs::registerBoubouleEnemyPrefab(KapEngine::KEngine& engine) {
 
         auto enemyComp = std::make_shared<BoubouleEnemy>(enemy);
         enemy->addComponent(enemyComp);
-        enemyComp->setLife(1);
 
         auto collider = std::make_shared<KapEngine::Collider>(enemy, true);
         enemy->addComponent(collider);
@@ -342,77 +303,69 @@ void Prefabs::registerBoubouleEnemyPrefab(KapEngine::KEngine& engine) {
         enemy->addComponent(bulletIdle);
 
         KapEngine::Time::ETime duration;
-        duration.setSeconds(.5f);
+        duration.setSeconds(0.5f);
         bulletIdle->setTiming(duration);
         bulletIdle->loop(true);
-        bulletIdle->setRect({0, 0, 17.083333333f, 18});
+        bulletIdle->setRect({0, 0, 17, 18});
         bulletIdle->setNbAnimations(12);
 
         auto animator = std::make_shared<KapEngine::Animator>(enemy);
         enemy->addComponent(animator);
-
         animator->addAnim(bulletIdle, "Idle");
-
         animator->addLink("Idle", "Idle");
-
         return enemy;
     });
 }
 
 void Prefabs::registerTentaclesBossEnemyPrefab(KapEngine::KEngine& engine) {
-    engine.getPrefabManager()->createPrefab("Enemy:TentaclesBossEnemy",
-                                            [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
-                                                auto enemy = KapEngine::UI::UiFactory::createCanvas(scene, "TentaclesBossEnemy");
-                                                enemy->setTag("Collider");
+    engine.getPrefabManager()->createPrefab("Enemy:TentacleBoss", [](KapEngine::SceneManagement::Scene& scene, const std::string& name) {
+        auto enemy = KapEngine::UI::UiFactory::createCanvas(scene, "TentacleBoss");
+        enemy->setTag("Collider");
 
-                                                auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
-                                                enemy->addComponent(networkIdentityComp);
+        auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(enemy);
+        enemy->addComponent(networkIdentityComp);
 
-                                                auto networkTransformComponent = std::make_shared<KapMirror::NetworkTransform>(enemy);
-                                                networkTransformComponent->setClientAuthority(false);
-                                                networkTransformComponent->setActiveUpdate(false);
-                                                networkTransformComponent->setActiveLateUpdate(true);
-                                                enemy->addComponent(networkTransformComponent);
+        auto networkTransformComponent = std::make_shared<KapMirror::NetworkTransform>(enemy);
+        networkTransformComponent->setClientAuthority(false);
+        networkTransformComponent->setActiveUpdate(false);
+        networkTransformComponent->setActiveLateUpdate(true);
+        enemy->addComponent(networkTransformComponent);
 
-                                                auto enemyComp = std::make_shared<TentaclesBossEnemy>(enemy);
-                                                enemy->addComponent(enemyComp);
-                                                enemyComp->setLife(100);
+        auto enemyComp = std::make_shared<TentaclesBossEnemy>(enemy);
+        enemy->addComponent(enemyComp);
 
-                                                auto collider = std::make_shared<KapEngine::Collider>(enemy, true);
-                                                enemy->addComponent(collider);
+        auto collider = std::make_shared<KapEngine::Collider>(enemy, true);
+        enemy->addComponent(collider);
 
-                                                auto imageComp = std::make_shared<KapEngine::UI::Image>(enemy);
-                                                imageComp->setRectangle({0, 0, 64, 66});
-                                                imageComp->setPathSprite("Assets/Textures/Enemy/enemy_3.png");
-                                                enemy->addComponent(imageComp);
+        auto imageComp = std::make_shared<KapEngine::UI::Image>(enemy);
+        imageComp->setRectangle({0, 0, 64, 66});
+        imageComp->setPathSprite("Assets/Textures/Enemy/enemy_3.png");
+        enemy->addComponent(imageComp);
 
-                                                auto& canvas = enemy->getComponent<KapEngine::UI::Canvas>();
-                                                canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
+        auto& canvas = enemy->getComponent<KapEngine::UI::Canvas>();
+        canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
 
-                                                auto& transform = enemy->getComponent<KapEngine::Transform>();
-                                                transform.setPosition({0, 0, 0});
-                                                transform.setScale({64 * 2, 66 * 2, 0});
+        auto& transform = enemy->getComponent<KapEngine::Transform>();
+        transform.setPosition({0, 0, 0});
+        transform.setScale({64 * 2, 66 * 2, 0});
 
-                                                auto bulletIdle = std::make_shared<SpriteAnimation>(enemy);
-                                                enemy->addComponent(bulletIdle);
+        auto bulletIdle = std::make_shared<SpriteAnimation>(enemy);
+        enemy->addComponent(bulletIdle);
 
-                                                KapEngine::Time::ETime duration;
-                                                duration.setSeconds(.4f);
-                                                bulletIdle->setTiming(duration);
-                                                bulletIdle->loop(true);
-                                                bulletIdle->setRect({0, 0, 65.5, 66});
-                                                bulletIdle->setNbAnimations(12);
-                                                bulletIdle->bouncingVersion(false);
+        KapEngine::Time::ETime duration;
+        duration.setSeconds(0.4f);
+        bulletIdle->setTiming(duration);
+        bulletIdle->loop(true);
+        bulletIdle->setRect({0, 0, 65.5, 66});
+        bulletIdle->setNbAnimations(12);
+        bulletIdle->bouncingVersion(false);
 
-                                                auto animator = std::make_shared<KapEngine::Animator>(enemy);
-                                                enemy->addComponent(animator);
-
-                                                animator->addAnim(bulletIdle, "Idle");
-
-                                                animator->addLink("Idle", "Idle");
-
-                                                return enemy;
-                                            });
+        auto animator = std::make_shared<KapEngine::Animator>(enemy);
+        enemy->addComponent(animator);
+        animator->addAnim(bulletIdle, "Idle");
+        animator->addLink("Idle", "Idle");
+        return enemy;
+    });
 }
 
 #pragma endregion

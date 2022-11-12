@@ -164,11 +164,6 @@ void MapScript::verifScript() {
         throw LuaException("Map description is not set or empty");
     }
 
-    // TODO: Transform this into avalaible
-    if (isLoadedByServer && !newEnemies.empty()) {
-        throw LuaException("Modded map is not supported by server");
-    }
-
     for (auto& enemy : newEnemies) {
         checkNewEnemy(enemy);
     }
@@ -387,8 +382,8 @@ void MapScript::closeScript() {
 }
 
 void MapScript::destroyPrefabEnemies() {
-    for (auto& enemy : spawnEnemies) {
-        engine.getPrefabManager()->removePrefab("Enemy:" + enemy.name);
+    for (auto& enemy : newEnemies) {
+        engine.getPrefabManager()->removePrefab("Enemy:" + enemy->name);
     }
 }
 
@@ -405,11 +400,14 @@ void MapScript::spawnEnemy(KapEngine::SceneManagement::Scene& scene, const std::
 
         networkManager->getServer()->spawnObject("Enemy:" + enemyName, {startPositionX, startPositionY, 0},
             [this, &enemyName, &enemyHp](const std::shared_ptr<KapEngine::GameObject>& go) {
-                if (go->hasComponent<EnemyController>()) {
-                    auto& controller = go->getComponent<EnemyController>();
-                    controller.setMapScript(this);
-                    controller.setEnemyName(enemyName);
-                    controller.setHp(enemyHp);
+                for (auto& component : go->getAllComponents()) {
+                    auto controller = std::dynamic_pointer_cast<EnemyController>(component);
+                    if (controller) {
+                        controller->setMapScript(this);
+                        controller->setEnemyName(enemyName);
+                        controller->setHp(enemyHp);
+                        break;
+                    }
                 }
             },enemy);
     } else {
@@ -421,11 +419,14 @@ void MapScript::spawnEnemy(KapEngine::SceneManagement::Scene& scene, const std::
         auto& transform = enemy->getComponent<KapEngine::Transform>();
         transform.setPosition({startPositionX, startPositionY, 0});
 
-        if (enemy->hasComponent<EnemyController>()) {
-            auto& controller = enemy->getComponent<EnemyController>();
-            controller.setMapScript(this);
-            controller.setEnemyName(enemyName);
-            controller.setHp(enemyHp);
+        for (auto& component : enemy->getAllComponents()) {
+            auto controller = std::dynamic_pointer_cast<EnemyController>(component);
+            if (controller) {
+                controller->setMapScript(this);
+                controller->setEnemyName(enemyName);
+                controller->setHp(enemyHp);
+                break;
+            }
         }
     }
 }

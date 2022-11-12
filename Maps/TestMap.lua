@@ -15,7 +15,7 @@ boubouleAnim.rectangle = Rectangle.new(0, 0, 17, 18)
 boubouleAnim.nbFrames = 12
 
 local bouboule = Enemy.new()
-bouboule.name = "Bouboule"
+bouboule.name = "Bouboule2"
 bouboule.pathSprite = "Assets/Textures/Enemy/enemy_1.png"
 bouboule.rectangle = Rectangle.new(0, 0, 17, 18)
 bouboule.scale = Vector2.new(51, 54)
@@ -23,7 +23,7 @@ bouboule.animation = boubouleAnim
 
 -- RedShip
 local redShip = Enemy.new()
-redShip.name = "RedShip"
+redShip.name = "RedShip2"
 redShip.pathSprite = "Assets/Textures/Enemy/enemy_4.png"
 redShip.rectangle = Rectangle.new(0, 0, 263, 116)
 redShip.scale = Vector2.new(79, 35)
@@ -36,7 +36,7 @@ tentacleBossAnim.rectangle = Rectangle.new(0, 0, 65.5, 66)
 tentacleBossAnim.nbFrames = 12
 
 local tentacleBoss = Enemy.new()
-tentacleBoss.name = "TentacleBoss"
+tentacleBoss.name = "TentacleBoss2"
 tentacleBoss.pathSprite = "Assets/Textures/Enemy/enemy_3.png"
 tentacleBoss.rectangle = Rectangle.new(0, 0, 64, 66)
 tentacleBoss.scale = Vector2.new(128, 132)
@@ -62,9 +62,9 @@ end
 
 -- Update enemies
 local controllers = {
-    ["Bouboule"] = BasicController,
-    ["RedShip"] = BasicController,
-    ["TentacleBoss"] = BossController
+    ["Bouboule2"] = BasicController,
+    ["RedShip2"] = BasicController,
+    ["TentacleBoss2"] = BossController
 }
 
 function OnEnemyUpdate(enemyName, posX, posY, time)
@@ -76,9 +76,9 @@ end
 
 -- Spawn enemies
 for i = 1, 3 do
-    Map.SpawnEnemy("Bouboule", 1, 100 + (60 * i), 0, 10)
+    Map.SpawnEnemy("Bouboule2", 1, 100 + (60 * i), 0, 10)
 end
 
-Map.SpawnEnemy("RedShip", 8, Math.Random(200, 400), 0, 50)
+Map.SpawnEnemy("RedShip2", 8, Math.Random(200, 400), 0, 50)
 
-Map.SpawnEnemy("TentacleBoss", 15, 300, 200, 100)
+Map.SpawnEnemy("TentacleBoss2", 15, 300, 200, 100)

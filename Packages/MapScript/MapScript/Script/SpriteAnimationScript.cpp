@@ -38,13 +38,13 @@ int SpriteAnimation::__create(lua_State* L) {
 }
 
 int SpriteAnimation::__destroy(lua_State* L) {
-    auto* spriteAnimation = (SpriteAnimation*)lua_touserdata(L, -1);
+    auto* spriteAnimation = (SpriteAnimation*) lua_touserdata(L, -1);
     spriteAnimation->~SpriteAnimation();
     return 0;
 }
 
 int SpriteAnimation::__index(lua_State* L) {
-    auto* spriteAnimation = (SpriteAnimation*)lua_touserdata(L, -2);
+    auto* spriteAnimation = (SpriteAnimation*) lua_touserdata(L, -2);
     std::string index(lua_tostring(L, -1));
     if (index == "duration") {
         lua_pushnumber(L, spriteAnimation->duration);
@@ -72,14 +72,14 @@ int SpriteAnimation::__index(lua_State* L) {
 }
 
 int SpriteAnimation::__newIndex(lua_State* L) {
-    auto* spriteAnimation = (SpriteAnimation*)lua_touserdata(L, -3);
+    auto* spriteAnimation = (SpriteAnimation*) lua_touserdata(L, -3);
     std::string index(lua_tostring(L, -2));
     if (index == "duration") {
         spriteAnimation->duration = lua_tonumber(L, -1);
     } else if (index == "loop") {
         spriteAnimation->loop = lua_toboolean(L, -1);
     } else if (index == "rectangle") {
-        spriteAnimation->rectangle = (Rectangle*)lua_touserdata(L, -1);
+        spriteAnimation->rectangle = (Rectangle*) lua_touserdata(L, -1);
     } else if (index == "nbFrames") {
         spriteAnimation->nbFrames = lua_tonumber(L, -1);
     } else {

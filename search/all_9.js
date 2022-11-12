@@ -27,9 +27,10 @@ var searchData=
   ['isgamepadkey_261',['isGamepadKey',['../classKapEngine_1_1Events_1_1Key.html#a1abf05517268dbe377b15893b5bdf114',1,'KapEngine::Events::Key']]],
   ['isgraphicallibexists_262',['isGraphicalLibExists',['../classKapEngine_1_1KEngine.html#ae69eb009c532e2445f656260e7d5b9c4',1,'KapEngine::KEngine::isGraphicalLibExists(std::size_t const &amp;index) const'],['../classKapEngine_1_1KEngine.html#aa9b2a5f890ad06602b07ad11ab6b1a0f',1,'KapEngine::KEngine::isGraphicalLibExists(std::string const &amp;name) const']]],
   ['iskeyboardkey_263',['isKeyboardKey',['../classKapEngine_1_1Events_1_1Key.html#a7f24251ddc6edad03685b9855c5e446f',1,'KapEngine::Events::Key']]],
-  ['ismousekey_264',['isMouseKey',['../classKapEngine_1_1Events_1_1Key.html#a59ff9c1b383859e3e93d64431a434961',1,'KapEngine::Events::Key']]],
-  ['isrunning_265',['isRunning',['../classKapEngine_1_1KEngine.html#a5f93441dbd9ba82dfc6cc4745cca7074',1,'KapEngine::KEngine']]],
-  ['isserver_266',['isServer',['../classKapMirror_1_1NetworkComponent.html#a297f8f8da9870d4615d78cd5afe0f563',1,'KapMirror::NetworkComponent::isServer()'],['../classKapMirror_1_1NetworkIdentity.html#a40b0ff224932163f73790d71c298d195',1,'KapMirror::NetworkIdentity::isServer()']]],
-  ['istrigger_267',['isTrigger',['../classKapEngine_1_1Collider.html#a96e08f0d17e623a3515aae591fec5601',1,'KapEngine::Collider']]],
-  ['iterator_268',['Iterator',['../classKapEngine_1_1Dictionary_1_1Iterator.html',1,'KapEngine::Dictionary']]]
+  ['ismodded_264',['isModded',['../classRType_1_1MapScript.html#a56c27361e50140caaec06a497381199f',1,'RType::MapScript']]],
+  ['ismousekey_265',['isMouseKey',['../classKapEngine_1_1Events_1_1Key.html#a59ff9c1b383859e3e93d64431a434961',1,'KapEngine::Events::Key']]],
+  ['isrunning_266',['isRunning',['../classKapEngine_1_1KEngine.html#a5f93441dbd9ba82dfc6cc4745cca7074',1,'KapEngine::KEngine']]],
+  ['isserver_267',['isServer',['../classKapMirror_1_1NetworkComponent.html#a297f8f8da9870d4615d78cd5afe0f563',1,'KapMirror::NetworkComponent::isServer()'],['../classKapMirror_1_1NetworkIdentity.html#a40b0ff224932163f73790d71c298d195',1,'KapMirror::NetworkIdentity::isServer()']]],
+  ['istrigger_268',['isTrigger',['../classKapEngine_1_1Collider.html#a96e08f0d17e623a3515aae591fec5601',1,'KapEngine::Collider']]],
+  ['iterator_269',['Iterator',['../classKapEngine_1_1Dictionary_1_1Iterator.html',1,'KapEngine::Dictionary']]]
 ];

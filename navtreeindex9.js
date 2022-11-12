@@ -1,5 +1,6 @@
 var NAVTREEINDEX9 =
 {
+"md_CONTRIBUTING.html":[1],
 "md_CONTRIBUTING.html#autotoc_md13":[1,0],
 "md_CONTRIBUTING.html#autotoc_md14":[1,1],
 "md_CONTRIBUTING.html#autotoc_md15":[1,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX9 =
 "md_doxygen-awesome-css_docs_extensions.html#autotoc_md45":[3,3,0],
 "md_doxygen-awesome-css_docs_extensions.html#autotoc_md46":[3,3,1],
 "md_doxygen-awesome-css_docs_tricks.html":[4],
-"md_doxygen-awesome-css_docs_tricks.html#autotoc_md48":[4,0],
-"md_doxygen-awesome-css_docs_tricks.html#autotoc_md49":[4,1]
+"md_doxygen-awesome-css_docs_tricks.html#autotoc_md48":[4,0]
 };

@@ -1,5 +1,6 @@
 var NAVTREEINDEX8 =
 {
+"classbackward_1_1SignalHandling.html#acd8c2644c9ccfb998547bcb8773307ac":[38,0,0,5,0],
 "classbackward_1_1SnippetFactory.html":[38,0,0,6],
 "classbackward_1_1SnippetFactory.html#a2bfbaa900acb0d4fdea885cf9c2ef93c":[38,0,0,6,0],
 "classbackward_1_1SnippetFactory.html#a635aad3afd35531d61f2745473a96a62":[38,0,0,6,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX8 =
 "md_CODE_OF_CONDUCT.html#autotoc_md6":[0,13],
 "md_CODE_OF_CONDUCT.html#autotoc_md7":[0,13,0],
 "md_CODE_OF_CONDUCT.html#autotoc_md8":[0,13,1],
-"md_CODE_OF_CONDUCT.html#autotoc_md9":[0,13,2],
-"md_CONTRIBUTING.html":[1]
+"md_CODE_OF_CONDUCT.html#autotoc_md9":[0,13,2]
 };

@@ -16,6 +16,7 @@ var classRType_1_1MapScript =
     [ "getDescription", "classRType_1_1MapScript.html#a14ed860aa6fbfb54d42788cf20ac753a", null ],
     [ "getName", "classRType_1_1MapScript.html#a24444aa072fa5674e7f8b0a7898e3d32", null ],
     [ "getSpawnedEnemies", "classRType_1_1MapScript.html#aae1872a223002c3654708a590f6cc6eb", null ],
+    [ "isModded", "classRType_1_1MapScript.html#a56c27361e50140caaec06a497381199f", null ],
     [ "loadScript", "classRType_1_1MapScript.html#aa1430120f49b5dae1cfb736f79ddad97", null ],
     [ "spawnEnemy", "classRType_1_1MapScript.html#a24b3577073899a5bcac5e25c32d90fc3", null ]
 ];

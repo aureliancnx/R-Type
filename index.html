@@ -103,7 +103,7 @@ Install the game</h2>
 Host your own server</h2>
 <p>You're able to directly run the R-Type server without building the project. Just do it by downloading the latest <a href="https://docs.docker.com/engine/install/">Docker</a> image available.</p>
 <div class="fragment"><div class="line">$ docker pull aureliancnx/rtype-server:latest</div>
-<div class="line">$ docker run -it aureliancnx/rtype-server:latest</div>
+<div class="line">$ docker run -p 7777:7777 -it aureliancnx/rtype-server:latest</div>
 </div><!-- fragment --><p>You can retrieve the Docker image here : <a href="https://hub.docker.com/repository/docker/aureliancnx/rtype-server">aureliancnx/rtype-server</a></p>
 <p>The <b>latest</b> Docker image is automatically updated with Github Actions when a game release is created.</p>
 <h2><a class="anchor" id="autotoc_md261"></a>

@@ -217,7 +217,7 @@ void MapScript::createNewEnemy(Script::Enemy* enemy) {
             networkTransformComponent->setActiveLateUpdate(true);
             enemyObject->addComponent(networkTransformComponent);
 
-            auto controller = std::make_shared<EnemyController>(this, enemyObject);
+            auto controller = std::make_shared<EnemyController>(enemyObject);
             enemyObject->addComponent(controller);
 
             auto collider = std::make_shared<KapEngine::Collider>(enemyObject, true);
@@ -355,8 +355,14 @@ KapEngine::Tools::Vector3 MapScript::_updateEnemy(const std::string& enemyName, 
 
     lua_pcall(L, 4, 2, 0);
 
+    if (!lua_isnumber(L, -2) || !lua_isnumber(L, -1)) {
+        return position;
+    }
+
     float posX = lua_tonumber(L, -2);
     float posY = lua_tonumber(L, -1);
+
+    lua_pop(L, 2);
 
     return {posX, posY, 0};
 }
@@ -398,9 +404,10 @@ void MapScript::spawnEnemy(KapEngine::SceneManagement::Scene& scene, const std::
         }
 
         networkManager->getServer()->spawnObject("Enemy:" + enemyName, {startPositionX, startPositionY, 0},
-            [&enemyName, &enemyHp](const std::shared_ptr<KapEngine::GameObject>& go) {
+            [this, &enemyName, &enemyHp](const std::shared_ptr<KapEngine::GameObject>& go) {
                 if (go->hasComponent<EnemyController>()) {
                     auto& controller = go->getComponent<EnemyController>();
+                    controller.setMapScript(this);
                     controller.setEnemyName(enemyName);
                     controller.setHp(enemyHp);
                 }
@@ -416,6 +423,7 @@ void MapScript::spawnEnemy(KapEngine::SceneManagement::Scene& scene, const std::
 
         if (enemy->hasComponent<EnemyController>()) {
             auto& controller = enemy->getComponent<EnemyController>();
+            controller.setMapScript(this);
             controller.setEnemyName(enemyName);
             controller.setHp(enemyHp);
         }

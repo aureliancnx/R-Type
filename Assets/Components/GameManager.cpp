@@ -11,7 +11,7 @@
 #include "Menu/EndMenu.hpp"
 #include "CampaignGenerator/CampaignGenerator.hpp"
 #include "Player/PlayerSkin.hpp"
-#include "Campaign/CampaignManager.hpp"
+#include "Campaign/MapManager.hpp"
 #include "KapMirror/Experimental/Compressions/GZip/GZipCompression.hpp"
 
 #include "Sylph/SylphTransport.hpp"
@@ -157,7 +157,7 @@ void RType::GameManager::initSinglePlayer() {
         return;
     }
 
-    auto campaignManager = std::make_shared<CampaignManager>(gameMenu);
+    auto campaignManager = std::make_shared<MapManager>(gameMenu);
     gameMenu->addComponent(campaignManager);
 }
 

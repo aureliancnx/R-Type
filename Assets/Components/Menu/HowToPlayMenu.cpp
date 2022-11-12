@@ -182,17 +182,14 @@ void RType::HowToPlayMenu::initFightAnimation() {
         auto animator = std::make_shared<KapEngine::Animator>(ship);
         ship->addComponent(animator);
 
-        animator->addAnim(shipIdle, "Idle");
-        animator->addAnim(shipUp, "Up");
         animator->addAnim(shipDown, "Down");
+        animator->addAnim(shipUp, "Up");
 
-        animator->addLink("Idle", "Idle", "IdleToIdle");
+        animator->addLink("Down", "Down", "DownToDown");
+        animator->addLink("Up", "Up", "UpToUp");
 
-        animator->addLink("Idle", "Up", "IdleToUp");
-        animator->addLink("Up", "Idle", "UpToIdle");
-
-        animator->addLink("Idle", "Down", "IdleToDown");
-        animator->addLink("Down", "Idle", "DownToIdle");
+        animator->addLink("Up", "Down", "UpToDown");
+        animator->addLink("Down", "Up", "DownToUp");
     } catch (...) { KAP_DEBUG_ERROR("Failed to set shipAnimation img"); }
 
     // create bouboule sprite animation

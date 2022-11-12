@@ -276,11 +276,10 @@ void RType::PlayerController::takeDamage(int damage) {
     }
 
     life -= damage;
-    std::cout << "Life: " << life << std::endl;
     if (life <= 0) {
         life = 0;
         isDead = true;
-        std::cout << "Dead: true" << std::endl;
+        // TODO: do something on death
     }
 
     if (isServer()) {

@@ -251,9 +251,9 @@ void RType::PlayerController::checkCollisions() {
     for (auto& collision : collisions) {
         int damage = 0;
         if (collision->getName() == "Bullet") {
-            damage = 10;
+            damage = 2;
         } else if (collision->getName() == "Missile") {
-            damage = 50;
+            damage = 3;
         }
         if (collision->getName() == "Bullet" || collision->getName() == "Missile") {
             if (isLocal()) {
@@ -276,6 +276,7 @@ void RType::PlayerController::takeDamage(int damage) {
     }
 
     life -= damage;
+    std::cout << "Life: " << life << std::endl;
     if (life <= 0) {
         life = 0;
         isDead = true;
@@ -286,10 +287,8 @@ void RType::PlayerController::takeDamage(int damage) {
         getServer()->updateObject(getNetworkId());
     }
 
-    if ((life > 33 && life <= 66) || (life > 0 && life <= 33)) {
-        if (isClient() || isLocal()) {
-            menuManager->removeLife();
-        }
+    if (isClient() || isLocal()) {
+        menuManager->updateHealth(life);
     }
 }
 

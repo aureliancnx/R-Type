@@ -172,6 +172,9 @@ void Prefabs::registerMissileExplodePrefab(KapEngine::KEngine& engine) {
             tr.setParent(menu->getId());
         } catch (...) {}
 
+        auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(menu);
+        menu->addComponent(networkIdentityComp);
+
         auto animator = std::make_shared<KapEngine::Animator>(menu);
         menu->addComponent(animator);
 
@@ -212,6 +215,9 @@ void Prefabs::registerBulletExplodePrefab(KapEngine::KEngine& engine) {
             auto& tr = img->getComponent<KapEngine::Transform>();
             tr.setParent(menu->getId());
         } catch (...) {}
+
+        auto networkIdentityComp = std::make_shared<KapMirror::NetworkIdentity>(menu);
+        menu->addComponent(networkIdentityComp);
 
         auto animator = std::make_shared<KapEngine::Animator>(menu);
         menu->addComponent(animator);

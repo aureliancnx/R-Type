@@ -51,6 +51,7 @@ void EnemyController::onSceneUpdated() {
                     getServer()->destroyObject(getScene().getGameObject(getGameObject().getId()));
                 }
             }
+
             if (isLocal()) {
                 std::shared_ptr<KapEngine::GameObject> explosion;
                 if (getEngine().getPrefabManager()->instantiatePrefab("BulletExplode", getScene(), explosion)) {
@@ -61,6 +62,14 @@ void EnemyController::onSceneUpdated() {
                 }
                 other->destroy();
             } else if (isServer()) {
+                std::shared_ptr<KapEngine::GameObject> explosion;
+                getServer()->spawnObject(
+                    "BulletExplode", other->getComponent<KapEngine::Transform>().getWorldPosition(),
+                    [&other](const std::shared_ptr<KapEngine::GameObject>& go) {
+                        go->getComponent<KapEngine::Transform>().setPosition(
+                            other->getComponent<KapEngine::Transform>().getWorldPosition());
+                    },
+                    explosion);
                 getServer()->destroyObject(other);
             }
         } else if (other.use_count() > 1 && other->getName() == "Missile Player") {
@@ -72,6 +81,7 @@ void EnemyController::onSceneUpdated() {
                     getServer()->destroyObject(getScene().getGameObject(getGameObject().getId()));
                 }
             }
+
             if (isLocal()) {
                 std::shared_ptr<KapEngine::GameObject> explosion;
                 if (getEngine().getPrefabManager()->instantiatePrefab("MissileExplode", getScene(), explosion)) {
@@ -82,6 +92,14 @@ void EnemyController::onSceneUpdated() {
                 }
                 other->destroy();
             } else if (isServer()) {
+                std::shared_ptr<KapEngine::GameObject> explosion;
+                getServer()->spawnObject(
+                    "MissileExplode", other->getComponent<KapEngine::Transform>().getWorldPosition(),
+                    [&other](const std::shared_ptr<KapEngine::GameObject>& go) {
+                        go->getComponent<KapEngine::Transform>().setPosition(
+                            other->getComponent<KapEngine::Transform>().getWorldPosition());
+                    },
+                    explosion);
                 getServer()->destroyObject(other);
             }
         }

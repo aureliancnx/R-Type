@@ -51,8 +51,7 @@ void RType::MenuCampaignSelector::onAwake() {
     updateButtons();
 }
 
-void RType::MenuCampaignSelector::onUpdate() {
-}
+void RType::MenuCampaignSelector::onUpdate() {}
 
 void RType::MenuCampaignSelector::setButtonLevel1(const std::shared_ptr<KapEngine::GameObject>& button) {
     if (!button->hasComponent<KapEngine::UI::Button>()) {
@@ -124,7 +123,7 @@ void RType::MenuCampaignSelector::updateButtons() {
         btn.setBackground(_campaigns[_currentMap].image, {0, 0, 449, 433});
 
         auto children = _buttonLevel1->getComponent<KapEngine::Transform>().getChildren();
-        for (auto & i : children) {
+        for (auto& i : children) {
             if (i->hasComponent<KapEngine::UI::Text>() && i->getName() == "LevelName") {
                 // change level name
                 auto& txt = i->getComponent<KapEngine::UI::Text>();
@@ -155,7 +154,7 @@ void RType::MenuCampaignSelector::updateButtons() {
         btn.setBackground(_campaigns[nextId].image, {0, 0, 449, 433});
 
         auto children = _buttonLevel2->getComponent<KapEngine::Transform>().getChildren();
-        for (auto & i : children) {
+        for (auto& i : children) {
             if (i->hasComponent<KapEngine::UI::Text>() && i->getName() == "LevelName") {
                 // change level name
                 auto& txt = i->getComponent<KapEngine::UI::Text>();

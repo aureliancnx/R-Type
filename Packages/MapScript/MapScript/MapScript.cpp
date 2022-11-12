@@ -289,8 +289,11 @@ void MapScript::_registerSpawnEnemy(const std::string& _name, int spawnTime, flo
     if (enemyHp == 0) {
         throw LuaException("Enemy HP can't be 0");
     }
+
     if (startPositionX == 0) {
         startPositionX = 1280 + 100; // Constant
+    } else {
+        startPositionX = 1280 - startPositionX; // Constant
     }
 
     spawnEnemies.push_back({_name, spawnTime, startPositionY, startPositionX, enemyHp});
@@ -386,12 +389,6 @@ void MapScript::destroyPrefabEnemies() {
 void MapScript::spawnEnemy(KapEngine::SceneManagement::Scene& scene, const std::string& enemyName, float startPositionY,
                            float startPositionX, int enemyHp) {
     std::shared_ptr<KapEngine::GameObject> enemy;
-
-    if (startPositionX <= 0) {
-        startPositionX = 1280 + 100; // Constant
-    } else {
-        startPositionX = 1280 - startPositionX;
-    }
 
     if (isLoadedByServer) {
         auto networkManager = KapMirror::NetworkManager::getInstance();

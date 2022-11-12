@@ -293,13 +293,19 @@ void RType::GameMenuManager::addLife() {
     _life++;
     switch (_life) {
         case 1:
-            heart1->getComponent<Animator>().setTrigger("On");
+            if (heart1 != nullptr && heart1->hasComponent<Animator>()) {
+                heart1->getComponent<Animator>().setTrigger("On");
+            }
             break;
         case 2:
-            heart2->getComponent<Animator>().setTrigger("On");
+            if (heart2 != nullptr && heart2->hasComponent<Animator>()) {
+                heart2->getComponent<Animator>().setTrigger("On");
+            }
             break;
         case 3:
-            heart3->getComponent<Animator>().setTrigger("On");
+            if (heart3 != nullptr && heart3->hasComponent<Animator>()) {
+                heart3->getComponent<Animator>().setTrigger("On");
+            }
             break;
         default:
             break;
@@ -312,13 +318,19 @@ void RType::GameMenuManager::removeLife() {
     _life--;
     switch (_life) {
         case 0:
-            heart1->getComponent<Animator>().setTrigger("Off");
+            if (heart1 != nullptr && heart1->hasComponent<Animator>()) {
+                heart1->getComponent<Animator>().setTrigger("Off");
+            }
             break;
         case 1:
-            heart2->getComponent<Animator>().setTrigger("Off");
+            if (heart2 != nullptr && heart2->hasComponent<Animator>()) {
+                heart2->getComponent<Animator>().setTrigger("Off");
+            }
             break;
         case 2:
-            heart3->getComponent<Animator>().setTrigger("Off");
+            if (heart3 != nullptr && heart3->hasComponent<Animator>()) {
+                heart3->getComponent<Animator>().setTrigger("Off");
+            }
             break;
         default:
             break;

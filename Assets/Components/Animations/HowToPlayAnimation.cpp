@@ -39,8 +39,9 @@ namespace RType {
         _explosionInvert = false;
         _explosionInvert2 = false;
         _bulletReset = false;
-        _nbShoot = 0;
         _canShoot = true;
+        _shipAnimation = false;
+        _nbShoot = 0;
     }
 
     void HowToPlayAnimation::onResetRect() {
@@ -157,14 +158,14 @@ namespace RType {
         else
             transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0, 4.0f, 0));
 
-        if (_shipAnimation == 0 && posY > 300) {
+        if (_shipAnimation == false && posY > 300) {
             _shipInvert = true;
-            _shipAnimation = 1;
+            _shipAnimation = true;
             _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("DownToUp");            
             _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("UpToUp");
-        } else if (_shipAnimation == 1 && posY < 70) {
+        } else if (_shipAnimation == true && posY < 70) {
             _shipInvert = false;
-            _shipAnimation = 0;
+            _shipAnimation = false;
             _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("UpToDown");            
             _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("DownToDown");
         }

@@ -61,4 +61,41 @@ std::shared_ptr<KapEngine::GameObject> RType::LobbyMenuManager::initButton(std::
                                                                            KapEngine::Tools::Color color,
                                                                            KapEngine::Tools::Color textColor) {
     std::shared_ptr<GameObject> button = parent->getScene().createGameObject(name);
+
+#if IS_MAX_KAPUI_VERSION(0, 101)
+    auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text);
+    btnComp->setTextColor(textColor);
+    btnComp->setNormalColor(color);
+    btnComp->getOnClick().registerAction(callback);
+#else
+    KapEngine::UI::KapUiFactory::createButton(button, text, callback, color, textColor);
+#endif
+
+    try {
+        button->getComponent<Transform>().setParent(parent->getId());
+    } catch (...) { KAP_DEBUG_ERROR("Failled to set button " + name + " parent"); }
+    return button;
+}
+std::shared_ptr<KapEngine::GameObject> RType::LobbyMenuManager::initButton(std::shared_ptr<KapEngine::GameObject> parent, std::string name,
+                                                                           std::string text, std::function<void()> callback,
+                                                                           std::string pathSprite, KapEngine::Tools::Rectangle rect,
+                                                                           KapEngine::Tools::Color color,
+                                                                           KapEngine::Tools::Color textColor) {
+    std::shared_ptr<GameObject> button = parent->getScene().createGameObject(name);
+
+#if IS_MAX_KAPUI_VERSION(0, 101)
+    auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text);
+    btnComp->setTextColor(textColor);
+    btnComp->setNormalColor(color);
+    btnComp->getOnClick().registerAction(callback);
+    btnComp->setBackground(pathSprite, rect);
+#else
+    auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text, callback, color, textColor);
+    btnComp->setBackground(pathSprite, rect);
+#endif
+
+    try {
+        button->getComponent<Transform>().setParent(parent->getId());
+    } catch (...) { KAP_DEBUG_ERROR("Failled to set button " + name + " parent"); }
+    return button;
 }

@@ -14,10 +14,8 @@ namespace RType {
         explicit MapManager(std::shared_ptr<KapEngine::GameObject> go);
         ~MapManager();
 
-        void onAwake() override;
+        void loadMapScript(const std::string& path, bool isServer = false);
 
         void onFixedUpdate() override;
-
-        void onSceneChanged() override;
     };
 } // namespace RType

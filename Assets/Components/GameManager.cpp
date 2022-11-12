@@ -143,8 +143,6 @@ void RType::GameManager::initSinglePlayer() {
         return;
     }
 
-    player->getComponent<PlayerSkin>().setSkinId(player->getComponent<PlayerSkin>().getSkinId());
-
     auto& transform = player->getComponent<KapEngine::Transform>();
     transform.setPosition({0, 0, 0});
 
@@ -157,8 +155,9 @@ void RType::GameManager::initSinglePlayer() {
         return;
     }
 
-    auto campaignManager = std::make_shared<MapManager>(gameMenu);
-    gameMenu->addComponent(campaignManager);
+    auto mapManagerObject = scene->createGameObject("MapManager");
+    auto mapManager = std::make_shared<MapManager>(mapManagerObject);
+    mapManagerObject->addComponent(mapManager);
 }
 
 // TODO: Move this to a dedicated class
@@ -189,6 +188,9 @@ void RType::GameManager::initMultiPlayer(bool isServer) {
     networkManager->setCompression(std::make_shared<KapMirror::Experimental::GZipCompression>());
     networkManagerObject->addComponent(networkManager);
 
+    auto mapManager = std::make_shared<MapManager>(networkManagerObject);
+    networkManagerObject->addComponent(mapManager);
+
     if (!isServer) {
         std::shared_ptr<GameObject> gameMenu;
         if (!engine->getPrefabManager()->instantiatePrefab("InGameMenu", *scene, gameMenu)) {
@@ -207,12 +209,14 @@ void RType::GameManager::initMultiPlayer(bool isServer) {
 }
 
 // TODO: Move this to a dedicated class
-void RType::GameManager::startCampaign() {
-    auto& scene = engine->getSceneManager()->getScene("SinglePlayer");
+void RType::GameManager::startCampaign(const std::string& pathMap) {
+    auto scene = engine->getSceneManager()->getScene("SinglePlayer");
 
-    auto enemies = scene.createGameObject("Enemies Generator");
-    auto compEnemies = std::make_shared<CampaignGenerator>(enemies);
-    enemies->addComponent(compEnemies);
+    engine->getSceneManager()->loadScene("SinglePlayer");
+
+    auto mapManager = scene.findFirstGameObject("MapManager");
+    auto& mapManagerComponent = mapManager->getComponent<MapManager>();
+    mapManagerComponent.loadMapScript(pathMap);
 }
 
 // TODO: Move this to a dedicated class

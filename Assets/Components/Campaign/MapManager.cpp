@@ -12,22 +12,18 @@ MapManager::~MapManager() {
     }
 }
 
-void RType::MapManager::onAwake() {
-    if (!KapEngine::PlayerPrefs::hasKey("CampaignPath")) {
-        KapEngine::Debug::error("No MapScript path found");
-        return;
-    }
-
-    std::string path = KapEngine::PlayerPrefs::getString("CampaignPath");
-
-    mapScript = std::make_shared<MapScript>(&getEngine());
+void MapManager::loadMapScript(const std::string& path, bool isServer) {
+    mapScript = std::make_shared<MapScript>(&getEngine(), isServer);
     mapScript->loadScript(path);
-    enemies = mapScript->getSpawnedEnemies();
 
+    KapEngine::Debug::log("MapScript loaded");
+    KapEngine::Debug::log("Map Name: " + mapScript->getName());
+
+    enemies = mapScript->getSpawnedEnemies();
     lastUpdate = KapMirror::NetworkTime::localTime();
 }
 
-void RType::MapManager::onFixedUpdate() {
+void MapManager::onFixedUpdate() {
     long long time = KapMirror::NetworkTime::localTime();
 
     if (enemies.empty()) {
@@ -48,5 +44,3 @@ void RType::MapManager::onFixedUpdate() {
         enemies.erase(enemies.begin() + toRemove[i]);
     }
 }
-
-void RType::MapManager::onSceneChanged() {}

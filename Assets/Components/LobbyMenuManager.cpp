@@ -63,6 +63,7 @@ void RType::LobbyMenuManager::initLobbyMenu(bool local) {
         if (isLocal()) {
             btn = initButton(lobbyMenu, "Play", "Play", [this]() {
                 KAP_DEBUG_WARNING("Play");
+                quit();
             }, "Assets/Textures/button.png", {5, 9, 655, 213});
         }
         if (isClient()) {
@@ -154,4 +155,8 @@ std::shared_ptr<KapEngine::GameObject> RType::LobbyMenuManager::initButton(std::
         button->getComponent<Transform>().setScale({100, 230, 0});
     } catch (...) { KAP_DEBUG_ERROR("Failled to set button " + name + " parent"); }
     return button;
+}
+
+void RType::LobbyMenuManager::quit() {
+    lobbyMenu->setActive(false);
 }

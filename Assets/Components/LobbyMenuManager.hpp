@@ -37,6 +37,8 @@ namespace RType {
                                                           KapEngine::Tools::Color color = KapEngine::Tools::Color::white(),
                                                           KapEngine::Tools::Color textColor = KapEngine::Tools::Color::black());
 
+        void quit();
+
         // variables
       private:
         std::shared_ptr<KapEngine::GameObject> lobbyMenu;

@@ -42,8 +42,9 @@ namespace RType {
         bool _explosionInvert = false;
         bool _explosionInvert2 = false;
         bool _bulletReset = false;
-        int _nbShoot = 0;
         bool _canShoot = true;
+        bool _shipAnimation = false;
+        int _nbShoot = 0;
 
         // Functions
         void init(std::shared_ptr<KapEngine::GameObject> gameObject);

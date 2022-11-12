@@ -39,8 +39,8 @@ namespace RType {
         _explosionInvert = false;
         _explosionInvert2 = false;
         _bulletReset = false;
-        _nbShoot = 0;
         _canShoot = true;
+        _nbShoot = 0;
     }
 
     void HowToPlayAnimation::onResetRect() {
@@ -150,20 +150,21 @@ namespace RType {
 
     void HowToPlayAnimation::moveShip() {
         auto& transform = getImage("Ship").getTransform();
+        auto posY = transform.getWorldPosition().getY();
 
         if (_shipInvert)
             transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0, -4.0f, 0));
         else
             transform.setPosition(transform.getLocalPosition() + KapEngine::Tools::Vector3(0, 4.0f, 0));
 
-        if (transform.getWorldPosition().getY() > 300) {
+        if (_shipAnimation == false && posY > 300) {
             _shipInvert = true;
-            _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("DownToIdle");
-            _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("IdleToUp");
-        } else if (transform.getWorldPosition().getY() < 70) {
+            _shipAnimation = true;
+            _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("DownToUp");
+        } else if (_shipAnimation == true && posY < 70) {
             _shipInvert = false;
-            _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("UpToIdle");
-            _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("IdleToDown");
+            _shipAnimation = false;
+            _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("UpToDown");
         }
     }
 

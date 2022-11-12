@@ -12,8 +12,8 @@ namespace RType {
 
       private:
         Direction direction;
-        float speed = 4.f;
-        float initialX;
+        float speed = 4.0f;
+        float initialX = 0.0f;
         KapEngine::KEngine& engine;
 
       public:
@@ -26,7 +26,7 @@ namespace RType {
 
         void onStart() override;
 
-        void onUpdate() override;
+        void onFixedUpdate() override;
 
         void serialize(KapMirror::NetworkWriter& writer) override;
 

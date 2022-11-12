@@ -13,7 +13,9 @@ MapManager::~MapManager() {
     isLoaded = false;
 }
 
-void MapManager::loadMapScript(const std::string& path, bool isServer) {
+void MapManager::loadMapScript(const std::string& path, bool isServer, bool _isSpawn) {
+    isSpawn = _isSpawn;
+
     mapScript = std::make_shared<MapScript>(&getEngine(), isServer);
     mapScript->loadScript(path);
 
@@ -27,7 +29,7 @@ void MapManager::loadMapScript(const std::string& path, bool isServer) {
 }
 
 void MapManager::onFixedUpdate() {
-    if (!isLoaded || enemies.empty()) {
+    if (!isSpawn || !isLoaded || enemies.empty()) {
         return;
     }
 

@@ -67,8 +67,7 @@ void RType::GameManager::registerPrefabs() {
 
     Prefabs::registerInGameMenuPrefab(*engine);
 
-    // Enemies
-    Prefabs::registerShipEnemyPrefab(*engine);
+    // Default Enemies
     Prefabs::registerBoubouleEnemyPrefab(*engine);
     Prefabs::registerTentaclesBossEnemyPrefab(*engine);
 
@@ -221,7 +220,7 @@ void RType::GameManager::startCampaign(const std::string& pathMap) {
     }
 
     auto& mapManagerComponent = mapManager->getComponent<MapManager>();
-    mapManagerComponent.loadMapScript(pathMap);
+    mapManagerComponent.loadMapScript(pathMap, false);
 }
 
 // TODO: Move this to a dedicated class

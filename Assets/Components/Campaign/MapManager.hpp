@@ -7,6 +7,7 @@ namespace RType {
     class MapManager : public KapEngine::Component {
       private:
         bool isLoaded = false;
+        bool isSpawn = false;
 
         std::shared_ptr<MapScript> mapScript = nullptr;
         std::vector<SpawnEnemy> enemies;
@@ -16,7 +17,7 @@ namespace RType {
         explicit MapManager(std::shared_ptr<KapEngine::GameObject> go);
         ~MapManager();
 
-        void loadMapScript(const std::string& path, bool isServer = false);
+        void loadMapScript(const std::string& path, bool isServer, bool _isSpawn = true);
 
         void onFixedUpdate() override;
     };

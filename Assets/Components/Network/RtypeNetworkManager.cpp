@@ -32,10 +32,8 @@ void RtypeNetworkManager::registerClientHandlers() {
         [this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, ErrorOnStartGameMessage& message) {
             onErrorOnStartGameMessage(connection, message);
         });
-    getClient()->registerHandler<StartGameMessage>(
-        [this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, StartGameMessage& message) {
-            onPlayerStartGameMessage(connection, message);
-        });
+    getClient()->registerHandler<StartGameMessage>([this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
+                                                          StartGameMessage& message) { onPlayerStartGameMessage(connection, message); });
     getClient()->registerHandler<PlayerPingRequest>([this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                                            PlayerPingRequest& message) { onClientPlayerPingRequest(connection, message); });
     getClient()->registerHandler<PlayerPingResult>([this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
@@ -71,7 +69,7 @@ void RtypeNetworkManager::onErrorOnStartGameMessage(const std::shared_ptr<KapMir
 }
 
 void RtypeNetworkManager::onPlayerStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
-                              StartGameMessage& message) {
+                                                   StartGameMessage& message) {
     KAP_DEBUG_LOG("onPlayerStartGameMessage: Start game");
 }
 

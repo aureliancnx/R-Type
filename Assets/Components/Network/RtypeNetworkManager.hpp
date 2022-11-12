@@ -39,8 +39,7 @@ namespace RType {
         void onErrorOnStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                        ErrorOnStartGameMessage& message);
 
-        void onPlayerStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
-                                      StartGameMessage& message);
+        void onPlayerStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, StartGameMessage& message);
 
         void onClientPlayerPingRequest(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, PlayerPingRequest& request);
 

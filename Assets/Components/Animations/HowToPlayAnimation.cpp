@@ -160,12 +160,12 @@ namespace RType {
         if (_shipAnimation == 0 && posY > 300) {
             _shipInvert = true;
             _shipAnimation = 1;
-            _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("DownToUp");            
+            _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("DownToUp");
             _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("UpToUp");
         } else if (_shipAnimation == 1 && posY < 70) {
             _shipInvert = false;
             _shipAnimation = 0;
-            _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("UpToDown");            
+            _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("UpToDown");
             _allGameObject.at("Ship")->getComponent<KapEngine::Animator>().setTrigger("DownToDown");
         }
     }

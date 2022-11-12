@@ -82,6 +82,12 @@ namespace RType {
         std::vector<SpawnEnemy> getSpawnedEnemies() const { return spawnEnemies; }
 
         /**
+         * @brief Is Modded Map (new enemies, custom path, ...).
+         * @return True if map is modded, false otherwise
+         */
+        bool isModded() const;
+
+        /**
          * @brief Spawn enemy.
          * @param scene Scene where enemy will be spawned
          * @param enemyName Name of the enemy (without "Enemy" suffix)

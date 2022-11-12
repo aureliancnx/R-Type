@@ -32,6 +32,10 @@ void RtypeNetworkManager::registerClientHandlers() {
         [this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, ErrorOnStartGameMessage& message) {
             onErrorOnStartGameMessage(connection, message);
         });
+    getClient()->registerHandler<StartGameMessage>(
+        [this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, StartGameMessage& message) {
+            onPlayerStartGameMessage(connection, message);
+        });
     getClient()->registerHandler<PlayerPingRequest>([this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                                            PlayerPingRequest& message) { onClientPlayerPingRequest(connection, message); });
     getClient()->registerHandler<PlayerPingResult>([this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
@@ -62,8 +66,13 @@ void RtypeNetworkManager::onPlayerAuthorityMessage(const std::shared_ptr<KapMirr
 
 void RtypeNetworkManager::onErrorOnStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                                     ErrorOnStartGameMessage& message) {
-    KAP_DEBUG_ERROR("Error on start game: " + message.errorMessage);
+    KAP_DEBUG_ERROR("onErrorOnStartGameMessage: Error on start game: " + message.errorMessage);
     // TODO: Handle error
+}
+
+void RtypeNetworkManager::onPlayerStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
+                              StartGameMessage& message) {
+    KAP_DEBUG_LOG("onPlayerStartGameMessage: Start game");
 }
 
 void RtypeNetworkManager::onClientPlayerPingRequest(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
@@ -183,15 +192,31 @@ void RtypeNetworkManager::onStartGameMessage(const std::shared_ptr<KapMirror::Ne
         return;
     }
 
-    // Check if Map Script exists
-    std::ifstream file(message.mapScriptPath);
-    if (!file.good()) {
-        KapEngine::Debug::error("Map script not found");
-        sendErrorOnStartGame(connection, "Map script not found");
+    // Check if Map Script exists and is valid
+    MapScript script(&getEngine(), true);
+    try {
+        script.loadScript(message.mapScriptPath);
+    } catch (LuaException& e) {
+        script.closeScript();
+        KapEngine::Debug::error("Map script error: " + std::string(e.what()));
+        sendErrorOnStartGame(connection, "Invalid Map Script");
         return;
     }
 
+    if (script.isModded()) {
+        script.closeScript();
+        KapEngine::Debug::error("Map script is modded!");
+        sendErrorOnStartGame(connection, "Server not supported modded Map Script");
+        return;
+    }
+
+    script.closeScript();
+
     isGameStarted = true;
+
+    StartGameMessage startGameMessage;
+    startGameMessage.mapScriptPath = message.mapScriptPath;
+    getServer()->sendToAll(startGameMessage);
 
     KapEngine::Debug::log("Start game with " + std::to_string(players.size()) + " players");
     startGame(message.mapScriptPath, true);

@@ -439,3 +439,7 @@ Script::Enemy* MapScript::getNewEnemy(const std::string& enemyName) {
     }
     return nullptr;
 }
+
+bool MapScript::isModded() const {
+    return !newEnemies.empty();
+}

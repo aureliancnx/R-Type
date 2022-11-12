@@ -2,7 +2,7 @@ var classRType_1_1Menu =
 [
     [ "Menu", "classRType_1_1Menu.html#a6140a3d049d0fe8ac5c52d9dc733e337", null ],
     [ "~Menu", "classRType_1_1Menu.html#a192d07a1e37ac1cf137fc747641d93b0", null ],
-    [ "__initCanvas", "classRType_1_1Menu.html#aa7bf66bb2251814da391eac25d2e1051", null ],
+    [ "__initCanvas", "classRType_1_1Menu.html#a7935e4934f680ac6393aa9fc07d76f1b", null ],
     [ "hide", "classRType_1_1Menu.html#a5a3c5cd3371162b12b73d2092352ac4f", null ],
     [ "init", "classRType_1_1Menu.html#adee0763ddeb6685e1ee6fb55f76de2a3", null ],
     [ "show", "classRType_1_1Menu.html#a95bf6ef5ff84a6f2f31d33dfadb6f972", null ],

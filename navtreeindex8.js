@@ -1,5 +1,12 @@
 var NAVTREEINDEX8 =
 {
+"classbackward_1_1Colorize.html":[38,0,0,2],
+"classbackward_1_1Colorize.html#a292685cb3eb1d1ae5779e239b0d05ce6":[38,0,0,2,1],
+"classbackward_1_1Colorize.html#a952bae33e9e382a19cde094266858a1c":[38,0,0,2,0],
+"classbackward_1_1Colorize.html#ad1171b299febf4e9a72616642f5cc5ce":[38,0,0,2,2],
+"classbackward_1_1Colorize.html#adb295a526c9b0c61d5ddde4358e94924":[38,0,0,2,3],
+"classbackward_1_1Printer.html":[38,0,0,3],
+"classbackward_1_1Printer.html#a0b8a226c708625feaa57509f763b091a":[38,0,0,3,4],
 "classbackward_1_1Printer.html#a0c3901fa5647c29b72f92376f32a631c":[38,0,0,3,1],
 "classbackward_1_1Printer.html#a0fd722ce3517aa67f179c33a3e841769":[38,0,0,3,6],
 "classbackward_1_1Printer.html#a1af82e423f32058ba425d706c4f4c033":[38,0,0,3,9],
@@ -242,12 +249,5 @@ var NAVTREEINDEX8 =
 "functions_vars.html":[38,3,2],
 "functions_w.html":[38,3,0,21],
 "group__Components.html":[36,0],
-"hierarchy.html":[38,2],
-"imgui__impl__glfw_8hpp_source.html":[39,0,2,2,0,0],
-"imgui__impl__opengl2_8hpp_source.html":[39,0,2,2,0,1],
-"index.html":[],
-"index.html#autotoc_md257":[0],
-"index.html#autotoc_md258":[1],
-"index.html#autotoc_md259":[2],
-"index.html#autotoc_md260":[3]
+"hierarchy.html":[38,2]
 };

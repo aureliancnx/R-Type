@@ -106,15 +106,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abb4f4fcac2fb53ca005e02b71e846fb1"><td class="memItemLeft" align="right" valign="top"><a id="abb4f4fcac2fb53ca005e02b71e846fb1"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>MapManager</b> (std::shared_ptr&lt; <a class="el" href="classKapEngine_1_1GameObject.html">KapEngine::GameObject</a> &gt; go)</td></tr>
 <tr class="separator:abb4f4fcac2fb53ca005e02b71e846fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb18d9c6237ab3839be04192a58197ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType_1_1MapManager.html#adb18d9c6237ab3839be04192a58197ec">onAwake</a> () override</td></tr>
-<tr class="memdesc:adb18d9c6237ab3839be04192a58197ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">call component awake  <a href="classRType_1_1MapManager.html#adb18d9c6237ab3839be04192a58197ec">More...</a><br /></td></tr>
-<tr class="separator:adb18d9c6237ab3839be04192a58197ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94792c5b44c1c87193e0687ede03c7d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType_1_1MapManager.html#a94792c5b44c1c87193e0687ede03c7d4">onFixedUpdate</a> () override</td></tr>
-<tr class="memdesc:a94792c5b44c1c87193e0687ede03c7d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">call eachv x ms  <a href="classRType_1_1MapManager.html#a94792c5b44c1c87193e0687ede03c7d4">More...</a><br /></td></tr>
-<tr class="separator:a94792c5b44c1c87193e0687ede03c7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3556c1af58215e9cb418d1facc6cde0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType_1_1MapManager.html#a3556c1af58215e9cb418d1facc6cde0b">onSceneChanged</a> () override</td></tr>
-<tr class="memdesc:a3556c1af58215e9cb418d1facc6cde0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">call when scene is changed  <a href="classRType_1_1MapManager.html#a3556c1af58215e9cb418d1facc6cde0b">More...</a><br /></td></tr>
-<tr class="separator:a3556c1af58215e9cb418d1facc6cde0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a062b6a506d5cc3b1d6ad17f9c6efcbed"><td class="memItemLeft" align="right" valign="top"><a id="a062b6a506d5cc3b1d6ad17f9c6efcbed"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>loadMapScript</b> (const std::string &amp;path, bool isServer=false)</td></tr>
+<tr class="separator:a062b6a506d5cc3b1d6ad17f9c6efcbed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75759f0bb7726815a7b782dd2d580fb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRType_1_1MapManager.html#a75759f0bb7726815a7b782dd2d580fb1">onFixedUpdate</a> () override</td></tr>
+<tr class="memdesc:a75759f0bb7726815a7b782dd2d580fb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">call eachv x ms  <a href="classRType_1_1MapManager.html#a75759f0bb7726815a7b782dd2d580fb1">More...</a><br /></td></tr>
+<tr class="separator:a75759f0bb7726815a7b782dd2d580fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classKapEngine_1_1Component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classKapEngine_1_1Component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classKapEngine_1_1Component.html">KapEngine::Component</a></td></tr>
 <tr class="memitem:aa8051d9ecc1bfa025e09cd803994c4bd inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top"><a id="aa8051d9ecc1bfa025e09cd803994c4bd"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Component</b> (std::shared_ptr&lt; <a class="el" href="classKapEngine_1_1GameObject.html">GameObject</a> &gt; &amp;go, std::string const &amp;name)</td></tr>
@@ -137,6 +134,9 @@ std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getGameObjectI
 <tr class="memitem:a15c4ebae3ca398b69c96ff4c33306970 inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#a15c4ebae3ca398b69c96ff4c33306970">onInit</a> () override</td></tr>
 <tr class="memdesc:a15c4ebae3ca398b69c96ff4c33306970 inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">call on component init  <a href="classKapEngine_1_1Component.html#a15c4ebae3ca398b69c96ff4c33306970">More...</a><br /></td></tr>
 <tr class="separator:a15c4ebae3ca398b69c96ff4c33306970 inherit pub_methods_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77bb969bbb1e9d2b0a41ad3011f59548 inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#a77bb969bbb1e9d2b0a41ad3011f59548">onAwake</a> () override</td></tr>
+<tr class="memdesc:a77bb969bbb1e9d2b0a41ad3011f59548 inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">call component awake  <a href="classKapEngine_1_1Component.html#a77bb969bbb1e9d2b0a41ad3011f59548">More...</a><br /></td></tr>
+<tr class="separator:a77bb969bbb1e9d2b0a41ad3011f59548 inherit pub_methods_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7324857a80396521eae33fef7877d5f inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#ae7324857a80396521eae33fef7877d5f">onStart</a> () override</td></tr>
 <tr class="memdesc:ae7324857a80396521eae33fef7877d5f inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">call component start  <a href="classKapEngine_1_1Component.html#ae7324857a80396521eae33fef7877d5f">More...</a><br /></td></tr>
 <tr class="separator:ae7324857a80396521eae33fef7877d5f inherit pub_methods_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,6 +187,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:a41fc4b01887039cb1b9b38ea68685d8b inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#a41fc4b01887039cb1b9b38ea68685d8b">onSceneGonnaUpdated</a> () override</td></tr>
 <tr class="memdesc:a41fc4b01887039cb1b9b38ea68685d8b inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">call when scene will update (not threaded)  <a href="classKapEngine_1_1Component.html#a41fc4b01887039cb1b9b38ea68685d8b">More...</a><br /></td></tr>
 <tr class="separator:a41fc4b01887039cb1b9b38ea68685d8b inherit pub_methods_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad271eec076f17b8a3b20af2c6eba102d inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#ad271eec076f17b8a3b20af2c6eba102d">onSceneChanged</a> () override</td></tr>
+<tr class="memdesc:ad271eec076f17b8a3b20af2c6eba102d inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">call when scene is changed  <a href="classKapEngine_1_1Component.html#ad271eec076f17b8a3b20af2c6eba102d">More...</a><br /></td></tr>
+<tr class="separator:ad271eec076f17b8a3b20af2c6eba102d inherit pub_methods_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a923ba8a08cbf090602e913481606ca5f inherit pub_methods_classKapEngine_1_1Component"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapEngine_1_1Component.html#a923ba8a08cbf090602e913481606ca5f">getLevel</a> () const</td></tr>
 <tr class="memdesc:a923ba8a08cbf090602e913481606ca5f inherit pub_methods_classKapEngine_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Level component.  <a href="classKapEngine_1_1Component.html#a923ba8a08cbf090602e913481606ca5f">More...</a><br /></td></tr>
 <tr class="separator:a923ba8a08cbf090602e913481606ca5f inherit pub_methods_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -255,8 +258,8 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <tr class="separator:adcf99f72eea159651e3678e9671c1822 inherit pro_attribs_classKapEngine_1_1Component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="adb18d9c6237ab3839be04192a58197ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb18d9c6237ab3839be04192a58197ec">&#9670;&nbsp;</a></span>onAwake()</h2>
+<a id="a75759f0bb7726815a7b782dd2d580fb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75759f0bb7726815a7b782dd2d580fb1">&#9670;&nbsp;</a></span>onFixedUpdate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -265,37 +268,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void RType::MapManager::onAwake </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>call component awake </p>
-<p>will be called at runtime when the scene is first loaded or when another scene has been loaded before. </p>
-
-<p>Reimplemented from <a class="el" href="classKapEngine_1_1Component.html#a77bb969bbb1e9d2b0a41ad3011f59548">KapEngine::Component</a>.</p>
-
-</div>
-</div>
-<a id="a94792c5b44c1c87193e0687ede03c7d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94792c5b44c1c87193e0687ede03c7d4">&#9670;&nbsp;</a></span>onFixedUpdate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void RType::MapManager::onFixedUpdate </td>
+          <td class="memname">void MapManager::onFixedUpdate </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -311,35 +284,6 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <p>call eachv x ms </p>
 
 <p>Reimplemented from <a class="el" href="classKapEngine_1_1Component.html#a6da1dd9c9f7f19bb7aa05276142d4a5b">KapEngine::Component</a>.</p>
-
-</div>
-</div>
-<a id="a3556c1af58215e9cb418d1facc6cde0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3556c1af58215e9cb418d1facc6cde0b">&#9670;&nbsp;</a></span>onSceneChanged()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void RType::MapManager::onSceneChanged </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>call when scene is changed </p>
-
-<p>Reimplemented from <a class="el" href="classKapEngine_1_1Component.html#ad271eec076f17b8a3b20af2c6eba102d">KapEngine::Component</a>.</p>
 
 </div>
 </div>

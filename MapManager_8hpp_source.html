@@ -103,20 +103,16 @@ $(document).ready(function(){initNavTree('MapManager_8hpp_source.html',''); init
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classRType_1_1MapManager.html">MapManager</a>(std::shared_ptr&lt;KapEngine::GameObject&gt; go);</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        ~<a class="code" href="classRType_1_1MapManager.html">MapManager</a>();</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1MapManager.html#adb18d9c6237ab3839be04192a58197ec">onAwake</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">void</span> loadMapScript(<span class="keyword">const</span> std::string&amp; path, <span class="keywordtype">bool</span> isServer = <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1MapManager.html#a94792c5b44c1c87193e0687ede03c7d4">onFixedUpdate</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1MapManager.html#a3556c1af58215e9cb418d1facc6cde0b">onSceneChanged</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    };</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;} <span class="comment">// namespace RType</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classRType_1_1MapManager.html#a75759f0bb7726815a7b782dd2d580fb1">onFixedUpdate</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    };</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;} <span class="comment">// namespace RType</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassRType_1_1MapManager_html_adb18d9c6237ab3839be04192a58197ec"><div class="ttname"><a href="classRType_1_1MapManager.html#adb18d9c6237ab3839be04192a58197ec">RType::MapManager::onAwake</a></div><div class="ttdeci">void onAwake() override</div><div class="ttdoc">call component awake</div><div class="ttdef"><b>Definition:</b> MapManager.cpp:15</div></div>
+<div class="ttc" id="aclassRType_1_1MapManager_html_a75759f0bb7726815a7b782dd2d580fb1"><div class="ttname"><a href="classRType_1_1MapManager.html#a75759f0bb7726815a7b782dd2d580fb1">RType::MapManager::onFixedUpdate</a></div><div class="ttdeci">void onFixedUpdate() override</div><div class="ttdoc">call eachv x ms</div><div class="ttdef"><b>Definition:</b> MapManager.cpp:26</div></div>
 <div class="ttc" id="aclassRType_1_1MapManager_html"><div class="ttname"><a href="classRType_1_1MapManager.html">RType::MapManager</a></div><div class="ttdef"><b>Definition:</b> MapManager.hpp:7</div></div>
 <div class="ttc" id="aclassKapEngine_1_1Component_html"><div class="ttname"><a href="classKapEngine_1_1Component.html">KapEngine::Component</a></div><div class="ttdef"><b>Definition:</b> Component.hpp:38</div></div>
-<div class="ttc" id="aclassRType_1_1MapManager_html_a3556c1af58215e9cb418d1facc6cde0b"><div class="ttname"><a href="classRType_1_1MapManager.html#a3556c1af58215e9cb418d1facc6cde0b">RType::MapManager::onSceneChanged</a></div><div class="ttdeci">void onSceneChanged() override</div><div class="ttdoc">call when scene is changed</div><div class="ttdef"><b>Definition:</b> MapManager.cpp:52</div></div>
-<div class="ttc" id="aclassRType_1_1MapManager_html_a94792c5b44c1c87193e0687ede03c7d4"><div class="ttname"><a href="classRType_1_1MapManager.html#a94792c5b44c1c87193e0687ede03c7d4">RType::MapManager::onFixedUpdate</a></div><div class="ttdeci">void onFixedUpdate() override</div><div class="ttdoc">call eachv x ms</div><div class="ttdef"><b>Definition:</b> MapManager.cpp:30</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

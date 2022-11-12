@@ -18,7 +18,7 @@ var searchData=
   ['spawnenemy_715',['SpawnEnemy',['../structRType_1_1SpawnEnemy.html',1,'RType']]],
   ['splashscreen_716',['SplashScreen',['../classKapEngine_1_1SceneManagement_1_1SplashScreen.html',1,'KapEngine::SceneManagement']]],
   ['splashscreennode_717',['SplashScreenNode',['../structKapEngine_1_1SceneManagement_1_1SplashScreen_1_1SplashScreenNode.html',1,'KapEngine::SceneManagement::SplashScreen']]],
-  ['spriteanimation_718',['SpriteAnimation',['../classRType_1_1SpriteAnimation.html',1,'RType::SpriteAnimation'],['../classRType_1_1Script_1_1SpriteAnimation.html',1,'RType::Script::SpriteAnimation']]],
+  ['spriteanimation_718',['SpriteAnimation',['../classRType_1_1Script_1_1SpriteAnimation.html',1,'RType::Script::SpriteAnimation'],['../classRType_1_1SpriteAnimation.html',1,'RType::SpriteAnimation']]],
   ['stackelement_719',['StackElement',['../classKapEngine_1_1Profiler_1_1StackElement.html',1,'KapEngine::Profiler']]],
   ['stacksummary_720',['StackSummary',['../classKapEngine_1_1Profiler_1_1StackSummary.html',1,'KapEngine::Profiler']]],
   ['stacktrace_721',['StackTrace',['../classbackward_1_1StackTrace.html',1,'backward']]],

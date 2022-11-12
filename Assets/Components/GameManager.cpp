@@ -12,10 +12,11 @@
 #include "CampaignGenerator/CampaignGenerator.hpp"
 #include "Player/PlayerSkin.hpp"
 #include "Campaign/CampaignManager.hpp"
+#include "KapMirror/Experimental/Compressions/GZip/GZipCompression.hpp"
 
 #include "Sylph/SylphTransport.hpp"
 #include "Prefabs.hpp"
-#include "NetStatViewer.hpp"
+#include "Network/NetStatViewer.hpp"
 
 RType::GameManager* RType::GameManager::instance = nullptr;
 
@@ -185,6 +186,7 @@ void RType::GameManager::initMultiPlayer(bool isServer) {
     auto networkManagerObject = scene->createGameObject("NetworkManager");
     networkManager = std::make_shared<RtypeNetworkManager>(networkManagerObject, isServer);
     networkManager->setTransport(std::make_shared<KapMirror::SylphTransport>());
+    networkManager->setCompression(std::make_shared<KapMirror::Experimental::GZipCompression>());
     networkManagerObject->addComponent(networkManager);
 
     if (!isServer) {

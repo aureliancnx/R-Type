@@ -5,7 +5,7 @@
 
 #include "Player/PlayerController.hpp"
 #include "Animations/SpriteAnimation.hpp"
-#include "RtypeNetworkManager.hpp"
+#include "Network/RtypeNetworkManager.hpp"
 
 namespace RType {
     class GameManager {

@@ -18,6 +18,7 @@ namespace RType {
         bool isMoving = false;
 
         long long lastRefreshTime = 0;
+        long long lastPingTime = 0;
 
         std::shared_ptr<GameMenuManager> menuManager;
         KapEngine::Time::EClock clockMissile;
@@ -34,6 +35,8 @@ namespace RType {
         int life = 100;
         bool isDead = false;
 
+        unsigned int connectionId;
+
       public:
         explicit PlayerController(std::shared_ptr<KapEngine::GameObject> _gameObject);
         ~PlayerController() = default;
@@ -49,6 +52,8 @@ namespace RType {
         void onStartClient() override;
 
         void movePlayer(const KapEngine::Tools::Vector2& input);
+
+        void setConnectionId(unsigned int _connectionId);
 
         void shoot();
 
@@ -78,5 +83,7 @@ namespace RType {
         void initSettings();
 
         void checkCollisions();
+
+        void sendPingUpdate();
     };
 } // namespace RType

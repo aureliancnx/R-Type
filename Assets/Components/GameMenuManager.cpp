@@ -277,7 +277,7 @@ void RType::GameMenuManager::updateHealth(int health) {
         auto &component = heartObject->getComponent<UI::Image>();
         if (health > (int) (((((float) itr * 1.f) + 1.f) / 3.f) * 100.f) * 1) {
             // full heart
-            component.setRectangle({175 * 0, 0, 175, 175});
+            component.setRectangle({0, 0, 175, 175});
         }else if (health < (int) (((float) itr / 3.f) * 100.f)) {
             // remove heart
             component.setRectangle({175 * 10, 0, 175, 175});

@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['magnificentreceivepipe_299',['MagnificentReceivePipe',['../classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html',1,'KapMirror::Telepathy']]],
-  ['magnificentsendpipe_300',['MagnificentSendPipe',['../classKapMirror_1_1Telepathy_1_1MagnificentSendPipe.html',1,'KapMirror::Telepathy']]],
-  ['mainmenu_301',['MainMenu',['../classRType_1_1MainMenu.html',1,'RType']]],
-  ['map_302',['Map',['../classRType_1_1Parser_1_1Map.html',1,'RType::Parser']]],
-  ['mapenemy_303',['MapEnemy',['../classRType_1_1MapEnemy.html',1,'RType']]],
+  ['magnificentreceivepipe_298',['MagnificentReceivePipe',['../classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html',1,'KapMirror::Telepathy']]],
+  ['magnificentsendpipe_299',['MagnificentSendPipe',['../classKapMirror_1_1Telepathy_1_1MagnificentSendPipe.html',1,'KapMirror::Telepathy']]],
+  ['mainmenu_300',['MainMenu',['../classRType_1_1MainMenu.html',1,'RType']]],
+  ['map_301',['Map',['../classRType_1_1Parser_1_1Map.html',1,'RType::Parser']]],
+  ['mapenemy_302',['MapEnemy',['../classRType_1_1MapEnemy.html',1,'RType']]],
+  ['mapmanager_303',['MapManager',['../classRType_1_1MapManager.html',1,'RType']]],
   ['mapscript_304',['MapScript',['../classRType_1_1MapScript.html',1,'RType']]],
   ['math_305',['Math',['../classRType_1_1Script_1_1Math.html',1,'RType::Script']]],
   ['maxvalue_306',['maxValue',['../classKapEngine_1_1Events_1_1Key.html#a4447003f35da885280e1af101926ff96',1,'KapEngine::Events::Key']]],

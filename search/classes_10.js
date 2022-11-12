@@ -10,7 +10,7 @@ var searchData=
   ['shipenemy_707',['ShipEnemy',['../classRType_1_1ShipEnemy.html',1,'RType']]],
   ['signalhandling_708',['SignalHandling',['../classbackward_1_1SignalHandling.html',1,'backward']]],
   ['snippetfactory_709',['SnippetFactory',['../classbackward_1_1SnippetFactory.html',1,'backward']]],
-  ['socket_710',['Socket',['../classKapMirror_1_1Sylph_1_1Socket.html',1,'KapMirror::Sylph::Socket'],['../classKapMirror_1_1Telepathy_1_1Socket.html',1,'KapMirror::Telepathy::Socket']]],
+  ['socket_710',['Socket',['../classKapMirror_1_1Telepathy_1_1Socket.html',1,'KapMirror::Telepathy::Socket'],['../classKapMirror_1_1Sylph_1_1Socket.html',1,'KapMirror::Sylph::Socket']]],
   ['socketexception_711',['SocketException',['../classKapMirror_1_1Telepathy_1_1SocketException.html',1,'KapMirror::Telepathy::SocketException'],['../classKapMirror_1_1Sylph_1_1SocketException.html',1,'KapMirror::Sylph::SocketException']]],
   ['solomenu_712',['SoloMenu',['../classRType_1_1SoloMenu.html',1,'RType']]],
   ['sourcefile_713',['SourceFile',['../classbackward_1_1SourceFile.html',1,'backward']]],

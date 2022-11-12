@@ -56,7 +56,7 @@ var searchData=
   ['signalhandling_467',['SignalHandling',['../classbackward_1_1SignalHandling.html',1,'backward']]],
   ['size_468',['size',['../classKapMirror_1_1NetworkWriter.html#a0658ab746b40588cf797cfcb43b44d44',1,'KapMirror::NetworkWriter']]],
   ['snippetfactory_469',['SnippetFactory',['../classbackward_1_1SnippetFactory.html',1,'backward']]],
-  ['socket_470',['Socket',['../classKapMirror_1_1Sylph_1_1Socket.html',1,'KapMirror::Sylph::Socket'],['../classKapMirror_1_1Telepathy_1_1Socket.html',1,'KapMirror::Telepathy::Socket']]],
+  ['socket_470',['Socket',['../classKapMirror_1_1Telepathy_1_1Socket.html',1,'KapMirror::Telepathy::Socket'],['../classKapMirror_1_1Sylph_1_1Socket.html',1,'KapMirror::Sylph::Socket']]],
   ['socketexception_471',['SocketException',['../classKapMirror_1_1Telepathy_1_1SocketException.html',1,'KapMirror::Telepathy::SocketException'],['../classKapMirror_1_1Sylph_1_1SocketException.html',1,'KapMirror::Sylph::SocketException']]],
   ['solomenu_472',['SoloMenu',['../classRType_1_1SoloMenu.html',1,'RType']]],
   ['sourcefile_473',['SourceFile',['../classbackward_1_1SourceFile.html',1,'backward']]],

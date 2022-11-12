@@ -22,6 +22,8 @@ void RType::PlayerController::onUpdate() {
         return;
     }
 
+    checkCollisions();
+
     if (getInput().getKeyDown(debugKey)) {
         GameManager::getInstance()->toggleDebugMode();
     }
@@ -260,7 +262,6 @@ void RType::PlayerController::checkCollisions() {
                 collision->destroy();
             }
             takeDamage(damage);
-            getGameObject().destroy();
         }
     }
 
@@ -278,6 +279,7 @@ void RType::PlayerController::takeDamage(int damage) {
     if (life <= 0) {
         life = 0;
         isDead = true;
+        std::cout << "Dead: true" << std::endl;
     }
 
     if (isServer()) {

@@ -276,6 +276,7 @@ void RType::PlayerController::takeDamage(int damage) {
     }
 
     life -= damage;
+    KAP_DEBUG_LOG("Player[" + std::to_string(getNetworkId()) + "] Player life update: " + std::to_string(life));
     if (life <= 0) {
         life = 0;
         isDead = true;

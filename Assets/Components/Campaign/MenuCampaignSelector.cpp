@@ -46,8 +46,6 @@ void RType::MenuCampaignSelector::onAwake() {
     updateButtons();
 }
 
-void RType::MenuCampaignSelector::onUpdate() {}
-
 void RType::MenuCampaignSelector::setButtonLevel1(const std::shared_ptr<KapEngine::GameObject>& button) {
     if (!button->hasComponent<KapEngine::UI::Button>()) {
         return;

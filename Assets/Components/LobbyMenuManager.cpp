@@ -165,7 +165,5 @@ void RType::LobbyMenuManager::quit() {
         if (go) {
             go->getComponent<GameMenuManager>().setActive(true);
         }
-    } catch (...) {
-        KAP_DEBUG_ERROR("Failled to find MenuManager");
-    }
+    } catch (...) { KAP_DEBUG_ERROR("Failled to find MenuManager"); }
 }

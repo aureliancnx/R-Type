@@ -159,4 +159,12 @@ std::shared_ptr<KapEngine::GameObject> RType::LobbyMenuManager::initButton(std::
 
 void RType::LobbyMenuManager::quit() {
     lobbyMenu->setActive(false);
+    try {
+        auto go = getGameObject().getScene().findFirstGameObject("MenuManager");
+        if (go) {
+            go->getComponent<GameMenuManager>().setActive(true);
+        }
+    } catch (...) {
+        KAP_DEBUG_ERROR("Failled to find MenuManager");
+    }
 }

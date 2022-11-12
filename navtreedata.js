@@ -24,14 +24,14 @@ var NAVTREE =
 [
   [ "R-Type", "index.html", [
     [ "Contributor Covenant Code of Conduct", "md_CODE_OF_CONDUCT.html", [
-      [ "R-Type", "index.html#autotoc_md257", null ],
-      [ "How do I build and run this?", "index.html#autotoc_md258", null ],
-      [ "Install the game", "index.html#autotoc_md259", null ],
-      [ "Host your own server", "index.html#autotoc_md260", null ],
-      [ "Documentation", "index.html#autotoc_md261", null ],
-      [ "How organize project", "index.html#autotoc_md262", null ],
-      [ "Cheat warning", "index.html#autotoc_md263", null ],
-      [ "Authors", "index.html#autotoc_md264", null ],
+      [ "R-Type", "index.html#autotoc_md259", null ],
+      [ "How do I build and run this?", "index.html#autotoc_md260", null ],
+      [ "Install the game", "index.html#autotoc_md261", null ],
+      [ "Host your own server", "index.html#autotoc_md262", null ],
+      [ "Documentation", "index.html#autotoc_md263", null ],
+      [ "How organize project", "index.html#autotoc_md264", null ],
+      [ "Cheat warning", "index.html#autotoc_md265", null ],
+      [ "Authors", "index.html#autotoc_md266", null ],
       [ "Our Pledge", "md_CODE_OF_CONDUCT.html#autotoc_md1", null ],
       [ "Our Standards", "md_CODE_OF_CONDUCT.html#autotoc_md2", null ],
       [ "Enforcement Responsibilities", "md_CODE_OF_CONDUCT.html#autotoc_md3", null ],
@@ -260,111 +260,114 @@ var NAVTREE =
       [ "Getting Started", "md_Library_KapProfiler_README.html#autotoc_md178", null ]
     ] ],
     [ "Easily embed lua into applications managed with CMake", "md_Library_LuaEngine_README.html", null ],
+    [ "README", "md_Packages_KapMirror_KapMirror_Transports_Telepathy_README.html", null ],
     [ "README", "md_Packages_KapMirror_README.html", null ],
     [ "Contributor Covenant Code of Conduct", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html", [
-      [ "Our Pledge", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md187", null ],
-      [ "Our Standards", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md188", null ],
-      [ "Enforcement Responsibilities", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md189", null ],
-      [ "Scope", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md190", null ],
-      [ "Enforcement", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md191", null ],
-      [ "Enforcement Guidelines", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md192", [
-        [ "KapMirror", "md_Packages_KapMirror_README.html#autotoc_md180", null ],
-        [ "Architecture", "md_Packages_KapMirror_README.html#autotoc_md181", null ],
-        [ "Getting Started", "md_Packages_KapMirror_README.html#autotoc_md182", null ],
-        [ "Made with KapMirror", "md_Packages_KapMirror_README.html#autotoc_md183", [
+      [ "Our Pledge", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md189", null ],
+      [ "Our Standards", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md190", null ],
+      [ "Enforcement Responsibilities", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md191", null ],
+      [ "Scope", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md192", null ],
+      [ "Enforcement", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md193", null ],
+      [ "Enforcement Guidelines", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md194", [
+        [ "What makes Telepathy special?", "md_Packages_KapMirror_KapMirror_Transports_Telepathy_README.html#autotoc_md180", null ],
+        [ "Credits", "md_Packages_KapMirror_KapMirror_Transports_Telepathy_README.html#autotoc_md181", null ],
+        [ "KapMirror", "md_Packages_KapMirror_README.html#autotoc_md182", null ],
+        [ "Architecture", "md_Packages_KapMirror_README.html#autotoc_md183", null ],
+        [ "Getting Started", "md_Packages_KapMirror_README.html#autotoc_md184", null ],
+        [ "Made with KapMirror", "md_Packages_KapMirror_README.html#autotoc_md185", [
           [ "Game Example", "md_Library_KapEngine_Readme.html#autotoc_md174", null ],
           [ "Documentation", "md_Library_KapEngine_Readme.html#autotoc_md175", null ],
-          [ "<a href=\"https://github.com/aureliancnx/R-Type\">RType</a>", "md_Packages_KapMirror_README.html#autotoc_md184", null ]
+          [ "<a href=\"https://github.com/aureliancnx/R-Type\">RType</a>", "md_Packages_KapMirror_README.html#autotoc_md186", null ]
         ] ],
-        [ "Low Level Transports", "md_Packages_KapMirror_README.html#autotoc_md185", null ],
-        [ "1. Correction", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md193", null ],
-        [ "2. Warning", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md194", null ],
-        [ "3. Temporary Ban", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md195", null ],
-        [ "4. Permanent Ban", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md196", null ]
+        [ "Low Level Transports", "md_Packages_KapMirror_README.html#autotoc_md187", null ],
+        [ "1. Correction", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md195", null ],
+        [ "2. Warning", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md196", null ],
+        [ "3. Temporary Ban", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md197", null ],
+        [ "4. Permanent Ban", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md198", null ]
       ] ],
-      [ "Attribution", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md197", null ]
+      [ "Attribution", "md_Packages_KapRaylib_CODE_OF_CONDUCT.html#autotoc_md199", null ]
     ] ],
     [ "CONTRIBUTING", "md_Packages_KapRaylib_CONTRIBUTING.html", [
-      [ "Contributing to KapRaylib", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md198", [
-        [ "Table of Contents", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md199", null ],
-        [ "Code of Conduct", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md200", null ],
-        [ "I Have a Question", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md201", null ],
-        [ "I Want To Contribute", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md202", [
-          [ "Legal Notice <!-- omit in toc -->", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md203", null ],
-          [ "Reporting Bugs", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md204", [
-            [ "Before Submitting a Bug Report", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md205", null ],
-            [ "How Do I Submit a Good Bug Report?", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md206", null ]
+      [ "Contributing to KapRaylib", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md200", [
+        [ "Table of Contents", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md201", null ],
+        [ "Code of Conduct", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md202", null ],
+        [ "I Have a Question", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md203", null ],
+        [ "I Want To Contribute", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md204", [
+          [ "Legal Notice <!-- omit in toc -->", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md205", null ],
+          [ "Reporting Bugs", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md206", [
+            [ "Before Submitting a Bug Report", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md207", null ],
+            [ "How Do I Submit a Good Bug Report?", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md208", null ]
           ] ],
-          [ "Suggesting Enhancements", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md207", [
-            [ "Before Submitting an Enhancement", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md208", null ],
-            [ "How Do I Submit a Good Enhancement Suggestion?", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md209", null ]
+          [ "Suggesting Enhancements", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md209", [
+            [ "Before Submitting an Enhancement", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md210", null ],
+            [ "How Do I Submit a Good Enhancement Suggestion?", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md211", null ]
           ] ],
-          [ "Your First Code Contribution", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md210", null ],
-          [ "Improving The Documentation", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md211", null ]
+          [ "Your First Code Contribution", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md212", null ],
+          [ "Improving The Documentation", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md213", null ]
         ] ],
-        [ "Styleguides", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md212", [
-          [ "Commit Messages", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md213", null ],
-          [ "Branch names", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md214", null ]
+        [ "Styleguides", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md214", [
+          [ "Commit Messages", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md215", null ],
+          [ "Branch names", "md_Packages_KapRaylib_CONTRIBUTING.html#autotoc_md216", null ]
         ] ]
       ] ]
     ] ],
     [ "Description", "md_Packages_KapRaylib_pull_request_template.html", [
-      [ "Type of change", "md_Packages_KapRaylib_pull_request_template.html#autotoc_md216", null ],
-      [ "How Has This Been Tested?", "md_Packages_KapRaylib_pull_request_template.html#autotoc_md217", null ],
-      [ "Checklist:", "md_Packages_KapRaylib_pull_request_template.html#autotoc_md218", null ]
+      [ "Type of change", "md_Packages_KapRaylib_pull_request_template.html#autotoc_md218", null ],
+      [ "How Has This Been Tested?", "md_Packages_KapRaylib_pull_request_template.html#autotoc_md219", null ],
+      [ "Checklist:", "md_Packages_KapRaylib_pull_request_template.html#autotoc_md220", null ]
     ] ],
     [ "KapRaylib", "md_Packages_KapRaylib_README.html", [
-      [ "Documentation", "md_Packages_KapRaylib_README.html#autotoc_md220", null ]
+      [ "Documentation", "md_Packages_KapRaylib_README.html#autotoc_md222", null ]
     ] ],
     [ "Code of Conduct - KapUI", "md_Packages_KapUI_CODE_OF_CONDUCT.html", [
-      [ "Our Pledge", "md_Packages_KapUI_CODE_OF_CONDUCT.html#autotoc_md222", null ],
-      [ "Our Standards", "md_Packages_KapUI_CODE_OF_CONDUCT.html#autotoc_md223", null ],
-      [ "Our Responsibilities", "md_Packages_KapUI_CODE_OF_CONDUCT.html#autotoc_md224", null ],
-      [ "Scope", "md_Packages_KapUI_CODE_OF_CONDUCT.html#autotoc_md225", null ],
-      [ "Enforcement", "md_Packages_KapUI_CODE_OF_CONDUCT.html#autotoc_md226", null ],
-      [ "Attribution", "md_Packages_KapUI_CODE_OF_CONDUCT.html#autotoc_md227", null ]
+      [ "Our Pledge", "md_Packages_KapUI_CODE_OF_CONDUCT.html#autotoc_md224", null ],
+      [ "Our Standards", "md_Packages_KapUI_CODE_OF_CONDUCT.html#autotoc_md225", null ],
+      [ "Our Responsibilities", "md_Packages_KapUI_CODE_OF_CONDUCT.html#autotoc_md226", null ],
+      [ "Scope", "md_Packages_KapUI_CODE_OF_CONDUCT.html#autotoc_md227", null ],
+      [ "Enforcement", "md_Packages_KapUI_CODE_OF_CONDUCT.html#autotoc_md228", null ],
+      [ "Attribution", "md_Packages_KapUI_CODE_OF_CONDUCT.html#autotoc_md229", null ]
     ] ],
     [ "CONTRIBUTING", "md_Packages_KapUI_CONTRIBUTING.html", [
-      [ "Contributing to KapUI", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md228", [
-        [ "Table of Contents", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md229", null ],
-        [ "Code of Conduct", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md230", null ],
-        [ "I Have a Question", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md231", null ],
-        [ "I Want To Contribute", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md232", [
-          [ "Legal Notice", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md233", null ],
-          [ "Reporting Bugs", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md234", [
-            [ "Before Submitting a Bug Report", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md235", null ],
-            [ "How Do I Submit a Good Bug Report?", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md236", null ]
+      [ "Contributing to KapUI", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md230", [
+        [ "Table of Contents", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md231", null ],
+        [ "Code of Conduct", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md232", null ],
+        [ "I Have a Question", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md233", null ],
+        [ "I Want To Contribute", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md234", [
+          [ "Legal Notice", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md235", null ],
+          [ "Reporting Bugs", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md236", [
+            [ "Before Submitting a Bug Report", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md237", null ],
+            [ "How Do I Submit a Good Bug Report?", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md238", null ]
           ] ],
-          [ "Suggesting Enhancements", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md237", [
-            [ "Before Submitting an Enhancement", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md238", null ],
-            [ "How Do I Submit a Good Enhancement Suggestion?", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md239", null ]
+          [ "Suggesting Enhancements", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md239", [
+            [ "Before Submitting an Enhancement", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md240", null ],
+            [ "How Do I Submit a Good Enhancement Suggestion?", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md241", null ]
           ] ],
-          [ "Your First Code Contribution", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md240", null ],
-          [ "Improving The Documentation", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md241", null ]
+          [ "Your First Code Contribution", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md242", null ],
+          [ "Improving The Documentation", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md243", null ]
         ] ],
-        [ "Styleguides", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md242", [
-          [ "Commit Messages", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md243", null ],
-          [ "Branch names", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md244", null ]
+        [ "Styleguides", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md244", [
+          [ "Commit Messages", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md245", null ],
+          [ "Branch names", "md_Packages_KapUI_CONTRIBUTING.html#autotoc_md246", null ]
         ] ]
       ] ]
     ] ],
     [ "Description", "md_Packages_KapUI_pull_request_template.html", [
-      [ "Type of change", "md_Packages_KapUI_pull_request_template.html#autotoc_md246", null ],
-      [ "How Has This Been Tested?", "md_Packages_KapUI_pull_request_template.html#autotoc_md247", null ],
-      [ "Checklist:", "md_Packages_KapUI_pull_request_template.html#autotoc_md248", null ]
+      [ "Type of change", "md_Packages_KapUI_pull_request_template.html#autotoc_md248", null ],
+      [ "How Has This Been Tested?", "md_Packages_KapUI_pull_request_template.html#autotoc_md249", null ],
+      [ "Checklist:", "md_Packages_KapUI_pull_request_template.html#autotoc_md250", null ]
     ] ],
     [ "KapUi [V 0.1]", "md_Packages_KapUI_README.html", [
-      [ "Documentation", "md_Packages_KapUI_README.html#autotoc_md250", null ]
+      [ "Documentation", "md_Packages_KapUI_README.html#autotoc_md252", null ]
     ] ],
     [ "README", "md_Packages_SylphTransport_README.html", null ],
     [ "Description", "md_pull_request_template.html", [
-      [ "Type of change", "md_pull_request_template.html#autotoc_md254", null ],
-      [ "How Has This Been Tested?", "md_pull_request_template.html#autotoc_md255", null ],
-      [ "Checklist:", "md_pull_request_template.html#autotoc_md256", null ]
+      [ "Type of change", "md_pull_request_template.html#autotoc_md256", null ],
+      [ "How Has This Been Tested?", "md_pull_request_template.html#autotoc_md257", null ],
+      [ "Checklist:", "md_pull_request_template.html#autotoc_md258", null ]
     ] ],
     [ "Security Policy", "md_SECURITY.html", [
-      [ "Supported Versions", "md_SECURITY.html#autotoc_md266", null ],
-      [ "Reporting a Vulnerability", "md_SECURITY.html#autotoc_md267", null ]
+      [ "Supported Versions", "md_SECURITY.html#autotoc_md268", null ],
+      [ "Reporting a Vulnerability", "md_SECURITY.html#autotoc_md269", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
@@ -402,7 +405,7 @@ var NAVTREEINDEX =
 "classRType_1_1MapScript.html#a56c27361e50140caaec06a497381199f",
 "classbackward_1_1StackTraceImplBase.html",
 "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md106",
-"namespaceKapEngine_1_1UI.html"
+"namespaceKapEngine_1_1Tools.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

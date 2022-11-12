@@ -7,7 +7,7 @@
 namespace RType {
     class EnemyController : public KapMirror::NetworkComponent {
       private:
-        MapScript* mapScript;
+        MapScript* mapScript = nullptr;
 
         std::vector<std::shared_ptr<KapEngine::GameObject>> collidedObjects;
 
@@ -15,8 +15,10 @@ namespace RType {
         int hp = 20;
 
       public:
-        explicit EnemyController(MapScript* _mapScript, std::shared_ptr<KapEngine::GameObject> _gameObject);
+        explicit EnemyController(std::shared_ptr<KapEngine::GameObject> _gameObject);
         ~EnemyController() = default;
+
+        void setMapScript(MapScript* _mapScript);
 
         void setEnemyName(const std::string& _enemyName);
 

@@ -14,9 +14,8 @@ Bullet::Direction Bullet::getDirection() const { return direction; }
 
 void Bullet::onStart() { initialX = getTransform().getWorldPosition().getX(); }
 
-void Bullet::onUpdate() {
+void Bullet::onFixedUpdate() {
     auto& transform = getTransform();
-
     KapEngine::Tools::Vector3 nPos = transform.getWorldPosition();
 
     float xMove = 0.0f;

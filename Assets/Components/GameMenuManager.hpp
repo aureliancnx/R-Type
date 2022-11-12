@@ -28,9 +28,7 @@ namespace RType {
 
         std::shared_ptr<KapEngine::Animator> getMissileAnimator() const { return missileAnimator; }
 
-        void initHeart();
-        void addLife();
-        void removeLife();
+        void updateHealth(int health);
 
       private:
         void initMainMenu(bool local = true);
@@ -49,12 +47,7 @@ namespace RType {
         // variables
       private:
         std::shared_ptr<KapEngine::GameObject> mainMenu;
-        std::shared_ptr<KapEngine::GameObject> heart1;
-        std::shared_ptr<KapEngine::GameObject> heart2;
-        std::shared_ptr<KapEngine::GameObject> heart3;
         std::shared_ptr<KapEngine::Animator> missileAnimator;
-
-        int _life = 3;
     };
 
 } // namespace RType

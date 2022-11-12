@@ -32,7 +32,7 @@ void Enemy::initScript(lua_State* L, MapScript* mapScript) {
 }
 
 int Enemy::__create(lua_State* L) {
-    auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
+    auto* manager = (MapScript*) lua_touserdata(L, lua_upvalueindex(1));
 
     void* ptr = lua_newuserdata(L, sizeof(Script::Enemy));
     new (ptr) Script::Enemy();
@@ -42,18 +42,18 @@ int Enemy::__create(lua_State* L) {
     lua_newtable(L);
     lua_setuservalue(L, 1);
 
-    manager->_registerNewEnemy((Enemy*)ptr);
+    manager->_registerNewEnemy((Enemy*) ptr);
     return 1;
 }
 
 int Enemy::__destroy(lua_State* L) {
-    auto* enemy = (Enemy*)lua_touserdata(L, -1);
+    auto* enemy = (Enemy*) lua_touserdata(L, -1);
     enemy->~Enemy();
     return 0;
 }
 
 int Enemy::__index(lua_State* L) {
-    auto* enemy = (Enemy*)lua_touserdata(L, -2);
+    auto* enemy = (Enemy*) lua_touserdata(L, -2);
     std::string index(lua_tostring(L, -1));
     if (index == "name") {
         lua_pushstring(L, enemy->name.c_str());
@@ -88,7 +88,7 @@ int Enemy::__index(lua_State* L) {
 }
 
 int Enemy::__newIndex(lua_State* L) {
-    auto* enemy = (Enemy*)lua_touserdata(L, -3);
+    auto* enemy = (Enemy*) lua_touserdata(L, -3);
     std::string index(lua_tostring(L, -2));
     if (index == "name") {
         std::string name(lua_tostring(L, -1));
@@ -102,17 +102,17 @@ int Enemy::__newIndex(lua_State* L) {
     }
     if (index == "rectangle") {
         void* ptr = lua_touserdata(L, -1);
-        enemy->rectangle = (Rectangle*)ptr;
+        enemy->rectangle = (Rectangle*) ptr;
         return 0;
     }
     if (index == "scale") {
         void* ptr = lua_touserdata(L, -1);
-        enemy->scale = (Vector2*)ptr;
+        enemy->scale = (Vector2*) ptr;
         return 0;
     }
     if (index == "animation") {
         void* ptr = lua_touserdata(L, -1);
-        enemy->animation = (SpriteAnimation*)ptr;
+        enemy->animation = (SpriteAnimation*) ptr;
         return 0;
     }
 
@@ -124,7 +124,7 @@ int Enemy::__newIndex(lua_State* L) {
 }
 
 int Enemy::__dump(lua_State* L) {
-    auto* enemy = (Enemy*)lua_touserdata(L, -1);
+    auto* enemy = (Enemy*) lua_touserdata(L, -1);
     enemy->dump();
     return 0;
 }

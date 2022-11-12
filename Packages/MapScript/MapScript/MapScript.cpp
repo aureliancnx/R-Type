@@ -64,7 +64,7 @@ void MapScript::executeScript(const std::string& script) {
 
 void MapScript::initScript() {
     auto setMapName = [](lua_State* L) -> int {
-        auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
+        auto* manager = (MapScript*) lua_touserdata(L, lua_upvalueindex(1));
 
         std::string mapName(lua_tostring(L, 1));
         manager->_setMapName(mapName);
@@ -72,7 +72,7 @@ void MapScript::initScript() {
     };
 
     auto setMapAuthor = [](lua_State* L) -> int {
-        auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
+        auto* manager = (MapScript*) lua_touserdata(L, lua_upvalueindex(1));
 
         std::string mapAuthor(lua_tostring(L, 1));
         manager->_setMapAuthor(mapAuthor);
@@ -80,7 +80,7 @@ void MapScript::initScript() {
     };
 
     auto setMapDescription = [](lua_State* L) -> int {
-        auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
+        auto* manager = (MapScript*) lua_touserdata(L, lua_upvalueindex(1));
 
         std::string mapDescription(lua_tostring(L, 1));
         manager->_setMapDescription(mapDescription);
@@ -88,7 +88,7 @@ void MapScript::initScript() {
     };
 
     auto setMapBannerPath = [](lua_State* L) -> int {
-        auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
+        auto* manager = (MapScript*) lua_touserdata(L, lua_upvalueindex(1));
 
         std::string path(lua_tostring(L, 1));
         manager->_setMapBannerPath(path);
@@ -96,24 +96,24 @@ void MapScript::initScript() {
     };
 
     auto spawnMapEnemy = [](lua_State* L) -> int {
-        auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
+        auto* manager = (MapScript*) lua_touserdata(L, lua_upvalueindex(1));
 
         std::string enemyName(lua_tostring(L, 1));
-        auto spawnTime = (int)lua_tonumber(L, 2);
-        auto startPositionY = (float)lua_tonumber(L, 3);
-        auto startPositionX = (float)lua_tonumber(L, 4);
-        auto enemyHp = (int)lua_tonumber(L, 5);
+        auto spawnTime = (int) lua_tonumber(L, 2);
+        auto startPositionY = (float) lua_tonumber(L, 3);
+        auto startPositionX = (float) lua_tonumber(L, 4);
+        auto enemyHp = (int) lua_tonumber(L, 5);
 
         manager->_registerSpawnEnemy(enemyName, spawnTime, startPositionY, startPositionX, enemyHp);
         return 0;
     };
 
     auto instantiatePrefab = [](lua_State* L) -> int {
-        auto* manager = (MapScript*)lua_touserdata(L, lua_upvalueindex(1));
+        auto* manager = (MapScript*) lua_touserdata(L, lua_upvalueindex(1));
 
         std::string prefabName(lua_tostring(L, 1));
-        auto startPositionY = (float)lua_tonumber(L, 2);
-        auto startPositionX = (float)lua_tonumber(L, 3);
+        auto startPositionY = (float) lua_tonumber(L, 2);
+        auto startPositionX = (float) lua_tonumber(L, 3);
 
         manager->_instanciatePrefab(prefabName, startPositionY, startPositionX);
         return 0;
@@ -164,11 +164,6 @@ void MapScript::verifScript() {
         throw LuaException("Map description is not set or empty");
     }
 
-    // TODO: Transform this into avalaible
-    if (isLoadedByServer && !newEnemies.empty()) {
-        throw LuaException("Modded map is not supported by server");
-    }
-
     for (auto& enemy : newEnemies) {
         checkNewEnemy(enemy);
     }
@@ -217,7 +212,7 @@ void MapScript::createNewEnemy(Script::Enemy* enemy) {
             networkTransformComponent->setActiveLateUpdate(true);
             enemyObject->addComponent(networkTransformComponent);
 
-            auto controller = std::make_shared<EnemyController>(this, enemyObject);
+            auto controller = std::make_shared<EnemyController>(enemyObject);
             enemyObject->addComponent(controller);
 
             auto collider = std::make_shared<KapEngine::Collider>(enemyObject, true);
@@ -320,8 +315,8 @@ void MapScript::_instanciatePrefab(const std::string& prefabName, float position
             return;
         }
 
-        networkManager->getServer()->spawnObject(prefabName, {positionX, positionY, 0},
-            [](const std::shared_ptr<KapEngine::GameObject>& go) {}, gameObject);
+        networkManager->getServer()->spawnObject(
+            prefabName, {positionX, positionY, 0}, [](const std::shared_ptr<KapEngine::GameObject>& go) {}, gameObject);
     } else {
         if (!engine.getPrefabManager()->instantiatePrefab(prefabName, scene, gameObject)) {
             KapEngine::Debug::error("Can't instanciate prefab: " + prefabName);
@@ -351,12 +346,18 @@ KapEngine::Tools::Vector3 MapScript::_updateEnemy(const std::string& enemyName, 
     lua_pushnumber(L, position.getY());
 
     long long time = KapMirror::NetworkTime::localTime();
-    lua_pushnumber(L, (double)time);
+    lua_pushnumber(L, (double) time);
 
     lua_pcall(L, 4, 2, 0);
 
+    if (!lua_isnumber(L, -2) || !lua_isnumber(L, -1)) {
+        return position;
+    }
+
     float posX = lua_tonumber(L, -2);
     float posY = lua_tonumber(L, -1);
+
+    lua_pop(L, 2);
 
     return {posX, posY, 0};
 }
@@ -381,8 +382,8 @@ void MapScript::closeScript() {
 }
 
 void MapScript::destroyPrefabEnemies() {
-    for (auto& enemy : spawnEnemies) {
-        engine.getPrefabManager()->removePrefab("Enemy:" + enemy.name);
+    for (auto& enemy : newEnemies) {
+        engine.getPrefabManager()->removePrefab("Enemy:" + enemy->name);
     }
 }
 
@@ -397,14 +398,20 @@ void MapScript::spawnEnemy(KapEngine::SceneManagement::Scene& scene, const std::
             return;
         }
 
-        networkManager->getServer()->spawnObject("Enemy:" + enemyName, {startPositionX, startPositionY, 0},
-            [&enemyName, &enemyHp](const std::shared_ptr<KapEngine::GameObject>& go) {
-                if (go->hasComponent<EnemyController>()) {
-                    auto& controller = go->getComponent<EnemyController>();
-                    controller.setEnemyName(enemyName);
-                    controller.setHp(enemyHp);
+        networkManager->getServer()->spawnObject(
+            "Enemy:" + enemyName, {startPositionX, startPositionY, 0},
+            [this, &enemyName, &enemyHp](const std::shared_ptr<KapEngine::GameObject>& go) {
+                for (auto& component : go->getAllComponents()) {
+                    auto controller = std::dynamic_pointer_cast<EnemyController>(component);
+                    if (controller) {
+                        controller->setMapScript(this);
+                        controller->setEnemyName(enemyName);
+                        controller->setHp(enemyHp);
+                        break;
+                    }
                 }
-            },enemy);
+            },
+            enemy);
     } else {
         if (!engine.getPrefabManager()->instantiatePrefab("Enemy:" + enemyName, scene, enemy)) {
             KapEngine::Debug::error("Can't spawn enemy: " + enemyName + " (Prefab: 'Enemy:" + enemyName + "' not found)");
@@ -414,10 +421,14 @@ void MapScript::spawnEnemy(KapEngine::SceneManagement::Scene& scene, const std::
         auto& transform = enemy->getComponent<KapEngine::Transform>();
         transform.setPosition({startPositionX, startPositionY, 0});
 
-        if (enemy->hasComponent<EnemyController>()) {
-            auto& controller = enemy->getComponent<EnemyController>();
-            controller.setEnemyName(enemyName);
-            controller.setHp(enemyHp);
+        for (auto& component : enemy->getAllComponents()) {
+            auto controller = std::dynamic_pointer_cast<EnemyController>(component);
+            if (controller) {
+                controller->setMapScript(this);
+                controller->setEnemyName(enemyName);
+                controller->setHp(enemyHp);
+                break;
+            }
         }
     }
 }
@@ -430,3 +441,5 @@ Script::Enemy* MapScript::getNewEnemy(const std::string& enemyName) {
     }
     return nullptr;
 }
+
+bool MapScript::isModded() const { return !newEnemies.empty(); }

@@ -11,7 +11,7 @@
 #include "Menu/EndMenu.hpp"
 #include "CampaignGenerator/CampaignGenerator.hpp"
 #include "Player/PlayerSkin.hpp"
-#include "Campaign/CampaignManager.hpp"
+#include "Campaign/MapManager.hpp"
 #include "KapMirror/Experimental/Compressions/GZip/GZipCompression.hpp"
 
 #include "Sylph/SylphTransport.hpp"
@@ -38,7 +38,6 @@ void RType::GameManager::launchGame() {
 
     // Show main menu
     menuManager.showMenu("MainMenu");
-    menuManager.showMenu("EndMenu");
 
     engine->getGraphicalLibManager()->getCurrentLib()->playMusic("Assets/Sound/Music/space-asteroids.mp3");
     engine->getGraphicalLibManager()->getCurrentLib()->setMusicVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
@@ -68,8 +67,7 @@ void RType::GameManager::registerPrefabs() {
 
     Prefabs::registerInGameMenuPrefab(*engine);
 
-    // Enemies
-    Prefabs::registerShipEnemyPrefab(*engine);
+    // Default Enemies
     Prefabs::registerBoubouleEnemyPrefab(*engine);
     Prefabs::registerTentaclesBossEnemyPrefab(*engine);
 
@@ -143,8 +141,6 @@ void RType::GameManager::initSinglePlayer() {
         return;
     }
 
-    player->getComponent<PlayerSkin>().setSkinId(player->getComponent<PlayerSkin>().getSkinId());
-
     auto& transform = player->getComponent<KapEngine::Transform>();
     transform.setPosition({0, 0, 0});
 
@@ -157,8 +153,9 @@ void RType::GameManager::initSinglePlayer() {
         return;
     }
 
-    auto campaignManager = std::make_shared<CampaignManager>(gameMenu);
-    gameMenu->addComponent(campaignManager);
+    auto mapManagerObject = scene->createGameObject("MapManager");
+    auto mapManager = std::make_shared<MapManager>(mapManagerObject);
+    mapManagerObject->addComponent(mapManager);
 }
 
 // TODO: Move this to a dedicated class
@@ -189,6 +186,10 @@ void RType::GameManager::initMultiPlayer(bool isServer) {
     networkManager->setCompression(std::make_shared<KapMirror::Experimental::GZipCompression>());
     networkManagerObject->addComponent(networkManager);
 
+    auto mapManagerObject = scene->createGameObject("MapManager");
+    auto mapManager = std::make_shared<MapManager>(mapManagerObject);
+    mapManagerObject->addComponent(mapManager);
+
     if (!isServer) {
         std::shared_ptr<GameObject> gameMenu;
         if (!engine->getPrefabManager()->instantiatePrefab("InGameMenu", *scene, gameMenu)) {
@@ -207,12 +208,19 @@ void RType::GameManager::initMultiPlayer(bool isServer) {
 }
 
 // TODO: Move this to a dedicated class
-void RType::GameManager::startCampaign() {
-    auto& scene = engine->getSceneManager()->getScene("SinglePlayer");
+void RType::GameManager::startCampaign(const std::string& pathMap) {
+    auto scene = engine->getSceneManager()->getScene("SinglePlayer");
 
-    auto enemies = scene.createGameObject("Enemies Generator");
-    auto compEnemies = std::make_shared<CampaignGenerator>(enemies);
-    enemies->addComponent(compEnemies);
+    engine->getSceneManager()->loadScene("SinglePlayer");
+
+    auto mapManager = scene.findFirstGameObject("MapManager");
+    if (mapManager == nullptr) {
+        KAP_DEBUG_ERROR("Failed to find MapManager");
+        return;
+    }
+
+    auto& mapManagerComponent = mapManager->getComponent<MapManager>();
+    mapManagerComponent.loadMapScript(pathMap, false);
 }
 
 // TODO: Move this to a dedicated class
@@ -238,13 +246,13 @@ void RType::GameManager::toggleDebugMode() {
     debugMode = !debugMode;
 
     if (debugMode) {
-        KAP_DEBUG_LOG("Debug mode enabled.");
+        KapEngine::Debug::log("Debug mode enabled.");
     } else {
-        KAP_DEBUG_LOG("Debug mode disabled.");
+        KapEngine::Debug::log("Debug mode disabled.");
     }
 }
 
-bool RType::GameManager::hasDebugMode() { return debugMode; }
+bool RType::GameManager::hasDebugMode() const { return debugMode; }
 
 void RType::GameManager::initAxis() {
     KapEngine::Events::Input::Axis horizontal("Horizontal");

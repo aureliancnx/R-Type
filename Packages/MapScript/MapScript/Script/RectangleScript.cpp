@@ -35,10 +35,10 @@ void Rectangle::initScript(lua_State* L) {
 }
 
 int Rectangle::__create(lua_State* L) {
-    auto x = (float)lua_tonumber(L, 1);
-    auto y = (float)lua_tonumber(L, 2);
-    auto w = (float)lua_tonumber(L, 3);
-    auto h = (float)lua_tonumber(L, 4);
+    auto x = (float) lua_tonumber(L, 1);
+    auto y = (float) lua_tonumber(L, 2);
+    auto w = (float) lua_tonumber(L, 3);
+    auto h = (float) lua_tonumber(L, 4);
     lua_pop(L, 4);
 
     void* ptr = lua_newuserdata(L, sizeof(Rectangle));
@@ -49,7 +49,7 @@ int Rectangle::__create(lua_State* L) {
     lua_newtable(L);
     lua_setuservalue(L, 1);
 
-    auto* rect = (Rectangle*)ptr;
+    auto* rect = (Rectangle*) ptr;
     rect->x = x;
     rect->y = y;
     rect->w = w;
@@ -58,13 +58,13 @@ int Rectangle::__create(lua_State* L) {
 }
 
 int Rectangle::__destroy(lua_State* L) {
-    auto* rect = (Rectangle*)lua_touserdata(L, -1);
+    auto* rect = (Rectangle*) lua_touserdata(L, -1);
     rect->~Rectangle();
     return 0;
 }
 
 int Rectangle::__index(lua_State* L) {
-    auto* rect = (Rectangle*)lua_touserdata(L, -2);
+    auto* rect = (Rectangle*) lua_touserdata(L, -2);
     std::string index(lua_tostring(L, -1));
     if (index == "x") {
         lua_pushnumber(L, rect->x);
@@ -95,22 +95,22 @@ int Rectangle::__index(lua_State* L) {
 }
 
 int Rectangle::__newIndex(lua_State* L) {
-    auto* rect = (Rectangle*)lua_touserdata(L, -3);
+    auto* rect = (Rectangle*) lua_touserdata(L, -3);
     std::string index(lua_tostring(L, -2));
     if (index == "x") {
-        rect->x = (float)lua_tonumber(L, -1);
+        rect->x = (float) lua_tonumber(L, -1);
         return 0;
     }
     if (index == "y") {
-        rect->y = (float)lua_tonumber(L, -1);
+        rect->y = (float) lua_tonumber(L, -1);
         return 0;
     }
     if (index == "w") {
-        rect->w = (float)lua_tonumber(L, -1);
+        rect->w = (float) lua_tonumber(L, -1);
         return 0;
     }
     if (index == "h") {
-        rect->h = (float)lua_tonumber(L, -1);
+        rect->h = (float) lua_tonumber(L, -1);
         return 0;
     }
 
@@ -122,7 +122,7 @@ int Rectangle::__newIndex(lua_State* L) {
 }
 
 int Rectangle::__dump(lua_State* L) {
-    auto* rect = (Rectangle*)lua_touserdata(L, -1);
+    auto* rect = (Rectangle*) lua_touserdata(L, -1);
     rect->dump();
     return 0;
 }

@@ -13,11 +13,11 @@ namespace RType {
         std::string tmpCanvasToDisplay = "";
 
       public:
-        Menu(KapEngine::SceneManagement::Scene& _scene) : engine(_scene.getEngine()), scene(_scene) {}
+        explicit Menu(KapEngine::SceneManagement::Scene& _scene) : engine(_scene.getEngine()), scene(_scene) {}
 
         ~Menu() = default;
 
-        void __initCanvas(std::string name) {
+        void __initCanvas(const std::string& name) {
             canvas = KapEngine::UI::UiFactory::createCanvas(scene, "Canvas" + name);
             canvas->setActive(false);
         }

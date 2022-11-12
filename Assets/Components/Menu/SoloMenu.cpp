@@ -1,8 +1,6 @@
 #include "SoloMenu.hpp"
 #include "KapUI/KapUI.hpp"
-#include "Keys/UpdateStartGameKeys.hpp"
 #include "Campaign/MenuCampaignSelector.hpp"
-#include "MapScript/MapScript.hpp"
 
 #include "KapEngine.hpp"
 
@@ -307,7 +305,7 @@ void SoloMenu::init() {
 #else
     // create MenuCampaigne
     {
-        auto menuCampaignComp = std::make_shared<MenuCampaignSelector>(canvas, &engine);
+        auto menuCampaignComp = std::make_shared<MenuCampaignSelector>(canvas, gameManager);
         canvas->addComponent(menuCampaignComp);
     }
 

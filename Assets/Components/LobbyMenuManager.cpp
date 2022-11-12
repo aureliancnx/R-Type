@@ -56,48 +56,52 @@ void RType::LobbyMenuManager::initLobbyMenu(bool local) {
 
     auto& scene = getGameObject().getScene();
 
-    // Ready button
+    // Ready / Play button
     {
         std::shared_ptr<GameObject> btn;
 
         if (local)
-            btn = initButton(lobbyMenu, "Play", "Play", [this]() { KAP_DEBUG_LOG("Run Game"); }, "Assets/Textures/button.png", {5, 9, 655, 213});
+            btn = initButton(lobbyMenu, "Play", "Play", [this]() { KAP_DEBUG_WARNING("Play"); }, "Assets/Textures/button.png", {5, 9, 655, 213});
         else if (isClient())
-            btn = initButton(lobbyMenu, "Ready", "Ready", [this]() { KAP_DEBUG_LOG("Ready"); }, "Assets/Textures/button.png", {5, 9, 655, 213});
+            btn = initButton(lobbyMenu, "Ready", "Ready", [this]() { KAP_DEBUG_WARNING("Ready"); }, "Assets/Textures/button.png", {5, 9, 655, 213});
 
-        auto &btnTransform = btn->getComponent<Transform>();
-        btnTransform.setScale(btnSize);
-        btnTransform.setPosition(btnBasePos);
+        auto& tr = btn->getComponent<Transform>();
+
+        tr.setScale(btnSize);
+        tr.setPosition(btnBasePos);
     }
 
-    // Map name
+    // Text for input map
     {
-        Tools::Vector3 btnSize = {80.f / getEngine().getScreenSize().getX(), 80.f / 90.f, 0};
-        Tools::Vector3 calculatedPos;
-        calculatedPos.setX(getEngine().getScreenSize().getX() - 80.0f - 10);
-        calculatedPos.setY(5);
-
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Choose map");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Enter the map name : ");
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Choose Map Text");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Enter map name : ");
         auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
+        Tools::Vector3 calculatedPos;
+        calculatedPos.setX(getEngine().getScreenSize().getX() - 80.0f - 250);
+        calculatedPos.setY(40);
+
         txt->addComponent(compText);
-        float size = getEngine().getScreenSize().getX() / 2;
-        transform.setScale({size, size, 0});
-        transform.setPosition({size, 90 / 2, 0});
+        transform.setScale({150, 35, 0});
+        transform.setPosition(calculatedPos);
         transform.setParent(lobbyMenu->getId());
+    }
 
-        {
-            auto inpt = scene.createGameObject("InputFieldMap");
-            auto inptComp = std::make_shared<KapEngine::UI::Inputfield>(inpt);
+    // Input map
+    {
+        auto inpt = scene.createGameObject("InputFieldMap");
+        auto inptComp = std::make_shared<KapEngine::UI::Inputfield>(inpt);
 
-            inpt->addComponent(inptComp);
+        inpt->addComponent(inptComp);
 
-            auto& transform = inpt->getComponent<KapEngine::Transform>();
-            transform.setPosition(calculatedPos);
-            transform.setScale(btnSize);
-            transform.setParent(lobbyMenu->getId());
-        }
+        Tools::Vector3 calculatedPos;
+        calculatedPos.setX(getEngine().getScreenSize().getX() - 80.0f - 100);
+        calculatedPos.setY(5);
+
+        auto& transform = inpt->getComponent<KapEngine::Transform>();
+        transform.setScale(btnSize);
+        transform.setPosition(calculatedPos);
+        transform.setParent(lobbyMenu->getId());
     }
 
 }

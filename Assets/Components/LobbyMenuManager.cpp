@@ -27,13 +27,9 @@ RType::LobbyMenuManager::LobbyMenuManager(std::shared_ptr<KapEngine::GameObject>
     go->setName("MenuManager");
 }
 
-void RType::LobbyMenuManager::onStart() {
-    initLobbyMenu();
-}
+void RType::LobbyMenuManager::onStart() { initLobbyMenu(); }
 
-void RType::LobbyMenuManager::onStartClient() {
-    initLobbyMenu(false);
-}
+void RType::LobbyMenuManager::onStartClient() { initLobbyMenu(false); }
 
 void RType::LobbyMenuManager::initBackground(std::shared_ptr<KapEngine::GameObject> parent) {
     auto background = parent->getScene().createGameObject("Background");

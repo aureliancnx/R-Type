@@ -44,6 +44,7 @@ namespace RType {
         bool _bulletReset = false;
         int _nbShoot = 0;
         bool _canShoot = true;
+        int _shipAnimation = 0;
 
         // Functions
         void init(std::shared_ptr<KapEngine::GameObject> gameObject);

@@ -187,8 +187,9 @@ void RType::GameManager::initMultiPlayer(bool isServer) {
     networkManager->setCompression(std::make_shared<KapMirror::Experimental::GZipCompression>());
     networkManagerObject->addComponent(networkManager);
 
-    auto mapManager = std::make_shared<MapManager>(networkManagerObject);
-    networkManagerObject->addComponent(mapManager);
+    auto mapManagerObject = scene->createGameObject("MapManager");
+    auto mapManager = std::make_shared<MapManager>(mapManagerObject);
+    mapManagerObject->addComponent(mapManager);
 
     if (!isServer) {
         std::shared_ptr<GameObject> gameMenu;
@@ -214,6 +215,11 @@ void RType::GameManager::startCampaign(const std::string& pathMap) {
     engine->getSceneManager()->loadScene("SinglePlayer");
 
     auto mapManager = scene.findFirstGameObject("MapManager");
+    if (mapManager == nullptr) {
+        KAP_DEBUG_ERROR("Failed to find MapManager");
+        return;
+    }
+
     auto& mapManagerComponent = mapManager->getComponent<MapManager>();
     mapManagerComponent.loadMapScript(pathMap);
 }

@@ -58,6 +58,6 @@ namespace RType {
 
         void onServerPlayerPingRequest(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection, PlayerPingRequest& request);
 
-        void startGame();
+        void startGame(const std::string& mapScriptPath);
     };
 } // namespace RType

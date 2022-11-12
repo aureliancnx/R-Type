@@ -10,11 +10,14 @@ MapManager::~MapManager() {
     if (mapScript != nullptr) {
         mapScript->closeScript();
     }
+    isLoaded = false;
 }
 
 void MapManager::loadMapScript(const std::string& path, bool isServer) {
     mapScript = std::make_shared<MapScript>(&getEngine(), isServer);
     mapScript->loadScript(path);
+
+    isLoaded = true;
 
     KapEngine::Debug::log("MapScript loaded");
     KapEngine::Debug::log("Map Name: " + mapScript->getName());
@@ -24,12 +27,11 @@ void MapManager::loadMapScript(const std::string& path, bool isServer) {
 }
 
 void MapManager::onFixedUpdate() {
-    long long time = KapMirror::NetworkTime::localTime();
-
-    if (enemies.empty()) {
+    if (!isLoaded || enemies.empty()) {
         return;
     }
 
+    long long time = KapMirror::NetworkTime::localTime();
     std::vector<int> toRemove;
     for (int i = 0; i < enemies.size(); i++) {
         const SpawnEnemy& enemy = enemies[i];

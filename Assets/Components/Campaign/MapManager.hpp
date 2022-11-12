@@ -6,6 +6,8 @@
 namespace RType {
     class MapManager : public KapEngine::Component {
       private:
+        bool isLoaded = false;
+
         std::shared_ptr<MapScript> mapScript = nullptr;
         std::vector<SpawnEnemy> enemies;
         long long lastUpdate = 0;

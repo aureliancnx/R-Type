@@ -156,18 +156,11 @@ void RType::HowToPlayMenu::initFightAnimation() {
 
     // create ship sprite animation
     try {
-        auto shipIdle = std::make_shared<SpriteAnimation>(ship);
-        ship->addComponent(shipIdle);
-
-        KapEngine::Time::ETime timer;
-        timer.setSeconds(.1f);
-        shipIdle->setTiming(timer);
-        shipIdle->setRect({263 * 2, 0, 263, 116});
-        shipIdle->setNbAnimations(1);
-
         auto shipUp = std::make_shared<SpriteAnimation>(ship);
         ship->addComponent(shipUp);
 
+        KapEngine::Time::ETime timer;
+        timer.setSeconds(.1f);
         shipUp->setTiming(timer);
         shipUp->setRect({263 * 4, 0, 263, 116});
         shipUp->setNbAnimations(1);

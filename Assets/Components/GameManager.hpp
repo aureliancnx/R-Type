@@ -49,7 +49,7 @@ namespace RType {
 
         void startCampaign(const std::string& pathMap);
 
-        bool hasDebugMode();
+        bool hasDebugMode() const;
 
         void toggleDebugMode();
 

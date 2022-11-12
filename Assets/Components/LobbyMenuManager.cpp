@@ -57,34 +57,47 @@ void RType::LobbyMenuManager::initLobbyMenu(bool local) {
     auto& scene = getGameObject().getScene();
 
     // Ready button
-//    {
-//        std::shared_ptr<GameObject> btn;
-//
-//        if (local)
-//            btn = initButton(lobbyMenu, "Ready", "Ready", [this]() { KAP_DEBUG_LOG("Run Game"); }, "Assets/Textures/button.png", {0, 0, 256, 256});
-//        else if (isClient())
-//            btn = initButton(lobbyMenu, "Ready", "Ready", [this]() { KAP_DEBUG_LOG("Ready"); }, "Assets/Textures/button.png", {0, 0, 256, 256});
-//
-//        auto &btnTransform = btn->getComponent<Transform>();
-//        btnTransform.setScale(btnSize);
-//        btnTransform.setPosition(btnBasePos);
-//    }
+    {
+        std::shared_ptr<GameObject> btn;
+
+        if (local)
+            btn = initButton(lobbyMenu, "Play", "Play", [this]() { KAP_DEBUG_LOG("Run Game"); }, "Assets/Textures/button.png", {5, 9, 655, 213});
+        else if (isClient())
+            btn = initButton(lobbyMenu, "Ready", "Ready", [this]() { KAP_DEBUG_LOG("Ready"); }, "Assets/Textures/button.png", {5, 9, 655, 213});
+
+        auto &btnTransform = btn->getComponent<Transform>();
+        btnTransform.setScale(btnSize);
+        btnTransform.setPosition(btnBasePos);
+    }
 
     // Map name
     {
-        std::string mapName = "name";
-        auto txt = KapEngine::UI::UiFactory::createText(scene, "Map: " + mapName);
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Change your settings");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        Tools::Vector3 btnSize = {80.f / getEngine().getScreenSize().getX(), 80.f / 90.f, 0};
+        Tools::Vector3 calculatedPos;
+        calculatedPos.setX(getEngine().getScreenSize().getX() - 80.0f - 10);
+        calculatedPos.setY(5);
 
-        compText->setPoliceSize(20);
-        compText->setTextColor(Tools::Color::red());
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Choose map");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Enter the map name : ");
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         float size = getEngine().getScreenSize().getX() / 2;
         transform.setScale({size, size, 0});
         transform.setPosition({size, 90 / 2, 0});
         transform.setParent(lobbyMenu->getId());
+
+        {
+            auto inpt = scene.createGameObject("InputFieldMap");
+            auto inptComp = std::make_shared<KapEngine::UI::Inputfield>(inpt);
+
+            inpt->addComponent(inptComp);
+
+            auto& transform = inpt->getComponent<KapEngine::Transform>();
+            transform.setPosition(calculatedPos);
+            transform.setScale(btnSize);
+            transform.setParent(lobbyMenu->getId());
+        }
     }
 
 }
@@ -125,10 +138,12 @@ std::shared_ptr<KapEngine::GameObject> RType::LobbyMenuManager::initButton(std::
 #else
     auto btnComp = KapEngine::UI::KapUiFactory::createButton(button, text, callback, color, textColor);
     btnComp->setBackground(pathSprite, rect);
+    btnComp->setTextPosition({25, 12});
 #endif
 
     try {
         button->getComponent<Transform>().setParent(parent->getId());
+        button->getComponent<Transform>().setScale({100, 230, 0});
     } catch (...) { KAP_DEBUG_ERROR("Failled to set button " + name + " parent"); }
     return button;
 }

@@ -16,7 +16,7 @@
 
 #include "Sylph/SylphTransport.hpp"
 #include "Prefabs.hpp"
-#include "NetStatViewer.hpp"
+#include "Network/NetStatViewer.hpp"
 
 RType::GameManager* RType::GameManager::instance = nullptr;
 

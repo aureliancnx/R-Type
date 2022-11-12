@@ -222,13 +222,11 @@ var NAVTREEINDEX6 =
 "classRType_1_1GameMenuManager.html":[38,0,5,10],
 "classRType_1_1GameMenuManager.html#a1a438980f3d4f239d37f2b9be6e01364":[38,0,5,10,1],
 "classRType_1_1GameMenuManager.html#a1c21965c04d9a3662e9fc39c5280f89a":[38,0,5,10,0],
-"classRType_1_1GameMenuManager.html#a8ada885ad8df988e5050f8bb4183a7ca":[38,0,5,10,6],
-"classRType_1_1GameMenuManager.html#a91afb2ad78c929bb950c6d3f9727cd5f":[38,0,5,10,2],
-"classRType_1_1GameMenuManager.html#aa34dff9b5733314cd89492dad8e3dc38":[38,0,5,10,3],
-"classRType_1_1GameMenuManager.html#aaff6f182115cfa9396c6f59286cabc81":[38,0,5,10,8],
-"classRType_1_1GameMenuManager.html#acfc81ca1aed37a0f83bb97199b605b27":[38,0,5,10,7],
-"classRType_1_1GameMenuManager.html#ae13fa7d409f59a60f860bd0f094b8f26":[38,0,5,10,4],
-"classRType_1_1GameMenuManager.html#ae5fd7e9f32056a29640a9e996c16c232":[38,0,5,10,5],
+"classRType_1_1GameMenuManager.html#a8ada885ad8df988e5050f8bb4183a7ca":[38,0,5,10,4],
+"classRType_1_1GameMenuManager.html#aa34dff9b5733314cd89492dad8e3dc38":[38,0,5,10,2],
+"classRType_1_1GameMenuManager.html#aa6b391a42dbc571c796450bddf3b5fbb":[38,0,5,10,6],
+"classRType_1_1GameMenuManager.html#acfc81ca1aed37a0f83bb97199b605b27":[38,0,5,10,5],
+"classRType_1_1GameMenuManager.html#ae13fa7d409f59a60f860bd0f094b8f26":[38,0,5,10,3],
 "classRType_1_1HowToPlayAnimation.html":[38,0,5,11],
 "classRType_1_1HowToPlayAnimation.html#a23b7b087c42516caa88ee01cf860f582":[38,0,5,11,5],
 "classRType_1_1HowToPlayAnimation.html#a2b6159c44ad438489cdc717208b95cee":[38,0,5,11,1],
@@ -249,5 +247,7 @@ var NAVTREEINDEX6 =
 "classRType_1_1KeySelector.html#a7f2189986a299b443b64b081e8d0df44":[38,0,5,14,0],
 "classRType_1_1KeySelector.html#ac1d7b255fe12890d0feb2b74d96cda69":[38,0,5,14,2],
 "classRType_1_1KeySelector.html#ac64178b0834503e266ec164a09c2796b":[38,0,5,14,4],
-"classRType_1_1KeyboardMenu.html":[38,0,5,13]
+"classRType_1_1KeyboardMenu.html":[38,0,5,13],
+"classRType_1_1KeyboardMenu.html#a0120102cfbeac32a6a6a1465b07dbbc7":[38,0,5,13,0],
+"classRType_1_1KeyboardMenu.html#a7b9c22778d7e5d52f2d73878743a5ff0":[38,0,5,13,2]
 };

@@ -1,7 +1,5 @@
 var NAVTREEINDEX7 =
 {
-"classRType_1_1KeyboardMenu.html#a0120102cfbeac32a6a6a1465b07dbbc7":[38,0,5,13,0],
-"classRType_1_1KeyboardMenu.html#a7b9c22778d7e5d52f2d73878743a5ff0":[38,0,5,13,2],
 "classRType_1_1KeyboardMenu.html#aacb4969d87e369b955e51bcf1809685a":[38,0,5,13,1],
 "classRType_1_1LuaException.html":[38,0,5,15],
 "classRType_1_1LuaException.html#a03f27f6118be565bae5b14927daafd71":[38,0,5,15,1],
@@ -249,5 +247,7 @@ var NAVTREEINDEX7 =
 "classRType_1_1VolumeMenu.html#ab7d01fe1cc514e1d0a0dbfd772c7d78f":[38,0,5,46,1],
 "classTracedException.html":[38,0,12],
 "classTracedException.html#a18ee3dec8f7e720c9e39043187193e75":[38,0,12,0],
-"classbackward_1_1Colorize.html":[38,0,0,2]
+"classbackward_1_1Colorize.html":[38,0,0,2],
+"classbackward_1_1Colorize.html#a292685cb3eb1d1ae5779e239b0d05ce6":[38,0,0,2,1],
+"classbackward_1_1Colorize.html#a952bae33e9e382a19cde094266858a1c":[38,0,0,2,0]
 };

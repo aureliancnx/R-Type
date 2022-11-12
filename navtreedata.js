@@ -399,10 +399,10 @@ var NAVTREEINDEX =
 "classKapEngine_1_1Tools_1_1Rectangle.html#a3dc1cccb255e390384d60f899796ff8e",
 "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#ab8b2cc97d7c585bbd8f2707f5f31098e",
 "classKapMirror_1_1Sylph_1_1SocketException.html",
-"classRType_1_1KeyboardMenu.html#a0120102cfbeac32a6a6a1465b07dbbc7",
-"classbackward_1_1Colorize.html#a292685cb3eb1d1ae5779e239b0d05ce6",
-"imgui__impl__opengl2_8hpp_source.html",
-"md_doxygen-awesome-css_README.html#autotoc_md67"
+"classRType_1_1KeyboardMenu.html#aacb4969d87e369b955e51bcf1809685a",
+"classbackward_1_1Colorize.html#ad1171b299febf4e9a72616642f5cc5ce",
+"index.html#autotoc_md257",
+"md_doxygen-awesome-css_docs_customization.html#autotoc_md29"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

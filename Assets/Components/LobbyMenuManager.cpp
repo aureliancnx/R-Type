@@ -38,7 +38,7 @@ void RType::LobbyMenuManager::initBackground(std::shared_ptr<KapEngine::GameObje
 
     auto backgroundImage = std::make_shared<UI::Image>(background);
     Tools::Color color = Tools::Color::grey();
-    color.setA(126);
+    color.setA(255);
     backgroundImage->setColor(color);
     background->addComponent(backgroundImage);
 }

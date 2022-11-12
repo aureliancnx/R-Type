@@ -20,7 +20,7 @@ namespace RType {
         long long lastRefreshTime = 0;
         long long lastPingTime = 0;
 
-        std::shared_ptr<GameMenuManager> menuManager;
+        GameMenuManager* menuManager = nullptr;
         KapEngine::Time::EClock clockMissile;
 
         KapEngine::Events::Key::EKey upKey = KapEngine::Events::Key::UP;

@@ -61,14 +61,12 @@ void RType::LobbyMenuManager::initLobbyMenu(bool local) {
         std::shared_ptr<GameObject> btn;
 
         if (isLocal()) {
-            btn = initButton(lobbyMenu, "Play", "Play", [this]() {
-                KAP_DEBUG_WARNING("Play");
-            }, "Assets/Textures/button.png", {5, 9, 655, 213});
+            btn = initButton(lobbyMenu, "Play", "Play", [this]() { KAP_DEBUG_WARNING("Play"); }, "Assets/Textures/button.png",
+                             {5, 9, 655, 213});
         }
         if (isClient()) {
-            btn = initButton(lobbyMenu, "Ready", "Ready", [this]() {
-                KAP_DEBUG_WARNING("Ready");
-            }, "Assets/Textures/button.png", {5, 9, 655, 213});
+            btn = initButton(lobbyMenu, "Ready", "Ready", [this]() { KAP_DEBUG_WARNING("Ready"); }, "Assets/Textures/button.png",
+                             {5, 9, 655, 213});
         }
         auto& tr = btn->getComponent<Transform>();
 

@@ -57,25 +57,27 @@ void RType::LobbyMenuManager::initLobbyMenu(bool local) {
     auto& scene = getGameObject().getScene();
 
     // Ready button
-//    {
-//        std::shared_ptr<GameObject> btn;
-//
-//        if (local)
-//            btn = initButton(lobbyMenu, "Ready", "Ready", [this]() { KAP_DEBUG_LOG("Run Game"); }, "Assets/Textures/button.png", {0, 0, 256, 256});
-//        else if (isClient())
-//            btn = initButton(lobbyMenu, "Ready", "Ready", [this]() { KAP_DEBUG_LOG("Ready"); }, "Assets/Textures/button.png", {0, 0, 256, 256});
-//
-//        auto &btnTransform = btn->getComponent<Transform>();
-//        btnTransform.setScale(btnSize);
-//        btnTransform.setPosition(btnBasePos);
-//    }
+    //    {
+    //        std::shared_ptr<GameObject> btn;
+    //
+    //        if (local)
+    //            btn = initButton(lobbyMenu, "Ready", "Ready", [this]() { KAP_DEBUG_LOG("Run Game"); }, "Assets/Textures/button.png", {0,
+    //            0, 256, 256});
+    //        else if (isClient())
+    //            btn = initButton(lobbyMenu, "Ready", "Ready", [this]() { KAP_DEBUG_LOG("Ready"); }, "Assets/Textures/button.png", {0, 0,
+    //            256, 256});
+    //
+    //        auto &btnTransform = btn->getComponent<Transform>();
+    //        btnTransform.setScale(btnSize);
+    //        btnTransform.setPosition(btnBasePos);
+    //    }
 
     // Map name
     {
         std::string mapName = "name";
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Map: " + mapName);
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Change your settings");
-        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         compText->setPoliceSize(20);
         compText->setTextColor(Tools::Color::red());
@@ -86,7 +88,6 @@ void RType::LobbyMenuManager::initLobbyMenu(bool local) {
         transform.setPosition({size, 90 / 2, 0});
         transform.setParent(lobbyMenu->getId());
     }
-
 }
 
 std::shared_ptr<KapEngine::GameObject> RType::LobbyMenuManager::initButton(std::shared_ptr<KapEngine::GameObject> parent, std::string name,

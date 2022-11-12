@@ -40,7 +40,6 @@ namespace RType {
         _explosionInvert2 = false;
         _bulletReset = false;
         _canShoot = true;
-        _shipAnimation = false;
         _nbShoot = 0;
     }
 

@@ -76,9 +76,9 @@ end
 
 -- Spawn enemies
 for i = 1, 3 do
-    Map.SpawnEnemy("Bouboule", 1, 100 + (60 * i), 100, 10)
+    Map.SpawnEnemy("Bouboule", 1, 100 + (60 * i), 0, 10)
 end
 
-Map.SpawnEnemy("RedShip", 8, Math.Random(200, 400), 10, 50)
+Map.SpawnEnemy("RedShip", 8, Math.Random(200, 400), 0, 50)
 
 Map.SpawnEnemy("TentacleBoss", 15, 300, 200, 100)

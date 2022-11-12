@@ -430,10 +430,13 @@ void RType::HowToPlayMenu::initKeyboardInput() {
     {
         std::string inputUp = "UNDEFINED";
         int value = KapEngine::PlayerPrefs::getInt("upInput");
+
         if (KapEngine::Events::Key::intInEnum(value)) {
             KapEngine::Events::Key inputKey;
             inputKey = (KapEngine::Events::Key::EKey) value;
             inputUp = inputKey.toString();
+        } else {
+            inputUp = "UP";
         }
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move up");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, inputUp);
@@ -453,6 +456,8 @@ void RType::HowToPlayMenu::initKeyboardInput() {
             KapEngine::Events::Key inputKey;
             inputKey = (KapEngine::Events::Key::EKey) value;
             inputDown = inputKey.toString();
+        } else {
+            inputDown = "DOWN";
         }
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move Down");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, inputDown);
@@ -472,6 +477,8 @@ void RType::HowToPlayMenu::initKeyboardInput() {
             KapEngine::Events::Key inputKey;
             inputKey = (KapEngine::Events::Key::EKey) value;
             inputLeft = inputKey.toString();
+        } else {
+            inputLeft = "LEFT";
         }
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move Left");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, inputLeft);
@@ -491,6 +498,8 @@ void RType::HowToPlayMenu::initKeyboardInput() {
             KapEngine::Events::Key inputKey;
             inputKey = (KapEngine::Events::Key::EKey) value;
             inputRight = inputKey.toString();
+        } else {
+            inputRight = "RIGHT";
         }
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move Right");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, inputRight);
@@ -510,6 +519,8 @@ void RType::HowToPlayMenu::initKeyboardInput() {
             KapEngine::Events::Key inputKey;
             inputKey = (KapEngine::Events::Key::EKey) value;
             inputShoot = inputKey.toString();
+        } else {
+            inputShoot = "SPACE";
         }
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move Shoot");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, inputShoot);

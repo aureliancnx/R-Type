@@ -401,8 +401,8 @@ var NAVTREEINDEX =
 "classKapMirror_1_1Sylph_1_1SocketException.html",
 "classRType_1_1KeySelector.html#a5ae89466a41beb74f9244125a37b58aa",
 "classbackward_1_1Printer.html#a0fd722ce3517aa67f179c33a3e841769",
-"index.html#autotoc_md263",
-"md_doxygen-awesome-css_docs_extensions.html#autotoc_md35"
+"index.html#autotoc_md262",
+"md_doxygen-awesome-css_docs_extensions.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

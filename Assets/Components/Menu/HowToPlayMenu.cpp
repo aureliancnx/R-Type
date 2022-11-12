@@ -435,7 +435,7 @@ void RType::HowToPlayMenu::initKeyboardInput() {
             KapEngine::Events::Key inputKey;
             inputKey = (KapEngine::Events::Key::EKey) value;
             inputUp = inputKey.toString();
-        }else{
+        } else {
             inputUp = "UP";
         }
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move up");
@@ -456,7 +456,7 @@ void RType::HowToPlayMenu::initKeyboardInput() {
             KapEngine::Events::Key inputKey;
             inputKey = (KapEngine::Events::Key::EKey) value;
             inputDown = inputKey.toString();
-        }else{
+        } else {
             inputDown = "DOWN";
         }
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move Down");
@@ -477,7 +477,7 @@ void RType::HowToPlayMenu::initKeyboardInput() {
             KapEngine::Events::Key inputKey;
             inputKey = (KapEngine::Events::Key::EKey) value;
             inputLeft = inputKey.toString();
-        }else{
+        } else {
             inputLeft = "LEFT";
         }
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move Left");
@@ -498,7 +498,7 @@ void RType::HowToPlayMenu::initKeyboardInput() {
             KapEngine::Events::Key inputKey;
             inputKey = (KapEngine::Events::Key::EKey) value;
             inputRight = inputKey.toString();
-        }else{
+        } else {
             inputRight = "RIGHT";
         }
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move Right");
@@ -519,7 +519,7 @@ void RType::HowToPlayMenu::initKeyboardInput() {
             KapEngine::Events::Key inputKey;
             inputKey = (KapEngine::Events::Key::EKey) value;
             inputShoot = inputKey.toString();
-        }else{
+        } else {
             inputShoot = "SPACE";
         }
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Keyboard Move Shoot");

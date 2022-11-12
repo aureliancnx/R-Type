@@ -115,9 +115,9 @@ Public Member Functions</h2></td></tr>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#a5152b04748b5c1978823fb5a31bb5aca">clientDisconnect</a> ()=0</td></tr>
 <tr class="memdesc:a5152b04748b5c1978823fb5a31bb5aca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect the client from the server. <br /></td></tr>
 <tr class="separator:a5152b04748b5c1978823fb5a31bb5aca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47a9b577b0430b3990d9a36fbaa44d01"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#a47a9b577b0430b3990d9a36fbaa44d01">clientSend</a> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; data)=0</td></tr>
-<tr class="memdesc:a47a9b577b0430b3990d9a36fbaa44d01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to the server.  <a href="classKapMirror_1_1Transport.html#a47a9b577b0430b3990d9a36fbaa44d01">More...</a><br /></td></tr>
-<tr class="separator:a47a9b577b0430b3990d9a36fbaa44d01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86ec9e930637dc996180ec680cc8ed01"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#a86ec9e930637dc996180ec680cc8ed01">clientSend</a> (const std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; &amp;data)=0</td></tr>
+<tr class="memdesc:a86ec9e930637dc996180ec680cc8ed01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to the server.  <a href="classKapMirror_1_1Transport.html#a86ec9e930637dc996180ec680cc8ed01">More...</a><br /></td></tr>
+<tr class="separator:a86ec9e930637dc996180ec680cc8ed01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84df3fd2d08e3fcc85663afd5cdf4550"><td class="memItemLeft" align="right" valign="top"><a id="a84df3fd2d08e3fcc85663afd5cdf4550"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#a84df3fd2d08e3fcc85663afd5cdf4550">clientEarlyUpdate</a> ()=0</td></tr>
 <tr class="memdesc:a84df3fd2d08e3fcc85663afd5cdf4550"><td class="mdescLeft">&#160;</td><td class="mdescRight">Client Update (call this function every frame) <br /></td></tr>
@@ -129,9 +129,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#ab845a65288c96f00a4576c934be6b7d9">serverStop</a> ()=0</td></tr>
 <tr class="memdesc:ab845a65288c96f00a4576c934be6b7d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the server. <br /></td></tr>
 <tr class="separator:ab845a65288c96f00a4576c934be6b7d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a699d1074eae7d490b914fb7a6015fc88"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#a699d1074eae7d490b914fb7a6015fc88">serverSend</a> (int connectionId, std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; data)=0</td></tr>
-<tr class="memdesc:a699d1074eae7d490b914fb7a6015fc88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to the client.  <a href="classKapMirror_1_1Transport.html#a699d1074eae7d490b914fb7a6015fc88">More...</a><br /></td></tr>
-<tr class="separator:a699d1074eae7d490b914fb7a6015fc88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87f510562297b959797807d7b0cf9892"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#a87f510562297b959797807d7b0cf9892">serverSend</a> (int connectionId, const std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; &amp;data)=0</td></tr>
+<tr class="memdesc:a87f510562297b959797807d7b0cf9892"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to the client.  <a href="classKapMirror_1_1Transport.html#a87f510562297b959797807d7b0cf9892">More...</a><br /></td></tr>
+<tr class="separator:a87f510562297b959797807d7b0cf9892"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1550301cc3beffb35a1f497453430e11"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Transport.html#a1550301cc3beffb35a1f497453430e11">serverDisconnect</a> (int connectionId)=0</td></tr>
 <tr class="memdesc:a1550301cc3beffb35a1f497453430e11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect the connection.  <a href="classKapMirror_1_1Transport.html#a1550301cc3beffb35a1f497453430e11">More...</a><br /></td></tr>
 <tr class="separator:a1550301cc3beffb35a1f497453430e11"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -251,8 +251,8 @@ static std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Transport.html"
 
 </div>
 </div>
-<a id="a47a9b577b0430b3990d9a36fbaa44d01"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47a9b577b0430b3990d9a36fbaa44d01">&#9670;&nbsp;</a></span>clientSend()</h2>
+<a id="a86ec9e930637dc996180ec680cc8ed01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86ec9e930637dc996180ec680cc8ed01">&#9670;&nbsp;</a></span>clientSend()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -263,7 +263,7 @@ static std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Transport.html"
         <tr>
           <td class="memname">virtual void KapMirror::Transport::clientSend </td>
           <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt;&#160;</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; &amp;&#160;</td>
           <td class="paramname"><em>data</em></td><td>)</td>
           <td></td>
         </tr>
@@ -283,7 +283,7 @@ static std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Transport.html"
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classKapMirror_1_1TelepathyTransport.html#ad46f02b5b3c9e576cd7fbb0657a073f4">KapMirror::TelepathyTransport</a>, and <a class="el" href="classKapMirror_1_1SylphTransport.html#ad2225a426d57b86dd480c723afee35eb">KapMirror::SylphTransport</a>.</p>
+<p>Implemented in <a class="el" href="classKapMirror_1_1TelepathyTransport.html#a230a2afc13640b35b2d1a2a56c300131">KapMirror::TelepathyTransport</a>, and <a class="el" href="classKapMirror_1_1SylphTransport.html#a76efbc5f9b55824b630bd7967e667064">KapMirror::SylphTransport</a>.</p>
 
 </div>
 </div>
@@ -323,8 +323,8 @@ static std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Transport.html"
 
 </div>
 </div>
-<a id="a699d1074eae7d490b914fb7a6015fc88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a699d1074eae7d490b914fb7a6015fc88">&#9670;&nbsp;</a></span>serverSend()</h2>
+<a id="a87f510562297b959797807d7b0cf9892"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87f510562297b959797807d7b0cf9892">&#9670;&nbsp;</a></span>serverSend()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -341,7 +341,7 @@ static std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Transport.html"
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt;&#160;</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; &amp;&#160;</td>
           <td class="paramname"><em>data</em>&#160;</td>
         </tr>
         <tr>
@@ -366,7 +366,7 @@ static std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Transport.html"
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classKapMirror_1_1TelepathyTransport.html#a5a29f89bb79f57bce09b484b03516933">KapMirror::TelepathyTransport</a>, and <a class="el" href="classKapMirror_1_1SylphTransport.html#a3125d28e15e2a0b563721c37bcff3fe3">KapMirror::SylphTransport</a>.</p>
+<p>Implemented in <a class="el" href="classKapMirror_1_1TelepathyTransport.html#af9ffbf15e89f7be8edcf83bdafa411be">KapMirror::TelepathyTransport</a>, and <a class="el" href="classKapMirror_1_1SylphTransport.html#a56a141778e919047ad6143db3c03a270">KapMirror::SylphTransport</a>.</p>
 
 </div>
 </div>

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['accept_19',['accept',['../classKapMirror_1_1Telepathy_1_1Socket.html#afa9c64e0890aae0d464fcdbde7ab544b',1,'KapMirror::Telepathy::Socket::accept()'],['../classKapMirror_1_1Sylph_1_1Socket.html#afa9c64e0890aae0d464fcdbde7ab544b',1,'KapMirror::Sylph::Socket::accept()']]],
-  ['accepttcpclient_20',['acceptTcpClient',['../classKapMirror_1_1Telepathy_1_1TcpListener.html#adf1749fdf0a783a09da697d087c9c4d9',1,'KapMirror::Telepathy::TcpListener']]],
+  ['accept_19',['accept',['../classKapMirror_1_1Socket.html#afa9c64e0890aae0d464fcdbde7ab544b',1,'KapMirror::Socket']]],
+  ['accepttcpclient_20',['acceptTcpClient',['../classKapMirror_1_1TcpListener.html#adf1749fdf0a783a09da697d087c9c4d9',1,'KapMirror::TcpListener']]],
   ['action_21',['Action',['../structKapMirror_1_1Experimental_1_1Action.html',1,'KapMirror::Experimental']]],
   ['action_3c_20void_28kapmirror_3a_3atransport_20_26_29_3e_22',['Action&lt; void(KapMirror::Transport &amp;)&gt;',['../structKapMirror_1_1Experimental_1_1Action.html',1,'KapMirror::Experimental']]],
   ['action_3c_20void_28kapmirror_3a_3atransport_20_26_2c_20const_20std_3a_3ashared_5fptr_3c_20kapmirror_3a_3aarraysegment_3c_20byte_20_3e_3e_20_26_29_3e_23',['Action&lt; void(KapMirror::Transport &amp;, const std::shared_ptr&lt; KapMirror::ArraySegment&lt; byte &gt;&gt; &amp;)&gt;',['../structKapMirror_1_1Experimental_1_1Action.html',1,'KapMirror::Experimental']]],
@@ -13,7 +13,7 @@ var searchData=
   ['addcomponent_29',['addComponent',['../classKapEngine_1_1GameObject.html#a6892e752300001300772f38905a00a76',1,'KapEngine::GameObject']]],
   ['addlink_30',['addLink',['../classKapEngine_1_1Animator.html#a1691e8768286604abebe2e0a3cfb8fb0',1,'KapEngine::Animator::addLink(std::string animName, std::string outAnim, std::string trigger=&quot;&quot;)'],['../classKapEngine_1_1Animator.html#a334775dd11ccd41cb0fde0d3348afe1e',1,'KapEngine::Animator::addLink(std::string animName, std::string outAnim, std::vector&lt; std::string &gt; triggers)']]],
   ['addrequirecomponent_31',['addRequireComponent',['../classKapEngine_1_1Component.html#a2164610991c285f395da90565c0be9bf',1,'KapEngine::Component']]],
-  ['address_32',['Address',['../classKapMirror_1_1Telepathy_1_1Address.html',1,'KapMirror::Telepathy::Address'],['../classKapMirror_1_1Sylph_1_1Address.html',1,'KapMirror::Sylph::Address']]],
+  ['address_32',['Address',['../classKapMirror_1_1Address.html',1,'KapMirror']]],
   ['allparentisactive_33',['allParentIsActive',['../classKapEngine_1_1Transform.html#a5ac3dd6a4859f82073b1fd610c98738d',1,'KapEngine::Transform']]],
   ['allparentsactive_34',['allParentsActive',['../classKapEngine_1_1Transform.html#abca146c2ce6dfec9737c4647c3d0eb46',1,'KapEngine::Transform']]],
   ['animation_35',['Animation',['../classKapEngine_1_1Animation.html',1,'KapEngine']]],

@@ -2,7 +2,7 @@ var searchData=
 [
   ['backwardcpp_48',['BackwardCpp',['../classconanfile_1_1BackwardCpp.html',1,'conanfile']]],
   ['bar_49',['bar',['../uniontoto_1_1titi_1_1foo_1_1bar.html',1,'toto::titi::foo']]],
-  ['bind_50',['bind',['../classKapMirror_1_1Telepathy_1_1Socket.html#ace1da4f860ac0af46d702cb5fc875a51',1,'KapMirror::Telepathy::Socket::bind()'],['../classKapMirror_1_1Sylph_1_1Socket.html#ace1da4f860ac0af46d702cb5fc875a51',1,'KapMirror::Sylph::Socket::bind()']]],
+  ['bind_50',['bind',['../classKapMirror_1_1Socket.html#ace1da4f860ac0af46d702cb5fc875a51',1,'KapMirror::Socket']]],
   ['boubouleenemy_51',['BoubouleEnemy',['../classRType_1_1BoubouleEnemy.html',1,'RType']]],
   ['bouncingversion_52',['bouncingVersion',['../classRType_1_1SpriteAnimation.html#a65b299565b2f03f63a045e2fcb5c8908',1,'RType::SpriteAnimation']]],
   ['bug_20list_53',['Bug List',['../bug.html',1,'']]],

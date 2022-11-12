@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>R-Type: Packages/SylphTransport/Sylph/UdpListener.hpp Source File</title>
+<title>R-Type: Packages/KapMirror/KapMirror/Core/Network/UdpListener.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -92,18 +92,18 @@ $(document).ready(function(){initNavTree('UdpListener_8hpp_source.html',''); ini
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;UdpClient.hpp&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;SocketException.hpp&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>KapMirror::Sylph {</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classKapMirror_1_1Sylph_1_1UdpListener.html">    7</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classKapMirror_1_1Sylph_1_1UdpListener.html">UdpListener</a> {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>KapMirror {</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classKapMirror_1_1UdpListener.html">    7</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classKapMirror_1_1UdpListener.html">UdpListener</a> {</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;      <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        std::shared_ptr&lt;Socket&gt; socket;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;      <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classKapMirror_1_1Sylph_1_1UdpListener.html">UdpListener</a>(<span class="keyword">const</span> std::shared_ptr&lt;Address&gt;&amp; address);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        ~<a class="code" href="classKapMirror_1_1Sylph_1_1UdpListener.html">UdpListener</a>();</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classKapMirror_1_1UdpListener.html">UdpListener</a>(<span class="keyword">const</span> std::shared_ptr&lt;Address&gt;&amp; address);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        ~<a class="code" href="classKapMirror_1_1UdpListener.html">UdpListener</a>();</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Sylph_1_1UdpListener.html#adc31adc8e184e66a979c669b2486228f">close</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1UdpListener.html#adc31adc8e184e66a979c669b2486228f">close</a>();</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1Sylph_1_1UdpListener.html#a8433022888ff1cb78c73d0731faa0787">start</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classKapMirror_1_1UdpListener.html#a8433022888ff1cb78c73d0731faa0787">start</a>();</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">void</span> sendTo(<span class="keyword">const</span> std::shared_ptr&lt;Address&gt;&amp; address, <span class="keywordtype">byte</span>* buffer, <span class="keywordtype">int</span> size);</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
@@ -115,16 +115,16 @@ $(document).ready(function(){initNavTree('UdpListener_8hpp_source.html',''); ini
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span> setBlocking(<span class="keywordtype">bool</span> blocking);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    };</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;} <span class="comment">// namespace KapMirror::Sylph</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;} <span class="comment">// namespace KapMirror</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1UdpListener_html"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1UdpListener.html">KapMirror::Sylph::UdpListener</a></div><div class="ttdef"><b>Definition:</b> UdpListener.hpp:7</div></div>
-<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1UdpListener_html_a8433022888ff1cb78c73d0731faa0787"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1UdpListener.html#a8433022888ff1cb78c73d0731faa0787">KapMirror::Sylph::UdpListener::start</a></div><div class="ttdeci">void start()</div><div class="ttdoc">Start listening for connections.</div><div class="ttdef"><b>Definition:</b> UdpListener.cpp:16</div></div>
-<div class="ttc" id="aclassKapMirror_1_1Sylph_1_1UdpListener_html_adc31adc8e184e66a979c669b2486228f"><div class="ttname"><a href="classKapMirror_1_1Sylph_1_1UdpListener.html#adc31adc8e184e66a979c669b2486228f">KapMirror::Sylph::UdpListener::close</a></div><div class="ttdeci">void close()</div><div class="ttdoc">Close the listener.</div><div class="ttdef"><b>Definition:</b> UdpListener.cpp:14</div></div>
+<div class="ttc" id="aclassKapMirror_1_1UdpListener_html_a8433022888ff1cb78c73d0731faa0787"><div class="ttname"><a href="classKapMirror_1_1UdpListener.html#a8433022888ff1cb78c73d0731faa0787">KapMirror::UdpListener::start</a></div><div class="ttdeci">void start()</div><div class="ttdoc">Start listening for connections.</div><div class="ttdef"><b>Definition:</b> UdpListener.cpp:16</div></div>
+<div class="ttc" id="aclassKapMirror_1_1UdpListener_html_adc31adc8e184e66a979c669b2486228f"><div class="ttname"><a href="classKapMirror_1_1UdpListener.html#adc31adc8e184e66a979c669b2486228f">KapMirror::UdpListener::close</a></div><div class="ttdeci">void close()</div><div class="ttdoc">Close the listener.</div><div class="ttdef"><b>Definition:</b> UdpListener.cpp:14</div></div>
+<div class="ttc" id="aclassKapMirror_1_1UdpListener_html"><div class="ttname"><a href="classKapMirror_1_1UdpListener.html">KapMirror::UdpListener</a></div><div class="ttdef"><b>Definition:</b> UdpListener.hpp:7</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_395bafe2adc24fcfed5d14b8ce406a4f.html">Packages</a></li><li class="navelem"><a class="el" href="dir_13b6f70408ea905a877fdbea60cc9afa.html">SylphTransport</a></li><li class="navelem"><a class="el" href="dir_e010111164ea9b208d9d682c01db7839.html">Sylph</a></li><li class="navelem"><b>UdpListener.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_395bafe2adc24fcfed5d14b8ce406a4f.html">Packages</a></li><li class="navelem"><a class="el" href="dir_3b048d9529ae462ac48e3f4677d149b1.html">KapMirror</a></li><li class="navelem"><a class="el" href="dir_0cad1a91fd26d93c6fc5c7346882dfca.html">KapMirror</a></li><li class="navelem"><a class="el" href="dir_68b268bbdb56b752025b478279427eb3.html">Core</a></li><li class="navelem"><a class="el" href="dir_d68447fcf0b5141b07802a4f957de743.html">Network</a></li><li class="navelem"><b>UdpListener.hpp</b></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>

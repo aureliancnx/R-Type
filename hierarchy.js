@@ -6,8 +6,7 @@ var hierarchy =
     [ "KapMirror::Experimental::Action< void(KapMirror::Transport &, int)>", "structKapMirror_1_1Experimental_1_1Action.html", null ],
     [ "KapMirror::Experimental::Action< void(KapMirror::Transport &, int, const std::shared_ptr< KapMirror::ArraySegment< byte >> &)>", "structKapMirror_1_1Experimental_1_1Action.html", null ],
     [ "KapMirror::Experimental::Action< void(std::shared_ptr< KapMirror::NetworkConnection >)>", "structKapMirror_1_1Experimental_1_1Action.html", null ],
-    [ "KapMirror::Telepathy::Address", "classKapMirror_1_1Telepathy_1_1Address.html", null ],
-    [ "KapMirror::Sylph::Address", "classKapMirror_1_1Sylph_1_1Address.html", null ],
+    [ "KapMirror::Address", "classKapMirror_1_1Address.html", null ],
     [ "KapMirror::Array", "classKapMirror_1_1Array.html", null ],
     [ "KapMirror::ArraySegment< T >", "classKapMirror_1_1ArraySegment.html", null ],
     [ "KapEngine::Events::Input::Axis", "structKapEngine_1_1Events_1_1Input_1_1Axis.html", null ],
@@ -68,8 +67,7 @@ var hierarchy =
         [ "KapEngine::Errors::GraphicalSystemError", "classKapEngine_1_1Errors_1_1GraphicalSystemError.html", null ],
         [ "KapEngine::Errors::SceneError", "classKapEngine_1_1Errors_1_1SceneError.html", null ]
       ] ],
-      [ "KapMirror::Sylph::SocketException", "classKapMirror_1_1Sylph_1_1SocketException.html", null ],
-      [ "KapMirror::Telepathy::SocketException", "classKapMirror_1_1Telepathy_1_1SocketException.html", null ],
+      [ "KapMirror::SocketException", "classKapMirror_1_1SocketException.html", null ],
       [ "RType::LuaException", "classRType_1_1LuaException.html", null ],
       [ "test::AssertFailedError", "structtest_1_1AssertFailedError.html", null ]
     ] ],
@@ -212,8 +210,7 @@ var hierarchy =
     [ "KapMirror::Sylph::Server", "classKapMirror_1_1Sylph_1_1Server.html", null ],
     [ "backward::SignalHandling", "classbackward_1_1SignalHandling.html", null ],
     [ "backward::SnippetFactory", "classbackward_1_1SnippetFactory.html", null ],
-    [ "KapMirror::Telepathy::Socket", "classKapMirror_1_1Telepathy_1_1Socket.html", null ],
-    [ "KapMirror::Sylph::Socket", "classKapMirror_1_1Sylph_1_1Socket.html", null ],
+    [ "KapMirror::Socket", "classKapMirror_1_1Socket.html", null ],
     [ "backward::SourceFile", "classbackward_1_1SourceFile.html", null ],
     [ "backward::ResolvedTrace::SourceLoc", "structbackward_1_1ResolvedTrace_1_1SourceLoc.html", null ],
     [ "RType::SpawnEnemy", "structRType_1_1SpawnEnemy.html", null ],
@@ -233,8 +230,8 @@ var hierarchy =
       [ "backward::cfile_streambuf", "classbackward_1_1cfile__streambuf.html", null ]
     ] ],
     [ "RType::Parser::Summon", "classRType_1_1Parser_1_1Summon.html", null ],
-    [ "KapMirror::Telepathy::TcpClient", "classKapMirror_1_1Telepathy_1_1TcpClient.html", null ],
-    [ "KapMirror::Telepathy::TcpListener", "classKapMirror_1_1Telepathy_1_1TcpListener.html", null ],
+    [ "KapMirror::TcpClient", "classKapMirror_1_1TcpClient.html", null ],
+    [ "KapMirror::TcpListener", "classKapMirror_1_1TcpListener.html", null ],
     [ "test::TestBase", "structtest_1_1TestBase.html", null ],
     [ "KapEngine::Profiler::ThreadStack", "classKapEngine_1_1Profiler_1_1ThreadStack.html", null ],
     [ "backward::Trace", "structbackward_1_1Trace.html", [
@@ -252,8 +249,8 @@ var hierarchy =
       [ "KapMirror::TelepathyTransport", "classKapMirror_1_1TelepathyTransport.html", null ]
     ] ],
     [ "KapEngine::Type", "classKapEngine_1_1Type.html", null ],
-    [ "KapMirror::Sylph::UdpClient", "classKapMirror_1_1Sylph_1_1UdpClient.html", null ],
-    [ "KapMirror::Sylph::UdpListener", "classKapMirror_1_1Sylph_1_1UdpListener.html", null ],
+    [ "KapMirror::UdpClient", "classKapMirror_1_1UdpClient.html", null ],
+    [ "KapMirror::UdpListener", "classKapMirror_1_1UdpListener.html", null ],
     [ "KapEngine::UI::UiFactory", "classKapEngine_1_1UI_1_1UiFactory.html", null ],
     [ "KapEngine::Tools::Vector2", "classKapEngine_1_1Tools_1_1Vector2.html", null ],
     [ "RType::Script::Vector2", "classRType_1_1Script_1_1Vector2.html", null ],

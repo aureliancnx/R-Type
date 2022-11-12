@@ -41,29 +41,20 @@ var annotated_dup =
         [ "NetworkStatistics", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html", "classKapMirror_1_1Experimental_1_1NetworkStatistics" ]
       ] ],
       [ "Sylph", null, [
-        [ "Address", "classKapMirror_1_1Sylph_1_1Address.html", "classKapMirror_1_1Sylph_1_1Address" ],
         [ "Client", "classKapMirror_1_1Sylph_1_1Client.html", "classKapMirror_1_1Sylph_1_1Client" ],
         [ "ClientConnection", "classKapMirror_1_1Sylph_1_1ClientConnection.html", "classKapMirror_1_1Sylph_1_1ClientConnection" ],
         [ "Connection", "classKapMirror_1_1Sylph_1_1Connection.html", "classKapMirror_1_1Sylph_1_1Connection" ],
         [ "Server", "classKapMirror_1_1Sylph_1_1Server.html", "classKapMirror_1_1Sylph_1_1Server" ],
-        [ "ServerConnection", "classKapMirror_1_1Sylph_1_1ServerConnection.html", "classKapMirror_1_1Sylph_1_1ServerConnection" ],
-        [ "Socket", "classKapMirror_1_1Sylph_1_1Socket.html", "classKapMirror_1_1Sylph_1_1Socket" ],
-        [ "SocketException", "classKapMirror_1_1Sylph_1_1SocketException.html", "classKapMirror_1_1Sylph_1_1SocketException" ],
-        [ "UdpClient", "classKapMirror_1_1Sylph_1_1UdpClient.html", "classKapMirror_1_1Sylph_1_1UdpClient" ],
-        [ "UdpListener", "classKapMirror_1_1Sylph_1_1UdpListener.html", "classKapMirror_1_1Sylph_1_1UdpListener" ]
+        [ "ServerConnection", "classKapMirror_1_1Sylph_1_1ServerConnection.html", "classKapMirror_1_1Sylph_1_1ServerConnection" ]
       ] ],
       [ "Telepathy", null, [
-        [ "Address", "classKapMirror_1_1Telepathy_1_1Address.html", "classKapMirror_1_1Telepathy_1_1Address" ],
         [ "Client", "classKapMirror_1_1Telepathy_1_1Client.html", "classKapMirror_1_1Telepathy_1_1Client" ],
         [ "ClientConnection", "structKapMirror_1_1Telepathy_1_1ClientConnection.html", "structKapMirror_1_1Telepathy_1_1ClientConnection" ],
         [ "MagnificentReceivePipe", "classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe.html", "classKapMirror_1_1Telepathy_1_1MagnificentReceivePipe" ],
         [ "MagnificentSendPipe", "classKapMirror_1_1Telepathy_1_1MagnificentSendPipe.html", "classKapMirror_1_1Telepathy_1_1MagnificentSendPipe" ],
-        [ "Server", "classKapMirror_1_1Telepathy_1_1Server.html", "classKapMirror_1_1Telepathy_1_1Server" ],
-        [ "Socket", "classKapMirror_1_1Telepathy_1_1Socket.html", "classKapMirror_1_1Telepathy_1_1Socket" ],
-        [ "SocketException", "classKapMirror_1_1Telepathy_1_1SocketException.html", "classKapMirror_1_1Telepathy_1_1SocketException" ],
-        [ "TcpClient", "classKapMirror_1_1Telepathy_1_1TcpClient.html", "classKapMirror_1_1Telepathy_1_1TcpClient" ],
-        [ "TcpListener", "classKapMirror_1_1Telepathy_1_1TcpListener.html", "classKapMirror_1_1Telepathy_1_1TcpListener" ]
+        [ "Server", "classKapMirror_1_1Telepathy_1_1Server.html", "classKapMirror_1_1Telepathy_1_1Server" ]
       ] ],
+      [ "Address", "classKapMirror_1_1Address.html", "classKapMirror_1_1Address" ],
       [ "Array", "classKapMirror_1_1Array.html", null ],
       [ "ArraySegment", "classKapMirror_1_1ArraySegment.html", "classKapMirror_1_1ArraySegment" ],
       [ "Compression", "classKapMirror_1_1Compression.html", "classKapMirror_1_1Compression" ],
@@ -84,9 +75,15 @@ var annotated_dup =
       [ "ObjectDestroyMessage", "structKapMirror_1_1ObjectDestroyMessage.html", "structKapMirror_1_1ObjectDestroyMessage" ],
       [ "ObjectSpawnMessage", "structKapMirror_1_1ObjectSpawnMessage.html", "structKapMirror_1_1ObjectSpawnMessage" ],
       [ "ObjectTransformMessage", "structKapMirror_1_1ObjectTransformMessage.html", "structKapMirror_1_1ObjectTransformMessage" ],
+      [ "Socket", "classKapMirror_1_1Socket.html", "classKapMirror_1_1Socket" ],
+      [ "SocketException", "classKapMirror_1_1SocketException.html", "classKapMirror_1_1SocketException" ],
       [ "SylphTransport", "classKapMirror_1_1SylphTransport.html", "classKapMirror_1_1SylphTransport" ],
+      [ "TcpClient", "classKapMirror_1_1TcpClient.html", "classKapMirror_1_1TcpClient" ],
+      [ "TcpListener", "classKapMirror_1_1TcpListener.html", "classKapMirror_1_1TcpListener" ],
       [ "TelepathyTransport", "classKapMirror_1_1TelepathyTransport.html", "classKapMirror_1_1TelepathyTransport" ],
-      [ "Transport", "classKapMirror_1_1Transport.html", "classKapMirror_1_1Transport" ]
+      [ "Transport", "classKapMirror_1_1Transport.html", "classKapMirror_1_1Transport" ],
+      [ "UdpClient", "classKapMirror_1_1UdpClient.html", "classKapMirror_1_1UdpClient" ],
+      [ "UdpListener", "classKapMirror_1_1UdpListener.html", "classKapMirror_1_1UdpListener" ]
     ] ],
     [ "MyLibrary", null, [
       [ "Example", "classMyLibrary_1_1Example.html", "classMyLibrary_1_1Example" ],

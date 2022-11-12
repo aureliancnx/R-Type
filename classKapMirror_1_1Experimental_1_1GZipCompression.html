@@ -102,12 +102,12 @@ Inheritance diagram for KapMirror::Experimental::GZipCompression:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a19fdfecef753fd11ba7583b30f57ba1c"><td class="memItemLeft" align="right" valign="top"><a id="a19fdfecef753fd11ba7583b30f57ba1c"></a>
-std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>compress</b> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; data) override</td></tr>
-<tr class="separator:a19fdfecef753fd11ba7583b30f57ba1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d831cd1e74a21ddf7a07ca77be50631"><td class="memItemLeft" align="right" valign="top"><a id="a6d831cd1e74a21ddf7a07ca77be50631"></a>
-std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>decompress</b> (std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; data) override</td></tr>
-<tr class="separator:a6d831cd1e74a21ddf7a07ca77be50631"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6674c69fcfc034240630d37093f5a693"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Experimental_1_1GZipCompression.html#a6674c69fcfc034240630d37093f5a693">compress</a> (const std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; &amp;data) override</td></tr>
+<tr class="memdesc:a6674c69fcfc034240630d37093f5a693"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compress data with the compression algorithm.  <a href="classKapMirror_1_1Experimental_1_1GZipCompression.html#a6674c69fcfc034240630d37093f5a693">More...</a><br /></td></tr>
+<tr class="separator:a6674c69fcfc034240630d37093f5a693"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ac7e9d68df6bedc2541a4a59705680f"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKapMirror_1_1Experimental_1_1GZipCompression.html#a1ac7e9d68df6bedc2541a4a59705680f">decompress</a> (const std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; &amp;data) override</td></tr>
+<tr class="memdesc:a1ac7e9d68df6bedc2541a4a59705680f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decompress data with the compression algorithm.  <a href="classKapMirror_1_1Experimental_1_1GZipCompression.html#a1ac7e9d68df6bedc2541a4a59705680f">More...</a><br /></td></tr>
+<tr class="separator:a1ac7e9d68df6bedc2541a4a59705680f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -116,6 +116,69 @@ Additional Inherited Members</h2></td></tr>
 static std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1Compression.html">Compression</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>activeCompression</b> = nullptr</td></tr>
 <tr class="separator:a3afb456ad9bbea065e8b561367083a31 inherit pub_static_attribs_classKapMirror_1_1Compression"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6674c69fcfc034240630d37093f5a693"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6674c69fcfc034240630d37093f5a693">&#9670;&nbsp;</a></span>compress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">KapMirror::ArraySegment</a>&lt; byte &gt; &gt; GZipCompression::compress </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compress data with the compression algorithm. </p>
+<dl class="section return"><dt>Returns</dt><dd>Compressed data as ArraySegment&lt;byte&gt; </dd></dl>
+
+<p>Implements <a class="el" href="classKapMirror_1_1Compression.html#a708ed35a9df4404a5002c354be87636c">KapMirror::Compression</a>.</p>
+
+</div>
+</div>
+<a id="a1ac7e9d68df6bedc2541a4a59705680f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ac7e9d68df6bedc2541a4a59705680f">&#9670;&nbsp;</a></span>decompress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">KapMirror::ArraySegment</a>&lt; byte &gt; &gt; GZipCompression::decompress </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>&lt; byte &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Decompress data with the compression algorithm. </p>
+<dl class="section return"><dt>Returns</dt><dd>Decompressed data as ArraySegment&lt;byte&gt; </dd></dl>
+
+<p>Implements <a class="el" href="classKapMirror_1_1Compression.html#ad198af903fbe8ac923193faab9942635">KapMirror::Compression</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Packages/KapMirror/KapMirror/Experimental/Compressions/GZip/<a class="el" href="GZipCompression_8hpp_source.html">GZipCompression.hpp</a></li>
 <li>Packages/KapMirror/KapMirror/Experimental/Compressions/GZip/GZipCompression.cpp</li>

@@ -6,10 +6,10 @@ var classKapMirror_1_1SylphTransport =
     [ "clientConnected", "classKapMirror_1_1SylphTransport.html#a25f3022ca6a4da8953cc82a638736d01", null ],
     [ "clientDisconnect", "classKapMirror_1_1SylphTransport.html#a8b966764cabe07a101fb0055987a9739", null ],
     [ "clientEarlyUpdate", "classKapMirror_1_1SylphTransport.html#a1b5cd0eae53b6323722d21b60050c598", null ],
-    [ "clientSend", "classKapMirror_1_1SylphTransport.html#ad2225a426d57b86dd480c723afee35eb", null ],
+    [ "clientSend", "classKapMirror_1_1SylphTransport.html#a76efbc5f9b55824b630bd7967e667064", null ],
     [ "serverDisconnect", "classKapMirror_1_1SylphTransport.html#a6e3805e274ee785baa24943ac882afd4", null ],
     [ "serverEarlyUpdate", "classKapMirror_1_1SylphTransport.html#ab221ab282dafd1c0362176e929d7f859", null ],
-    [ "serverSend", "classKapMirror_1_1SylphTransport.html#a3125d28e15e2a0b563721c37bcff3fe3", null ],
+    [ "serverSend", "classKapMirror_1_1SylphTransport.html#a56a141778e919047ad6143db3c03a270", null ],
     [ "serverStart", "classKapMirror_1_1SylphTransport.html#a41d981a5a39a9013a09dc5f145d0e7e1", null ],
     [ "serverStop", "classKapMirror_1_1SylphTransport.html#aebf432be284689c7f5d46cdac9cce375", null ]
 ];

@@ -1,6 +1,5 @@
 var NAVTREEINDEX5 =
 {
-"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#ab8b2cc97d7c585bbd8f2707f5f31098e":[38,0,3,0,2,12],
 "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#ab8ed1c4a3cc1302dd8fe6d17786def1e":[38,0,3,0,2,29],
 "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#abb51131f3be9e49d063ff254e317a056":[38,0,3,0,2,20],
 "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#ad9a6dc6c16dc5b468de90435511a571d":[38,0,3,0,2,4],
@@ -249,5 +248,6 @@ var NAVTREEINDEX5 =
 "classKapMirror_1_1Sylph_1_1Socket.html#ad308d6c61cbe5cedaac1393a23748b04":[38,0,3,1,6,8],
 "classKapMirror_1_1Sylph_1_1Socket.html#aeac4eb6379a543d38ed88977d3b6630a":[38,0,3,1,6,2],
 "classKapMirror_1_1Sylph_1_1Socket.html#aead18631f81ca3dcf35a694ad8df7841":[38,0,3,1,6,16],
-"classKapMirror_1_1Sylph_1_1Socket.html#afa9c64e0890aae0d464fcdbde7ab544b":[38,0,3,1,6,3]
+"classKapMirror_1_1Sylph_1_1Socket.html#afa9c64e0890aae0d464fcdbde7ab544b":[38,0,3,1,6,3],
+"classKapMirror_1_1Sylph_1_1SocketException.html":[38,0,3,1,7]
 };

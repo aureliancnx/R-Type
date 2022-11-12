@@ -393,16 +393,16 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"classKapEngine_1_1Collider.html#a92a36099a933727f2f73ad6401e2e3f9",
-"classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65a9b352bfa55f35692d2ba1de788ceca11",
-"classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#aa59755a84b31540601a96be710601ac0",
-"classKapEngine_1_1Tools_1_1Rectangle.html#a3dc1cccb255e390384d60f899796ff8e",
-"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#ab8b2cc97d7c585bbd8f2707f5f31098e",
-"classKapMirror_1_1Sylph_1_1SocketException.html",
-"classRType_1_1KeyboardMenu.html#aacb4969d87e369b955e51bcf1809685a",
-"classbackward_1_1Colorize.html#ad1171b299febf4e9a72616642f5cc5ce",
-"index.html#autotoc_md257",
-"md_doxygen-awesome-css_docs_customization.html#autotoc_md29"
+"classKapEngine_1_1Collider.html#a96e08f0d17e623a3515aae591fec5601",
+"classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65a9ebd977a43ddf3c32a8e070e8e8f2c0d",
+"classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#ab04b51cb6e830006cc235c8f63a34a91",
+"classKapEngine_1_1Tools_1_1Rectangle.html#a3dee29d75f1d1d1f7b234c3b88d53dc8",
+"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#ab8ed1c4a3cc1302dd8fe6d17786def1e",
+"classKapMirror_1_1Sylph_1_1SocketException.html#a099d4d13eabd2e1bc232b474dcad1410",
+"classRType_1_1MainMenu.html#a340d84023f931683f4f80c9a1d5d127f",
+"classbackward_1_1SnippetFactory.html",
+"md_CONTRIBUTING.html#autotoc_md13",
+"md_doxygen-awesome-css_docs_tricks.html#autotoc_md50"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

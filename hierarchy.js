@@ -104,14 +104,14 @@ var hierarchy =
         [ "KapMirror::Experimental::NetworkStatistics", "classKapMirror_1_1Experimental_1_1NetworkStatistics.html", null ],
         [ "KapMirror::NetworkComponent", "classKapMirror_1_1NetworkComponent.html", [
           [ "KapMirror::NetworkTransform", "classKapMirror_1_1NetworkTransform.html", null ],
-          [ "RType::BoubouleEnemy", "classRType_1_1BoubouleEnemy.html", null ],
           [ "RType::Bullet", "classRType_1_1Bullet.html", null ],
-          [ "RType::EnemyController", "classRType_1_1EnemyController.html", null ],
+          [ "RType::EnemyController", "classRType_1_1EnemyController.html", [
+            [ "RType::BoubouleEnemy", "classRType_1_1BoubouleEnemy.html", null ],
+            [ "RType::TentaclesBossEnemy", "classRType_1_1TentaclesBossEnemy.html", null ]
+          ] ],
           [ "RType::GameMenuManager", "classRType_1_1GameMenuManager.html", null ],
           [ "RType::PlayerController", "classRType_1_1PlayerController.html", null ],
-          [ "RType::PlayerSkin", "classRType_1_1PlayerSkin.html", null ],
-          [ "RType::ShipEnemy", "classRType_1_1ShipEnemy.html", null ],
-          [ "RType::TentaclesBossEnemy", "classRType_1_1TentaclesBossEnemy.html", null ]
+          [ "RType::PlayerSkin", "classRType_1_1PlayerSkin.html", null ]
         ] ],
         [ "KapMirror::NetworkIdentity", "classKapMirror_1_1NetworkIdentity.html", null ],
         [ "KapMirror::NetworkManager", "classKapMirror_1_1NetworkManager.html", [
@@ -208,8 +208,8 @@ var hierarchy =
     ] ],
     [ "KapEngine::SceneManagement::Scene", "classKapEngine_1_1SceneManagement_1_1Scene.html", null ],
     [ "KapEngine::SceneManagement::SceneManager", "classKapEngine_1_1SceneManagement_1_1SceneManager.html", null ],
-    [ "KapMirror::Sylph::Server", "classKapMirror_1_1Sylph_1_1Server.html", null ],
     [ "KapMirror::Telepathy::Server", "classKapMirror_1_1Telepathy_1_1Server.html", null ],
+    [ "KapMirror::Sylph::Server", "classKapMirror_1_1Sylph_1_1Server.html", null ],
     [ "backward::SignalHandling", "classbackward_1_1SignalHandling.html", null ],
     [ "backward::SnippetFactory", "classbackward_1_1SnippetFactory.html", null ],
     [ "KapMirror::Telepathy::Socket", "classKapMirror_1_1Telepathy_1_1Socket.html", null ],
@@ -255,8 +255,8 @@ var hierarchy =
     [ "KapMirror::Sylph::UdpClient", "classKapMirror_1_1Sylph_1_1UdpClient.html", null ],
     [ "KapMirror::Sylph::UdpListener", "classKapMirror_1_1Sylph_1_1UdpListener.html", null ],
     [ "KapEngine::UI::UiFactory", "classKapEngine_1_1UI_1_1UiFactory.html", null ],
-    [ "RType::Script::Vector2", "classRType_1_1Script_1_1Vector2.html", null ],
     [ "KapEngine::Tools::Vector2", "classKapEngine_1_1Tools_1_1Vector2.html", null ],
+    [ "RType::Script::Vector2", "classRType_1_1Script_1_1Vector2.html", null ],
     [ "KapEngine::Tools::Vector3", "classKapEngine_1_1Tools_1_1Vector3.html", null ],
     [ "ConanFile", null, [
       [ "conanfile.BackwardCpp", "classconanfile_1_1BackwardCpp.html", null ],

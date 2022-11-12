@@ -143,7 +143,6 @@ var annotated_dup =
       [ "RtypeNetworkManager", "classRType_1_1RtypeNetworkManager.html", "classRType_1_1RtypeNetworkManager" ],
       [ "SettingPlayerMenu", "classRType_1_1SettingPlayerMenu.html", "classRType_1_1SettingPlayerMenu" ],
       [ "SettingsMenu", "classRType_1_1SettingsMenu.html", "classRType_1_1SettingsMenu" ],
-      [ "ShipEnemy", "classRType_1_1ShipEnemy.html", "classRType_1_1ShipEnemy" ],
       [ "SoloMenu", "classRType_1_1SoloMenu.html", "classRType_1_1SoloMenu" ],
       [ "SpawnEnemy", "structRType_1_1SpawnEnemy.html", "structRType_1_1SpawnEnemy" ],
       [ "SpriteAnimation", "classRType_1_1SpriteAnimation.html", "classRType_1_1SpriteAnimation" ],

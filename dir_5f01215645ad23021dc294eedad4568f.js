@@ -4,7 +4,6 @@ var dir_5f01215645ad23021dc294eedad4568f =
     [ "Bullet", "dir_a3f584a7fe70e4443f2f81f348c09c3f.html", "dir_a3f584a7fe70e4443f2f81f348c09c3f" ],
     [ "Campaign", "dir_efb2386a5298f8ccc115c7c02b473822.html", "dir_efb2386a5298f8ccc115c7c02b473822" ],
     [ "CampaignGenerator", "dir_073780c6c5587571422cb232d18e7bbf.html", "dir_073780c6c5587571422cb232d18e7bbf" ],
-    [ "Enemies", "dir_83ea8050de5263d8dcba2ebe5aca32cf.html", "dir_83ea8050de5263d8dcba2ebe5aca32cf" ],
     [ "Keys", "dir_16b247074be353bd21254fba4a26df9d.html", "dir_16b247074be353bd21254fba4a26df9d" ],
     [ "Menu", "dir_48512684e89ee83d43da4ef2727a0417.html", "dir_48512684e89ee83d43da4ef2727a0417" ],
     [ "Network", "dir_d1d321612f4bb557b040aa293e512e8d.html", "dir_d1d321612f4bb557b040aa293e512e8d" ],

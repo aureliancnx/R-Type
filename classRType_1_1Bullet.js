@@ -8,8 +8,8 @@ var classRType_1_1Bullet =
     [ "~Bullet", "classRType_1_1Bullet.html#a892f32d98466221cdc8939081d7e4a83", null ],
     [ "deserialize", "classRType_1_1Bullet.html#a57d782d14153c16e6a9948e0bdb24575", null ],
     [ "getDirection", "classRType_1_1Bullet.html#aa0f011848ef19d623a07879491c15f6a", null ],
+    [ "onFixedUpdate", "classRType_1_1Bullet.html#a0bebd7585556f1d0ac5b92201c9edc69", null ],
     [ "onStart", "classRType_1_1Bullet.html#a1a4944dc3df072842757c104facad088", null ],
-    [ "onUpdate", "classRType_1_1Bullet.html#ac5f77f16d5aafe7fb89a08ea4c03b059", null ],
     [ "serialize", "classRType_1_1Bullet.html#a3e3e72ba297deb1d73c5eef2549400fe", null ],
     [ "setDirection", "classRType_1_1Bullet.html#a9fc04b3b223b0917a28a39099bbceafa", null ]
 ];

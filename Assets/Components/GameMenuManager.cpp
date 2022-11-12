@@ -274,19 +274,18 @@ void RType::GameMenuManager::updateHealth(int health) {
         if (!heartObject->hasComponent<UI::Image>()) {
             continue;
         }
-        auto &component = heartObject->getComponent<UI::Image>();
+        auto& component = heartObject->getComponent<UI::Image>();
         if (health > (int) (((((float) itr * 1.f) + 1.f) / 3.f) * 100.f) * 1) {
             // full heart
             component.setRectangle({175 * 0, 0, 175, 175});
-        }else if (health < (int) (((float) itr / 3.f) * 100.f)) {
+        } else if (health < (int) (((float) itr / 3.f) * 100.f)) {
             // remove heart
             component.setRectangle({175 * 10, 0, 175, 175});
-        }else{
+        } else {
             float healthRest = ((float) health - (((float) itr / 3.f) * 100.f));
             float ho = 10.f - ((healthRest / ((1.f / 3.f) * 100.f)) * 10.f);
             int xOffset = ((int) (ho * 1) * 175);
             component.setRectangle({(float) xOffset, 0, 175, 175});
         }
     }
-
 }

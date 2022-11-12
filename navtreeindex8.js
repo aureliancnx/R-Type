@@ -1,5 +1,8 @@
 var NAVTREEINDEX8 =
 {
+"classbackward_1_1SignalHandling.html":[38,0,0,5],
+"classbackward_1_1SignalHandling.html#a23d2580ecae5722e44b9e53a616be310":[38,0,0,5,2],
+"classbackward_1_1SignalHandling.html#a90e0daba1c40856ace7f5576a2d1393f":[38,0,0,5,1],
 "classbackward_1_1SignalHandling.html#acd8c2644c9ccfb998547bcb8773307ac":[38,0,0,5,0],
 "classbackward_1_1SnippetFactory.html":[38,0,0,6],
 "classbackward_1_1SnippetFactory.html#a2bfbaa900acb0d4fdea885cf9c2ef93c":[38,0,0,6,0],
@@ -177,8 +180,8 @@ var NAVTREEINDEX8 =
 "dir_fef29fda9d893b7850f121e644421544.html":[39,0,2,1,0,14],
 "example_8hpp_source.html":[39,0,1,0,0,0],
 "files.html":[39,0],
-"functions.html":[38,3,0,0],
 "functions.html":[38,3,0],
+"functions.html":[38,3,0,0],
 "functions_a.html":[38,3,0,1],
 "functions_b.html":[38,3,0,2],
 "functions_c.html":[38,3,0,3],
@@ -186,8 +189,8 @@ var NAVTREEINDEX8 =
 "functions_e.html":[38,3,0,5],
 "functions_enum.html":[38,3,3],
 "functions_f.html":[38,3,0,6],
-"functions_func.html":[38,3,1],
 "functions_func.html":[38,3,1,0],
+"functions_func.html":[38,3,1],
 "functions_func_a.html":[38,3,1,1],
 "functions_func_b.html":[38,3,1,2],
 "functions_func_c.html":[38,3,1,3],
@@ -246,8 +249,5 @@ var NAVTREEINDEX8 =
 "md_CODE_OF_CONDUCT.html#autotoc_md3":[0,10],
 "md_CODE_OF_CONDUCT.html#autotoc_md4":[0,11],
 "md_CODE_OF_CONDUCT.html#autotoc_md5":[0,12],
-"md_CODE_OF_CONDUCT.html#autotoc_md6":[0,13],
-"md_CODE_OF_CONDUCT.html#autotoc_md7":[0,13,0],
-"md_CODE_OF_CONDUCT.html#autotoc_md8":[0,13,1],
-"md_CODE_OF_CONDUCT.html#autotoc_md9":[0,13,2]
+"md_CODE_OF_CONDUCT.html#autotoc_md6":[0,13]
 };

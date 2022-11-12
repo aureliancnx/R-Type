@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"classKapMirror_1_1Sylph_1_1Socket.html#afa9c64e0890aae0d464fcdbde7ab544b":[38,0,3,1,6,3],
+"classKapMirror_1_1Sylph_1_1SocketException.html":[38,0,3,1,7],
 "classKapMirror_1_1Sylph_1_1SocketException.html#a099d4d13eabd2e1bc232b474dcad1410":[38,0,3,1,7,0],
 "classKapMirror_1_1Sylph_1_1SocketException.html#aa103236c01d21a023644b07a8101c91f":[38,0,3,1,7,1],
 "classKapMirror_1_1Sylph_1_1UdpClient.html":[38,0,3,1,8],
@@ -247,7 +249,5 @@ var NAVTREEINDEX6 =
 "classRType_1_1KeyboardMenu.html#aacb4969d87e369b955e51bcf1809685a":[38,0,5,13,1],
 "classRType_1_1LuaException.html":[38,0,5,15],
 "classRType_1_1LuaException.html#a03f27f6118be565bae5b14927daafd71":[38,0,5,15,1],
-"classRType_1_1LuaException.html#a066f4d7fb4425469ef1e879244101776":[38,0,5,15,2],
-"classRType_1_1LuaException.html#a70ec586fa22c693d76a1e9a651b86a71":[38,0,5,15,0],
-"classRType_1_1MainMenu.html":[38,0,5,16]
+"classRType_1_1LuaException.html#a066f4d7fb4425469ef1e879244101776":[38,0,5,15,2]
 };

@@ -26,7 +26,7 @@ You're able to directly run the R-Type server without building the project. Just
 
 ```
 $ docker pull aureliancnx/rtype-server:latest
-$ docker run -it aureliancnx/rtype-server:latest
+$ docker run -p 7777:7777 -it aureliancnx/rtype-server:latest
 ```
 
 You can retrieve the Docker image here : [aureliancnx/rtype-server](https://hub.docker.com/repository/docker/aureliancnx/rtype-server)

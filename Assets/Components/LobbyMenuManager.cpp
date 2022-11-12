@@ -56,3 +56,9 @@ void RType::LobbyMenuManager::initLobbyMenu(bool local) {
 
     auto& scene = getGameObject().getScene();
 }
+std::shared_ptr<KapEngine::GameObject> RType::LobbyMenuManager::initButton(std::shared_ptr<KapEngine::GameObject> parent, std::string name,
+                                                                           std::string text, std::function<void()> callback,
+                                                                           KapEngine::Tools::Color color,
+                                                                           KapEngine::Tools::Color textColor) {
+    std::shared_ptr<GameObject> button = parent->getScene().createGameObject(name);
+}

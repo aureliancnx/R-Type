@@ -27,6 +27,16 @@ namespace RType {
 
         void initBackground(std::shared_ptr<KapEngine::GameObject> parent);
 
+        std::shared_ptr<KapEngine::GameObject> initButton(std::shared_ptr<KapEngine::GameObject> parent, std::string name, std::string text,
+                                                          std::function<void()> callback,
+                                                          KapEngine::Tools::Color color = KapEngine::Tools::Color::white(),
+                                                          KapEngine::Tools::Color textColor = KapEngine::Tools::Color::black());
+        std::shared_ptr<KapEngine::GameObject> initButton(std::shared_ptr<KapEngine::GameObject> parent, std::string name, std::string text,
+                                                          std::function<void()> callback, std::string pathSprite,
+                                                          KapEngine::Tools::Rectangle rect,
+                                                          KapEngine::Tools::Color color = KapEngine::Tools::Color::white(),
+                                                          KapEngine::Tools::Color textColor = KapEngine::Tools::Color::black());
+
         // variables
       private:
         std::shared_ptr<KapEngine::GameObject> lobbyMenu;

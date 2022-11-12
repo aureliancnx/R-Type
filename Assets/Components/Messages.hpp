@@ -48,13 +48,9 @@ namespace RType {
     struct StartGameMessage : KapMirror::NetworkMessage {
         std::string mapScriptPath{};
 
-        void serialize(KapMirror::NetworkWriter& writer) override {
-            writer.writeString(mapScriptPath);
-        }
+        void serialize(KapMirror::NetworkWriter& writer) override { writer.writeString(mapScriptPath); }
 
-        void deserialize(KapMirror::NetworkReader& reader) override {
-            mapScriptPath = reader.readString();
-        }
+        void deserialize(KapMirror::NetworkReader& reader) override { mapScriptPath = reader.readString(); }
     };
 
     struct ErrorOnStartGameMessage : KapMirror::NetworkMessage {

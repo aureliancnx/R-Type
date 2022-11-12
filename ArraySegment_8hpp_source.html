@@ -117,7 +117,7 @@ $(document).ready(function(){initNavTree('ArraySegment_8hpp_source.html',''); in
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>(T* _array, <span class="keywordtype">int</span> _offset, <span class="keywordtype">int</span> _size) {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            array = <a class="code" href="classKapMirror_1_1Array.html#af96ade23db25e4bdf8eaf1d0a60bfb03">Array::copyArray</a>(_array, _size);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            offset = _offset;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            size = _size;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            size = _size - _offset;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        ~<a class="code" href="classKapMirror_1_1ArraySegment.html">ArraySegment</a>() { <span class="keyword">delete</span>[] array; }</div>

@@ -343,6 +343,15 @@ void RType::PlayerController::onStartClient() {
             }
         }
     } catch (...) { KAP_DEBUG_LOG("MenuManager not found"); }
+    try {
+        auto go = getScene().findFirstGameObject("LobbyManager");
+        if (go) {
+            auto lobbyManagers = go->getComponents<LobbyMenuManager>();
+            if (!lobbyManagers.empty()) {
+                lobbyManager = lobbyManagers[0];
+            }
+        }
+    } catch (...) { KAP_DEBUG_LOG("LobbyManager not found"); }
 }
 
 void RType::PlayerController::onStart() {

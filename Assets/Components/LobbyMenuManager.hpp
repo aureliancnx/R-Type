@@ -11,6 +11,8 @@
 #include "KapEngine.hpp"
 #include "KapMirror/KapMirror.hpp"
 
+#include "GameMenuManager.hpp"
+
 namespace RType {
 
     class LobbyMenuManager : public KapMirror::NetworkComponent {

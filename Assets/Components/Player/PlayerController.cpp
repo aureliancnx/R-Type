@@ -3,26 +3,28 @@
 #include "Messages.hpp"
 #include "GameManager.hpp"
 
-RType::PlayerController::PlayerController(std::shared_ptr<KapEngine::GameObject> _gameObject)
+using namespace RType;
+
+PlayerController::PlayerController(std::shared_ptr<KapEngine::GameObject> _gameObject)
     : KapMirror::NetworkComponent(_gameObject, "Player") {
     addRequireComponent("Image");
     addRequireComponent("NetworkTransform");
 }
 
-void RType::PlayerController::setLocalAuthority(bool _isLocalAuthority) { isLocalAuthority = _isLocalAuthority; }
+void PlayerController::setLocalAuthority(bool _isLocalAuthority) { isLocalAuthority = _isLocalAuthority; }
 
-void RType::PlayerController::onUpdate() {
+void PlayerController::onUpdate() {
     if (isMoving) {
         if (getTransform().getLocalPosition() == posToMove) {
             isMoving = false;
         }
     }
 
+    checkCollisions();
+
     if (!isLocalAuthority) {
         return;
     }
-
-    checkCollisions();
 
     if (getInput().getKeyDown(debugKey)) {
         GameManager::getInstance()->toggleDebugMode();
@@ -61,9 +63,9 @@ void RType::PlayerController::onUpdate() {
     }
 }
 
-void RType::PlayerController::setConnectionId(unsigned int _connectionId) { connectionId = _connectionId; }
+void PlayerController::setConnectionId(unsigned int _connectionId) { connectionId = _connectionId; }
 
-void RType::PlayerController::sendPingUpdate() {
+void PlayerController::sendPingUpdate() {
     if (KapMirror::NetworkTime::localTime() - lastPingTime > 2000) {
         unsigned int clientId = connectionId;
         lastPingTime = KapMirror::NetworkTime::localTime();
@@ -85,7 +87,7 @@ void RType::PlayerController::sendPingUpdate() {
 
 #pragma region Movement
 
-void RType::PlayerController::onFixedUpdate() {
+void PlayerController::onFixedUpdate() {
     if (isServer()) {
         sendPingUpdate();
     }
@@ -107,7 +109,7 @@ void RType::PlayerController::onFixedUpdate() {
     }
 }
 
-void RType::PlayerController::movePlayer(const KapEngine::Tools::Vector2& input) {
+void PlayerController::movePlayer(const KapEngine::Tools::Vector2& input) {
     if (isClient()) {
         sendInput(input);
         return;
@@ -126,7 +128,7 @@ void RType::PlayerController::movePlayer(const KapEngine::Tools::Vector2& input)
     inputToMove = input;
 }
 
-void RType::PlayerController::sendInput(const KapEngine::Tools::Vector2& input) {
+void PlayerController::sendInput(const KapEngine::Tools::Vector2& input) {
     if (!isClient() || !isLocalAuthority) {
         return;
     }
@@ -142,7 +144,7 @@ void RType::PlayerController::sendInput(const KapEngine::Tools::Vector2& input) 
 
 #pragma region Shoot
 
-void RType::PlayerController::prepareShoot() {
+void PlayerController::prepareShoot() {
     clockMissile.restart();
 
     if (isLocal()) {
@@ -160,7 +162,7 @@ void RType::PlayerController::prepareShoot() {
     }
 }
 
-void RType::PlayerController::shoot() {
+void PlayerController::shoot() {
     KapEngine::Tools::Vector3 pos = getTransform().getLocalPosition() + KapEngine::Tools::Vector3(70, 15, 0);
     bool isMissile = false;
 
@@ -190,7 +192,7 @@ void RType::PlayerController::shoot() {
     }
 }
 
-void RType::PlayerController::spawnBullet(const KapEngine::Tools::Vector3& pos) {
+void PlayerController::spawnBullet(const KapEngine::Tools::Vector3& pos) {
     if (isLocal()) {
         auto& scene = getScene();
         std::shared_ptr<KapEngine::GameObject> bullet;
@@ -210,7 +212,7 @@ void RType::PlayerController::spawnBullet(const KapEngine::Tools::Vector3& pos) 
     }
 }
 
-void RType::PlayerController::spawnMissile(const KapEngine::Tools::Vector3& pos) {
+void PlayerController::spawnMissile(const KapEngine::Tools::Vector3& pos) {
     if (isLocal()) {
         auto& scene = getScene();
         std::shared_ptr<KapEngine::GameObject> missile;
@@ -224,7 +226,7 @@ void RType::PlayerController::spawnMissile(const KapEngine::Tools::Vector3& pos)
     }
 }
 
-void RType::PlayerController::playShootSound() {
+void PlayerController::playShootSound() {
     if (isServer()) {
         return;
     }
@@ -241,19 +243,19 @@ void RType::PlayerController::playShootSound() {
 
 #pragma region collisions
 
-void RType::PlayerController::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> collider) { collisions.push_back(collider); }
+void PlayerController::onTriggerEnter(std::shared_ptr<KapEngine::GameObject> collider) { collisions.push_back(collider); }
 
-void RType::PlayerController::checkCollisions() {
-    if (collisions.size() == 0) {
+void PlayerController::checkCollisions() {
+    if (collisions.empty()) {
         return;
     }
 
     for (auto& collision : collisions) {
         int damage = 0;
         if (collision->getName() == "Bullet") {
-            damage = 2;
+            damage = 1;
         } else if (collision->getName() == "Missile") {
-            damage = 3;
+            damage = 10;
         }
         if (collision->getName() == "Bullet" || collision->getName() == "Missile") {
             if (isLocal()) {
@@ -270,7 +272,7 @@ void RType::PlayerController::checkCollisions() {
 
 #pragma endregion
 
-void RType::PlayerController::takeDamage(int damage) {
+void PlayerController::takeDamage(int damage) {
     if (isClient()) {
         return;
     }
@@ -287,12 +289,12 @@ void RType::PlayerController::takeDamage(int damage) {
         getServer()->updateObject(getNetworkId());
     }
 
-    if (isClient() || isLocal()) {
+    if (isLocal()) {
         menuManager->updateHealth(life);
     }
 }
 
-void RType::PlayerController::initSettings() {
+void PlayerController::initSettings() {
     if (!KapEngine::PlayerPrefs::getString("upInput").empty()) {
         int value = KapEngine::PlayerPrefs::getInt("upInput");
         if (KapEngine::Events::Key::intInEnum(value)) {
@@ -331,7 +333,7 @@ void RType::PlayerController::initSettings() {
     }
 }
 
-void RType::PlayerController::onStartClient() {
+void PlayerController::onStartClient() {
     NetworkComponent::onStartClient();
 
     initSettings();
@@ -346,7 +348,7 @@ void RType::PlayerController::onStartClient() {
     } catch (...) { KAP_DEBUG_LOG("MenuManager not found"); }
 }
 
-void RType::PlayerController::onStart() {
+void PlayerController::onStart() {
     if (isLocal()) {
         initSettings();
         try {
@@ -361,12 +363,20 @@ void RType::PlayerController::onStart() {
     }
 }
 
-void RType::PlayerController::serialize(KapMirror::NetworkWriter& writer) {
+void PlayerController::onObjectUpdate() {
+    if (isClient()) {
+        if (menuManager) {
+            menuManager->updateHealth(life);
+        }
+    }
+}
+
+void PlayerController::serialize(KapMirror::NetworkWriter& writer) {
     writer.write(life);
     writer.write(isDead);
 }
 
-void RType::PlayerController::deserialize(KapMirror::NetworkReader& reader) {
+void PlayerController::deserialize(KapMirror::NetworkReader& reader) {
     int _life = reader.read<int>();
     bool _isDead = reader.read<bool>();
 
@@ -376,6 +386,6 @@ void RType::PlayerController::deserialize(KapMirror::NetworkReader& reader) {
     }
 }
 
-int RType::PlayerController::getLife() const { return life; }
+int PlayerController::getLife() const { return life; }
 
-bool RType::PlayerController::dead() const { return isDead; }
+bool PlayerController::dead() const { return isDead; }

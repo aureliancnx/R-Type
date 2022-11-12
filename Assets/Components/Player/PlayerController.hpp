@@ -67,6 +67,8 @@ namespace RType {
 
         void onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other) override;
 
+        void onObjectUpdate() override;
+
         void serialize(KapMirror::NetworkWriter& writer) override;
 
         void deserialize(KapMirror::NetworkReader& reader) override;

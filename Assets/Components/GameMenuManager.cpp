@@ -22,7 +22,11 @@ RType::GameMenuManager::GameMenuManager(std::shared_ptr<GameObject> go) : KapMir
     go->setName("MenuManager");
 }
 
-void RType::GameMenuManager::onStart() { initMainMenu(); }
+void RType::GameMenuManager::onStart() {
+    if (isLocal()) {
+        initMainMenu();
+    }
+}
 
 void RType::GameMenuManager::displayMainMenu() {
     if (mainMenu.use_count() != 0) {
@@ -255,7 +259,9 @@ std::shared_ptr<GameObject> RType::GameMenuManager::initButton(const std::shared
     return button;
 }
 
-void RType::GameMenuManager::onStartClient() { initMainMenu(false); }
+void RType::GameMenuManager::onStartClient() {
+    initMainMenu(false);
+}
 
 void RType::GameMenuManager::updateHealth(int health) {
     for (int itr = 0; itr < 3; ++itr) {

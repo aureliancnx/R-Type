@@ -47,7 +47,7 @@ void RType::MenuVolume::onUpdate() {
 }
 
 void RType::MenuVolume::foundText() {
-    auto objs = getGameObjectConst().getScene().getGameObjects("Volume Value Text");
+    auto objs = getScene().getGameObjects("Volume Value Text");
     std::shared_ptr<GameObject> _found;
 
     for (std::size_t i = 0; i < objs.size(); i++) {

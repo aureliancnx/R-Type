@@ -29,7 +29,7 @@ void RType::CampaignGenerator::onAwake() {
 void RType::CampaignGenerator::onFixedUpdate() {
     if (_enemies.size() == 0)
         return;
-    auto& scene = getGameObjectConst().getScene();
+    auto& scene = getScene();
 
     KapEngine::Time::ETime tmp = _clock.getElapseTime();
 

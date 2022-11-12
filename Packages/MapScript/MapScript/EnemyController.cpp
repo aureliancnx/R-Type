@@ -2,9 +2,13 @@
 
 using namespace RType;
 
-EnemyController::EnemyController(MapScript* _mapScript, std::shared_ptr<KapEngine::GameObject> _gameObject)
-    : KapMirror::NetworkComponent(_gameObject, "Enemy"), mapScript(_mapScript) {
+EnemyController::EnemyController(std::shared_ptr<KapEngine::GameObject> _gameObject)
+    : KapMirror::NetworkComponent(_gameObject, "Enemy") {
     addRequireComponent("Image");
+}
+
+void EnemyController::setMapScript(MapScript* _mapScript) {
+    mapScript = _mapScript;
 }
 
 void EnemyController::setEnemyName(const std::string& _enemyName) { enemyName = _enemyName; }
@@ -13,8 +17,10 @@ void EnemyController::setHp(int _hp) { hp = _hp; }
 
 void EnemyController::onFixedUpdate() {
     auto& transform = getTransform();
-    auto newPosition = mapScript->_updateEnemy(enemyName, transform.getLocalPosition());
-    transform.setPosition(newPosition);
+    if (mapScript != nullptr) {
+        auto newPosition = mapScript->_updateEnemy(enemyName, transform.getLocalPosition());
+        transform.setPosition(newPosition);
+    }
 
     // Destroy enemy if his position is out of the screen
     if (transform.getWorldPosition().getX() < -100 || transform.getWorldPosition().getX() > 1280 + 200) {

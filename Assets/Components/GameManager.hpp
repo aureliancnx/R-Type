@@ -46,7 +46,8 @@ namespace RType {
 
       public:
         void startLocalMultiPlayer();
-        void startCampaign();
+
+        void startCampaign(const std::string& pathMap);
 
         bool hasDebugMode();
 

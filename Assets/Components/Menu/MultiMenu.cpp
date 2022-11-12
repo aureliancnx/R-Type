@@ -38,8 +38,6 @@ void MultiMenu::init() {
 
         inpt->addComponent(inptComp);
 
-        inptComp->setInputType(KapEngine::UI::Inputfield::InputType::IPV4);
-
         auto& transform = inpt->getComponent<KapEngine::Transform>();
         transform.setScale({150, 35, 0});
         transform.setPosition({200, 150, 0});

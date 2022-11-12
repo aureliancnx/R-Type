@@ -2,6 +2,7 @@
 #include "Player/PlayerController.hpp"
 #include "Player/PlayerSkin.hpp"
 #include "NetStatViewer.hpp"
+#include "Campaign/MapManager.hpp"
 
 using namespace RType;
 
@@ -123,6 +124,8 @@ void RtypeNetworkManager::onServerClientConnected(const std::shared_ptr<KapMirro
     PlayerAuthorityMessage message;
     message.networkId = networkIdentity.getNetworkId();
     connection->send(message);
+
+    startGame("Maps/TestMap.lua");
 }
 
 void RtypeNetworkManager::onServerClientDisconnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
@@ -177,7 +180,7 @@ void RtypeNetworkManager::onStartGameMessage(const std::shared_ptr<KapMirror::Ne
     }
 
     isGameStarted = true;
-    startGame();
+    startGame("Maps/TestMap.lua");
 }
 
 void RtypeNetworkManager::sendErrorOnStartGame(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
@@ -213,15 +216,19 @@ void RtypeNetworkManager::onServerPlayerPingRequest(const std::shared_ptr<KapMir
     connection->send(res);
 }
 
-void RtypeNetworkManager::startGame() {
-    KapEngine::Debug::log("Start game");
+void RtypeNetworkManager::startGame(const std::string& mapScriptPath) {
+    KapEngine::Debug::log("Start game with " + std::to_string(players.size()) + " players");
+    KapEngine::Debug::log("Map script path: " + mapScriptPath);
 
-    // TODO: Implement Map Manager
-    std::shared_ptr<KapEngine::GameObject> enemy;
-    for (int i = 1; i <= 10; i++) {
-        getServer()->spawnObject("Enemy:BoubouleEnemy", {1280 + 100 + ((float) i * 100), 100 + ((float) i * 50), 0}, enemy);
+    auto scene = getEngine().getSceneManager()->getCurrentScene();
+    auto mapManager = scene.findFirstGameObject("MapManager");
+    if (mapManager == nullptr) {
+        KAP_DEBUG_ERROR("Failed to find MapManager");
+        return;
     }
-    getServer()->spawnObject("Enemy:TentaclesBossEnemy", {1280 - 200, 100, 0}, enemy);
+
+    auto& mapManagerComponent = mapManager->getComponent<MapManager>();
+    mapManagerComponent.loadMapScript(mapScriptPath, true);
 }
 
 #pragma endregion

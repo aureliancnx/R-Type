@@ -38,7 +38,6 @@ void RType::GameManager::launchGame() {
 
     // Show main menu
     menuManager.showMenu("MainMenu");
-    menuManager.showMenu("EndMenu");
 
     engine->getGraphicalLibManager()->getCurrentLib()->playMusic("Assets/Sound/Music/space-asteroids.mp3");
     engine->getGraphicalLibManager()->getCurrentLib()->setMusicVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
@@ -188,8 +187,9 @@ void RType::GameManager::initMultiPlayer(bool isServer) {
     networkManager->setCompression(std::make_shared<KapMirror::Experimental::GZipCompression>());
     networkManagerObject->addComponent(networkManager);
 
-    auto mapManager = std::make_shared<MapManager>(networkManagerObject);
-    networkManagerObject->addComponent(mapManager);
+    auto mapManagerObject = scene->createGameObject("MapManager");
+    auto mapManager = std::make_shared<MapManager>(mapManagerObject);
+    mapManagerObject->addComponent(mapManager);
 
     if (!isServer) {
         std::shared_ptr<GameObject> gameMenu;
@@ -215,6 +215,11 @@ void RType::GameManager::startCampaign(const std::string& pathMap) {
     engine->getSceneManager()->loadScene("SinglePlayer");
 
     auto mapManager = scene.findFirstGameObject("MapManager");
+    if (mapManager == nullptr) {
+        KAP_DEBUG_ERROR("Failed to find MapManager");
+        return;
+    }
+
     auto& mapManagerComponent = mapManager->getComponent<MapManager>();
     mapManagerComponent.loadMapScript(pathMap);
 }
@@ -242,13 +247,13 @@ void RType::GameManager::toggleDebugMode() {
     debugMode = !debugMode;
 
     if (debugMode) {
-        KAP_DEBUG_LOG("Debug mode enabled.");
+        KapEngine::Debug::log("Debug mode enabled.");
     } else {
-        KAP_DEBUG_LOG("Debug mode disabled.");
+        KapEngine::Debug::log("Debug mode disabled.");
     }
 }
 
-bool RType::GameManager::hasDebugMode() { return debugMode; }
+bool RType::GameManager::hasDebugMode() const { return debugMode; }
 
 void RType::GameManager::initAxis() {
     KapEngine::Events::Input::Axis horizontal("Horizontal");

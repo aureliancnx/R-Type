@@ -43,19 +43,11 @@ void RType::MenuCampaignSelector::openFolderLua() {
 void RType::MenuCampaignSelector::onAwake() {
     openFolderLua();
     getLuaInformation();
-
-    KAP_DEBUG_LOG("Campaigns loaded");
-    for (std::size_t i = 0; i < _campaigns.size(); i++) {
-        KAP_DEBUG_LOG("Campaign " + std::to_string(i) + " : " + _campaigns[i].name);
-    }
     updateButtons();
 }
 
-void RType::MenuCampaignSelector::onUpdate() {}
-
 void RType::MenuCampaignSelector::setButtonLevel1(const std::shared_ptr<KapEngine::GameObject>& button) {
     if (!button->hasComponent<KapEngine::UI::Button>()) {
-        KAP_DEBUG_ERROR("Failed to find button");
         return;
     }
 
@@ -66,7 +58,6 @@ void RType::MenuCampaignSelector::setButtonLevel1(const std::shared_ptr<KapEngin
 
 void RType::MenuCampaignSelector::setButtonLevel2(const std::shared_ptr<KapEngine::GameObject>& button) {
     if (!button->hasComponent<KapEngine::UI::Button>()) {
-        KAP_DEBUG_ERROR("Failed to find button");
         return;
     }
 
@@ -77,7 +68,6 @@ void RType::MenuCampaignSelector::setButtonLevel2(const std::shared_ptr<KapEngin
 
 void RType::MenuCampaignSelector::setButtonLeft(const std::shared_ptr<KapEngine::GameObject>& button) {
     if (!button->hasComponent<KapEngine::UI::Button>()) {
-        KAP_DEBUG_ERROR("Failed to find button");
         return;
     }
 
@@ -88,7 +78,6 @@ void RType::MenuCampaignSelector::setButtonLeft(const std::shared_ptr<KapEngine:
 
 void RType::MenuCampaignSelector::setButtonRight(const std::shared_ptr<KapEngine::GameObject>& button) {
     if (!button->hasComponent<KapEngine::UI::Button>()) {
-        KAP_DEBUG_ERROR("Failed to find button");
         return;
     }
 
@@ -117,8 +106,10 @@ void RType::MenuCampaignSelector::buttonPreviousMaps() {
 void RType::MenuCampaignSelector::updateButtons() {
     // update button 1
     try {
-        if (_buttonLevel1.use_count() == 0)
+        if (_buttonLevel1.use_count() == 0) {
             throw KapEngine::Errors::ComponentError("Failed to get button 1");
+        }
+
         auto& btn = _buttonLevel1->getComponent<KapEngine::UI::Button>();
         btn.setBackground(_campaigns[_currentMap].image, {0, 0, 449, 433});
 
@@ -150,6 +141,7 @@ void RType::MenuCampaignSelector::updateButtons() {
         if (nextId >= _campaigns.size()) {
             nextId = 0;
         }
+
         auto& btn = _buttonLevel2->getComponent<KapEngine::UI::Button>();
         btn.setBackground(_campaigns[nextId].image, {0, 0, 449, 433});
 
@@ -174,12 +166,15 @@ void RType::MenuCampaignSelector::updateButtons() {
 
 void RType::MenuCampaignSelector::buttonPlayFirst() {
     getEngine().getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
+
     try {
         getGameObject().getComponent<UpdateStartGameKeys>().checkInputs();
     } catch (...) { KAP_DEBUG_ERROR("Failed to update inputs"); }
+
     try {
-        if (_currentMap >= _campaigns.size())
+        if (_currentMap >= _campaigns.size()) {
             throw KapEngine::Errors::ComponentError("Failed to get current map");
+        }
         const Campaign& campaign = _campaigns[_currentMap];
         gameManager.startCampaign(campaign.scriptPath);
     } catch (LuaException& e) { KapEngine::Debug::error(e.what()); } catch (std::exception& e) {
@@ -189,15 +184,19 @@ void RType::MenuCampaignSelector::buttonPlayFirst() {
 
 void RType::MenuCampaignSelector::buttonPlaySecond() {
     getEngine().getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
+
     try {
         getGameObject().getComponent<UpdateStartGameKeys>().checkInputs();
     } catch (...) { KAP_DEBUG_ERROR("Failed to update inputs"); }
+
     try {
         std::size_t nextId = _currentMap + 1;
-        if (nextId >= _campaigns.size())
+        if (nextId >= _campaigns.size()) {
             nextId = 0;
-        if (nextId >= _campaigns.size())
+        }
+        if (nextId >= _campaigns.size()) {
             throw KapEngine::Errors::ComponentError("Failed to get current map");
+        }
         const Campaign& campaign = _campaigns[nextId];
         gameManager.startCampaign(campaign.scriptPath);
     } catch (LuaException& e) { KapEngine::Debug::error(e.what()); } catch (std::exception& e) {

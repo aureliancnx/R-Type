@@ -33,8 +33,6 @@ namespace RType {
         explicit MenuCampaignSelector(std::shared_ptr<KapEngine::GameObject> go, GameManager& _gameManager);
         ~MenuCampaignSelector() = default;
 
-        void onUpdate() override;
-
         void onAwake() override;
 
         void buttonNextMaps();

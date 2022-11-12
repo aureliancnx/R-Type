@@ -288,4 +288,5 @@ void RType::GameMenuManager::updateHealth(int health) {
             component.setRectangle({(float) xOffset, 0, 175, 175});
         }
     }
+
 }

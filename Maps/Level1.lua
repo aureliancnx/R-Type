@@ -58,29 +58,48 @@ tentacleBoss.scale = Vector2.new(128, 132)
 tentacleBoss.animation = tentacleBossAnim
 
 -- Controller of the enemies
+
+BasicBool = false
+
 function BasicController(posX, posY, time)
     if (Math.Mod(time, 50) == 0) then
         Map.InstantiatePrefab("Bullet", posX, posY)
     end
-    if (Math.Random(-10, 10) > 0) then
-        return posX - 0.5, posY - 1.5
-    else
-        return posX - 0.5, posY + 1.5
+
+    if (posY < 50) then
+        BasicBool = true
+    end
+    if (posY > 500) then
+        BasicBool = false
+    end
+    if (BasicBool == false) then
+        return posX - 1, posY - 1
+    end
+    if (BasicBool == true) then
+        return posX - 1, posY + 1
     end
 end
 
-function BossController(posX, posY, time)
-    -- Make the boss movement
+BossBool = false
 
+
+function BossController(posX, posY, time)
     -- Shoot
     if (Math.Mod(time, 50) == 0) then
-        Map.InstantiatePrefab("Bullet", posX, posY)
+        Map.InstantiatePrefab("Missile", posX, posY)
     end
 
-    if (posY < 100) then
-        return posX, posY + 0.5
-    else
-        return posX, posY - 0.5
+    if (posY < 50) then
+        BossBool = true
+    end
+    if (posY > 500) then
+        BossBool = false
+    end
+    if (BossBool == false) then
+        return posX, posY - 1
+    end
+    if (BossBool == true) then
+        return posX, posY + 1
     end
 end
 
@@ -100,6 +119,7 @@ end
 
 -- Spawn enemies
 for i = 1, 100 do
+    Debug.Log(i)
     Map.SpawnEnemy("Bouboule2", 4 * i, Math.Random(100, 500), 0, 5)
 end
 

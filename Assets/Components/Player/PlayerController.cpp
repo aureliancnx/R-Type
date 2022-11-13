@@ -253,7 +253,7 @@ void PlayerController::checkCollisions() {
     for (auto& collision : collisions) {
         int damage = 0;
         if (collision->getName() == "Bullet") {
-            damage = 1;
+            damage = 4;
         } else if (collision->getName() == "Missile") {
             damage = 10;
         }

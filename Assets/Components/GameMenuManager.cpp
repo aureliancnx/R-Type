@@ -4,6 +4,7 @@
 
 #include "KapEngineUi.hpp"
 #include "KapUI/KapUI.hpp"
+#include "GameManager.hpp"
 
 using namespace KapEngine;
 
@@ -34,6 +35,20 @@ void RType::GameMenuManager::displayMainMenu() {
     } else {
         initMainMenu();
     }
+}
+
+void RType::GameMenuManager::displayEndMenu(bool win) {
+    if (!isLocal()) {
+        if (getClient()->isConnected()) {
+            getClient()->disconnect();
+        }
+    }
+
+    PlayerPrefs::setBool("Finish", win);
+    PlayerPrefs::setInt("ScorePlayer", 0);
+
+    getEngine().getSceneManager()->loadScene("EndScene");
+    GameManager::getInstance()->getMenuManager().showMenu("EndMenu");
 }
 
 void RType::GameMenuManager::initMainMenu(bool local) {

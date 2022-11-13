@@ -253,7 +253,7 @@ void PlayerController::checkCollisions() {
     for (auto& collision : collisions) {
         int damage = 0;
         if (collision->getName() == "Bullet") {
-            damage = 1;
+            damage = 4;
         } else if (collision->getName() == "Missile") {
             damage = 10;
         }
@@ -273,16 +273,15 @@ void PlayerController::checkCollisions() {
 #pragma endregion
 
 void PlayerController::takeDamage(int damage) {
-    if (isClient()) {
-        return;
-    }
-
     life -= damage;
     KAP_DEBUG_LOG("Player[" + std::to_string(getNetworkId()) + "] Player life update: " + std::to_string(life));
     if (life <= 0) {
         life = 0;
         isDead = true;
         // TODO: do something on death
+        if (isLocal() || isClient()) {
+            menuManager->displayEndMenu(false);
+        }
     }
 
     if (isServer()) {

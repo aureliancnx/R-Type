@@ -40,6 +40,7 @@ var NAVTREEINDEX0 =
 "Component_8hpp_source.html":[40,0,2,1,0,0,0],
 "Compression_8hpp_source.html":[40,0,3,0,0,1,3],
 "Connection_8hpp_source.html":[40,0,3,5,0,2],
+"ConvertEnum_8hpp_source.html":[40,0,0,0,4,1],
 "DebugScript_8hpp_source.html":[40,0,3,3,0,1,0],
 "Debug_8hpp_source.html":[40,0,2,1,0,2,0],
 "Dictionary_8hpp_source.html":[40,0,2,1,0,16,0],
@@ -89,7 +90,7 @@ var NAVTREEINDEX0 =
 "KapRaylib_8hpp_source.html":[40,0,3,1,0,4],
 "KapUISettings_8hpp_source.html":[40,0,3,2,0,5],
 "KapUI_8hpp_source.html":[40,0,3,2,0,4],
-"KeySelector_8hpp_source.html":[40,0,0,0,4,1],
+"KeySelector_8hpp_source.html":[40,0,0,0,4,2],
 "Key_8hpp_source.html":[40,0,2,1,0,6,1,1],
 "KeyboardMenu_8hpp_source.html":[40,0,0,0,5,2],
 "LegacyGraphicalLib_8hpp_source.html":[40,0,2,1,0,9,0,0],
@@ -174,7 +175,7 @@ var NAVTREEINDEX0 =
 "UiFactory_8hpp_source.html":[40,0,2,1,0,9,1,1,0],
 "UiImage_8hpp_source.html":[40,0,2,1,0,9,1,2,0],
 "UiText_8hpp_source.html":[40,0,2,1,0,9,1,3,0],
-"UpdateStartGameKeys_8hpp_source.html":[40,0,0,0,4,2],
+"UpdateStartGameKeys_8hpp_source.html":[40,0,0,0,4,3],
 "Vector2Script_8hpp_source.html":[40,0,3,3,0,1,5],
 "Vectors_8hpp_source.html":[40,0,2,1,0,15,2],
 "VolumeMenu_8hpp_source.html":[40,0,0,0,5,9],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "classKapEngine_1_1Collider.html#a835aad5122836d98061416fd3c34a4fa":[37,0,5,2],
 "classKapEngine_1_1Collider.html#a92a36099a933727f2f73ad6401e2e3f9":[37,0,5,0],
 "classKapEngine_1_1Collider.html#a96e08f0d17e623a3515aae591fec5601":[37,0,5,7],
-"classKapEngine_1_1Collider.html#a97de92957a541665532f62cb251024ad":[37,0,5,3],
-"classKapEngine_1_1Collider.html#aad385c886b7a5e221a204819fed778c9":[37,0,5,4]
+"classKapEngine_1_1Collider.html#a97de92957a541665532f62cb251024ad":[37,0,5,3]
 };

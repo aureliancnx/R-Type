@@ -118,6 +118,7 @@ var hierarchy =
         ] ],
         [ "RType::CampaignGenerator", "classRType_1_1CampaignGenerator.html", null ],
         [ "RType::ChangeKey", "classRType_1_1ChangeKey.html", null ],
+        [ "RType::ConvertEnum", "classRType_1_1ConvertEnum.html", null ],
         [ "RType::KeySelector", "classRType_1_1KeySelector.html", null ],
         [ "RType::MapManager", "classRType_1_1MapManager.html", null ],
         [ "RType::MenuCampaignSelector", "classRType_1_1MenuCampaignSelector.html", null ],

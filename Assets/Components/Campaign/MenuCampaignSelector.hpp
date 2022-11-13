@@ -50,5 +50,6 @@ namespace RType {
         void openFolderLua();
 
         void updateButtons();
+        std::string formatText(const std::string& text);
     };
 } // namespace RType

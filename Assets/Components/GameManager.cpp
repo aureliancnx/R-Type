@@ -172,6 +172,7 @@ void GameManager::initSinglePlayer() {
 // TODO: Move this to a dedicated class
 void GameManager::initMultiPlayer(bool isServer) {
     auto scene = engine->getSceneManager()->createScene("MultiPlayer");
+    auto lostConnectionScene = engine->getSceneManager()->createScene("MPConnectionLost");
 
     std::shared_ptr<KapEngine::GameObject> paralaxGalaxy;
     if (!engine->getPrefabManager()->instantiatePrefab("ParalaxGalaxy", *scene, paralaxGalaxy)) {

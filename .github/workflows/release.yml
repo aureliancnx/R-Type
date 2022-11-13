@@ -25,6 +25,7 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
+          generateReleaseNotes: true
   build:
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}

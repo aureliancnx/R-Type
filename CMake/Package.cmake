@@ -30,6 +30,7 @@ set(CPACK_DEBIAN_PACKAGE_NAME "RType")
 set(CPACK_DEBIAN_PACKAGE_CONTACT "idk@gmail.com")
 set(CPACK_DEBIAN_PACKAGE_VERSION "1.0")
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "RType")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libboost-dev")
 
 # CPack configuration for DMG package generation
 set(CPACK_DMG_BACKGROUND_IMAGE ${CMAKE_CURRENT_SOURCE_DIR}/Assets/Installer/installer_dragndrop.png)

@@ -40,6 +40,7 @@ namespace RType {
                                                           KapEngine::Tools::Color textColor = KapEngine::Tools::Color::black());
 
         void quit();
+        void startGame();
 
         // variables
       private:

@@ -9,6 +9,7 @@
 
 #include "KapEngineUi.hpp"
 #include "KapUI/KapUI.hpp"
+#include "Messages.hpp"
 
 using namespace KapEngine;
 
@@ -44,6 +45,13 @@ void RType::LobbyMenuManager::initBackground(std::shared_ptr<KapEngine::GameObje
 }
 
 void RType::LobbyMenuManager::initLobbyMenu(bool local) {
+    try {
+        auto go = getGameObject().getScene().findFirstGameObject("MenuManager");
+        if (go) {
+            go->getComponent<GameMenuManager>().setActive(false);
+        }
+    } catch (...) { KAP_DEBUG_ERROR("Failled to find MenuManager"); }
+
     lobbyMenu = getGameObject().getScene().createGameObject("MainMenu");
     lobbyMenu->getComponent<Transform>().setParent(getGameObject().getId());
 
@@ -60,28 +68,21 @@ void RType::LobbyMenuManager::initLobbyMenu(bool local) {
     {
         std::shared_ptr<GameObject> btn;
 
-        if (isLocal()) {
-            btn = initButton(lobbyMenu, "Play", "Play",
-                             [this]() {
-                                 KAP_DEBUG_WARNING("Play");
-                                 quit();
-                             },
-                             "Assets/Textures/button.png", {5, 9, 655, 213});
-        }
         if (isClient()) {
-            btn = initButton(lobbyMenu, "Ready", "Ready", [this]() { KAP_DEBUG_WARNING("Ready"); }, "Assets/Textures/button.png",
-                             {5, 9, 655, 213});
+            btn = initButton(lobbyMenu, "Ready", "Ready", [this]() {
+                startGame();
+            }, "Assets/Textures/button.png", {5, 9, 655, 213});
         }
         auto& tr = btn->getComponent<Transform>();
 
         tr.setScale(btnSize);
-        tr.setPosition(btnBasePos);
+        tr.setPosition({150, 5, 0});
     }
 
     // Text for input map
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Choose Map Text");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Enter map name : ");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Path map : ");
         auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         Tools::Vector3 calculatedPos;
@@ -165,5 +166,13 @@ void RType::LobbyMenuManager::quit() {
         if (go) {
             go->getComponent<GameMenuManager>().setActive(true);
         }
-    } catch (...) { KAP_DEBUG_ERROR("Failled to find MenuManager"); }
+    } catch (...) { KAP_DEBUG_ERROR("Failed to find MenuManager"); }
+}
+
+// TODO: Add a way to get the map path from the input field
+void RType::LobbyMenuManager::startGame() {
+    StartGameMessage message;
+    message.mapScriptPath = "Maps/TestMapServer.lua";
+    getClient()->send(message);
+//    quit();
 }

@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"classKapEngine_1_1Tools_1_1Color.html#abe3473c8bf66d5e15fb84dff7b91327e":[39,0,2,7,0,3],
 "classKapEngine_1_1Tools_1_1Color.html#aca989acbc607587b241a5677f97584b7":[39,0,2,7,0,0],
 "classKapEngine_1_1Tools_1_1Color.html#ae7b4dd4f53cc8c788df2390d96c7605a":[39,0,2,7,0,13],
 "classKapEngine_1_1Tools_1_1Rectangle.html":[39,0,2,7,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "classKapMirror_1_1Experimental_1_1NetworkStatistics.html":[39,0,3,0,2],
 "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a01a565faabefc5c2847d66e38673742d":[39,0,3,0,2,21],
 "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a09f3ffb50a7a0f3f2cc469f46adf8353":[39,0,3,0,2,17],
-"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a0baa1eef0de690ccb2700f1dc3c6732f":[39,0,3,0,2,16],
-"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a0c6f0ff5c4007ac64bcc80b80b8e05f2":[39,0,3,0,2,7]
+"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a0baa1eef0de690ccb2700f1dc3c6732f":[39,0,3,0,2,16]
 };

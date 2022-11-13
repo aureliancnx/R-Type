@@ -396,16 +396,16 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"classKapEngine_1_1Collider.html#a96e08f0d17e623a3515aae591fec5601",
-"classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65a9ebd977a43ddf3c32a8e070e8e8f2c0d",
-"classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#ab04b51cb6e830006cc235c8f63a34a91",
-"classKapEngine_1_1Tools_1_1Color.html#aca989acbc607587b241a5677f97584b7",
-"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a0ee63493070e485c962037a915f35111",
-"classKapMirror_1_1Sylph_1_1Server.html",
-"classRType_1_1LuaException.html#a70ec586fa22c693d76a1e9a651b86a71",
-"classbackward_1_1Printer.html#af5916965c8e12c840a1a4798a90b6161",
-"md_CODE_OF_CONDUCT.html#autotoc_md4",
-"md_doxygen-awesome-css_docs_extensions.html#autotoc_md40"
+"classKapEngine_1_1Collider.html#a92a36099a933727f2f73ad6401e2e3f9",
+"classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65a9b352bfa55f35692d2ba1de788ceca11",
+"classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#aa59755a84b31540601a96be710601ac0",
+"classKapEngine_1_1Tools_1_1Color.html#abe3473c8bf66d5e15fb84dff7b91327e",
+"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a0c6f0ff5c4007ac64bcc80b80b8e05f2",
+"classKapMirror_1_1Sylph_1_1Connection.html#af5120ebb88e3baa038de9c69cd798e6a",
+"classRType_1_1LobbyMenuManager.html#a68828c90e88607e2fc53b156e56b4319",
+"classbackward_1_1Printer.html#a4a42f91145e5d86cdc43c74b3b4b9bdf",
+"md_CODE_OF_CONDUCT.html",
+"md_doxygen-awesome-css_docs_extensions.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

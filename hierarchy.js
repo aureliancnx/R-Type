@@ -148,6 +148,7 @@ var hierarchy =
     [ "RType::MapScript", "classRType_1_1MapScript.html", null ],
     [ "RType::Script::Math", "classRType_1_1Script_1_1Math.html", null ],
     [ "RType::Menu", "classRType_1_1Menu.html", [
+      [ "RType::ConnectionLostMenu", "classRType_1_1ConnectionLostMenu.html", null ],
       [ "RType::EndMenu", "classRType_1_1EndMenu.html", null ],
       [ "RType::HowToPlayMenu", "classRType_1_1HowToPlayMenu.html", null ],
       [ "RType::KeyboardMenu", "classRType_1_1KeyboardMenu.html", null ],
@@ -209,8 +210,8 @@ var hierarchy =
     ] ],
     [ "KapEngine::SceneManagement::Scene", "classKapEngine_1_1SceneManagement_1_1Scene.html", null ],
     [ "KapEngine::SceneManagement::SceneManager", "classKapEngine_1_1SceneManagement_1_1SceneManager.html", null ],
-    [ "KapMirror::Telepathy::Server", "classKapMirror_1_1Telepathy_1_1Server.html", null ],
     [ "KapMirror::Sylph::Server", "classKapMirror_1_1Sylph_1_1Server.html", null ],
+    [ "KapMirror::Telepathy::Server", "classKapMirror_1_1Telepathy_1_1Server.html", null ],
     [ "backward::SignalHandling", "classbackward_1_1SignalHandling.html", null ],
     [ "backward::SnippetFactory", "classbackward_1_1SnippetFactory.html", null ],
     [ "KapMirror::Socket", "classKapMirror_1_1Socket.html", null ],

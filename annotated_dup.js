@@ -107,6 +107,7 @@ var annotated_dup =
       [ "Bullet", "classRType_1_1Bullet.html", "classRType_1_1Bullet" ],
       [ "CampaignGenerator", "classRType_1_1CampaignGenerator.html", "classRType_1_1CampaignGenerator" ],
       [ "ChangeKey", "classRType_1_1ChangeKey.html", "classRType_1_1ChangeKey" ],
+      [ "ConnectionLostMenu", "classRType_1_1ConnectionLostMenu.html", "classRType_1_1ConnectionLostMenu" ],
       [ "ConvertEnum", "classRType_1_1ConvertEnum.html", "classRType_1_1ConvertEnum" ],
       [ "EndMenu", "classRType_1_1EndMenu.html", "classRType_1_1EndMenu" ],
       [ "EnemyController", "classRType_1_1EnemyController.html", "classRType_1_1EnemyController" ],

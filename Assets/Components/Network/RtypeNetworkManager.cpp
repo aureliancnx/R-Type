@@ -48,12 +48,12 @@ void RtypeNetworkManager::registerClientHandlers() {
 void RtypeNetworkManager::onClientConnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
     KapEngine::Debug::log("RtypeNetworkManager: Client connected");
 
-//        try {
-//            auto go = getGameObject().getScene().findFirstGameObject("LobbyManager");
-//            if (go) {
-//                go->getComponent<GameMenuManager>().setActive(false);
-//            }
-//        } catch (...) { KAP_DEBUG_ERROR("Failed to find LobbyManager"); }
+    //        try {
+    //            auto go = getGameObject().getScene().findFirstGameObject("LobbyManager");
+    //            if (go) {
+    //                go->getComponent<GameMenuManager>().setActive(false);
+    //            }
+    //        } catch (...) { KAP_DEBUG_ERROR("Failed to find LobbyManager"); }
 }
 
 // if is not connected or if connection is lost

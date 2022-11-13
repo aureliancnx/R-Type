@@ -5,10 +5,10 @@
 #include "GameManager.hpp"
 
 namespace RType {
-    class ConnectionLost : public Menu {
+    class ConnectionLostMenu : public Menu {
       public:
-        ConnectionLost(KapEngine::SceneManagement::Scene &_scene, GameManager &_gameManager);
-        ~ConnectionLost() = default;
+        ConnectionLostMenu(KapEngine::SceneManagement::Scene &_scene, GameManager &_gameManager);
+        ~ConnectionLostMenu() = default;
 
         void init() override;
 

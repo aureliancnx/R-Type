@@ -146,6 +146,9 @@ void GameManager::initSinglePlayer() {
     auto& transform = player->getComponent<KapEngine::Transform>();
     transform.setPosition({0, 0, 0});
 
+    auto& playerIdentity = player->getComponent<KapMirror::NetworkIdentity>();
+    playerIdentity.setAuthority(true);
+
     auto& playerController = player->getComponent<PlayerController>();
     playerController.setLocalAuthority(true);
 

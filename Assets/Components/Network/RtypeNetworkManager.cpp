@@ -66,8 +66,17 @@ void RtypeNetworkManager::onPlayerAuthorityMessage(const std::shared_ptr<KapMirr
                                                    PlayerAuthorityMessage& message) {
     std::shared_ptr<KapEngine::GameObject> player;
     if (getClient()->getExistingObject(message.networkId, player)) {
+        auto& identity = player->getComponent<KapMirror::NetworkIdentity>();
+        identity.setAuthority(true);
+
         auto& playerController = player->getComponent<PlayerController>();
         playerController.setLocalAuthority(true);
+
+        auto& playerSkin = player->getComponent<PlayerSkin>();
+        if (KapEngine::PlayerPrefs::hasKey("shipID")) {
+            playerSkin.setSkinId(KapEngine::PlayerPrefs::getInt("shipID"));
+            getClient()->updateObject(identity.getNetworkId());
+        }
     }
 }
 
@@ -147,20 +156,13 @@ void RtypeNetworkManager::onServerClientConnected(const std::shared_ptr<KapMirro
 
     std::shared_ptr<KapEngine::GameObject> player;
     getServer()->spawnObject(
-        "Player", {0, 0, 0},
-        [](const std::shared_ptr<KapEngine::GameObject>& go) {
-            auto& networkIdentity = go->getComponent<KapMirror::NetworkIdentity>();
-            auto& playerSkin = go->getComponent<PlayerSkin>();
-
-            // Set Default Skin (Send later the player skin)
-            playerSkin.setSkinId(2);
-        },
-        player);
+        "Player", {0, 0, 0}, [](const std::shared_ptr<KapEngine::GameObject>& go) {}, player);
 
     player->getComponent<PlayerController>().setConnectionId(connection->getConnectionId());
     players[connection->getConnectionId()] = player;
 
     auto& networkIdentity = player->getComponent<KapMirror::NetworkIdentity>();
+    networkIdentity.setAuthority(true);
 
     // Send player authority
     PlayerAuthorityMessage message;

@@ -118,15 +118,15 @@ void RType::MenuCampaignSelector::updateButtons() {
             if (i->hasComponent<KapEngine::UI::Text>() && i->getName() == "LevelName") {
                 // change level name
                 auto& txt = i->getComponent<KapEngine::UI::Text>();
-                txt.setText(_campaigns[_currentMap].name);
+                txt.setText(formatText(_campaigns[_currentMap].name));
             } else if (i->hasComponent<KapEngine::UI::Text>() && i->getName() == "LevelDescription") {
                 // change level description
                 auto& txt = i->getComponent<KapEngine::UI::Text>();
-                txt.setText(_campaigns[_currentMap].description);
+                txt.setText(formatText(_campaigns[_currentMap].description));
             } else if (i->hasComponent<KapEngine::UI::Text>() && i->getName() == "LevelAuthor") {
                 // change level author
                 auto& txt = i->getComponent<KapEngine::UI::Text>();
-                txt.setText(_campaigns[_currentMap].author);
+                txt.setText(formatText(_campaigns[_currentMap].author));
             }
         }
     } catch (const std::exception& e) { KAP_DEBUG_ERROR("Failed to update button 1 : " + std::string(e.what())); }
@@ -150,15 +150,15 @@ void RType::MenuCampaignSelector::updateButtons() {
             if (i->hasComponent<KapEngine::UI::Text>() && i->getName() == "LevelName") {
                 // change level name
                 auto& txt = i->getComponent<KapEngine::UI::Text>();
-                txt.setText(_campaigns[nextId].name);
+                txt.setText(formatText(_campaigns[nextId].name));
             } else if (i->hasComponent<KapEngine::UI::Text>() && i->getName() == "LevelDescription") {
                 // change level description
                 auto& txt = i->getComponent<KapEngine::UI::Text>();
-                txt.setText(_campaigns[nextId].description);
+                txt.setText(formatText(_campaigns[nextId].description));
             } else if (i->hasComponent<KapEngine::UI::Text>() && i->getName() == "LevelAuthor") {
                 // change level author
                 auto& txt = i->getComponent<KapEngine::UI::Text>();
-                txt.setText(_campaigns[nextId].author);
+                txt.setText(formatText(_campaigns[nextId].author));
             }
         }
     } catch (const std::exception& e) { KAP_DEBUG_ERROR("Failed to update button 2 : " + std::string(e.what())); }
@@ -202,4 +202,13 @@ void RType::MenuCampaignSelector::buttonPlaySecond() {
     } catch (LuaException& e) { KapEngine::Debug::error(e.what()); } catch (std::exception& e) {
         KapEngine::Debug::error(e.what());
     }
+}
+
+std::string RType::MenuCampaignSelector::formatText(const std::string& text) {
+    std::string result = text;
+    if (result.size() > 30) {
+        result = result.substr(0, 27);
+        result += "...";
+    }
+    return result;
 }

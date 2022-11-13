@@ -63,9 +63,7 @@ void RType::LobbyMenuManager::initLobbyMenu(bool local) {
         std::shared_ptr<GameObject> btn;
 
         if (isClient()) {
-            btn = initButton(lobbyMenu, "Ready", "Ready", [this]() {
-                startGame();
-            }, "Assets/Textures/button.png", {5, 9, 655, 213});
+            btn = initButton(lobbyMenu, "Ready", "Ready", [this]() { startGame(); }, "Assets/Textures/button.png", {5, 9, 655, 213});
         }
         auto& tr = btn->getComponent<Transform>();
 
@@ -168,5 +166,5 @@ void RType::LobbyMenuManager::startGame() {
     StartGameMessage message;
     message.mapScriptPath = "Maps/TestMapServer.lua";
     getClient()->send(message);
-//    quit();
+    //    quit();
 }

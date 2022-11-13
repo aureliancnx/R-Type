@@ -139,6 +139,7 @@ void Prefabs::registerMissilePrefab(KapEngine::KEngine &engine) {
         missile->addComponent(networkTransformComponent);
 
         auto missileComp = std::make_shared<Bullet>(missile);
+        missileComp->setDirection(Bullet::Direction::LEFT);
         missile->addComponent(missileComp);
 
         auto collider = std::make_shared<KapEngine::Collider>(missile, true);

@@ -40,7 +40,7 @@ void MultiMenu::init() {
         inptComp->setPlaceholderText("127.0.0.1");
 
         auto& transform = inpt->getComponent<KapEngine::Transform>();
-        transform.setScale({150, 35, 0});
+        transform.setScale({150, 15, 0});
         transform.setPosition({200, 150, 0});
         transform.setParent(canvas);
     }
@@ -67,7 +67,7 @@ void MultiMenu::init() {
         inptComp->setInputType(KapEngine::UI::Inputfield::InputType::NUMBER);
 
         auto& transform = inpt->getComponent<KapEngine::Transform>();
-        transform.setScale({150, 35, 0});
+        transform.setScale({50, 15, 0});
         transform.setPosition({200, 190, 0});
         transform.setParent(canvas);
     }

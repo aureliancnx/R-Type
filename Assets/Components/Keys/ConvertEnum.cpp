@@ -4,10 +4,12 @@
 
 #include "ConvertEnum.hpp"
 #include "Keys/UpdateStartGameKeys.hpp"
+#include "KapUI/KapUI.hpp"
 
 using namespace RType;
 
-ConvertEnum::ConvertEnum(std::shared_ptr<GameObject> go) : Component(go, "Convert Enum to String") {}
+ConvertEnum::ConvertEnum(std::shared_ptr<GameObject> go, std::string prefsKey, std::string prefix, KapEngine::Events::Key::EKey basicKey) : Component(go, "Convert Enum to String"),
+    _prefix(prefix), _basicKey(basicKey), _prefKey(prefsKey) {}
 
 ConvertEnum::~ConvertEnum() {}
 
@@ -16,34 +18,25 @@ void ConvertEnum::onAwake() {}
 void ConvertEnum::onUpdate() { setTextKey(); }
 
 void ConvertEnum::setTextKey() {
-    try {
-        auto children = _buttonKeyBoard->getComponent<KapEngine::Transform>().getChildren();
 
-        for (auto& i : children) {
-            if (i->hasComponent<KapEngine::UI::Button>() && i->getName() == "ButtonInput1") {
-                auto& txt = i->getComponent<KapEngine::UI::Text>();
-                txt.setText("Move Up : " + KeyToString(KapEngine::PlayerPrefs::getInt("upInput")));
-            }
-            if (i->hasComponent<KapEngine::UI::Button>() && i->getName() == "ButtonInput2") {
-                auto& txt = i->getComponent<KapEngine::UI::Text>();
-                txt.setText("Move Down : " + KeyToString(KapEngine::PlayerPrefs::getInt("downInput")));
-            }
-            if (i->hasComponent<KapEngine::UI::Button>() && i->getName() == "ButtonInput3") {
-                auto& txt = i->getComponent<KapEngine::UI::Text>();
-                txt.setText("Move Left : " + KeyToString(KapEngine::PlayerPrefs::getInt("leftInput")));
-            }
-            if (i->hasComponent<KapEngine::UI::Button>() && i->getName() == "ButtonInput4") {
-                auto& txt = i->getComponent<KapEngine::UI::Text>();
-                txt.setText("Move Right : " + KeyToString(KapEngine::PlayerPrefs::getInt("rightInput")));
-            }
-            if (i->hasComponent<KapEngine::UI::Button>() && i->getName() == "ButtonInput5") {
-                auto& txt = i->getComponent<KapEngine::UI::Text>();
-                txt.setText("Shoot : " + KeyToString(KapEngine::PlayerPrefs::getInt("shootInput")));
-            }
-            if (i->hasComponent<KapEngine::UI::Button>() && i->getName() == "ButtonInput6") {
-                auto& txt = i->getComponent<KapEngine::UI::Text>();
-                txt.setText("Debug :" + KeyToString(KapEngine::PlayerPrefs::getInt("debugInput")));
-            }
-        }
-    } catch (const std::exception& e) { KAP_DEBUG_ERROR("Failed to update KeyBoard button " + std::string(e.what())); }
+    auto &btn = getGameObject().getComponent<KapEngine::UI::Button>();
+
+    if (KapEngine::PlayerPrefs::hasKey(_prefKey)) {
+        auto key = KapEngine::PlayerPrefs::getInt(_prefKey);
+        btn.setText(_prefix + KeyToString(key));
+    } else {
+        KapEngine::Events::Key key;
+        key = _basicKey;
+        btn.setText(_prefix + key.toString());
+    }
+}
+
+std::string ConvertEnum::KeyToString(int e) {
+    if (KapEngine::Events::Key::intInEnum(e)) {
+        KapEngine::Events::Key key;
+        key = (KapEngine::Events::Key::EKey)e;
+        return key.toString();
+    } else {
+        return "Unknown";
+    }
 }

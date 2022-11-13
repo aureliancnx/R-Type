@@ -37,6 +37,7 @@ void MultiMenu::init() {
         auto inptComp = std::make_shared<KapEngine::UI::Inputfield>(inpt);
 
         inpt->addComponent(inptComp);
+        inptComp->setPlaceholderText("127.0.0.1:7777");
 
         auto& transform = inpt->getComponent<KapEngine::Transform>();
         transform.setScale({150, 35, 0});

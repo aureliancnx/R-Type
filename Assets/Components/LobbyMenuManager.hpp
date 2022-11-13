@@ -10,6 +10,8 @@
 
 #include "KapEngine.hpp"
 #include "KapMirror/KapMirror.hpp"
+#include "KapEngineUi.hpp"
+#include "KapUI/KapUI.hpp"
 
 #include "GameMenuManager.hpp"
 
@@ -46,6 +48,7 @@ namespace RType {
         // variables
       private:
         std::shared_ptr<KapEngine::GameObject> lobbyMenu;
+        std::shared_ptr<KapEngine::UI::Inputfield> mapField;
     };
 
 } // namespace RType

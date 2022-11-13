@@ -82,6 +82,7 @@ void GameManager::registerMenus() {
 
     auto &scene = engine->getSceneManager()->getScene(1);
     auto &endScene = engine->getSceneManager()->getScene("EndScene");
+    auto &lostConnection = engine->getSceneManager()->getScene("MPConnectionLost");
 
     // Register menus
     auto mainMenu = std::make_shared<MainMenu>(scene);
@@ -110,6 +111,9 @@ void GameManager::registerMenus() {
 
     auto endMenu = std::make_shared<EndMenu>(endScene, *this);
     menuManager.registerMenu("EndMenu", endMenu);
+
+    auto connectionLostMenu = std::make_shared<ConnectionLostMenu>(lostConnection, *this);
+    menuManager.registerMenu("MPConnectionLost", connectionLostMenu);
 }
 
 MenuManager &GameManager::getMenuManager() { return menuManager; }

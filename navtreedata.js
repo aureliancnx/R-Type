@@ -401,11 +401,11 @@ var NAVTREEINDEX =
 "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#ac8e5521eeefcbadfa823f697bf250a82",
 "classKapEngine_1_1Tools_1_1Rectangle.html#a69d1bc80d7e3b773b260dfba1b1825b1",
 "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a52f3456bb0dcb3a4b800da173acd47fb",
-"classKapMirror_1_1Sylph_1_1ServerConnection.html",
-"classRType_1_1MapEnemy.html#a9bc91c6d7b224dab4911e3b935493e92",
-"classbackward_1_1SourceFile.html#a0e99a27e60f7bc8d45438c749d6fa18a",
-"md_CONTRIBUTING.html#autotoc_md18",
-"md_pull_request_template.html#autotoc_md256"
+"classKapMirror_1_1Sylph_1_1Server.html#af02b20bceea6faf45793fad994e6aab9",
+"classRType_1_1MapEnemy.html#a8fcff84b463af94219d012a07f68dbf1",
+"classbackward_1_1SourceFile.html",
+"md_CONTRIBUTING.html#autotoc_md17",
+"md_pull_request_template.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

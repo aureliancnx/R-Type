@@ -1,6 +1,7 @@
 var classKapMirror_1_1NetworkWriter =
 [
     [ "NetworkWriter", "classKapMirror_1_1NetworkWriter.html#a4f9044a83bad20e9f3c5afee39bdf895", null ],
+    [ "NetworkWriter", "classKapMirror_1_1NetworkWriter.html#a1265c7a844da44987578a20391013463", null ],
     [ "~NetworkWriter", "classKapMirror_1_1NetworkWriter.html#af3e03f62e7c139ee983bd4626157821b", null ],
     [ "operator byte *", "classKapMirror_1_1NetworkWriter.html#a887af504e0a2113b9106cc6e0f9bd1af", null ],
     [ "reset", "classKapMirror_1_1NetworkWriter.html#a35379a9ab4b78dc8650f87ea0fdfa3ac", null ],

@@ -2,6 +2,7 @@ var classRType_1_1GameManager =
 [
     [ "GameManager", "classRType_1_1GameManager.html#a2c5e42d991abc79789abb0e73c74173b", null ],
     [ "~GameManager", "classRType_1_1GameManager.html#a97084bc427fc6a9ce22aa089f8ac6ce4", null ],
+    [ "getMenuManager", "classRType_1_1GameManager.html#aa2fd6e2faf2cd5c5af468d250192119e", null ],
     [ "getNetworkManager", "classRType_1_1GameManager.html#ae9375e764cab519ef7b1fda50d947690", null ],
     [ "hasDebugMode", "classRType_1_1GameManager.html#ac1717006fc8b0f9b0f2b21003e8b2d09", null ],
     [ "launchGame", "classRType_1_1GameManager.html#a289665674fd8c3e0880692e32b4e99db", null ],

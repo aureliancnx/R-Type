@@ -47,7 +47,6 @@ void RtypeNetworkManager::registerClientHandlers() {
 // successfully connection
 void RtypeNetworkManager::onClientConnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
     KapEngine::Debug::log("RtypeNetworkManager: Client connected");
-
 }
 
 // if is not connected or if connection is lost
@@ -103,7 +102,6 @@ void RtypeNetworkManager::onErrorOnStartGameMessage(const std::shared_ptr<KapMir
 void RtypeNetworkManager::onPlayerStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                                    StartGameMessage& message) {
     KAP_DEBUG_LOG("onPlayerStartGameMessage: Start game");
-
     //    try {
     //        auto go = getScene().findFirstGameObject("LobbyManger");
     //        if (go) {

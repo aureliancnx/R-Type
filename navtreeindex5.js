@@ -1,6 +1,5 @@
 var NAVTREEINDEX5 =
 {
-"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a0c6f0ff5c4007ac64bcc80b80b8e05f2":[39,0,3,0,2,7],
 "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a0ee63493070e485c962037a915f35111":[39,0,3,0,2,15],
 "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a11c1d38a2166089dd66f078bd70f1ad8":[39,0,3,0,2,22],
 "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a156a03b7c161be31cf157a166daa9b26":[39,0,3,0,2,10],
@@ -249,5 +248,6 @@ var NAVTREEINDEX5 =
 "classKapMirror_1_1Sylph_1_1Connection.html#af36b0cb014dc8c8e444bdef26fc5ce03a065ae436b321e846ce7c3a64a7c45562":[39,0,3,1,2,1,1],
 "classKapMirror_1_1Sylph_1_1Connection.html#af36b0cb014dc8c8e444bdef26fc5ce03a554863ceb1fa1190fb60a7b37299fa07":[39,0,3,1,2,1,3],
 "classKapMirror_1_1Sylph_1_1Connection.html#af36b0cb014dc8c8e444bdef26fc5ce03ad21f616d08b0db9fcab6331b7dddfd82":[39,0,3,1,2,1,2],
-"classKapMirror_1_1Sylph_1_1Connection.html#af36b0cb014dc8c8e444bdef26fc5ce03afe8696310ab7f249b1c6c0319a6e7c7b":[39,0,3,1,2,1,0]
+"classKapMirror_1_1Sylph_1_1Connection.html#af36b0cb014dc8c8e444bdef26fc5ce03afe8696310ab7f249b1c6c0319a6e7c7b":[39,0,3,1,2,1,0],
+"classKapMirror_1_1Sylph_1_1Connection.html#af5120ebb88e3baa038de9c69cd798e6a":[39,0,3,1,2,9]
 };

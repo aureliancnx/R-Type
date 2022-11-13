@@ -1,6 +1,5 @@
 var NAVTREEINDEX6 =
 {
-"classKapMirror_1_1Sylph_1_1Connection.html#af5120ebb88e3baa038de9c69cd798e6a":[39,0,3,1,2,9],
 "classKapMirror_1_1Sylph_1_1Server.html":[39,0,3,1,3],
 "classKapMirror_1_1Sylph_1_1Server.html#a2dd422dc25689dc106a6d5fe1d3b3298":[39,0,3,1,3,6],
 "classKapMirror_1_1Sylph_1_1Server.html#a40a68f732de5d6d794ded373dc16a902":[39,0,3,1,3,7],
@@ -249,5 +248,6 @@ var NAVTREEINDEX6 =
 "classRType_1_1LobbyMenuManager.html#a9104a87abf7d29a883599b0ea266fbec":[39,0,5,16,0],
 "classRType_1_1LobbyMenuManager.html#a9c0064bfe64dcadeb242ce542878f3f7":[39,0,5,16,4],
 "classRType_1_1LobbyMenuManager.html#ae0534a3197331998050f19bf2ee0ea64":[39,0,5,16,3],
-"classRType_1_1LuaException.html":[39,0,5,17]
+"classRType_1_1LuaException.html":[39,0,5,17],
+"classRType_1_1LuaException.html#a03f27f6118be565bae5b14927daafd71":[39,0,5,17,1]
 };

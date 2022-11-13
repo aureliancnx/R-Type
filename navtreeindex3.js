@@ -136,8 +136,7 @@ var NAVTREEINDEX3 =
 "classKapEngine_1_1Profiler_1_1ThreadStack.html#a37c03c69fd807c483d9051ad33709bd8":[39,0,2,4,4,2],
 "classKapEngine_1_1Profiler_1_1ThreadStack.html#accdb5bcf8af9de339795cf26beb16673":[39,0,2,4,4,1],
 "classKapEngine_1_1Profiler_1_1Viewer.html":[39,0,2,4,5],
-"classKapEngine_1_1Profiler_1_1Viewer.html#a5eec92ff793afd3617912d9074d33812":[39,0,2,4,5,3],
-"classKapEngine_1_1Profiler_1_1Viewer.html#a7fbfbf2a4b8ce9665f86be30f8ba6174":[39,0,2,4,5,2],
+"classKapEngine_1_1Profiler_1_1Viewer.html#a5eec92ff793afd3617912d9074d33812":[39,0,2,4,5,2],
 "classKapEngine_1_1Profiler_1_1Viewer.html#aa4ea741cf59bfc169dd0846d8141aa34":[39,0,2,4,5,0],
 "classKapEngine_1_1Profiler_1_1Viewer.html#afc95442ffc8830069e73d3826ae65aec":[39,0,2,4,5,1],
 "classKapEngine_1_1SceneManagement_1_1Scene.html":[39,0,2,5,0],
@@ -249,5 +248,6 @@ var NAVTREEINDEX3 =
 "classKapEngine_1_1Tools_1_1Color.html#a9d48a257a2aa40edc8a297c23815a98f":[39,0,2,7,0,9],
 "classKapEngine_1_1Tools_1_1Color.html#a9e4eb8d9b78f39cb62b63d3e7738c345":[39,0,2,7,0,2],
 "classKapEngine_1_1Tools_1_1Color.html#aa084cbe242d6b84d9ee61c38f8d796b2":[39,0,2,7,0,12],
-"classKapEngine_1_1Tools_1_1Color.html#aa3f5a083d171af5473deefe2347697b5":[39,0,2,7,0,8]
+"classKapEngine_1_1Tools_1_1Color.html#aa3f5a083d171af5473deefe2347697b5":[39,0,2,7,0,8],
+"classKapEngine_1_1Tools_1_1Color.html#abe3473c8bf66d5e15fb84dff7b91327e":[39,0,2,7,0,3]
 };

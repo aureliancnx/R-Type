@@ -399,13 +399,13 @@ var NAVTREEINDEX =
 "classKapEngine_1_1Collider.html#a96e08f0d17e623a3515aae591fec5601",
 "classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65a9ebd977a43ddf3c32a8e070e8e8f2c0d",
 "classKapEngine_1_1Graphical_1_1Raylib_1_1RaylibGraphical.html#ab04b51cb6e830006cc235c8f63a34a91",
-"classKapEngine_1_1Tools_1_1Color.html#abe3473c8bf66d5e15fb84dff7b91327e",
-"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a0c6f0ff5c4007ac64bcc80b80b8e05f2",
-"classKapMirror_1_1Sylph_1_1Connection.html#af5120ebb88e3baa038de9c69cd798e6a",
-"classRType_1_1LuaException.html#a03f27f6118be565bae5b14927daafd71",
-"classbackward_1_1Printer.html#ad0785ce1f397d943a00093364f4c66b8",
-"md_CODE_OF_CONDUCT.html#autotoc_md3",
-"md_doxygen-awesome-css_docs_extensions.html#autotoc_md39"
+"classKapEngine_1_1Tools_1_1Color.html#aca989acbc607587b241a5677f97584b7",
+"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a0ee63493070e485c962037a915f35111",
+"classKapMirror_1_1Sylph_1_1Server.html",
+"classRType_1_1LuaException.html#a066f4d7fb4425469ef1e879244101776",
+"classbackward_1_1Printer.html#af5916965c8e12c840a1a4798a90b6161",
+"md_CODE_OF_CONDUCT.html#autotoc_md4",
+"md_doxygen-awesome-css_docs_extensions.html#autotoc_md40"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

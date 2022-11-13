@@ -83,7 +83,7 @@ void GameManager::registerMenus() {
 
     auto &scene = engine->getSceneManager()->getScene(1);
     auto &endScene = engine->getSceneManager()->getScene("EndScene");
-    auto &lostConnection = engine->getSceneManager()->getScene("MPConnectionLost");
+    auto lostConnectionScene = engine->getSceneManager()->createScene("MPConnectionLost");
 
     // Register menus
     auto mainMenu = std::make_shared<MainMenu>(scene);
@@ -113,7 +113,7 @@ void GameManager::registerMenus() {
     auto endMenu = std::make_shared<EndMenu>(endScene, *this);
     menuManager.registerMenu("EndMenu", endMenu);
 
-    auto connectionLostMenu = std::make_shared<ConnectionLostMenu>(lostConnection, *this);
+    auto connectionLostMenu = std::make_shared<ConnectionLostMenu>(*lostConnectionScene, *this);
     menuManager.registerMenu("MPConnectionLost", connectionLostMenu);
 }
 
@@ -172,7 +172,6 @@ void GameManager::initSinglePlayer() {
 // TODO: Move this to a dedicated class
 void GameManager::initMultiPlayer(bool isServer) {
     auto scene = engine->getSceneManager()->createScene("MultiPlayer");
-    auto lostConnectionScene = engine->getSceneManager()->createScene("MPConnectionLost");
 
     std::shared_ptr<KapEngine::GameObject> paralaxGalaxy;
     if (!engine->getPrefabManager()->instantiatePrefab("ParalaxGalaxy", *scene, paralaxGalaxy)) {

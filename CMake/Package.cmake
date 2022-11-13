@@ -6,7 +6,6 @@ include(InstallRequiredSystemLibraries)
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/Assets/" DESTINATION "Assets")
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/Maps/" DESTINATION "Maps")
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/Binaries/" DESTINATION ".")
-install(DIRECTORY ${CPACK_BUILD_SOURCE_DIRS}/ DESTINATION . COMPONENT All)
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION "." COMPONENT applications)
 
 # Set installation prefix

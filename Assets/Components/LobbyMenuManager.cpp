@@ -25,7 +25,6 @@ RType::LobbyMenuManager::LobbyMenuManager(std::shared_ptr<KapEngine::GameObject>
         getGameObject().addComponent(canvas);
         canvas->setResizeType(UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
     }
-    go->setName("LobbyManager");
 }
 
 void RType::LobbyMenuManager::onStart() {}
@@ -46,7 +45,7 @@ void RType::LobbyMenuManager::initBackground(std::shared_ptr<KapEngine::GameObje
 
 void RType::LobbyMenuManager::initLobbyMenu(bool local) {
 
-    lobbyMenu = getGameObject().getScene().createGameObject("MainMenu");
+    lobbyMenu = getGameObject().getScene().createGameObject("LobbyMenu");
     lobbyMenu->getComponent<Transform>().setParent(getGameObject().getId());
 
     Tools::Vector3 btnSize = {80.f / getGameObject().getEngine().getScreenSize().getX(), 80.f / 90.f, 0};

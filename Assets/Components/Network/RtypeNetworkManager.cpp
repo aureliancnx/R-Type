@@ -47,6 +47,8 @@ void RtypeNetworkManager::registerClientHandlers() {
 // successfully connection
 void RtypeNetworkManager::onClientConnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
     KapEngine::Debug::log("RtypeNetworkManager: Client connected");
+<<<<<<< HEAD
+=======
 
     //        try {
     //            auto go = getGameObject().getScene().findFirstGameObject("LobbyManager");
@@ -54,6 +56,7 @@ void RtypeNetworkManager::onClientConnected(const std::shared_ptr<KapMirror::Net
     //                go->getComponent<GameMenuManager>().setActive(false);
     //            }
     //        } catch (...) { KAP_DEBUG_ERROR("Failed to find LobbyManager"); }
+>>>>>>> 0a16fc09f772197b15c9960b5f4acc2209e4d524
 }
 
 // if is not connected or if connection is lost
@@ -109,6 +112,24 @@ void RtypeNetworkManager::onErrorOnStartGameMessage(const std::shared_ptr<KapMir
 void RtypeNetworkManager::onPlayerStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                                    StartGameMessage& message) {
     KAP_DEBUG_LOG("onPlayerStartGameMessage: Start game");
+
+    //    try {
+    //        auto go = getScene().findFirstGameObject("LobbyManger");
+    //        if (go) {
+    //            go->setActive(false);
+    //        }
+    //    } catch (...) {
+    //        KAP_DEBUG_ERROR("onPlayerStartGameMessage: LobbyManager not found");
+    //    }
+    //
+    //    try {
+    //        auto go = getScene().findFirstGameObject("MenuManager");
+    //        if (go) {
+    //            go->setActive(true);
+    //        }
+    //    } catch (...) {
+    //        KAP_DEBUG_ERROR("onPlayerStartGameMessage: MenuManager not found");
+    //    }
 }
 
 void RtypeNetworkManager::onClientPlayerPingRequest(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,

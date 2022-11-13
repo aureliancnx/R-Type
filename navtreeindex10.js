@@ -1,5 +1,6 @@
 var NAVTREEINDEX10 =
 {
+"namespaceKapEngine_1_1Time.html":[39,0,2,6],
 "namespaceKapEngine_1_1Tools.html":[39,0,2,7],
 "namespaceKapEngine_1_1Tools.html":[38,0,0,6],
 "namespaceKapEngine_1_1UI.html":[39,0,2,8],

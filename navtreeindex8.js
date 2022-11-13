@@ -1,5 +1,6 @@
 var NAVTREEINDEX8 =
 {
+"classbackward_1_1StackTraceImpl.html#abfa5b720721a2b7c6951dd9841a5ec77":[39,0,0,9,3],
 "classbackward_1_1StackTraceImplBase.html":[39,0,0,10],
 "classbackward_1_1StackTraceImplBase.html#a2560188cfbd0750d761cb00e82a1d069":[39,0,0,10,5],
 "classbackward_1_1StackTraceImplBase.html#a59ccf3f7633c8981813a1a7981d59b90":[39,0,0,10,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX8 =
 "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md101":[7,4],
 "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md102":[7,5],
 "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md103":[7,5,0],
-"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md104":[7,5,1],
-"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md105":[7,5,2]
+"md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md104":[7,5,1]
 };

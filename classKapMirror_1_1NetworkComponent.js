@@ -7,6 +7,7 @@ var classKapMirror_1_1NetworkComponent =
     [ "getClient", "classKapMirror_1_1NetworkComponent.html#a57326dd2fbc9403c7e85b57b9e8bb927", null ],
     [ "getNetworkId", "classKapMirror_1_1NetworkComponent.html#aa871ea8c5e3d80739f8ef6f2c46731f8", null ],
     [ "getServer", "classKapMirror_1_1NetworkComponent.html#af5ae354a1990e2b02fd7702f8b6f23d5", null ],
+    [ "hasAuthority", "classKapMirror_1_1NetworkComponent.html#a7f9ac3e9f3ace77cb72f4f3d3ce61b14", null ],
     [ "isClient", "classKapMirror_1_1NetworkComponent.html#a0483c8da2ea4a3b8e1af016b421b40c9", null ],
     [ "isLocal", "classKapMirror_1_1NetworkComponent.html#a28d1c77a72bbf2ed9ecba9171a132451", null ],
     [ "isServer", "classKapMirror_1_1NetworkComponent.html#a297f8f8da9870d4615d78cd5afe0f563", null ],

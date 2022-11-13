@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"classKapMirror_1_1Sylph_1_1ServerConnection.html#aa646d1d76a64ce3297f340964ad34cd4":[39,0,3,1,4,1],
 "classKapMirror_1_1TcpClient.html":[39,0,3,27],
 "classKapMirror_1_1TcpClient.html#a11b2a91ca4178cd3747aba69a9a8f11b":[39,0,3,27,10],
 "classKapMirror_1_1TcpClient.html#a125d2277f401cbdebadb9689a5933e18":[39,0,3,27,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "classRType_1_1MapScript.html#a24444aa072fa5674e7f8b0a7898e3d32":[39,0,5,19,14],
 "classRType_1_1MapScript.html#a24b3577073899a5bcac5e25c32d90fc3":[39,0,5,19,18],
 "classRType_1_1MapScript.html#a4e3f5f01e168569da40ba429586f6461":[39,0,5,19,10],
-"classRType_1_1MapScript.html#a4f72cc53645a6d516eb9d86125886b69":[39,0,5,19,6],
-"classRType_1_1MapScript.html#a4ff41cc5e28ed7c4393251a6e5c8c990":[39,0,5,19,2]
+"classRType_1_1MapScript.html#a4f72cc53645a6d516eb9d86125886b69":[39,0,5,19,6]
 };

@@ -27,7 +27,7 @@ RType::LobbyMenuManager::LobbyMenuManager(std::shared_ptr<KapEngine::GameObject>
     }
 }
 
-void RType::LobbyMenuManager::onStart() { }
+void RType::LobbyMenuManager::onStart() {}
 
 void RType::LobbyMenuManager::onStartClient() { initLobbyMenu(false); }
 
@@ -152,12 +152,12 @@ std::shared_ptr<KapEngine::GameObject> RType::LobbyMenuManager::initButton(std::
 
 void RType::LobbyMenuManager::quit() {
     lobbyMenu->setActive(false);
-//    try {
-//        auto go = getGameObject().getScene().findFirstGameObject("MenuManager");
-//        if (go) {
-//            go->getComponent<GameMenuManager>().setActive(true);
-//        }
-//    } catch (...) { KAP_DEBUG_ERROR("Failed to find MenuManager"); }
+    //    try {
+    //        auto go = getGameObject().getScene().findFirstGameObject("MenuManager");
+    //        if (go) {
+    //            go->getComponent<GameMenuManager>().setActive(true);
+    //        }
+    //    } catch (...) { KAP_DEBUG_ERROR("Failed to find MenuManager"); }
 }
 
 // TODO: Add a way to get the map path from the input field

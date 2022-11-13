@@ -53,27 +53,27 @@ namespace RType {
 
     void HowToPlayAnimation::onResetPosition() {
         {
-            auto& transform = getImage("Ship").getTransform();
+            auto &transform = getImage("Ship").getTransform();
             transform.setPosition(getResetPosition("Ship"));
         }
 
         {
-            auto& transform = getImage("Bullet").getTransform();
+            auto &transform = getImage("Bullet").getTransform();
             transform.setPosition(getResetPosition("Bullet"));
         }
 
         {
-            auto& transform = getImage("Bouboule").getTransform();
+            auto &transform = getImage("Bouboule").getTransform();
             transform.setPosition(getResetPosition("Bouboule"));
         }
 
         {
-            auto& transform = getImage("Bouboule2").getTransform();
+            auto &transform = getImage("Bouboule2").getTransform();
             transform.setPosition(getResetPosition("Bouboule2"));
         }
 
         {
-            auto& transform = getImage("Explosion").getTransform();
+            auto &transform = getImage("Explosion").getTransform();
             transform.setPosition(getResetPosition("Explosion"));
         }
     }
@@ -90,7 +90,7 @@ namespace RType {
         if (getGameObject("Bouboule2")->isActive() == false)
             return;
 
-        auto& transform = getImage("Bouboule2").getTransform();
+        auto &transform = getImage("Bouboule2").getTransform();
         auto pos_Y = transform.getWorldPosition().getY();
         auto pos_X = transform.getWorldPosition().getX();
 
@@ -121,7 +121,7 @@ namespace RType {
         if (getGameObject("Bouboule")->isActive() == false)
             return;
 
-        auto& transform = getImage("Bouboule").getTransform();
+        auto &transform = getImage("Bouboule").getTransform();
         auto posY = transform.getWorldPosition().getY();
         auto posX = transform.getWorldPosition().getX();
 
@@ -149,7 +149,7 @@ namespace RType {
     }
 
     void HowToPlayAnimation::moveShip() {
-        auto& transform = getImage("Ship").getTransform();
+        auto &transform = getImage("Ship").getTransform();
         auto posY = transform.getWorldPosition().getY();
 
         if (_shipInvert)
@@ -169,7 +169,7 @@ namespace RType {
     }
 
     void HowToPlayAnimation::moveBullet() {
-        auto& transform = getImage("Bullet").getTransform();
+        auto &transform = getImage("Bullet").getTransform();
         auto shipPosY = getImage("Ship").getTransform().getWorldPosition().getY();
 
         if (getGameObject("Bullet")->isActive() == false && shipPosY == 266) {
@@ -206,7 +206,7 @@ namespace RType {
     }
 
     void HowToPlayAnimation::moveExplosion() {
-        auto& transform = getImage("Explosion").getTransform();
+        auto &transform = getImage("Explosion").getTransform();
         if (_explosionInvert && getImage("Bullet").getTransform().getWorldPosition().getX() >= 588.0f) {
             getGameObject("Explosion")->setActive(true);
             transform.setPosition(getResetPosition("Explosion"));
@@ -254,21 +254,21 @@ namespace RType {
         throw Errors::ComponentError("Failed to get rect of ");
     }
 
-    UI::Image& HowToPlayAnimation::getImage(std::string name) {
+    UI::Image &HowToPlayAnimation::getImage(std::string name) {
         try {
             return _allGameObject.at(name)->getComponent<UI::Image>();
         } catch (...) { Debug::error("Failed to get image of  " + _allGameObject.at(name)->getName()); }
         throw Errors::ComponentError("Failed to get image of ");
     }
 
-    SpriteAnimation& HowToPlayAnimation::getSpriteAnimation(std::string name) {
+    SpriteAnimation &HowToPlayAnimation::getSpriteAnimation(std::string name) {
         try {
             return _allGameObject.at(name)->getComponent<SpriteAnimation>();
         } catch (...) { Debug::error("Failed to get SpriteAnimation of  " + _allGameObject.at(name)->getName()); }
         throw Errors::ComponentError("Failed to get SpriteAnimation of ");
     }
 
-    std::shared_ptr<KapEngine::GameObject>& HowToPlayAnimation::getGameObject(std::string name) {
+    std::shared_ptr<KapEngine::GameObject> &HowToPlayAnimation::getGameObject(std::string name) {
         try {
             return _allGameObject.at(name);
         } catch (...) { Debug::error("Failed to get gameObject of  " + _allGameObject.at(name)->getName()); }

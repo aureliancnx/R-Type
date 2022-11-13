@@ -34,7 +34,7 @@ namespace RType {
 
             bool hasBonus() const;
 
-            friend std::ostream& operator<<(std::ostream& os, const Summon& summon);
+            friend std::ostream &operator<<(std::ostream &os, const Summon &summon);
 
           private:
             float _time;

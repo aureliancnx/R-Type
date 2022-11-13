@@ -11,7 +11,7 @@ namespace RType {
         std::shared_ptr<ChangeKey> _chgKey;
 
       public:
-        KeyboardMenu(KapEngine::SceneManagement::Scene& _scene);
+        KeyboardMenu(KapEngine::SceneManagement::Scene &_scene);
         ~KeyboardMenu() = default;
 
         void init() override;

@@ -17,14 +17,14 @@
 
 // using namespace KapEngine;
 
-RType::HowToPlayMenu::HowToPlayMenu(KapEngine::SceneManagement::Scene& _scene) : Menu(_scene) {}
+RType::HowToPlayMenu::HowToPlayMenu(KapEngine::SceneManagement::Scene &_scene) : Menu(_scene) {}
 
 void RType::HowToPlayMenu::init() {
 
     // Change type of display for canvas
     {
         try {
-            auto& can = canvas->getComponent<KapEngine::UI::Canvas>();
+            auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
             can.setScreenCompare(KapEngine::Tools::Vector2(720, 480));
         } catch (...) { KAP_DEBUG_ERROR("Failed to resize canvas"); }
@@ -38,7 +38,7 @@ void RType::HowToPlayMenu::init() {
         imageComp->setRectangle({0, 0, 381, 200});
         background->addComponent(imageComp);
 
-        auto& transform = background->getComponent<KapEngine::Transform>();
+        auto &transform = background->getComponent<KapEngine::Transform>();
         transform.setPosition(KapEngine::Tools::Vector3(0, 0, 0));
         transform.setScale({720, 480, 0});
         transform.setParent(canvas);
@@ -48,7 +48,7 @@ void RType::HowToPlayMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonBack");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto &transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Back");
@@ -70,7 +70,7 @@ void RType::HowToPlayMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "How to play title");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "HOW TO PLAY");
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -86,7 +86,7 @@ void RType::HowToPlayMenu::initFightAnimation() {
     auto fight = scene.createGameObject("Fight");
 
     try {
-        auto& tr = fight->getComponent<KapEngine::Transform>();
+        auto &tr = fight->getComponent<KapEngine::Transform>();
         tr.setParent(canvas);
     } catch (...) { KAP_DEBUG_ERROR("Failed to get Transform of parent"); }
 
@@ -98,11 +98,11 @@ void RType::HowToPlayMenu::initFightAnimation() {
 
     // create ship image
     try {
-        auto& imageComp = ship->getComponent<KapEngine::UI::Image>();
+        auto &imageComp = ship->getComponent<KapEngine::UI::Image>();
         imageComp.setPathSprite("Assets/Textures/Ship/ship_1.png");
         imageComp.setRectangle({0, 0, 263, 116});
 
-        auto& transform = ship->getComponent<KapEngine::Transform>();
+        auto &transform = ship->getComponent<KapEngine::Transform>();
         transform.setPosition(KapEngine::Tools::Vector3(300, 50, 0));
         transform.setScale({79, 35, 0});
         transform.setParent(fight);
@@ -110,11 +110,11 @@ void RType::HowToPlayMenu::initFightAnimation() {
 
     // create bullet image
     try {
-        auto& imageComp = bullet->getComponent<KapEngine::UI::Image>();
+        auto &imageComp = bullet->getComponent<KapEngine::UI::Image>();
         imageComp.setPathSprite("Assets/Textures/Bullet/bullet_1.png");
         imageComp.setRectangle({0, 0, 19, 6});
 
-        auto& transform = bullet->getComponent<KapEngine::Transform>();
+        auto &transform = bullet->getComponent<KapEngine::Transform>();
         transform.setPosition(KapEngine::Tools::Vector3(380, 266, 0));
         transform.setScale({19, 6});
         transform.setParent(fight);
@@ -122,11 +122,11 @@ void RType::HowToPlayMenu::initFightAnimation() {
 
     // create bouboule enemy image
     try {
-        auto& imageComp = bouboule->getComponent<KapEngine::UI::Image>();
+        auto &imageComp = bouboule->getComponent<KapEngine::UI::Image>();
         imageComp.setPathSprite("Assets/Textures/Enemy/enemy_1.png");
         imageComp.setRectangle({0, 0, 17, 18});
 
-        auto& transform = bouboule->getComponent<KapEngine::Transform>();
+        auto &transform = bouboule->getComponent<KapEngine::Transform>();
         transform.setPosition(KapEngine::Tools::Vector3(600, 50, 0));
         transform.setScale({40, 40});
         transform.setParent(fight);
@@ -134,11 +134,11 @@ void RType::HowToPlayMenu::initFightAnimation() {
 
     // create second bouboule enemy image
     try {
-        auto& imageComp = bouboule2->getComponent<KapEngine::UI::Image>();
+        auto &imageComp = bouboule2->getComponent<KapEngine::UI::Image>();
         imageComp.setPathSprite("Assets/Textures/Enemy/enemy_1.png");
         imageComp.setRectangle({0, 0, 17, 18});
 
-        auto& transform = bouboule2->getComponent<KapEngine::Transform>();
+        auto &transform = bouboule2->getComponent<KapEngine::Transform>();
         transform.setPosition(KapEngine::Tools::Vector3(500, 50, 0));
         transform.setScale({40, 40});
         transform.setParent(fight);
@@ -146,11 +146,11 @@ void RType::HowToPlayMenu::initFightAnimation() {
 
     // create explosion image
     try {
-        auto& imageComp = explosion->getComponent<KapEngine::UI::Image>();
+        auto &imageComp = explosion->getComponent<KapEngine::UI::Image>();
         imageComp.setPathSprite("Assets/Textures/Explosion/wills_pixel_explosions_sample/round_explosion/spritesheet/spritesheet.png");
         imageComp.setRectangle({0, 0, 100, 100});
 
-        auto& transform = explosion->getComponent<KapEngine::Transform>();
+        auto &transform = explosion->getComponent<KapEngine::Transform>();
         transform.setPosition(KapEngine::Tools::Vector3(600, 230, 0));
         transform.setScale({50, 70});
         transform.setParent(fight);
@@ -316,7 +316,7 @@ void RType::HowToPlayMenu::initKeyboardKeyDisplay() {
     {
         auto btn = scene.createGameObject("ButtonInput1");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto &transform = btn->getComponent<KapEngine::Transform>();
         auto compTxt = std::make_shared<ConvertEnum>(btn, "upInput", "Move Up : ", KapEngine::Events::Key::EKey::UP);
 
         btn->addComponent(compTxt);
@@ -335,7 +335,7 @@ void RType::HowToPlayMenu::initKeyboardKeyDisplay() {
     {
         auto btn = scene.createGameObject("ButtonInput2");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto &transform = btn->getComponent<KapEngine::Transform>();
         auto compTxt = std::make_shared<ConvertEnum>(btn, "downInput", "Move Down : ", KapEngine::Events::Key::EKey::DOWN);
 
         btn->addComponent(compTxt);
@@ -354,7 +354,7 @@ void RType::HowToPlayMenu::initKeyboardKeyDisplay() {
     {
         auto btn = scene.createGameObject("ButtonInput3");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto &transform = btn->getComponent<KapEngine::Transform>();
         auto compTxt = std::make_shared<ConvertEnum>(btn, "leftInput", "Move Left : ", KapEngine::Events::Key::EKey::LEFT);
 
         btn->addComponent(compTxt);
@@ -373,7 +373,7 @@ void RType::HowToPlayMenu::initKeyboardKeyDisplay() {
     {
         auto btn = scene.createGameObject("ButtonInput4");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto &transform = btn->getComponent<KapEngine::Transform>();
         auto compTxt = std::make_shared<ConvertEnum>(btn, "rightInput", "Move Right : ", KapEngine::Events::Key::EKey::RIGHT);
 
         btn->addComponent(compTxt);
@@ -392,7 +392,7 @@ void RType::HowToPlayMenu::initKeyboardKeyDisplay() {
     {
         auto btn = scene.createGameObject("ButtonInput5");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto &transform = btn->getComponent<KapEngine::Transform>();
         auto compTxt = std::make_shared<ConvertEnum>(btn, "shootInput", "Shoot : ", KapEngine::Events::Key::EKey::SPACE);
 
         btn->addComponent(compTxt);

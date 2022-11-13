@@ -8,9 +8,9 @@ namespace RType {
         std::string _message;
 
       public:
-        LuaException(std::string const& message) : _message(message) {}
+        LuaException(std::string const &message) : _message(message) {}
         ~LuaException() = default;
 
-        char const* what() const noexcept { return _message.c_str(); }
+        char const *what() const noexcept { return _message.c_str(); }
     };
 } // namespace RType

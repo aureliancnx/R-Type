@@ -13,7 +13,7 @@ MapManager::~MapManager() {
     isLoaded = false;
 }
 
-void MapManager::loadMapScript(const std::string& path, bool isServer, bool _isSpawn) {
+void MapManager::loadMapScript(const std::string &path, bool isServer, bool _isSpawn) {
     isSpawn = _isSpawn;
 
     mapScript = std::make_shared<MapScript>(&getEngine(), isServer);
@@ -36,7 +36,7 @@ void MapManager::onFixedUpdate() {
     long long time = KapMirror::NetworkTime::localTime();
     std::vector<int> toRemove;
     for (int i = 0; i < enemies.size(); i++) {
-        const SpawnEnemy& enemy = enemies[i];
+        const SpawnEnemy &enemy = enemies[i];
         long long seconds = (time - lastUpdate) / 1000;
         if (seconds >= enemy.spawnTime) {
             mapScript->spawnEnemy(getScene(), enemy.name, enemy.startPositionY, enemy.startPositionX, enemy.enemyHp);

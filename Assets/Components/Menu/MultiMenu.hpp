@@ -6,10 +6,10 @@
 namespace RType {
     class MultiMenu : public Menu {
       private:
-        GameManager& gameManager;
+        GameManager &gameManager;
 
       public:
-        MultiMenu(KapEngine::SceneManagement::Scene& _scene, GameManager& _gameManager);
+        MultiMenu(KapEngine::SceneManagement::Scene &_scene, GameManager &_gameManager);
         ~MultiMenu() = default;
 
         void init() override;

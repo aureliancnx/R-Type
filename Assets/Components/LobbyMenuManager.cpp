@@ -55,7 +55,7 @@ void RType::LobbyMenuManager::initLobbyMenu(bool local) {
 
     initBackground(lobbyMenu);
 
-    auto& scene = getGameObject().getScene();
+    auto &scene = getGameObject().getScene();
 
     // Ready / Play button
     {
@@ -64,7 +64,7 @@ void RType::LobbyMenuManager::initLobbyMenu(bool local) {
         if (isClient()) {
             btn = initButton(lobbyMenu, "Ready", "Ready", [this]() { startGame(); }, "Assets/Textures/button.png", {5, 9, 655, 213});
         }
-        auto& tr = btn->getComponent<Transform>();
+        auto &tr = btn->getComponent<Transform>();
 
         tr.setScale(btnSize);
         tr.setPosition({150, 5, 0});
@@ -74,7 +74,7 @@ void RType::LobbyMenuManager::initLobbyMenu(bool local) {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Choose Map Text");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Path map : ");
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         Tools::Vector3 calculatedPos;
         calculatedPos.setX(getEngine().getScreenSize().getX() - 80.0f - 250);
@@ -97,7 +97,7 @@ void RType::LobbyMenuManager::initLobbyMenu(bool local) {
         calculatedPos.setX(getEngine().getScreenSize().getX() - 80.0f - 100);
         calculatedPos.setY(5);
 
-        auto& transform = inpt->getComponent<KapEngine::Transform>();
+        auto &transform = inpt->getComponent<KapEngine::Transform>();
         transform.setScale(btnSize);
         transform.setPosition(calculatedPos);
         transform.setParent(lobbyMenu->getId());

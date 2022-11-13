@@ -20,9 +20,9 @@
 
 using namespace RType;
 
-GameManager* GameManager::instance = nullptr;
+GameManager *GameManager::instance = nullptr;
 
-GameManager::GameManager(KapEngine::KEngine* _engine, bool b) : engine(_engine), displaySplashScreens(b) { instance = this; }
+GameManager::GameManager(KapEngine::KEngine *_engine, bool b) : engine(_engine), displaySplashScreens(b) { instance = this; }
 
 void GameManager::launchGame() {
     KapEngine::Debug::log("Launch game");
@@ -80,8 +80,8 @@ void GameManager::registerPrefabs() {
 void GameManager::registerMenus() {
     KapEngine::Debug::log("Register menus");
 
-    auto& scene = engine->getSceneManager()->getScene(1);
-    auto& endScene = engine->getSceneManager()->getScene("EndScene");
+    auto &scene = engine->getSceneManager()->getScene(1);
+    auto &endScene = engine->getSceneManager()->getScene("EndScene");
 
     // Register menus
     auto mainMenu = std::make_shared<MainMenu>(scene);
@@ -112,7 +112,7 @@ void GameManager::registerMenus() {
     menuManager.registerMenu("EndMenu", endMenu);
 }
 
-MenuManager& GameManager::getMenuManager() { return menuManager; }
+MenuManager &GameManager::getMenuManager() { return menuManager; }
 
 void GameManager::initEndScene() { auto scene = engine->getSceneManager()->createScene("EndScene"); }
 
@@ -126,7 +126,7 @@ void GameManager::initSinglePlayer() {
         return;
     }
 
-    auto& transformPG = paralaxGalaxy->getComponent<KapEngine::Transform>();
+    auto &transformPG = paralaxGalaxy->getComponent<KapEngine::Transform>();
     transformPG.setPosition({0, 0, 0});
 
     std::shared_ptr<KapEngine::GameObject> paralaxStars;
@@ -135,7 +135,7 @@ void GameManager::initSinglePlayer() {
         return;
     }
 
-    auto& transformPS = paralaxStars->getComponent<KapEngine::Transform>();
+    auto &transformPS = paralaxStars->getComponent<KapEngine::Transform>();
     transformPS.setPosition({0, 0, 0});
 
     std::shared_ptr<KapEngine::GameObject> player;
@@ -144,13 +144,13 @@ void GameManager::initSinglePlayer() {
         return;
     }
 
-    auto& transform = player->getComponent<KapEngine::Transform>();
+    auto &transform = player->getComponent<KapEngine::Transform>();
     transform.setPosition({0, 0, 0});
 
-    auto& playerIdentity = player->getComponent<KapMirror::NetworkIdentity>();
+    auto &playerIdentity = player->getComponent<KapMirror::NetworkIdentity>();
     playerIdentity.setAuthority(true);
 
-    auto& playerController = player->getComponent<PlayerController>();
+    auto &playerController = player->getComponent<PlayerController>();
     playerController.setLocalAuthority(true);
 
     std::shared_ptr<GameObject> gameMenu;
@@ -174,7 +174,7 @@ void GameManager::initMultiPlayer(bool isServer) {
         return;
     }
 
-    auto& transformPG = paralaxGalaxy->getComponent<KapEngine::Transform>();
+    auto &transformPG = paralaxGalaxy->getComponent<KapEngine::Transform>();
     transformPG.setPosition({0, 0, 0});
 
     std::shared_ptr<KapEngine::GameObject> paralaxStars;
@@ -183,7 +183,7 @@ void GameManager::initMultiPlayer(bool isServer) {
         return;
     }
 
-    auto& transformPS = paralaxStars->getComponent<KapEngine::Transform>();
+    auto &transformPS = paralaxStars->getComponent<KapEngine::Transform>();
     transformPS.setPosition({0, 0, 0});
 
     auto networkManagerObject = scene->createGameObject("NetworkManager");
@@ -214,7 +214,7 @@ void GameManager::initMultiPlayer(bool isServer) {
 }
 
 // TODO: Move this to a dedicated class
-void GameManager::startCampaign(const std::string& pathMap) {
+void GameManager::startCampaign(const std::string &pathMap) {
     auto scene = engine->getSceneManager()->getScene("SinglePlayer");
 
     engine->getSceneManager()->loadScene("SinglePlayer");
@@ -225,12 +225,12 @@ void GameManager::startCampaign(const std::string& pathMap) {
         return;
     }
 
-    auto& mapManagerComponent = mapManager->getComponent<MapManager>();
+    auto &mapManagerComponent = mapManager->getComponent<MapManager>();
     mapManagerComponent.loadMapScript(pathMap, false);
 }
 
 // TODO: Move this to a dedicated class
-void GameManager::startLocalMultiPlayer(const std::string& ip, const std::string& port) {
+void GameManager::startLocalMultiPlayer(const std::string &ip, const std::string &port) {
     engine->getSceneManager()->loadScene("MultiPlayer");
 
     std::string toConnectIp = ip;
@@ -294,4 +294,4 @@ void GameManager::initAxis() {
     engine->getEventManager().getInput().addAxis(vertical);
 }
 
-std::shared_ptr<RtypeNetworkManager>& GameManager::getNetworkManager() { return networkManager; }
+std::shared_ptr<RtypeNetworkManager> &GameManager::getNetworkManager() { return networkManager; }

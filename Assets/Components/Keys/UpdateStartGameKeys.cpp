@@ -35,29 +35,29 @@ void UpdateStartGameKeys::checkInputs() {
     setValueSaved("debugInput", debug);
 
     try {
-        auto& axis = getInput().getAxisSettings("Vertical");
+        auto &axis = getInput().getAxisSettings("Vertical");
         axis.positiveButton = down;
         axis.negativeButton = up;
     } catch (...) { KAP_DEBUG_ERROR("Failed to update Vertical axis"); }
 
     try {
-        auto& axis = getInput().getAxisSettings("Horizontal");
+        auto &axis = getInput().getAxisSettings("Horizontal");
         axis.positiveButton = right;
         axis.negativeButton = left;
     } catch (...) { KAP_DEBUG_ERROR("Failed to update Horizontal axis"); }
 
     try {
-        auto& axis = getInput().getAxisSettings("Shoot");
+        auto &axis = getInput().getAxisSettings("Shoot");
         axis.positiveButton = shoot;
     } catch (...) { KAP_DEBUG_ERROR("Failed to update Shoot axis"); }
 
     try {
-        auto& axis = getInput().getAxisSettings("Debug");
+        auto &axis = getInput().getAxisSettings("Debug");
         axis.positiveButton = debug;
     } catch (...) { KAP_DEBUG_ERROR("Failed to update Debug axis"); }
 }
 
-bool UpdateStartGameKeys::setValueSaved(std::string const& name, KapEngine::Events::Key& key) {
+bool UpdateStartGameKeys::setValueSaved(std::string const &name, KapEngine::Events::Key &key) {
     if (KapEngine::PlayerPrefs::getString(name) == "")
         return false;
     int val = KapEngine::PlayerPrefs::getInt(name);

@@ -14,7 +14,7 @@ namespace RType {
         Direction direction;
         float speed = 4.0f;
         float initialX = 0.0f;
-        KapEngine::KEngine& engine;
+        KapEngine::KEngine &engine;
 
       public:
         explicit Bullet(std::shared_ptr<KapEngine::GameObject> gameObject);
@@ -28,8 +28,8 @@ namespace RType {
 
         void onFixedUpdate() override;
 
-        void serialize(KapMirror::NetworkWriter& writer) override;
+        void serialize(KapMirror::NetworkWriter &writer) override;
 
-        void deserialize(KapMirror::NetworkReader& reader) override;
+        void deserialize(KapMirror::NetworkReader &reader) override;
     };
 } // namespace RType

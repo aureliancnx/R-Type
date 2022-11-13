@@ -52,10 +52,10 @@ namespace RType {
         void onResetRect();
         void onResetPosition();
         void onResetActive();
-        KapEngine::UI::Image& getImage(std::string name);
-        SpriteAnimation& getSpriteAnimation(std::string name);
+        KapEngine::UI::Image &getImage(std::string name);
+        SpriteAnimation &getSpriteAnimation(std::string name);
         KapEngine::Tools::Vector3 getResetPosition(std::string name);
-        std::shared_ptr<KapEngine::GameObject>& getGameObject(std::string name);
+        std::shared_ptr<KapEngine::GameObject> &getGameObject(std::string name);
 
         void moveBouboule();
         void moveBouboule2();

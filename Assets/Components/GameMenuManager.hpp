@@ -35,16 +35,16 @@ namespace RType {
       private:
         void initMainMenu(bool local = true);
 
-        void initBackground(const std::shared_ptr<KapEngine::GameObject>& parent);
-        std::shared_ptr<KapEngine::GameObject> initButton(const std::shared_ptr<KapEngine::GameObject>& parent, const std::string& name,
+        void initBackground(const std::shared_ptr<KapEngine::GameObject> &parent);
+        std::shared_ptr<KapEngine::GameObject> initButton(const std::shared_ptr<KapEngine::GameObject> &parent, const std::string &name,
                                                           std::string text, std::function<void()> callback,
-                                                          const KapEngine::Tools::Color& color = KapEngine::Tools::Color::white(),
-                                                          const KapEngine::Tools::Color& textColor = KapEngine::Tools::Color::black());
-        std::shared_ptr<KapEngine::GameObject> initButton(const std::shared_ptr<KapEngine::GameObject>& parent, const std::string& name,
-                                                          std::string text, std::function<void()> callback, const std::string& pathSprite,
-                                                          const KapEngine::Tools::Rectangle& rect,
-                                                          const KapEngine::Tools::Color& color = KapEngine::Tools::Color::white(),
-                                                          const KapEngine::Tools::Color& textColor = KapEngine::Tools::Color::black());
+                                                          const KapEngine::Tools::Color &color = KapEngine::Tools::Color::white(),
+                                                          const KapEngine::Tools::Color &textColor = KapEngine::Tools::Color::black());
+        std::shared_ptr<KapEngine::GameObject> initButton(const std::shared_ptr<KapEngine::GameObject> &parent, const std::string &name,
+                                                          std::string text, std::function<void()> callback, const std::string &pathSprite,
+                                                          const KapEngine::Tools::Rectangle &rect,
+                                                          const KapEngine::Tools::Color &color = KapEngine::Tools::Color::white(),
+                                                          const KapEngine::Tools::Color &textColor = KapEngine::Tools::Color::black());
 
         // variables
       private:

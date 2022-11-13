@@ -12,13 +12,13 @@ namespace RType {
         MenuManager() = default;
         ~MenuManager() = default;
 
-        void registerMenu(const std::string& name, const std::shared_ptr<Menu>& menu) {
+        void registerMenu(const std::string &name, const std::shared_ptr<Menu> &menu) {
             menus[name] = menu;
             menu->__initCanvas(name);
             menu->init();
         }
 
-        void showMenu(const std::string& name) {
+        void showMenu(const std::string &name) {
             std::shared_ptr<Menu> menu;
             if (menus.tryGetValue(name, menu)) {
                 menu->show();
@@ -27,7 +27,7 @@ namespace RType {
             }
         }
 
-        void hideMenu(const std::string& name) {
+        void hideMenu(const std::string &name) {
             std::shared_ptr<Menu> menu;
             if (menus.tryGetValue(name, menu)) {
                 menu->hide();

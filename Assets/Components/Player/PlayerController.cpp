@@ -69,7 +69,7 @@ void PlayerController::sendPingUpdate() {
     if (KapMirror::NetworkTime::localTime() - lastPingTime > 2000) {
         unsigned int clientId = connectionId;
         lastPingTime = KapMirror::NetworkTime::localTime();
-        auto& pingDict = GameManager::getInstance()->getNetworkManager()->pingRequests;
+        auto &pingDict = GameManager::getInstance()->getNetworkManager()->pingRequests;
 
         unsigned int id = std::rand();
         KapEngine::Dictionary<unsigned int, long long> requests;
@@ -96,7 +96,7 @@ void PlayerController::onFixedUpdate() {
         return;
     }
 
-    auto& transform = getTransform();
+    auto &transform = getTransform();
 
     int moveRate = 30;
     if (KapMirror::NetworkTime::localTime() - lastRefreshTime > 1000 / moveRate) {
@@ -109,7 +109,7 @@ void PlayerController::onFixedUpdate() {
     }
 }
 
-void PlayerController::movePlayer(const KapEngine::Tools::Vector2& input) {
+void PlayerController::movePlayer(const KapEngine::Tools::Vector2 &input) {
     if (isClient()) {
         sendInput(input);
         return;
@@ -128,7 +128,7 @@ void PlayerController::movePlayer(const KapEngine::Tools::Vector2& input) {
     inputToMove = input;
 }
 
-void PlayerController::sendInput(const KapEngine::Tools::Vector2& input) {
+void PlayerController::sendInput(const KapEngine::Tools::Vector2 &input) {
     if (!isClient() || !isLocalAuthority) {
         return;
     }
@@ -192,9 +192,9 @@ void PlayerController::shoot() {
     }
 }
 
-void PlayerController::spawnBullet(const KapEngine::Tools::Vector3& pos) {
+void PlayerController::spawnBullet(const KapEngine::Tools::Vector3 &pos) {
     if (isLocal()) {
-        auto& scene = getScene();
+        auto &scene = getScene();
         std::shared_ptr<KapEngine::GameObject> bullet;
         getEngine().getPrefabManager()->instantiatePrefab("Bullet", scene, bullet);
         bullet->setName("Bullet Player");
@@ -204,7 +204,7 @@ void PlayerController::spawnBullet(const KapEngine::Tools::Vector3& pos) {
         std::shared_ptr<KapEngine::GameObject> bullet;
         getServer()->spawnObject(
             "Bullet", pos,
-            [](const std::shared_ptr<KapEngine::GameObject>& bullet) {
+            [](const std::shared_ptr<KapEngine::GameObject> &bullet) {
                 bullet->setName("Bullet Player");
                 bullet->getComponent<Bullet>().setDirection(Bullet::Direction::RIGHT);
             },
@@ -212,17 +212,23 @@ void PlayerController::spawnBullet(const KapEngine::Tools::Vector3& pos) {
     }
 }
 
-void PlayerController::spawnMissile(const KapEngine::Tools::Vector3& pos) {
+void PlayerController::spawnMissile(const KapEngine::Tools::Vector3 &pos) {
     if (isLocal()) {
-        auto& scene = getScene();
+        auto &scene = getScene();
         std::shared_ptr<KapEngine::GameObject> missile;
         getEngine().getPrefabManager()->instantiatePrefab("Missile", scene, missile);
         missile->setName("Missile Player");
         missile->getComponent<KapEngine::Transform>().setPosition(pos);
+        missile->getComponent<Bullet>().setDirection(Bullet::Direction::RIGHT);
     } else if (isServer()) {
         std::shared_ptr<KapEngine::GameObject> missile;
         getServer()->spawnObject(
-            "Missile", pos, [](const std::shared_ptr<KapEngine::GameObject>& missile) { missile->setName("Missile Player"); }, missile);
+            "Missile", pos,
+            [](const std::shared_ptr<KapEngine::GameObject> &missile) {
+                missile->setName("Missile Player");
+                missile->getComponent<Bullet>().setDirection(Bullet::Direction::RIGHT);
+            },
+            missile);
     }
 }
 
@@ -250,7 +256,7 @@ void PlayerController::checkCollisions() {
         return;
     }
 
-    for (auto& collision : collisions) {
+    for (auto &collision : collisions) {
         int damage = 0;
         if (collision->getName() == "Bullet") {
             damage = 4;
@@ -333,6 +339,7 @@ void PlayerController::initSettings() {
 }
 
 void PlayerController::onStartClient() {
+    life = 100;
     initSettings();
     try {
         auto go = getScene().findFirstGameObject("MenuManager");
@@ -355,6 +362,7 @@ void PlayerController::onStartClient() {
 }
 
 void PlayerController::onStart() {
+    life = 100;
     if (isLocal()) {
         initSettings();
         try {
@@ -386,12 +394,12 @@ void PlayerController::onObjectUpdate() {
     }
 }
 
-void PlayerController::serialize(KapMirror::NetworkWriter& writer) {
+void PlayerController::serialize(KapMirror::NetworkWriter &writer) {
     writer.write(life);
     writer.write(isDead);
 }
 
-void PlayerController::deserialize(KapMirror::NetworkReader& reader) {
+void PlayerController::deserialize(KapMirror::NetworkReader &reader) {
     int _life = reader.read<int>();
     bool _isDead = reader.read<bool>();
 

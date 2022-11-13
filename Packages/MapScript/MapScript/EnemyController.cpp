@@ -20,10 +20,18 @@ void EnemyController::onFixedUpdate() {
     }
 
     // Destroy enemy if his position is out of the screen
-    if (transform.getWorldPosition().getX() < -100 || transform.getWorldPosition().getX() > 1280 + 200) {
+    KapEngine::Tools::Vector3 xOut;
+    xOut.setX(transform.getWorldPosition().getX() + transform.getWorldScale().getX());
+    xOut.setY(transform.getWorldPosition().getX());
+
+    KapEngine::Tools::Vector3 yOut;
+    yOut.setX(transform.getWorldPosition().getY() + transform.getWorldScale().getY());
+    yOut.setY(transform.getWorldPosition().getY());
+
+    if (xOut.getX() < 0 || xOut.getY() > 1280 + 200) {
         getGameObject().destroy();
     }
-    if (transform.getWorldPosition().getY() < -100 || transform.getWorldPosition().getY() > 720 + 200) {
+    if (yOut.getX() < 0  || yOut.getY() > 720 + 200) {
         getGameObject().destroy();
     }
 }

@@ -3,7 +3,7 @@
 #include "Debug.hpp"
 #include "KapRaylib/KapRaylib.hpp"
 
-static void initWindow(KapEngine::KEngine* engine, bool draw) {
+static void initWindow(KapEngine::KEngine *engine, bool draw) {
     KapEngine::Tools::Vector2 screenSize(1280, 720);
     engine->setScreenSize(screenSize);
 
@@ -14,7 +14,7 @@ static void initWindow(KapEngine::KEngine* engine, bool draw) {
     libManager->changeLib(raylib->getName());
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv) {
     // Fix path
     try {
         if (argc > 0 && argv[0]) {

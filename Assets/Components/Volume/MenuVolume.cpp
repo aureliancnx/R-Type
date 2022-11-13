@@ -41,7 +41,7 @@ void RType::MenuVolume::onUpdate() {
 
     lastValue = nId;
     try {
-        auto& txt = _txt->getComponent<UI::Text>();
+        auto &txt = _txt->getComponent<UI::Text>();
         txt.setText(std::to_string(nId));
     } catch (...) { DEBUG_ERROR("Failed to load new text"); }
 }
@@ -66,7 +66,7 @@ void RType::MenuVolume::foundText() {
     _txt = _found;
 
     try {
-        auto& txt = _txt->getComponent<UI::Text>();
+        auto &txt = _txt->getComponent<UI::Text>();
         txt.setText(std::to_string(PlayerPrefs::getInt("volumeValue")));
     } catch (...) { DEBUG_ERROR("Failed to load new text"); }
 }

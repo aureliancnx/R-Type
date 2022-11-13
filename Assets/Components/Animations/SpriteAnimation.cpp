@@ -13,7 +13,7 @@ namespace RType {
 
     SpriteAnimation::SpriteAnimation(std::shared_ptr<GameObject> gameObject) : Animation(gameObject) { init(gameObject); }
 
-    SpriteAnimation::SpriteAnimation(std::shared_ptr<GameObject> gameObject, int nbAnimation, Tools::Rectangle rect, int64_t const& time)
+    SpriteAnimation::SpriteAnimation(std::shared_ptr<GameObject> gameObject, int nbAnimation, Tools::Rectangle rect, int64_t const &time)
         : Animation(gameObject) {
         _nbAnimation = nbAnimation;
         _rect = rect;
@@ -46,7 +46,7 @@ namespace RType {
 
     void SpriteAnimation::setRect(Tools::Rectangle rect) { _rect = rect; }
 
-    UI::Image& SpriteAnimation::getImage() {
+    UI::Image &SpriteAnimation::getImage() {
         try {
             return getGameObject().getComponent<UI::Image>();
         } catch (...) { DEBUG_ERROR("Failed to get image of button " + getGameObject().getName()); }

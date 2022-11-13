@@ -27,7 +27,7 @@ namespace RType {
         void setCanvasSettings(std::size_t id) { _idSettings = id; }
         void setCanvasInputSentence(std::size_t id) { _idInput = id; }
 
-        void startSelect(std::string const& prefName);
+        void startSelect(std::string const &prefName);
 
       protected:
       private:

@@ -17,7 +17,7 @@ namespace RType {
       public:
         SpriteAnimation(std::shared_ptr<KapEngine::GameObject> gameObject);
         SpriteAnimation(std::shared_ptr<KapEngine::GameObject> gameObject, int nbAnimation, KapEngine::Tools::Rectangle rect,
-                        int64_t const& time);
+                        int64_t const &time);
         ~SpriteAnimation() = default;
 
         void onPlay() override;
@@ -55,7 +55,7 @@ namespace RType {
         std::size_t _nbYTextures = 0;
         // Functions
         void init(std::shared_ptr<KapEngine::GameObject> gameObject);
-        KapEngine::UI::Image& getImage();
+        KapEngine::UI::Image &getImage();
         KapEngine::Tools::Vector2 calculateNewPos(int crossProduct);
     };
 } // namespace RType

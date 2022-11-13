@@ -4,6 +4,7 @@
 #include "KapEngineUi.hpp"
 #include "KapUI/KapUI.hpp"
 #include "Keys/ChangeKey.hpp"
+#include "Keys/ConvertEnum.hpp"
 
 using namespace KapEngine;
 
@@ -67,9 +68,11 @@ void RType::KeyboardMenu::init() {
         auto btn = scene.createGameObject("ButtonInput1");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
         auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto compTxt = std::make_shared<ConvertEnum>(btn);
 
+        btn->addComponent(compTxt);
         btn->addComponent(btnComp);
-        btnComp->setText("Move Up");
+        btnComp->setText("");
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
         btnComp->setTextPosition({60, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
@@ -86,9 +89,11 @@ void RType::KeyboardMenu::init() {
         auto btn = scene.createGameObject("ButtonInput2");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
         auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto compTxt = std::make_shared<ConvertEnum>(btn);
 
+        btn->addComponent(compTxt);
         btn->addComponent(btnComp);
-        btnComp->setText("Move Down");
+        btnComp->setText("");
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
         btnComp->setTextPosition({60, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
@@ -105,9 +110,11 @@ void RType::KeyboardMenu::init() {
         auto btn = scene.createGameObject("ButtonInput3");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
         auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto compTxt = std::make_shared<ConvertEnum>(btn);
 
+        btn->addComponent(compTxt);
         btn->addComponent(btnComp);
-        btnComp->setText("Move Left");
+        btnComp->setText("");
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
         btnComp->setTextPosition({60, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
@@ -124,9 +131,11 @@ void RType::KeyboardMenu::init() {
         auto btn = scene.createGameObject("ButtonInput4");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
         auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto compTxt = std::make_shared<ConvertEnum>(btn);
 
+        btn->addComponent(compTxt);
         btn->addComponent(btnComp);
-        btnComp->setText("Move Right");
+        btnComp->setText("");
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
         btnComp->setTextPosition({60, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
@@ -143,9 +152,11 @@ void RType::KeyboardMenu::init() {
         auto btn = scene.createGameObject("ButtonInput5");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
         auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto compTxt = std::make_shared<ConvertEnum>(btn);
 
+        btn->addComponent(compTxt);
         btn->addComponent(btnComp);
-        btnComp->setText("Shoot");
+        btnComp->setText("");
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
         btnComp->setTextPosition({60, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
@@ -162,9 +173,11 @@ void RType::KeyboardMenu::init() {
         auto btn = scene.createGameObject("ButtonInput6");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
         auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto compTxt = std::make_shared<ConvertEnum>(btn);
 
+        btn->addComponent(compTxt);
         btn->addComponent(btnComp);
-        btnComp->setText("Debug");
+        btnComp->setText("");
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
         btnComp->setTextPosition({60, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());

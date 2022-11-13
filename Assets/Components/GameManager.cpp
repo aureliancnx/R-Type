@@ -226,16 +226,23 @@ void GameManager::startCampaign(const std::string& pathMap) {
 }
 
 // TODO: Move this to a dedicated class
-void GameManager::startLocalMultiPlayer(const std::string& address) {
+void GameManager::startLocalMultiPlayer(const std::string& ip, const std::string& port) {
     engine->getSceneManager()->loadScene("MultiPlayer");
 
-    std::string toConnect = address;
-    if (toConnect.empty()) {
-        toConnect = "127.0.0.1";
+    std::string toConnectIp = ip;
+    std::string toConnectPort = port;
+
+    if (toConnectIp.empty()) {
+        toConnectIp = "127.0.0.1";
     }
 
-    KapEngine::Debug::log("Connecting to " + toConnect);
-    networkManager->networkAddress = toConnect;
+    if (toConnectPort.empty()) {
+        toConnectPort = "7777";
+    }
+
+    KapEngine::Debug::log("Connecting to " + toConnectIp + ":" + toConnectPort);
+    networkManager->networkAddress = toConnectIp;
+    networkManager->networkPort = std::stoi(toConnectPort);
     networkManager->startClient();
 }
 

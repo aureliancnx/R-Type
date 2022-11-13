@@ -53,6 +53,8 @@ namespace RType {
 
         void toggleDebugMode();
 
+        MenuManager &getMenuManager();
+
         std::shared_ptr<RtypeNetworkManager>& getNetworkManager();
 
         static GameManager* getInstance() { return instance; }

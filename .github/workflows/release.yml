@@ -114,7 +114,7 @@ jobs:
       - name: Create installer
         run: |
           cd build/
-          ls -lah
+          ls -lahR
           cpack
         shell: bash
       - name: Upload Release Asset (.rpm)

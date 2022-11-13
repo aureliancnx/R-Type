@@ -89,7 +89,7 @@ jobs:
         shell: bash
         run: |
           cmake --build build --config ${{ matrix.config.build_type }}
-          ls -lah
+          ls -lahR
       - name: Check file exists
         shell: bash
         run: test -f build/${{ matrix.config.executable_file }}

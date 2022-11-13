@@ -1,5 +1,11 @@
 var NAVTREEINDEX5 =
 {
+"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a0c6f0ff5c4007ac64bcc80b80b8e05f2":[39,0,3,0,2,7],
+"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a0ee63493070e485c962037a915f35111":[39,0,3,0,2,15],
+"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a11c1d38a2166089dd66f078bd70f1ad8":[39,0,3,0,2,22],
+"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a156a03b7c161be31cf157a166daa9b26":[39,0,3,0,2,10],
+"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a1bb15e4237a8d87d729167a301b63514":[39,0,3,0,2,11],
+"classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a262e07e60d669fbae6fe1d0adc49aadd":[39,0,3,0,2,5],
 "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a263aa6e78443c43d603c81be1f11af31":[39,0,3,0,2,6],
 "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a3107790d38155181f91e82dad6b5d258":[39,0,3,0,2,25],
 "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a3193e7ac48549a9f32ca78fad2c7570a":[39,0,3,0,2,2],
@@ -243,11 +249,5 @@ var NAVTREEINDEX5 =
 "classKapMirror_1_1Sylph_1_1Connection.html#af36b0cb014dc8c8e444bdef26fc5ce03a065ae436b321e846ce7c3a64a7c45562":[39,0,3,1,2,1,1],
 "classKapMirror_1_1Sylph_1_1Connection.html#af36b0cb014dc8c8e444bdef26fc5ce03a554863ceb1fa1190fb60a7b37299fa07":[39,0,3,1,2,1,3],
 "classKapMirror_1_1Sylph_1_1Connection.html#af36b0cb014dc8c8e444bdef26fc5ce03ad21f616d08b0db9fcab6331b7dddfd82":[39,0,3,1,2,1,2],
-"classKapMirror_1_1Sylph_1_1Connection.html#af36b0cb014dc8c8e444bdef26fc5ce03afe8696310ab7f249b1c6c0319a6e7c7b":[39,0,3,1,2,1,0],
-"classKapMirror_1_1Sylph_1_1Connection.html#af5120ebb88e3baa038de9c69cd798e6a":[39,0,3,1,2,9],
-"classKapMirror_1_1Sylph_1_1Server.html":[39,0,3,1,3],
-"classKapMirror_1_1Sylph_1_1Server.html#a2dd422dc25689dc106a6d5fe1d3b3298":[39,0,3,1,3,6],
-"classKapMirror_1_1Sylph_1_1Server.html#a40a68f732de5d6d794ded373dc16a902":[39,0,3,1,3,7],
-"classKapMirror_1_1Sylph_1_1Server.html#a47540ee92fa93a32b198c74c88b0c5ae":[39,0,3,1,3,8],
-"classKapMirror_1_1Sylph_1_1Server.html#a4b3aa2579cb1c8cd1d069582c14d0fa6":[39,0,3,1,3,1]
+"classKapMirror_1_1Sylph_1_1Connection.html#af36b0cb014dc8c8e444bdef26fc5ce03afe8696310ab7f249b1c6c0319a6e7c7b":[39,0,3,1,2,1,0]
 };

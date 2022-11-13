@@ -24,6 +24,7 @@ namespace RType {
 
         std::shared_ptr<GameMenuManager> menuManager;
         std::shared_ptr<LobbyMenuManager> lobbyManager;
+
         KapEngine::Time::EClock clockMissile;
 
         KapEngine::Events::Key::EKey upKey = KapEngine::Events::Key::UP;

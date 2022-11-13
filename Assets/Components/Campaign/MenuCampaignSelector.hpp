@@ -18,7 +18,7 @@ namespace RType {
         };
 
       private:
-        GameManager& gameManager;
+        GameManager &gameManager;
 
         std::size_t _currentMap = 0;
         std::size_t _nbMaps = 0;
@@ -30,7 +30,7 @@ namespace RType {
         std::shared_ptr<KapEngine::GameObject> _buttonRight;
 
       public:
-        explicit MenuCampaignSelector(std::shared_ptr<KapEngine::GameObject> go, GameManager& _gameManager);
+        explicit MenuCampaignSelector(std::shared_ptr<KapEngine::GameObject> go, GameManager &_gameManager);
         ~MenuCampaignSelector() = default;
 
         void onAwake() override;
@@ -40,16 +40,16 @@ namespace RType {
         void buttonPlayFirst();
         void buttonPlaySecond();
 
-        void setButtonLevel1(const std::shared_ptr<KapEngine::GameObject>& btn);
-        void setButtonLevel2(const std::shared_ptr<KapEngine::GameObject>& btn);
-        void setButtonLeft(const std::shared_ptr<KapEngine::GameObject>& btn);
-        void setButtonRight(const std::shared_ptr<KapEngine::GameObject>& btn);
+        void setButtonLevel1(const std::shared_ptr<KapEngine::GameObject> &btn);
+        void setButtonLevel2(const std::shared_ptr<KapEngine::GameObject> &btn);
+        void setButtonLeft(const std::shared_ptr<KapEngine::GameObject> &btn);
+        void setButtonRight(const std::shared_ptr<KapEngine::GameObject> &btn);
 
       private:
         void getLuaInformation();
         void openFolderLua();
 
         void updateButtons();
-        std::string formatText(const std::string& text);
+        std::string formatText(const std::string &text);
     };
 } // namespace RType

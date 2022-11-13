@@ -19,7 +19,7 @@ void ConvertEnum::onUpdate() { setTextKey(); }
 
 void ConvertEnum::setTextKey() {
 
-    auto& btn = getGameObject().getComponent<KapEngine::UI::Button>();
+    auto &btn = getGameObject().getComponent<KapEngine::UI::Button>();
 
     if (KapEngine::PlayerPrefs::hasKey(_prefKey)) {
         auto key = KapEngine::PlayerPrefs::getInt(_prefKey);

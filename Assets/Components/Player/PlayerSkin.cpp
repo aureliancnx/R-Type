@@ -15,7 +15,7 @@ void PlayerSkin::setSkinId(int _skinId) {
     skinId = _skinId;
 
     try {
-        auto& image = getGameObject().getComponent<KapEngine::UI::Image>();
+        auto &image = getGameObject().getComponent<KapEngine::UI::Image>();
         image.setPathSprite("Assets/Textures/Ship/ship_" + std::to_string(skinId) + ".png");
     } catch (...) { KAP_DEBUG_ERROR("PlayerSkin::setSkinId: Image component not found"); }
 }
@@ -28,9 +28,9 @@ void PlayerSkin::onStart() {
     }
 }
 
-void PlayerSkin::serialize(KapMirror::NetworkWriter& writer) { writer.write(skinId); }
+void PlayerSkin::serialize(KapMirror::NetworkWriter &writer) { writer.write(skinId); }
 
-void PlayerSkin::deserialize(KapMirror::NetworkReader& reader) { skinId = reader.read<int>(); }
+void PlayerSkin::deserialize(KapMirror::NetworkReader &reader) { skinId = reader.read<int>(); }
 
 void PlayerSkin::onObjectUpdate() {
     if (isClient()) {

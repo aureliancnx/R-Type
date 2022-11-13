@@ -3,13 +3,13 @@
 
 using namespace RType;
 
-MainMenu::MainMenu(KapEngine::SceneManagement::Scene& _scene) : Menu(_scene) {}
+MainMenu::MainMenu(KapEngine::SceneManagement::Scene &_scene) : Menu(_scene) {}
 
 void MainMenu::init() {
     // change type of display for canvas
     {
         try {
-            auto& can = canvas->getComponent<KapEngine::UI::Canvas>();
+            auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
             can.setScreenCompare(KapEngine::Tools::Vector2(720, 480));
         } catch (...) { KAP_DEBUG_ERROR("Failed to resize canvas"); }
@@ -23,7 +23,7 @@ void MainMenu::init() {
         imageComp->setRectangle(KapEngine::Tools::Rectangle(0, 0, 755, 448));
         background->addComponent(imageComp);
 
-        auto& transform = background->getComponent<KapEngine::Transform>();
+        auto &transform = background->getComponent<KapEngine::Transform>();
         transform.setPosition(KapEngine::Tools::Vector3(0, 0, 0));
         transform.setScale(KapEngine::Tools::Vector3(720, 480, 0));
         transform.setParent(canvas);
@@ -37,7 +37,7 @@ void MainMenu::init() {
         imageComp->setRectangle(KapEngine::Tools::Rectangle(0, 0, 762, 225));
         title->addComponent(imageComp);
 
-        auto& transform = title->getComponent<KapEngine::Transform>();
+        auto &transform = title->getComponent<KapEngine::Transform>();
         transform.setPosition(KapEngine::Tools::Vector3(90, 20, 0));
         transform.setScale(KapEngine::Tools::Vector3(550, 180, 0));
         transform.setParent(canvas);
@@ -47,7 +47,7 @@ void MainMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonPlay");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto &transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Campaign");
@@ -69,7 +69,7 @@ void MainMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonMulti");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto &transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Multiplayer");
@@ -91,7 +91,7 @@ void MainMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonSettings");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto &transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Settings");
@@ -113,7 +113,7 @@ void MainMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonQuit");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto &transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Quit");

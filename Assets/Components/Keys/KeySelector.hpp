@@ -16,7 +16,7 @@ namespace RType {
 
         void onUpdate() override;
 
-        bool keySelected(KapEngine::Events::Key& key);
+        bool keySelected(KapEngine::Events::Key &key);
 
         void selectKey();
     };

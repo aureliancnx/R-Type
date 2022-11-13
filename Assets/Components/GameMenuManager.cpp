@@ -63,7 +63,7 @@ void RType::GameMenuManager::initMainMenu(bool local) {
 
     initBackground(mainMenu);
 
-    auto& scene = getScene();
+    auto &scene = getScene();
 
     // create quit button
     {
@@ -81,7 +81,7 @@ void RType::GameMenuManager::initMainMenu(bool local) {
                              "Assets/Textures/Icons/logout.png", {0, 0, 512, 512});
         }
 
-        auto& tr = btn->getComponent<Transform>();
+        auto &tr = btn->getComponent<Transform>();
 
         tr.setScale(btnSize);
         tr.setPosition(btnBasePos);
@@ -137,17 +137,17 @@ void RType::GameMenuManager::initMainMenu(bool local) {
         animator->addLink("AnimationOff", "On");
 
         try {
-            auto& tr = heart->getComponent<Transform>();
+            auto &tr = heart->getComponent<Transform>();
             tr.setParent(mainMenu->getId());
             tr.setPosition(calculatedPos);
             tr.setScale(btnSize);
-        } catch (const std::exception& e) { DEBUG_ERROR("Error: " + std::string(e.what())); }
+        } catch (const std::exception &e) { DEBUG_ERROR("Error: " + std::string(e.what())); }
     }
 
     // create weapon intel
     {
         auto weaponIntel = UI::UiFactory::createImage(scene, "WeaponIntel", "Assets/Textures/Weapons/Empty.png", {0, 0, 32, 32});
-        auto& tr = weaponIntel->getComponent<Transform>();
+        auto &tr = weaponIntel->getComponent<Transform>();
         tr.setParent(mainMenu->getId());
         Tools::Vector3 calculatedPos;
         calculatedPos.setX(getEngine().getScreenSize().getX() - 80.0f - 10);
@@ -159,7 +159,7 @@ void RType::GameMenuManager::initMainMenu(bool local) {
     // create load missile
     {
         auto weaponIntel = UI::UiFactory::createImage(scene, "WeaponIntel", "Assets/Textures/Weapons/LoadingMissile.png", {0, 0, 31, 31});
-        auto& tr = weaponIntel->getComponent<Transform>();
+        auto &tr = weaponIntel->getComponent<Transform>();
         tr.setParent(mainMenu->getId());
         Tools::Vector3 calculatedPos;
         calculatedPos.setX(getEngine().getScreenSize().getX() - 160.0f - 20);
@@ -219,7 +219,7 @@ void RType::GameMenuManager::initMainMenu(bool local) {
     }
 }
 
-void RType::GameMenuManager::initBackground(const std::shared_ptr<GameObject>& parent) {
+void RType::GameMenuManager::initBackground(const std::shared_ptr<GameObject> &parent) {
     auto background = parent->getScene().createGameObject("Background");
     background->getComponent<Transform>().setParent(parent->getId());
     background->getComponent<Transform>().setPosition({0, 0, 0});
@@ -231,9 +231,9 @@ void RType::GameMenuManager::initBackground(const std::shared_ptr<GameObject>& p
     background->addComponent(backgroundImage);
 }
 
-std::shared_ptr<GameObject> RType::GameMenuManager::initButton(const std::shared_ptr<GameObject>& parent, const std::string& name,
-                                                               std::string text, std::function<void()> callback, const Tools::Color& color,
-                                                               const Tools::Color& textColor) {
+std::shared_ptr<GameObject> RType::GameMenuManager::initButton(const std::shared_ptr<GameObject> &parent, const std::string &name,
+                                                               std::string text, std::function<void()> callback, const Tools::Color &color,
+                                                               const Tools::Color &textColor) {
     std::shared_ptr<GameObject> button = parent->getScene().createGameObject(name);
 
 #if IS_MAX_KAPUI_VERSION(0, 101)
@@ -251,10 +251,10 @@ std::shared_ptr<GameObject> RType::GameMenuManager::initButton(const std::shared
     return button;
 }
 
-std::shared_ptr<GameObject> RType::GameMenuManager::initButton(const std::shared_ptr<GameObject>& parent, const std::string& name,
+std::shared_ptr<GameObject> RType::GameMenuManager::initButton(const std::shared_ptr<GameObject> &parent, const std::string &name,
                                                                std::string text, std::function<void()> callback,
-                                                               const std::string& pathSprite, const Tools::Rectangle& rect,
-                                                               const Tools::Color& color, const Tools::Color& textColor) {
+                                                               const std::string &pathSprite, const Tools::Rectangle &rect,
+                                                               const Tools::Color &color, const Tools::Color &textColor) {
     std::shared_ptr<GameObject> button = parent->getScene().createGameObject(name);
 
 #if IS_MAX_KAPUI_VERSION(0, 101)
@@ -291,7 +291,7 @@ void RType::GameMenuManager::updateHealth(int health) {
         if (!heartObject->hasComponent<UI::Image>()) {
             continue;
         }
-        auto& component = heartObject->getComponent<UI::Image>();
+        auto &component = heartObject->getComponent<UI::Image>();
         if (health > (int) (((((float) itr * 1.f) + 1.f) / 3.f) * 100.f) * 1) {
             // full heart
             component.setRectangle({0, 0, 175, 175});

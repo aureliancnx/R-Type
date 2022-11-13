@@ -55,7 +55,7 @@ namespace RType {
 
         void onStartClient() override;
 
-        void movePlayer(const KapEngine::Tools::Vector2& input);
+        void movePlayer(const KapEngine::Tools::Vector2 &input);
 
         void setConnectionId(unsigned int _connectionId);
 
@@ -73,18 +73,18 @@ namespace RType {
 
         void onObjectUpdate() override;
 
-        void serialize(KapMirror::NetworkWriter& writer) override;
+        void serialize(KapMirror::NetworkWriter &writer) override;
 
-        void deserialize(KapMirror::NetworkReader& reader) override;
+        void deserialize(KapMirror::NetworkReader &reader) override;
 
       private:
-        void sendInput(const KapEngine::Tools::Vector2& input);
+        void sendInput(const KapEngine::Tools::Vector2 &input);
 
         void playShootSound();
 
-        void spawnBullet(const KapEngine::Tools::Vector3& pos);
+        void spawnBullet(const KapEngine::Tools::Vector3 &pos);
 
-        void spawnMissile(const KapEngine::Tools::Vector3& pos);
+        void spawnMissile(const KapEngine::Tools::Vector3 &pos);
 
         void initSettings();
 

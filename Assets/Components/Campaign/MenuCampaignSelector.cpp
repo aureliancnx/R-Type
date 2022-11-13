@@ -4,11 +4,11 @@
 
 using namespace KapEngine;
 
-RType::MenuCampaignSelector::MenuCampaignSelector(std::shared_ptr<KapEngine::GameObject> go, GameManager& _gameManager)
+RType::MenuCampaignSelector::MenuCampaignSelector(std::shared_ptr<KapEngine::GameObject> go, GameManager &_gameManager)
     : Component(go, "SoloMenu"), gameManager(_gameManager) {}
 
 void RType::MenuCampaignSelector::getLuaInformation() {
-    for (auto& campaign : _campaigns) {
+    for (auto &campaign : _campaigns) {
         try {
             MapScript mapScript(&getEngine());
             mapScript.loadScript(campaign.scriptPath);
@@ -17,7 +17,7 @@ void RType::MenuCampaignSelector::getLuaInformation() {
             campaign.name = mapScript.getName();
             campaign.image = mapScript.getBannerPath();
             mapScript.closeScript();
-        } catch (std::exception& e) { KAP_DEBUG_ERROR("Error while loading script " + campaign.scriptPath + " : " + e.what()); }
+        } catch (std::exception &e) { KAP_DEBUG_ERROR("Error while loading script " + campaign.scriptPath + " : " + e.what()); }
     }
 }
 
@@ -27,9 +27,9 @@ void RType::MenuCampaignSelector::openFolderLua() {
     _campaigns.clear();
 
     try {
-        for (const auto& entry : std::filesystem::directory_iterator("Maps")) {
+        for (const auto &entry : std::filesystem::directory_iterator("Maps")) {
             std::string file = entry.path().string();
-            const std::string& completePath = file;
+            const std::string &completePath = file;
             if (file.find(luaExt) != std::string::npos) {
                 Campaign campaign;
                 campaign.scriptPath = completePath;
@@ -46,42 +46,42 @@ void RType::MenuCampaignSelector::onAwake() {
     updateButtons();
 }
 
-void RType::MenuCampaignSelector::setButtonLevel1(const std::shared_ptr<KapEngine::GameObject>& button) {
+void RType::MenuCampaignSelector::setButtonLevel1(const std::shared_ptr<KapEngine::GameObject> &button) {
     if (!button->hasComponent<KapEngine::UI::Button>()) {
         return;
     }
 
-    auto& buttonComponent = button->getComponent<KapEngine::UI::Button>();
+    auto &buttonComponent = button->getComponent<KapEngine::UI::Button>();
     buttonComponent.getOnClick().registerAction([this]() { buttonPlayFirst(); });
     _buttonLevel1 = button;
 }
 
-void RType::MenuCampaignSelector::setButtonLevel2(const std::shared_ptr<KapEngine::GameObject>& button) {
+void RType::MenuCampaignSelector::setButtonLevel2(const std::shared_ptr<KapEngine::GameObject> &button) {
     if (!button->hasComponent<KapEngine::UI::Button>()) {
         return;
     }
 
-    auto& buttonComponent = button->getComponent<KapEngine::UI::Button>();
+    auto &buttonComponent = button->getComponent<KapEngine::UI::Button>();
     buttonComponent.getOnClick().registerAction([this]() { buttonPlaySecond(); });
     _buttonLevel2 = button;
 }
 
-void RType::MenuCampaignSelector::setButtonLeft(const std::shared_ptr<KapEngine::GameObject>& button) {
+void RType::MenuCampaignSelector::setButtonLeft(const std::shared_ptr<KapEngine::GameObject> &button) {
     if (!button->hasComponent<KapEngine::UI::Button>()) {
         return;
     }
 
-    auto& btn = button->getComponent<KapEngine::UI::Button>();
+    auto &btn = button->getComponent<KapEngine::UI::Button>();
     btn.getOnClick().registerAction([this]() { buttonPreviousMaps(); });
     _buttonLeft = button;
 }
 
-void RType::MenuCampaignSelector::setButtonRight(const std::shared_ptr<KapEngine::GameObject>& button) {
+void RType::MenuCampaignSelector::setButtonRight(const std::shared_ptr<KapEngine::GameObject> &button) {
     if (!button->hasComponent<KapEngine::UI::Button>()) {
         return;
     }
 
-    auto& btn = button->getComponent<KapEngine::UI::Button>();
+    auto &btn = button->getComponent<KapEngine::UI::Button>();
     btn.getOnClick().registerAction([this]() { buttonNextMaps(); });
     _buttonRight = button;
 }
@@ -110,26 +110,26 @@ void RType::MenuCampaignSelector::updateButtons() {
             throw KapEngine::Errors::ComponentError("Failed to get button 1");
         }
 
-        auto& btn = _buttonLevel1->getComponent<KapEngine::UI::Button>();
+        auto &btn = _buttonLevel1->getComponent<KapEngine::UI::Button>();
         btn.setBackground(_campaigns[_currentMap].image, {0, 0, 449, 433});
 
         auto children = _buttonLevel1->getComponent<KapEngine::Transform>().getChildren();
-        for (auto& i : children) {
+        for (auto &i : children) {
             if (i->hasComponent<KapEngine::UI::Text>() && i->getName() == "LevelName") {
                 // change level name
-                auto& txt = i->getComponent<KapEngine::UI::Text>();
+                auto &txt = i->getComponent<KapEngine::UI::Text>();
                 txt.setText(formatText(_campaigns[_currentMap].name));
             } else if (i->hasComponent<KapEngine::UI::Text>() && i->getName() == "LevelDescription") {
                 // change level description
-                auto& txt = i->getComponent<KapEngine::UI::Text>();
+                auto &txt = i->getComponent<KapEngine::UI::Text>();
                 txt.setText(formatText(_campaigns[_currentMap].description));
             } else if (i->hasComponent<KapEngine::UI::Text>() && i->getName() == "LevelAuthor") {
                 // change level author
-                auto& txt = i->getComponent<KapEngine::UI::Text>();
+                auto &txt = i->getComponent<KapEngine::UI::Text>();
                 txt.setText(formatText(_campaigns[_currentMap].author));
             }
         }
-    } catch (const std::exception& e) { KAP_DEBUG_ERROR("Failed to update button 1 : " + std::string(e.what())); }
+    } catch (const std::exception &e) { KAP_DEBUG_ERROR("Failed to update button 1 : " + std::string(e.what())); }
 
     // update button 2
     try {
@@ -142,26 +142,26 @@ void RType::MenuCampaignSelector::updateButtons() {
             nextId = 0;
         }
 
-        auto& btn = _buttonLevel2->getComponent<KapEngine::UI::Button>();
+        auto &btn = _buttonLevel2->getComponent<KapEngine::UI::Button>();
         btn.setBackground(_campaigns[nextId].image, {0, 0, 449, 433});
 
         auto children = _buttonLevel2->getComponent<KapEngine::Transform>().getChildren();
-        for (auto& i : children) {
+        for (auto &i : children) {
             if (i->hasComponent<KapEngine::UI::Text>() && i->getName() == "LevelName") {
                 // change level name
-                auto& txt = i->getComponent<KapEngine::UI::Text>();
+                auto &txt = i->getComponent<KapEngine::UI::Text>();
                 txt.setText(formatText(_campaigns[nextId].name));
             } else if (i->hasComponent<KapEngine::UI::Text>() && i->getName() == "LevelDescription") {
                 // change level description
-                auto& txt = i->getComponent<KapEngine::UI::Text>();
+                auto &txt = i->getComponent<KapEngine::UI::Text>();
                 txt.setText(formatText(_campaigns[nextId].description));
             } else if (i->hasComponent<KapEngine::UI::Text>() && i->getName() == "LevelAuthor") {
                 // change level author
-                auto& txt = i->getComponent<KapEngine::UI::Text>();
+                auto &txt = i->getComponent<KapEngine::UI::Text>();
                 txt.setText(formatText(_campaigns[nextId].author));
             }
         }
-    } catch (const std::exception& e) { KAP_DEBUG_ERROR("Failed to update button 2 : " + std::string(e.what())); }
+    } catch (const std::exception &e) { KAP_DEBUG_ERROR("Failed to update button 2 : " + std::string(e.what())); }
 }
 
 void RType::MenuCampaignSelector::buttonPlayFirst() {
@@ -175,9 +175,9 @@ void RType::MenuCampaignSelector::buttonPlayFirst() {
         if (_currentMap >= _campaigns.size()) {
             throw KapEngine::Errors::ComponentError("Failed to get current map");
         }
-        const Campaign& campaign = _campaigns[_currentMap];
+        const Campaign &campaign = _campaigns[_currentMap];
         gameManager.startCampaign(campaign.scriptPath);
-    } catch (LuaException& e) { KapEngine::Debug::error(e.what()); } catch (std::exception& e) {
+    } catch (LuaException &e) { KapEngine::Debug::error(e.what()); } catch (std::exception &e) {
         KapEngine::Debug::error(e.what());
     }
 }
@@ -197,14 +197,14 @@ void RType::MenuCampaignSelector::buttonPlaySecond() {
         if (nextId >= _campaigns.size()) {
             throw KapEngine::Errors::ComponentError("Failed to get current map");
         }
-        const Campaign& campaign = _campaigns[nextId];
+        const Campaign &campaign = _campaigns[nextId];
         gameManager.startCampaign(campaign.scriptPath);
-    } catch (LuaException& e) { KapEngine::Debug::error(e.what()); } catch (std::exception& e) {
+    } catch (LuaException &e) { KapEngine::Debug::error(e.what()); } catch (std::exception &e) {
         KapEngine::Debug::error(e.what());
     }
 }
 
-std::string RType::MenuCampaignSelector::formatText(const std::string& text) {
+std::string RType::MenuCampaignSelector::formatText(const std::string &text) {
     std::string result = text;
     if (result.size() > 30) {
         result = result.substr(0, 27);

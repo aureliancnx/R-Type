@@ -37,7 +37,7 @@ void MultiMenu::init() {
         auto inptComp = std::make_shared<KapEngine::UI::Inputfield>(inpt);
 
         inpt->addComponent(inptComp);
-        inptComp->setPlaceholderText("127.0.0.1:7777");
+        inptComp->setPlaceholderText("127.0.0.1");
 
         auto& transform = inpt->getComponent<KapEngine::Transform>();
         transform.setScale({150, 35, 0});
@@ -54,6 +54,33 @@ void MultiMenu::init() {
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3(50, 150, 0));
+        transform.setParent(canvas);
+    }
+
+    // create inputfield for port
+    {
+        auto inpt = scene.createGameObject("InputFieldPort");
+        auto inptComp = std::make_shared<KapEngine::UI::Inputfield>(inpt);
+
+        inpt->addComponent(inptComp);
+        inptComp->setPlaceholderText("7777");
+        inptComp->setInputType(KapEngine::UI::Inputfield::InputType::NUMBER);
+
+        auto& transform = inpt->getComponent<KapEngine::Transform>();
+        transform.setScale({150, 35, 0});
+        transform.setPosition({200, 190, 0});
+        transform.setParent(canvas);
+    }
+
+    // create text for ip
+    {
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Multi Text Port");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Enter your Port : ");
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+
+        txt->addComponent(compText);
+        transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
+        transform.setPosition(KapEngine::Tools::Vector3(50, 190, 0));
         transform.setParent(canvas);
     }
 

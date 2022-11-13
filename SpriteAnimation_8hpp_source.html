@@ -106,7 +106,7 @@ $(document).ready(function(){initNavTree('SpriteAnimation_8hpp_source.html','');
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;      <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classRType_1_1SpriteAnimation.html">SpriteAnimation</a>(std::shared_ptr&lt;KapEngine::GameObject&gt; gameObject);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="classRType_1_1SpriteAnimation.html">SpriteAnimation</a>(std::shared_ptr&lt;KapEngine::GameObject&gt; gameObject, <span class="keywordtype">int</span> nbAnimation, <a class="code" href="classKapEngine_1_1Tools_1_1Rectangle.html">KapEngine::Tools::Rectangle</a> rect,</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                        int64_t <span class="keyword">const</span>&amp; time);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                        int64_t <span class="keyword">const</span> &amp;time);</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        ~<a class="code" href="classRType_1_1SpriteAnimation.html">SpriteAnimation</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">void</span> onPlay() <span class="keyword">override</span>;</div>
@@ -139,7 +139,7 @@ $(document).ready(function(){initNavTree('SpriteAnimation_8hpp_source.html','');
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        std::size_t _nbYTextures = 0;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="comment">// Functions</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">void</span> init(std::shared_ptr&lt;KapEngine::GameObject&gt; gameObject);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="classKapEngine_1_1UI_1_1Image.html">KapEngine::UI::Image</a>&amp; getImage();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="classKapEngine_1_1UI_1_1Image.html">KapEngine::UI::Image</a> &amp;getImage();</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="classKapEngine_1_1Tools_1_1Vector2.html">KapEngine::Tools::Vector2</a> calculateNewPos(<span class="keywordtype">int</span> crossProduct);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    };</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;} <span class="comment">// namespace RType</span></div>

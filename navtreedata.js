@@ -402,7 +402,7 @@ var NAVTREEINDEX =
 "classKapEngine_1_1Tools_1_1Color.html#aca989acbc607587b241a5677f97584b7",
 "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a0ee63493070e485c962037a915f35111",
 "classKapMirror_1_1Sylph_1_1Server.html",
-"classRType_1_1LuaException.html#a066f4d7fb4425469ef1e879244101776",
+"classRType_1_1LuaException.html#a70ec586fa22c693d76a1e9a651b86a71",
 "classbackward_1_1Printer.html#af5916965c8e12c840a1a4798a90b6161",
 "md_CODE_OF_CONDUCT.html#autotoc_md4",
 "md_doxygen-awesome-css_docs_extensions.html#autotoc_md40"

@@ -1,7 +1,7 @@
 var NAVTREEINDEX7 =
 {
-"classRType_1_1LuaException.html#a066f4d7fb4425469ef1e879244101776":[39,0,5,17,2],
 "classRType_1_1LuaException.html#a70ec586fa22c693d76a1e9a651b86a71":[39,0,5,17,0],
+"classRType_1_1LuaException.html#a8c4edec3c7d79665b5d2878ab9f85204":[39,0,5,17,2],
 "classRType_1_1MainMenu.html":[39,0,5,18],
 "classRType_1_1MainMenu.html#a340d84023f931683f4f80c9a1d5d127f":[39,0,5,18,2],
 "classRType_1_1MainMenu.html#a46d4ccaa5094c438c873d3e465a9dfb7":[39,0,5,18,0],

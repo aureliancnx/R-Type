@@ -97,10 +97,10 @@ $(document).ready(function(){initNavTree('LuaException_8hpp_source.html',''); in
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        std::string _message;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;      <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="classRType_1_1LuaException.html">LuaException</a>(std::string <span class="keyword">const</span>&amp; message) : _message(message) {}</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="classRType_1_1LuaException.html">LuaException</a>(std::string <span class="keyword">const</span> &amp;message) : _message(message) {}</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        ~<a class="code" href="classRType_1_1LuaException.html">LuaException</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">char</span> <span class="keyword">const</span>* what() <span class="keyword">const</span> noexcept { <span class="keywordflow">return</span> _message.c_str(); }</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">char</span> <span class="keyword">const</span> *what() <span class="keyword">const</span> noexcept { <span class="keywordflow">return</span> _message.c_str(); }</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    };</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;} <span class="comment">// namespace RType</span></div>
 </div><!-- fragment --></div><!-- contents -->

@@ -37,10 +37,6 @@ void PlayerSkin::onStartClient() {
 
 void PlayerSkin::serialize(KapMirror::NetworkWriter& writer) { writer.write(skinId); }
 
-void PlayerSkin::deserialize(KapMirror::NetworkReader& reader) {
-    skinId = reader.read<int>();
-}
+void PlayerSkin::deserialize(KapMirror::NetworkReader& reader) { skinId = reader.read<int>(); }
 
-void PlayerSkin::onObjectUpdate() {
-    setSkinId(skinId);
-}
+void PlayerSkin::onObjectUpdate() { setSkinId(skinId); }

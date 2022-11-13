@@ -30,6 +30,8 @@ namespace RType {
 
         void updateHealth(int health);
 
+        void displayEndMenu();
+
       private:
         void initMainMenu(bool local = true);
 

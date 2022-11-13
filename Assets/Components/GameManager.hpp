@@ -9,10 +9,10 @@
 
 namespace RType {
     class GameManager {
-        static GameManager* instance;
+        static GameManager *instance;
 
       private:
-        KapEngine::KEngine* engine;
+        KapEngine::KEngine *engine;
 
         MenuManager menuManager;
 
@@ -22,7 +22,7 @@ namespace RType {
         bool debugMode = false;
 
       public:
-        explicit GameManager(KapEngine::KEngine* _engine, bool splashScreens = true);
+        explicit GameManager(KapEngine::KEngine *_engine, bool splashScreens = true);
         ~GameManager() = default;
 
         void launchGame();
@@ -45,16 +45,18 @@ namespace RType {
         void initAxis();
 
       public:
-        void startLocalMultiPlayer(const std::string& ip, const std::string& port);
+        void startLocalMultiPlayer(const std::string &ip, const std::string &port);
 
-        void startCampaign(const std::string& pathMap);
+        void startCampaign(const std::string &pathMap);
 
         bool hasDebugMode() const;
 
         void toggleDebugMode();
 
-        std::shared_ptr<RtypeNetworkManager>& getNetworkManager();
+        MenuManager &getMenuManager();
 
-        static GameManager* getInstance() { return instance; }
+        std::shared_ptr<RtypeNetworkManager> &getNetworkManager();
+
+        static GameManager *getInstance() { return instance; }
     };
 } // namespace RType

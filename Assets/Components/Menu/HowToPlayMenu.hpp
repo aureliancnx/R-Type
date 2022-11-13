@@ -9,11 +9,12 @@
 #define RTYPE_HOWTOPLAYMENU_HPP
 
 #include "Menu.hpp"
+#include "Keys/ChangeKey.hpp"
 
 namespace RType {
     class HowToPlayMenu : public Menu {
       public:
-        explicit HowToPlayMenu(KapEngine::SceneManagement::Scene& _scene);
+        explicit HowToPlayMenu(KapEngine::SceneManagement::Scene &_scene);
         ~HowToPlayMenu() = default;
 
         void init() override;
@@ -22,9 +23,10 @@ namespace RType {
       private:
         void initFightAnimation();
         void initKeyboardKeyDisplay();
-        void initKeyboardKeyBackground();
-        void initKeyboardActions();
-        void initKeyboardInput();
+
+        std::shared_ptr<KapEngine::GameObject> _goSettings;
+        std::shared_ptr<KapEngine::GameObject> _goInputs;
+        std::shared_ptr<ChangeKey> _chgKey;
     };
 } // namespace RType
 

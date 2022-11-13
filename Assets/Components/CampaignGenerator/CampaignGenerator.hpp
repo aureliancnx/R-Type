@@ -33,9 +33,9 @@ namespace RType {
 
         void onAwake() override;
 
-        std::shared_ptr<KapEngine::GameObject> spawnMob(std::string const& mobName, KapEngine::SceneManagement::Scene& scene);
+        std::shared_ptr<KapEngine::GameObject> spawnMob(std::string const &mobName, KapEngine::SceneManagement::Scene &scene);
 
-        void addEnemy(Enemy const& enemy);
+        void addEnemy(Enemy const &enemy);
 
       private:
         std::vector<Enemy> _enemies;

@@ -23,7 +23,7 @@ void RType::ChangeKey::onAwake() {
 void RType::ChangeKey::onUpdate() {
     if (!_startSelect)
         return;
-    auto& keySel = getGameObject().getComponent<KeySelector>();
+    auto &keySel = getGameObject().getComponent<KeySelector>();
     Events::Key key;
     if (keySel.keySelected(key)) {
         _startSelect = false;
@@ -33,14 +33,14 @@ void RType::ChangeKey::onUpdate() {
     }
 }
 
-void RType::ChangeKey::startSelect(std::string const& prefName) {
+void RType::ChangeKey::startSelect(std::string const &prefName) {
     if (prefName == "") {
         DEBUG_ERROR("You can't select a key without set a name to PlayerPrefs");
         return;
     }
     _startSelect = true;
     _prefName = prefName;
-    auto& keySel = getGameObject().getComponent<KeySelector>();
+    auto &keySel = getGameObject().getComponent<KeySelector>();
     keySel.selectKey();
     displayInputs();
 }

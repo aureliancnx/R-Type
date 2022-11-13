@@ -17,6 +17,6 @@ namespace RType {
         KapEngine::Events::Input::Axis _baseAxisShoot;
         KapEngine::Events::Input::Axis _baseAxisDebug;
 
-        bool setValueSaved(std::string const& name, KapEngine::Events::Key& key);
+        bool setValueSaved(std::string const &name, KapEngine::Events::Key &key);
     };
 } // namespace RType

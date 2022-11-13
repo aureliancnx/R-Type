@@ -12,7 +12,7 @@ RType::CampaignGenerator::CampaignGenerator(std::shared_ptr<GameObject> go) : Co
 
 RType::CampaignGenerator::~CampaignGenerator() {}
 
-void RType::CampaignGenerator::addEnemy(const RType::CampaignGenerator::Enemy& enemy) { _enemies.push_back(enemy); }
+void RType::CampaignGenerator::addEnemy(const RType::CampaignGenerator::Enemy &enemy) { _enemies.push_back(enemy); }
 
 void RType::CampaignGenerator::onAwake() {
     int time = 10;
@@ -29,14 +29,14 @@ void RType::CampaignGenerator::onAwake() {
 void RType::CampaignGenerator::onFixedUpdate() {
     if (_enemies.size() == 0)
         return;
-    auto& scene = getScene();
+    auto &scene = getScene();
 
     KapEngine::Time::ETime tmp = _clock.getElapseTime();
 
     for (std::size_t i = 0; i < _enemies.size(); i++) {
         if (_time.asSecond() < _enemies[i]._time && _enemies[i]._time <= tmp.asSecond()) {
             auto enemy = spawnMob(_enemies[i]._mobName, scene);
-            auto& trEnemy = enemy->getComponent<KapEngine::Transform>();
+            auto &trEnemy = enemy->getComponent<KapEngine::Transform>();
 
             trEnemy.setPosition({static_cast<float>(_enemies[i]._positionX), static_cast<float>(_enemies[i]._positionY), 0});
             if (_enemies.size() != 1) {
@@ -51,8 +51,8 @@ void RType::CampaignGenerator::onFixedUpdate() {
     _time = tmp;
 }
 
-std::shared_ptr<KapEngine::GameObject> RType::CampaignGenerator::spawnMob(const std::string& mobName,
-                                                                          KapEngine::SceneManagement::Scene& scene) {
+std::shared_ptr<KapEngine::GameObject> RType::CampaignGenerator::spawnMob(const std::string &mobName,
+                                                                          KapEngine::SceneManagement::Scene &scene) {
     std::shared_ptr<KapEngine::GameObject> mob;
     scene.getEngine().getPrefabManager()->instantiatePrefab(mobName, scene, mob);
     return mob;

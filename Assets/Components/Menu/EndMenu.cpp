@@ -8,14 +8,14 @@
 
 using namespace RType;
 
-EndMenu::EndMenu(KapEngine::SceneManagement::Scene& _scene, GameManager& _gameManager) : Menu(_scene), gameManager(_gameManager) {}
+EndMenu::EndMenu(KapEngine::SceneManagement::Scene &_scene, GameManager &_gameManager) : Menu(_scene), gameManager(_gameManager) {}
 
 void EndMenu::init() {
 
     // Change type of display for canvas
     {
         try {
-            auto& can = canvas->getComponent<KapEngine::UI::Canvas>();
+            auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
             can.setScreenCompare(KapEngine::Tools::Vector2(720, 480));
         } catch (...) { KAP_DEBUG_ERROR("Failed to resize canvas"); }
@@ -29,7 +29,7 @@ void EndMenu::init() {
         imageComp->setRectangle({0, 0, 755, 448});
         background->addComponent(imageComp);
 
-        auto& transform = background->getComponent<KapEngine::Transform>();
+        auto &transform = background->getComponent<KapEngine::Transform>();
         transform.setPosition(KapEngine::Tools::Vector3(0, 0, 0));
         transform.setScale({720, 480, 0});
         transform.setParent(canvas);
@@ -39,7 +39,7 @@ void EndMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonBack");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto &transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Back Menu");
@@ -61,7 +61,7 @@ void EndMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text End Menu");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         // KapEngine::PlayerPrefs::setBool("Finish", false); // SET LORS DE LA FINAL ACTION DU JEU
         if (KapEngine::PlayerPrefs::getBool("Finish") && KapEngine::PlayerPrefs::hasKey("Finish"))
@@ -80,7 +80,7 @@ void EndMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "End Score Text");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Your final score : ");
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         compText->setPoliceSize(20);
         txt->addComponent(compText);
@@ -93,7 +93,7 @@ void EndMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Value Score Text");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "");
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         compText->setPoliceSize(20);
         if (KapEngine::PlayerPrefs::hasKey("ScorePlayer"))
@@ -110,7 +110,7 @@ void EndMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Final Text");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Your game is over, here is your score from the previous game.");
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale({150, 35, 0});

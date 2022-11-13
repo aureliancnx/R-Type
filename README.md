@@ -4,6 +4,7 @@
 [![KapUI](https://img.shields.io/badge/KapUI-brightgreen.svg)](https://github.com/benji-35/KapUi)
 [![Documentation](https://img.shields.io/badge/docs-brightgreen.svg)](https://chaika9.gitbook.io/rtype/)
 [![Release](https://img.shields.io/github/release/aureliancnx/R-Type.svg)](https://github.com/aureliancnx/R-Type/releases/latest)
+[![Build verification](https://github.com/aureliancnx/R-Type/actions/workflows/build.yml/badge.svg)](https://github.com/aureliancnx/R-Type/actions)
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-brightgreen.svg)](https://github.com/aureliancnx/R-Type/blob/main/LICENSE)
 
 <img src="https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/virtual_console_wii_u_7/H2x1_WiiUVC_RType.jpg" title="R-Type" alt="Image"/>

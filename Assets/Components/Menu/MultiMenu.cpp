@@ -4,13 +4,13 @@
 
 using namespace RType;
 
-MultiMenu::MultiMenu(KapEngine::SceneManagement::Scene& _scene, GameManager& _gameManager) : Menu(_scene), gameManager(_gameManager) {}
+MultiMenu::MultiMenu(KapEngine::SceneManagement::Scene &_scene, GameManager &_gameManager) : Menu(_scene), gameManager(_gameManager) {}
 
 void MultiMenu::init() {
     // change type of display for canvas
     {
         try {
-            auto& can = canvas->getComponent<KapEngine::UI::Canvas>();
+            auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
             can.setScreenCompare(KapEngine::Tools::Vector2(720, 480));
         } catch (...) { KAP_DEBUG_ERROR("Failed to resize canvas"); }
@@ -24,7 +24,7 @@ void MultiMenu::init() {
         imageComp->setRectangle({0, 0, 720, 600});
         background->addComponent(imageComp);
 
-        auto& transform = background->getComponent<KapEngine::Transform>();
+        auto &transform = background->getComponent<KapEngine::Transform>();
         transform.setPosition(KapEngine::Tools::Vector3(0, 0, 0));
         transform.setScale({720, 480, 0});
         transform.setParent(canvas);
@@ -39,7 +39,7 @@ void MultiMenu::init() {
         inpt->addComponent(ipText);
         ipText->setPlaceholderText("127.0.0.1");
 
-        auto& transform = inpt->getComponent<KapEngine::Transform>();
+        auto &transform = inpt->getComponent<KapEngine::Transform>();
         transform.setScale({150, 15, 0});
         transform.setPosition({200, 150, 0});
         transform.setParent(canvas);
@@ -52,7 +52,7 @@ void MultiMenu::init() {
         auto txtComp = std::make_shared<KapEngine::UI::Text>(txt, "Enter your IP : ");
         txt->addComponent(txtComp);
 
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3(50, 150, 0));
         transform.setParent(canvas);
@@ -68,7 +68,7 @@ void MultiMenu::init() {
         portText->setPlaceholderText("7777");
         portText->setInputType(KapEngine::UI::Inputfield::InputType::NUMBER);
 
-        auto& transform = inpt->getComponent<KapEngine::Transform>();
+        auto &transform = inpt->getComponent<KapEngine::Transform>();
         transform.setScale({50, 15, 0});
         transform.setPosition({200, 190, 0});
         transform.setParent(canvas);
@@ -78,7 +78,7 @@ void MultiMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Multi Text Port");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Enter your Port : ");
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
@@ -102,7 +102,7 @@ void MultiMenu::init() {
             gameManager.startLocalMultiPlayer(ipText->getText(), portText->getText());
         });
 
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto &transform = btn->getComponent<KapEngine::Transform>();
         transform.setPosition({250, 250, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
@@ -112,7 +112,7 @@ void MultiMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonBackMulti");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto &transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Back");

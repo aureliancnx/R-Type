@@ -10,13 +10,13 @@
 #include "Player/PlayerController.hpp"
 #include "Player/PlayerSkin.hpp"
 
-RType::SettingPlayerMenu::SettingPlayerMenu(KapEngine::SceneManagement::Scene& _scene) : Menu(_scene) {}
+RType::SettingPlayerMenu::SettingPlayerMenu(KapEngine::SceneManagement::Scene &_scene) : Menu(_scene) {}
 
 void RType::SettingPlayerMenu::init() {
     // Change type of display for canvas
     {
         try {
-            auto& can = canvas->getComponent<KapEngine::UI::Canvas>();
+            auto &can = canvas->getComponent<KapEngine::UI::Canvas>();
 
             can.setResizeType(KapEngine::UI::Canvas::RESIZE_WITH_SCREEN);
             can.setScreenCompare(KapEngine::Tools::Vector2(720, 480));
@@ -31,7 +31,7 @@ void RType::SettingPlayerMenu::init() {
         imageComp->setRectangle({0, 0, 381, 200});
         background->addComponent(imageComp);
 
-        auto& transform = background->getComponent<KapEngine::Transform>();
+        auto &transform = background->getComponent<KapEngine::Transform>();
         transform.setPosition(KapEngine::Tools::Vector3(0, 0, 0));
         transform.setScale({720, 480, 0});
         transform.setParent(canvas);
@@ -41,7 +41,7 @@ void RType::SettingPlayerMenu::init() {
     {
         auto btn = scene.createGameObject("ButtonBack");
         auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto &transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
         btnComp->setText("Back");
@@ -63,7 +63,7 @@ void RType::SettingPlayerMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Text Change setting player");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Change your settings");
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         compText->setPoliceSize(20);
 
@@ -77,7 +77,7 @@ void RType::SettingPlayerMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Choose pseudo Text");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Enter your pseudo : ");
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale({150, 35, 0});
@@ -92,7 +92,7 @@ void RType::SettingPlayerMenu::init() {
 
         inpt->addComponent(inptComp);
 
-        auto& transform = inpt->getComponent<KapEngine::Transform>();
+        auto &transform = inpt->getComponent<KapEngine::Transform>();
         transform.setScale({150, 35, 0});
         transform.setPosition({330, 150, 0});
         transform.setParent(canvas);
@@ -102,7 +102,7 @@ void RType::SettingPlayerMenu::init() {
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Choose pseudo Text");
         auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Select your spaceship : ");
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+        auto &transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
         txt->addComponent(compText);
         transform.setScale({150, 35, 0});
@@ -124,15 +124,15 @@ void RType::SettingPlayerMenu::init() {
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
         btnComp->setTextPosition({15, 4});
 
-        auto& transform = btn->getComponent<KapEngine::Transform>();
+        auto &transform = btn->getComponent<KapEngine::Transform>();
         transform.setPosition({480, 240, 0});
         transform.setScale({40, 39, 0});
         transform.setParent(canvas);
 
         auto children = transform.getChildren();
-        for (const auto& i : children) {
+        for (const auto &i : children) {
             if (i->getName() == "Text" && i->hasComponent<KapEngine::UI::Text>()) {
-                auto& txt = i->getComponent<KapEngine::UI::Text>();
+                auto &txt = i->getComponent<KapEngine::UI::Text>();
                 txt.setPoliceSize(30);
             }
         }

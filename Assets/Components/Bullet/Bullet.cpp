@@ -15,7 +15,7 @@ Bullet::Direction Bullet::getDirection() const { return direction; }
 void Bullet::onStart() { initialX = getTransform().getWorldPosition().getX(); }
 
 void Bullet::onFixedUpdate() {
-    auto& transform = getTransform();
+    auto &transform = getTransform();
     KapEngine::Tools::Vector3 nPos = transform.getWorldPosition();
 
     float xMove = 0.0f;
@@ -40,6 +40,6 @@ void Bullet::onFixedUpdate() {
     }
 }
 
-void Bullet::serialize(KapMirror::NetworkWriter& writer) { writer.write(direction); }
+void Bullet::serialize(KapMirror::NetworkWriter &writer) { writer.write(direction); }
 
-void Bullet::deserialize(KapMirror::NetworkReader& reader) { direction = reader.read<Direction>(); }
+void Bullet::deserialize(KapMirror::NetworkReader &reader) { direction = reader.read<Direction>(); }

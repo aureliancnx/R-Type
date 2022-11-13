@@ -20,7 +20,7 @@ void KeySelector::onUpdate() {
     }
 }
 
-bool KeySelector::keySelected(KapEngine::Events::Key& key) {
+bool KeySelector::keySelected(KapEngine::Events::Key &key) {
     if (_selected == KapEngine::Events::Key::UNKNOWN)
         return false;
     _check = false;

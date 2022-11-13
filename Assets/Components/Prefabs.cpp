@@ -6,6 +6,7 @@
 #include "MapScript/DefaultEnemies/BoubouleEnemy.hpp"
 #include "MapScript/DefaultEnemies/TentaclesBossEnemy.hpp"
 #include "GameMenuManager.hpp"
+#include "LobbyMenuManager.hpp"
 
 using namespace RType;
 
@@ -261,6 +262,9 @@ void Prefabs::registerInGameMenuPrefab(KapEngine::KEngine& engine) {
 
         auto menuManager = std::make_shared<GameMenuManager>(menu);
         menu->addComponent(menuManager);
+
+        auto lobbyManager = make_shared<LobbyMenuManager>(menu);
+        menu->addComponent(lobbyManager);
 
         auto& canvas = menu->getComponent<KapEngine::UI::Canvas>();
         canvas.setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);

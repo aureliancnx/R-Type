@@ -335,23 +335,47 @@ void PlayerController::initSettings() {
 
 void PlayerController::onStartClient() {
     initSettings();
-
-    auto go = getScene().findFirstGameObject("MenuManager");
-    if (go != nullptr) {
-        menuManager = &go->getComponent<GameMenuManager>();
-    }
+    try {
+        auto go = getScene().findFirstGameObject("MenuManager");
+        if (go) {
+            auto menuManagers = go->getComponents<GameMenuManager>();
+            if (!menuManagers.empty()) {
+                menuManager = menuManagers[0];
+            }
+        }
+    } catch (...) { KAP_DEBUG_LOG("MenuManager not found"); }
+    try {
+        auto go = getScene().findFirstGameObject("LobbyManager");
+        if (go) {
+            auto lobbyManagers = go->getComponents<LobbyMenuManager>();
+            if (!lobbyManagers.empty()) {
+                lobbyManager = lobbyManagers[0];
+            }
+        }
+    } catch (...) { KAP_DEBUG_LOG("LobbyManager not found"); }
 }
 
 void PlayerController::onStart() {
-    if (!isLocal()) {
-        return;
-    }
-
-    initSettings();
-
-    auto go = getScene().findFirstGameObject("MenuManager");
-    if (go != nullptr) {
-        menuManager = &go->getComponent<GameMenuManager>();
+    if (isLocal()) {
+        initSettings();
+        try {
+            auto go = getScene().findFirstGameObject("MenuManager");
+            if (go) {
+                auto menuManagers = go->getComponents<GameMenuManager>();
+                if (!menuManagers.empty()) {
+                    menuManager = menuManagers[0];
+                }
+            }
+        } catch (...) { KAP_DEBUG_LOG("MenuManager not found"); }
+        try {
+            auto go = getScene().findFirstGameObject("LobbyManager");
+            if (go) {
+                auto lobbyManagers = go->getComponents<LobbyMenuManager>();
+                if (!lobbyManagers.empty()) {
+                    lobbyManager = lobbyManagers[0];
+                }
+            }
+        } catch (...) { KAP_DEBUG_LOG("LobbyManager not found"); }
     }
 }
 

@@ -4,7 +4,8 @@
 
 using namespace RType;
 
-ConnectionLostMenu::ConnectionLostMenu(KapEngine::SceneManagement::Scene &_scene, GameManager &_gameManager) : Menu(_scene), gameManager(_gameManager) {}
+ConnectionLostMenu::ConnectionLostMenu(KapEngine::SceneManagement::Scene &_scene, GameManager &_gameManager)
+    : Menu(_scene), gameManager(_gameManager) {}
 
 void ConnectionLostMenu::init() {
 

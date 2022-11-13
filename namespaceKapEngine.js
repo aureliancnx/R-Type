@@ -7,6 +7,7 @@ var namespaceKapEngine =
       [ "PrefabManager", "classKapEngine_1_1Prefabs_1_1PrefabManager.html", "classKapEngine_1_1Prefabs_1_1PrefabManager" ]
     ] ],
     [ "Profiler", null, [
+      [ "GlobImpl", "classKapEngine_1_1Profiler_1_1GlobImpl.html", "classKapEngine_1_1Profiler_1_1GlobImpl" ],
       [ "KapProfiler", "classKapEngine_1_1Profiler_1_1KapProfiler.html", "classKapEngine_1_1Profiler_1_1KapProfiler" ],
       [ "StackElement", "classKapEngine_1_1Profiler_1_1StackElement.html", "classKapEngine_1_1Profiler_1_1StackElement" ],
       [ "StackSummary", "classKapEngine_1_1Profiler_1_1StackSummary.html", "classKapEngine_1_1Profiler_1_1StackSummary" ],

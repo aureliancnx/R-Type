@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"classKapEngine_1_1Collider.html#a97de92957a541665532f62cb251024ad":[37,0,5,3],
 "classKapEngine_1_1Collider.html#aad385c886b7a5e221a204819fed778c9":[37,0,5,4],
 "classKapEngine_1_1Collider.html#adef6b11159ce0993bcb8d54bf6063be4":[37,0,5,5],
 "classKapEngine_1_1Collider.html#afc824f34e0c2c1f374d819459bfbdee7":[37,0,5,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65a9816e61d9a3e3dbb337cb791c02b559f":[39,0,2,1,3,0,18],
 "classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65a99b68b5027644ac678b48d0b007e587a":[39,0,2,1,3,0,102],
 "classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65a9b352bfa55f35692d2ba1de788ceca11":[39,0,2,1,3,0,29],
-"classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65a9ebd977a43ddf3c32a8e070e8e8f2c0d":[39,0,2,1,3,0,4],
-"classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65a9f27bcaa0a8fb4dcb3e2d32ffd0d8e21":[39,0,2,1,3,0,93]
+"classKapEngine_1_1Events_1_1Key.html#a0a19ffa51eb1c92b8e84621c9522dd65a9ebd977a43ddf3c32a8e070e8e8f2c0d":[39,0,2,1,3,0,4]
 };

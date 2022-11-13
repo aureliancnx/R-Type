@@ -4,7 +4,7 @@ include(InstallRequiredSystemLibraries)
 set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
 set(X_VCPKG_APPLOCAL_DEPS_INSTALL ON)
 
-#install(TARGETS... RUNTIME_DEPENDENCIES)
+install(TARGETS... RUNTIME_DEPENDENCIES)
 
 # Put assets in installation process
 # and RType executable in the root folder of destination

@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2022
-** R-Type
-** File description:
-** GameMenuManager
-*/
-
 #include "GameMenuManager.hpp"
 
 #include "Animations/SpriteAnimation.hpp"
@@ -29,7 +22,11 @@ RType::GameMenuManager::GameMenuManager(std::shared_ptr<GameObject> go) : KapMir
     go->setName("MenuManager");
 }
 
-void RType::GameMenuManager::onStart() { initMainMenu(); }
+void RType::GameMenuManager::onStart() {
+    if (isLocal()) {
+        initMainMenu();
+    }
+}
 
 void RType::GameMenuManager::displayMainMenu() {
     if (mainMenu.use_count() != 0) {
@@ -207,7 +204,7 @@ void RType::GameMenuManager::initMainMenu(bool local) {
     }
 }
 
-void RType::GameMenuManager::initBackground(std::shared_ptr<GameObject> parent) {
+void RType::GameMenuManager::initBackground(const std::shared_ptr<GameObject>& parent) {
     auto background = parent->getScene().createGameObject("Background");
     background->getComponent<Transform>().setParent(parent->getId());
     background->getComponent<Transform>().setPosition({0, 0, 0});
@@ -219,8 +216,9 @@ void RType::GameMenuManager::initBackground(std::shared_ptr<GameObject> parent) 
     background->addComponent(backgroundImage);
 }
 
-std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<GameObject> parent, std::string name, std::string text,
-                                                               std::function<void()> callback, Tools::Color color, Tools::Color textColor) {
+std::shared_ptr<GameObject> RType::GameMenuManager::initButton(const std::shared_ptr<GameObject>& parent, const std::string& name,
+                                                               std::string text, std::function<void()> callback, const Tools::Color& color,
+                                                               const Tools::Color& textColor) {
     std::shared_ptr<GameObject> button = parent->getScene().createGameObject(name);
 
 #if IS_MAX_KAPUI_VERSION(0, 101)
@@ -238,9 +236,10 @@ std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<G
     return button;
 }
 
-std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<GameObject> parent, std::string name, std::string text,
-                                                               std::function<void()> callback, std::string pathSprite,
-                                                               Tools::Rectangle rect, Tools::Color color, Tools::Color textColor) {
+std::shared_ptr<GameObject> RType::GameMenuManager::initButton(const std::shared_ptr<GameObject>& parent, const std::string& name,
+                                                               std::string text, std::function<void()> callback,
+                                                               const std::string& pathSprite, const Tools::Rectangle& rect,
+                                                               const Tools::Color& color, const Tools::Color& textColor) {
     std::shared_ptr<GameObject> button = parent->getScene().createGameObject(name);
 
 #if IS_MAX_KAPUI_VERSION(0, 101)

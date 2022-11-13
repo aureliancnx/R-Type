@@ -28,19 +28,12 @@ void PlayerSkin::onStart() {
     }
 }
 
-void PlayerSkin::onStartClient() {
-    NetworkComponent::onStartClient();
-
-    if (KapEngine::PlayerPrefs::hasKey("shipID")) {
-        setSkinId(KapEngine::PlayerPrefs::getInt("shipID"));
-    }
-}
-
 void PlayerSkin::serialize(KapMirror::NetworkWriter& writer) { writer.write(skinId); }
 
-void PlayerSkin::deserialize(KapMirror::NetworkReader& reader) {
-    skinId = reader.read<int>();
+void PlayerSkin::deserialize(KapMirror::NetworkReader& reader) { skinId = reader.read<int>(); }
 
-    // Update skin
-    setSkinId(skinId);
+void PlayerSkin::onObjectUpdate() {
+    if (isClient()) {
+        setSkinId(skinId);
+    }
 }

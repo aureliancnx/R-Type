@@ -148,11 +148,11 @@ void PlayerController::prepareShoot() {
     clockMissile.restart();
 
     if (isLocal()) {
-        if (menuManager.use_count() > 0) {
+        if (menuManager != nullptr) {
             menuManager->getMissileAnimator()->setTrigger("Load");
         }
     } else if (isClient() && isLocalAuthority) {
-        if (menuManager.use_count() > 0) {
+        if (menuManager != nullptr) {
             menuManager->getMissileAnimator()->setTrigger("Load");
         }
 
@@ -171,7 +171,7 @@ void PlayerController::shoot() {
     }
 
     if (isClient() && isLocalAuthority) {
-        if (menuManager.use_count() > 0) {
+        if (menuManager != nullptr) {
             menuManager->getMissileAnimator()->setTrigger("Unload");
         }
 
@@ -180,7 +180,7 @@ void PlayerController::shoot() {
         getClient()->send(message);
         return;
     } else if (isLocal()) {
-        if (menuManager.use_count() > 0) {
+        if (menuManager != nullptr) {
             menuManager->getMissileAnimator()->setTrigger("Unload");
         }
     }
@@ -334,8 +334,6 @@ void PlayerController::initSettings() {
 }
 
 void PlayerController::onStartClient() {
-    NetworkComponent::onStartClient();
-
     initSettings();
     try {
         auto go = getScene().findFirstGameObject("MenuManager");
@@ -346,6 +344,15 @@ void PlayerController::onStartClient() {
             }
         }
     } catch (...) { KAP_DEBUG_LOG("MenuManager not found"); }
+    try {
+        auto go = getScene().findFirstGameObject("LobbyManager");
+        if (go) {
+            auto lobbyManagers = go->getComponents<LobbyMenuManager>();
+            if (!lobbyManagers.empty()) {
+                lobbyManager = lobbyManagers[0];
+            }
+        }
+    } catch (...) { KAP_DEBUG_LOG("LobbyManager not found"); }
 }
 
 void PlayerController::onStart() {
@@ -360,6 +367,15 @@ void PlayerController::onStart() {
                 }
             }
         } catch (...) { KAP_DEBUG_LOG("MenuManager not found"); }
+        try {
+            auto go = getScene().findFirstGameObject("LobbyManager");
+            if (go) {
+                auto lobbyManagers = go->getComponents<LobbyMenuManager>();
+                if (!lobbyManagers.empty()) {
+                    lobbyManager = lobbyManagers[0];
+                }
+            }
+        } catch (...) { KAP_DEBUG_LOG("LobbyManager not found"); }
     }
 }
 

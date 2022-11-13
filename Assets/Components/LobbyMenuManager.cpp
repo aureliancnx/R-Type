@@ -25,10 +25,10 @@ RType::LobbyMenuManager::LobbyMenuManager(std::shared_ptr<KapEngine::GameObject>
         getGameObject().addComponent(canvas);
         canvas->setResizeType(UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
     }
-    go->setName("MenuManager");
+    go->setName("LobbyManager");
 }
 
-void RType::LobbyMenuManager::onStart() { initLobbyMenu(); }
+void RType::LobbyMenuManager::onStart() {}
 
 void RType::LobbyMenuManager::onStartClient() { initLobbyMenu(false); }
 
@@ -45,12 +45,6 @@ void RType::LobbyMenuManager::initBackground(std::shared_ptr<KapEngine::GameObje
 }
 
 void RType::LobbyMenuManager::initLobbyMenu(bool local) {
-    try {
-        auto go = getGameObject().getScene().findFirstGameObject("MenuManager");
-        if (go) {
-            go->getComponent<GameMenuManager>().setActive(false);
-        }
-    } catch (...) { KAP_DEBUG_ERROR("Failled to find MenuManager"); }
 
     lobbyMenu = getGameObject().getScene().createGameObject("MainMenu");
     lobbyMenu->getComponent<Transform>().setParent(getGameObject().getId());
@@ -159,12 +153,12 @@ std::shared_ptr<KapEngine::GameObject> RType::LobbyMenuManager::initButton(std::
 
 void RType::LobbyMenuManager::quit() {
     lobbyMenu->setActive(false);
-    try {
-        auto go = getGameObject().getScene().findFirstGameObject("MenuManager");
-        if (go) {
-            go->getComponent<GameMenuManager>().setActive(true);
-        }
-    } catch (...) { KAP_DEBUG_ERROR("Failed to find MenuManager"); }
+    //    try {
+    //        auto go = getGameObject().getScene().findFirstGameObject("MenuManager");
+    //        if (go) {
+    //            go->getComponent<GameMenuManager>().setActive(true);
+    //        }
+    //    } catch (...) { KAP_DEBUG_ERROR("Failed to find MenuManager"); }
 }
 
 // TODO: Add a way to get the map path from the input field

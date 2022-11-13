@@ -24,6 +24,8 @@ namespace RType {
 
         void onStartClient() override;
 
+        void quit();
+
       private:
         void initLobbyMenu(bool local = true);
 
@@ -39,7 +41,6 @@ namespace RType {
                                                           KapEngine::Tools::Color color = KapEngine::Tools::Color::white(),
                                                           KapEngine::Tools::Color textColor = KapEngine::Tools::Color::black());
 
-        void quit();
         void startGame();
 
         // variables

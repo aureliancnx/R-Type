@@ -39,12 +39,12 @@ void ConnectionLostMenu::init() {
         auto &transform = btn->getComponent<KapEngine::Transform>();
 
         btn->addComponent(btnComp);
-        btnComp->setText("Back Menu");
+        btnComp->setText("Back Home");
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({215, 220, 0});
+        transform.setPosition({250, 242, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
@@ -62,7 +62,7 @@ void ConnectionLostMenu::init() {
 
         txt->addComponent(compText);
         transform.setScale({150, 35, 0});
-        transform.setPosition({240, 200, 0});
+        transform.setPosition({246, 200, 0});
         transform.setParent(canvas);
     }
 }

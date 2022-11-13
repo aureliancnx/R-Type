@@ -2,6 +2,12 @@
 #include "Player/PlayerController.hpp"
 #include "Player/PlayerSkin.hpp"
 #include "NetStatViewer.hpp"
+#include "Campaign/MapManager.hpp"
+#include <fstream>
+
+#include "KapEngine.hpp"
+#include "KapEngineUi.hpp"
+#include "KapUI/KapUI.hpp"
 
 using namespace RType;
 
@@ -30,33 +36,89 @@ void RtypeNetworkManager::registerClientHandlers() {
         [this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection, ErrorOnStartGameMessage& message) {
             onErrorOnStartGameMessage(connection, message);
         });
+    getClient()->registerHandler<StartGameMessage>([this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
+                                                          StartGameMessage& message) { onPlayerStartGameMessage(connection, message); });
     getClient()->registerHandler<PlayerPingRequest>([this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                                            PlayerPingRequest& message) { onClientPlayerPingRequest(connection, message); });
     getClient()->registerHandler<PlayerPingResult>([this](const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                                           PlayerPingResult& message) { onPlayerPingResult(connection, message); });
 }
 
+// successfully connection
 void RtypeNetworkManager::onClientConnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
     KapEngine::Debug::log("RtypeNetworkManager: Client connected");
 }
 
+// if is not connected or if connection is lost
 void RtypeNetworkManager::onClientDisconnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
     KapEngine::Debug::log("RtypeNetworkManager: Disconnected from server");
 }
 
+// don't touch (is or permission)
 void RtypeNetworkManager::onPlayerAuthorityMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                                    PlayerAuthorityMessage& message) {
     std::shared_ptr<KapEngine::GameObject> player;
     if (getClient()->getExistingObject(message.networkId, player)) {
+        auto& identity = player->getComponent<KapMirror::NetworkIdentity>();
+        identity.setAuthority(true);
+
         auto& playerController = player->getComponent<PlayerController>();
         playerController.setLocalAuthority(true);
+
+        auto& playerSkin = player->getComponent<PlayerSkin>();
+        if (KapEngine::PlayerPrefs::hasKey("shipID")) {
+            playerSkin.setSkinId(KapEngine::PlayerPrefs::getInt("shipID"));
+            getClient()->updateObject(identity.getNetworkId());
+        }
     }
 }
 
+// if party can't start (full player, invalid map, etc..)
 void RtypeNetworkManager::onErrorOnStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                                     ErrorOnStartGameMessage& message) {
-    KAP_DEBUG_ERROR("Error on start game: " + message.errorMessage);
+    KAP_DEBUG_ERROR("onErrorOnStartGameMessage: Error on start game: " + message.errorMessage);
     // TODO: Handle error
+    auto go = getGameObject().getScene().findFirstGameObject("LobbyManager");
+    auto lobbyMenu = getGameObject().getScene().createGameObject("MainMenu");
+    lobbyMenu->getComponent<KapEngine::Transform>().setParent(getGameObject().getId());
+    if (go) {
+        auto& scene = getGameObject().getScene();
+        auto canvas = std::make_shared<KapEngine::UI::Canvas>(getGameObject().getScene().getGameObject(getGameObject().getId()));
+        getGameObject().addComponent(canvas);
+        canvas->setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Error Message");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Errror : " + message.errorMessage);
+        compText->setTextColor(KapEngine::Tools::Color::red());
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+
+        txt->addComponent(compText);
+        transform.setScale({150, 35, 0});
+        transform.setPosition({500, 5});
+        transform.setParent(lobbyMenu->getId());
+    }
+}
+
+// if party is starting (remove menu)
+void RtypeNetworkManager::onPlayerStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
+                                                   StartGameMessage& message) {
+    KAP_DEBUG_LOG("onPlayerStartGameMessage: Start game");
+    //    try {
+    //        auto go = getScene().findFirstGameObject("LobbyManger");
+    //        if (go) {
+    //            go->setActive(false);
+    //        }
+    //    } catch (...) {
+    //        KAP_DEBUG_ERROR("onPlayerStartGameMessage: LobbyManager not found");
+    //    }
+    //
+    //    try {
+    //        auto go = getScene().findFirstGameObject("MenuManager");
+    //        if (go) {
+    //            go->setActive(true);
+    //        }
+    //    } catch (...) {
+    //        KAP_DEBUG_ERROR("onPlayerStartGameMessage: MenuManager not found");
+    //    }
 }
 
 void RtypeNetworkManager::onClientPlayerPingRequest(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
@@ -104,20 +166,13 @@ void RtypeNetworkManager::onServerClientConnected(const std::shared_ptr<KapMirro
 
     std::shared_ptr<KapEngine::GameObject> player;
     getServer()->spawnObject(
-        "Player", {0, 0, 0},
-        [](const std::shared_ptr<KapEngine::GameObject>& go) {
-            auto& networkIdentity = go->getComponent<KapMirror::NetworkIdentity>();
-            auto& playerSkin = go->getComponent<PlayerSkin>();
-
-            // Set Default Skin (Send later the player skin)
-            playerSkin.setSkinId(2);
-        },
-        player);
+        "Player", {0, 0, 0}, [](const std::shared_ptr<KapEngine::GameObject>& go) {}, player);
 
     player->getComponent<PlayerController>().setConnectionId(connection->getConnectionId());
     players[connection->getConnectionId()] = player;
 
     auto& networkIdentity = player->getComponent<KapMirror::NetworkIdentity>();
+    networkIdentity.setAuthority(true);
 
     // Send player authority
     PlayerAuthorityMessage message;
@@ -166,18 +221,44 @@ void RtypeNetworkManager::onPlayerShootMessage(const std::shared_ptr<KapMirror::
 void RtypeNetworkManager::onStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
                                              StartGameMessage& message) {
     if (isGameStarted) {
-        KAP_DEBUG_LOG("Game already started");
+        KapEngine::Debug::error("Game already started");
         sendErrorOnStartGame(connection, "Game already started");
         return;
     }
-    if (players.size() < 2) {
-        KAP_DEBUG_LOG("Not enough players to start the game");
+    if (players.size() < 1) { // TODO: Change to 2
+        KapEngine::Debug::error("Not enough players to start the game");
         sendErrorOnStartGame(connection, "Not enough players to start the game");
         return;
     }
 
+    // Check if Map Script exists and is valid
+    MapScript script(&getEngine(), true);
+    try {
+        script.loadScript(message.mapScriptPath);
+    } catch (LuaException& e) {
+        script.closeScript();
+        KapEngine::Debug::error("Map script error: " + std::string(e.what()));
+        sendErrorOnStartGame(connection, "Invalid Map Script");
+        return;
+    }
+
+    if (script.isModded()) {
+        script.closeScript();
+        KapEngine::Debug::error("Map script is modded!");
+        sendErrorOnStartGame(connection, "Server not supported modded Map Script");
+        return;
+    }
+
+    script.closeScript();
+
     isGameStarted = true;
-    startGame();
+
+    StartGameMessage startGameMessage;
+    startGameMessage.mapScriptPath = message.mapScriptPath;
+    getServer()->sendToAll(startGameMessage);
+
+    KapEngine::Debug::log("Start game with " + std::to_string(players.size()) + " players");
+    startGame(message.mapScriptPath, true);
 }
 
 void RtypeNetworkManager::sendErrorOnStartGame(const std::shared_ptr<KapMirror::NetworkConnectionToClient>& connection,
@@ -213,15 +294,18 @@ void RtypeNetworkManager::onServerPlayerPingRequest(const std::shared_ptr<KapMir
     connection->send(res);
 }
 
-void RtypeNetworkManager::startGame() {
-    KapEngine::Debug::log("Start game");
+void RtypeNetworkManager::startGame(const std::string& mapScriptPath, bool isSpawn) {
+    KapEngine::Debug::log("Map script path: " + mapScriptPath);
 
-    // TODO: Implement Map Manager
-    std::shared_ptr<KapEngine::GameObject> enemy;
-    for (int i = 1; i <= 10; i++) {
-        getServer()->spawnObject("Enemy:BoubouleEnemy", {1280 + 100 + ((float) i * 100), 100 + ((float) i * 50), 0}, enemy);
+    auto scene = getEngine().getSceneManager()->getCurrentScene();
+    auto mapManager = scene.findFirstGameObject("MapManager");
+    if (mapManager == nullptr) {
+        KAP_DEBUG_ERROR("Failed to find MapManager");
+        return;
     }
-    getServer()->spawnObject("Enemy:TentaclesBossEnemy", {1280 - 200, 100, 0}, enemy);
+
+    auto& mapManagerComponent = mapManager->getComponent<MapManager>();
+    mapManagerComponent.loadMapScript(mapScriptPath, true, isSpawn);
 }
 
 #pragma endregion

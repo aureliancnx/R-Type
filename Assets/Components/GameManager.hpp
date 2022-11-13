@@ -5,7 +5,7 @@
 
 #include "Player/PlayerController.hpp"
 #include "Animations/SpriteAnimation.hpp"
-#include "RtypeNetworkManager.hpp"
+#include "Network/RtypeNetworkManager.hpp"
 
 namespace RType {
     class GameManager {
@@ -45,12 +45,15 @@ namespace RType {
         void initAxis();
 
       public:
-        void startLocalMultiPlayer();
-        void startCampaign();
+        void startLocalMultiPlayer(const std::string& ip, const std::string& port);
 
-        bool hasDebugMode();
+        void startCampaign(const std::string& pathMap);
+
+        bool hasDebugMode() const;
 
         void toggleDebugMode();
+
+        MenuManager& getMenuManager();
 
         std::shared_ptr<RtypeNetworkManager>& getNetworkManager();
 

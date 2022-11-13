@@ -11,18 +11,20 @@
 #include "Menu/EndMenu.hpp"
 #include "CampaignGenerator/CampaignGenerator.hpp"
 #include "Player/PlayerSkin.hpp"
-#include "Campaign/CampaignManager.hpp"
+#include "Campaign/MapManager.hpp"
 #include "KapMirror/Experimental/Compressions/GZip/GZipCompression.hpp"
 
 #include "Sylph/SylphTransport.hpp"
 #include "Prefabs.hpp"
-#include "NetStatViewer.hpp"
+#include "Network/NetStatViewer.hpp"
 
-RType::GameManager* RType::GameManager::instance = nullptr;
+using namespace RType;
 
-RType::GameManager::GameManager(KapEngine::KEngine* _engine, bool b) : engine(_engine), displaySplashScreens(b) { instance = this; }
+GameManager* GameManager::instance = nullptr;
 
-void RType::GameManager::launchGame() {
+GameManager::GameManager(KapEngine::KEngine* _engine, bool b) : engine(_engine), displaySplashScreens(b) { instance = this; }
+
+void GameManager::launchGame() {
     KapEngine::Debug::log("Launch game");
 
     registerPrefabs();
@@ -38,14 +40,12 @@ void RType::GameManager::launchGame() {
 
     // Show main menu
     menuManager.showMenu("MainMenu");
-    menuManager.showMenu("EndMenu");
-
     engine->getGraphicalLibManager()->getCurrentLib()->playMusic("Assets/Sound/Music/space-asteroids.mp3");
     engine->getGraphicalLibManager()->getCurrentLib()->setMusicVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
     engine->getGraphicalLibManager()->getCurrentLib()->setSoundVolume((float(KapEngine::PlayerPrefs::getInt("volumeValue")) / 100.f));
 }
 
-void RType::GameManager::launchServer() {
+void GameManager::launchServer() {
     KapEngine::Debug::log("Launch server");
     engine->getSplashScreen()->setDisplayKapEngineLogo(false);
 
@@ -56,7 +56,7 @@ void RType::GameManager::launchServer() {
     networkManager->startServer();
 }
 
-void RType::GameManager::registerPrefabs() {
+void GameManager::registerPrefabs() {
     // Player
     Prefabs::registerPlayerPrefab(*engine);
 
@@ -68,8 +68,7 @@ void RType::GameManager::registerPrefabs() {
 
     Prefabs::registerInGameMenuPrefab(*engine);
 
-    // Enemies
-    Prefabs::registerShipEnemyPrefab(*engine);
+    // Default Enemies
     Prefabs::registerBoubouleEnemyPrefab(*engine);
     Prefabs::registerTentaclesBossEnemyPrefab(*engine);
 
@@ -78,7 +77,7 @@ void RType::GameManager::registerPrefabs() {
     Prefabs::registerStarsParalaxPrefab(*engine);
 }
 
-void RType::GameManager::registerMenus() {
+void GameManager::registerMenus() {
     KapEngine::Debug::log("Register menus");
 
     auto& scene = engine->getSceneManager()->getScene(1);
@@ -113,10 +112,12 @@ void RType::GameManager::registerMenus() {
     menuManager.registerMenu("EndMenu", endMenu);
 }
 
-void RType::GameManager::initEndScene() { auto scene = engine->getSceneManager()->createScene("EndScene"); }
+MenuManager& GameManager::getMenuManager() { return menuManager; }
+
+void GameManager::initEndScene() { auto scene = engine->getSceneManager()->createScene("EndScene"); }
 
 // TODO: Move this to a dedicated class
-void RType::GameManager::initSinglePlayer() {
+void GameManager::initSinglePlayer() {
     auto scene = engine->getSceneManager()->createScene("SinglePlayer");
 
     std::shared_ptr<KapEngine::GameObject> paralaxGalaxy;
@@ -143,10 +144,11 @@ void RType::GameManager::initSinglePlayer() {
         return;
     }
 
-    player->getComponent<PlayerSkin>().setSkinId(player->getComponent<PlayerSkin>().getSkinId());
-
     auto& transform = player->getComponent<KapEngine::Transform>();
     transform.setPosition({0, 0, 0});
+
+    auto& playerIdentity = player->getComponent<KapMirror::NetworkIdentity>();
+    playerIdentity.setAuthority(true);
 
     auto& playerController = player->getComponent<PlayerController>();
     playerController.setLocalAuthority(true);
@@ -157,12 +159,13 @@ void RType::GameManager::initSinglePlayer() {
         return;
     }
 
-    auto campaignManager = std::make_shared<CampaignManager>(gameMenu);
-    gameMenu->addComponent(campaignManager);
+    auto mapManagerObject = scene->createGameObject("MapManager");
+    auto mapManager = std::make_shared<MapManager>(mapManagerObject);
+    mapManagerObject->addComponent(mapManager);
 }
 
 // TODO: Move this to a dedicated class
-void RType::GameManager::initMultiPlayer(bool isServer) {
+void GameManager::initMultiPlayer(bool isServer) {
     auto scene = engine->getSceneManager()->createScene("MultiPlayer");
 
     std::shared_ptr<KapEngine::GameObject> paralaxGalaxy;
@@ -189,6 +192,10 @@ void RType::GameManager::initMultiPlayer(bool isServer) {
     networkManager->setCompression(std::make_shared<KapMirror::Experimental::GZipCompression>());
     networkManagerObject->addComponent(networkManager);
 
+    auto mapManagerObject = scene->createGameObject("MapManager");
+    auto mapManager = std::make_shared<MapManager>(mapManagerObject);
+    mapManagerObject->addComponent(mapManager);
+
     if (!isServer) {
         std::shared_ptr<GameObject> gameMenu;
         if (!engine->getPrefabManager()->instantiatePrefab("InGameMenu", *scene, gameMenu)) {
@@ -207,22 +214,43 @@ void RType::GameManager::initMultiPlayer(bool isServer) {
 }
 
 // TODO: Move this to a dedicated class
-void RType::GameManager::startCampaign() {
-    auto& scene = engine->getSceneManager()->getScene("SinglePlayer");
+void GameManager::startCampaign(const std::string& pathMap) {
+    auto scene = engine->getSceneManager()->getScene("SinglePlayer");
 
-    auto enemies = scene.createGameObject("Enemies Generator");
-    auto compEnemies = std::make_shared<CampaignGenerator>(enemies);
-    enemies->addComponent(compEnemies);
+    engine->getSceneManager()->loadScene("SinglePlayer");
+
+    auto mapManager = scene.findFirstGameObject("MapManager");
+    if (mapManager == nullptr) {
+        KAP_DEBUG_ERROR("Failed to find MapManager");
+        return;
+    }
+
+    auto& mapManagerComponent = mapManager->getComponent<MapManager>();
+    mapManagerComponent.loadMapScript(pathMap, false);
 }
 
 // TODO: Move this to a dedicated class
-void RType::GameManager::startLocalMultiPlayer() {
-    auto& scene = engine->getSceneManager()->getScene("MultiPlayer");
+void GameManager::startLocalMultiPlayer(const std::string& ip, const std::string& port) {
+    engine->getSceneManager()->loadScene("MultiPlayer");
 
+    std::string toConnectIp = ip;
+    std::string toConnectPort = port;
+
+    if (toConnectIp.empty()) {
+        toConnectIp = "127.0.0.1";
+    }
+
+    if (toConnectPort.empty()) {
+        toConnectPort = "7777";
+    }
+
+    KapEngine::Debug::log("Connecting to " + toConnectIp + ":" + toConnectPort);
+    networkManager->networkAddress = toConnectIp;
+    networkManager->networkPort = std::stoi(toConnectPort);
     networkManager->startClient();
 }
 
-void RType::GameManager::initSplashScreens() {
+void GameManager::initSplashScreens() {
     engine->getSplashScreen()->setDisplayKapEngineLogo(true);
     auto nsplash =
         std::make_shared<KapEngine::SceneManagement::SplashScreen::SplashScreenNode>("Assets/Textures/Background/bg-back.png", 4);
@@ -234,19 +262,19 @@ void RType::GameManager::initSplashScreens() {
     engine->getSplashScreen()->addSplashScreen(nsplash);
 }
 
-void RType::GameManager::toggleDebugMode() {
+void GameManager::toggleDebugMode() {
     debugMode = !debugMode;
 
     if (debugMode) {
-        KAP_DEBUG_LOG("Debug mode enabled.");
+        KapEngine::Debug::log("Debug mode enabled.");
     } else {
-        KAP_DEBUG_LOG("Debug mode disabled.");
+        KapEngine::Debug::log("Debug mode disabled.");
     }
 }
 
-bool RType::GameManager::hasDebugMode() { return debugMode; }
+bool GameManager::hasDebugMode() const { return debugMode; }
 
-void RType::GameManager::initAxis() {
+void GameManager::initAxis() {
     KapEngine::Events::Input::Axis horizontal("Horizontal");
     KapEngine::Events::Input::Axis vertical("Vertical");
     KapEngine::Events::Input::Axis shoot("shoot");
@@ -266,4 +294,4 @@ void RType::GameManager::initAxis() {
     engine->getEventManager().getInput().addAxis(vertical);
 }
 
-std::shared_ptr<RType::RtypeNetworkManager>& RType::GameManager::getNetworkManager() { return networkManager; }
+std::shared_ptr<RtypeNetworkManager>& GameManager::getNetworkManager() { return networkManager; }

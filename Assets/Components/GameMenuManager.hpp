@@ -28,33 +28,28 @@ namespace RType {
 
         std::shared_ptr<KapEngine::Animator> getMissileAnimator() const { return missileAnimator; }
 
-        void initHeart();
-        void addLife();
-        void removeLife();
+        void updateHealth(int health);
+
+        void displayEndMenu(bool win);
 
       private:
         void initMainMenu(bool local = true);
 
-        void initBackground(std::shared_ptr<KapEngine::GameObject> parent);
-        std::shared_ptr<KapEngine::GameObject> initButton(std::shared_ptr<KapEngine::GameObject> parent, std::string name, std::string text,
-                                                          std::function<void()> callback,
-                                                          KapEngine::Tools::Color color = KapEngine::Tools::Color::white(),
-                                                          KapEngine::Tools::Color textColor = KapEngine::Tools::Color::black());
-        std::shared_ptr<KapEngine::GameObject> initButton(std::shared_ptr<KapEngine::GameObject> parent, std::string name, std::string text,
-                                                          std::function<void()> callback, std::string pathSprite,
-                                                          KapEngine::Tools::Rectangle rect,
-                                                          KapEngine::Tools::Color color = KapEngine::Tools::Color::white(),
-                                                          KapEngine::Tools::Color textColor = KapEngine::Tools::Color::black());
+        void initBackground(const std::shared_ptr<KapEngine::GameObject>& parent);
+        std::shared_ptr<KapEngine::GameObject> initButton(const std::shared_ptr<KapEngine::GameObject>& parent, const std::string& name,
+                                                          std::string text, std::function<void()> callback,
+                                                          const KapEngine::Tools::Color& color = KapEngine::Tools::Color::white(),
+                                                          const KapEngine::Tools::Color& textColor = KapEngine::Tools::Color::black());
+        std::shared_ptr<KapEngine::GameObject> initButton(const std::shared_ptr<KapEngine::GameObject>& parent, const std::string& name,
+                                                          std::string text, std::function<void()> callback, const std::string& pathSprite,
+                                                          const KapEngine::Tools::Rectangle& rect,
+                                                          const KapEngine::Tools::Color& color = KapEngine::Tools::Color::white(),
+                                                          const KapEngine::Tools::Color& textColor = KapEngine::Tools::Color::black());
 
         // variables
       private:
         std::shared_ptr<KapEngine::GameObject> mainMenu;
-        std::shared_ptr<KapEngine::GameObject> heart1;
-        std::shared_ptr<KapEngine::GameObject> heart2;
-        std::shared_ptr<KapEngine::GameObject> heart3;
         std::shared_ptr<KapEngine::Animator> missileAnimator;
-
-        int _life = 3;
     };
 
 } // namespace RType

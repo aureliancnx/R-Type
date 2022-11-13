@@ -2,10 +2,11 @@
 
 using namespace RType;
 
-EnemyController::EnemyController(MapScript* _mapScript, std::shared_ptr<KapEngine::GameObject> _gameObject)
-    : KapMirror::NetworkComponent(_gameObject, "Enemy"), mapScript(_mapScript) {
+EnemyController::EnemyController(std::shared_ptr<KapEngine::GameObject> _gameObject) : KapMirror::NetworkComponent(_gameObject, "Enemy") {
     addRequireComponent("Image");
 }
+
+void EnemyController::setMapScript(MapScript* _mapScript) { mapScript = _mapScript; }
 
 void EnemyController::setEnemyName(const std::string& _enemyName) { enemyName = _enemyName; }
 
@@ -13,8 +14,10 @@ void EnemyController::setHp(int _hp) { hp = _hp; }
 
 void EnemyController::onFixedUpdate() {
     auto& transform = getTransform();
-    auto newPosition = mapScript->_updateEnemy(enemyName, transform.getLocalPosition());
-    transform.setPosition(newPosition);
+    if (mapScript != nullptr) {
+        auto newPosition = mapScript->_updateEnemy(enemyName, transform.getLocalPosition());
+        transform.setPosition(newPosition);
+    }
 
     // Destroy enemy if his position is out of the screen
     if (transform.getWorldPosition().getX() < -100 || transform.getWorldPosition().getX() > 1280 + 200) {
@@ -48,10 +51,10 @@ void EnemyController::onSceneUpdated() {
                     getServer()->destroyObject(getScene().getGameObject(getGameObject().getId()));
                 }
             }
+
             if (isLocal()) {
                 std::shared_ptr<KapEngine::GameObject> explosion;
-                if (getEngine().getPrefabManager()->instantiatePrefab("BulletExplode", getScene(),
-                                                                                      explosion)) {
+                if (getEngine().getPrefabManager()->instantiatePrefab("BulletExplode", getScene(), explosion)) {
                     explosion->getComponent<KapEngine::Transform>().setPosition(
                         other->getComponent<KapEngine::Transform>().getWorldPosition());
                 } else {
@@ -59,6 +62,14 @@ void EnemyController::onSceneUpdated() {
                 }
                 other->destroy();
             } else if (isServer()) {
+                std::shared_ptr<KapEngine::GameObject> explosion;
+                getServer()->spawnObject(
+                    "BulletExplode", other->getComponent<KapEngine::Transform>().getWorldPosition(),
+                    [&other](const std::shared_ptr<KapEngine::GameObject>& go) {
+                        go->getComponent<KapEngine::Transform>().setPosition(
+                            other->getComponent<KapEngine::Transform>().getWorldPosition());
+                    },
+                    explosion);
                 getServer()->destroyObject(other);
             }
         } else if (other.use_count() > 1 && other->getName() == "Missile Player") {
@@ -70,10 +81,10 @@ void EnemyController::onSceneUpdated() {
                     getServer()->destroyObject(getScene().getGameObject(getGameObject().getId()));
                 }
             }
+
             if (isLocal()) {
                 std::shared_ptr<KapEngine::GameObject> explosion;
-                if (getEngine().getPrefabManager()->instantiatePrefab("MissileExplode", getScene(),
-                                                                                      explosion)) {
+                if (getEngine().getPrefabManager()->instantiatePrefab("MissileExplode", getScene(), explosion)) {
                     explosion->getComponent<KapEngine::Transform>().setPosition(
                         other->getComponent<KapEngine::Transform>().getWorldPosition());
                 } else {
@@ -81,6 +92,14 @@ void EnemyController::onSceneUpdated() {
                 }
                 other->destroy();
             } else if (isServer()) {
+                std::shared_ptr<KapEngine::GameObject> explosion;
+                getServer()->spawnObject(
+                    "MissileExplode", other->getComponent<KapEngine::Transform>().getWorldPosition(),
+                    [&other](const std::shared_ptr<KapEngine::GameObject>& go) {
+                        go->getComponent<KapEngine::Transform>().setPosition(
+                            other->getComponent<KapEngine::Transform>().getWorldPosition());
+                    },
+                    explosion);
                 getServer()->destroyObject(other);
             }
         }

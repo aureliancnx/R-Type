@@ -32,8 +32,8 @@ void Vector2::initScript(lua_State* L) {
 }
 
 int Vector2::__create(lua_State* L) {
-    auto x = (float)lua_tonumber(L, 1);
-    auto y = (float)lua_tonumber(L, 2);
+    auto x = (float) lua_tonumber(L, 1);
+    auto y = (float) lua_tonumber(L, 2);
     lua_pop(L, 2);
 
     void* ptr = lua_newuserdata(L, sizeof(Vector2));
@@ -44,20 +44,20 @@ int Vector2::__create(lua_State* L) {
     lua_newtable(L);
     lua_setuservalue(L, 1);
 
-    auto* vector2 = (Vector2*)ptr;
+    auto* vector2 = (Vector2*) ptr;
     vector2->x = x;
     vector2->y = y;
     return 1;
 }
 
 int Vector2::__destroy(lua_State* L) {
-    auto* vector2 = (Vector2*)lua_touserdata(L, -1);
+    auto* vector2 = (Vector2*) lua_touserdata(L, -1);
     vector2->~Vector2();
     return 0;
 }
 
 int Vector2::__index(lua_State* L) {
-    auto* vector2 = (Vector2*)lua_touserdata(L, -2);
+    auto* vector2 = (Vector2*) lua_touserdata(L, -2);
     std::string index(lua_tostring(L, -1));
     if (index == "x") {
         lua_pushnumber(L, vector2->x);
@@ -80,14 +80,14 @@ int Vector2::__index(lua_State* L) {
 }
 
 int Vector2::__newIndex(lua_State* L) {
-    auto* vector2 = (Vector2*)lua_touserdata(L, -3);
+    auto* vector2 = (Vector2*) lua_touserdata(L, -3);
     std::string index(lua_tostring(L, -2));
     if (index == "x") {
-        vector2->x = (float)lua_tonumber(L, -1);
+        vector2->x = (float) lua_tonumber(L, -1);
         return 0;
     }
     if (index == "y") {
-        vector2->y = (float)lua_tonumber(L, -1);
+        vector2->y = (float) lua_tonumber(L, -1);
         return 0;
     }
 
@@ -99,7 +99,7 @@ int Vector2::__newIndex(lua_State* L) {
 }
 
 int Vector2::__dump(lua_State* L) {
-    auto* vector2 = (Vector2*)lua_touserdata(L, -1);
+    auto* vector2 = (Vector2*) lua_touserdata(L, -1);
     vector2->dump();
     return 0;
 }

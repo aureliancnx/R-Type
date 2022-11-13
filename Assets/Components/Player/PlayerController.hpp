@@ -5,6 +5,8 @@
 #include "KapEngineUi.hpp"
 #include "KapMirror/KapMirror.hpp"
 
+#include "LobbyMenuManager.hpp"
+
 #include "GameMenuManager.hpp"
 
 namespace RType {
@@ -21,6 +23,8 @@ namespace RType {
         long long lastPingTime = 0;
 
         std::shared_ptr<GameMenuManager> menuManager;
+        std::shared_ptr<LobbyMenuManager> lobbyManager;
+
         KapEngine::Time::EClock clockMissile;
 
         KapEngine::Events::Key::EKey upKey = KapEngine::Events::Key::UP;
@@ -66,6 +70,8 @@ namespace RType {
         void takeDamage(int damage);
 
         void onTriggerEnter(std::shared_ptr<KapEngine::GameObject> other) override;
+
+        void onObjectUpdate() override;
 
         void serialize(KapMirror::NetworkWriter& writer) override;
 

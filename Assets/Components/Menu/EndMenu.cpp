@@ -117,27 +117,4 @@ void EndMenu::init() {
         transform.setPosition({120, 150, 0});
         transform.setParent(canvas);
     }
-
-    // Create button replay game
-    {
-        auto btn = scene.createGameObject("ButtonReplayGame");
-        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
-
-        btn->addComponent(btnComp);
-        btnComp->setText("Replay Game");
-        btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
-        btnComp->setTextPosition({75, 12});
-        btnComp->setTextColor(KapEngine::Tools::Color::white());
-
-        transform.setPosition({129, 366, 0});
-        transform.setScale({222, 39, 0});
-        transform.setParent(canvas);
-
-        btnComp->getOnClick().registerAction([this]() {
-            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
-            scene.getEngine().getSceneManager()->loadScene("SinglePlayer");
-            gameManager.startCampaign();
-        });
-    }
 }

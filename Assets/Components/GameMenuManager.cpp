@@ -1,16 +1,10 @@
-/*
-** EPITECH PROJECT, 2022
-** R-Type
-** File description:
-** GameMenuManager
-*/
-
 #include "GameMenuManager.hpp"
 
 #include "Animations/SpriteAnimation.hpp"
 
 #include "KapEngineUi.hpp"
 #include "KapUI/KapUI.hpp"
+#include "GameManager.hpp"
 
 using namespace KapEngine;
 
@@ -29,7 +23,11 @@ RType::GameMenuManager::GameMenuManager(std::shared_ptr<GameObject> go) : KapMir
     go->setName("MenuManager");
 }
 
-void RType::GameMenuManager::onStart() { initMainMenu(); }
+void RType::GameMenuManager::onStart() {
+    if (isLocal()) {
+        initMainMenu();
+    }
+}
 
 void RType::GameMenuManager::displayMainMenu() {
     if (mainMenu.use_count() != 0) {
@@ -37,6 +35,20 @@ void RType::GameMenuManager::displayMainMenu() {
     } else {
         initMainMenu();
     }
+}
+
+void RType::GameMenuManager::displayEndMenu(bool win) {
+    if (!isLocal()) {
+        if (getClient()->isConnected()) {
+            getClient()->disconnect();
+        }
+    }
+
+    PlayerPrefs::setBool("Finish", win);
+    PlayerPrefs::setInt("ScorePlayer", 0);
+
+    getEngine().getSceneManager()->loadScene("EndScene");
+    GameManager::getInstance()->getMenuManager().showMenu("EndMenu");
 }
 
 void RType::GameMenuManager::initMainMenu(bool local) {
@@ -77,37 +89,38 @@ void RType::GameMenuManager::initMainMenu(bool local) {
 
     // create hearts
     for (std::size_t i = 0; i < 3; i++) {
+        std::cout << "hearts" << std::endl;
         std::string goName = "Heart" + std::to_string(i);
         Tools::Vector3 calculatedPos = btnBasePos;
         calculatedPos.setX(calculatedPos.getX() + 80.0f * i * 1.05f);
         calculatedPos.setX(calculatedPos.getX() + 80.0f * 1.5f);
 
-        auto heart = UI::UiFactory::createImage(scene, goName, "Assets/Textures/heart.png", {0, 0, 512, 512});
+        auto heart = UI::UiFactory::createImage(scene, goName, "Assets/Textures/heart_small.png", {0, 0, 175, 175});
 
         Time::ETime duration;
         duration.setSeconds(0.5f);
 
         auto heartOn = std::make_shared<SpriteAnimation>(heart);
         heartOn->setTiming(duration);
-        heartOn->setRect({0 * 512, 0, 512, 512});
+        heartOn->setRect({0 * 175, 0, 175, 175});
         heartOn->setNbAnimations(1);
         heart->addComponent(heartOn);
 
         auto heartOff = std::make_shared<SpriteAnimation>(heart);
         heartOff->setTiming(duration);
-        heartOff->setRect({10 * 512, 0, 512, 512});
+        heartOff->setRect({10 * 175, 0, 175, 175});
         heartOff->setNbAnimations(1);
         heart->addComponent(heartOff);
 
         auto heartAnimationOn = std::make_shared<SpriteAnimation>(heart);
         heartAnimationOn->setTiming(duration);
-        heartAnimationOn->setRect({0 * 512, 0, 512, 512});
+        heartAnimationOn->setRect({0 * 175, 0, 175, 175});
         heartAnimationOn->setNbAnimations(10);
         heart->addComponent(heartAnimationOn);
 
         auto heartAnimationOff = std::make_shared<SpriteAnimation>(heart);
         heartAnimationOff->setTiming(duration);
-        heartAnimationOff->setRect({0 * 512, 0, 512, 512});
+        heartAnimationOff->setRect({0 * 175, 0, 175, 175});
         heartAnimationOff->setNbAnimations(10);
         heartAnimationOff->reverseAnim(true);
         heart->addComponent(heartAnimationOff);
@@ -206,7 +219,7 @@ void RType::GameMenuManager::initMainMenu(bool local) {
     }
 }
 
-void RType::GameMenuManager::initBackground(std::shared_ptr<GameObject> parent) {
+void RType::GameMenuManager::initBackground(const std::shared_ptr<GameObject>& parent) {
     auto background = parent->getScene().createGameObject("Background");
     background->getComponent<Transform>().setParent(parent->getId());
     background->getComponent<Transform>().setPosition({0, 0, 0});
@@ -218,8 +231,9 @@ void RType::GameMenuManager::initBackground(std::shared_ptr<GameObject> parent) 
     background->addComponent(backgroundImage);
 }
 
-std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<GameObject> parent, std::string name, std::string text,
-                                                               std::function<void()> callback, Tools::Color color, Tools::Color textColor) {
+std::shared_ptr<GameObject> RType::GameMenuManager::initButton(const std::shared_ptr<GameObject>& parent, const std::string& name,
+                                                               std::string text, std::function<void()> callback, const Tools::Color& color,
+                                                               const Tools::Color& textColor) {
     std::shared_ptr<GameObject> button = parent->getScene().createGameObject(name);
 
 #if IS_MAX_KAPUI_VERSION(0, 101)
@@ -237,9 +251,10 @@ std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<G
     return button;
 }
 
-std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<GameObject> parent, std::string name, std::string text,
-                                                               std::function<void()> callback, std::string pathSprite,
-                                                               Tools::Rectangle rect, Tools::Color color, Tools::Color textColor) {
+std::shared_ptr<GameObject> RType::GameMenuManager::initButton(const std::shared_ptr<GameObject>& parent, const std::string& name,
+                                                               std::string text, std::function<void()> callback,
+                                                               const std::string& pathSprite, const Tools::Rectangle& rect,
+                                                               const Tools::Color& color, const Tools::Color& textColor) {
     std::shared_ptr<GameObject> button = parent->getScene().createGameObject(name);
 
 #if IS_MAX_KAPUI_VERSION(0, 101)
@@ -259,68 +274,35 @@ std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<G
     return button;
 }
 
-void RType::GameMenuManager::initHeart() {
-#if IS_MIN_KAPENGINE_VERSION(1, 215)
-    heart1 = KapEngine::UI::UiFactory::createImage(getScene(), "Heart1", "Assets/Textures/Icons/heart.png", {0, 0, 512, 512});
-    heart2 = KapEngine::UI::UiFactory::createImage(getScene(), "Heart2", "Assets/Textures/Icons/heart.png", {0, 0, 512, 512});
-    heart3 = KapEngine::UI::UiFactory::createImage(getScene(), "Heart3", "Assets/Textures/Icons/heart.png", {0, 0, 512, 512});
-#else
-    heart1 = KapEngine::UI::UiFactory::createImage(getScene(), "Heart1", "Assets/Textures/Icons/heart.png");
-    {
-        auto& img = heart1->getComponent<KapEngine::UI::Image>();
-        img.setRectangle({0, 0, 512, 512});
-    }
-
-    heart2 = KapEngine::UI::UiFactory::createImage(getScene(), "Heart2", "Assets/Textures/Icons/heart.png");
-    {
-        auto& img = heart2->getComponent<KapEngine::UI::Image>();
-        img.setRectangle({0, 0, 512, 512});
-    }
-
-    heart3 = KapEngine::UI::UiFactory::createImage(getScene(), "Heart3", "Assets/Textures/Icons/heart.png");
-    {
-        auto& img = heart3->getComponent<KapEngine::UI::Image>();
-        img.setRectangle({0, 0, 512, 512});
-    }
-#endif
+void RType::GameMenuManager::onStartClient() {
+    initMainMenu(false);
+    setActive(false);
 }
 
-void RType::GameMenuManager::onStartClient() { initMainMenu(false); }
+void RType::GameMenuManager::updateHealth(int health) {
+    for (int itr = 0; itr < 3; ++itr) {
+        std::string objectName = "Heart" + std::to_string(itr);
 
-void RType::GameMenuManager::addLife() {
-    if (_life >= 3)
-        return;
-    _life++;
-    switch (_life) {
-        case 1:
-            heart1->getComponent<Animator>().setTrigger("On");
-            break;
-        case 2:
-            heart2->getComponent<Animator>().setTrigger("On");
-            break;
-        case 3:
-            heart3->getComponent<Animator>().setTrigger("On");
-            break;
-        default:
-            break;
-    }
-}
-
-void RType::GameMenuManager::removeLife() {
-    if (_life <= 0)
-        return;
-    _life--;
-    switch (_life) {
-        case 0:
-            heart1->getComponent<Animator>().setTrigger("Off");
-            break;
-        case 1:
-            heart2->getComponent<Animator>().setTrigger("Off");
-            break;
-        case 2:
-            heart3->getComponent<Animator>().setTrigger("Off");
-            break;
-        default:
-            break;
+        // what?
+        if (getScene().getGameObjects(objectName).empty()) {
+            continue;
+        }
+        auto heartObject = getScene().findFirstGameObject(objectName);
+        if (!heartObject->hasComponent<UI::Image>()) {
+            continue;
+        }
+        auto& component = heartObject->getComponent<UI::Image>();
+        if (health > (int) (((((float) itr * 1.f) + 1.f) / 3.f) * 100.f) * 1) {
+            // full heart
+            component.setRectangle({0, 0, 175, 175});
+        } else if (health < (int) (((float) itr / 3.f) * 100.f)) {
+            // remove heart
+            component.setRectangle({175 * 10, 0, 175, 175});
+        } else {
+            float healthRest = ((float) health - (((float) itr / 3.f) * 100.f));
+            float ho = 10.f - ((healthRest / ((1.f / 3.f) * 100.f)) * 10.f);
+            int xOffset = ((int) (ho * 1) * 175);
+            component.setRectangle({(float) xOffset, 0, 175, 175});
+        }
     }
 }

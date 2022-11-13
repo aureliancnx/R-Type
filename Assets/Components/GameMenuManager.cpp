@@ -38,6 +38,12 @@ void RType::GameMenuManager::displayMainMenu() {
 }
 
 void RType::GameMenuManager::displayEndMenu(bool win) {
+    if (!isLocal()) {
+        if (getClient()->isConnected()) {
+            getClient()->disconnect();
+        }
+    }
+
     PlayerPrefs::setBool("Finish", win);
     PlayerPrefs::setInt("ScorePlayer", 0);
 

@@ -37,7 +37,10 @@ void RType::GameMenuManager::displayMainMenu() {
     }
 }
 
-void RType::GameMenuManager::displayEndMenu() { GameManager::getInstance()->getMenuManager().showMenu("EndMenu"); }
+void RType::GameMenuManager::displayEndMenu() {
+    getEngine().getSceneManager()->loadScene("EndScene");
+    GameManager::getInstance()->getMenuManager().showMenu("EndMenu");
+}
 
 void RType::GameMenuManager::initMainMenu(bool local) {
     // menu set

@@ -43,7 +43,7 @@ void ConnectionLostMenu::init() {
         btnComp->setTextPosition({75, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
 
-        transform.setPosition({200, 200, 0});
+        transform.setPosition({215, 220, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
 
@@ -61,7 +61,7 @@ void ConnectionLostMenu::init() {
 
         txt->addComponent(compText);
         transform.setScale({150, 35, 0});
-        transform.setPosition({120, 250, 0});
+        transform.setPosition({240, 200, 0});
         transform.setParent(canvas);
     }
 }

@@ -219,10 +219,16 @@ void PlayerController::spawnMissile(const KapEngine::Tools::Vector3 &pos) {
         getEngine().getPrefabManager()->instantiatePrefab("Missile", scene, missile);
         missile->setName("Missile Player");
         missile->getComponent<KapEngine::Transform>().setPosition(pos);
+        missile->getComponent<Bullet>().setDirection(Bullet::Direction::RIGHT);
     } else if (isServer()) {
         std::shared_ptr<KapEngine::GameObject> missile;
         getServer()->spawnObject(
-            "Missile", pos, [](const std::shared_ptr<KapEngine::GameObject> &missile) { missile->setName("Missile Player"); }, missile);
+            "Missile", pos,
+            [](const std::shared_ptr<KapEngine::GameObject> &missile) {
+                missile->setName("Missile Player");
+                missile->getComponent<Bullet>().setDirection(Bullet::Direction::RIGHT);
+            },
+            missile);
     }
 }
 

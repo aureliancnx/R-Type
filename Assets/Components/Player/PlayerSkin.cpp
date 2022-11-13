@@ -29,10 +29,9 @@ void PlayerSkin::onStart() {
 }
 
 void PlayerSkin::onStartClient() {
-    NetworkComponent::onStartClient();
-
     if (KapEngine::PlayerPrefs::hasKey("shipID")) {
         setSkinId(KapEngine::PlayerPrefs::getInt("shipID"));
+        getClient()->updateObject(getNetworkId());
     }
 }
 
@@ -40,7 +39,8 @@ void PlayerSkin::serialize(KapMirror::NetworkWriter& writer) { writer.write(skin
 
 void PlayerSkin::deserialize(KapMirror::NetworkReader& reader) {
     skinId = reader.read<int>();
+}
 
-    // Update skin
+void PlayerSkin::onObjectUpdate() {
     setSkinId(skinId);
 }

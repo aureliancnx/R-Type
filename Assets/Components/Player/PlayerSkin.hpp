@@ -25,5 +25,7 @@ namespace RType {
         void serialize(KapMirror::NetworkWriter& writer) override;
 
         void deserialize(KapMirror::NetworkReader& reader) override;
+
+        void onObjectUpdate() override;
     };
 } // namespace RType

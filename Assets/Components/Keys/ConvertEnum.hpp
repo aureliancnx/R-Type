@@ -17,7 +17,8 @@ namespace RType {
 
     class ConvertEnum : public Component {
       public:
-        ConvertEnum(std::shared_ptr<GameObject> go, std::string prefsKey, std::string prefix = "Move Up : ", KapEngine::Events::Key::EKey basicKey = KapEngine::Events::Key::Z);
+        ConvertEnum(std::shared_ptr<GameObject> go, std::string prefsKey,
+                    std::string prefix = "Move Up : ", KapEngine::Events::Key::EKey basicKey = KapEngine::Events::Key::Z);
         ~ConvertEnum();
 
         static std::string KeyToString(int e);

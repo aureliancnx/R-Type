@@ -402,10 +402,10 @@ var NAVTREEINDEX =
 "classKapEngine_1_1Tools_1_1Rectangle.html#a74942c819f3149e758cbbe37b4ff01c7",
 "classKapMirror_1_1Experimental_1_1NetworkStatistics.html#a54df1b729c896f530e50f48733355f41",
 "classKapMirror_1_1Sylph_1_1ServerConnection.html#a53ec80a9a1113ef22a3ba2ff53d56815",
-"classRType_1_1MapScript.html#a14ed860aa6fbfb54d42788cf20ac753a",
-"classbackward_1_1StackTraceImpl.html",
-"md_Library_KapEngine_CODE_OF_CONDUCT.html",
-"namespaceKapEngine_1_1Graphical.html"
+"classRType_1_1MapScript.html",
+"classbackward_1_1StackTrace.html",
+"md_CONTRIBUTING.html#autotoc_md27",
+"namespaceKapEngine_1_1Events.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

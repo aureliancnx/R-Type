@@ -1,5 +1,6 @@
 var NAVTREEINDEX9 =
 {
+"md_CONTRIBUTING.html#autotoc_md27":[1,3,1],
 "md_Library_KapEngine_CODE_OF_CONDUCT.html":[7],
 "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md100":[7,3],
 "md_Library_KapEngine_CODE_OF_CONDUCT.html#autotoc_md101":[7,4],
@@ -244,10 +245,9 @@ var NAVTREEINDEX9 =
 "md_pull_request_template.html#autotoc_md257":[32,1],
 "md_pull_request_template.html#autotoc_md258":[32,2],
 "modules.html":[37],
-"namespaceKapEngine.html":[38,0,0],
 "namespaceKapEngine.html":[39,0,2],
-"namespaceKapEngine_1_1Errors.html":[39,0,2,0],
+"namespaceKapEngine.html":[38,0,0],
 "namespaceKapEngine_1_1Errors.html":[38,0,0,0],
-"namespaceKapEngine_1_1Events.html":[39,0,2,1],
+"namespaceKapEngine_1_1Errors.html":[39,0,2,0],
 "namespaceKapEngine_1_1Events.html":[38,0,0,1]
 };

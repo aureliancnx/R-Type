@@ -1,5 +1,6 @@
 var NAVTREEINDEX8 =
 {
+"classbackward_1_1StackTrace.html":[39,0,0,8],
 "classbackward_1_1StackTraceImpl.html":[39,0,0,9],
 "classbackward_1_1StackTraceImpl.html#a65b1def36181512a179dbbf4d79c6276":[39,0,0,9,1],
 "classbackward_1_1StackTraceImpl.html#a722efc939b63d042260149e29628f2d6":[39,0,0,9,2],
@@ -170,8 +171,8 @@ var NAVTREEINDEX8 =
 "functions_e.html":[39,3,0,5],
 "functions_enum.html":[39,3,3],
 "functions_f.html":[39,3,0,6],
-"functions_func.html":[39,3,1],
 "functions_func.html":[39,3,1,0],
+"functions_func.html":[39,3,1],
 "functions_func_a.html":[39,3,1,1],
 "functions_func_b.html":[39,3,1,2],
 "functions_func_c.html":[39,3,1,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX8 =
 "md_CONTRIBUTING.html#autotoc_md23":[1,2,3],
 "md_CONTRIBUTING.html#autotoc_md24":[1,2,4],
 "md_CONTRIBUTING.html#autotoc_md25":[1,3],
-"md_CONTRIBUTING.html#autotoc_md26":[1,3,0],
-"md_CONTRIBUTING.html#autotoc_md27":[1,3,1]
+"md_CONTRIBUTING.html#autotoc_md26":[1,3,0]
 };

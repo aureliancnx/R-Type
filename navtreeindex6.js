@@ -226,6 +226,7 @@ var NAVTREEINDEX6 =
 "classRType_1_1LobbyMenuManager.html#a56e4ca68fe2675c37c62228738b31d46":[39,0,5,15,1],
 "classRType_1_1LobbyMenuManager.html#a68828c90e88607e2fc53b156e56b4319":[39,0,5,15,2],
 "classRType_1_1LobbyMenuManager.html#a9104a87abf7d29a883599b0ea266fbec":[39,0,5,15,0],
+"classRType_1_1LobbyMenuManager.html#a9c0064bfe64dcadeb242ce542878f3f7":[39,0,5,15,4],
 "classRType_1_1LobbyMenuManager.html#ae0534a3197331998050f19bf2ee0ea64":[39,0,5,15,3],
 "classRType_1_1LuaException.html":[39,0,5,16],
 "classRType_1_1LuaException.html#a03f27f6118be565bae5b14927daafd71":[39,0,5,16,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "classRType_1_1MapManager.html#a2530b18da4159f241dbad686df4ec16f":[39,0,5,19,2],
 "classRType_1_1MapManager.html#a75759f0bb7726815a7b782dd2d580fb1":[39,0,5,19,3],
 "classRType_1_1MapManager.html#abb4f4fcac2fb53ca005e02b71e846fb1":[39,0,5,19,0],
-"classRType_1_1MapManager.html#ac4024a4688cb432385228b584593b3a0":[39,0,5,19,1],
-"classRType_1_1MapScript.html":[39,0,5,20]
+"classRType_1_1MapManager.html#ac4024a4688cb432385228b584593b3a0":[39,0,5,19,1]
 };

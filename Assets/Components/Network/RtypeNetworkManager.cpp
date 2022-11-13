@@ -80,7 +80,7 @@ void RtypeNetworkManager::onErrorOnStartGameMessage(const std::shared_ptr<KapMir
 
     if (message.errorMessage == "Game already started") {
         onPlayerStartGameMessage(connection, reinterpret_cast<StartGameMessage&>(message));
-        return ;
+        return;
     }
 
     // TODO: Handle error

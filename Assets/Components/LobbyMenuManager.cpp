@@ -173,7 +173,6 @@ void RType::LobbyMenuManager::quit() {
     //    } catch (...) { KAP_DEBUG_ERROR("Failed to find MenuManager"); }
 }
 
-// TODO: Add a way to get the map path from the input field
 void RType::LobbyMenuManager::startGame() {
     StartGameMessage message;
     KAP_DEBUG_WARNING("Map: " + mapField->getText());

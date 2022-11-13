@@ -5,6 +5,10 @@
 #include "Campaign/MapManager.hpp"
 #include <fstream>
 
+#include "KapEngine.hpp"
+#include "KapEngineUi.hpp"
+#include "KapUI/KapUI.hpp"
+
 using namespace RType;
 
 RtypeNetworkManager::RtypeNetworkManager(std::shared_ptr<KapEngine::GameObject> go, bool _isServer)
@@ -40,19 +44,24 @@ void RtypeNetworkManager::registerClientHandlers() {
                                                           PlayerPingResult& message) { onPlayerPingResult(connection, message); });
 }
 
+// successfully connection
 void RtypeNetworkManager::onClientConnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
     KapEngine::Debug::log("RtypeNetworkManager: Client connected");
 
-    // TODO: Remove this (is for Test)
-    StartGameMessage message;
-    message.mapScriptPath = "Maps/TestMapServer.lua";
-    connection->send(message);
+//        try {
+//            auto go = getGameObject().getScene().findFirstGameObject("LobbyManager");
+//            if (go) {
+//                go->getComponent<GameMenuManager>().setActive(false);
+//            }
+//        } catch (...) { KAP_DEBUG_ERROR("Failed to find LobbyManager"); }
 }
 
+// if is not connected or if connection is lost
 void RtypeNetworkManager::onClientDisconnected(const std::shared_ptr<KapMirror::NetworkConnection>& connection) {
     KapEngine::Debug::log("RtypeNetworkManager: Disconnected from server");
 }
 
+// don't touch (is or permission)
 void RtypeNetworkManager::onPlayerAuthorityMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                                    PlayerAuthorityMessage& message) {
     std::shared_ptr<KapEngine::GameObject> player;
@@ -62,12 +71,32 @@ void RtypeNetworkManager::onPlayerAuthorityMessage(const std::shared_ptr<KapMirr
     }
 }
 
+// if party can't start (full player, invalid map, etc..)
 void RtypeNetworkManager::onErrorOnStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                                     ErrorOnStartGameMessage& message) {
     KAP_DEBUG_ERROR("onErrorOnStartGameMessage: Error on start game: " + message.errorMessage);
     // TODO: Handle error
+    auto go = getGameObject().getScene().findFirstGameObject("LobbyManager");
+    auto lobbyMenu = getGameObject().getScene().createGameObject("MainMenu");
+    lobbyMenu->getComponent<KapEngine::Transform>().setParent(getGameObject().getId());
+    if (go) {
+        auto& scene = getGameObject().getScene();
+        auto canvas = std::make_shared<KapEngine::UI::Canvas>(getGameObject().getScene().getGameObject(getGameObject().getId()));
+        getGameObject().addComponent(canvas);
+        canvas->setResizeType(KapEngine::UI::Canvas::ResizyngType::RESIZE_WITH_SCREEN);
+        auto txt = KapEngine::UI::UiFactory::createText(scene, "Error Message");
+        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Errror : " + message.errorMessage);
+        compText->setTextColor(KapEngine::Tools::Color::red());
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
+
+        txt->addComponent(compText);
+        transform.setScale({150, 35, 0});
+        transform.setPosition({500, 5});
+        transform.setParent(lobbyMenu->getId());
+    }
 }
 
+// if party is starting (remove menu)
 void RtypeNetworkManager::onPlayerStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                                    StartGameMessage& message) {
     KAP_DEBUG_LOG("onPlayerStartGameMessage: Start game");

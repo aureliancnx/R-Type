@@ -260,7 +260,10 @@ std::shared_ptr<GameObject> RType::GameMenuManager::initButton(std::shared_ptr<G
     return button;
 }
 
-void RType::GameMenuManager::onStartClient() { initMainMenu(false); }
+void RType::GameMenuManager::onStartClient() {
+    initMainMenu(false);
+    setActive(false);
+}
 
 void RType::GameMenuManager::updateHealth(int health) {
     for (int itr = 0; itr < 3; ++itr) {

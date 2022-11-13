@@ -77,10 +77,17 @@ void RtypeNetworkManager::onPlayerAuthorityMessage(const std::shared_ptr<KapMirr
 void RtypeNetworkManager::onErrorOnStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                                     ErrorOnStartGameMessage& message) {
     KAP_DEBUG_ERROR("onErrorOnStartGameMessage: Error on start game: " + message.errorMessage);
+
+    if (message.errorMessage == "Game already started") {
+        onPlayerStartGameMessage(connection, reinterpret_cast<StartGameMessage&>(message));
+        return ;
+    }
+
     // TODO: Handle error
-    auto go = getGameObject().getScene().findFirstGameObject("LobbyManager");
+    auto go = getGameObject().getScene().findFirstGameObject("LobbyMenu");
     auto lobbyMenu = getGameObject().getScene().createGameObject("MainMenu");
     lobbyMenu->getComponent<KapEngine::Transform>().setParent(getGameObject().getId());
+
     if (go) {
         auto& scene = getGameObject().getScene();
         auto canvas = std::make_shared<KapEngine::UI::Canvas>(getGameObject().getScene().getGameObject(getGameObject().getId()));
@@ -102,6 +109,14 @@ void RtypeNetworkManager::onErrorOnStartGameMessage(const std::shared_ptr<KapMir
 void RtypeNetworkManager::onPlayerStartGameMessage(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,
                                                    StartGameMessage& message) {
     KAP_DEBUG_LOG("onPlayerStartGameMessage: Start game");
+
+    {
+        auto go = getGameObject().getScene().findFirstGameObject("Error Message");
+        if (go) {
+            getGameObject().getScene().destroyGameObject(go->getId());
+        }
+    }
+
     try {
         auto go = getScene().findFirstGameObject("LobbyMenu");
         if (go) {

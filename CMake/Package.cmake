@@ -4,19 +4,18 @@ include(InstallRequiredSystemLibraries)
 set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
 set(X_VCPKG_APPLOCAL_DEPS_INSTALL ON)
 
-install(CODE [[
-  file(GET_RUNTIME_DEPENDENCIES
-    # ...
-    )
-  ]])
-
 # Put assets in installation process
 # and RType executable in the root folder of destination
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/Assets/" DESTINATION "Assets")
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/Maps/" DESTINATION "Maps")
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/Binaries/" DESTINATION ".")
-install(DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} DESTINATION . FILES_MATCHING PATTERN "*.dll")
-install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION "." COMPONENT applications)
+
+add_custom_command(TARGET RType POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:RType> $<TARGET_FILE_DIR:RType>
+        COMMAND_EXPAND_LISTS
+        )
 
 # Set installation prefix
 set(CPACK_INSTALL_PREFIX /R-Type)

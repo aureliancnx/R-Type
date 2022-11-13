@@ -37,7 +37,10 @@ void RType::GameMenuManager::displayMainMenu() {
     }
 }
 
-void RType::GameMenuManager::displayEndMenu() {
+void RType::GameMenuManager::displayEndMenu(bool win) {
+    PlayerPrefs::setBool("Finish", win);
+    PlayerPrefs::setInt("ScorePlayer", 0);
+
     getEngine().getSceneManager()->loadScene("EndScene");
     GameManager::getInstance()->getMenuManager().showMenu("EndMenu");
 }

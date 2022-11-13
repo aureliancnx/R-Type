@@ -283,7 +283,7 @@ void PlayerController::takeDamage(int damage) {
         life = 0;
         isDead = true;
         // TODO: do something on death
-        menuManager->displayEndMenu();
+        menuManager->displayEndMenu(false);
     }
 
     if (isServer()) {

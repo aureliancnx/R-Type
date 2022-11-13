@@ -45,7 +45,7 @@ namespace RType {
         void initAxis();
 
       public:
-        void startLocalMultiPlayer();
+        void startLocalMultiPlayer(const std::string& address);
 
         void startCampaign(const std::string& pathMap);
 

@@ -32,11 +32,12 @@ void MultiMenu::init() {
     }
 
     // create inputfield for ip
+    std::shared_ptr<KapEngine::UI::Inputfield> addressText;
     {
         auto inpt = scene.createGameObject("InputFieldIp");
-        auto inptComp = std::make_shared<KapEngine::UI::Inputfield>(inpt);
 
-        inpt->addComponent(inptComp);
+        addressText = std::make_shared<KapEngine::UI::Inputfield>(inpt);
+        inpt->addComponent(addressText);
 
         auto& transform = inpt->getComponent<KapEngine::Transform>();
         transform.setScale({150, 35, 0});
@@ -47,10 +48,11 @@ void MultiMenu::init() {
     // create text for ip
     {
         auto txt = KapEngine::UI::UiFactory::createText(scene, "Multi Text Ip");
-        auto compText = std::make_shared<KapEngine::UI::Text>(txt, "Enter your IP : ");
-        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
 
-        txt->addComponent(compText);
+        auto txtComp = std::make_shared<KapEngine::UI::Text>(txt, "Enter your IP : ");
+        txt->addComponent(txtComp);
+
+        auto& transform = txt->getComponent<KapEngine::Transform>().getTransform();
         transform.setScale(KapEngine::Tools::Vector3(150, 35, 0));
         transform.setPosition(KapEngine::Tools::Vector3(50, 150, 0));
         transform.setParent(canvas);
@@ -59,24 +61,23 @@ void MultiMenu::init() {
     // create button join
     {
         auto btn = scene.createGameObject("ButtonPlay");
-        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
-        auto& transform = btn->getComponent<KapEngine::Transform>();
 
+        auto btnComp = std::make_shared<KapEngine::UI::Button>(btn);
         btn->addComponent(btnComp);
+
         btnComp->setText("Join");
         btnComp->setBackground("Assets/Textures/button.png", {5, 9, 655, 213});
         btnComp->setTextPosition({80, 12});
         btnComp->setTextColor(KapEngine::Tools::Color::white());
+        btnComp->getOnClick().registerAction([this, addressText]() {
+            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
+            gameManager.startLocalMultiPlayer(addressText->getText());
+        });
 
+        auto& transform = btn->getComponent<KapEngine::Transform>();
         transform.setPosition({250, 250, 0});
         transform.setScale({222, 39, 0});
         transform.setParent(canvas);
-
-        btnComp->getOnClick().registerAction([this]() {
-            engine.getGraphicalLibManager()->getCurrentLib()->playSound("Assets/Sound/Fx/hoverButton.wav");
-            engine.getSceneManager()->loadScene("MultiPlayer");
-            gameManager.startLocalMultiPlayer();
-        });
     }
 
     // create button back

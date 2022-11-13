@@ -163,8 +163,7 @@ void PlayerController::prepareShoot() {
 }
 
 void PlayerController::shoot() {
-    KapEngine::Tools::Vector3 pos = getTransform().getLocalPosition()
-            + KapEngine::Tools::Vector3(90, 15, 0);
+    KapEngine::Tools::Vector3 pos = getTransform().getLocalPosition() + KapEngine::Tools::Vector3(90, 15, 0);
     bool isMissile = false;
 
     if (clockMissile.getElapseTime().asSecond() >= 4.5f) {

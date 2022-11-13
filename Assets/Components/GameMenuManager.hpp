@@ -32,6 +32,8 @@ namespace RType {
 
         void displayEndMenu(bool win);
 
+        void display(bool win);
+
       private:
         void initMainMenu(bool local = true);
 

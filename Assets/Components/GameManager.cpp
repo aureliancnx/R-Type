@@ -8,6 +8,7 @@
 #include "Menu/VolumeMenu.hpp"
 #include "Menu/HowToPlayMenu.hpp"
 #include "Menu/SettingPlayerMenu.hpp"
+#include "Menu/ConnectionLostMenu.hpp"
 #include "Menu/EndMenu.hpp"
 #include "CampaignGenerator/CampaignGenerator.hpp"
 #include "Player/PlayerSkin.hpp"
@@ -82,6 +83,7 @@ void GameManager::registerMenus() {
 
     auto &scene = engine->getSceneManager()->getScene(1);
     auto &endScene = engine->getSceneManager()->getScene("EndScene");
+    auto lostConnectionScene = engine->getSceneManager()->createScene("MPConnectionLost");
 
     // Register menus
     auto mainMenu = std::make_shared<MainMenu>(scene);
@@ -110,6 +112,9 @@ void GameManager::registerMenus() {
 
     auto endMenu = std::make_shared<EndMenu>(endScene, *this);
     menuManager.registerMenu("EndMenu", endMenu);
+
+    auto connectionLostMenu = std::make_shared<ConnectionLostMenu>(*lostConnectionScene, *this);
+    menuManager.registerMenu("MPConnectionLost", connectionLostMenu);
 }
 
 MenuManager &GameManager::getMenuManager() { return menuManager; }

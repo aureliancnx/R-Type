@@ -333,6 +333,7 @@ void PlayerController::initSettings() {
 }
 
 void PlayerController::onStartClient() {
+    life = 100;
     initSettings();
     try {
         auto go = getScene().findFirstGameObject("MenuManager");
@@ -355,6 +356,7 @@ void PlayerController::onStartClient() {
 }
 
 void PlayerController::onStart() {
+    life = 100;
     if (isLocal()) {
         initSettings();
         try {

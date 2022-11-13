@@ -8,6 +8,7 @@
 #include "KapEngine.hpp"
 #include "KapEngineUi.hpp"
 #include "KapUI/KapUI.hpp"
+#include "GameManager.hpp"
 
 using namespace RType;
 
@@ -52,6 +53,8 @@ void RtypeNetworkManager::onClientConnected(const std::shared_ptr<KapMirror::Net
 // if is not connected or if connection is lost
 void RtypeNetworkManager::onClientDisconnected(const std::shared_ptr<KapMirror::NetworkConnection> &connection) {
     KapEngine::Debug::log("RtypeNetworkManager: Disconnected from server");
+    getEngine().getSceneManager()->loadScene("MPConnectionLost");
+    GameManager::getInstance()->getMenuManager().showMenu("MPConnectionLost");
 }
 
 // don't touch (is or permission)

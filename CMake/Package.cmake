@@ -1,6 +1,9 @@
 # Install required system libraries by default
 include(InstallRequiredSystemLibraries)
 
+set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
+set(X_VCPKG_APPLOCAL_DEPS_INSTALL ON)
+
 # Put assets in installation process
 # and RType executable in the root folder of destination
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/Assets/" DESTINATION "Assets")

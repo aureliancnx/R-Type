@@ -106,23 +106,19 @@ void RtypeNetworkManager::onPlayerStartGameMessage(const std::shared_ptr<KapMirr
     for (auto& g : go) {
         std::cout << g->getName() << std::endl;
     }
-        try {
-            auto go = getScene().findFirstGameObject("LobbyMenu");
-            if (go) {
-                go->setActive(false);
-            }
-        } catch (...) {
-            KAP_DEBUG_ERROR("onPlayerStartGameMessage: LobbyManager not found");
+    try {
+        auto go = getScene().findFirstGameObject("LobbyMenu");
+        if (go) {
+            go->setActive(false);
         }
+    } catch (...) { KAP_DEBUG_ERROR("onPlayerStartGameMessage: LobbyManager not found"); }
 
-        try {
-            auto go = getScene().findFirstGameObject("MenuManager");
-            if (go) {
-                go->setActive(true);
-            }
-        } catch (...) {
-            KAP_DEBUG_ERROR("onPlayerStartGameMessage: MenuManager not found");
+    try {
+        auto go = getScene().findFirstGameObject("MenuManager");
+        if (go) {
+            go->setActive(true);
         }
+    } catch (...) { KAP_DEBUG_ERROR("onPlayerStartGameMessage: MenuManager not found"); }
 }
 
 void RtypeNetworkManager::onClientPlayerPingRequest(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,

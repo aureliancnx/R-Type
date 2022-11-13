@@ -100,21 +100,6 @@ void RType::LobbyMenuManager::initLobbyMenu(bool local) {
         transform.setPosition(calculatedPos);
         transform.setParent(lobbyMenu->getId());
     }
-    //    {
-    //        auto inpt = scene.createGameObject("InputFieldMap");
-    //        auto inptComp = std::make_shared<KapEngine::UI::Inputfield>(inpt);
-    //
-    //        inpt->addComponent(inptComp);
-    //
-    //        Tools::Vector3 calculatedPos;
-    //        calculatedPos.setX(getEngine().getScreenSize().getX() - 80.0f - 100);
-    //        calculatedPos.setY(5);
-    //
-    //        auto& transform = inpt->getComponent<KapEngine::Transform>();
-    //        transform.setScale(btnSize);
-    //        transform.setPosition(calculatedPos);
-    //        transform.setParent(lobbyMenu->getId());
-    //    }
 }
 
 std::shared_ptr<KapEngine::GameObject> RType::LobbyMenuManager::initButton(std::shared_ptr<KapEngine::GameObject> parent, std::string name,

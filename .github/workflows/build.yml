@@ -87,7 +87,9 @@ jobs:
             -G "${{ matrix.config.generators }}"
       - name: Build
         shell: bash
-        run: cmake --build build --config ${{ matrix.config.build_type }}
+        run: |
+          cmake --build build --config ${{ matrix.config.build_type }}
+          ls -lah
       - name: Check file exists
         shell: bash
         run: test -f build/${{ matrix.config.executable_file }}

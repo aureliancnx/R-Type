@@ -6,6 +6,7 @@ include(InstallRequiredSystemLibraries)
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/Assets/" DESTINATION "Assets")
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/Maps/" DESTINATION "Maps")
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/Binaries/" DESTINATION ".")
+install(DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} DESTINATION . FILES_MATCHING PATTERN "*.dll")
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION "." COMPONENT applications)
 
 # Set installation prefix

@@ -95,7 +95,7 @@ void RType::LobbyMenuManager::initLobbyMenu(bool local) {
         calculatedPos.setX(getEngine().getScreenSize().getX() - 80.0f - 100);
         calculatedPos.setY(5);
 
-        auto& transform = inpt->getComponent<KapEngine::Transform>();
+        auto &transform = inpt->getComponent<KapEngine::Transform>();
         transform.setScale({150, 15, 0});
         transform.setPosition(calculatedPos);
         transform.setParent(lobbyMenu->getId());

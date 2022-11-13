@@ -110,13 +110,6 @@ void RtypeNetworkManager::onPlayerStartGameMessage(const std::shared_ptr<KapMirr
                                                    StartGameMessage& message) {
     KAP_DEBUG_LOG("onPlayerStartGameMessage: Start game");
 
-    {
-        auto go = getGameObject().getScene().findFirstGameObject("Error Message");
-        if (go) {
-            getGameObject().getScene().destroyGameObject(go->getId());
-        }
-    }
-
     try {
         auto go = getScene().findFirstGameObject("LobbyMenu");
         if (go) {
@@ -130,6 +123,11 @@ void RtypeNetworkManager::onPlayerStartGameMessage(const std::shared_ptr<KapMirr
             go->setActive(true);
         }
     } catch (...) { KAP_DEBUG_ERROR("onPlayerStartGameMessage: MenuManager not found"); }
+
+    auto go = getGameObject().getScene().findFirstGameObject("Error Message");
+    if (go) {
+        getGameObject().getScene().destroyGameObject(go->getId());
+    }
 }
 
 void RtypeNetworkManager::onClientPlayerPingRequest(const std::shared_ptr<KapMirror::NetworkConnectionToServer>& connection,

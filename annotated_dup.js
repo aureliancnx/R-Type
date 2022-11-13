@@ -116,6 +116,7 @@ var annotated_dup =
       [ "HowToPlayMenu", "classRType_1_1HowToPlayMenu.html", "classRType_1_1HowToPlayMenu" ],
       [ "KeyboardMenu", "classRType_1_1KeyboardMenu.html", "classRType_1_1KeyboardMenu" ],
       [ "KeySelector", "classRType_1_1KeySelector.html", "classRType_1_1KeySelector" ],
+      [ "LobbyMenuManager", "classRType_1_1LobbyMenuManager.html", "classRType_1_1LobbyMenuManager" ],
       [ "LuaException", "classRType_1_1LuaException.html", "classRType_1_1LuaException" ],
       [ "MainMenu", "classRType_1_1MainMenu.html", "classRType_1_1MainMenu" ],
       [ "MapEnemy", "classRType_1_1MapEnemy.html", "classRType_1_1MapEnemy" ],

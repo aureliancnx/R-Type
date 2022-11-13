@@ -11,6 +11,7 @@ var dir_5f01215645ad23021dc294eedad4568f =
     [ "Volume", "dir_61a969dbb77841833d347b4d8ffa8627.html", "dir_61a969dbb77841833d347b4d8ffa8627" ],
     [ "GameManager.hpp", "GameManager_8hpp_source.html", null ],
     [ "GameMenuManager.hpp", "GameMenuManager_8hpp_source.html", null ],
+    [ "LobbyMenuManager.hpp", "LobbyMenuManager_8hpp_source.html", null ],
     [ "MenuManager.hpp", "MenuManager_8hpp_source.html", null ],
     [ "Messages.hpp", "Assets_2Components_2Messages_8hpp_source.html", null ],
     [ "Prefabs.hpp", "Prefabs_8hpp_source.html", null ]

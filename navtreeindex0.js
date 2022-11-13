@@ -27,7 +27,7 @@ var NAVTREEINDEX0 =
 "Animator_8hpp_source.html":[40,0,2,1,0,1,4,0],
 "ArraySegment_8hpp_source.html":[40,0,3,0,0,1,2],
 "Array_8hpp_source.html":[40,0,3,0,0,1,1],
-"Assets_2Components_2Messages_8hpp_source.html":[40,0,0,0,12],
+"Assets_2Components_2Messages_8hpp_source.html":[40,0,0,0,13],
 "BoubouleEnemy_8hpp_source.html":[40,0,3,3,0,0,0],
 "Bullet_8hpp_source.html":[40,0,0,0,1,0],
 "Button_8hpp_source.html":[40,0,3,2,0,0,0],
@@ -94,6 +94,7 @@ var NAVTREEINDEX0 =
 "KeyboardMenu_8hpp_source.html":[40,0,0,0,5,2],
 "LegacyGraphicalLib_8hpp_source.html":[40,0,2,1,0,9,0,0],
 "Library_2KapEngine_2KapEngine_2Engine_2Factory_8hpp_source.html":[40,0,2,1,0,3,1],
+"LobbyMenuManager_8hpp_source.html":[40,0,0,0,11],
 "LuaException_8hpp_source.html":[40,0,3,3,0,4],
 "Lua_8hpp_source.html":[40,0,3,3,0,3],
 "MagnificentReceivePipe_8hpp_source.html":[40,0,3,0,0,3,0,1],
@@ -105,7 +106,7 @@ var NAVTREEINDEX0 =
 "Map_8hpp_source.html":[40,0,3,4,0,0],
 "MathScript_8hpp_source.html":[40,0,3,3,0,1,2],
 "MenuCampaignSelector_8hpp_source.html":[40,0,0,0,2,1],
-"MenuManager_8hpp_source.html":[40,0,0,0,11],
+"MenuManager_8hpp_source.html":[40,0,0,0,12],
 "MenuVolume_8hpp_source.html":[40,0,0,0,8,0],
 "Menu_8hpp_source.html":[40,0,0,0,5,4],
 "MessagePacking_8hpp_source.html":[40,0,3,0,0,1,4],
@@ -136,7 +137,7 @@ var NAVTREEINDEX0 =
 "PlayerPrefs_8hpp_source.html":[40,0,2,1,0,10,0],
 "PlayerSkin_8hpp_source.html":[40,0,0,0,7,1],
 "PrefabManager_8hpp_source.html":[40,0,2,1,0,11,0],
-"Prefabs_8hpp_source.html":[40,0,0,0,13],
+"Prefabs_8hpp_source.html":[40,0,0,0,14],
 "RaylibCache_8hpp_source.html":[40,0,3,1,0,0,0],
 "RaylibEncapsulation_8hpp_source.html":[40,0,3,1,0,2,0],
 "RaylibGraphical_8hpp_source.html":[40,0,3,1,0,3,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "classKapEngine_1_1Collider.html#a92a36099a933727f2f73ad6401e2e3f9":[37,0,5,0],
 "classKapEngine_1_1Collider.html#a96e08f0d17e623a3515aae591fec5601":[37,0,5,7],
 "classKapEngine_1_1Collider.html#a97de92957a541665532f62cb251024ad":[37,0,5,3],
-"classKapEngine_1_1Collider.html#aad385c886b7a5e221a204819fed778c9":[37,0,5,4],
-"classKapEngine_1_1Collider.html#adef6b11159ce0993bcb8d54bf6063be4":[37,0,5,5]
+"classKapEngine_1_1Collider.html#aad385c886b7a5e221a204819fed778c9":[37,0,5,4]
 };

@@ -113,9 +113,7 @@ void GameManager::registerMenus() {
     menuManager.registerMenu("EndMenu", endMenu);
 }
 
-MenuManager &GameManager::getMenuManager() {
-    return menuManager;
-}
+MenuManager& GameManager::getMenuManager() { return menuManager; }
 
 void GameManager::initEndScene() { auto scene = engine->getSceneManager()->createScene("EndScene"); }
 

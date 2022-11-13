@@ -53,7 +53,7 @@ namespace RType {
 
         void toggleDebugMode();
 
-        MenuManager &getMenuManager();
+        MenuManager& getMenuManager();
 
         std::shared_ptr<RtypeNetworkManager>& getNetworkManager();
 

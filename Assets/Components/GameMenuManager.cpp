@@ -51,11 +51,6 @@ void RType::GameMenuManager::displayEndMenu(bool win) {
     GameManager::getInstance()->getMenuManager().showMenu("EndMenu");
 }
 
-void RType::GameMenuManager::displayConnectionLostMenu() {
-    getEngine().getSceneManager()->loadScene("MPConnectionLost");
-    GameManager::getInstance()->getMenuManager().showMenu("MPConnectionLost");
-}
-
 void RType::GameMenuManager::initMainMenu(bool local) {
     // menu set
     mainMenu = getScene().createGameObject("MainMenu");

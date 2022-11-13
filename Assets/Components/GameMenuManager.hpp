@@ -32,7 +32,7 @@ namespace RType {
 
         void displayEndMenu(bool win);
 
-        void displayConnectionLostMenu();
+        void display(bool win);
 
       private:
         void initMainMenu(bool local = true);

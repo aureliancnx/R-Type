@@ -223,10 +223,12 @@ void PlayerController::spawnMissile(const KapEngine::Tools::Vector3 &pos) {
     } else if (isServer()) {
         std::shared_ptr<KapEngine::GameObject> missile;
         getServer()->spawnObject(
-            "Missile", pos, [](const std::shared_ptr<KapEngine::GameObject> &missile) {
+            "Missile", pos,
+            [](const std::shared_ptr<KapEngine::GameObject> &missile) {
                 missile->setName("Missile Player");
                 missile->getComponent<Bullet>().setDirection(Bullet::Direction::RIGHT);
-            }, missile);
+            },
+            missile);
     }
 }
 

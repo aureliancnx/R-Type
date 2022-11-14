@@ -12,11 +12,6 @@ install(DIRECTORY "${PROJECT_SOURCE_DIR}/Assets/" DESTINATION "Assets")
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/Maps/" DESTINATION "Maps")
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/Binaries/" DESTINATION ".")
 
-add_custom_command(TARGET RType POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:RType> $<TARGET_FILE_DIR:RType>
-        COMMAND_EXPAND_LISTS
-        )
-
 # Set installation prefix
 set(CPACK_INSTALL_PREFIX /R-Type)
 

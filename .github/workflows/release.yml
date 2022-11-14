@@ -115,6 +115,7 @@ jobs:
         run: |
           cd build/
           ls -lahR
+          find "*.dll" -mindepth 1 -type f -print0 | xargs -0 mv -t .
           cpack
         shell: bash
       - name: Upload Release Asset (.rpm)

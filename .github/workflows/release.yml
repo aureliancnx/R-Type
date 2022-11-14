@@ -114,6 +114,7 @@ jobs:
       - name: Create installer
         run: |
           cd build/
+          mkdir bin/
           find . -name '*.dll' -mindepth 1 -type f -exec mv {} bin/. \; 
           ls -lahR
           cpack

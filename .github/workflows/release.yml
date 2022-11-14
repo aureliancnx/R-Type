@@ -114,8 +114,8 @@ jobs:
       - name: Create installer
         run: |
           cd build/
+          find . -name '*.dll' -mindepth 1 -type f -exec mv {} bin/. \; 
           ls -lahR
-          find . -name '*.dll' -mindepth 1 -type f -exec mv {} . \; 
           cpack
         shell: bash
       - name: Upload Release Asset (.rpm)

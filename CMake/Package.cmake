@@ -55,6 +55,9 @@ if (${CMAKE_INSTALL_PREFIX} MATCHES "/_CPack_Packages/.*/(TGZ|ZIP)/")
     execute_process( COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_INSTALL_PREFIX}/lib)
 endif()
 
+set(CPACK_SOURCE_INSTALLED_DIRECTORIES
+        "${CMAKE_BINARY_DIR}/;/")
+
 # Add RType component
 cpack_add_component(applications
         REQUIRED

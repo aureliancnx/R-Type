@@ -264,7 +264,7 @@ void Prefabs::registerInGameMenuPrefab(KapEngine::KEngine &engine) {
         auto menuManager = std::make_shared<GameMenuManager>(menu);
         menu->addComponent(menuManager);
 
-        auto lobbyManager = make_shared<LobbyMenuManager>(menu);
+        auto lobbyManager = std::make_shared<LobbyMenuManager>(menu);
         menu->addComponent(lobbyManager);
 
         auto &canvas = menu->getComponent<KapEngine::UI::Canvas>();

@@ -3,6 +3,7 @@
 #include "Messages.hpp"
 #include "GameManager.hpp"
 #include <sstream>
+#include <iomanip>
 
 using namespace RType;
 

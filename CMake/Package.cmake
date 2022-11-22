@@ -1,17 +1,11 @@
 # Install required system libraries by default
 include(InstallRequiredSystemLibraries)
 
-set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
-set(X_VCPKG_APPLOCAL_DEPS_INSTALL ON)
-
-#install(TARGETS... RUNTIME_DEPENDENCIES)
-
 # Put assets in installation process
 # and RType executable in the root folder of destination
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/Assets/" DESTINATION "Assets")
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/Maps/" DESTINATION "Maps")
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/Binaries/" DESTINATION ".")
-install(DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} DESTINATION . FILES_MATCHING PATTERN "*.dll")
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION "." COMPONENT applications)
 
 # Set installation prefix
@@ -35,7 +29,6 @@ set(CPACK_DEBIAN_PACKAGE_NAME "RType")
 set(CPACK_DEBIAN_PACKAGE_CONTACT "idk@gmail.com")
 set(CPACK_DEBIAN_PACKAGE_VERSION "1.0")
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "RType")
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "libboost-dev")
 
 # CPack configuration for DMG package generation
 set(CPACK_DMG_BACKGROUND_IMAGE ${CMAKE_CURRENT_SOURCE_DIR}/Assets/Installer/installer_dragndrop.png)
